@@ -1,0 +1,25 @@
+{
+    "navigation": {
+        "about": "О нас",
+        "branches": "Филиалы",
+        "courses": "Курсы",
+        "co-workers": "Коллеги",
+        "price-list": "Прайс-лист"
+    },
+    "footer": {
+        "about-us": "О нас",
+        "branches": "Филиалы",
+        "programs": "Программы",
+        "partners": "Коллеги"
+    },
+    "adress": {
+        "adress": "Адрес: Ереван, Абовяна 33",
+        "street": "Армения, Ереван, Абовяна 33"
+    },
+    "texts": {
+        "main-title": "УЧИТЬСЯ НИКОГДА НЕ ПОЗДНО",
+        "follow-us": "ПОДПИСЫВАЙТЕСЬ НА НАС",
+        "rights": "Все права защищены",
+        "rating-title": "Учебный центр Art House"
+    }
+}

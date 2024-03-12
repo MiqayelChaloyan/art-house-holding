@@ -1,0 +1,25 @@
+{
+    "navigation": {
+        "about": "About us",
+        "branches": "Branches",
+        "courses": "Courses",
+        "co-workers": "Co-Workers",
+        "price-list": "Price List"
+    },
+    "footer": {
+        "about-us": "About us",
+        "branches": "Branches",
+        "programs": "Programs",
+        "partners": "Co-Workers"
+    },
+    "adress": {
+        "adress": "Adress: Yerevan, Abovyan 33",
+        "street": "Armenia, Yereva, Abovyan 33"
+    },
+    "texts": {
+        "main-title": "IT'S NEVER TOO LATE TO LEARN",
+        "follow-us": "FOLLOW US",
+        "rights": "All rights reserved",
+        "rating-title": "Art House Learning Center"
+    }
+}
