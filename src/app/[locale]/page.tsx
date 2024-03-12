@@ -9,16 +9,6 @@ import { fetchArtHouseHomeData } from '../../../sanity/services/art-house-servic
 import { ART_HOUSE_HOME } from '../../../sanity/sanity-queries/art-house';
 
 
-export const getDataAPI = async (localActive: string) => {
-  try {
-    const data = await fetchArtHouseHomeData(localActive);
-    return data[1];
-  } catch (err) {
-    console.error('Error fetching data:', err);
-  }
-};
-
-
 export default function Home(props: any) {
   const [data, setData] = useState<ART_HOUSE_HOME[] | any>([]);
   const localActive = useLocale();
@@ -26,8 +16,8 @@ export default function Home(props: any) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getDataAPI(localActive);
-        setData(result);
+        const result = await fetchArtHouseHomeData(localActive);
+        setData(result[1]);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
