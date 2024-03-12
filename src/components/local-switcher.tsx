@@ -6,19 +6,17 @@ import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
-import { locales } from '@/navigation';
 
-
-const localeStrings: {
-  am: string
-  ru: string
-  en: string
-  [key: string]: string
-} = {
-  am: 'Հայ',
-  ru: 'Рус',
-  en: 'Eng',
-};
+// const localeStrings: {
+//   am: string
+//   ru: string
+//   en: string
+//   [key: string]: string
+// } = {
+//   am: 'Հայ',
+//   ru: 'Рус',
+//   en: 'Eng',
+// };
 
 
 export default function LocalSwitcher() {

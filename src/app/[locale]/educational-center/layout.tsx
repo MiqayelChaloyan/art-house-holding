@@ -5,12 +5,12 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
 // import Providers from '@/app/providers';
-import { locales } from '@/navigation';
 
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 import '@/styles/globals.sass';
+// import { locales } from '@/navigation';
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -37,6 +37,8 @@ export async function generateMetadata(): Promise<Metadata> {
         }
     };
 }
+
+const locales = ['en', 'am', 'ru'];
 
 
 export function generateStaticParams() {

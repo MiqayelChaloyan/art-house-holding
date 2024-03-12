@@ -6,12 +6,12 @@ import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { Metadata } from 'next';
 
 // import Providers from '@/app/providers';
-import { locales } from '@/navigation';
 
 import Header from '@/components/outlets/art-house/header';
 import Footer from '@/components/outlets/art-house/footer';
 
 import '@/styles/globals.sass';
+// import { locales } from '@/navigation';
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -38,6 +38,8 @@ export async function generateMetadata(): Promise<Metadata> {
         }
     };
 }
+
+const locales = ['en', 'am', 'ru'];
 
 
 export function generateStaticParams() {
