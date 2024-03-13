@@ -1,14 +1,13 @@
-import { getTranslations } from "next-intl/server";
+import Home from '@/components/screens/language';
 
-import { notFound } from 'next/navigation';
+import { getTranslations } from "next-intl/server";
 
 import { type Metadata } from "next";
 
 import { Locale } from "@/locales";
-
-import Home from '@/components/screens/educational-center';
-
 import { getHomeData } from '../../../../sanity/services/educational-center-service/about-us';
+import { notFound } from 'next/navigation';
+
 
 
 interface RootLayoutProps {
@@ -26,12 +25,13 @@ async function getResources(locale: string) {
 
 export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
     const data = await getResources(locale);
+    // console.log(data);
 
     if (!data) {
         notFound()
     }
 
-    return <Home data={data}/>;
+    return <Home />;
 }
 
 

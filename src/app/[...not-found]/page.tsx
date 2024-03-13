@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { Inter } from 'next/font/google';
+
 import styles from './styles.module.sass';
 
-import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
