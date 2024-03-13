@@ -1,11 +1,11 @@
-import React from 'react';
+import { useTranslations } from 'next-intl';
 
-const Footer = () => {
-    return (
-        <div className='my-10 text-center'>
-            <p>footer</p>
-        </div>
-    );
-};
+export default function Footer() {
+  const t = useTranslations('navigation');
 
-export default Footer;
+  return (
+    <div className='my-10 text-center'>
+      <p>{t('about')}</p>
+    </div>
+  );
+}

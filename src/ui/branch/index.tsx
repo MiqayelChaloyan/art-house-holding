@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import Link from 'next/link';
 
-import { urlFor } from '../../../sanity/imageUrlBuilder';
+import { urlFor } from '../../../../sanity/imageUrlBuilder';
 
 import { ArianAMU, inter } from '@/constants/font';
 

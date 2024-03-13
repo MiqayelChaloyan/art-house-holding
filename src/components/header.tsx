@@ -1,27 +1,16 @@
-import React from 'react';
-
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-
 import LocalSwitcher from './local-switcher';
 
-import { useLocale, useTranslations } from 'next-intl';
+export default function Header() {
+  const t = useTranslations('navigation');
 
-
-
-const Header = () => {
-    const localActive = useLocale();
-
-    const t = useTranslations('navigation');
-
-    return (
-        <header className='p-4'>
-            <nav className='flex items-center justify-between'>
-                <Link href={`/${localActive}`}>{t('branches')}</Link>
-                {/* <Link href={`/${localActive}/about`}>{t('about')}</Link> */}
-                <LocalSwitcher />
-            </nav>
-        </header>
-    );
-};
-
-export default Header;
+  return (
+    <header className='p-4'>
+      <nav className='flex items-center justify-between'>
+        <Link href='/'>{t('about')}</Link>
+        <LocalSwitcher />
+      </nav>
+    </header>
+  );
+}

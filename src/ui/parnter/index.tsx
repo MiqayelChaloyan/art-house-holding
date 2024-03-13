@@ -1,4 +1,4 @@
-import { urlFor } from '../../../sanity/imageUrlBuilder';
+import { urlFor } from '../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 

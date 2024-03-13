@@ -1,9 +1,45 @@
-export default function Home() {
-    return (
-        <div>
-            <h1 className='text-4xl mb-4 font-semibold'>education center</h1>
-            <div style={{ width: '100%', height: '400px', backgroundColor: 'red' }}></div>
-            <p>education center</p>
-        </div>
-    );
+import Home from '@/components/screens/educational-center';
+
+import { getTranslations } from "next-intl/server";
+
+import { type Metadata } from "next";
+
+import { Locale } from "@/locales";
+
+import { getHomeData } from '../../../../sanity/services/educational-center-service/about-us';
+
+
+
+interface RootLayoutProps {
+    params: {
+        locale: string;
+    };
+}
+
+
+async function getResources(locale: string) {
+    const res = await getHomeData(locale);
+    return res
+}
+
+
+export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
+    const data = await getResources(locale);
+    console.log(data);
+
+    return <Home />;
+}
+
+
+export async function generateMetadata({
+    params: { locale },
+}: {
+    params: { locale: Locale };
+}): Promise<Metadata> {
+    const t = await getTranslations({ locale, namespace: 'metadata' });
+
+    return {
+        title: t('title'),
+        description: t('descriptionEducationalCenter'),
+    };
 }

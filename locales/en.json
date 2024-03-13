@@ -6,6 +6,11 @@
         "co-workers": "Co-Workers",
         "price-list": "Price List"
     },
+    "metadata":  {
+        "title": "Art House Holding",
+        "description": "At Art House, we pride ourselves on being a dynamic training center that offers a diverse array of courses to ignite your passion and elevate your skills.",
+        "descriptionEducationalCenter": "Through immersive classes, ART teaches you the skills you need in your future career as a successful and competitive professional."
+    },
     "footer": {
         "about-us": "About us",
         "branches": "Branches",

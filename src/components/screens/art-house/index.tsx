@@ -1,28 +1,16 @@
-import Header from './Header';
-import Branches from './Branches';
-import Progress from './Progress';
-import Partners from './Partners';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
+import { useTranslations } from 'next-intl';
 
-import { ART_HOUSE_HOME } from '../../../../sanity/sanity-queries/art-house';
-
-
-export default function Page({ data }: any) {
-	const { our_websites, progress_section, co_workers } = data;
-
-	// if (!our_websites || !progress_section || !co_workers || isError) {
-	// 	return <PageNotFoundError />
-	// }
-
-    console.log(data)
+export default function Home() {
+    const t = useTranslations('navigation');
 
     return (
         <div>
             <Header />
-            <Branches data={our_websites} />
-            <Progress  data={progress_section} />
-            <Partners data={co_workers} />
+            <h1 className='text-4xl mb-4 font-semibold'>{t('about')}</h1>
+            <p>{t('about')}</p>
+            <Footer />
         </div>
     );
 }
-
-

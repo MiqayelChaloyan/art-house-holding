@@ -1,26 +1,10 @@
 'use client';
 
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
 import { ChangeEvent, useTransition } from 'react';
 
-import Link from 'next/link';
-import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
-
-
-// const localeStrings: {
-//   am: string
-//   ru: string
-//   en: string
-//   [key: string]: string
-// } = {
-//   am: 'Հայ',
-//   ru: 'Рус',
-//   en: 'Eng',
-// };
-
-
 export default function LocalSwitcher() {
-
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const localActive = useLocale();
@@ -44,14 +28,15 @@ export default function LocalSwitcher() {
 
   return (
     <label className='border-2 rounded'>
+      <p className='sr-only'>change language</p>
       <select
         defaultValue={localActive}
         className='bg-transparent py-2'
         onChange={onSelectChange}
         disabled={isPending}
       >
-        <option value='am'>Armenian</option>
         <option value='en'>English</option>
+        <option value='am'>Armenian</option>
         <option value='ru'>Russian</option>
       </select>
     </label>
