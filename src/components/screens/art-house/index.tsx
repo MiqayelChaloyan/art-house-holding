@@ -1,34 +1,30 @@
-import Link from 'next/link';
+"use client"
 
-import { useLocale, useTranslations } from 'next-intl';
+import Main from '@/components/screens/art-house/Main';
+import Branches from '@/components/screens/art-house/Branches';
+import Progress from '@/components/screens/art-house/Progress';
+import Partners from '@/components/screens/art-house/Partners';
 
-// import Footer from '@/components/footer';
-import Header from '@/components/header';
+import Footer from '@/lib/outlets/art-house/footer';
+import Header from '@/lib/outlets/art-house/header';
 
 import { ART_HOUSE_HOME } from '../../../../sanity/sanity-queries/art-house';
 
 
 interface RootProps {
     data: ART_HOUSE_HOME
-}
+};
 
 
 export default function Home({ data }: Readonly<RootProps>) {
-    const t = useTranslations('navigation');
-    const localActive = useLocale();
-
-
     return (
-        <div  style={{backgroundColor: 'yellow'}}>
-            <header>
-                <Link href={`/${localActive}/educational-center`}>educational-center</Link>
-                <Link href={`/${localActive}/language`}>language</Link>
-                <Header/>
-            </header>
-            <h1>home</h1>
-            <h1 className='text-4xl mb-4 font-semibold'>{t('about')}</h1>
-            <p>{t('about')}</p>
-            <footer>Custom footer art house</footer>
+        <div>
+            <Header typePosition='fixed' />
+            <Main />
+            <Branches data={data.our_websites} />
+            <Progress data={data.progress_section} />
+            <Partners data={data.co_workers} />
+            <Footer />
         </div>
     );
-}
+};

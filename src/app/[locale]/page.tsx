@@ -20,7 +20,6 @@ async function getResources(locale: string) {
   return res[1]
 }
 
-
 export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
   const data = await getResources(locale);
 
@@ -30,7 +29,6 @@ export default async function Page({ params: { locale } }: Readonly<RootLayoutPr
 
   return <Home data={data}/>;
 }
-
 
 export async function generateMetadata({
   params: { locale },

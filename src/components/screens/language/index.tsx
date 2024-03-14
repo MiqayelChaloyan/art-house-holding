@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
 // import Footer from '@/components/footer';
-import Header from '@/components/header';
+// import Header from '@/components/header';
 
 
 export default function Home() {
@@ -16,7 +16,6 @@ export default function Home() {
             <header>
                 <Link href={`/`}>home</Link>
                 <Link href={`/${localActive}/educational-center`}>educational-center</Link>
-                <Header/>
             </header>
             <h1>language</h1>
             <h1 className='text-4xl mb-4 font-semibold'>{t('about')}</h1>
