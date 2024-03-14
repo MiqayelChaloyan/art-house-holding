@@ -1,7 +1,11 @@
 import Home from '@/components/screens/art-house';
-
 import { fetchArtHouseHomeData } from '../../../sanity/services/art-house-service';
+import { notFound } from 'next/navigation';
+import { getTranslations } from "next-intl/server";
 
+import { type Metadata } from "next";
+
+import { Locale } from "@/locales";
 
 
 interface RootLayoutProps {
@@ -16,10 +20,25 @@ async function getResources(locale: string) {
   return res[1]
 }
 
-
 export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
   const data = await getResources(locale);
-  console.log(data);
 
-  return <Home />;
+  if (!data) {
+    notFound()
+  }
+
+  return <Home data={data}/>;
+}
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
 }

@@ -1,13 +1,14 @@
-import Home from '@/components/screens/educational-center';
-
 import { getTranslations } from "next-intl/server";
+
+import { notFound } from 'next/navigation';
 
 import { type Metadata } from "next";
 
 import { Locale } from "@/locales";
 
-import { getHomeData } from '../../../../sanity/services/educational-center-service/about-us';
+import Home from '@/components/screens/educational-center';
 
+import { getHomeData } from '../../../../sanity/services/educational-center-service/about-us';
 
 
 interface RootLayoutProps {
@@ -25,9 +26,12 @@ async function getResources(locale: string) {
 
 export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
     const data = await getResources(locale);
-    console.log(data);
 
-    return <Home />;
+    if (!data) {
+        notFound()
+    }
+
+    return <Home data={data}/>;
 }
 
 
@@ -43,3 +47,4 @@ export async function generateMetadata({
         description: t('descriptionEducationalCenter'),
     };
 }
+

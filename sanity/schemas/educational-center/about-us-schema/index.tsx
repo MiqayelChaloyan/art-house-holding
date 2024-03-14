@@ -1,4 +1,4 @@
-import ArrayMaxItems from "@/utils/ArrayMaxItems";
+import ArrayMaxItems from "@/lib/utils/ArrayMaxItems";
 import { defineArrayMember } from "sanity";
 
 export const aboutUsSchemaEducationalCenter = {

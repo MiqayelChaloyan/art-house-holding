@@ -1,0 +1,128 @@
+export async function generateMetadata({
+  params: {locale}
+}: Omit<Props, 'children'>): Promise<Metadata> {
+  const t = await getTranslations({locale, namespace: 'LocaleLayout'});
+  const formatter = await getFormatter({locale});
+  const now = await getNow({locale});
+  const timeZone = await getTimeZone({locale});
+
+  return {
+    metadataBase: new URL('http://localhost:3000'),
+    title: t('title'),
+    description: t('description'),
+    other: {
+      currentYear: formatter.dateTime(now, {year: 'numeric'}),
+      timeZone: timeZone || 'N/A'
+    }
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { NextIntlClientProvider, useMessages } from "next-intl";
+// import { getTranslations } from "next-intl/server";
+
+// import { Inter } from 'next/font/google';
+
+// import { type Metadata } from "next";
+
+// import { Locale } from "@/locales";
+// import Link from "next/link";
+
+// const inter = Inter({ subsets: ['latin'] });
+
+// // import './globals.css';
+
+
+// interface RootLayoutProps {
+//   children: React.ReactNode;
+//   params: {
+//     locale: string;
+//   };
+// }
+
+
+// function ParentLayout({
+//   children,
+//   params: { locale },
+// }: Readonly<RootLayoutProps>) {
+//   const messages = useMessages();
+
+//   return (
+//     <html lang={locale}>
+//       <body className={inter.className}>
+//         <NextIntlClientProvider locale={locale} messages={messages}>
+//           <header>
+//             Custom header education center
+//             <Link href='/'>about</Link>
+//           </header>
+//           {children}
+//           <footer>Custom footer education center</footer>
+//         </NextIntlClientProvider>
+//       </body>
+//     </html>
+//   );
+// };
+
+
+// export async function generateMetadata({
+//   params: { locale },
+// }: {
+//   params: { locale: Locale };
+// }): Promise<Metadata> {
+//   const t = await getTranslations({ locale, namespace: 'metadata' });
+
+//   return {
+//     title: t('title'),
+//     description: t('description'),
+//   };
+// }
+
+
+
+// export default ParentLayout;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <header>
+// <Link href={`/${localActive}/educational-center`}>educational-center</Link>
+// <Link href={`/${localActive}/language`}>language</Link>
+// <Header/>
+// </header>
+
+
+// <h1>home</h1>
+// <h1 className='text-4xl mb-4 font-semibold'>{t('about')}</h1>
+// <p>{t('about')}</p>
