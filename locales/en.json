@@ -6,7 +6,7 @@
         "co-workers": "Co-Workers",
         "price-list": "Price List"
     },
-    "metadata":  {
+    "metadata": {
         "title": "Art House Holding",
         "description": "At Art House, we pride ourselves on being a dynamic training center that offers a diverse array of courses to ignite your passion and elevate your skills.",
         "descriptionEducationalCenter": "Through immersive classes, ART teaches you the skills you need in your future career as a successful and competitive professional."
@@ -26,5 +26,39 @@
         "follow-us": "FOLLOW US",
         "rights": "All rights reserved",
         "rating-title": "Art House Learning Center"
+    },
+    "buttons": {
+        "contact-us": "Contact Us",
+        "view-more": "View more",
+        "show-less": "Show less"
+    },
+    "sections": {
+        "co-worker": "Co-workers",
+        "courses": "Courses",
+        "about-courses": "About courses",
+        "courses-process": "Courses process",
+        "student-work": "Student Work",
+        "price-list": "Price List",
+        "about": "About us",
+        "news": "News",
+        "specialists": "Specialists",
+        "rating": "Our rating"
+    },
+    "contact": {
+        "tell": "Tell.",
+        "email": "Email"
+    },
+    "contact-us-form": {
+        "title": "CONTACT US",
+        "name": "Name",
+        "email": "Email",
+        "phone-number": "Phone Number",
+        "message": "Message",
+        "send": "Send",
+        "loading": "Loading"
+    },
+    "price-list": {
+        "days": "days",
+        "hour": "hour"
     }
 }

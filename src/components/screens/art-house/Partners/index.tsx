@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
 
 import Partner from '@/lib/ui/parnter';
-import useWindowSize from '@/lib/hooks/useWindowSize';
+import useWindowSize from '@/hooks/useWindowSize';
 import { ArianAMU } from '@/lib/constants/font';
 
 // Swiper styles

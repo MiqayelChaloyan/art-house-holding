@@ -1,0 +1,172 @@
+.container
+    position: relative
+    background: #E3E1E1
+    @media screen and ( max-width: 991px )
+       bottom: 40px
+    @media screen and ( max-width: 767px )
+       bottom: 20px
+
+
+.about_us
+   display: flex
+   justify-content: space-around
+   align-items: baseline
+   height: 520px
+   @media screen and (max-device-width: 1600px) 
+       padding: 0
+   @media screen and (max-device-width: 1200px) 
+       padding: 0
+   @media screen and ( max-width: 991px )
+       display: flex
+       padding-top: 0
+       height: 513px
+   @media screen and ( max-width: 767px )
+       display: block
+       height: max-content
+
+   h2
+      font-family: sans-serif
+      font-size: 24px
+      @media screen and ( max-width: 991px )
+        text-align: center
+        padding: 35px 0 35px 0
+      @media screen and ( max-width: 767px )
+        text-align: center
+        padding: 35px 0 35px 0
+   p
+     font-family: sans-serif
+     width: 100%
+     padding-right: var(--container-gap)
+     padding-left: var(--container-gap)
+     font-size: 18px
+     text-align: left
+     @media screen and (max-width: 1200px )
+       width: 90%
+       font-size: 16px
+     @media screen and ( max-width: 991px )
+       width: 100%
+       font-size: 13px
+     @media screen and ( max-width: 767px )
+       margin: 0 auto   
+       width: 100%
+       text-align: center
+       font-size: 16px
+       margin-bottom: 27px
+
+
+.about_box
+    width: 100%
+    @media screen and (max-device-width: 1200px) 
+      width: 100%
+    @media screen and (max-device-width: 1600px) 
+      width: 100%
+    @media screen and ( max-width: 991px )
+      width: 70%
+    @media screen and ( max-width: 767px )
+      width: 100%
+
+
+.form_box
+    width: 90%
+    @media screen and (max-device-width: 1200px) 
+      width: 70%
+    @media screen and (max-device-width: 1600px) 
+      width: 70%
+    @media screen and ( max-width: 991px )
+      width: 75%
+    @media screen and ( max-width: 767px )
+      width: 100%
+      padding-bottom: 12px
+
+
+.skew 
+    display: block
+    height: 57px
+    width: 50%
+    position: relative
+    transform: skew(44deg)
+    bottom: 58px
+    &:after 
+      height: 60px
+      width: 110%
+      background: #E3E1E1
+      margin: 0 auto
+      position: absolute
+      content: ''
+      right: 0
+    @media screen and (max-device-width: 1400px) 
+      height: 50px
+      background: #E3E1E1
+      width: 38%
+      bottom: 50px
+      &:after 
+        height: 55px
+        width: 100%
+        background: #E3E1E1
+        right: 50px
+    @media screen and (max-device-width: 1290px) 
+      height: 60px
+      background: #E3E1E1
+      width: 50%
+      &:after 
+        height: 55px
+        width: 100%
+        background: #E3E1E1
+        right: 50px
+    @media screen and ( max-width: 991px )
+      height: 47px
+      background: #E3E1E1
+      width: 45%
+      bottom: 45px
+      &:after 
+        height: 55px
+        width: 100%
+        background: #E3E1E1
+        right: 50px
+    @media screen and ( max-width: 767px )
+      height: 62px
+      background: #E3E1E1
+      width: 120%
+      &:after 
+        height: 64px
+        width: 105%
+        background: #E3E1E1
+
+
+.title
+    position: absolute
+    margin: 0 auto
+    width: 100%
+    color: #313131
+    top: -40px
+    font-size: 32px
+    padding-right: var(--container-gap)
+    padding-left: var(--container-gap)
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+      font-size: 33px
+    /* xl */
+    @media screen and ( max-width: 1280px )
+      font-size: 30px
+    /* lg */
+    @media screen and ( max-width: 1024px )
+      font-size: 27px
+      top: -37px
+    /* md */
+    @media screen and ( max-width: 768px )
+      font-size: 24px
+      top: -30px
+    /* sm */
+    @media screen and ( max-width: 640px )
+      top: 15px
+      text-align: center
+      width: 100%
+      position: relative
+      margin-bottom: 20px
+    /* xs */
+    @media screen and ( max-width: 475px )
+      top: 15px
+      text-align: center
+      width: 100%
+      position: relative
+      margin-bottom: 20px

@@ -1,0 +1,107 @@
+.container
+   display: grid
+   justify-content: center
+   align-items: center
+   background: black
+   height: max-content
+   @media screen and (max-device-width: 1600px) 
+       padding: 0
+       td
+          width: 270px !important
+   @media screen and (max-device-width: 1200px) 
+       padding: 0
+       td
+          width: 233px !important
+   @media screen and ( max-width: 991px )
+       display: block
+       text-align: center
+       padding-top: 0
+       height: max-content
+       td
+          padding: 9px !important
+          width: 205px !important
+          font-size: 12px !important
+   @media screen and ( max-width: 767px )
+       display: block
+       text-align: center
+       height: max-content
+       td
+          padding: 9px !important
+          width: 342px !important
+          font-size: 17px !important
+          margin-bottom: 5px !important
+   td 
+      border: 2px solid lightgray
+      padding: 15px
+      width: 283px
+      color: white
+      text-align: center
+      font-weight: bold
+      font-size: 20px
+
+   h2
+      font-size: 24px
+      @media screen and ( max-width: 991px )
+        text-align: center
+        padding: 35px 0 35px 0
+      @media screen and ( max-width: 767px )
+        text-align: center
+        padding: 35px 0 35px 0
+   p
+     width: 80%
+     font-size: 14px
+     @media screen and ( max-width: 991px )
+       margin: 0 auto
+     @media screen and ( max-width: 767px )
+       margin: 0 auto
+.box
+    width: 25%
+    @media screen and (max-device-width: 1200px) 
+      width: 30%
+    @media screen and (max-device-width: 1600px) 
+      width: 40%
+    @media screen and ( max-width: 991px )
+      width: 100%
+    @media screen and ( max-width: 767px )
+      width: 100%
+
+.title
+    margin: 0 auto
+    width: 100%
+    font-size: 33px
+    color: var(--color-white)
+    padding-right: var(--container-gap)
+    padding-left: var(--container-gap)
+    @media screen and (max-device-width: 1400px) 
+       font-size: 30px
+    @media screen and (max-device-width: 1200px) 
+       font-size: 25px
+    @media screen and ( max-width: 991px )
+       width: 100%
+       font-size: 25px
+    @media screen and ( max-width: 767px )
+       width: 85%
+       font-size: 27px
+       text-align: center
+       top: 8px
+       position: relative
+       
+.table
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    width: 100%
+    margin: 20px auto
+    @media screen and ( max-width: 991px )
+       width: 100%
+    @media screen and ( max-width: 767px )
+       width: 82%
+       display: grid
+
+.price_list_table
+    @media screen and ( max-width: 767px )
+       margin: 20px auto
+
+.list
+    @media screen and ( max-width: 767px )
+      display: grid
