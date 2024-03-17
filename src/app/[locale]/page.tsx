@@ -1,3 +1,5 @@
+"use server"
+
 import Home from '@/components/screens/art-house';
 import { fetchArtHouseHomeData } from '../../../sanity/services/art-house-service';
 import { notFound } from 'next/navigation';
@@ -17,17 +19,28 @@ interface RootLayoutProps {
 
 async function getResources(locale: string) {
   const res = await fetchArtHouseHomeData(locale);
-  return res[1]
+
+  if (!res?.length) {
+    return {
+      data: [],
+      isError: true
+    }
+  }
+
+  return {
+    data: res[1],
+    isError: false
+  }
 }
 
 export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
-  const data = await getResources(locale);
+  const { data, isError } = await getResources(locale);
 
-  if (!data) {
+  if (!data || isError) {
     notFound()
   }
 
-  return <Home data={data}/>;
+  return <Home data={data} />;
 }
 
 export async function generateMetadata({

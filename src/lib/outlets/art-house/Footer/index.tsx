@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 
 import Link from 'next/link';
@@ -14,7 +16,7 @@ import { Hosts } from '@/lib/constants/hosts';
 import { ArianAMU } from '@/lib/constants/font';
 
 import styles from './styles.module.sass';
-import useWindowSize from '@/lib/hooks/useWindowSize';
+import useWindowSize from '@/hooks/useWindowSize';
 
 
 const Footer = () => {

@@ -1,0 +1,298 @@
+.courses
+   bottom: 82px
+   position: relative 
+   background: black
+
+
+.content
+   width: 39%
+   @media screen and (max-device-width: 1600px) 
+     width: 40%
+   @media screen and (max-width: 1200px )
+     width: 37%
+   @media screen and ( max-width: 991px )
+     width: 41%
+     text-align: left
+     margin: 0 auto
+     p
+        font-size: 12px
+        color: #313131
+        /* sm */
+        @media screen and ( max-width: 640px )
+          font-size: 16px
+          width: 100%
+          text-align: left  
+        /* xs */
+        @media screen and ( max-width: 475px )
+          font-size: 16px
+          width: 100%
+          text-align: left  
+   @media screen and ( max-width: 767px )
+     width: 100%
+     text-align: center
+     margin: 0 auto
+            
+
+.subtitle
+    font-size: 26px
+    font-weight: 600
+    line-height: 31px
+    margin-bottom: 15px
+    color: #313131
+    @media screen and ( max-width: 991px )
+       font-size: 15px
+    @media screen and ( max-width: 767px )
+       font-size: 22px
+
+
+.images
+   width: 50%       
+   display: flex
+   bottom: 100px
+   position: relative
+   left: 0
+   @media screen and (max-device-width: 1200px) 
+     bottom: 103px  
+     right: 0
+     left: 0
+   @media screen and (max-device-width: 1600px) 
+     right: 0
+   @media screen and ( max-width: 991px )
+     bottom: 100px
+     left: 5px
+     display: flex
+     justify-content: center
+   @media screen and ( max-width: 767px )
+     bottom: 0
+     left: 0
+     display: flex
+     justify-content: center
+     margin: 0 auto
+
+
+.image
+   width: 260px
+   height: 360px
+   margin: 10px
+   border-radius: 40px
+   @media screen and ( max-width: 1600px )
+      width: 224px
+      height: 277px
+      margin: 20px
+   @media screen and (max-device-width: 1400px) 
+      width: 201px
+      height: 254px
+   @media screen and ( max-width: 1200px )
+      width: 266px
+      height: 286px
+      margin: 20px
+   @media screen and ( max-width: 991px )
+      width: 177px
+      height: 177px
+      margin: 20px
+   @media screen and ( max-width: 767px )
+      width: 200px
+      height: 200px
+      margin: 20px
+
+
+.cooking_courses
+    background: #E3E1E1
+    display: grid
+    padding: 33px
+    @media screen and (max-device-width: 1600px) 
+      padding: 68px
+    @media screen and ( max-width: 991px )
+      padding-top: 0
+      padding: 44px
+    @media screen and ( max-width: 767px )
+      padding-top: 28px
+
+
+.button
+   display: flex
+   align-items: center
+   justify-content: center
+   width: 50%
+   height: 50px
+   color: #fff
+   font-weight: 500
+   text-align: center
+   border-radius: 50px
+   padding: 12px 20px
+   background: #C62020
+   margin: 10px auto
+   transition: 0.4s
+   &:hover
+     transition: 0.4s
+     background-color: #E3E1E1
+     border: 3px solid #C62020
+     color: #C62020
+   @media screen and ( max-width: 1400px )
+     font-size: 15px
+   @media screen and ( max-width: 1200px )
+     font-size: 15px
+   @media screen and ( max-width: 991px )
+     width: 60%
+     height: 33px
+     font-size: 12px
+     padding: 8px 0
+     &:hover
+        background-color: #C62020
+        border: none
+   @media screen and ( max-width: 767px )
+     font-size: 15px
+     padding: 8px 16px
+     width: 100%
+     height: 43px
+
+
+.course
+   display: flex
+   justify-content: space-around
+   align-items: self-start
+   height: max-content
+   @media screen and (max-device-width: 1600px) 
+   @media screen and (max-device-width: 1200px) 
+     display: flex
+     padding: 0
+   @media screen and ( max-width: 991px )
+     display: flex
+     top: 0
+     height: max-content
+   @media screen and ( max-width: 767px )
+     display: block
+     height: max-content
+
+
+.buttons_group
+    display: flex
+    justify-content: center
+    align-items: center
+    @media screen and ( max-width: 767px )
+       display: flex
+       margin-top: 10px
+
+
+.view_btn
+    color: #313131
+    text-decoration: underline
+    @media screen and ( max-width: 1200px )
+        font-size: 15px
+    @media screen and ( max-width: 991px )
+        width: 60%
+        font-size: 12px
+    @media screen and ( max-width: 767px )
+        font-size: 15px
+        padding: 8px 5px
+        width: 100%
+
+
+.arrow
+  cursor: pointer
+  height: 30px
+  position: absolute
+  transform: translateX(-50%) translateY(-50%)
+  transition: transform 0.1s
+  width: 30px
+  @media screen and ( max-width: 991px )
+    width: 18px
+  @media screen and ( max-width: 767px )
+    width: 32px
+    margin-left: 10px
+
+
+.arrow_top, .arrow_bottom
+  background-color: #C62020
+  height: 4px
+  left: -5px
+  position: absolute
+  top: 50%
+  width: 100%
+
+
+.arrow_top:after, .arrow_bottom:after
+  background-color: black
+  content: ""
+  height: 100%
+  position: absolute
+  top: 0
+  transition: all 0.15s
+
+
+.arrow_top
+  transform: rotate(45deg)
+  transform-origin: bottom right
+
+
+.arrow_top:after
+  left: 100%
+  right: 0
+  transition-delay: 0s
+
+
+.arrow_bottom
+  transform: rotate(-45deg)
+  transform-origin: top right
+
+
+.arrow_bottom:after
+  left: 0
+  right: 100%
+  transition-delay: 0.15s
+
+
+.arrow:hover .arrow_top:after
+  left: 0
+  transition-delay: 0.15s
+
+
+.arrow:hover .arrow_bottom:after
+  right: 0
+  transition-delay: 0s
+
+
+.arrow:active
+  transform: translateX(-50%) translateY(-50%) scale(0.9)
+
+
+.courses_link_btn_arrow_mobile
+    display: none
+    @media screen and ( max-width: 767px )
+        display: block
+        margin: 0 auto
+        width: 8%
+        margin-bottom: 20px
+        color: black
+    
+
+.courses_link_btn_arrow
+    display: block
+    @media screen and ( max-width: 991px )
+      margin-left: 29px
+    @media screen and ( max-width: 767px )
+      display: none
+
+
+.arrow_long_right 
+    box-sizing: border-box 
+    position: relative 
+    display: block 
+    transform: scale(var(--ggs,1)) 
+    border-top: 2px solid transparent 
+    border-bottom: 2px solid transparent 
+    box-shadow: inset 0 0 0 2px 
+    width: 24px 
+    height: 6px 
+    &::after 
+      content: "" 
+      display: block 
+      box-sizing: border-box 
+      position: absolute 
+      width: 6px 
+      height: 6px 
+      border-top: 2px solid 
+      border-right: 2px solid 
+      transform: rotate(45deg) 
+      right: 0 
+      bottom: -2px 

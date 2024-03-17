@@ -1,0 +1,125 @@
+.container
+    background: var(--color-black)
+    position: relative
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+      height: 800px !important
+    /* xl */
+    @media screen and ( max-width: 1280px )
+      height: 700px !important
+    /* lg */
+    @media screen and ( max-width: 1024px )
+      height: 550px !important
+    /* md */
+    @media screen and ( max-width: 768px )
+      height: 480px !important
+    /* sm */
+    @media screen and ( max-width: 640px )
+      height: 390px !important
+    /* xs */
+    @media screen and ( max-width: 475px )
+      height: 373px !important
+
+
+.video_player
+   display: flex
+   justify-content: space-around
+   align-items: baseline
+   height: 721px
+   @media screen and (max-device-width: 1600px) 
+       padding: 0
+   @media screen and (max-device-width: 1200px) 
+       padding: 0
+   @media screen and ( max-width: 991px )
+       display: flex
+       padding-top: 10px
+       height: 399px
+   @media screen and ( max-width: 767px )
+       display: block
+       height: 250px
+       padding-top: 0
+
+
+.triangle
+    display: block
+    height: 50px
+    width: 55%
+    position: relative
+    transform: skew(44deg)
+    bottom: 60px
+    &:after 
+      height: 60px
+      width: 110%
+      background: var(--color-black)
+      margin: 0 auto
+      position: absolute
+      content: ''
+      right: 0
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+      bottom: 43px
+      &:after 
+        height: 45px
+    /* xl */
+    @media screen and ( max-width: 1280px )
+      bottom: 42px
+      &:after 
+        height: 45px
+    /* lg */
+    @media screen and ( max-width: 1024px )
+      bottom: 41px
+      &:after 
+        height: 45px
+    /* md */
+    @media screen and ( max-width: 768px )
+      bottom: 35px
+      &:after 
+        height: 37px
+    /* sm */
+    @media screen and ( max-width: 640px )
+      display: none
+
+
+.title
+    position: absolute
+    margin: 0 auto
+    width: 100%
+    color: white
+    top: 10px
+    font-size: 32px
+    padding-right: var(--container-gap)
+    padding-left: var(--container-gap)
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+      font-size: 33px
+    /* xl */
+    @media screen and ( max-width: 1280px )
+      font-size: 30px
+    /* lg */
+    @media screen and ( max-width: 1024px )
+      font-size: 27px
+      top: 0
+    /* md */
+    @media screen and ( max-width: 768px )
+      font-size: 24px
+      top: 10px
+    /* sm */
+    @media screen and ( max-width: 640px )
+      top: 25px
+      text-align: center
+      width: 100%
+      position: relative
+      margin-bottom: 20px
+    /* xs */
+    @media screen and ( max-width: 475px )
+      top: 20px
+      text-align: center
+      width: 100%
+      position: relative
+      margin-bottom: 30px
+      padding-right: 0
+      padding-left: 0
+
+
+
+

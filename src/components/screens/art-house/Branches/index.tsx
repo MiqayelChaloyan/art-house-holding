@@ -43,9 +43,11 @@ interface SwiperTypes {
 
 
 const Branches: FC<Props> = ({ data }) => {
+    // const { locale } = useRouter();
 
-    const cards: JSX.Element[] = data?.map((item: any) => <Branch key={item.slug} item={item} />);
+    const cards: JSX.Element[] = data?.map((item: any) => <Branch key={item.slug} item={item} locale={'en'}/>);
 
+    // console.log(locale)
     const result: JSX.Element[] = cards?.map((card: JSX.Element) => (
         <SwiperSlide key={card.key}>
             {card}

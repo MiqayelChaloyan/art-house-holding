@@ -15,11 +15,13 @@ interface BranchProps {
         web_site_url: string;
         website_logo_front: string;
         website_logo_back: string;
-    };
+    }
+    locale: string
 };
 
 
-const Branch: React.FC<BranchProps> = ({ item }) => {
+const Branch: React.FC<BranchProps> = ({ item, locale }) => {
+
     const { company_name, words, web_site_url, website_logo_front, website_logo_back } = item;
     
     const urlForImageFront = urlFor(website_logo_front)
@@ -39,7 +41,7 @@ const Branch: React.FC<BranchProps> = ({ item }) => {
 
 
     return (
-        <Link href={`${web_site_url}`} aria-label={`${web_site_url}`} id='card'>
+        <Link href={`/${locale}/${web_site_url}`} aria-label={`${web_site_url}`} id='card'>
             <div className={styles.card_container}>
                 <div className={styles.card}>
                     <div className={styles.front}>

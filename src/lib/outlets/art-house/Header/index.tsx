@@ -11,6 +11,7 @@ import LocalSwitcher from '@/components/components/local-switcher';
 
 import Logo from '@/lib/icons/art-house/Logo'
 import { ArianAMU } from '@/lib/constants/font';
+import { Pages } from '@/lib/constants/pages';
 
 import cn from 'classnames';
 
@@ -57,7 +58,7 @@ const Header = ({ typePosition }: IHeaderProps) => {
             `${isOpenMenu ? styles.boxOpenMenu : ''}`
         )}>
             <div className={`container ${styles.wrap}`}>
-                <Link href='/' aria-label='home' className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}>
+                <Link href={Pages.HOME} aria-label='home' className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}>
                     <Logo
                         width='212'
                         height='60'
