@@ -81,10 +81,18 @@ export async function generateMetadata({
             icon: urlForImageSvg,
         },
         openGraph: {
-            title: title,
-            description: content,
+            // title: title,
+            // description: content,
             url: urlForImage,
-            type: 'website'
-        }
+            type: 'website',
+            images: [
+                {
+                    url: urlForImage,
+                    width: 400,
+                    height: 400,
+                    alt: course_name,
+                },
+            ],
+        },
     };
 }
