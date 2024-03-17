@@ -28,15 +28,14 @@ async function getResources(locale: string) {
 }
 
 
-interface RootLayoutProps {
-    children: React.ReactNode;
+interface LayoutProps {
     params: {
         locale: string
     };
 }
 
 
-export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
+export default async function Page({ params: { locale } }: LayoutProps) {
     const { data, isError } = await getResources(locale);
 
     if (!data || isError) {
