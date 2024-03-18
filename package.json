@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "@sanity/dashboard": "^3.1.6",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.32.0",

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { useTranslations } from 'next-intl';
 
-import Map from '@/components/components/google-map';
+import GoogleMaps from '@/components/components/google-map';
 import FormAppointment from '@/components/components/forms';
 import FormHeader from '@/components/components/form-header';
 
@@ -15,6 +15,7 @@ import Phone from '@/lib/icons/educational-center/Phone';
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
+import { MapProvider } from '@/lib/providers';
 
 
 type Props = {
@@ -58,11 +59,13 @@ const Footer: FC<Props> = ({ courses }) => {
                     <div className={styles.contact}>
                         <FormAppointment width='30%'>
                             <FormHeader display='grid' color='white' justifyContent='center' title={t('contact-us-form.title')} fill='white' group={group} />
-                         </FormAppointment>
+                        </FormAppointment>
                     </div>
                 </div>
                 <div className={styles.google_map}>
-                    <Map width='100%' height='100%' />
+                    {/* <MapProvider> */}
+                        <GoogleMaps width='100%' height='100%'/>
+                    {/* </MapProvider> */}
                     <p className={styles.adress}>{t('adress.adress')}</p>
                 </div>
                 <div className={styles.links}>

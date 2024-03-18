@@ -47,7 +47,7 @@ async function Layout({
         <div>
             <div className="wrapper">
                 <RightMenu />
-                <BottomMenu />
+                <BottomMenu locale={locale} />
                 <div className="wrapper-content">
                     <Header typePosition='fixed'  locale={locale} />
                     <main className="wrapper-main">

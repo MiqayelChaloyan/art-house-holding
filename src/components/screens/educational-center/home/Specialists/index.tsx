@@ -52,7 +52,7 @@ const Specialists: FC<SectionCoursesProps> = ({ data }) => {
         slidesToScroll: 1,
         infinite: true,
         speed: 600,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 5000,
         dots: false,
         nextArrow: <SampleNextArrow />,

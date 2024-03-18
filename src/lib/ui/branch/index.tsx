@@ -68,6 +68,5 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
     );
 };
 
-
 export default memo(Branch);
 
