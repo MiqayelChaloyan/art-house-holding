@@ -42,7 +42,7 @@ const Footer = () => {
                         </Link>
                     </div>
                     <div className={styles.box}>
-                        <h2 className={`${styles.addres} ${ArianAMU.className}`}>{t('adress.street')}</h2>
+                        <h2 className={`${styles.addres} ${ArianAMU.className}`}>{t('address.street')}</h2>
                         <div className={styles.phone_numbers}>
                             <Link href='tel:+37477543455' aria-label='+374 (77) 54 34 55' className={styles.icon}>
                                 <p className={`${styles.info_web} ${ArianAMU.className}`}>+374 (77) 54 34 55,</p>

@@ -63,7 +63,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 				console.log('Error !!');
 				return;
 			};
-			console.log('Form submitted successfully!');
+			
 			setState(() => ({
 				...initState,
 				isLoading: false,

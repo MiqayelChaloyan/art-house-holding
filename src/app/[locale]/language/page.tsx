@@ -1,4 +1,4 @@
-import Home from '@/components/screens/language';
+import Home from '@/components/screens/language/home';
 
 import { getTranslations } from "next-intl/server";
 

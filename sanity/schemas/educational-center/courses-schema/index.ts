@@ -228,6 +228,7 @@ export const coursesSchemaEducationalCenter = {
         {
             name: 'price_list',
             type: 'array',
+            // components: { input: ArrayMaxItems },
             title: 'Price list',
             of: [
                 {

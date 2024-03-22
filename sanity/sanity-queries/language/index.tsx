@@ -1,6 +1,14 @@
 export interface LANGUAGE {
     _id: string
-    our_websites: any
-    progress_section: any
-    co_workers: any
+    slug: any
+    course_name: string
+};
+
+export interface ABOUT_LANGUAGE {
+    _id: string
+    name: string
+    text: any
+    slug: any
+    during_courses_images: any
+    teachers: any
 };

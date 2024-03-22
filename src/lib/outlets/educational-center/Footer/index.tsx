@@ -66,7 +66,7 @@ const Footer: FC<Props> = ({ courses }) => {
                     {/* <MapProvider> */}
                         <GoogleMaps width='100%' height='100%'/>
                     {/* </MapProvider> */}
-                    <p className={styles.adress}>{t('adress.adress')}</p>
+                    <p className={styles.address}>{t('address.address')}</p>
                 </div>
                 <div className={styles.links}>
                     <div className={styles.courses_links}>
@@ -96,7 +96,7 @@ const Footer: FC<Props> = ({ courses }) => {
                             />
                             <p className={styles.info_web}>{t('contact.email')} art.house@bk.ru</p>
                         </Link>
-                        <p className={styles.info_web}>{t('adress.street')}</p>
+                        <p className={styles.info_web}>{t('address.street')}</p>
                     </div>
                 </div>
             </div>

@@ -33,12 +33,12 @@ type IHeaderProps = {
 const Header = ({ typePosition, locale }: IHeaderProps) => {
     const [isSticky, setIsSticky] = useState<boolean>(false);
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
-    const t = useTranslations('navigation');
     const pathname = usePathname();
+    const t = useTranslations('navigation');
 
     // const dispatch = useAppDispatch();
 
-    console.log(`${locale}/${Pages.EDUCATIONAL_CO_WORKER}`, pathname)
+    // console.log(`${locale}/${Pages.EDUCATIONAL_CO_WORKER}`, pathname)
 
 
     useEffect(() => {
@@ -86,7 +86,6 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         <Link href={`/${locale}${Pages.EDUCATIONAL_CO_WORKER}`} aria-label='co-workers' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_CO_WORKER}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('co-workers')}</Link>
                         <Link href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`} aria-label='price-list' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('price-list')}</Link>
                     </div>
-
                     <div>
                         <LocalSwitcher />
                     </div>

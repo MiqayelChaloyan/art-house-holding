@@ -30,10 +30,7 @@ const config = defineConfig(
       }),
 
     ],
-
     schema,
-
-
   }
 );
 

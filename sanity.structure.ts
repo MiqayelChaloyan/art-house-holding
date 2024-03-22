@@ -1,9 +1,12 @@
+import { DocumentsIcon } from '@sanity/icons'
+
+
 export default (S: any) =>
     S.list()
         .title('Base')
         .items([
             ...S.documentTypeListItems().filter(
-                (listItem: any) => !['art-house-home', 'co-workers', 'about-us', 'courses'].includes(listItem.getId())
+                (listItem: any) => !['art-house-home', 'co-workers', 'about-us', 'courses', 'languages', 'about-language'].includes(listItem.getId())
             ),
 
             S.listItem()
@@ -14,6 +17,7 @@ export default (S: any) =>
                         .items([
                             S.listItem()
                                 .title('Home')
+                                .icon(DocumentsIcon)
                                 .child(S.document().schemaType('art-house-home').documentId('art-house')),
                         ])
                 ),
@@ -26,6 +30,7 @@ export default (S: any) =>
                         .items([
                             S.listItem()
                                 .title('About Us')
+                                .icon(DocumentsIcon)
                                 .child(S.document().schemaType('about-us').documentId('about-us-educational-center')),
                             S.listItem()
                                 .title('Courses')
@@ -65,15 +70,36 @@ export default (S: any) =>
                                 .child(S.document().schemaType('Categorie').documentId('Categorie')),
                         ])
                 ),
-
-            S.listItem().title('ART-HOUSE-LANGUAGE')
+            S.listItem()
+                .title('ART-HOUSE-LANGUAGE')
                 .child(
                     S.list()
                         .title('Pages')
                         .items([
+                            // S.listItem()
+                            //     .title('About Us')
+                            //     .child(S.document().schemaType('about-us').documentId('about-us-educational-center')),
                             S.listItem()
-                                .title('Categorie')
-                                .child(S.document().schemaType('Categorie').documentId('Categorie')),
+                                .title('Courses')
+                                .child(
+                                    S.documentList()
+                                        .title('Courses')
+                                        .filter('_type == "languages"')
+                                ),
+                                S.listItem()
+                                .title('Languages')
+                                .child(
+                                    S.documentList()
+                                        .title('Languages')
+                                        .filter('_type == "about-language"')
+                                ),
+                            // S.listItem()
+                            //     .title('Co-Workers')
+                            //     .child(
+                            //         S.documentList()
+                            //             .title('Co-Workers')
+                            //             .filter('_type == "co-workers"')
+                            //     )
                         ])
                 ),
         ]);

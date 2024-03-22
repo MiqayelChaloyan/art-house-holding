@@ -14,7 +14,9 @@ export default async (req, res) => {
           <p><strong>Message: </strong> ${message}</p>
         `
       });
+
       console.log(name, email, phone );
+      
     } catch (error) {
       return res.status(500).json({ error: error.message || error.toString() });
     }

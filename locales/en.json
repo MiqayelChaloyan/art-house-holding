@@ -4,12 +4,15 @@
         "branches": "Branches",
         "courses": "Courses",
         "co-workers": "Co-Workers",
-        "price-list": "Price List"
+        "price-list": "Price List",
+        "languages": "Languages",
+        "discounts": "Promotions"
     },
     "metadata": {
         "title": "Art House Holding",
         "description": "At Art House, we pride ourselves on being a dynamic training center that offers a diverse array of courses to ignite your passion and elevate your skills.",
-        "descriptionEducationalCenter": "Through immersive classes, ART teaches you the skills you need in your future career as a successful and competitive professional."
+        "descriptionEducationalCenter": "Through immersive classes, ART teaches you the skills you need in your future career as a successful and competitive professional.",
+        "language": "Language is a structured system of communication that consists of grammar and vocabulary. It is the primary means by which humans convey meaning. We will make you improve your knowledge together with our experienced professors"
     },
     "footer": {
         "about-us": "About us",
@@ -17,15 +20,18 @@
         "programs": "Programs",
         "partners": "Co-Workers"
     },
-    "adress": {
-        "adress": "Adress: Yerevan, Abovyan 33",
-        "street": "Armenia, Yereva, Abovyan 33"
+    "address": {
+        "address": "Address: Yerevan, Abovyan 33",
+        "street": "Armenia, Yerevan, Abovyan 33"
     },
     "texts": {
         "main-title": "IT'S NEVER TOO LATE TO LEARN",
         "follow-us": "FOLLOW US",
         "rights": "All rights reserved",
-        "rating-title": "Art House Learning Center"
+        "rating-title": "Art House Learning Center",
+        "send-request": "Send request",
+        "take-the-test":  "Pass the test",
+        "contact-us": "Contact us"
     },
     "buttons": {
         "contact-us": "Contact Us",
@@ -51,9 +57,11 @@
     "contact-us-form": {
         "title": "CONTACT US",
         "name": "Name",
+        "full-name": "Name, Surname",
         "email": "Email",
         "phone-number": "Phone Number",
         "message": "Message",
+        "select-course": "Select the course",
         "send": "Send",
         "loading": "Loading"
     },
