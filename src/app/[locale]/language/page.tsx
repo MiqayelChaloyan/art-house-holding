@@ -25,13 +25,12 @@ async function getResources(locale: string) {
 
 export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
     const data = await getResources(locale);
-    // console.log(data);
 
     if (!data) {
         notFound()
     }
 
-    return <Home />;
+    return <Home locale={locale}/>;
 }
 
 

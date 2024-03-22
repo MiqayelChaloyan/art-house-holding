@@ -11,8 +11,6 @@ import { useTranslations } from 'next-intl';
 // import { openModal } from '@/store/stateModalSlice';
 // import { openModalLoading } from '@/store/stateLoadingLanguage';
 
-import cn from 'classnames';
-
 import Logo from '@/lib/icons/educational-center/Logo';
 import Button from '@/lib/ui/Button';
 import { Pages } from '@/lib/constants/pages';
@@ -20,6 +18,8 @@ import { Pages } from '@/lib/constants/pages';
 import { ArianAMU } from '@/lib/constants/font';
 import { usePathname } from 'next/navigation'
 import LocalSwitcher from '@/components/components/local-switcher';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 

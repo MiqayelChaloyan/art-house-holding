@@ -26,8 +26,7 @@ async function getResources(slug: string, locale: string) {
 
 export default async function Page({ params: { locale, slug } }: Readonly<RootLayoutProps>) {
     const data = await getResources(slug[0], locale);
-
-    console.log(data)
+    
     if (!data) {
         notFound()
     }

@@ -5,13 +5,13 @@ import Gmail from '@/lib/icons/language/Gmail';
 import Instagram from '@/lib/icons/language/Instagram';
 import Facebook from '@/lib/icons/language/Facebook';
 
-import styles from './styles.module.sass';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Hosts } from '@/lib/constants/hosts';
 import useWindowSize from '@/hooks/useWindowSize';
 import Container from '@/components/components/container';
 
+import styles from './styles.module.sass';
 
 
 const Footer = () => {

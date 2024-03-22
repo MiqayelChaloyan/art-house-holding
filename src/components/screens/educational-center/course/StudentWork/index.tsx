@@ -4,6 +4,8 @@ import { FC, memo, useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
+import { useTranslations } from 'next-intl';
+
 import Cancel from '@/lib/icons/educational-center/Cancel';
 // import Carousel from '@/lib/ui/';
 
@@ -13,7 +15,6 @@ import Button from '@/lib/ui/Button';
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './style.module.sass';
-import { useTranslations } from 'next-intl';
 
 
 type Props = {

@@ -14,8 +14,9 @@ import Phone from '@/lib/icons/educational-center/Phone';
 
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
 
+// import { MapProvider } from '@/lib/providers';
+
 import styles from './styles.module.sass';
-import { MapProvider } from '@/lib/providers';
 
 
 type Props = {

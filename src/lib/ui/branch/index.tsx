@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import Link from 'next/link';
 
-import { ArianAMU, inter } from '@/lib/constants/font';
+import { ArianAMU, Inter } from '@/lib/constants/font';
 import { urlFor } from '../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
@@ -36,8 +36,8 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
 
     const wordsArray = words.split(' ');
 
-    const titlesFront = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_front} ${inter.className}`} >{word}</p>);
-    const titlesBack = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_back} ${inter.className}`} >{word}</p>);
+    const titlesFront = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_front} ${Inter.className}`} >{word}</p>);
+    const titlesBack = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_back} ${Inter.className}`} >{word}</p>);
 
 
     return (

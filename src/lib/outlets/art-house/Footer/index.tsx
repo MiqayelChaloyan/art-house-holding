@@ -15,8 +15,9 @@ import Linkedin from '@/lib/icons/art-house/Linkedin';
 import { Hosts } from '@/lib/constants/hosts';
 import { ArianAMU } from '@/lib/constants/font';
 
-import styles from './styles.module.sass';
 import useWindowSize from '@/hooks/useWindowSize';
+
+import styles from './styles.module.sass';
 
 
 const Footer = () => {

@@ -1,21 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { Inter } from 'next/font/google';
 
-import '@/styles/globals.sass';
-import styles from './styles.module.sass';
 import Container from '@/components/components/container';
 
+import { ArianAMU } from '@/lib/constants/font';
 
-const inter = Inter({ subsets: ['latin'] });
+import '@/styles/globals.sass';
+
+import styles from './styles.module.sass';
 
 
 export default function NotFound() {
 
     return (
         <html lang='en'>
-            <body className={`${styles.link} ${inter.className}`}>
+            <body className={`${styles.link} ${ArianAMU.className}`}>
                 <Container>
                     <div className={styles.not_found}>
                         <div className={styles.left}>

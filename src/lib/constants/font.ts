@@ -1,17 +1,18 @@
 import localFont from 'next/font/local';
-import { Inter } from 'next/font/google';
+// import { Inter } from 'next/font/google';
 
 const ArianAMU = localFont({ src: '../../../public/font/arnamu.ttf' });
 const Vrdznagir = localFont({ src: '../../../public/font/Vrdznagir.otf' });
+const Inter = localFont({ src: '../../../public/font/Inter.ttf' });
 
-const inter = Inter({
-    subsets: ['latin'],
-    variable: '--font-inter',
-    display: 'swap',
-});
+// const inter = Inter({
+//     subsets: ['latin'],
+//     variable: '--font-inter',
+//     display: 'swap',
+// });
 
 export {
     ArianAMU,
-    inter,
+    Inter,
     Vrdznagir
 };

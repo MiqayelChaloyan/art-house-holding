@@ -1,11 +1,8 @@
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
-import { Inter } from 'next/font/google';
+import { Inter } from "@/lib/constants/font";
 
 import '@/styles/globals.sass';
-
-
-const inter = Inter({ subsets: ['latin'] });
 
 
 interface RootLayoutProps {
@@ -24,7 +21,7 @@ function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={Inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>

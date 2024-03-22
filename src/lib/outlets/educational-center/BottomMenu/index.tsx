@@ -17,8 +17,9 @@ import PriceList from '@/lib/icons/educational-center/PriceList';
 import CoWorkers from '@/lib/icons/educational-center/CoWorkers';
 import Contact from '@/lib/icons/educational-center/Contact';
 
-import styles from './styles.module.sass';
 import { Pages } from '@/lib/constants/pages';
+
+import styles from './styles.module.sass';
 
 
 type Props = {
