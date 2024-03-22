@@ -3,7 +3,7 @@ import Home from "@/components/screens/language/languages";
 
 interface RootLayoutProps {
     params: {
-        locale?: string;
+        locale: string;
     };
 }
 

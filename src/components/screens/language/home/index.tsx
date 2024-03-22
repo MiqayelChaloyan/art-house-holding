@@ -11,7 +11,7 @@ import OurDailyLife from './OurDailyLife';
 import styles from './styles.module.sass'
 import Partners from './Partners';
 
-export default function Home() {
+export default function Home({locale}: any) {
     // const t = useTranslations('navigation');
     // const localActive = useLocale();
 
