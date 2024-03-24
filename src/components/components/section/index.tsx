@@ -3,6 +3,8 @@
 import React, { useRef } from "react";
 import { useInView } from 'framer-motion'
 
+import useWindowSize from "@/hooks/useWindowSize";
+
 
 interface Props {
     children: JSX.Element
@@ -16,19 +18,26 @@ const Section = ({ children, direction }: Props) => {
 
     const style = { [direction === 'left' ? 'left' : 'right']: isInView ? '0px' : '150px' };
 
+    const windowSize = useWindowSize();
+
     return (
         <div ref={ref}>
-            <div
-                style={{
-                    ...style,
-                    position: 'relative',
-                    opacity: isInView ? 1 : 0,
-                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-                }}
-            >
-                {children}
-            </div>
+            {windowSize.width > 640 ? (
+                <div
+                    style={{
+                        ...style,
+                        position: 'relative',
+                        opacity: isInView ? 1 : 0,
+                        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+                    }}
+                >
+                    {children}
+                </div>
+            ) : (
+                children
+            )}
         </div>
+
 
     )
 }

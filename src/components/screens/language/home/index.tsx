@@ -26,10 +26,6 @@ export default function Home({locale}: any) {
            <Partners/> */}
            <div style={{backgroundColor: 'white', height: '400px', width: '100%', marginTop: '250px'}}></div> 
            {/* mobile 70px */}
-           <div style={{backgroundColor: 'green', height: '500px', width: '100%'}}></div>
-           <div style={{backgroundColor: 'black', height: '200px', width: '100%'}}></div>
-           <div style={{backgroundColor: 'yellow', height: '300px', width: '100%'}}></div>
-           <div style={{backgroundColor: 'black', height: '500px', width: '100%'}}></div>
 
         </div>
     );
