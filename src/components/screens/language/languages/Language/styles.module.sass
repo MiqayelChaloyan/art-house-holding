@@ -3,19 +3,140 @@
     height: 770px
 
 
-.block
+.row_one
     display: flex    
     justify-content: center
     margin: 100px auto
 
 
-.row_1
+.left_side
     width: 50%
 
-.row_2
+
+.right_side
     width: 50%
     p
         color: #828282
         font-size: 20px
         font-weight: 400
         line-height: 24.41px
+    h5
+        color: #828282
+        font-size: 20px
+        font-weight: 400
+        line-height: 24.41px
+    a
+        color: #828282
+        font-size: 20px
+        font-weight: 400
+        line-height: 24.41px
+    del
+        color: #828282
+        font-size: 20px
+        font-weight: 400
+        line-height: 24.41px
+
+
+.row_two
+    margin: 50px auto
+
+
+.gallery_row_one
+    display: flex
+    justify-content: space-evenly
+    flex-wrap: wrap
+    columns: 3
+    gap: 15px
+    align-items: flex-start
+
+
+.high_altitude_picture
+    width: 352.26px
+    height: 390.47px
+    object-fit: cover
+    border-radius: 20px
+    transform: scale(1)
+    transition: .5s ease-in-out
+    overflow: hidden
+    &:hover
+        transform: scale(1.1)
+        transition: .5s ease-in-out
+
+
+.gallery_row_two
+    display: flex
+    justify-content: space-evenly
+    flex-wrap: wrap
+    columns: 3
+    gap: 15px
+    align-items: flex-end
+
+
+.low_altitude_picture
+    width: 352.26px
+    height: 327.26px
+    object-fit: cover
+    border-radius: 20px
+    transform: scale(1)
+    transition: .5s ease-in-out
+    overflow: hidden
+    &:hover
+        transform: scale(1.1)
+        transition: .5s ease-in-out
+
+
+.video_player
+   display: flex
+   justify-content: space-around
+   align-items: baseline
+   height: 570px
+   margin-bottom: 60px
+   @media screen and (max-device-width: 1600px) 
+       padding: 0
+   @media screen and (max-device-width: 1200px) 
+       padding: 0
+   @media screen and ( max-width: 991px )
+       display: flex
+       padding-top: 10px
+       height: 399px
+   @media screen and ( max-width: 767px )
+       display: block
+       height: 250px
+       padding-top: 0
+
+
+.row_four
+   display: flex
+   justify-content: space-evenly
+   align-items: center
+   margin-bottom: 50px
+
+
+.teacher
+    width: 263.35px
+    height: 372.73px
+    object-fit: cover
+    border-radius: 20px
+
+
+.teacher_column
+    position: relative
+    top: 0
+    bottom: 0
+    box-shadow: 4px 4px 9px 0 #a1a1a1
+    border-radius: 20px
+
+
+.fullName
+    position: absolute
+    bottom: 0
+    background-color: #F9CC48
+    width: 100%
+    border-radius: 20px
+    padding: 10px
+    h2 
+        font-size: 20px
+        font-weight: 400
+        color: white
+        line-height: 24.41px
+        text-align: center

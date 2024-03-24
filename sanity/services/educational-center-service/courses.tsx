@@ -33,7 +33,7 @@ export const getCourses = async (language: string): Promise<EDUCATIONAL_CENTER_C
     }`;
     
     try {
-        const data = await client.fetch(query, { language: language || 'am'  });
+        const data = await client.fetch(query, { language: language || 'am'  },{ cache: 'no-store' });
         return data;
     } catch (err) {
         throw err;
@@ -69,7 +69,7 @@ export const getCourseBySlug = async (slug: string, language: string): Promise<E
     }`;    
 
     try {
-        const data = await client.fetch(query, { slug, language: language || 'am'  });
+        const data = await client.fetch(query, { slug, language: language || 'am'  }, { cache: 'no-store' });
         return data;
 
     } catch (err) {
@@ -106,7 +106,7 @@ export const getCourseById = async (_id: string, language: string): Promise<EDUC
     }`;
 
     try {
-        const data = await client.fetch(query, { _id, language: language || 'am'  });        
+        const data = await client.fetch(query, { _id, language: language || 'am'  }, { cache: 'no-store' });        
         return data;
     } catch (err) {
         throw err;

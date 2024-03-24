@@ -32,17 +32,18 @@ async function Layout({
         notFound()
     }
 
+
     return (
         <div className="languages-container">
             <div className="wrapper-content">
-                <Header locale={locale} />
+                <Header locale={locale}/>
                 {/* <CircularMenu /> */}
-                <main className="wrapper-main">
+                <main className="language-wrapper">
                     {children}
                 </main>
             </div>
-            <ContactUs courses={courses} />
-            <Footer />
+            {/* <ContactUs courses={courses} /> */}
+            {/* <Footer /> */}
         </div>
     );
 }

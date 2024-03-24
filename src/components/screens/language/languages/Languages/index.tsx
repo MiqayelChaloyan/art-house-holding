@@ -40,6 +40,8 @@ export default function Languages({ locale }: Readonly<RootProps>) {
                             width={0}
                             height={0}
                             sizes="100vw"
+                            loading="eager"
+                            quality={50}
                         />
                     </Link>
                     <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_GERMAN}`} aria-label='german' className={styles.link}>
@@ -62,6 +64,8 @@ export default function Languages({ locale }: Readonly<RootProps>) {
                             width={0}
                             height={0}
                             sizes="100vw"
+                            loading="eager"
+                            quality={50}
                         />
                     </Link>
                     <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_FRENCH}`} aria-label='french' className={styles.link}>
@@ -73,6 +77,8 @@ export default function Languages({ locale }: Readonly<RootProps>) {
                             width={0}
                             height={0}
                             sizes="100vw"
+                            loading="eager"
+                            quality={50}
                         />
                     </Link>
                 </div>
@@ -86,6 +92,8 @@ export default function Languages({ locale }: Readonly<RootProps>) {
                             width={0}
                             height={0}
                             sizes="100vw"
+                            loading="eager"
+                            quality={50}
                         />
                     </Link>
                     <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_RUSSIAN}`} aria-label='russian' className={styles.link}>
@@ -97,6 +105,8 @@ export default function Languages({ locale }: Readonly<RootProps>) {
                             width={0}
                             height={0}
                             sizes="100vw"
+                            loading="eager"
+                            quality={50}
                         />
                     </Link>
                     <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_SPANISH}`} aria-label='spanish' className={styles.link}>
@@ -108,6 +118,8 @@ export default function Languages({ locale }: Readonly<RootProps>) {
                             width={0}
                             height={0}
                             sizes="100vw"
+                            loading="eager"
+                            quality={50}
                         />
                     </Link>
                 </div>

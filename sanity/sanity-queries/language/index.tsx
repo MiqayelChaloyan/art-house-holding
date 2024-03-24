@@ -9,6 +9,7 @@ export interface ABOUT_LANGUAGE {
     name: string
     text: any
     slug: any
+    course_process: any
     during_courses_images: any
     teachers: any
 };

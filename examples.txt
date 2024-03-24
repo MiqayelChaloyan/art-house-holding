@@ -126,3 +126,132 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 // <h1>home</h1>
 // <h1 className='text-4xl mb-4 font-semibold'>{t('about')}</h1>
 // <p>{t('about')}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$imagePAth: '../../../../../public/assets/images/language/background.png'
+
+
+
+
+
+
+
+.requests
+    display: flex
+    justify-content: space-around
+    position: relative
+    top: -20px
+    flex: 30%
+
+.send_request
+    border-color: #006ED2 #006ED2 transparent #006ED2
+    border-style: solid
+    border-width: 100px 70px 70px 70px
+    height: 0px
+    width: 0px
+    position: relative
+    top: 0
+    transition: .4s
+    cursor: pointer
+    &:hover
+        top: 20px
+
+
+.take_test
+    border-color: #F9CC48 #F9CC48 transparent #F9CC48
+    border-style: solid
+    border-width: 100px 70px 70px 70px
+    height: 0px
+    width: 0px
+    position: relative
+    top: 0
+    transition: .4s
+    cursor: pointer
+    margin-left: 20px !important
+    &:hover
+        top: 20px
+
+
+.triangle_text
+    font-size: 18px
+    font-weight: 400
+    position: absolute
+    bottom: 7px
+    width: 100px
+    right: 0
+    left: -49px
+    display: flex
+    justify-content: center
+    text-align: center
+    text-transform: uppercase
+    color: white
+
+
+
+
+.three
+    display: grid
+    grid-auto-rows: 1fr
+    grid-template-columns: 1fr 1fr 1fr
+    align-items: center
+    div
+        margin: 0 auto
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.header
+  position: sticky
+  top: 0
+  width: 100%
+  overflow: hidden
+
+
+.sticky
+    background-color: red
+    transition: .5s
+
+.nav
+    display: flex
+    justify-content: space-evenly
+    align-items: center
+    margin: 30px auto
+    transition: .5s
+
+
+
+.row
+    display: flex
+
+.logo
+    flex: 33%
+
+.switcher
+    flex: 33%

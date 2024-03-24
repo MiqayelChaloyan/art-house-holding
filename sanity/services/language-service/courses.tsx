@@ -12,7 +12,7 @@ export const getCourses = async (language: string): Promise<LANGUAGE[]> => {
     }`;
 
     try {
-        const data = await client.fetch(query, { language: language || 'am' });        
+        const data = await client.fetch(query, { language: language || 'am' }, { cache: 'no-store' });        
         return data;
     } catch (err) {
         throw err;

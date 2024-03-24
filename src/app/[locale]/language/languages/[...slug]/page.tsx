@@ -7,7 +7,8 @@ import { Locale } from "@/locales";
 
 import Language from "@/components/screens/language/languages/Language";
 
-import { getLanguageBySlug } from "../../../../../../sanity/services/language-service/languages";
+import { query } from "../../../../../../sanity/services/language-service/languages";
+import { client } from "../../../../../../sanity/client";
 
 
 interface RootLayoutProps {
@@ -19,14 +20,15 @@ interface RootLayoutProps {
 
 
 async function getResources(slug: string, locale: string) {
-    const res = await getLanguageBySlug(slug, locale);
-    return res[0]
+    // const res = await getLanguageBySlug(slug, locale);
+    const data = await client.fetch(query, { slug, language: locale }, { next: { revalidate: 100 } });
+    return data[0]
 }
 
 
 export default async function Page({ params: { locale, slug } }: Readonly<RootLayoutProps>) {
     const data = await getResources(slug[0], locale);
-    
+
     if (!data) {
         notFound()
     }

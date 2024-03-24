@@ -76,7 +76,7 @@ const languagesSchemaLanguage = {
         },
         {
             title: 'Course Process Video',
-            name: 'Object',
+            name: 'course_process',
             type: 'object',
             fields: [
                 {

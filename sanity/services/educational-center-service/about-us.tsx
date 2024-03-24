@@ -50,7 +50,7 @@ export const getHomeData = async (language: string): Promise<EDUCATIONAL_CENTER_
     }`;
 
     try {
-        const data = await client.fetch(query, { language: language || 'am'  });
+        const data = await client.fetch(query, { language: language || 'am'  },{ cache: 'no-store' });
         return data;
     } catch (err) {
         throw err;
