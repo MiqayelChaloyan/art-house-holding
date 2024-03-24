@@ -14,7 +14,10 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	background-repeat: no-repeat
 	background-size: cover
 	background-position: center  
-
+	/* sm */
+	@media screen and ( max-width: 640px )
+		height: 0
+		
 
 .body 
 	transition: .5s ease
@@ -57,12 +60,14 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		position: fixed
 		top: 60px
 		left: 0
-		height: 100vh
+		height: 0
 		width: 100%
 		max-width: 100%
 		background-color: #222
 		display: grid
-		padding: 150px 0
+		padding: 0
+		transition: 0.2s
+		overflow: hidden
 
 
 .link
@@ -206,7 +211,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		display: none
 
 
-
 .triangle_text
 	font-size: 18px
 	font-weight: 400
@@ -235,10 +239,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* sm */
 	@media screen and ( max-width: 640px )
 		display: none
-
-
-
-
 
 
 .mobile
@@ -337,7 +337,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		transition: var(--tr-time)
 
 
-
 .menuBtnActive
 	&:before, &:after
 		width: 33px
@@ -349,3 +348,8 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	span
 		opacity: 0
 		transform: scale(0)
+
+
+.active
+	height: 100vh
+	padding: 120px 0

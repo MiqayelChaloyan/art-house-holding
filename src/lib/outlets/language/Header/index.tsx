@@ -79,7 +79,11 @@ const Header = ({ locale }: IHeaderProps) => {
                         <LocalSwitcher />
                     </div>
                 </div>
-                <div className={`${styles.nav} ${isSticky ? styles.scrollY : ""}`}>
+                <div className={cn(
+                    styles.nav,
+                    isSticky ? styles.scrollY : '',
+                    isOpenMenu ? styles.active : ''
+                )}>
                     {navigationLinks.map((link, index) => (
                         <Link
                             key={index}
@@ -107,7 +111,7 @@ const Header = ({ locale }: IHeaderProps) => {
                         `${isOpenMenu ? styles.menuBtnActive : ''}`,
                     )}
                     onClick={toggleMenuClick}
-                    title='Art Training Center Menu'
+                    title='Language'
                 ><span></span></button>
             </div>
         </div>
