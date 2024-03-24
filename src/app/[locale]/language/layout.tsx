@@ -42,8 +42,8 @@ async function Layout({
                     {children}
                 </main>
             </div>
-            {/* <ContactUs courses={courses} /> */}
-            {/* <Footer /> */}
+            <ContactUs courses={courses} />
+            <Footer />
         </div>
     );
 }

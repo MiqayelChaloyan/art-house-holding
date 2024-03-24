@@ -73,7 +73,7 @@ const Header = ({ locale }: IHeaderProps) => {
                         </div>
                     </div>
                     <div className={styles.logo}>
-                        <Logo width={windowSize.width > 1024 ? 255.53 : 150} height={80} fill='#F9CC48' />
+                        <Logo width={windowSize.width > 1280 ? 255.53 : 150} height={80} fill='#F9CC48' />
                     </div>
                     <div className={styles.switcher}>
                         <LocalSwitcher />
@@ -104,7 +104,7 @@ const Header = ({ locale }: IHeaderProps) => {
                     </div>
                 </div>
             </header>
-            <div className={styles.mobile_menu}>
+            <div className={styles.menuMobile}>
                 <button
                     className={cn(
                         styles.menuBtn,

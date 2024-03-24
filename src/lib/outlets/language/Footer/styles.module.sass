@@ -2,12 +2,18 @@
    background-color: #006ED2
    height: 181px
    display: grid
+   /* sm */
+   @media screen and ( max-width: 640px )
+      height: 300px
 
 
 .column
    display: flex
    justify-content: space-around
    align-items: center
+   /* sm */
+   @media screen and ( max-width: 640px )
+      display: grid
 
 
 .reserved
@@ -15,6 +21,22 @@
    font-weight: var(--font-weight-normal)
    font-size: 17px
    line-height: 25.5px
+   /* 2xl */
+   @media screen and ( max-width: 1536px )
+      font-size: 17px
+   /* xl */
+   @media screen and ( max-width: 1280px )
+      font-size: 14px
+   /* lg */
+   @media screen and ( max-width: 1024px )
+      font-size: 13px
+   /* md */
+   @media screen and ( max-width: 768px )
+      font-size: 13px
+   /* sm */
+   @media screen and ( max-width: 640px )
+      font-size: 14px
+      text-align: center
 
 
 .address
@@ -25,6 +47,26 @@
        font-weight: var(--font-weight-normal)
        font-size: 17px
        line-height: 25.5px
+   /* sm */
+   @media screen and ( max-width: 640px )
+       display: grid
+       span
+          /* 2xl */
+          @media screen and ( max-width: 1536px )
+            font-size: 17px
+          /* xl */
+          @media screen and ( max-width: 1280px )
+            font-size: 14px
+          /* lg */
+          @media screen and ( max-width: 1024px )
+            font-size: 13px
+          /* md */
+          @media screen and ( max-width: 768px )
+            font-size: 13px
+          /* sm */
+          @media screen and ( max-width: 640px )
+            font-size: 14px
+            text-align: center
 
 
 .phone
@@ -33,12 +75,35 @@
    font-weight: var(--font-weight-normal)
    font-size: 17px
    line-height: 25.5px
+   /* 2xl */
+   @media screen and ( max-width: 1536px )
+      font-size: 17px
+   /* xl */
+   @media screen and ( max-width: 1280px )
+      font-size: 14px
+   /* lg */
+   @media screen and ( max-width: 1024px )
+      font-size: 13px
+   /* md */
+   @media screen and ( max-width: 768px )
+      font-size: 13px
+   /* sm */
+   @media screen and ( max-width: 640px )
+      font-size: 14px
+      text-align: center
+      margin-left: 0
 
 
 .hosts
    display: flex
    align-items: center
+   justify-content: center
 
 
 .logo
     width: 10%
+    /* sm */
+    @media screen and ( max-width: 640px )
+      display: flex
+      justify-content: center
+      width: 100% 

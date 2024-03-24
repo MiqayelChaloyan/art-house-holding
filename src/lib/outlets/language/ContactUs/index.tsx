@@ -22,10 +22,11 @@ import { Vrdznagir } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
+import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
 
 interface Props {
@@ -117,13 +118,13 @@ const ContactUs: FC<Props> = ({ courses }) => {
                         <div className={styles.contact_us}>
                             <div className={styles.hosts}>
                                 <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">
-                                    <Gmail width={windowSize.width <= 1024 ? 20 : 30} height={windowSize.width <= 1024 ? 20 : 30} fill='#F9CC48' />
+                                    <Gmail width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
                                 </Link>
                                 <Link href={Hosts.instagram} aria-label='Instagram' className={styles.social_network} target="_blank">
-                                    <Instagram width={windowSize.width <= 1024 ? 20 : 30} height={windowSize.width <= 1024 ? 20 : 30} fill='#F9CC48' />
+                                    <Instagram width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
                                 </Link>
                                 <Link href={Hosts.facebook} aria-label='Facebook' className={styles.social_network} target="_blank">
-                                    <Facebook width={windowSize.width <= 1024 ? 20 : 30} height={windowSize.width <= 1024 ? 20 : 30} fill='#F9CC48' />
+                                    <Facebook width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
                                 </Link>
                             </div>
                             <div className={styles.form}>

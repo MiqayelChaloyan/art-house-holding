@@ -1,6 +1,14 @@
 $imagePath: '../../../../../public/assets/images/language/background.png'
 
 
+.sticky_header 
+	padding-top: 100px 
+	header
+		height: 60px 
+	.body
+		scale: 0 
+	
+
 .header 
 	width: 100% 
 	height: 250px 
@@ -14,6 +22,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	background-repeat: no-repeat
 	background-size: cover
 	background-position: center  
+	z-index: 100
 	/* sm */
 	@media screen and ( max-width: 640px )
 		height: 0
@@ -32,110 +41,17 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		z-index: 150
 		margin: 50px
 
-.nav 
-	position: absolute 
-	bottom: 4px
-	height: 60px 
-	line-height: 60px 
-	width: 100% 
-	display: flex
-	justify-content: space-evenly
-	flex-wrap: wrap
-	padding: 0 200px
-	z-index: 100
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
-		padding: 0 180px
-	/* xl */
-	@media screen and ( max-width: 1280px )
-		padding: 0 150px
-	/* lg */
-	@media screen and ( max-width: 1024px )
-		padding: 0 100px
-	/* md */
-	@media screen and ( max-width: 768px )
-		padding: 0 80px
-	/* sm */
-	@media screen and ( max-width: 640px )
-		position: fixed
-		top: 25px
-		left: 0
-		height: 0
-		width: 100%
-		max-width: 100%
-		background-color: #222
-		display: grid
-		padding: 0
-		transition: 0.2s
-		overflow: hidden
-
-
-.link
-	flex: 1 0 18%
-	color: #006ED2
-	display: inline-block 
-	font-size: 18px
-	font-weight: 700
-	margin: 0 
-	&:after 
-		display: block 
-		content: '' 
-		border-bottom: solid 3px #F9CC48 
-		transform: scaleX(0) 
-		transition: transform 250ms ease-in-out 
-	&:hover 
-		color: #F9CC48
-		&:after 
-			transform: scaleX(1)
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
-		font-size: 17px
-	/* xl */
-	@media screen and ( max-width: 1280px )
-		font-size: 16px
-	/* lg */
-	@media screen and ( max-width: 1024px )
-		font-size: 15px
-	/* md */
-	@media screen and ( max-width: 768px )
-		font-size: 15px
-	/* sm */
-	@media screen and ( max-width: 640px )
-		font-size: 18px
-		color: #fff
-
-
-
-.scrollY
-	background-color: #006ED2
-	a
-		color: #fff
-	/* sm */
-	@media screen and ( max-width: 640px )
-		background-color: #222
-
-
-
-.sticky_header 
-	padding-top: 100px 
-	header
-		height: 60px 
-	.body
-		scale: 0 
-
 
 .requests
 	display: flex
 	justify-content: center
 	position: relative
 	top: -20px
-
-
-.requests
 	flex: 1
 	/* sm */
 	@media screen and ( max-width: 640px )
 		display: none
+
 
 .logo
 	flex: 1
@@ -178,7 +94,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* sm */
 	@media screen and ( max-width: 640px )
 		display: none
-
 
 
 .take_test
@@ -241,6 +156,94 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		display: none
 
 
+.nav 
+	position: absolute 
+	bottom: 4px
+	height: 60px 
+	line-height: 60px 
+	width: 100% 
+	display: flex
+	justify-content: space-evenly
+	flex-wrap: wrap
+	padding: 0 200px
+	z-index: 100
+	/* 2xl */
+	@media screen and ( max-width: 1536px )
+		padding: 0 180px
+	/* xl */
+	@media screen and ( max-width: 1280px )
+		padding: 0 150px
+	/* lg */
+	@media screen and ( max-width: 1024px )
+		padding: 0 100px
+	/* md */
+	@media screen and ( max-width: 768px )
+		padding: 0 80px
+	/* sm */
+	@media screen and ( max-width: 640px )
+		position: fixed
+		top: 25px
+		left: 0
+		height: 0
+		width: 100%
+		max-width: 100%
+		background-color: #222
+		display: grid
+		padding: 0
+		transition: 0.2s
+		overflow: hidden
+
+
+
+.scrollY
+	background-color: #006ED2
+	a
+		color: #fff
+	/* sm */
+	@media screen and ( max-width: 640px )
+		background-color: #222
+
+
+.active
+	height: 100vh
+	padding: 150px 0
+
+
+.link
+	flex: 1 0 18%
+	color: #006ED2
+	display: inline-block 
+	font-size: 18px
+	font-weight: 700
+	margin: 0 
+	&:after 
+		display: block 
+		content: '' 
+		border-bottom: solid 3px #F9CC48 
+		transform: scaleX(0) 
+		transition: transform 250ms ease-in-out 
+	&:hover 
+		color: #F9CC48
+		&:after 
+			transform: scaleX(1)
+	/* 2xl */
+	@media screen and ( max-width: 1536px )
+		font-size: 17px
+	/* xl */
+	@media screen and ( max-width: 1280px )
+		font-size: 16px
+	/* lg */
+	@media screen and ( max-width: 1024px )
+		font-size: 15px
+	/* md */
+	@media screen and ( max-width: 768px )
+		font-size: 15px
+	/* sm */
+	@media screen and ( max-width: 640px )
+		font-size: 18px
+		color: #fff
+
+
 .mobile
 	display: none
 	/* sm */
@@ -288,7 +291,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 				transform: scaleX(1)
 
 
-.mobile_menu
+.menuMobile
 	display: none
 	/* sm */
 	@media screen and ( max-width: 640px )
@@ -301,6 +304,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		height: 70px
 		width: 100%
 		padding: 18px
+		z-index: 100
 
 
 .menuBtn
@@ -350,6 +354,3 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		transform: scale(0)
 
 
-.active
-	height: 100vh
-	padding: 150px 0

@@ -1,29 +1,68 @@
 $imagePath: '../../../../../public/assets/images/language/connection.png'
 
 
-
-
 .contact
-    display: flex
-    justify-content: space-between  
-    align-items: center 
+   display: flex
+   justify-content: space-between  
+   align-items: center 
+   margin: 40px auto
+   /* md */
+   @media screen and ( max-width: 768px )
+      display: grid
+      justify-content: center
+      margin: 40px auto
 
 
 .connection
-    background-image: url($imagePath) 
-    background-repeat: no-repeat
-    background-size: 100%
-    background-position: center  
-    height: 478px
-    width: 574px
-    margin: 0 auto
+   background-image: url($imagePath) 
+   background-repeat: no-repeat
+   background-size: 100%
+   background-position: center  
+   height: 478px
+   width: 574px
+   margin: 0 auto
+   /* 2xl */
+   @media screen and ( max-width: 1536px )
+      height: 435px
+      width: 448px
+   /* xl */
+   @media screen and ( max-width: 1280px )
+      height: 435px
+      width: 448px
+   /* lg */
+   @media screen and ( max-width: 1024px )
+      height: 312px
+      width: 312px
+   /* md */
+   @media screen and ( max-width: 768px )
+      height: 312px
+      width: 312px
+   /* sm */
+   @media screen and ( max-width: 640px )
+      height: 312px
+      width: 312px
 
 
 .title
-    text-align: center
-    color: #006ED2
-    font-size: 90px
-    font-weight: 400
+   text-align: center
+   color: #006ED2
+   font-size: 90px
+   font-weight: 400
+   /* 2xl */
+   @media screen and ( max-width: 1536px )
+      font-size: 80px
+   /* xl */
+   @media screen and ( max-width: 1280px )
+      font-size: 60px
+   /* lg */
+   @media screen and ( max-width: 1024px )
+      font-size: 60px
+   /* md */
+   @media screen and ( max-width: 768px )
+      font-size: 60px
+   /* sm */
+   @media screen and ( max-width: 640px )
+      font-size: 60px
 
 
 .hosts
@@ -32,6 +71,21 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    justify-content: space-evenly
    margin: 20px auto
    width: 424px
+   /* 2xl */
+   @media screen and ( max-width: 1536px )
+      width: 400px
+   /* xl */
+   @media screen and ( max-width: 1280px )
+      width: 359px
+   /* lg */
+   @media screen and ( max-width: 1024px )
+      width: 359px
+   /* md */
+   @media screen and ( max-width: 768px )
+      width: 350px
+   /* sm */
+   @media screen and ( max-width: 640px )
+      width: 360px
 
 
 .social_network
@@ -41,19 +95,39 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
 
 
 .form
-    width: 424px
-    height: 480px
-    padding: 20px
-    border-radius: 20px
-    box-shadow: 0px 2px 9px 1px gray
-    background-color: #F9CC48
+   width: 424px
+   height: 480px
+   padding: 20px
+   border-radius: 20px
+   box-shadow: 0px 2px 9px 1px gray
+   background-color: #F9CC48
+   /* 2xl */
+   @media screen and ( max-width: 1536px )
+      height: 480px
+      width: 400px
+   /* xl */
+   @media screen and ( max-width: 1280px )
+      height: 437px
+      width: 359px
+   /* lg */
+   @media screen and ( max-width: 1024px )
+      height: 383px
+      width: 359px
+   /* md */
+   @media screen and ( max-width: 768px )
+      height: 383px
+      width: 359px
+   /* sm */
+   @media screen and ( max-width: 640px )
+      height: 383px
+      width: 359px
 
 
 .form_title
-    text-align: center
-    color: white
-    font-size: 20px
-    font-weight: 700
+   text-align: center
+   color: white
+   font-size: 20px
+   font-weight: 700
 
 
 .contact_us
@@ -168,7 +242,7 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    /* md */
    @media screen and ( max-width: 768px )
       font-size: 14px
-      width: 72%
+      width: 100%
    /* sm */
    @media screen and ( max-width: 640px )
       font-size: 14px
