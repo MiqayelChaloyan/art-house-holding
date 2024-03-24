@@ -61,7 +61,7 @@ const Header = ({ locale }: IHeaderProps) => {
     const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
     return (
-        <div className={`${isSticky ? styles.sticky_header : ""}`}>
+        <div className={`${isSticky ? styles.sticky_header : ''}`}>
             <header className={styles.header}>
                 <div className={styles.body}>
                     <div className={styles.requests}>
