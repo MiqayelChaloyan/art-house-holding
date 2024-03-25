@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -11,7 +11,7 @@ import LocalSwitcher from '@/components/components/local-switcher';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { Pages } from '@/lib/constants/pages';
-import { ArianAMU } from '@/lib/constants/font';
+import { Arial } from '@/lib/constants/font';
 import Logo from '@/lib/icons/language/Logo';
 
 import cn from 'classnames';
@@ -66,14 +66,14 @@ const Header = ({ locale }: IHeaderProps) => {
                 <div className={styles.body}>
                     <div className={styles.requests}>
                         <div className={styles.send_request}>
-                            <p className={styles.triangle_text}>{t("texts.send-request")}</p>
+                            <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.send-request")}</p>
                         </div>
                         <div className={styles.take_test}>
-                            <p className={styles.triangle_text}>{t("texts.take-the-test")}</p>
+                            <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.take-the-test")}</p>
                         </div>
                     </div>
                     <div className={styles.logo}>
-                        <Logo width={windowSize.width > 1280 ? 255.53 : 150} height={80} fill='#F9CC48' />
+                        <Logo width={windowSize.width > 1280 ? 255.53: windowSize.width > 1024 ? 200 : 150} height={80} fill='#F9CC48' />
                     </div>
                     <div className={styles.switcher}>
                         <LocalSwitcher />
@@ -89,14 +89,14 @@ const Header = ({ locale }: IHeaderProps) => {
                             key={index}
                             href={`/${locale}${link.path}`}
                             aria-label={`/${locale}${link.path}`}
-                            className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${ArianAMU.className}`}
+                            className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${Arial.className}`}
                         >
                             {t(`navigation.${link.label}`)}
                         </Link>
                     ))}
                     <div className={styles.mobile}>
-                        <p className={styles.mobile_triangle_text_one}>{t("texts.send-request")}</p>
-                        <p className={styles.mobile_triangle_text_two}>{t("texts.take-the-test")}</p>
+                        <p className={`${styles.mobile_triangle_text_one} ${Arial.className}`}>{t("texts.send-request")}</p>
+                        <p className={`${styles.mobile_triangle_text_two} ${Arial.className}`}>{t("texts.take-the-test")}</p>
                         <div className={styles.mobile_switcher}>
                             <LocalSwitcher />
                         </div>
@@ -119,7 +119,7 @@ const Header = ({ locale }: IHeaderProps) => {
 };
 
 
-export default Header;
+export default memo(Header);
 
 
 

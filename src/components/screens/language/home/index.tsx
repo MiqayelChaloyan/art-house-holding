@@ -19,12 +19,15 @@ export default function Home({locale}: any) {
 
     return (
         <div className={styles.container}>
+            <Main/>
+            {/* <About/>
+            <Promotions/> */}
            {/* <Main/>
            <About/>
            <Promotions/>
            <OurDailyLife/>
            <Partners/> */}
-           <div style={{backgroundColor: 'white', height: '400px', width: '100%', marginTop: '250px'}}></div> 
+           {/* <div style={{backgroundColor: 'red', height: '400px', width: '100%'}}></div>  */}
            {/* mobile 70px */}
 
         </div>

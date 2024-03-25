@@ -9,7 +9,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		scale: 0 
 	
 
-.header 
+.header
 	width: 100% 
 	height: 250px 
 	text-align: center 
@@ -23,22 +23,63 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	background-size: cover
 	background-position: center  
 	z-index: 100
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		width: 100% 
+		height: 250px 
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		width: 100% 
+		height: 250px 
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		width: 100% 
+		height: 250px 
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		width: 100% 
+		height: 250px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		width: 100% 
+		height: 250px 
+	/* @md */
+	@media screen and (max-width: 1024px)
+		width: 100% 
+		height: 250px 
+	/* @sm */
+	@media screen and (max-width: 768px)
+		width: 100% 
+		height: 250px 
+	/* @xs */
+	@media screen and (max-width: 600px)
 		height: 0
-		
 
-.body 
+
+.body
 	transition: .5s ease
 	display: flex
 	justify-content: space-around
 	align-items: center
 	position: relative
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		transition: .5s ease
+		display: flex
+		justify-content: space-around
+		align-items: center
+		position: relative
+	/* @xs */
+	@media screen and (max-width: 600px)
 		display: block
 		position: relative
 		z-index: 150
+		margin: 50px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		margin: 50px
+	/* @3xs */
+	@media screen and (max-width: 360px)
 		margin: 50px
 
 
@@ -48,22 +89,35 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	position: relative
 	top: -20px
 	flex: 1
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		display: flex
+		justify-content: center
+		position: relative
+		top: -20px
+		flex: 1
+	/* @xs */
+	@media screen and (max-width: 600px)
 		display: none
 
 
 .logo
 	flex: 1
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		flex: 1
+	/* @xs */
+	@media screen and (max-width: 600px)
 		display: none
 
 
 .switcher
 	flex: 1
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		flex: 1
+	/* @xs */
+	@media screen and (max-width: 600px)
 		display: none
 
 
@@ -79,20 +133,33 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	cursor: pointer
 	&:hover
 		top: 20px
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		border-color: #006ED2 #006ED2 transparent #006ED2
+		border-style: solid
 		border-width: 100px 70px 70px 70px
-	/* xl */
-	@media screen and ( max-width: 1280px )
+		height: 0px
+		width: 0px
+		position: relative
+		top: 0
+		transition: .4s
+		cursor: pointer
+		&:hover
+			top: 20px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		border-width: 100px 70px 70px 70px
+	/* @lg */
+	@media screen and (max-width: 1280px)
 		border-width: 90px 50px 50px 50px
-	/* lg */
-	@media screen and ( max-width: 1024px )
+	/* @md */
+	@media screen and (max-width: 1024px)
 		border-width: 90px 50px 50px 50px
-	/* md */
-	@media screen and ( max-width: 768px )
+	/* @sm */
+	@media screen and (max-width: 768px)
 		border-width: 80px 40px 40px 40px
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and (max-width: 600px)
 		display: none
 
 
@@ -106,23 +173,37 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	top: 0
 	transition: .4s
 	cursor: pointer
-	margin-left: 20px !important
+	margin-left: 15px
 	&:hover
 		top: 20px
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		border-color: #F9CC48 #F9CC48 transparent #F9CC48
+		border-style: solid
 		border-width: 100px 70px 70px 70px
-	/* xl */
-	@media screen and ( max-width: 1280px )
+		height: 0px
+		width: 0px
+		position: relative
+		top: 0
+		transition: .4s
+		cursor: pointer
+		margin-left: 15px
+		&:hover
+			top: 20px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		border-width: 100px 70px 70px 70px
+	/* @lg */
+	@media screen and (max-width: 1280px)
 		border-width: 90px 50px 50px 50px
-	/* lg */
-	@media screen and ( max-width: 1024px )
+	/* @md */
+	@media screen and (max-width: 1024px)
 		border-width: 90px 50px 50px 50px
-	/* md */
-	@media screen and ( max-width: 768px )
+	/* @sm */
+	@media screen and (max-width: 768px)
 		border-width: 80px 40px 40px 40px
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and (max-width: 600px)
 		display: none
 
 
@@ -139,24 +220,27 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	text-align: center
 	text-transform: uppercase
 	color: white
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 18px
+	/* @xl */
+	@media screen and (max-width: 1440px)
 		font-size: 17px
-	/* xl */
-	@media screen and ( max-width: 1280px )
-		font-size: 16px
-	/* lg */
-	@media screen and ( max-width: 1024px )
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 17px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 17px
+	/* @sm */
+	@media screen and (max-width: 768px)
 		font-size: 15px
-	/* md */
-	@media screen and ( max-width: 768px )
-		font-size: 14px
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and (max-width: 600px)
 		display: none
 
 
-.nav 
+.nav
 	position: absolute 
 	bottom: 4px
 	height: 60px 
@@ -167,20 +251,23 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	flex-wrap: wrap
 	padding: 0 200px
 	z-index: 100
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		padding: 0 200px
+	/* @xl */
+	@media screen and (max-width: 1440px)
 		padding: 0 180px
-	/* xl */
-	@media screen and ( max-width: 1280px )
+	/* @lg */
+	@media screen and (max-width: 1280px)
 		padding: 0 150px
-	/* lg */
-	@media screen and ( max-width: 1024px )
-		padding: 0 100px
-	/* md */
-	@media screen and ( max-width: 768px )
+	/* @md */
+	@media screen and (max-width: 1024px)
 		padding: 0 80px
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @sm */
+	@media screen and (max-width: 768px)
+		padding: 0 80px
+	/* @xs */
+	@media screen and (max-width: 600px)
 		position: fixed
 		top: 25px
 		left: 0
@@ -192,21 +279,35 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		padding: 0
 		transition: 0.2s
 		overflow: hidden
-
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		top: 25px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		top: 25px
 
 
 .scrollY
 	background-color: #006ED2
 	a
 		color: #fff
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs  */
+	@media screen and ( max-width: 600px )
 		background-color: #222
 
 
 .active
 	height: 100vh
-	padding: 150px 0
+	padding: 130px 0
+	/* @xs */
+	@media screen and (max-width: 600px)
+		padding: 150px 0
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		padding: 80px 0
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		padding: 30px 0
 
 
 .link
@@ -226,37 +327,45 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		color: #F9CC48
 		&:after 
 			transform: scaleX(1)
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
+	/* @xl */
+	@media screen and (max-width: 1440px)
 		font-size: 17px
-	/* xl */
-	@media screen and ( max-width: 1280px )
-		font-size: 16px
-	/* lg */
-	@media screen and ( max-width: 1024px )
-		font-size: 15px
-	/* md */
-	@media screen and ( max-width: 768px )
-		font-size: 15px
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 17px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 17px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 17px
+	/* @xs */
+	@media screen and (max-width: 600px)
 		font-size: 18px
+		color: #fff
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 16px
+		color: #fff
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 16px
 		color: #fff
 
 
 .mobile
 	display: none
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and ( max-width: 600px )
 		display: block
 
 
 .mobile_triangle_text_one
 	display: none
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and ( max-width: 600px )
 		display: block
-		font-size: 18px
+		font-size: 16px
 		color: #fff
 		font-weight: 700
 		&:after 
@@ -273,10 +382,10 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 
 .mobile_triangle_text_two
 	display: none
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and ( max-width: 600px )
 		display: block
-		font-size: 18px
+		font-size: 16px
 		color: #fff
 		font-weight: 700
 		&:after 
@@ -293,8 +402,8 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 
 .menuMobile
 	display: none
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and ( max-width: 600px )
 		display: flex
 		justify-content: flex-end
 		padding: 0 40px
@@ -305,6 +414,13 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		width: 100%
 		padding: 18px
 		z-index: 100
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		height: 60px
+		padding: 12px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		height: 60px
 
 
 .menuBtn
@@ -315,8 +431,8 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	height: 40px
 	position: relative
 	z-index: 150
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and ( max-width: 600px )
 		display: flex
 	&:before, &:after
 		content: ''

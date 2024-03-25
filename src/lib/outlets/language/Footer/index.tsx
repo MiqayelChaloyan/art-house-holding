@@ -13,6 +13,7 @@ import { Hosts } from '@/lib/constants/hosts';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import styles from './styles.module.sass';
+import { Arial } from '@/lib/constants/font';
 
 
 const Footer = () => {
@@ -21,19 +22,19 @@ const Footer = () => {
 
 
     return (
-        <footer className={styles.container}>
+        <footer className={styles.footer}>
             <div className={styles.column}>
                 <div className={styles.logo}>
-                    <Logo width={windowSize.width > 1280 ? 255.53 : 150} height={80} fill='#F9CC48' />
+                    <Logo width={windowSize.width > 1280 ? 255.53: windowSize.width > 1024 ? 200 : 150} height={80} fill='#F9CC48' />
                 </div>
                 <div>
                     <div className={styles.address}>
-                        <span>{t('street')}</span>
+                        <span className={Arial.className}>{t('street')}</span>
                         <Link href='tel:+37477543455' aria-label='+374 (77) 54 34 55' className={styles.icon}>
-                            <p className={styles.phone}>+374 (77) 54 34 55</p>
+                            <p className={`${styles.phone} ${Arial.className}`}>+374 (77) 54 34 55</p>
                         </Link>
                     </div>
-                    <p className={styles.reserved}>2024 ART HOUSE</p>
+                    <p className={`${styles.reserved} ${Arial.className}`}>2024 ART HOUSE</p>
                 </div>
                 <div className={styles.hosts}>
                     <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">

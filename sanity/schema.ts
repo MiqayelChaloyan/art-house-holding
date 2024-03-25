@@ -10,6 +10,7 @@ import coursesSchemaEducationalCenter from './schemas/educational-center/courses
 import coWorkersSchemaEducationalCenter from './schemas/educational-center/co-workers-schema';
 import coursesSchemaLanguage from './schemas/language/courses-schema';
 import languagesSchemaLanguage from './schemas/language/languages-schema';
+import aboutUsSchemaLanguage from './schemas/language/about-us-schema';
 
 export const schemaTypes = [
   homeSchemaArtHouse,
@@ -18,6 +19,7 @@ export const schemaTypes = [
   aboutUsSchemaEducationalCenter,
   coursesSchemaEducationalCenter,
   coWorkersSchemaEducationalCenter,
+  aboutUsSchemaLanguage,
   coursesSchemaLanguage,
   languagesSchemaLanguage
 ];

@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, memo, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -54,7 +54,6 @@ const ContactUs: FC<Props> = ({ courses }) => {
                 [target.name]: target.value,
             },
         }));
-
 
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -168,10 +167,11 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                             state={state}
                                         />
                                     </div>
-                                    <button type='submit' className={styles.submit}
-                                    >
+                                    <button type='submit' className={styles.submit}>
                                         {isLoading ?
-                                            `${t('contact-us-form.loading')}...`
+                                            <span>
+                                                {`${t('contact-us-form.loading')}...`}
+                                            </span>
                                             :
                                             <span>
                                                 {t('contact-us-form.send')}
@@ -188,4 +188,4 @@ const ContactUs: FC<Props> = ({ courses }) => {
     )
 }
 
-export default ContactUs;
+export default memo(ContactUs);

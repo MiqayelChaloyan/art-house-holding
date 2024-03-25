@@ -8,3 +8,6 @@ function ArrayFunctions(props) {
 export default function ArrayMaxItems(props) {
     return props.renderDefault({ ...props, arrayFunctions: ArrayFunctions });
 };
+
+
+// ArrayMaxItems.tsx

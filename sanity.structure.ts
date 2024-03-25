@@ -6,7 +6,7 @@ export default (S: any) =>
         .title('Base')
         .items([
             ...S.documentTypeListItems().filter(
-                (listItem: any) => !['art-house-home', 'co-workers', 'about-us', 'courses', 'languages', 'about-language'].includes(listItem.getId())
+                (listItem: any) => !['art-house-home', 'co-workers', 'about-us', 'courses', 'languages', 'about-language', 'about-us-language'].includes(listItem.getId())
             ),
 
             S.listItem()
@@ -76,9 +76,10 @@ export default (S: any) =>
                     S.list()
                         .title('Pages')
                         .items([
-                            // S.listItem()
-                            //     .title('About Us')
-                            //     .child(S.document().schemaType('about-us').documentId('about-us-educational-center')),
+                            S.listItem()
+                                .title('About Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('about-us-language').documentId('about-us-language')),
                             S.listItem()
                                 .title('Courses')
                                 .child(
@@ -86,7 +87,7 @@ export default (S: any) =>
                                         .title('Courses')
                                         .filter('_type == "languages"')
                                 ),
-                                S.listItem()
+                            S.listItem()
                                 .title('Languages')
                                 .child(
                                     S.documentList()

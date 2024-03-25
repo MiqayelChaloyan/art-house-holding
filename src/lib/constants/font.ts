@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 const ArianAMU = localFont({ src: '../../../public/font/arnamu.ttf' });
 const Vrdznagir = localFont({ src: '../../../public/font/Vrdznagir.otf' });
 const Inter = localFont({ src: '../../../public/font/Inter.ttf' });
-
+const Arial = localFont({ src: '../../../public/font/arial.ttf' });
 // const inter = Inter({
 //     subsets: ['latin'],
 //     variable: '--font-inter',
@@ -14,5 +14,6 @@ const Inter = localFont({ src: '../../../public/font/Inter.ttf' });
 export {
     ArianAMU,
     Inter,
-    Vrdznagir
+    Vrdznagir,
+    Arial
 };

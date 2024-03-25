@@ -1,43 +1,40 @@
-import React, { FC, useState } from "react";
+import React, { FC, memo, useState } from "react";
 
-import styles from './styles.module.sass';
 import { LANGUAGE } from "../../../../sanity/sanity-queries/language";
 
-const options = [
-    { label: "Grapes 🍇", value: "grapes" },
-    { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry" },
-    { label: "Watermelon 🍉", value: "watermelon" },
-    { label: "Pear 🍐", value: "pear", disabled: true },
-    { label: "Apple 🍎", value: "apple" },
-    { label: "Tangerine 🍊", value: "tangerine" },
-    { label: "Pineapple 🍍", value: "pineapple" },
-    { label: "Peach 🍑", value: "peach" }
-];
+import styles from './styles.module.sass';
 
-// type Language = {
-//     id: number;
-//     name: string;
-//     email: string;
-//   };
+
+type FormProps = {
+    isLoading: boolean,
+    error: string,
+    values: {
+        fullName: string,
+        email: string,
+        phone: string,
+        language: string
+    }
+};
+
 
 interface SelectProps {
     data: LANGUAGE[]
-	state: any
-	handleChange: (value: any) => void
+    state: FormProps
+    handleChange: (value: any) => void
 }
 
-const Select: FC<SelectProps>  = ({ data, state, handleChange }) => {
+
+const Select: FC<SelectProps> = ({ data, state, handleChange }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleSelect = () => {
         setIsOpen(!isOpen);
     };
 
-    const handleOptionClick = (e: { currentTarget: { querySelector: (arg0: string) => { (): any; new(): any; textContent: any; }; }; }) => {
+    const handleOptionClick = (e: any) => {
         const selectedText = e.currentTarget.querySelector('label').textContent;
 
-        handleChange((prev: any) => ({
+        handleChange((prev: FormProps) => ({
             ...prev,
             values: {
                 ...prev.values,
@@ -75,4 +72,4 @@ const Select: FC<SelectProps>  = ({ data, state, handleChange }) => {
     );
 };
 
-export default Select;
+export default memo(Select);

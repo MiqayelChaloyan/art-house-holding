@@ -22,7 +22,7 @@ const Section = ({ children, direction }: Props) => {
 
     return (
         <div ref={ref}>
-            {windowSize.width > 640 ? (
+            {windowSize.width > 600 ? (
                 <div
                     style={{
                         ...style,

@@ -1,12 +1,12 @@
-.custom_select 
+.custom_select
 	position: relative 
 	width: 380px 
 	max-width: 100% 
-	font-weight: 300
+	font-weight: var(--font-weight-light)
 	font-size: 22px
 	box-shadow: 1px 13px 11px -4px #0000003d
 	border-radius: 20px 
-	color: white 
+	color: var(--color-white) 
 	margin: 15px 0 
 	&.active 
 		.arrow 
@@ -15,59 +15,88 @@
 			opacity: 1 
 			visibility: visible 
 			transform: scaleY(1) 
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
-		font-size: 16px
-	/* xl */
-	@media screen and ( max-width: 1280px )
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 22px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 22px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 22px
+	/* @xl */
+	@media screen and (max-width: 1440px)
 		font-size: 15px
-	/* lg */
-	@media screen and ( max-width: 1024px )
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 15px
+	/* @md */
+	@media screen and (max-width: 1024px)
 		font-size: 14px
 		height: 30px
-	/* md */
-	@media screen and ( max-width: 768px )
+	/* @sm */
+	@media screen and (max-width: 768px)
 		font-size: 14px
 		width: 100%
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and (max-width: 600px)
 		font-size: 14px
-	/* xs */
-	@media screen and ( max-width: 475px )
+		width: 100%
+	/* @2xs */
+	@media screen and (max-width: 480px)
 		font-size: 14px
+		width: 100%
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 14px
+		width: 100%
 
 
-.select_button 
+.select_button
 	width: 100% 
 	font-size: 20px 
 	height: 40px 
 	border-radius: 20px 
-	background-color: #6AAAE6 
+	background-color: var(--color-primary-blue) 
 	padding: 0.675em 1em 
-	border: 1px solid #6AAAE6 
+	border: 1px solid var(--color-primary-blue) 
 	cursor: pointer 
 	display: flex 
 	justify-content: space-between 
 	align-items: center 
-	/* 2xl */
-	@media screen and ( max-width: 1536px )
-		font-size: 16px
-	/* xl */
-	@media screen and ( max-width: 1280px )
-		font-size: 15px
-	/* lg */
-	@media screen and ( max-width: 1024px )
+	outline: none
+	&:focus
+		outline: none !important
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 22px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 22px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 22px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 22px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 22px
+	/* @md */
+	@media screen and (max-width: 1024px)
 		font-size: 14px
 		height: 30px
-	/* md */
-	@media screen and ( max-width: 768px )
+	/* @sm */
+	@media screen and (max-width: 768px)
 		font-size: 14px
-		width: 100%
-	/* sm */
-	@media screen and ( max-width: 640px )
+	/* @xs */
+	@media screen and (max-width: 600px)
 		font-size: 14px
-	/* xs */
-	@media screen and ( max-width: 475px )
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 14px
+	/* @3xs */
+	@media screen and (max-width: 360px)
 		font-size: 14px
 
 
@@ -87,8 +116,8 @@
 	list-style: none 
 	width: 100% 
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) 
-	background-color: #fff 
-	border: 1px solid #caced1 
+	background-color: var(--color-white) 
+	border: 1px solid var(--color-light-gray) 
 	border-radius: 4px 
 	padding: 0.675em 1em 
 	margin-top: 8px 
@@ -98,9 +127,12 @@
 	transform: scaleY(0) 
 	opacity: 0 
 	z-index: 100 
-	visibility: hidden 
+	visibility: hidden
 	&:focus-within 
 		box-shadow: 0 10px 25px rgba(94, 108, 233, 0.6) 
+	/* @sm */
+	@media screen and (max-width: 768px)
+		max-height: 96px
 	li 
 		position: relative 
 		cursor: pointer 
@@ -116,6 +148,10 @@
 			align-items: center 
 			color: black 
 			font-size: 20px
+			/* @sm */
+			@media screen and (max-width: 768px)
+				padding: 0 0
+				font-size: 14px
 	&::-webkit-scrollbar 
 		width: 7px 
 	&::-webkit-scrollbar-track 
@@ -127,7 +163,7 @@
 	input 
 		&:focus 
 			& ~ label 
-				background-color: #dfdfdf 
+				background-color: var(--color-double-gray) 
 	input[type="radio"] 
 		position: absolute 
 		left: 0 
