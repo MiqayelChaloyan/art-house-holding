@@ -1,19 +1,19 @@
 import { SlugInput, defineArrayMember, defineField } from "sanity";
 import { basePath } from "../../../env";
 
-import { ArrayOfPrimitivesInputProps, ArrayOfPrimitivesFunctions, ArrayInputFunctionsProps, ArraySchemaType } from 'sanity'
+// import { ArrayOfPrimitivesInputProps, ArrayOfPrimitivesFunctions, ArrayInputFunctionsProps, ArraySchemaType } from 'sanity'
 
-function ArrayFunctions(props: ArrayInputFunctionsProps<string | number | boolean, ArraySchemaType>) {
-    const valRules = props?.schemaType?.validation?.[0]?._rules || []
-    const max = valRules.find(r => r.flag === 'max')?.constraint
-    const total = props?.value?.length || 0
-    if (!isNaN(max) && total >= max) return null
-    return <ArrayOfPrimitivesFunctions {...props} />
-}
+// function ArrayFunctions(props: ArrayInputFunctionsProps<string | number | any, ArraySchemaType>) {
+//     const valRules = props?.schemaType?.validation?.[0]?._rules || []
+//     const max = valRules.find((r: any) => r.flag === 'max')?.constraint
+//     const total = props?.value?.length || 0
+//     if (!isNaN(max) && total >= max) return null
+//     return <ArrayOfPrimitivesFunctions {...props} />
+// }
 
-function ArrayMaxItems(props: ArrayOfPrimitivesInputProps) {
-    return props.renderDefault({ ...props, arrayFunctions: ArrayFunctions })
-}
+// function ArrayMaxItems(props: ArrayOfPrimitivesInputProps) {
+//     return props.renderDefault({ ...props, arrayFunctions: ArrayFunctions })
+// }
 
 const aboutUsSchemaLanguage = {
     name: 'about-us-language',
@@ -144,7 +144,7 @@ const aboutUsSchemaLanguage = {
             type: 'array',
             name: 'myArray',
             title: 'My Array Max 3 item',
-            components: { input: ArrayMaxItems },
+            // components: { input: ArrayMaxItems },
             of: [ {
                 title: 'Name',
                 name: 'name',
