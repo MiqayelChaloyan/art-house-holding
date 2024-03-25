@@ -473,3 +473,22 @@ $imagePAth: '../../../../../public/assets/images/language/background.png'
 // function ArrayMaxItems(props: ArrayOfPrimitivesInputProps) {
 //     return props.renderDefault({ ...props, arrayFunctions: ArrayFunctions })
 // }
+
+
+
+import { SlugInput, defineArrayMember, defineField } from "sanity";
+import { basePath } from "../../../env";
+
+
+        defineField({
+            type: 'array',
+            name: 'myArray',
+            title: 'My Array Max 3 item',
+            // components: { input: ArrayMaxItems },
+            of: [ {
+                title: 'Name',
+                name: 'name',
+                type: 'string',
+            }],
+            validation: (rule) => rule.max(3),
+        }),
