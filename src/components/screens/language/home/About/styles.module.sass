@@ -1,14 +1,57 @@
-
-
-
 .about
     display: flex
     justify-content: space-between
     align-items: center
     margin: 40px auto
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        display: grid
+
 
 .column
     width: 45%
+    margin-bottom: 40px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+       width: 45%
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+       width: 45%
+    /* @xl */
+    @media screen and (max-width: 1440px)
+       width: 45%
+    /* @lg */
+    @media screen and (max-width: 1280px)
+       width: 100%
+    /* @md */
+    @media screen and (max-width: 1024px)
+       width: 100%
+    /* @sm */
+    @media screen and (max-width: 768px)
+       width: 100%
+    /* @xs */
+    @media screen and (max-width: 600px)
+       width: 100%
+    /* @2xs */
+    @media screen and (max-width: 480px)
+       width: 100%
+    /* @3xs */
+    @media screen and (max-width: 360px)
+       width: 100%
+
+
+.gallery
+    display: inline
+    /* @lg */
+    @media screen and (max-width: 1280px)
+       width: 100%
+       display: flex
+       justify-content: space-between
+    /* @xs */
+    @media screen and (max-width: 600px)
+       display: grid
+       justify-content: center
+
 
 .gallery_one
     background-color: red
@@ -16,6 +59,41 @@
     height: 270px
     position: relative
     top: 100px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+       top: 100px
+       width: 270px
+       height: 220px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+       top: 100px
+       width: 250px
+       height: 200px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+       top: 100px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+       top: 0
+    /* @md */
+    @media screen and (max-width: 1024px)
+       top: 0
+       width: 180px
+       height: 150px
+    /* @sm */
+    @media screen and (max-width: 768px)
+       top: 0
+       margin-bottom: 40px
+    /* @xs */
+    @media screen and (max-width: 600px)
+       top: 0
+    /* @2xs */
+    @media screen and (max-width: 480px)
+       top: 0
+    /* @3xs */
+    @media screen and (max-width: 360px)
+       top: 0
+
 
 .gallery_two
     background-color: blue
@@ -24,6 +102,41 @@
     position: relative
     top: 0
     right: 200px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+       right: 200px
+       width: 270px
+       height: 220px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+       right: 200px
+       width: 250px
+       height: 200px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+       right: 200px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+       right: 0
+    /* @md */
+    @media screen and (max-width: 1024px)
+       right: 0
+       width: 180px
+       height: 150px
+    /* @sm */
+    @media screen and (max-width: 768px)
+       right: 0
+       margin-bottom: 40px
+    /* @xs */
+    @media screen and (max-width: 600px)
+       right: 0
+    /* @2xs */
+    @media screen and (max-width: 480px)
+       right: 0
+    /* @3xs */
+    @media screen and (max-width: 360px)
+       right: 0
+
 
 .gallery_three
     background-color: gray
@@ -31,10 +144,74 @@
     height: 270px
     position: relative
     bottom: 100px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        bottom: 100px
+        width: 270px
+        height: 220px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        bottom: 100px
+        width: 250px
+        height: 200px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        bottom: 100px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        bottom: 0
+    /* @md */
+    @media screen and (max-width: 1024px)
+        bottom: 0
+        width: 180px
+        height: 150px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        bottom: 0
+    /* @xs */
+    @media screen and (max-width: 600px)
+        bottom: 0
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        bottom: 0
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        bottom: 0
 
 
 .text
     margin-bottom: 30px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        margin-bottom: 30px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        margin-bottom: 30px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+         margin-bottom: 30px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        margin-bottom: 30px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        margin-bottom: 30px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-bottom: 30px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin-bottom: 30px
+        font-size: 14px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        margin-bottom: 30px
+        font-size: 13px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        margin-bottom: 30px
+        font-size: 12px
+
 
 .buttons
     display: flex
@@ -42,11 +219,37 @@
     align-items: center
 
 
-
 .title
     color: #006ED2
     font-size: 70px
     font-weight: 400
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 70px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 60px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 50px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 40px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 40px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 40px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 40px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 40px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 40px
 
 
 .button
@@ -56,6 +259,69 @@
     font-weight: 700
     border-radius: 20px
     box-shadow: 0 5px 1px -3px #00000059
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 185px
+        height: 50px
+        font-size: 20px
+        font-weight: 700
+        border-radius: 20px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 185px
+        height: 50px
+        font-size: 20px
+        font-weight: 700
+        border-radius: 20px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 185px
+        height: 50px
+        font-size: 20px
+        font-weight: 700
+        border-radius: 20px  
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 16px
+        padding: 0
+        text-align: center
+        width: 172px !important
+        height: 45px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 11px
+        padding: 0
+        text-align: center
+        width: 111px !important
+        height: 30px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 11px
+        padding: 0
+        text-align: center
+        width: 111px !important
+        height: 30px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 11px
+        padding: 0
+        text-align: center
+        width: 111px !important
+        height: 30px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 11px
+        padding: 0
+        text-align: center
+        width: 111px !important
+        height: 30px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 11px
+        padding: 0
+        text-align: center
+        width: 111px !important
+        height: 30px
 
 
 .separate_1

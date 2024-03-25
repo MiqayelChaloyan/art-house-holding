@@ -492,3 +492,75 @@ import { basePath } from "../../../env";
             }],
             validation: (rule) => rule.max(3),
         }),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.response
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        width: 100%
+        height: 300px
+        background-color: green
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 100%
+        height: 300px
+        background-color: brown
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 100%
+        height: 300px
+        background-color: grey
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 100%
+        height: 300px
+        background-color: gold
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 100%
+        height: 300px
+        background-color: pink
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 100%
+        height: 300px
+        background-color: yellow
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 100%
+        height: 300px
+        background-color: purple
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 100%
+        height: 300px
+        background-color: aqua
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 100%
+        height: 300px
+        background-color: green
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 100%
+        height: 300px
+        background-color: black
+
+
+
+
+
+
+

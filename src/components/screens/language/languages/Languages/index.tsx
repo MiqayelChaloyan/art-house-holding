@@ -1,9 +1,9 @@
 "use client"
 
+import { memo } from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image';
-
-// import { useLocale, useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
@@ -18,7 +18,43 @@ interface RootProps {
 };
 
 
-export default function Languages({ locale }: Readonly<RootProps>) {
+type LanguageProps = {
+    src: string,
+    alt: string,
+    page: string,
+    label: string
+};
+
+interface LanguageGalleryProps {
+    locale: string
+    images: any
+};
+
+
+const LanguageGallery = ({ locale, images }: Readonly<LanguageGalleryProps>) => {
+    return (
+        <div className={styles.gallery}>
+            {images.map((image: LanguageProps, index: number) => (
+                <Link key={index} href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${image.page}`} aria-label={image.label} className={styles.link}>
+                    <Image
+                        src={image.src}
+                        alt={image.alt}
+                        priority
+                        className={styles.language}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        loading="eager"
+                        quality={50}
+                    />
+                </Link>
+            ))}
+        </div>
+    );
+};
+
+
+const Languages = ({ locale }: Readonly<RootProps>) => {
     const english = getLanguageImagetoLocale(locale, 'english')
     const german = getLanguageImagetoLocale(locale, 'german')
     const chinese = getLanguageImagetoLocale(locale, 'chinese')
@@ -27,103 +63,24 @@ export default function Languages({ locale }: Readonly<RootProps>) {
     const russian = getLanguageImagetoLocale(locale, 'russian')
     const spanish = getLanguageImagetoLocale(locale, 'spanish')
 
+    const images = [
+        { src: english.default.src, alt: 'english', page: Pages.LANGUAGE_ENGLISH, label: 'english' },
+        { src: german.default.src, alt: 'german', page: Pages.LANGUAGE_GERMAN, label: 'german' },
+        { src: chinese.default.src, alt: 'chinese', page: Pages.LANGUAGE_CHINESE, label: 'chinese' },
+        { src: french.default.src, alt: 'french', page: Pages.LANGUAGE_FRENCH, label: 'french' },
+        { src: italian.default.src, alt: 'italian', page: Pages.LANGUAGE_ITALIAN, label: 'italian' },
+        { src: russian.default.src, alt: 'russian', page: Pages.LANGUAGE_RUSSIAN, label: 'russian' },
+        { src: spanish.default.src, alt: 'spanish', page: Pages.LANGUAGE_SPANISH, label: 'spanish' }
+    ];
+
     return (
-        <div className={styles.container}>
+        <section id='language' className={styles.container}>
             <Container>
-                <div className={styles.gallery_one}>
-                    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_ENGLISH}`} aria-label='english' className={styles.link}>
-                        <Image
-                            src={english.default.src}
-                            alt='english'
-                            priority
-                            className={styles.image}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            loading="eager"
-                            quality={50}
-                        />
-                    </Link>
-                    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_GERMAN}`} aria-label='german' className={styles.link}>
-                        <Image
-                            src={german.default.src}
-                            alt='german'
-                            priority
-                            className={styles.image}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                        />
-                    </Link>
-                    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_CHINESE}`} aria-label='chinese' className={styles.link}>
-                        <Image
-                            src={chinese.default.src}
-                            alt='chinese'
-                            priority
-                            className={styles.image}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            loading="eager"
-                            quality={50}
-                        />
-                    </Link>
-                    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_FRENCH}`} aria-label='french' className={styles.link}>
-                        <Image
-                            src={french.default.src}
-                            alt='french'
-                            priority
-                            className={styles.image}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            loading="eager"
-                            quality={50}
-                        />
-                    </Link>
-                </div>
-                <div className={styles.gallery_two}>
-                    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_ITALIAN}`} aria-label='italian' className={styles.link}>
-                        <Image
-                            src={italian.default.src}
-                            alt='italian'
-                            priority
-                            className={styles.image}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            loading="eager"
-                            quality={50}
-                        />
-                    </Link>
-                    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_RUSSIAN}`} aria-label='russian' className={styles.link}>
-                        <Image
-                            src={russian.default.src}
-                            alt='russian'
-                            priority
-                            className={styles.image}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            loading="eager"
-                            quality={50}
-                        />
-                    </Link>
-                    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${Pages.LANGUAGE_SPANISH}`} aria-label='spanish' className={styles.link}>
-                        <Image
-                            src={spanish.default.src}
-                            alt='spanish'
-                            priority
-                            className={styles.image}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            loading="eager"
-                            quality={50}
-                        />
-                    </Link>
-                </div>
+                <LanguageGallery locale={locale} images={images.slice(0, 4)} />
+                <LanguageGallery locale={locale} images={images.slice(4, 7)} />
             </Container>
-        </div>
+        </section>
     );
 }
+
+export default memo(Languages);

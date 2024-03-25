@@ -15,7 +15,7 @@ const About = () => {
             <Container>
                 <div className={styles.about}>
                     <div className={styles.column}>
-                        <h1 className={`${styles.title} ${Arial.className}`}>Մեր մասին</h1>
+                        <h1 className={`${styles.title} ${Arial.className} ${Arial.className}`}>Մեր մասին</h1>
                         <p className={styles.text}>
                             Արտ Հաուս լեզվի կենտրոնը հիմնադրվել է 2009 թ-ին՝ հետևելով մեկ գերնպատակի. տալ լիարժեք մասնագիտական կրթություն, անսահման գիտելիք և հմտություն, որի շնորհիվ ուսանողներից յուրաքանչյուրը մրցունակ կլինի աշխատաշուկայում  թե՛ Հայաստանում, թե՛ արտերկրում:
                             Ուսուցումն իրականացնում են բարձրակարգ մասնագետ – դասավանդողներ, որոնք իրենց տարիների աշխատանքային փորձով, գիտելիքներով և հմտությամբ առաջատարն են Հայաստանում և նվիրյալը իրենց գործի:
@@ -41,7 +41,7 @@ const About = () => {
                             </button>
                         </div>
                     </div>
-                    <div className={styles.s}>
+                    <div className={styles.gallery}>
                         <div className={styles.gallery_one}></div>
                         <div className={styles.gallery_two}></div>
                         <div className={styles.gallery_three}></div>

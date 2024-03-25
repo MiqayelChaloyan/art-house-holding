@@ -8,54 +8,54 @@ const aboutUsSchemaLanguage = {
     title: 'About Us',
     id: 'about-us-language',
     fields: [
-        // {
-        //     title: 'Name',
-        //     name: 'name',
-        //     type: 'string',
-        // },
-        // {
-        //     title: 'About us content',
-        //     name: 'text',
-        //     type: 'object',
-        //     validation: (Rule: any) => Rule.required(),
-        //     fields: [
-        //         {
-        //             title: 'Armenian',
-        //             name: 'am',
-        //             type: 'array',
-        //             of: [{ type: 'block' }],
-        //         },
-        //         {
-        //             title: 'English',
-        //             name: 'en',
-        //             type: 'array',
-        //             of: [{ type: 'block' }],
-        //         },
-        //         {
-        //             title: 'Russian',
-        //             name: 'ru',
-        //             type: 'array',
-        //             of: [{ type: 'block' }],
-        //         },
-        //         {
-        //             name: 'about_us_images',
-        //             type: 'array',
-        //             title: 'About Us Images',
-        //             description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
-        //             of: [{
-        //                 type: 'image', alt: 'alt',
-        //                 fields: [
-        //                     {
-        //                         name: 'alt',
-        //                         type: 'string',
-        //                         title: 'Alternative text',
-        //                     },
-        //                 ],
-        //             }],
+        {
+            title: 'Name',
+            name: 'name',
+            type: 'string',
+        },
+        {
+            title: 'About us content',
+            name: 'text',
+            type: 'object',
+            validation: (Rule: any) => Rule.required(),
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'array',
+                    of: [{ type: 'block' }],
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'array',
+                    of: [{ type: 'block' }],
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'array',
+                    of: [{ type: 'block' }],
+                },
+                {
+                    name: 'about_us_images',
+                    type: 'array',
+                    title: 'About Us Images',
+                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                    of: [{
+                        type: 'image', alt: 'alt',
+                        fields: [
+                            {
+                                name: 'alt',
+                                type: 'string',
+                                title: 'Alternative text',
+                            },
+                        ],
+                    }],
 
-        //         },
-        //     ],
-        // },
+                },
+            ],
+        },
 
         // {
         //     name: 'promotions',
@@ -119,13 +119,13 @@ const aboutUsSchemaLanguage = {
         //     ]
         // },
 
-        defineField(
-            {
-                title: 'Name',
-                name: 'name',
-                type: 'string',
-            },
-        ),
+        // defineField(
+        //     {
+        //         title: 'Name',
+        //         name: 'name',
+        //         type: 'string',
+        //     },
+        // ),
 
 
 

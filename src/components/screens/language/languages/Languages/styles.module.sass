@@ -1,20 +1,47 @@
+.container
+    margin-top: 260px
 
-
-
-.image
+.language
     width: 100%
     height: 456px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        height: 456px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        height: 456px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        height: 380px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        height: 350px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        height: 300px
+        background-color: yellow
+    /* @sm */
+    @media screen and (max-width: 768px)
+        height: 250px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        height: 300px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        height: 300px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        height: 300px
 
-.gallery_one
-    display: flex
-    justify-content: space-between
-    margin: 100px auto
 
-
-.gallery_two
+.gallery
     display: flex
     justify-content: space-evenly
     margin: 100px auto
+    /* @xs */
+    @media screen and (max-width: 600px)
+        display: grid
+        justify-content: center
 
 
 .link

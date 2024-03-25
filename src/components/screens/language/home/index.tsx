@@ -20,6 +20,7 @@ export default function Home({locale}: any) {
     return (
         <div className={styles.container}>
             <Main/>
+            <About/>
             {/* <About/>
             <Promotions/> */}
            {/* <Main/>
