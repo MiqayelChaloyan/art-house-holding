@@ -6,7 +6,7 @@ export default (S: any) =>
         .title('Base')
         .items([
             ...S.documentTypeListItems().filter(
-                (listItem: any) => !['art-house-home', 'co-workers', 'about-us', 'courses', 'languages', 'about-language', 'about-us-language'].includes(listItem.getId())
+                (listItem: any) => !['art-house-home', 'co-workers', 'about-us', 'courses', 'languages', 'about-language', 'about-us-language', 'price-list-language'].includes(listItem.getId())
             ),
 
             S.listItem()
@@ -94,6 +94,10 @@ export default (S: any) =>
                                         .title('Languages')
                                         .filter('_type == "about-language"')
                                 ),
+                            S.listItem()
+                                .title('Price List')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('price-list-language').documentId('price-list-languages')),
                             // S.listItem()
                             //     .title('Co-Workers')
                             //     .child(

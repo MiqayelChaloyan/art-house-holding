@@ -21,16 +21,9 @@ export default function Home({locale}: any) {
         <div className={styles.container}>
             <Main/>
             <About/>
-            {/* <About/>
-            <Promotions/> */}
-           {/* <Main/>
-           <About/>
-           <Promotions/>
-           <OurDailyLife/>
-           <Partners/> */}
-           {/* <div style={{backgroundColor: 'red', height: '400px', width: '100%'}}></div>  */}
-           {/* mobile 70px */}
-
+            <Promotions/>
+            <OurDailyLife/>
+            <Partners/>
         </div>
     );
 }

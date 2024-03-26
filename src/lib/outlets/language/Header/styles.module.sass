@@ -17,16 +17,12 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	position: fixed 
 	top: 0 
 	overflow: hidden 
-	transition: .3s ease
+	transition: height 0.7s
 	background-image: url($imagePath) 
 	background-repeat: no-repeat
 	background-size: cover
 	background-position: center  
 	z-index: 100
-	/* @4xl */
-	@media screen and (max-width: 2560px)
-		width: 100% 
-		height: 250px 
 	/* @3xl */
 	@media screen and (max-width: 1920px)
 		width: 100% 
@@ -57,18 +53,11 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 
 
 .body
-	transition: .5s ease
+	transition: 1s ease-in-out
 	display: flex
 	justify-content: space-around
 	align-items: center
 	position: relative
-	/* @4xl */
-	@media screen and (max-width: 2560px)
-		transition: .5s ease
-		display: flex
-		justify-content: space-around
-		align-items: center
-		position: relative
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: block

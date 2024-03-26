@@ -1,6 +1,3 @@
-.container
-    margin-top: 260px
-
 .language
     width: 100%
     height: 456px
@@ -19,32 +16,37 @@
     /* @md */
     @media screen and (max-width: 1024px)
         height: 300px
-        background-color: yellow
     /* @sm */
     @media screen and (max-width: 768px)
         height: 250px
     /* @xs */
     @media screen and (max-width: 600px)
-        height: 300px
+        height: 200px
     /* @2xs */
     @media screen and (max-width: 480px)
-        height: 300px
+        height: 200px
     /* @3xs */
     @media screen and (max-width: 360px)
-        height: 300px
+        height: 200px
 
 
 .gallery
     display: flex
     justify-content: space-evenly
-    margin: 100px auto
+    margin: 20px auto
     /* @xs */
     @media screen and (max-width: 600px)
-        display: grid
+        display: flex
         justify-content: center
+        flex-wrap: wrap
 
 
 .link
     transition: transform .7s
     &:hover
         transform: scale(0.9)
+    /* @xs */
+    @media screen and (max-width: 600px)
+        display: grid
+        margin: 20px auto
+        
