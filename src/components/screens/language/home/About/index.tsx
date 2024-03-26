@@ -1,7 +1,7 @@
 
 import Container from '@/components/components/container';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial, Calibri } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
@@ -16,7 +16,7 @@ const About = () => {
                 <div className={styles.about}>
                     <div className={styles.column}>
                         <h1 className={`${styles.title} ${Arial.className} ${Arial.className}`}>Մեր մասին</h1>
-                        <p className={styles.text}>
+                        <p className={`${styles.text} ${Calibri.className}`}>
                             Արտ Հաուս լեզվի կենտրոնը հիմնադրվել է 2009 թ-ին՝ հետևելով մեկ գերնպատակի. տալ լիարժեք մասնագիտական կրթություն, անսահման գիտելիք և հմտություն, որի շնորհիվ ուսանողներից յուրաքանչյուրը մրցունակ կլինի աշխատաշուկայում  թե՛ Հայաստանում, թե՛ արտերկրում:
                             Ուսուցումն իրականացնում են բարձրակարգ մասնագետ – դասավանդողներ, որոնք իրենց տարիների աշխատանքային փորձով, գիտելիքներով և հմտությամբ առաջատարն են Հայաստանում և նվիրյալը իրենց գործի:
                             Ուսանողները ձեռք են բերում ժամանակի մեծ պահանջարկ վայելող մասնագիտություններ՝ տեսական խորը գիտելիքներով և գործնականում կիրառվող կատարողական բարձր արվեստով և հմտությամբ:

@@ -28,7 +28,6 @@ const config = defineConfig(
         defaultApiVersion: apiVersion,
         defaultDataset: dataset,
       }),
-
     ],
     schema,
   }

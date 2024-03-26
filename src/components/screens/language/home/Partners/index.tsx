@@ -16,6 +16,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 
 import styles from './styles.module.sass';
+import { Vrdznagir } from '@/lib/constants/font';
 
 
 
@@ -59,9 +60,9 @@ const Partners = () => {
 
 
     return (
-        <section id='partners' className={styles.partners}>
+        <section id='partners' className={styles.section}>
             <Container>
-                <h1>Գործընկերներ</h1>
+                <h2 className={`${styles.title} ${Vrdznagir.className}`}>Գործընկերներ</h2>
                 <div>
                     <Slider {...settings}>
                         {slidesItems}

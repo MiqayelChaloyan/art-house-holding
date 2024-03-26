@@ -107,13 +107,13 @@ const ContactUs: FC<Props> = ({ courses }) => {
         <div className={styles.container}>
             <Container>
                 <div className={styles.contact}>
-                    <Section direction='right'>
+                    {/* <Section direction='right'> */}
                         <div className={styles.box}>
                             <h1 className={`${styles.title}  ${Vrdznagir.className}`}>{t('texts.contact-us')}</h1>
                             <div className={styles.connection} />
                         </div>
-                    </Section>
-                    <Section direction='left'>
+                    {/* </Section> */}
+                    {/* <Section direction='left'> */}
                         <div className={styles.contact_us}>
                             <div className={styles.hosts}>
                                 <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">
@@ -181,7 +181,7 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                 </form>
                             </div>
                         </div>
-                    </Section>
+                    {/* </Section> */}
                 </div>
             </Container>
         </div>

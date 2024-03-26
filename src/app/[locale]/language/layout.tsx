@@ -36,9 +36,11 @@ async function Layout({
     return (
         <div className="languages-container">
             <div className="wrapper-content">
-                <Header locale={locale} />
-                {/* <CircularMenu /> */}
-                <main className="language-wrapper">
+                <div className="nav">
+                    <Header locale={locale} />
+                </div>
+                <CircularMenu />
+                <main className="languages-main">
                     {children}
                 </main>
             </div>

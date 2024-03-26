@@ -1,19 +1,21 @@
 import Container from "@/components/components/container"
 
 import styles from './styles.module.sass';
+import { Vrdznagir } from "@/lib/constants/font";
 
 
 const OurDailyLife = () => {
 
 
     return (
-        <div className={styles.container}>
+        <section className={styles.section}>
             <Container>
-              <div className={styles.ourDaily}>
-              <h1>Մեր առօրյան</h1>
-              </div>
+                <div className={styles.ourDaily}>
+                    <h2 className={`${styles.title} ${Vrdznagir.className}`}>Մեր առօրյան</h2>
+
+                </div>
             </Container>
-        </div>
+        </section>
     )
 }
 

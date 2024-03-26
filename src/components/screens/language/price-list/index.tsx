@@ -1,16 +1,12 @@
 import Link from 'next/link';
 
 import { useLocale, useTranslations } from 'next-intl';
-import Main from './Main';
-import About from './About';
-import Promotions from './Promotions';
-import OurDailyLife from './OurDailyLife';
+
 
 
 // import Footer from '@/components/footer';
 // import Header from '@/components/header';
 import styles from './styles.module.sass'
-import Partners from './Partners';
 
 export default function Home({locale}: any) {
     // const t = useTranslations('navigation');
@@ -18,12 +14,8 @@ export default function Home({locale}: any) {
 
 
     return (
-        <div className={styles.container}>
-            <Main/>
-            <About/>
-            <Promotions/>
-            <OurDailyLife/>
-            <Partners/>
-        </div>
+        <section id='price-list' className={styles.section}>
+         
+        </section>
     );
 }
