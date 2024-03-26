@@ -14,7 +14,7 @@ export default function Home({locale}: any) {
 
 
     return (
-        <section id='price-list' className={styles.section}>
+        <section id='price-list'>
          
         </section>
     );
