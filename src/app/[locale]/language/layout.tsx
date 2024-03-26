@@ -5,7 +5,7 @@ import Footer from "@/lib/outlets/language/Footer";
 import Header from "@/lib/outlets/language/Header";
 import { getCourses } from "../../../../sanity/services/language-service/courses";
 import { notFound } from "next/navigation";
-import CircularMenu from "@/lib/outlets/language/CircularMenu";
+import FBMessenger from "@/lib/outlets/language/FBMessenger";
 
 
 interface RootLayoutProps {
@@ -39,7 +39,7 @@ async function Layout({
                 <div className="nav">
                     <Header locale={locale} />
                 </div>
-                <CircularMenu />
+                <FBMessenger />
                 <main className="languages-main">
                     {children}
                 </main>
