@@ -27,8 +27,8 @@ import { FacebookProvider, CustomChat } from 'react-facebook';
 const CircularMenu = () => {
 
     return (
-        <FacebookProvider appId="766900155396947" chatSupport>
-            <CustomChat pageId="108431271487600" minimized={true} />
+        <FacebookProvider appId="108431271487600" chatSupport>
+            <CustomChat pageId="766900155396947" minimized={true} />
         </FacebookProvider>
     );
 }
