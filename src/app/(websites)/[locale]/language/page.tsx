@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { type Metadata } from "next";
 
 import { Locale } from "@/locales";
-import { getHomeData } from '../../../../sanity/services/educational-center-service/about-us';
+import { getHomeData } from '../../../../../sanity/services/educational-center-service/about-us';
 import { notFound } from 'next/navigation';
 
 

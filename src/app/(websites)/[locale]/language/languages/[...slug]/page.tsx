@@ -7,8 +7,8 @@ import { Locale } from "@/locales";
 
 import Language from "@/components/screens/language/languages/Language";
 
-import { query } from "../../../../../../sanity/services/language-service/languages";
-import { client } from "../../../../../../sanity/client";
+import { query } from "../../../../../../../sanity/services/language-service/languages";
+import { client } from "../../../../../../../sanity/client";
 
 
 interface RootLayoutProps {

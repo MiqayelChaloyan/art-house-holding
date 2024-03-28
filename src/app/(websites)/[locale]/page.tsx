@@ -1,7 +1,7 @@
 "use server"
 
 import Home from '@/components/screens/art-house';
-import { fetchArtHouseHomeData } from '../../../sanity/services/art-house-service';
+import { fetchArtHouseHomeData } from '../../../../sanity/services/art-house-service';
 import { notFound } from 'next/navigation';
 import { getTranslations } from "next-intl/server";
 

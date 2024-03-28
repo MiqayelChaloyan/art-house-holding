@@ -1,4 +1,6 @@
 import { EarthGlobeIcon } from '@sanity/icons'
+import { RuleType } from '../../../ruleType';
+import { BookIcon } from '@sanity/icons';
 
 const priceListSchemaLanguage = {
     name: 'price-list-language',
@@ -6,6 +8,28 @@ const priceListSchemaLanguage = {
     title: 'Price List',
     icon: EarthGlobeIcon,
     id: 'price-list-languages',
+    initialValue: () => ({
+        publishedAt: new Date().toISOString()
+    }),
+    fieldsets: [
+        {
+            title: "SEO & metadata",
+            name: "metadata",
+        },
+        {
+            title: "Social Media",
+            name: "social"
+        },
+        {
+            title: "Website Logo",
+            name: "logos",
+            options: {
+                collapsible: true,
+                collapsed: false
+            }
+        }
+    ],
+
     fields: [
         {
             title: 'Name',
@@ -13,20 +37,83 @@ const priceListSchemaLanguage = {
             type: 'string',
         },
         {
+            title: 'Social Media Title',
+            name: 'social',
+            fieldset: "metadata",
+            type: 'object',
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string',
+                    validation: (Rule: RuleType) => Rule.min(5).max(30),
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string',
+                    validation: (Rule: RuleType) => Rule.min(5).max(30),
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string',
+                    validation: (Rule: RuleType) => Rule.min(5).max(30),
+                }
+            ]
+        },
+        {
+            title: 'Meta Description',
+            name: 'description',
+            fieldset: "metadata",
+            type: 'object',
+            description: "Enter SEO Meta Description",
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string',
+                    validation: (Rule: RuleType) => Rule.min(20).max(400),
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string',
+                    validation: (Rule: RuleType) => Rule.min(20).max(400),
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string',
+                    validation: (Rule: RuleType) => Rule.min(20).max(400),
+                }
+            ]
+        },
+        {
+            name: "openGraphImage",
+            type: "image",
+            title: "Open Graph Image",
+            description:
+                "Image for sharing previews on Facebook, Twitter etc.",
+            fieldset: "metadata"
+        },
+        {
             name: 'price_list',
             type: 'array',
-            // components: { input: ArrayMaxItems },
             title: 'Price list',
+            description: 'Գնացուցակ',
             of: [
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: BookIcon,
                     fields: [
                         {
-                            title: 'Course Title',
-                            name: 'course_title',
+                            title: 'Teaching language',
+                            description: 'Դասավանդվող լեզու',
+                            name: 'teaching_language',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -46,33 +133,196 @@ const priceListSchemaLanguage = {
                             ]
                         },
                         {
-                            title: 'Course Amount',
-                            name: 'amount',
+                            title: 'Group lessons cost 1 month',
+                            description: 'Խմբային դասեր 1 ամսվա արժեք (Շաբաթական 3 օր)',
+                            name: 'group_lessons',
                             type: 'number',
-                            initialValue: 0,
-                            validation: (Rule: any) => Rule.required(),
                         },
                         {
-                            name: 'duration',
-                            type: 'number',
-                            title: 'Duration of the course',
-                            initialValue: 0,
-                            validation: (Rule: any) => Rule.required(),
+                            title: 'Private lessons 1 month worth',
+                            description: 'Անհատական դասեր 1 ամսվա արժեք',
+                            name: 'private_lessons',
+                            type: 'object',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: '3 days a week',
+                                    description: 'Շաբաթական 3 օր',
+                                    name: 'three_week',
+                                    type: 'number'
+                                },
+                                {
+                                    title: '2 days a week',
+                                    description: 'Շաբաթական 2 օր',
+                                    name: 'two_week',
+                                    type: 'number'
+                                },
+                            ]
                         },
                         {
                             name: 'slug',
                             type: 'slug',
                             description: "Պիտի եզակի լինի",
+                            maxLength: 9,
                             options: {
                                 source: 'name',
                             },
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                         },
                     ]
                 }
             ]
         },
-      ],
+        {
+            name: 'private_lessons',
+            type: 'array',
+            title: 'Private lessons for foreigners',
+            description: 'Անհատական դասեր օտարերկրացիների համար',
+            of: [
+                {
+                    name: 'Object',
+                    type: 'object',
+                    icon: BookIcon,
+                    fields: [
+                        {
+                            title: 'Teaching language',
+                            description: 'Դասավանդվող լեզու',
+                            name: 'teaching_language',
+                            type: 'object',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Private lessons 1 month worth',
+                            description: 'Անհատական դասեր 1 ամսվա արժեք',
+                            name: 'private_lessons',
+                            type: 'object',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: '3 days a week',
+                                    description: 'Շաբաթական 3 օր',
+                                    name: 'three_week',
+                                    type: 'number'
+                                },
+                                {
+                                    title: '2 days a week',
+                                    description: 'Շաբաթական 2 օր',
+                                    name: 'two_week',
+                                    type: 'number'
+                                },
+                            ]
+                        },
+                        {
+                            name: 'slug',
+                            type: 'slug',
+                            description: "Պիտի եզակի լինի",
+                            maxLength: 9,
+                            options: {
+                                source: 'name',
+                            },
+                            validation: (Rule: RuleType) => Rule.required(),
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            name: 'english_courses',
+            type: 'array',
+            title: 'Advanced English language classes',
+            description: 'Անգլերեն լեզվի խորացված դասեր',
+            of: [
+                {
+                    name: 'Object',
+                    type: 'object',
+                    icon: BookIcon,
+                    fields: [
+                        {
+                            title: 'Language Type',
+                            description: 'Դասավանդվող տեսակը',
+                            name: 'language_type',
+                            type: 'object',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Private lessons cost 1 month',
+                            description: 'Անհատական դասեր 1 ամսվա արժեք (Շաբաթական 3 օր)',
+                            name: 'private_lessons',
+                            type: 'number',
+                        },
+                        {
+                            title: 'Duration',
+                            description: 'Տևողությունը',
+                            name: 'duration',
+                            type: 'object',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            name: 'slug',
+                            type: 'slug',
+                            description: "Պիտի եզակի լինի",
+                            maxLength: 9,
+                            options: {
+                                source: 'name',
+                            },
+                            validation: (Rule: RuleType) => Rule.required(),
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
 };
 
 export default priceListSchemaLanguage;

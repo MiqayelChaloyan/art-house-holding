@@ -3,7 +3,7 @@
 import ContactUs from "@/lib/outlets/language/ContactUs";
 import Footer from "@/lib/outlets/language/Footer";
 import Header from "@/lib/outlets/language/Header";
-import { getCourses } from "../../../../sanity/services/language-service/courses";
+import { getCourses } from "../../../../../sanity/services/language-service/courses";
 import { notFound } from "next/navigation";
 import FBMessenger from "@/lib/outlets/language/FBMessenger";
 
@@ -39,7 +39,7 @@ async function Layout({
                 <div className="nav">
                     <Header locale={locale} />
                 </div>
-                <FBMessenger />
+                {/* <FBMessenger /> */}
                 <main className="languages-main">
                     {children}
                 </main>

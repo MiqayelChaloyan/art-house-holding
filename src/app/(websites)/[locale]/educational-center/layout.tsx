@@ -5,7 +5,7 @@ import BottomMenu from "@/lib/outlets/educational-center/BottomMenu";
 import RightMenu from "@/lib/outlets/educational-center/RightMenu";
 import Footer from "@/lib/outlets/educational-center/Footer";
 
-import { getCourses } from "../../../../sanity/services/educational-center-service/courses";
+import { getCourses } from "../../../../../sanity/services/educational-center-service/courses";
 
 
 async function getResources(locale: string) {

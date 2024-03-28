@@ -4,17 +4,17 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from 'next/navigation';
 import { type Metadata } from "next";
 
-import PriceList from "@/components/screens/educational-center/price-list";
+import CoWorkers from "@/components/screens/educational-center/co-workers";
 
 import { Locale } from "@/locales";
 
-import { getCourses } from "../../../../../sanity/services/educational-center-service/courses";
+import { getCoWorkers } from "../../../../../../sanity/services/educational-center-service/co-workers";
 
 
 async function getResources(locale: string) {
-    const courses = await getCourses(locale);
+    const co_workers = await getCoWorkers(locale);
 
-    if (!courses?.length) {
+    if (!co_workers?.length) {
         return {
             data: [],
             isError: true
@@ -22,7 +22,7 @@ async function getResources(locale: string) {
     }
 
     return {
-        data: courses,
+        data: co_workers,
         isError: false
     }
 }
@@ -42,7 +42,7 @@ export default async function Page({ params: { locale } }: LayoutProps) {
         notFound()
     }
 
-    return <PriceList data={data} />;
+    return <CoWorkers data={data} />;
 }
 
 

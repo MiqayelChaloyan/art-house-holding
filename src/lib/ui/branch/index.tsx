@@ -3,9 +3,10 @@ import { memo } from 'react';
 import Link from 'next/link';
 
 import { ArianAMU, Inter } from '@/lib/constants/font';
-import { urlFor } from '../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
+import Image from 'next/image';
 
 
 interface BranchProps {
@@ -23,16 +24,17 @@ interface BranchProps {
 const Branch: React.FC<BranchProps> = ({ item, locale }) => {
 
     const { company_name, words, web_site_url, website_logo_front, website_logo_back } = item;
-    
-    const urlForImageFront = urlFor(website_logo_front)
-        .auto('format')
-        .fit('max')
-        .url();
 
-    const urlForImageBack = urlFor(website_logo_back)
-        .auto('format')
-        .fit('max')
-        .url();
+    const urlForImageFront = urlForImage(website_logo_front)
+    // .auto('format')
+    // .fit('max')
+    // .url();
+
+    const urlForImageBack = urlForImage(website_logo_back)
+    // .auto('format')
+    // .fit('max')
+    // .url();
+
 
     const wordsArray = words.split(' ');
 
@@ -46,7 +48,7 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
                 <div className={styles.card}>
                     <div className={styles.front}>
                         <div className={styles.logo_front}>
-                            <img src={urlForImageFront} alt={company_name} className={styles.logo} />
+                            <img src={urlForImageFront?.src} alt={company_name} className={styles.logo} />
                         </div>
                         <div className={styles.words}>
                             <p className={`${styles.title_front} ${ArianAMU.className}`}>{company_name}</p>
@@ -55,7 +57,7 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
                     </div>
                     <div className={styles.back}>
                         <div className={styles.logo_back}>
-                            <img src={urlForImageBack} alt={company_name} className={styles.logo} />
+                            <img src={urlForImageBack?.src} alt={company_name} className={styles.logo} />
                         </div>
                         <div className={styles.words}>
                             <p className={`${styles.title_back} ${ArianAMU.className}`}>{company_name}</p>

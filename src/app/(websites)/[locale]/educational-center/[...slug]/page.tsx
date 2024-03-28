@@ -7,9 +7,9 @@ import Course from "@/components/screens/educational-center/course";
 
 import { Locale } from "@/locales";
 
-import { getCourseBySlug } from "../../../../../sanity/services/educational-center-service/courses";
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
-import { urlFor } from '../../../../../sanity/imageUrlBuilder';
+import { getCourseBySlug } from "../../../../../../sanity/services/educational-center-service/courses";
+import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
+import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
 
 
 async function getResources(locale: string, slug: string) {
