@@ -4,7 +4,7 @@ import { FC, memo } from 'react';
 
 import Course from '../Course';
 
-import { urlFor } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 
 type Props = {
@@ -22,15 +22,15 @@ const Courses: FC<Props> = ({ data }) => {
 
     return (
         data.map((item: any): JSX.Element => {
-            const urlForImageOne = urlFor(item.news_image_one)
-                .auto('format')
-                .fit('max')
-                .url();
+            const urlForImageOne = urlForImage(item.news_image_one)
+                // .auto('format')
+                // .fit('max')
+                // .url();
 
-            const urlForImageTwo = urlFor(item.news_image_two)
-                .auto('format')
-                .fit('max')
-                .url();
+            const urlForImageTwo = urlForImage(item.news_image_two)
+                // .auto('format')
+                // .fit('max')
+                // .url();
 
             const course = {
                 subtitle: item.subtitle,

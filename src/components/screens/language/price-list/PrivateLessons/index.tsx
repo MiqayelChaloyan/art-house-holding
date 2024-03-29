@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import { Arial } from '@/lib/constants/font';
 
 import styles from './styles.module.sass';
+import { useTranslations } from 'next-intl';
 
 
 interface PrivateLessons {
@@ -22,6 +23,7 @@ interface PrivateLessonsProps {
 }
 
 const PrivateLessons: React.FC<PrivateLessonsProps> = ({ data }) => {
+    const t = useTranslations();
 
     const tableRows = data?.map((item: Props, index: number) => {
         return (
@@ -36,21 +38,21 @@ const PrivateLessons: React.FC<PrivateLessonsProps> = ({ data }) => {
 
     return (
         <div className={Arial.className}>
-            <h1 className={styles.title}>Անհատական դասեր {'\n'} օտարերկրացիների համար</h1>
+            <h1 className={styles.title}>{t('titles.private-lessons')}</h1>
             <div className={styles.table}>
                 <table>
                     <thead>
                         <tr>
                             <th rowSpan={2} colSpan={1}>
-                                Դասավանդվող {'\n'} լեզուներ
+                                {t('tables-titles.languages-taught')}
                             </th>
                             <th rowSpan={1} colSpan={2}>
-                                Անհատական դասեր {'\n'} 1 ամսվա արժեք
+                                {t('tables-titles.private-lessons')}
                             </th>
                         </tr>
                         <tr>
-                            <th>Շաբաթական 3 օր</th>
-                            <th>Շաբաթական 2 օր</th>
+                            <th>{t('tables-titles.three-days-week')}</th>
+                            <th>{t('tables-titles.two-days-week')}</th>
                         </tr>
                     </thead>
                     <tbody>

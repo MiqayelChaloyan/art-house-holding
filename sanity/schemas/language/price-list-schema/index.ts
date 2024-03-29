@@ -11,91 +11,11 @@ const priceListSchemaLanguage = {
     initialValue: () => ({
         publishedAt: new Date().toISOString()
     }),
-    fieldsets: [
-        {
-            title: "SEO & metadata",
-            name: "metadata",
-        },
-        {
-            title: "Social Media",
-            name: "social"
-        },
-        {
-            title: "Website Logo",
-            name: "logos",
-            options: {
-                collapsible: true,
-                collapsed: false
-            }
-        }
-    ],
-
     fields: [
         {
             title: 'Name',
             name: 'name',
             type: 'string',
-        },
-        {
-            title: 'Social Media Title',
-            name: 'social',
-            fieldset: "metadata",
-            type: 'object',
-            fields: [
-                {
-                    title: 'Armenian',
-                    name: 'am',
-                    type: 'string',
-                    validation: (Rule: RuleType) => Rule.min(5).max(30),
-                },
-                {
-                    title: 'English',
-                    name: 'en',
-                    type: 'string',
-                    validation: (Rule: RuleType) => Rule.min(5).max(30),
-                },
-                {
-                    title: 'Russian',
-                    name: 'ru',
-                    type: 'string',
-                    validation: (Rule: RuleType) => Rule.min(5).max(30),
-                }
-            ]
-        },
-        {
-            title: 'Meta Description',
-            name: 'description',
-            fieldset: "metadata",
-            type: 'object',
-            description: "Enter SEO Meta Description",
-            fields: [
-                {
-                    title: 'Armenian',
-                    name: 'am',
-                    type: 'string',
-                    validation: (Rule: RuleType) => Rule.min(20).max(400),
-                },
-                {
-                    title: 'English',
-                    name: 'en',
-                    type: 'string',
-                    validation: (Rule: RuleType) => Rule.min(20).max(400),
-                },
-                {
-                    title: 'Russian',
-                    name: 'ru',
-                    type: 'string',
-                    validation: (Rule: RuleType) => Rule.min(20).max(400),
-                }
-            ]
-        },
-        {
-            name: "openGraphImage",
-            type: "image",
-            title: "Open Graph Image",
-            description:
-                "Image for sharing previews on Facebook, Twitter etc.",
-            fieldset: "metadata"
         },
         {
             name: 'price_list',

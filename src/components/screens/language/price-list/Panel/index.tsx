@@ -1,4 +1,6 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
+
+import { useTranslations } from 'next-intl';
 
 // import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
@@ -24,6 +26,8 @@ interface PanelProps {
 }
 
 const Panel: React.FC<PanelProps> = ({ data }) => {
+  const t = useTranslations();
+  
   // const [currentPage, setCurrentPage] = useState<number>(1);
   // const recordPerPage = 5;
   // const lastIndex = currentPage * recordPerPage;
@@ -42,7 +46,6 @@ const Panel: React.FC<PanelProps> = ({ data }) => {
       </tr>
     );
   });
-
 
   // const prePage = () => {
   //   if (currentPage !== firstIndex && firstIndex !== 0) {
@@ -63,25 +66,25 @@ const Panel: React.FC<PanelProps> = ({ data }) => {
 
   return (
     <div className={Arial.className}>
-      <h1 className={styles.title}>Գնացուցակ</h1>
+      <h1 className={styles.title}>{t('titles.price-list')}</h1>
       <div className={styles.table}>
         <table>
           <thead>
             <tr>
               <th rowSpan={2} colSpan={1}>
-                Դասավանդվող {'\n'} լեզուներ
+                {t('tables-titles.languages-taught')}
               </th>
               <th rowSpan={1} colSpan={1}>
-                Խմբային դասեր {'\n'} 1 ամսվա արժեք
+                {t('tables-titles.group-lessons')}
               </th>
               <th rowSpan={1} colSpan={2}>
-                Անհատական դասեր {'\n'} 1 ամսվա արժեք
+                {t('tables-titles.private-lessons')}
               </th>
             </tr>
             <tr>
-              <th>Շաբաթական 3 օր</th>
-              <th>Շաբաթական 3 օր</th>
-              <th>Շաբաթական 2 օր</th>
+              <th>{t('tables-titles.three-days-week')}</th>
+              <th>{t('tables-titles.three-days-week')}</th>
+              <th>{t('tables-titles.two-days-week')}</th>
             </tr>
           </thead>
           <tbody>

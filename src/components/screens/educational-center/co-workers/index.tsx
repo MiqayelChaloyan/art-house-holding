@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 import Container from '@/components/components/container';
 
-import { urlFor } from '../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
@@ -29,10 +29,10 @@ const CoWorkers: FC<CoWorkersProps> = ({ data }) => {
 	// }, []);
 
 	const workers = data.map((item: any) => {
-		const urlForImage = urlFor(item.logo)
-			.auto('format')
-			.fit('max')
-			.url();
+		const urlFor = urlForImage(item.logo)
+			// .auto('format')
+			// .fit('max')
+			// .url();
 
 		return (
 			<div key={item._id} className={styles.co_worker}>
@@ -48,7 +48,7 @@ const CoWorkers: FC<CoWorkersProps> = ({ data }) => {
 						style={{ objectFit: 'cover' }}
 					/> */}
 
-					<img src={urlForImage} className={styles.image}/>
+					<img src={urlFor?.src} className={styles.image}/>
 				</div>
 				<p className={styles.text}>{item.company_name}</p>
 				<p className={styles.text}>{item.cooperation}</p>

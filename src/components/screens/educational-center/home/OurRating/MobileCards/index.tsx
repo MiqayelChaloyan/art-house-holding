@@ -1,6 +1,6 @@
 import RatingCard from '../RatingCard';
 
-import { urlFor } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
@@ -8,12 +8,12 @@ import styles from './styles.module.sass';
 const MobileCards = (data: any, slideIndex: any) => {
     const feedbacks = data.map((card: any, index: string): JSX.Element => {
 
-        const urlForImageBackground = urlFor(card.our_rating_section_image)
+        const urlForImageBackground = urlForImage(card.our_rating_section_image)
             .auto('format')
             .fit('max')
             .url();
 
-        const urlForImage = urlFor(card.user_image)
+        const urlForImage = urlForImage(card.user_image)
             .auto('format')
             .fit('max')
             .url();

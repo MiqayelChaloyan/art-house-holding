@@ -68,5 +68,20 @@
     "price-list": {
         "days": "ден",
         "hour": "час"
+    },
+    "titles": {
+        "price-list": "Прайс-лист",
+        "private-lessons": "Частные уроки \n для иностранцев",
+        "english-language-lessons": "Продвинутые курсы \n английского языка"
+    },
+    "tables-titles": {
+        "languages-taught": "Преподаваемые \n языки",
+        "group-lessons": "Групповые занятия \n стоят 1 месяц.",
+        "private-lessons": "Индивидуальные занятия \n стоят 1 месяц",
+        "three-days-week": "3 дня в неделю",
+        "two-days-week": "2 дня в неделю",
+        "english": "Английский",
+        "duration": "Продолжительность"
     }
 }
+

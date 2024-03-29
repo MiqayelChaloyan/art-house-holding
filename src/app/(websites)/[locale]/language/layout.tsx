@@ -36,7 +36,7 @@ async function Layout({
     return (
         <div className="languages-container">
             <div className="wrapper-content">
-                <div className="nav">
+                <div>
                     <Header locale={locale} />
                 </div>
                 {/* <FBMessenger /> */}

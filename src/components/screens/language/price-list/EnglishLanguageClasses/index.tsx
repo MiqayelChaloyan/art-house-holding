@@ -1,14 +1,11 @@
 import React, { memo } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { Arial } from '@/lib/constants/font';
 
 import styles from './styles.module.sass';
 
-
-// interface PrivateLessons {
-//     three_week: string;
-//     two_week: string;
-// }
 
 interface Props {
     slug: string;
@@ -22,6 +19,7 @@ interface EnglishLanguageClassesProps {
 }
 
 const EnglishLanguageClasses: React.FC<EnglishLanguageClassesProps> = ({ data }) => {
+    const t = useTranslations();
 
     const tableRows = data?.map((item: Props, index: number) => {
         return (
@@ -36,25 +34,26 @@ const EnglishLanguageClasses: React.FC<EnglishLanguageClassesProps> = ({ data })
 
     return (
         <div className={Arial.className}>
-            <h1 className={styles.title}>Անգլերեն լեզվի {'\n'} խորացված դասեր</h1>
+            <h1 className={styles.title}>{t('titles.english-language-lessons')}</h1>
             <div className={styles.table}>
                 <table>
                     <thead>
                         <tr>
                             <th rowSpan={2} colSpan={1}>
-                            Անգլերեն
+                                {t('tables-titles.english')}
                             </th>
                             <th rowSpan={1} colSpan={1}>
-                                Անհատական դասեր {'\n'} 1 ամսվա արժեք
+                                {t('tables-titles.private-lessons')}
                             </th>
-                            <th rowSpan={1} colSpan={1}>
-                            Տևողությունը
+                            <th rowSpan={2} colSpan={1}>
+                                {t('tables-titles.duration')}
                             </th>
                         </tr>
-                        {/* <tr>
-                            <th>Շաբաթական 3 օր</th>
-                            <th>Շաբաթական 2 օր</th>
-                        </tr> */}
+                        <tr>
+                            <th>
+                                {t('tables-titles.three-days-week')}
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
                         {tableRows}

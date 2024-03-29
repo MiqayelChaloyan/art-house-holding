@@ -41,21 +41,21 @@ export default async function Page({ params: { locale } }: Readonly<RootLayoutPr
     return (<Home data={data} />);
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: {
-    params: { locale: Locale };
-}): Promise<Metadata> {
-    const data = await getResources(locale);
-    const image = urlForImage(data[0].openGraphImage) as {
-        src: string
-    }
+// export async function generateMetadata({
+//     params: { locale },
+// }: {
+//     params: { locale: Locale };
+// }): Promise<Metadata> {
+//     const data = await getResources(locale);
+//     const image = urlForImage(data[0].openGraphImage) as {
+//         src: string
+//     }
 
-    return {
-        title: data[0].social,
-        description: data[0].description,
-        openGraph: {
-            images: [image.src],
-        },
-    };
-}
+//     return {
+//         // title: data[0].social,
+//         description: data[0].description,
+//         openGraph: {
+//             images: [image.src],
+//         },
+//     };
+// }

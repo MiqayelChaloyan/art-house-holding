@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 import Button from '@/lib/ui/Button';
 
-import { urlFor } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
 
 import { ArianAMU } from '@/lib/constants/font';
@@ -24,15 +24,15 @@ const Images = ({ images }: any) => {
         <div>
             <div className={styles.gallery_row}>
                 {firstDivImages.map((image: any) => {
-                    const urlForImageOne = urlFor(image)
-                        .auto('format')
-                        .fit('max')
-                        .url();
+                    const urlForImageOne = urlForImage(image)
+                        // .auto('format')
+                        // .fit('max')
+                        // .url();
 
                     return (
                         <Image
                             key={image._key}
-                            src={urlForImageOne}
+                            src={urlForImageOne?.src}
                             alt={image.alt}
                             priority
                             className={styles.image_gallery}
@@ -46,15 +46,15 @@ const Images = ({ images }: any) => {
             </div>
             <div className={styles.gallery_row}>
                 {secondDivImages.map((image: any) => {
-                    const urlForImageOne = urlFor(image)
-                        .auto('format')
-                        .fit('max')
-                        .url();
+                    const urlForImageOne = urlForImage(image)
+                        // .auto('format')
+                        // .fit('max')
+                        // .url();
 
                     return (
                         <Image
                             key={image._key}
-                            src={urlForImageOne}
+                            src={urlForImageOne?.src}
                             alt={image.alt}
                             priority
                             className={styles.image_gallery}
@@ -75,10 +75,10 @@ const Item = ({ item }: any) => {
     // const router = useRouter();
     // const { i18n } = useTranslation();
 
-    const urlForImage = urlFor(item.specialists_section_image)
-        .auto('format')
-        .fit('max')
-        .url();
+    const urlFor = urlForImage(item.specialists_section_image)
+        // .auto('format')
+        // .fit('max')
+        // .url();
 
     // const goCoursePage = async () => {
     //     const data = await getCourseById(item.categories._ref, i18n.language);
@@ -90,7 +90,7 @@ const Item = ({ item }: any) => {
             <div className={styles.right}>
                 <Image
                     key={item._key}
-                    src={urlForImage}
+                    src={urlFor?.src}
                     alt={item.specialists_section_image.alt}
                     priority
                     className={styles.img}

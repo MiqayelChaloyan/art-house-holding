@@ -68,5 +68,19 @@
     "price-list": {
         "days": "օր",
         "hour": "ժամ"
+    },
+    "titles": {
+        "price-list": "Գնացուցակ",
+        "private-lessons": "Անհատական դասեր \n օտարերկրացիների համար",
+        "english-language-lessons": "Անգլերեն լեզվի \n խորացված դասեր"
+    },
+    "tables-titles": {
+        "languages-taught": "Դասավանդվող \n լեզուներ",
+        "group-lessons": "Խմբային դասեր \n 1 ամսվա արժեք",
+        "private-lessons": "Անհատական դասեր \n 1 ամսվա արժեք",
+        "three-days-week": "Շաբաթական 3 օր",
+        "two-days-week": "Շաբաթական 2 օր",
+        "english": "Անգլերեն",
+        "duration": "Տևողությունը"
     }
 }

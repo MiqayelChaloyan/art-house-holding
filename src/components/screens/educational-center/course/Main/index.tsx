@@ -8,7 +8,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
-import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
@@ -23,17 +23,17 @@ const Main: FC<Props> = ({ course }) => {
 	const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center', duration: 4000 }, [Autoplay({ delay: 1000 })]);
 	
 	const slidesItems = items.map((item: any): JSX.Element => {
-        const urlForImage = urlFor(item.image)
-            .auto('format')
-            .fit('max')
-            .url();
+        const urlFor = urlForImage(item.image)
+            // .auto('format')
+            // .fit('max')
+            // .url();
             
         const content = item.content.length > 272 ? item.content.slice(0, 272) + '...' : item.content;
             
         return (
             <SlideItem
                 key={item.slug}
-                url={urlForImage}
+                url={urlFor?.src}
                 title={item.title}
                 content={content}
                 alt={item.image.alt}

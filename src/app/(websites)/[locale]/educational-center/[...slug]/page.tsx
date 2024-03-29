@@ -9,7 +9,7 @@ import { Locale } from "@/locales";
 
 import { getCourseBySlug } from "../../../../../../sanity/services/educational-center-service/courses";
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
-import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 
 async function getResources(locale: string, slug: string) {
@@ -61,15 +61,15 @@ export async function generateMetadata({
 
     const { course_name, about_us_content, svg, course_main: [{ title, content, image }] } = data[0];
 
-    const urlForImage = urlFor(image)
-        .auto('format')
-        .fit('max')
-        .url();
+    const urlForImg = urlForImage(image)
+        // .auto('format')
+        // .fit('max')
+        // .url();
 
-    const urlForImageSvg = urlFor(svg)
-        .auto('format')
-        .fit('max')
-        .url();
+    const urlForImageSvg = urlForImage(svg)
+        // .auto('format')
+        // .fit('max')
+        // .url();
 
     return {
         metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN as string | URL),
@@ -78,21 +78,21 @@ export async function generateMetadata({
         keywords: [course_name, title],
         authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
         icons: {
-            icon: urlForImageSvg,
+            icon: urlForImageSvg?.src,
         },
         openGraph: {
             // title: title,
             // description: content,
-            url: urlForImage,
+            // url: urlForImg?.src,
             type: 'website',
-            images: [
-                {
-                    url: urlForImage,
-                    width: 400,
-                    height: 400,
-                    alt: course_name,
-                },
-            ],
+            // images: [
+            //     {
+            //         url: urlForImg?.src,
+            //         width: 400,
+            //         height: 400,
+            //         alt: course_name,
+            //     },
+            // ],
         },
     };
 }

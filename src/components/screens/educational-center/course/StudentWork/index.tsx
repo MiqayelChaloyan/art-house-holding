@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 import Cancel from '@/lib/icons/educational-center/Cancel';
 // import Carousel from '@/lib/ui/';
 
-import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import Container from '@/components/components/container';
 import Button from '@/lib/ui/Button';
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
@@ -38,10 +38,10 @@ const StudentWork: FC<Props> = ({ course }) => {
 
     const images = course[0].student_works.slice(0, initialLoadCourses).map((item: any) => {
 
-        const urlForImage = urlFor(item)
-            .auto('format')
-            .fit('max')
-            .url();
+        const urlFor = urlForImage(item)
+            // .auto('format')
+            // .fit('max')
+            // .url();
 
         return (
             <div
@@ -49,11 +49,11 @@ const StudentWork: FC<Props> = ({ course }) => {
                 className={`${styles.img_block} ${isFullscreen ? styles.fullscreenContainer : ''}`}
                 onClick={() => {
                     setFullscreen(true);
-                    setImageUrl(urlForImage);
+                    setImageUrl(urlFor?.src);
                 }}
             >
                 <Image
-                    src={urlForImage}
+                    src={urlFor?.src}
                     alt={item.alt}
                     priority
                     className={styles.work_img}

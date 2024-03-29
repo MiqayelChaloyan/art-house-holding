@@ -1,6 +1,6 @@
 "use client"
 
-import { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -19,6 +19,21 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
+type IHeaderProps = {
+    locale: string
+};
+
+type StickyBoundaryProps = {
+    children: JSX.Element[]
+    sticky: boolean
+    width: number
+};
+
+type HeaderProps = {
+    children: JSX.Element[]
+};
+
+
 const navigationLinks = [
     { path: Pages.LANGUAGE_HOME, label: 'about' },
     { path: Pages.LANGUAGE_LANGUAGES, label: 'languages' },
@@ -28,9 +43,13 @@ const navigationLinks = [
 ];
 
 
-type IHeaderProps = {
-    locale: string
-};
+const StickyBoundary = ({ children, sticky, width }: StickyBoundaryProps) => (
+    <div className={`${styles.boundary} ${sticky ? styles.isSticky : ''}`}>{children}</div>
+);
+
+const HeaderBoundary = ({ children }: HeaderProps) => (
+    <header className={styles.header}>{children}</header>
+);
 
 
 const Header = ({ locale }: IHeaderProps) => {
@@ -40,6 +59,7 @@ const Header = ({ locale }: IHeaderProps) => {
     const pathname = usePathname();
     const windowSize = useWindowSize();
     const t = useTranslations()
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -58,30 +78,34 @@ const Header = ({ locale }: IHeaderProps) => {
         };
     }, []);
 
+
     const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
+
     return (
-        <div className={`${isSticky ? styles.sticky_header : ''}`}>
-            <header className={styles.header}>
-                <div className={styles.body}>
-                    <div className={styles.requests}>
-                        <div className={styles.send_request}>
-                            <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.send-request")}</p>
-                        </div>
-                        <div className={styles.take_test}>
-                            <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.take-the-test")}</p>
-                        </div>
+        <div className={cn(
+            styles.container,
+            isSticky ? styles.stickyContainer : ''
+        )}>
+            <HeaderBoundary>
+                <div className={styles.requests}>
+                    <div className={styles.send_request}>
+                        <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.send-request")}</p>
                     </div>
-                    <div className={styles.logo}>
-                        <Logo width={windowSize.width > 1280 ? 255.53: windowSize.width > 1024 ? 200 : 150} height={80} fill='#F9CC48' />
-                    </div>
-                    <div className={styles.switcher}>
-                        <LocalSwitcher />
+                    <div className={styles.take_test}>
+                        <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.take-the-test")}</p>
                     </div>
                 </div>
-                <div className={cn(
+                <div className={styles.logo}>
+                    <Logo width={windowSize.width < 1280 ? 150 : 255.53} height={80} fill='#F9CC48' />
+                </div>
+                <div className={styles.switcher}>
+                    <LocalSwitcher />
+                </div>
+            </HeaderBoundary>
+            <StickyBoundary sticky={isSticky} width={windowSize.width}>
+                <nav className={cn(
                     styles.nav,
-                    isSticky ? styles.scrollY : '',
                     isOpenMenu ? styles.active : ''
                 )}>
                     {navigationLinks.map((link, index) => (
@@ -89,7 +113,8 @@ const Header = ({ locale }: IHeaderProps) => {
                             key={index}
                             href={`/${locale}${link.path}`}
                             aria-label={`/${locale}${link.path}`}
-                            className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${Arial.className}`}
+                            className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}
+                            onClick={() => setIsOpenMenu(false)}
                         >
                             {t(`navigation.${link.label}`)}
                         </Link>
@@ -102,37 +127,22 @@ const Header = ({ locale }: IHeaderProps) => {
                         </div>
                         <Logo width={150} height={80} fill='#fff' />
                     </div>
+                </nav>
+                <div className={styles.menuMobile}>
+                    <button
+                        className={cn(
+                            styles.menuBtn,
+                            `${isOpenMenu ? styles.menuBtnActive : ''}`,
+                        )}
+                        onClick={toggleMenuClick}
+                        title='Language'
+                    ><span></span></button>
                 </div>
-            </header>
-            <div className={styles.menuMobile}>
-                <button
-                    className={cn(
-                        styles.menuBtn,
-                        `${isOpenMenu ? styles.menuBtnActive : ''}`,
-                    )}
-                    onClick={toggleMenuClick}
-                    title='Language'
-                ><span></span></button>
-            </div>
+            </StickyBoundary>
         </div>
-    );
-};
-
+    )
+}
 
 export default memo(Header);
 
 
-
-
-
-
-
-
-
-{/*  TODO - pordzeluc heto jnjel
-    <Link href={`/${locale}${Pages.LANGUAGE_HOME}`} aria-label={`/${locale}${Pages.LANGUAGE_HOME}`} className={`${styles.link} ${pathname === `/${locale}${Pages.LANGUAGE_HOME}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('navigation.about')}</Link>
-    <Link href={`/${locale}${Pages.LANGUAGE_LANGUAGES}`} aria-label={`/${locale}${Pages.LANGUAGE_LANGUAGES}`} className={`${styles.link} ${pathname === `/${locale}${Pages.LANGUAGE_LANGUAGES}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('navigation.languages')}</Link>
-    <Link href={`/${locale}${Pages.LANGUAGE_DISCOUNTS}`} aria-label={`/${locale}${Pages.LANGUAGE_DISCOUNTS}`} className={`${styles.link} ${pathname === `/${locale}${Pages.LANGUAGE_DISCOUNTS}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('navigation.discounts')}</Link>
-    <Link href={`/${locale}${Pages.LANGUAGE_PRICE_LIST}`} aria-label={`/${locale}${Pages.LANGUAGE_PRICE_LIST}`} className={`${styles.link} ${pathname === `/${locale}${Pages.LANGUAGE_PRICE_LIST}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('navigation.price-list')}</Link>
-    <Link href={`/${locale}${Pages.LANGUAGE_CO_WORKER}`} aria-label={`/${locale}${Pages.LANGUAGE_CO_WORKER}`} className={`${styles.link} ${pathname === `/${locale}${Pages.LANGUAGE_CO_WORKER}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('navigation.co-workers')}</Link> 
-*/}

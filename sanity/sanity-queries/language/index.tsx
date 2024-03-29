@@ -13,3 +13,28 @@ export interface ABOUT_LANGUAGE {
     during_courses_images: any
     teachers: any
 };
+
+export interface PRICE_LIST_LANHUAGE {
+    _id: string
+    name: string
+    price_list: {
+        slug: string
+        teaching_language: string
+        group_lessons: string,
+        private_lessons: {
+            three_week: string
+            two_week: string
+        },
+    },
+    private_lessons: {
+        slug: string
+        teaching_language: string
+        private_lessons: string
+    },
+    english_courses: {
+        slug: string
+        language_type: string
+        duration: string
+        private_lessons: string
+    }
+}
