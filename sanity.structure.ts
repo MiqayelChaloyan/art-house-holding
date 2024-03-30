@@ -15,7 +15,8 @@ export default (S: any) =>
                     'about-language',
                     'about-us-language',
                     'price-list-language',
-                    'co-workers-language'
+                    'co-workers-language',
+                    'languages-select-option'
                 ].includes(listItem.getId())
             ),
 
@@ -92,11 +93,14 @@ export default (S: any) =>
                                 .child(S.document().schemaType('about-us-language').documentId('about-us-language')),
                             S.listItem()
                                 .title('Courses')
-                                .child(
-                                    S.documentList()
-                                        .title('Courses')
-                                        .filter('_type == "languages"')
-                                ),
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('languages-select-option').documentId('languages-select-option')),
+
+                                // .child(
+                                //     S.documentList()
+                                //         .title('Courses')
+                                //         .filter('_type == "languages"')
+                                // ),
                             S.listItem()
                                 .title('Languages')
                                 .child(

@@ -56,12 +56,16 @@
     },
     "contact-us-form": {
         "title": "CONTACT US",
+        "form-title-language": "SEND A REQUEST",
         "name": "Name",
+        "last-name": "Last Name",
         "full-name": "Name, Surname",
         "email": "Email",
         "phone-number": "Phone Number",
         "message": "Message",
         "select-course": "Select the course",
+        "select-quantity": "Quantity of classes",
+        "select-duration": "Quantity of classes",
         "send": "Send",
         "loading": "Loading"
     },

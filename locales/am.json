@@ -56,12 +56,16 @@
     },
     "contact-us-form": {
         "title": "ԿԱՊՎԵԼ ՄԵԶ ՀԵՏ",
+        "form-title-language": "ՈՒՂԱՐԿԵԼ ՀԱՅՏ",
         "name": "Անուն",
+        "last-name": "Ազգանուն",
         "full-name": "Անուն, Ազգանուն",
         "email": "Փոստի հասցե",
         "phone-number": "Հեռախոսահամար",
         "message": "Հաղորդագրություն",
         "select-course": "Ընտրել դասընթացը",
+        "select-quantity": "Դասի տևողությունը",
+        "select-duration": "Դասերի քանակը",
         "send": "Ուղարկել",
         "loading": "Բեռնվում է"
     },

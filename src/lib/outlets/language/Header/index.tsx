@@ -78,6 +78,9 @@ const Header = ({ locale }: IHeaderProps) => {
         };
     }, []);
 
+    useEffect(() => {
+        if (windowSize.width > 600) setIsOpenMenu(false)
+    }, [windowSize.width])
 
     const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
@@ -90,10 +93,22 @@ const Header = ({ locale }: IHeaderProps) => {
             <HeaderBoundary>
                 <div className={styles.requests}>
                     <div className={styles.send_request}>
-                        <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.send-request")}</p>
+                        <Link
+                            href={`/${locale}/language/form`}
+                            aria-label={`/${locale}/language/form`}
+                            className={`${styles.triangle_text} 
+                        ${Arial.className}`}>
+                            {t("texts.send-request")}
+                        </Link>
                     </div>
                     <div className={styles.take_test}>
-                        <p className={`${styles.triangle_text} ${Arial.className}`}>{t("texts.take-the-test")}</p>
+                        <Link
+                            href={`/${locale}/language/form`}
+                            aria-label={`/${locale}/language/form`}
+                            className={`${styles.triangle_text} 
+                         ${Arial.className}`}>
+                            {t("texts.take-the-test")}
+                        </Link>
                     </div>
                 </div>
                 <div className={styles.logo}>

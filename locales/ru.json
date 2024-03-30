@@ -56,12 +56,16 @@
     },
     "contact-us-form": {
         "title": "СВЯЗАТЬСЯ С НАМИ",
+        "form-title-language": "ОТПРАВИТЬ ЗАПРОС",
         "name": "Имя",
+        "last-name": "Фамилия",
         "full-name": "Имя, Фамилия",
         "email": "Электронная почта",
         "phone-number": "Номер телефона",
         "message": "Сообщение",
         "select-course": "Выберите курс",
+        "select-quantity": "Продолжительность урока",
+        "select-duration": "Количество занятий",
         "send": "Отправлять",
         "loading": "Загрузка"
     },

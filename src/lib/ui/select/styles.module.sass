@@ -1,4 +1,4 @@
-.custom_select
+.large-select
 	position: relative 
 	width: 380px 
 	max-width: 100% 
@@ -10,9 +10,9 @@
 	margin: 15px 0 
 	z-index: 0
 	&.active 
-		.arrow 
+		.large-arrow 
 			transform: rotate(180deg) 
-		.select_dropdown 
+		.large-select-dropdown 
 			opacity: 1 
 			visibility: visible 
 			transform: scaleY(1) 
@@ -53,7 +53,63 @@
 		width: 100%
 
 
-.select_button
+.small-select
+	position: relative 
+	width: 260px
+	height: 55px
+	max-width: 100% 
+	font-weight: var(--font-weight-light)
+	font-size: 22px
+	box-shadow: 1px 13px 11px -4px #0000003d
+	border-radius: 20px 
+	color: var(--color-white) 
+	margin: 15px 0 
+	z-index: 0
+	&.active 
+		.small-arrow 
+			transform: rotate(180deg) 
+		.small-select-dropdown 
+			opacity: 1 
+			visibility: visible 
+			transform: scaleY(1) 
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 22px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 22px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 22px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 15px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 15px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 14px
+		height: 30px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 14px
+		width: 100%
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 14px
+		width: 100%
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 14px
+		width: 100%
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 14px
+		width: 100%
+
+
+.large-select-button
 	width: 100% 
 	font-size: 20px 
 	height: 40px 
@@ -101,18 +157,144 @@
 		font-size: 14px
 
 
-.selected_value 
+.small-select-button
+	width: 100% 
+	font-size: 20px 
+	height: 55px 
+	border-radius: 20px 
+	background-color: var(--color-white) 
+	padding: 0.675em 1em 
+	border: 1px solid var(--color-white) 
+	cursor: pointer 
+	display: flex 
+	justify-content: space-between 
+	align-items: center 
+	outline: none
+	&:focus
+		outline: none !important
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 22px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 22px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 22px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 22px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 22px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 14px
+		height: 30px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 14px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 14px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 14px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 14px
+
+
+.large-selected-value 
 	text-align: left 
+	color: white
 
 
-.arrow 
+.small-selected-value 
+	text-align: left 
+	color: #D4C7BA 
+	font-size: 16px
+
+
+.large-arrow 
 	border-left: 5px solid transparent 
 	border-right: 5px solid transparent 
 	border-top: 6px solid white 
 	transition: transform ease-in-out 0.3s 
 
 
-.select_dropdown 
+.large-select-dropdown 
+	position: absolute 
+	list-style: none 
+	width: 100% 
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) 
+	background-color: var(--color-white) 
+	border: 1px solid var(--color-light-gray) 
+	border-radius: 4px 
+	padding: 0.675em 1em 
+	margin-top: 8px 
+	max-height: 150px 
+	overflow-y: auto 
+	transition: 0.5s ease 
+	transform: scaleY(0) 
+	opacity: 0 
+	z-index: 99 
+	visibility: hidden
+	&:focus-within 
+		box-shadow: 0 10px 25px rgba(94, 108, 233, 0.6) 
+	/* @sm */
+	@media screen and (max-width: 768px)
+		max-height: 96px
+	li 
+		position: relative 
+		cursor: pointer 
+		display: flex 
+		gap: 1rem 
+		align-items: center 
+		label 
+			width: 100% 
+			padding: 8px 10px 
+			cursor: pointer 
+			display: flex 
+			gap: 1rem 
+			align-items: center 
+			color: black 
+			font-size: 20px
+			/* @sm */
+			@media screen and (max-width: 768px)
+				padding: 0 0
+				font-size: 14px
+	&::-webkit-scrollbar 
+		width: 7px 
+	&::-webkit-scrollbar-track 
+		background: #f1f1f1 
+		border-radius: 25px 
+	&::-webkit-scrollbar-thumb 
+		background: #ccc 
+		border-radius: 25px 
+	input 
+		&:focus 
+			& ~ label 
+				background-color: var(--color-double-gray) 
+	input[type="radio"] 
+		position: absolute 
+		left: 0 
+		opacity: 0 
+
+
+.large-select-dropdown li:hover,
+.large-select-dropdown input:checked~label 
+	background-color: #f2f2f2 
+
+
+.small-arrow 
+	border-left: 5px solid transparent 
+	border-right: 5px solid transparent 
+	border-top: 6px solid #006ED2
+	transition: transform ease-in-out 0.3s 
+
+
+.small-select-dropdown 
 	position: absolute 
 	list-style: none 
 	width: 100% 
@@ -171,6 +353,6 @@
 		opacity: 0 
 
 
-.select_dropdown li:hover,
-.select_dropdown input:checked~label 
+.small-select-dropdown li:hover,
+.small-select-dropdown input:checked~label 
 	background-color: #f2f2f2 

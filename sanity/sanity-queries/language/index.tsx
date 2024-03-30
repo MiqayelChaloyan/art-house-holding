@@ -1,14 +1,25 @@
 export interface LANGUAGE {
     _id: string
-    slug: any
-    course_name: string
+    slug: string
+    languages: {
+        course: string
+        slug: string
+    }
+    quantity_lessons: {
+        quantity: string
+        slug: string
+    }
+    class_duration: {
+        duration: string
+        slug: string
+    }
 };
 
 export interface ABOUT_LANGUAGE {
     _id: string
     name: string
     text: any
-    slug: any
+    slug: string
     course_process: any
     during_courses_images: any
     teachers: any
