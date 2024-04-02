@@ -16,7 +16,8 @@ export default (S: any) =>
                     'about-us-language',
                     'price-list-language',
                     'co-workers-language',
-                    'languages-select-option'
+                    'languages-select-option',
+                    'questions-language'
                 ].includes(listItem.getId())
             ),
 
@@ -95,12 +96,6 @@ export default (S: any) =>
                                 .title('Courses')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('languages-select-option').documentId('languages-select-option')),
-
-                                // .child(
-                                //     S.documentList()
-                                //         .title('Courses')
-                                //         .filter('_type == "languages"')
-                                // ),
                             S.listItem()
                                 .title('Languages')
                                 .child(
@@ -118,7 +113,14 @@ export default (S: any) =>
                                     S.documentList()
                                         .title('Co-Workers')
                                         .filter('_type == "co-workers-language"')
-                                )
+                                ),
+                            // S.listItem()
+                            //     .title('Questions')
+                            //     .child(
+                            //         S.documentList()
+                            //             .title('Questions')
+                            //             .filter('_type == "questions-language"')
+                            //     ),
                         ])
                 ),
         ]);

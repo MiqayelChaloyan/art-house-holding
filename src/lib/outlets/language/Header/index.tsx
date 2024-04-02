@@ -96,17 +96,17 @@ const Header = ({ locale }: IHeaderProps) => {
                         <Link
                             href={`/${locale}/language/form`}
                             aria-label={`/${locale}/language/form`}
-                            className={`${styles.triangle_text} 
-                        ${Arial.className}`}>
+                            className={`${styles.triangle_text} ${Arial.className}`}
+                        >
                             {t("texts.send-request")}
                         </Link>
                     </div>
                     <div className={styles.take_test}>
                         <Link
-                            href={`/${locale}/language/form`}
-                            aria-label={`/${locale}/language/form`}
-                            className={`${styles.triangle_text} 
-                         ${Arial.className}`}>
+                            href={`/${locale}/language/quiz`}
+                            aria-label={`/${locale}/language/quiz`}
+                            className={`${styles.triangle_text} ${Arial.className}`}
+                        >
                             {t("texts.take-the-test")}
                         </Link>
                     </div>

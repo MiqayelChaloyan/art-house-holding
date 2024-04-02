@@ -14,6 +14,7 @@ import aboutUsSchemaLanguage from './schemas/language/about-us-schema';
 import priceListSchemaLanguage from './schemas/language/price-list-schema';
 import coWorkersSchemaLanguage from './schemas/language/co-workers-schema';
 
+
 export const schemaTypes = [
   homeSchemaArtHouse,
   // art_house_design,
@@ -25,7 +26,7 @@ export const schemaTypes = [
   coursesSchemaLanguage,
   languagesSchemaLanguage,
   priceListSchemaLanguage,
-  coWorkersSchemaLanguage
+  coWorkersSchemaLanguage,
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {

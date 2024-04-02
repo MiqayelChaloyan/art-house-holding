@@ -1,5 +1,7 @@
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
+import { StoreProvider } from "@/store/StoreProvider";
+
 import { Inter } from "@/lib/constants/font";
 
 import '@/styles/globals.sass';
@@ -28,7 +30,9 @@ function RootLayout({
     <html lang={locale}>
       <body className={Inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <StoreProvider>
+            {children}
+          </StoreProvider>
         </NextIntlClientProvider>
       </body>
     </html>

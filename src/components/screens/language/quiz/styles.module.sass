@@ -1,0 +1,57 @@
+.title
+    color: #006ED2
+    font-size: 60px
+    font-weight: 700
+    line-height: 60px
+    margin-bottom: 100px
+    text-align: center
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 70px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 60px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 50px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 40px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 40px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 40px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 40px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 40px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 40px
+
+
+
+.row
+    display: flex
+    justify-content: center
+
+.link
+    margin: 40px
+
+.language
+    width: 150px
+    height: 150px
+    object-fit: contain
+    overflow: hidden
+    transition: transform 2s, filter 1.5s ease-in-out
+    transform-origin: center center
+    filter: brightness(100%)
+    &:hover
+        filter: brightness(70%)
+        transform: scale(1.3) rotate(360deg) 
+
+
