@@ -56,7 +56,8 @@ const Rating = ({ data }: any) => data.map((card: any, index: number): JSX.Eleme
         ...sizes[index],
     };
 
-    return <RatingCard key={card.slug} options={options} />;
+    // return <RatingCard key={card.slug} options={options} />;
+    return <div>1</div>
 });
 
 export default memo(Rating);
