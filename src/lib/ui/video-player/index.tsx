@@ -49,8 +49,8 @@ const Player: FC<Props> = ({ light, path }) => {
                 playIcon={
                     <div className={styles.icon}>
                         <Play
-                            width='90'
-                            height='90'
+                            width='80'
+                            height='80'
                             fill='white'
                         />
                     </div>

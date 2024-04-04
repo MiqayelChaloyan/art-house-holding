@@ -22,23 +22,27 @@ const Main: FC<Props> = ({ course }) => {
 	const items = course[0].course_main;
 	const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center', duration: 4000 }, [Autoplay({ delay: 1000 })]);
 	
-	const slidesItems = items.map((item: any): JSX.Element => {
-        const urlFor = urlForImage(item.image)
+	const slidesItems = items.map((item: any) => {
+        const path: {
+            src: string;
+            width: any;
+            height: any;
+        } | any = urlForImage(item.image)
             // .auto('format')
             // .fit('max')
             // .url();
             
         const content = item.content.length > 272 ? item.content.slice(0, 272) + '...' : item.content;
             
-        return (
-            <SlideItem
-                key={item.slug}
-                url={urlFor?.src}
-                title={item.title}
-                content={content}
-                alt={item.image.alt}
-            />
-        );
+        // return (
+        //     <SlideItem
+        //         key={item.slug}
+        //         url={path?.src}
+        //         title={item.title}
+        //         content={content}
+        //         alt={item.image.alt}
+        //     />
+        // );
     });
 
 

@@ -38,7 +38,11 @@ const StudentWork: FC<Props> = ({ course }) => {
 
     const images = course[0].student_works.slice(0, initialLoadCourses).map((item: any) => {
 
-        const urlFor = urlForImage(item)
+        const urlFor: {
+            src: string;
+            width: any;
+            height: any;
+        } | any = urlForImage(item)
             // .auto('format')
             // .fit('max')
             // .url();

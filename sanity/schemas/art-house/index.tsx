@@ -16,7 +16,7 @@ const homeSchemaArtHouse = {
             name: 'our_websites',
             type: 'array',
             title: 'Websites',
-            components: { input: ArrayMaxItems },
+            // components: { input: ArrayMaxItems },
             of: [
                 {
                     name: 'Object',
@@ -99,7 +99,7 @@ const homeSchemaArtHouse = {
             name: 'progress_section',
             type: 'array',
             title: 'Progress Section',
-            components: { input: ArrayMaxItems },
+            // components: { input: ArrayMaxItems },
             validation: (Rule: any) => Rule.max(4),
             description: 'Ոչ պակաս, քան չորս և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
             of: [

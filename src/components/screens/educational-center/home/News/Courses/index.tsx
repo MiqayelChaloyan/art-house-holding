@@ -22,20 +22,28 @@ const Courses: FC<Props> = ({ data }) => {
 
     return (
         data.map((item: any): JSX.Element => {
-            const urlForImageOne = urlForImage(item.news_image_one)
+            const path1: {
+                src: string;
+                width: any;
+                height: any;
+            } | any = urlForImage(item.news_image_one)
                 // .auto('format')
                 // .fit('max')
                 // .url();
 
-            const urlForImageTwo = urlForImage(item.news_image_two)
+            const path2: {
+                src: string;
+                width: any;
+                height: any;
+            } | any = urlForImage(item.news_image_two)
                 // .auto('format')
                 // .fit('max')
                 // .url();
 
             const course = {
                 subtitle: item.subtitle,
-                urlForImageOne,
-                urlForImageTwo,
+                urlForImageOne: path1.src,
+                urlForImageTwo: path2.src,
                 content: item.content,
                 scrollToElement,
                 altOne: item.news_image_one.alt,

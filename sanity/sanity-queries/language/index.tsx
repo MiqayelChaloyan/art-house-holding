@@ -1,3 +1,57 @@
+export interface ABOUT_US_LANGUAGE {
+    _id: string
+    about_us: {
+        content: {
+            markDefs: any,
+            children: [
+                {
+                    marks: any,
+                    text: string,
+                    _key: string,
+                    _type: string
+                }],
+            _type: string,
+            style: string,
+            _key: string
+        },
+        about_us_images: [
+            {
+                map: any;
+                _type: string,
+                alt: string,
+                _key: string,
+                asset: { _ref: string, _type: string }
+            },
+        ],
+        about_our_daily: any
+    };
+    our_daily_life: {
+        about_our_daily: [
+            {
+                news: string
+                languages: { _ref: string, _type: string },
+                video_url: string
+                video_light: {
+                    alt: string
+                    asset: {
+                        _ref: string
+                        _type: string
+                    },
+                    _type: string
+                }
+            },
+        ]
+        our_daily_life_images: [
+            {
+                _type: string,
+                alt: string,
+                _key: string,
+                asset: [Object]
+            },
+        ]
+    }
+};
+
 export interface LANGUAGE {
     _id: string
     slug: string
@@ -47,5 +101,16 @@ export interface PRICE_LIST_LANHUAGE {
         language_type: string
         duration: string
         private_lessons: string
+    }
+}
+
+export interface DISCOUNTS_LANGUAGE {
+    discounts_list: {
+        [x: string]: any;
+        discount: {
+            _type: string
+            alt: string
+            asset: { _ref: string, _type: string }
+        }
     }
 }

@@ -8,7 +8,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import AccordionArrow from '@/lib/icons/educational-center/AccordionArrow';
 
-import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import styles from './style.module.sass';
 
@@ -57,10 +57,14 @@ const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab 
         );
     });
 
-    const urlForSvg = urlFor(svg)
-        .auto('format')
-        .fit('max')
-        .url();
+    const urlForSvg: {
+        src: string;
+        width: any;
+        height: any;
+    } | any = urlForImage(svg)
+        // .auto('format')
+        // .fit('max')
+        // .url();
 
     return (
         <div
@@ -79,7 +83,7 @@ const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab 
                     </button>
                 </div>
                 <div>
-                    <img src={urlForSvg} alt={alt} className={styles.svg_icon}/>
+                    <img src={urlForSvg.src} alt={alt} className={styles.svg_icon}/>
                 </div>
             </div>
             <div className={styles.panel__inner} style={innerStyle} aria-hidden={!activeTab === index}>

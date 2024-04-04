@@ -13,6 +13,7 @@ import languagesSchemaLanguage from './schemas/language/languages-schema';
 import aboutUsSchemaLanguage from './schemas/language/about-us-schema';
 import priceListSchemaLanguage from './schemas/language/price-list-schema';
 import coWorkersSchemaLanguage from './schemas/language/co-workers-schema';
+import discountsSchemaLanguage from './schemas/language/discounts-schema';
 
 
 export const schemaTypes = [
@@ -27,6 +28,7 @@ export const schemaTypes = [
   languagesSchemaLanguage,
   priceListSchemaLanguage,
   coWorkersSchemaLanguage,
+  discountsSchemaLanguage,
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {

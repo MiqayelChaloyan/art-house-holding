@@ -17,7 +17,8 @@ export default (S: any) =>
                     'price-list-language',
                     'co-workers-language',
                     'languages-select-option',
-                    'questions-language'
+                    'questions-language',
+                    'discounts-languages',
                 ].includes(listItem.getId())
             ),
 
@@ -115,12 +116,16 @@ export default (S: any) =>
                                         .filter('_type == "co-workers-language"')
                                 ),
                             // S.listItem()
-                            //     .title('Questions')
+                            //     .title('Promotions')
                             //     .child(
                             //         S.documentList()
-                            //             .title('Questions')
-                            //             .filter('_type == "questions-language"')
+                            //             .title('Promotions')
+                            //             .filter('_type == "promotions-language"')
                             //     ),
+                            S.listItem()
+                                .title('Discounts')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('discounts-languages').documentId('discounts-languages')),
                         ])
                 ),
         ]);

@@ -29,7 +29,7 @@ const CoWorkers: FC<CoWorkersProps> = ({ data }) => {
 	// }, []);
 
 	const workers = data.map((item: any) => {
-		const urlFor = urlForImage(item.logo)
+		const path = urlForImage(item.logo)
 			// .auto('format')
 			// .fit('max')
 			// .url();
@@ -48,7 +48,7 @@ const CoWorkers: FC<CoWorkersProps> = ({ data }) => {
 						style={{ objectFit: 'cover' }}
 					/> */}
 
-					<img src={urlFor?.src} className={styles.image}/>
+					<img src={path?.src} className={styles.image}/>
 				</div>
 				<p className={styles.text}>{item.company_name}</p>
 				<p className={styles.text}>{item.cooperation}</p>

@@ -1,14 +1,14 @@
-import Discounts from "@/components/screens/language/discounts";
-
 import { getTranslations } from "next-intl/server";
 
 import { type Metadata } from "next";
 import { notFound } from 'next/navigation';
 
+import About from "@/components/screens/language/about";
+
 import { Locale } from "@/locales";
 
 import { client } from "../../../../../../sanity/client";
-import { query } from "../../../../../../sanity/services/language-service/discounts";
+import { query } from "../../../../../../sanity/services/language-service/about-us";
 
 
 interface Props {
@@ -31,8 +31,8 @@ export default async function Page({ params: { locale } }: Readonly<Props>) {
         notFound()
     }
 
-    return (<Discounts data={data}/>);
-}
+    return <About data={data} locale={locale}/>;
+};
 
 
 export async function generateMetadata({

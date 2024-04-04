@@ -32,26 +32,17 @@ const Questions = ({ onCheked }: any) => {
 
 
     return (
-        <div>
+        <div className={styles.field}>
             <div>
                 <h2 className={`${styles.question} ${Calibri.className}`}>{questions?.question}</h2>
             </div>
             <ul id={questions?.id} className={styles.quiz}>
                 {
                     questions?.options.map((q: any, i: number) => (
-                        <li key={i}>
-                            <label className={styles.label} >
-                                {q}
-
-                                <input
-                                    type="radio"
-                                    name="options"
-                                    id={`q${i}-option`}
-                                    onChange={() => onSelect(i)}
-                                />
-                                <span className={styles.checkmark}></span>
-                            </label>
-                            <div className={styles.check}></div>
+                       <li className={styles.radio_container} key={i}>
+                            <input className={styles.radio} type="radio" id={`q${i}-option`} name="options" onChange={() => onSelect(i)} />
+                            <span className={styles.checkmark}></span>
+                            <label htmlFor={`q${i}-option`}>{q}</label>
                         </li>
                     ))
                 }

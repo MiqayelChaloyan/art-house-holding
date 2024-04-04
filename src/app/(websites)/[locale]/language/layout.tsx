@@ -7,6 +7,7 @@ import { notFound, useParams } from "next/navigation";
 import FBMessenger from "@/lib/outlets/language/FBMessenger";
 import { client } from "../../../../../sanity/client";
 import { headers } from "next/headers";
+import ScrollToTopButton from "@/lib/outlets/general/ScrollToTopButton";
 
 interface RootLayoutProps {
     children: React.ReactNode;
@@ -52,6 +53,7 @@ async function Layout({
                     <Header locale={locale} />
                 </div>
                 {/* <FBMessenger /> */}
+                <ScrollToTopButton/>
                 <main className="languages-main">
                     {children}
                 </main>

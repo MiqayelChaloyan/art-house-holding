@@ -5,8 +5,10 @@ import { getTranslations } from "next-intl/server";
 import { type Metadata } from "next";
 
 import { Locale } from "@/locales";
-import { getHomeData } from '../../../../../sanity/services/educational-center-service/about-us';
 import { notFound } from 'next/navigation';
+import { client } from '../../../../../sanity/client';
+import { query } from '../../../../../sanity/services/language-service/about-us';
+import { query as discountsQuery } from "../../../../../sanity/services/language-service/discounts";
 
 
 
@@ -18,19 +20,24 @@ interface RootLayoutProps {
 
 
 async function getResources(locale: string) {
-    const res = await getHomeData(locale);
-    return res
+    const discounts = await client.fetch(discountsQuery, { language: locale }, { next: { revalidate: 100 } });
+    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+
+    return {
+        data,
+        discounts
+    }
 }
 
 
 export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
-    const data = await getResources(locale);
+    const { data, discounts } = await getResources(locale);
 
     if (!data) {
         notFound()
     }
 
-    return <Home locale={locale}/>;
+    return <Home data={data} discounts={discounts} locale={locale} />;
 }
 
 

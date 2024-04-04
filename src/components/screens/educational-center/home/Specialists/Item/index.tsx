@@ -24,7 +24,11 @@ const Images = ({ images }: any) => {
         <div>
             <div className={styles.gallery_row}>
                 {firstDivImages.map((image: any) => {
-                    const urlForImageOne = urlForImage(image)
+                    const urlForImageOne: {
+                        src: string;
+                        width: any;
+                        height: any;
+                    } | any = urlForImage(image)
                         // .auto('format')
                         // .fit('max')
                         // .url();
@@ -46,7 +50,11 @@ const Images = ({ images }: any) => {
             </div>
             <div className={styles.gallery_row}>
                 {secondDivImages.map((image: any) => {
-                    const urlForImageOne = urlForImage(image)
+                    const urlForImageOne: {
+                        src: string;
+                        width: any;
+                        height: any;
+                    } | any = urlForImage(image)
                         // .auto('format')
                         // .fit('max')
                         // .url();
@@ -75,7 +83,11 @@ const Item = ({ item }: any) => {
     // const router = useRouter();
     // const { i18n } = useTranslation();
 
-    const urlFor = urlForImage(item.specialists_section_image)
+    const urlFor: {
+        src: string;
+        width: any;
+        height: any;
+    } | any = urlForImage(item.specialists_section_image)
         // .auto('format')
         // .fit('max')
         // .url();

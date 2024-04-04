@@ -18,7 +18,11 @@ type Props = {
 
 
 const CookingCourses: FC<Props> = ({ data }) => {
-    const urlFor = urlForImage(data[0].cooking_courses[0].video_light)
+    const path: {
+        src: string;
+        width: any;
+        height: any;
+    } | any = urlForImage(data[0].cooking_courses[0].video_light)
         // .auto('format')
         // .fit('max')
         // .url();
@@ -29,7 +33,7 @@ const CookingCourses: FC<Props> = ({ data }) => {
             <Container>
                 <h1 className={styles.title}>{data[0].cooking_courses[0].video_section_title}</h1>
                 <div className={styles.video_player}>
-                    <Player light={urlFor?.src} path={data[0].cooking_courses[0].video_url} />
+                    <Player light={path?.src} path={data[0].cooking_courses[0].video_url} />
                 </div>
             </Container>
         </section>

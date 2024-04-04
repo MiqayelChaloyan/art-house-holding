@@ -29,22 +29,22 @@ const Main: FC<Props> = ({ data }) => {
 		}
 	};
 
-	const slidesItems = items.map((item: any): JSX.Element => {
+	const slidesItems = items.map((item: any) => {
 		const urlFor = urlForImage(item.image)
 			// .auto('format')
 			// .fit('max')
 			// .url();
 
-		return (
-			<SlideItem
-				key={item.slug}
-				url={urlFor?.src}
-				alt={item.image.alt}
-				subtitle={item.title}
-				content={item.content}
-				scrollToElement={scrollToElement}
-			/>
-		);
+		// return (
+		// 	<SlideItem
+		// 		key={item.slug}
+		// 		url={urlFor?.src}
+		// 		alt={item.image.alt}
+		// 		subtitle={item.title}
+		// 		content={item.content}
+		// 		scrollToElement={scrollToElement}
+		// 	/>
+		// );
 	});
 
 

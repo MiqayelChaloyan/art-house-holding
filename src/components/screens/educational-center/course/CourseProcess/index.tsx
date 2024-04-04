@@ -22,7 +22,11 @@ type Props = {
 const CourseProcess: FC<Props> = ({ course }) => {
     const t = useTranslations('sections');
 
-    const urlFor = urlForImage(course[0].course_process[0].video_light)
+    const path: {
+        src: string;
+        width: any;
+        height: any;
+    } | undefined = urlForImage(course[0].course_process[0].video_light)
         // .auto('format')
         // .fit('max')
         // .url();
@@ -32,7 +36,7 @@ const CourseProcess: FC<Props> = ({ course }) => {
             <Container>
                 <h1 className={styles.title}>{t('courses-process')}</h1>
                 <div className={styles.video_player}>
-                    <Player light={urlFor?.src} path={course[0].course_process[0].video_url} />
+                    <Player light={path?.src} path={course[0].course_process[0].video_url} />
                 </div>
             </Container>
         </section>

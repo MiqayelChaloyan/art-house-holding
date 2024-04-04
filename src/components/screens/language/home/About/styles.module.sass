@@ -1,7 +1,7 @@
 .about
     display: flex
     justify-content: space-between
-    align-items: center
+    align-items: flex-end
     margin: 40px auto
     /* @lg */
     @media screen and (max-width: 1280px)
@@ -40,6 +40,84 @@
        width: 100%
 
 
+.title
+    color: #006ED2
+    font-size: 70px
+    font-weight: 500
+    text-transform: uppercase
+    line-height: 80.49px
+    margin-bottom: 40px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 70px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 60px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 50px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 40px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 40px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 40px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 40px
+        margin-bottom: 10px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 40px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 40px
+
+
+.text
+    margin-bottom: 30px
+    font-size: 16px
+    color: #828282
+    font-weight: 400
+    line-height: 29.53px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        margin-bottom: 30px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        margin-bottom: 30px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+         margin-bottom: 30px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        margin-bottom: 30px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        margin-bottom: 30px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-bottom: 30px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin-bottom: 30px
+        font-size: 14px
+        line-height: 27px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        margin-bottom: 30px
+        font-size: 13px
+        line-height: 20px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        margin-bottom: 30px
+        font-size: 12px
+        line-height: 20px
+
+
 .gallery
     display: inline
     /* @lg */
@@ -53,8 +131,11 @@
        justify-content: center
 
 
+.image
+    width: 100%
+
+
 .gallery_one
-    background-color: red
     width: 313px
     height: 270px
     position: relative
@@ -96,25 +177,25 @@
 
 
 .gallery_two
-    background-color: blue
     width: 313px
     height: 270px
     position: relative
     top: 0
-    right: 200px
+    right: 185px
+    z-index: 1
     /* @3xl */
     @media screen and (max-width: 1920px)
-       right: 200px
+       right: 185px
        width: 270px
        height: 220px
     /* @2xl */
     @media screen and (max-width: 1600px)
-       right: 200px
+       right: 185px
        width: 250px
        height: 200px
     /* @xl */
     @media screen and (max-width: 1440px)
-       right: 200px
+       right: 185px
     /* @lg */
     @media screen and (max-width: 1280px)
        right: 0
@@ -139,24 +220,23 @@
 
 
 .gallery_three
-    background-color: gray
     width: 313px
     height: 270px
     position: relative
-    bottom: 100px
+    bottom: 40px
     /* @3xl */
     @media screen and (max-width: 1920px)
-        bottom: 100px
+        bottom: 40px
         width: 270px
         height: 220px
     /* @2xl */
     @media screen and (max-width: 1600px)
-        bottom: 100px
+        bottom: 40px
         width: 250px
         height: 200px
     /* @xl */
     @media screen and (max-width: 1440px)
-        bottom: 100px
+        bottom: 40px
     /* @lg */
     @media screen and (max-width: 1280px)
         bottom: 0
@@ -179,108 +259,41 @@
         bottom: 0
 
 
-.text
-    margin-bottom: 30px
-    font-size: 16px
-    color: #828282
-    font-weight: 400
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-        margin-bottom: 30px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-        margin-bottom: 30px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-         margin-bottom: 30px
-    /* @lg */
-    @media screen and (max-width: 1280px)
-        margin-bottom: 30px
-    /* @md */
-    @media screen and (max-width: 1024px)
-        margin-bottom: 30px
-    /* @sm */
-    @media screen and (max-width: 768px)
-        margin-bottom: 30px
-    /* @xs */
-    @media screen and (max-width: 600px)
-        margin-bottom: 30px
-        font-size: 14px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        margin-bottom: 30px
-        font-size: 13px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        margin-bottom: 30px
-        font-size: 12px
-
-
 .buttons
     display: flex
     justify-content: space-evenly
     align-items: center
 
 
-.title
-    color: #006ED2
-    font-size: 70px
-    font-weight: 400
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-        font-size: 70px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-        font-size: 60px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-        font-size: 50px
-    /* @lg */
-    @media screen and (max-width: 1280px)
-        font-size: 40px
-    /* @md */
-    @media screen and (max-width: 1024px)
-        font-size: 40px
-    /* @sm */
-    @media screen and (max-width: 768px)
-        font-size: 40px
-    /* @xs */
-    @media screen and (max-width: 600px)
-        font-size: 40px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        font-size: 40px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        font-size: 40px
-
-
 .button
     width: 185px
     height: 50px
-    font-size: 20px
+    font-size: 17px
     font-weight: 700
     border-radius: 20px
-    box-shadow: 0 5px 1px -3px #00000059
+    box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.3490196078)
+    display: flex
+    justify-content: center
+    align-items: center
     /* @3xl */
     @media screen and (max-width: 1920px)
         width: 185px
         height: 50px
-        font-size: 20px
+        font-size: 17px
         font-weight: 700
         border-radius: 20px
     /* @2xl */
     @media screen and (max-width: 1600px)
         width: 185px
         height: 50px
-        font-size: 20px
+        font-size: 17px
         font-weight: 700
         border-radius: 20px
     /* @xl */
     @media screen and (max-width: 1440px)
         width: 185px
         height: 50px
-        font-size: 20px
+        font-size: 17px
         font-weight: 700
         border-radius: 20px  
     /* @lg */
@@ -327,7 +340,7 @@
         height: 30px
 
 
-.separate_1
+.send_btn
     background-color: #F9CC48
     color: #fff
     border: 2px solid #F9CC48
@@ -339,7 +352,7 @@
         border: 1px solid #006ED2
 
 
-.separate_2
+.more_btn
     background-color: #fff
     color: #F9CC48
     border: 2px solid #F9CC48
@@ -348,3 +361,12 @@
         background-color: #006ED2
         color: #fff
         border: 1px solid #006ED2
+
+
+
+
+
+
+
+
+

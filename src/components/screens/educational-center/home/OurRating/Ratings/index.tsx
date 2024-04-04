@@ -23,12 +23,20 @@ const sizes = [
 ];
 
 const Rating = ({ data }: any) => data.map((card: any, index: number): JSX.Element => {
-    const urlForImageBackground = urlForImage(card.our_rating_section_image)
+    const urlForImageBackground: {
+        src: string;
+        width: any;
+        height: any;
+    } | any = urlForImage(card.our_rating_section_image)
     // .auto('format')
     // .fit('max')
     // .url();
 
-    const urlForImage = urlForImage(card.user_image)
+    const path: {
+        src: string;
+        width: any;
+        height: any;
+    } | any = urlForImage(card.user_image)
     // .auto('format')
     // .fit('max')
     // .url();
@@ -39,9 +47,9 @@ const Rating = ({ data }: any) => data.map((card: any, index: number): JSX.Eleme
 
     const options = {
         name,
-        urlForImageBackground,
+        urlForImageBackground: urlForImageBackground.src,
         urlImageBackgroundAlt,
-        urlForImage,
+        urlForImage: path.src,
         urlImageAlt,
         result: card?.user_feedback,
         rating: card.rating + 1,
