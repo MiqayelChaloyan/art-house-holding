@@ -29,13 +29,13 @@ const EducationalCenterHome: FC<Props> = ({ data }) => {
 
     return (
         <>
-            <Main data={data} />
+            {/* <Main data={data} />
             <About data={data} />
             <CookingCourses data={data} />
             <News data={data} />
             <Progress data={data} />
             <Specialists data={data} />
-            <OurRating data={data} /> 
+            <OurRating data={data} />  */}
         </>
     )
 }

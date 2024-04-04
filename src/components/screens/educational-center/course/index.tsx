@@ -28,11 +28,11 @@ const Course: FC<CoursePageProps> = ({ course }) => {
     
     return (
         <>
-            <Main course={course} />
+            {/* <Main course={course} />
             <About course={course}/>
             <CourseProcess course={course} />
             <StudentWork course={course} />
-            <PriceList course={course} />
+            <PriceList course={course} /> */}
         </>
     );
 };
