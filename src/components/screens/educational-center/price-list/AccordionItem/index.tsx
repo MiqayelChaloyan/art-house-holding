@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -13,16 +13,7 @@ import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import styles from './style.module.sass';
 
 
-function daysBetweenDates(dateStr1: any, dateStr2: any) {
-    const startDate = new Date(dateStr1);
-    const endDate = new Date(dateStr2);
-    const timeDifference = endDate.getTime() - startDate.getTime();
-    const daysDifference = timeDifference / (1000 * 3600 * 24);
-
-    return daysDifference;
-};
-
-type Props = {
+interface Props {
     name: string
     list: any
     svg: string
@@ -32,7 +23,16 @@ type Props = {
     activateTab: () => void
 };
 
-const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab }) => {
+function daysBetweenDates(dateStr1: any, dateStr2: any) {
+    const startDate = new Date(dateStr1);
+    const endDate = new Date(dateStr2);
+    const timeDifference = endDate.getTime() - startDate.getTime();
+    const daysDifference = timeDifference / (1000 * 3600 * 24);
+
+    return daysDifference;
+};
+
+const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Props) => {
     const size = useWindowSize();
     const t = useTranslations('price-list');
 
@@ -57,14 +57,7 @@ const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab 
         );
     });
 
-    const urlForSvg: {
-        src: string;
-        width: any;
-        height: any;
-    } | any = urlForImage(svg)
-        // .auto('format')
-        // .fit('max')
-        // .url();
+    const pathSvg: { src: string, width: number, height: number } | any  = urlForImage(svg);
 
     return (
         <div
@@ -83,7 +76,7 @@ const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab 
                     </button>
                 </div>
                 <div>
-                    <img src={urlForSvg.src} alt={alt} className={styles.svg_icon}/>
+                    <img src={pathSvg?.src} alt={alt} className={styles.svg_icon}/>
                 </div>
             </div>
             <div className={styles.panel__inner} style={innerStyle} aria-hidden={!activeTab === index}>

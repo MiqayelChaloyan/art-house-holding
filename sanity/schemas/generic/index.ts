@@ -1,19 +1,21 @@
-const coWorkersSchemaEducationalCenter = {
-    name: 'co-workers',
+import { RuleType } from '../../ruleType';
+
+const partnersSchema = {
+    name: 'partners',
     type: 'document',
-    title: 'Co-workers',
-    id: 'co-workers-educational-center',
+    title: 'Partners',
+    id: 'partners',
     fields: [
         {
             title: 'Name',
             name: 'name',
             type: 'string',
         },
-        {
+       {
             title: 'Company Name (Ընկերության Անվանումը)',
             name: 'company_name',
             type: 'object',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
                     title: 'Armenian',
@@ -36,7 +38,7 @@ const coWorkersSchemaEducationalCenter = {
             title: 'Cooperation (Համագործակցություն)',
             name: 'cooperation',
             type: 'object',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
                     title: 'Armenian',
@@ -59,7 +61,7 @@ const coWorkersSchemaEducationalCenter = {
             title: 'Implemented Projects (Իրականացված ծրագրեր)',
             name: 'implemented_projects',
             type: 'object',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
                     title: 'Armenian',
@@ -84,7 +86,7 @@ const coWorkersSchemaEducationalCenter = {
             options: {
                 source: 'name',
             },
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
         },
         {
             name: 'logo',
@@ -95,14 +97,13 @@ const coWorkersSchemaEducationalCenter = {
 
                 {
                     name: 'alt',
-                    title: 'Alt',
+                    title: 'Alternative text',
                     type: 'string'
                 }
             ],
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
         },
     ],
 };
 
-export default coWorkersSchemaEducationalCenter;
-
+export default partnersSchema;

@@ -1,3 +1,5 @@
+'use client'
+
 import RatingCard from '../RatingCard';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
@@ -8,23 +10,8 @@ import styles from './styles.module.sass';
 const MobileCards = (data: any, slideIndex: any) => {
     const feedbacks = data.map((card: any, index: string): JSX.Element => {
 
-        const urlForImageBackground: {
-            src: string;
-            width: any;
-            height: any;
-        } | any = urlForImage(card.our_rating_section_image)
-            // .auto('format')
-            // .fit('max')
-            // .url();
-
-        const path: {
-            src: string;
-            width: any;
-            height: any;
-        } | any = urlForImage(card.user_image)
-            // .auto('format')
-            // .fit('max')
-            // .url();
+        const urlForImageBackground: { src: string, width: number, height: number } | any = urlForImage(card.our_rating_section_image);
+        const path: { src: string, width: number, height: number } | any = urlForImage(card.user_image);
 
         const urlImageBackgroundAlt = card.our_rating_section_image.alt;
         const urlImageAlt = card.user_image.alt;

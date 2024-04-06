@@ -1,24 +1,30 @@
-import { FC, useEffect } from 'react';
+'use client'
+
+import { useEffect } from 'react';
+
+import { useTranslations } from 'next-intl';
 
 // import { useAppDispatch } from '@/hooks/useStore';
 // import { closeModal } from '@/store/stateModalSlice';
 
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
-
-// 
-// import Accordion from '../Accordion';
-// import { Courses } from '../../../../../sanity/sanity-queries/courses';
-
-import styles from './styles.module.sass';
-import Accordion from './Accordion';
-import { useTranslations } from 'next-intl';
 import Container from '@/components/components/container';
 
-type PriceListProps = {
+import Accordion from './Accordion';
+
+// import { Courses } from '../../../../../sanity/sanity-queries/courses';
+
+import { Inter } from '@/lib/constants/font';
+
+import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
+
+import styles from './styles.module.sass';
+
+
+interface Props {
 	data: EDUCATIONAL_CENTER_COURSES[]
 }
 
-const PriceList: FC<PriceListProps> = ({ data }) => {
+const PriceList = ({ data }: Props) => {
 	const t = useTranslations('sections');
 	// const dispatch = useAppDispatch();
 
@@ -29,7 +35,7 @@ const PriceList: FC<PriceListProps> = ({ data }) => {
 	return (
 		<section id='price-list' className={styles.container}>
 			<Container>
-				<h1 className={styles.title}>{t('price-list')}</h1>
+				<h1 className={`${styles.title} ${Inter.className}`}>{t('price-list')}</h1>
 				<Accordion courses={data} />
 			</Container>
 		</section>

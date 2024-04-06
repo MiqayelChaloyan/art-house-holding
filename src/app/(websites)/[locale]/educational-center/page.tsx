@@ -1,14 +1,17 @@
-"use server"
-
-import { getTranslations } from "next-intl/server";
+'use server'
 
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
+
 import { type Metadata } from "next";
 
-import { Locale } from "@/locales";
+import { Locale } from '@/locales';
+
+import { client } from '../../../../../sanity/client';
+
 import Home from '@/components/screens/educational-center/home';
 
-import { getHomeData } from '../../../../../sanity/services/educational-center-service/about-us';
+import { query } from '../../../../../sanity/services/educational-center-service/about-us';
 
 
 interface RootLayoutProps {
@@ -19,16 +22,16 @@ interface RootLayoutProps {
 
 
 async function getResources(locale: string) {
-    const res = await getHomeData(locale);
+    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
 
-    if (!res?.length) {
+    if (!data?.length) {
         return {
             data: [],
             isError: true
         }
     }
     return {
-        data: res,
+        data,
         isError: false
     }
 }

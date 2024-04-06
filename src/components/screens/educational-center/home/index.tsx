@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 
 // import { useAppDispatch } from "@/hooks/useStore";
 // import { closeModal } from "@/store/stateModalSlice";
@@ -19,23 +19,22 @@ interface Props {
 }
 
 
-const EducationalCenterHome: FC<Props> = ({ data }) => {
+const EducationalCenterHome = ({ data }: Props) => {
     // const dispatch = useAppDispatch();
 
     // useEffect(() => {
     //     dispatch(closeModal());
     // }, []);
 
-
     return (
         <>
-            {/* <Main data={data} />
+            <Main data={data} />
             <About data={data} />
             <CookingCourses data={data} />
             <News data={data} />
             <Progress data={data} />
             <Specialists data={data} />
-            <OurRating data={data} />  */}
+            <OurRating data={data} /> 
         </>
     )
 }

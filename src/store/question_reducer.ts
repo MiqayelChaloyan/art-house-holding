@@ -1,13 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-export const questionReducer = createSlice({
-    name: 'questions',
-    initialState: {
+export interface Questions {
+        quiz: any
+        trace: number
+        result: number
+        isLoading: boolean
+}
+
+const initialState: Questions = {
         quiz: [],
         trace: 0,
         result: 0,
         isLoading: false
-    },
+};
+
+export const questionReducer = createSlice({
+    name: 'questions',
+    initialState,
     reducers: {
         startExamAction: (state, action) => {
             let quiz = action.payload

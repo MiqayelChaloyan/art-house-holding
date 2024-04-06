@@ -5,18 +5,14 @@ import styles from './styles.module.sass';
 
 
 const Partner = ({ item }: any) => {
-    const { alt } = item;
+    const { logo: { alt }, logo } = item;
 
-    const urlForSvg = urlForImage(item)
-        // .auto('format')
-        // .fit('max')
-        // .url();
-
+    const path = urlForImage(logo);
 
     return (
         <div className={styles.co_worker}>
             <div className={styles.logo}>
-                <img src={urlForSvg?.src} alt={alt} className={styles.svg_icon} />
+                <img src={path?.src} alt={alt} className={styles.svg_icon} />
             </div>
         </div>
     );

@@ -1,20 +1,22 @@
-"use server"
+'use server'
+
+import { notFound } from 'next/navigation';
 
 import { getTranslations } from "next-intl/server";
-import { notFound } from 'next/navigation';
 import { type Metadata } from "next";
 
-import PriceList from "@/components/screens/educational-center/price-list";
+import PriceList from '@/components/screens/educational-center/price-list';
 
-import { Locale } from "@/locales";
+import { Locale } from '@/locales';
 
-import { getCourses } from "../../../../../../sanity/services/educational-center-service/courses";
+import { allCoursesQuery } from '../../../../../../sanity/services/educational-center-service/courses';
+import { client } from '../../../../../../sanity/client';
 
 
 async function getResources(locale: string) {
-    const courses = await getCourses(locale);
+    const data = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
 
-    if (!courses?.length) {
+    if (!data?.length) {
         return {
             data: [],
             isError: true
@@ -22,7 +24,7 @@ async function getResources(locale: string) {
     }
 
     return {
-        data: courses,
+        data,
         isError: false
     }
 }

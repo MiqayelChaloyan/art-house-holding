@@ -2,12 +2,11 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 /** call reducers */
 import questionReducer from './question_reducer';
-// import resultReducer from './result_reducer';
+import stateModal from './modal_reducer';
 
 const rootReducer = combineReducers({
     questions : questionReducer,
-    // result : resultReducer
+    modal: stateModal
 })
 
-/** create store with reducer */
 export default configureStore({ reducer : rootReducer});

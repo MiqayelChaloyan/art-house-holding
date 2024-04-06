@@ -1,4 +1,6 @@
-import { FC, memo, useEffect } from 'react';
+'use client'
+
+import { memo, useEffect } from 'react';
 
 import About from './About';
 import CourseProcess from './CourseProcess';
@@ -6,33 +8,32 @@ import StudentWork from './StudentWork';
 
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
 
-// import { useAppDispatch } from '@/hooks/useStore';
-// import { closeModal } from '@/store/stateModalSlice';
+import { useDispatch } from 'react-redux';
+import { closeModal } from '@/store/modal_reducer';
 
 import PriceList from './PriceList';
 import Main from './Main';
 
-type CoursePageProps = {
+
+interface CoursePageProps {
     course: EDUCATIONAL_CENTER_COURSES | any
 }
 
-const Course: FC<CoursePageProps> = ({ course }) => {
-    // const dispatch = useAppDispatch();
+const Course = ({ course }: CoursePageProps) => {
+    const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     setTimeout(() => dispatch(closeModal()), 1);
-    // }, [course]);
+    useEffect(() => {
+        setTimeout(() => dispatch(closeModal(false)), 1);
+    }, [course]);
 
-
-    // console.log(course, 'course><><')
     
     return (
         <>
-            {/* <Main course={course} />
+            <Main course={course} />
             <About course={course}/>
             <CourseProcess course={course} />
             <StudentWork course={course} />
-            <PriceList course={course} /> */}
+            <PriceList course={course} />
         </>
     );
 };

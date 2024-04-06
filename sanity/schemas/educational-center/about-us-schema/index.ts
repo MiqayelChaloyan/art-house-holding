@@ -1,5 +1,7 @@
-import ArrayMaxItems from "@/lib/utils/ArrayMaxItems";
-import { defineArrayMember } from "sanity";
+import { ClipboardIcon, TrendUpwardIcon, LaunchIcon, UserIcon } from '@sanity/icons';
+
+import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
+import { RuleType } from '../../../ruleType';
 
 export const aboutUsSchemaEducationalCenter = {
     name: 'about-us',
@@ -13,29 +15,21 @@ export const aboutUsSchemaEducationalCenter = {
             type: 'string',
         },
         {
-            name: 'slug',
-            type: 'slug',
-            description: "Պիտի եզակի լինի",
-            options: {
-                source: 'name',
-            },
-            validation: (Rule: any) => Rule.required(),
-        },
-        {
             name: 'main_section',
             type: 'array',
             title: 'Main Section',
             description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: ClipboardIcon,
                     fields: [
                         {
                             title: 'Title',
                             name: 'title',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -58,7 +52,6 @@ export const aboutUsSchemaEducationalCenter = {
                             title: 'Content',
                             name: 'content',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -85,7 +78,7 @@ export const aboutUsSchemaEducationalCenter = {
                             fields: [
                                 {
                                     name: 'alt',
-                                    title: 'Alt',
+                                    title: 'Alternative text',
                                     type: 'string'
                                 }
                             ]
@@ -97,7 +90,6 @@ export const aboutUsSchemaEducationalCenter = {
                             options: {
                                 source: 'name',
                             },
-                            validation: (Rule: any) => Rule.required(),
                         },
                     ]
                 }
@@ -107,7 +99,7 @@ export const aboutUsSchemaEducationalCenter = {
             title: 'About Us Content',
             name: 'about_us_content',
             type: 'object',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
                     title: 'Armenian',
@@ -128,74 +120,67 @@ export const aboutUsSchemaEducationalCenter = {
         },
         {
             name: 'cooking_courses',
-            type: 'array',
+            type: 'object',
             title: 'Cooking Courses Section',
-            // components: { input: ArrayMaxItems },
-            validation: (Rule: any) => Rule.max(1),
-            description: 'Ոչ պակաս, քան մեկ, և ոչ ավելի, միայն դուք կարող եք դա փոփոխել',
-            of: [
+            validation: (Rule: RuleType) => Rule.required(),
+            fields: [
                 {
-                    name: 'Object',
+                    title: 'Video Section Title',
+                    name: 'video_section_title',
                     type: 'object',
+                    validation: (Rule: any) => Rule.required(),
                     fields: [
                         {
-                            title: 'Video Section Title',
-                            name: 'video_section_title',
-                            type: 'object',
-                            validation: (Rule: any) => Rule.required(),
-                            fields: [
-                                {
-                                    title: 'Armenian',
-                                    name: 'am',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'English',
-                                    name: 'en',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'Russian',
-                                    name: 'ru',
-                                    type: 'string'
-                                }
-                            ]
+                            title: 'Armenian',
+                            name: 'am',
+                            type: 'string'
                         },
                         {
-                            name: 'video_url',
-                            title: 'Video Link',
-                            type: 'string',
-                            validation: (Rule: any) => Rule.required(),
+                            title: 'English',
+                            name: 'en',
+                            type: 'string'
                         },
                         {
-                            name: 'video_light',
-                            title: 'Video Light',
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-                                {
-                                    name: 'alt',
-                                    title: 'Alt',
-                                    type: 'string'
-                                }
-                            ],
-                            validation: (Rule: any) => Rule.required(),
-                        },
+                            title: 'Russian',
+                            name: 'ru',
+                            type: 'string'
+                        }
                     ]
-                }
+                },
+                {
+                    name: 'video_url',
+                    title: 'Video Link',
+                    type: 'string',
+                    validation: (Rule: any) => Rule.required(),
+                },
+                {
+                    name: 'video_light',
+                    title: 'Video Light',
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        {
+                            name: 'alt',
+                            title: 'Alternative text',
+                            type: 'string'
+                        }
+                    ],
+                    validation: (Rule: any) => Rule.required(),
+                },
             ]
         },
         {
             name: 'news_section',
             type: 'array',
             title: 'News Section',
-            // components: { input: ArrayMaxItems },
-            validation: (Rule: any) => Rule.max(3),
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(3),
             description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
             of: [
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: ClipboardIcon,
                     fields: [
                         {
                             title: 'News Section Title',
@@ -261,7 +246,7 @@ export const aboutUsSchemaEducationalCenter = {
 
                                 {
                                     name: 'alt',
-                                    title: 'Alt',
+                                    title: 'Alternative text',
                                     type: 'string'
                                 }
                             ]
@@ -295,13 +280,14 @@ export const aboutUsSchemaEducationalCenter = {
             name: 'progress_section',
             type: 'array',
             title: 'Progress Section',
-            // components: { input: ArrayMaxItems },
-            validation: (Rule: any) => Rule.max(4),
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(4),
             description: 'Ոչ պակաս, քան չորս և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
             of: [
-                defineArrayMember({
+                {
                     type: 'object',
                     name: 'tag',
+                    icon: TrendUpwardIcon,
                     fields: [
                         {
                             title: 'Title',
@@ -343,7 +329,7 @@ export const aboutUsSchemaEducationalCenter = {
                             validation: (Rule: any) => Rule.required(),
                         },
                     ]
-                })
+                }
             ]
         },
         {
@@ -351,10 +337,12 @@ export const aboutUsSchemaEducationalCenter = {
             type: 'array',
             title: 'Specialists Sections',
             description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            validation: (Rule: RuleType) => Rule.min(2),
             of: [
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: LaunchIcon,
                     fields: [
                         {
                             title: 'Specialists Section Title',
@@ -420,7 +408,7 @@ export const aboutUsSchemaEducationalCenter = {
 
                                 {
                                     name: 'alt',
-                                    title: 'Alt',
+                                    title: 'Alternative text',
                                     type: 'string'
                                 }
                             ]
@@ -466,13 +454,14 @@ export const aboutUsSchemaEducationalCenter = {
             name: 'our_rating_section',
             type: 'array',
             title: 'Our Rating Section',
-            // components: { input: ArrayMaxItems },
-            validation: (Rule: any) => Rule.max(3),
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(3),
             description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
             of: [
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: UserIcon,
                     fields: [
                         {
                             title: 'User Name',
@@ -506,7 +495,7 @@ export const aboutUsSchemaEducationalCenter = {
 
                                 {
                                     name: 'alt',
-                                    title: 'Alt',
+                                    title: 'Alternative text',
                                     type: 'string'
                                 }
                             ]
@@ -551,7 +540,7 @@ export const aboutUsSchemaEducationalCenter = {
                             fields: [
                                 {
                                     name: 'alt',
-                                    title: 'Alt',
+                                    title: 'Alternative text',
                                     type: 'string'
                                 }
                             ]

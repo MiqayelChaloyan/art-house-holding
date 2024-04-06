@@ -22,24 +22,9 @@ const sizes = [
     }
 ];
 
-const Rating = ({ data }: any) => data.map((card: any, index: number): JSX.Element => {
-    const urlForImageBackground: {
-        src: string;
-        width: any;
-        height: any;
-    } | any = urlForImage(card.our_rating_section_image)
-    // .auto('format')
-    // .fit('max')
-    // .url();
-
-    const path: {
-        src: string;
-        width: any;
-        height: any;
-    } | any = urlForImage(card.user_image)
-    // .auto('format')
-    // .fit('max')
-    // .url();
+const Rating = ({ data }: any) => data?.map((card: any, index: number): JSX.Element => {
+    const urlForImageBackground: { src: string, width: number, height: number } | any = urlForImage(card.our_rating_section_image);
+    const path: { src: string, width: number, height: number } | any= urlForImage(card.user_image);
 
     const urlImageBackgroundAlt = card.our_rating_section_image.alt;
     const urlImageAlt = card.user_image.alt;
@@ -56,8 +41,7 @@ const Rating = ({ data }: any) => data.map((card: any, index: number): JSX.Eleme
         ...sizes[index],
     };
 
-    // return <RatingCard key={card.slug} options={options} />;
-    return <div>1</div>
+    return <RatingCard key={card.slug} options={options} />;
 });
 
 export default memo(Rating);

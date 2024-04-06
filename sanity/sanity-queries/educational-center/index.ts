@@ -22,11 +22,3 @@ export interface EDUCATIONAL_CENTER_COURSES {
     svg: any
     price_list: any
 };
-
-export interface EDUCATIONAL_CENTER_CO_WORKERS {
-    id: string
-    _id: string
-    name: string
-    co_workers_image: string
-    slug: { current: string }
-};

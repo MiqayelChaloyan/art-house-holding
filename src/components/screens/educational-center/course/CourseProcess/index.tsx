@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -14,29 +14,22 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-quer
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     course: EDUCATIONAL_CENTER_DEFAULT[] | any
 };
 
 
-const CourseProcess: FC<Props> = ({ course }) => {
+const CourseProcess = ({ course }: Props) => {
     const t = useTranslations('sections');
 
-    const path: {
-        src: string;
-        width: any;
-        height: any;
-    } | undefined = urlForImage(course[0].course_process[0].video_light)
-        // .auto('format')
-        // .fit('max')
-        // .url();
+    const path: { src: string, width: number, height: number } | any = urlForImage(course[0].course_process.video_light);
 
     return (
         <section id='video-player' className={styles.container}>
             <Container>
                 <h1 className={styles.title}>{t('courses-process')}</h1>
                 <div className={styles.video_player}>
-                    <Player light={path?.src} path={course[0].course_process[0].video_url} />
+                    <Player light={path?.src} path={course[0].course_process.video_url} />
                 </div>
             </Container>
         </section>

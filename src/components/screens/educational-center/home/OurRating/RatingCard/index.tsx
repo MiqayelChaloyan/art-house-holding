@@ -1,3 +1,5 @@
+'use client'
+
 import { memo } from 'react';
 
 import { useTranslations } from 'next-intl';
@@ -14,7 +16,7 @@ const RatingCard = ({ options }: any) => {
     const t = useTranslations('texts');
 
     return (
-        <div className={styles.column} style={{ backgroundImage: `url(${options.urlForImageBackground.src})` }}>
+        <div className={styles.column} style={{ backgroundImage: `url(${options.urlForImageBackground})` }}>
                 <div className={styles.rating_card_blog} style={{ marginTop: `${options.top ? options.top : 20}px` }}>
                     <div className={styles.header} style={{ marginBottom: `${options.bottom ? options.bottom : 20}px` }}>
                         <div className={styles.header_text}>
@@ -31,13 +33,13 @@ const RatingCard = ({ options }: any) => {
                     <div className={styles.card} style={{ marginLeft: `${options.left ? options.left : 10}px` }}>
                         <div className={styles.left}>
                             <Image
-                                src={options.urlForImage.src}
+                                src={options.urlForImage}
                                 alt={options.urlImageAlt}
                                 priority
                                 className={styles.user_image}
                                 width={0}
                                 height={0}
-                                sizes="100vw"
+                                sizes='100vw'
                                 style={{ objectFit: 'cover' }}
                             />
                         </div>

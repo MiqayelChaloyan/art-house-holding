@@ -1,17 +1,23 @@
-import { notFound } from "next/navigation";
+'use server'
 
-import Header from "@/lib/outlets/educational-center/Header";
-import BottomMenu from "@/lib/outlets/educational-center/BottomMenu";
-import RightMenu from "@/lib/outlets/educational-center/RightMenu";
-import Footer from "@/lib/outlets/educational-center/Footer";
+import { notFound } from 'next/navigation';
 
-import { getCourses } from "../../../../../sanity/services/educational-center-service/courses";
+import Header from '@/lib/outlets/educational-center/Header';
+import BottomMenu from '@/lib/outlets/educational-center/BottomMenu';
+import RightMenu from '@/lib/outlets/educational-center/RightMenu';
+import Footer from '@/lib/outlets/educational-center/Footer';
+
+import Modal from '@/lib/outlets/educational-center/Modal';
+import CoursesModal from '@/lib/outlets/educational-center/Modal/courses';
+
+import { allCoursesQuery } from '../../../../../sanity/services/educational-center-service/courses';
+import { client } from '../../../../../sanity/client';
 
 
 async function getResources(locale: string) {
-    const courses = await getCourses(locale);
+    const data = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
 
-    if (!courses?.length) {
+    if (!data?.length) {
         return {
             data: [],
             isError: true
@@ -19,7 +25,7 @@ async function getResources(locale: string) {
     }
 
     return {
-        data: courses,
+        data,
         isError: false
     }
 }
@@ -49,17 +55,18 @@ async function Layout({
                 <RightMenu />
                 <BottomMenu locale={locale} />
                 <div className="wrapper-content">
-                    <Header typePosition='fixed'  locale={locale} />
+                    <Header typePosition='fixed' locale={locale} />
                     <main className="wrapper-main">
                         {children}
                     </main>
                 </div>
                 <Footer courses={data} />
             </div>
-            {/* <Modal>
-            <CoursesModal courses={courses} />
-        </Modal> */}
+            <Modal>
+                <CoursesModal  locale={locale} courses={data} /> 
+            </Modal>
             {/* <ModalLoading/> */}
+            {/* <CoursesModal courses={data} /> */}
         </div>
 
     );

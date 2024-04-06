@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import Container from '@/components/components/container';
 
@@ -12,28 +12,22 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-quer
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 };
 
 
-const CookingCourses: FC<Props> = ({ data }) => {
-    const path: {
-        src: string;
-        width: any;
-        height: any;
-    } | any = urlForImage(data[0].cooking_courses[0].video_light)
-        // .auto('format')
-        // .fit('max')
-        // .url();
+const CookingCourses = ({ data }: Props) => {
+    const path: { src: string, width: number, height: number } | any = urlForImage(data[0].cooking_courses.video_light)
+
 
     return (
         <section id='video-player' className={styles.container}>
             <div className={styles.triangle} />
             <Container>
-                <h1 className={styles.title}>{data[0].cooking_courses[0].video_section_title}</h1>
+                <h1 className={styles.title}>{data[0].cooking_courses.video_section_title}</h1>
                 <div className={styles.video_player}>
-                    <Player light={path?.src} path={data[0].cooking_courses[0].video_url} />
+                    <Player light={path?.src} path={data[0].cooking_courses.video_url} />
                 </div>
             </Container>
         </section>

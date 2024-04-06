@@ -1,8 +1,10 @@
-import { NextIntlClientProvider, useMessages } from "next-intl";
+'use server'
 
-import { StoreProvider } from "@/store/StoreProvider";
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import { Inter } from "@/lib/constants/font";
+import { StoreProvider } from '@/store/StoreProvider';
+
+import { Inter } from '@/lib/constants/font';
 
 import '@/styles/globals.sass';
 
@@ -13,12 +15,6 @@ interface RootLayoutProps {
     locale: string
   };
 }
-
-// if (process.env.NODE_ENV === 'production') {
-//   console.log = () => {}
-//   console.error = () => {}
-//   console.debug = () => {}
-// }
 
 function RootLayout({
   children,

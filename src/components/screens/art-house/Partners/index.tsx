@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import { memo, FC, useState } from 'react';
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { memo, useState } from 'react';
+import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 import { useTranslations } from 'next-intl';
 
@@ -17,7 +17,7 @@ import { ArianAMU } from '@/lib/constants/font';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import "swiper/css/autoplay";
+import 'swiper/css/autoplay';
 
 // slick-carousel 
 import Slider from 'react-slick';
@@ -26,7 +26,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { ART_HOUSE_HOME } from '../../../../../sanity/sanity-queries/art-house';
+import { PARTNERS } from '../../../../../sanity/sanity-queries/generic';
 
 import styles from './styles.module.sass';
 
@@ -44,12 +44,12 @@ const SamplePrevArrow = ({ onClick }: any) => (
 );
 
 
-type Props = {
-    data: ART_HOUSE_HOME[]
+interface Props {
+    partners?: PARTNERS[]
 };
 
 
-const Partners: FC<Props> = ({ data }) => {
+const Partners = ({ partners }: Props) => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
     const windowSize = useWindowSize();
     const t = useTranslations('navigation');
@@ -77,24 +77,24 @@ const Partners: FC<Props> = ({ data }) => {
         autoplay: true,
         autoplaySpeed: 2000,
         dots: false,
-        beforeChange: (current: any, next: any) => setSlideIndex(next),
+        beforeChange: (_: unknown, next: any) => setSlideIndex(next),
         centerMode: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         cssEase: 'ease-out',
-    }
+    };
 
 
     return (
-        <div id='co-workers' className={styles.container}>
+        <section id='co-workers' className={styles.container}>
             <h2 className={`${styles.title} ${ArianAMU.className}`}>
                 {t('co-workers')}
             </h2>
             <div className={styles.desktop}>
                 <Swiper {...params}>
                     {
-                        data?.map((item: any) =>
-                            <SwiperSlide key={item._key}>
+                        partners?.map((item, index) =>
+                            <SwiperSlide key={index}>
                                 <Partner item={item} />
                             </SwiperSlide>
                         )
@@ -104,7 +104,7 @@ const Partners: FC<Props> = ({ data }) => {
             <div className={styles.mobile}>
                 <Slider {...settings}>
                     {
-                        data?.map((item, index) => (
+                        partners?.map((item, index) => (
                             <div
                                 key={index}
                                 className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}
@@ -115,7 +115,7 @@ const Partners: FC<Props> = ({ data }) => {
                     }
                 </Slider>
             </div>
-        </div>
+        </section>
     );
 };
 

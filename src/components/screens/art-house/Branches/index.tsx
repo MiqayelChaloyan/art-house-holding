@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { FC } from 'react';
 
 import Branch from '@/lib/ui/branch';
 
@@ -20,34 +20,49 @@ import { ART_HOUSE_HOME } from '../../../../../sanity/sanity-queries/art-house';
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     data: ART_HOUSE_HOME[]
 };
 
+interface Branch {
+    company_name?: string,
+    words?: string,
+    website_logo_front?: {
+        _type: string,
+        alt: string,
+        asset: { _type: string, _ref: string }
+    },
+    website_logo_back?: {
+        _type: string,
+        alt: string,
+        asset: { _ref: string, _type: string }
+    },
+    slug?: string,
+    web_site_url?: string
+}
+
 interface SwiperTypes {
-    effect: 'coverflow';
-    grabCursor: boolean;
-    centeredSlides: boolean;
-    slidesPerView: 'auto';
-    pagination: boolean;
-    modules: (typeof EffectCoverflow | typeof Pagination)[];
-    className: string;
-    coverflowEffect: {
-        rotate: number;
-        stretch: number;
-        depth: number;
-        modifier: number;
-        slideShadows: boolean;
+    effect?: 'coverflow';
+    grabCursor?: boolean;
+    centeredSlides?: boolean;
+    slidesPerView?: 'auto';
+    pagination?: boolean;
+    modules?: (typeof EffectCoverflow | typeof Pagination)[];
+    className?: string;
+    coverflowEffect?: {
+        rotate?: number;
+        stretch?: number;
+        depth?: number;
+        modifier?: number;
+        slideShadows?: boolean;
     };
 };
 
 
-const Branches: FC<Props> = ({ data }) => {
-    // const { locale } = useRouter();
+const Branches = ({ data }: Props) => {
 
-    const cards: JSX.Element[] = data?.map((item: any) => <Branch key={item.slug} item={item} locale={'en'}/>);
+    const cards: JSX.Element[] = data?.map((item: any) => <Branch key={item.slug} item={item} locale={'en'} />);
 
-    // console.log(locale)
     const result: JSX.Element[] = cards?.map((card: JSX.Element) => (
         <SwiperSlide key={card.key}>
             {card}
@@ -59,7 +74,6 @@ const Branches: FC<Props> = ({ data }) => {
         grabCursor: false,
         centeredSlides: true,
         slidesPerView: 'auto',
-
         pagination: true,
         modules: [EffectCoverflow, Pagination],
         className: styles.mySwiper,
@@ -74,7 +88,7 @@ const Branches: FC<Props> = ({ data }) => {
 
 
     return (
-        <div id='branches' className={styles.container}>
+        <section id='branches' className={styles.container}>
             <Container>
                 <div className={styles.cards}>
                     {cards}
@@ -86,8 +100,8 @@ const Branches: FC<Props> = ({ data }) => {
                     </Swiper>
                 </div>
             </Container>
-        </div>
+        </section>
     );
 };
 
-export default memo(Branches);
+export default Branches;

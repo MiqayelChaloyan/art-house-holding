@@ -1,4 +1,4 @@
-import { FC } from 'react';
+'use client'
 
 import { useTranslations } from 'next-intl';
 
@@ -9,7 +9,7 @@ import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-quer
 import styles from './style.module.sass';
 
 
-type PriceListProps = {
+interface Props {
     course: EDUCATIONAL_CENTER_COURSES | any
 };
 
@@ -22,7 +22,7 @@ function daysBetweenDates(dateStr1: any, dateStr2: any) {
     return daysDifference;
 };
 
-const PriceList: FC<PriceListProps> = ({ course }) => {
+const PriceList= ({ course }: Props) => {
     const t = useTranslations();
 
     const table = course[0].price_list && course[0].price_list.map((item: any) => {

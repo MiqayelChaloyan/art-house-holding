@@ -1,31 +1,33 @@
-"use server"
+'use server'
 
-import { getTranslations } from "next-intl/server";
 import { notFound } from 'next/navigation';
-import { type Metadata } from "next";
+import { getTranslations } from 'next-intl/server';
 
-import CoWorkers from "@/components/screens/educational-center/co-workers";
+import { type Metadata } from 'next';
 
-import { Locale } from "@/locales";
+import CoWorkers from '@/components/screens/educational-center/co-workers';
 
-import { getCoWorkers } from "../../../../../../sanity/services/educational-center-service/co-workers";
+import { Locale } from '@/locales';
+
+import { client } from '../../../../../../sanity/client';
+import { partnersQuery } from '../../../../../../sanity/services/generic-service';
 
 
 async function getResources(locale: string) {
-    const co_workers = await getCoWorkers(locale);
-
-    if (!co_workers?.length) {
-        return {
-            data: [],
-            isError: true
-        }
+    const partners = await client.fetch(partnersQuery, { language: locale }, { next: { revalidate: 100 } });
+  
+    if (!partners?.length || !partners?.length) {
+      return {
+        partners: [],
+        isError: true
+      }
     }
-
+  
     return {
-        data: co_workers,
-        isError: false
+      partners,
+      isError: false
     }
-}
+  }
 
 
 interface LayoutProps {
@@ -36,13 +38,13 @@ interface LayoutProps {
 
 
 export default async function Page({ params: { locale } }: LayoutProps) {
-    const { data, isError } = await getResources(locale);
+    const { partners, isError } = await getResources(locale);
 
-    if (!data || isError) {
+    if (!partners || isError) {
         notFound()
     }
 
-    return <CoWorkers data={data} />;
+    return <CoWorkers data={partners} />;
 }
 
 

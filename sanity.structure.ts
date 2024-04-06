@@ -8,7 +8,6 @@ export default (S: any) =>
             ...S.documentTypeListItems().filter(
                 (listItem: any) => ![
                     'art-house-home',
-                    'co-workers',
                     'about-us',
                     'courses',
                     'languages',
@@ -19,6 +18,7 @@ export default (S: any) =>
                     'languages-select-option',
                     'questions-language',
                     'discounts-languages',
+                    'partners'
                 ].includes(listItem.getId())
             ),
 
@@ -52,13 +52,6 @@ export default (S: any) =>
                                         .title('Courses')
                                         .filter('_type == "courses"')
                                 ),
-                            S.listItem()
-                                .title('Co-Workers')
-                                .child(
-                                    S.documentList()
-                                        .title('Co-Workers')
-                                        .filter('_type == "co-workers"')
-                                )
                         ])
                 ),
 
@@ -126,6 +119,21 @@ export default (S: any) =>
                                 .title('Discounts')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('discounts-languages').documentId('discounts-languages')),
+                        ])
+                ),
+
+            S.listItem().title('GENERIC')
+                .child(
+                    S.list()
+                        .title('Pages')
+                        .items([
+                            S.listItem()
+                                .title('Partners')
+                                .child(
+                                    S.documentList()
+                                        .title('Partners')
+                                        .filter('_type == "partners"')
+                                ),
                         ])
                 ),
         ]);

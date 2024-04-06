@@ -1,18 +1,18 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import Course from '../Course';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 
-type Props = {
+interface Props {
     data: any
 };
 
 
-const Courses: FC<Props> = ({ data }) => {
+const Courses = ({ data }: Props) => {
     const scrollToElement = () => {
         const container: HTMLElement | null = document.getElementById('contact');
         if (container) {
@@ -22,23 +22,8 @@ const Courses: FC<Props> = ({ data }) => {
 
     return (
         data.map((item: any): JSX.Element => {
-            const path1: {
-                src: string;
-                width: any;
-                height: any;
-            } | any = urlForImage(item.news_image_one)
-                // .auto('format')
-                // .fit('max')
-                // .url();
-
-            const path2: {
-                src: string;
-                width: any;
-                height: any;
-            } | any = urlForImage(item.news_image_two)
-                // .auto('format')
-                // .fit('max')
-                // .url();
+            const path1: { src: string, width: number, height: number } | any = urlForImage(item.news_image_one);
+            const path2: { src: string, width: number, height: number } | any = urlForImage(item.news_image_two);
 
             const course = {
                 subtitle: item.subtitle,

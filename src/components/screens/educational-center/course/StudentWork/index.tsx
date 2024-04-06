@@ -1,30 +1,31 @@
-"use client"
+'use client'
 
-import { FC, memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
 import Image from 'next/image';
-
 import { useTranslations } from 'next-intl';
 
 import Cancel from '@/lib/icons/educational-center/Cancel';
+import Button from '@/lib/ui/Button';
 // import Carousel from '@/lib/ui/';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import Container from '@/components/components/container';
-import Button from '@/lib/ui/Button';
+
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './style.module.sass';
+import { Inter } from '@/lib/constants/font';
 
 
-type Props = {
+interface Props {
     course: EDUCATIONAL_CENTER_COURSES | any
 };
 
-const StudentWork: FC<Props> = ({ course }) => {
+const StudentWork = ({ course }: Props) => {
     const [initialLoadCourses, setInitialLoadCourses] = useState<number>(8);
-    const [isFullscreen, setFullscreen] = useState(false);
-    const [imageUrl, setImageUrl] = useState('');
+    const [isFullscreen, setFullscreen] = useState<boolean>(false);
+    const [imageUrl, setImageUrl] = useState<string>('');
     const t = useTranslations();
 
     useEffect(() => setInitialLoadCourses(8), [course]);
@@ -37,15 +38,7 @@ const StudentWork: FC<Props> = ({ course }) => {
     };
 
     const images = course[0].student_works.slice(0, initialLoadCourses).map((item: any) => {
-
-        const urlFor: {
-            src: string;
-            width: any;
-            height: any;
-        } | any = urlForImage(item)
-            // .auto('format')
-            // .fit('max')
-            // .url();
+        const path: { src: string, width: number, height: number } | any = urlForImage(item);
 
         return (
             <div
@@ -53,17 +46,17 @@ const StudentWork: FC<Props> = ({ course }) => {
                 className={`${styles.img_block} ${isFullscreen ? styles.fullscreenContainer : ''}`}
                 onClick={() => {
                     setFullscreen(true);
-                    setImageUrl(urlFor?.src);
+                    setImageUrl(path?.src);
                 }}
             >
                 <Image
-                    src={urlFor?.src}
+                    src={path?.src}
                     alt={item.alt}
                     priority
                     className={styles.work_img}
                     width={0}
                     height={0}
-                    sizes="100vw"
+                    sizes='100vw'
                     style={{ objectFit: 'cover' }}
                 />
             </div>
@@ -76,9 +69,9 @@ const StudentWork: FC<Props> = ({ course }) => {
 
     return (
         <section id='student-work' className={styles.container}>
-            <div className={styles.skew} />
+            <div className={styles.triangle} />
             <Container>
-                <h1 className={styles.title}>{t('sections.student-work')}</h1>
+                <h1 className={`${styles.title} ${Inter.className}`}>{t('sections.student-work')}</h1>
                 <div className={styles.works}>
                     <div className={styles.student_work}>
                         {images}
@@ -104,13 +97,13 @@ const StudentWork: FC<Props> = ({ course }) => {
                                     className={styles.img}
                                     width={0}
                                     height={0}
-                                    sizes="100vw"
+                                    sizes='100vw'
                                     style={{ objectFit: 'cover' }}
                                 />
                             </div>
                         )
                     }
-                    {course[0].student_works.length < 8 ? (
+                    {course[0]?.student_works.length < 8 ? (
                         <div className={styles.block_buttons}>
                             <div className={styles.btn_group}>
                                 <Button

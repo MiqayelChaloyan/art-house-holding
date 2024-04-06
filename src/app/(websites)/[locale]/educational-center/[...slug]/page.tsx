@@ -1,29 +1,32 @@
-"use server"
+'use server'
 
 import { notFound } from 'next/navigation';
-import { type Metadata } from "next";
+import { type Metadata } from 'next';
 
-import Course from "@/components/screens/educational-center/course";
+import Course from '@/components/screens/educational-center/course';
 
-import { Locale } from "@/locales";
+import { Locale } from '@/locales';
 
-import { getCourseBySlug } from "../../../../../../sanity/services/educational-center-service/courses";
+import { courseBySlugQuery } from '../../../../../../sanity/services/educational-center-service/courses';
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
+
+import { client } from '../../../../../../sanity/client';
+
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 
 async function getResources(locale: string, slug: string) {
-    const course = await getCourseBySlug(slug, locale);
+    const course = await client.fetch(courseBySlugQuery, { language: locale, slug }, { next: { revalidate: 100 } });
 
-    if (!course) {
+    if (!course?.length) {
         return {
-            data: [],
+            course: [],
             isError: true
         }
     }
 
     return {
-        data: course,
+        course,
         isError: false
     }
 }
@@ -38,61 +41,61 @@ interface LayoutProps {
 
 
 export default async function Page({ params: { locale, slug } }: LayoutProps) {
-    const { data, isError } = await getResources(locale, slug[0]);
+    const { course, isError } = await getResources(locale, slug[0]);
 
-    if (!data || isError) {
+    if (!course || isError) {
         notFound()
     }
 
-    return <Course course={data} />;
+    return <Course course={course} />;
 }
 
 
-export async function generateMetadata({
-    params: { locale, slug },
-}: {
-    params: { locale: Locale, slug: string[] };
-}): Promise<Metadata> {
-    const { data, isError }: EDUCATIONAL_CENTER_COURSES | any = await getResources(locale, slug[0]);
-    
-    if (!data.length || isError) {
-        notFound()
-    }
+// export async function generateMetadata({
+//     params: { locale, slug },
+// }: {
+//     params: { locale: Locale, slug: string[] };
+// }): Promise<Metadata> {
+//     const { data, isError }: EDUCATIONAL_CENTER_COURSES | any = await getResources(locale, slug[0]);
 
-    const { course_name, about_us_content, svg, course_main: [{ title, content, image }] } = data[0];
+//     if (!data.length || isError) {
+//         notFound()
+//     }
 
-    const urlForImg = urlForImage(image)
-        // .auto('format')
-        // .fit('max')
-        // .url();
+//     const { course_name, about_us_content, svg, course_main: [{ title, content, image }] } = data[0];
 
-    const urlForImageSvg = urlForImage(svg)
-        // .auto('format')
-        // .fit('max')
-        // .url();
+//     const urlForImg = urlForImage(image)
+//     // .auto('format')
+//     // .fit('max')
+//     // .url();
 
-    return {
-        metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN as string | URL),
-        title: course_name,
-        description: about_us_content,
-        keywords: [course_name, title],
-        authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
-        icons: {
-            icon: urlForImageSvg?.src,
-        },
-        openGraph: {
-            // title: title,
-            // description: content,
-            // url: urlForImg?.src,
-            type: 'website',
-            // images: [
-            //     {
-            //         url: urlForImg?.src,
-            //         width: 400,
-            //         height: 400,
-            //         alt: course_name,
-            //     },
-            // ],
-        },
-    };
-}
+//     const urlForImageSvg = urlForImage(svg)
+//     // .auto('format')
+//     // .fit('max')
+//     // .url();
+
+//     return {
+//         metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN as string | URL),
+//         title: course_name,
+//         description: about_us_content,
+//         keywords: [course_name, title],
+//         authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
+//         icons: {
+//             icon: urlForImageSvg?.src,
+//         },
+//         openGraph: {
+//             // title: title,
+//             // description: content,
+//             // url: urlForImg?.src,
+//             type: 'website',
+//             // images: [
+//             //     {
+//             //         url: urlForImg?.src,
+//             //         width: 400,
+//             //         height: 400,
+//             //         alt: course_name,
+//             //     },
+//             // ],
+//         },
+//     };
+// }
