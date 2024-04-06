@@ -38,7 +38,7 @@ function ScrollToTopButton() {
             initial="hide"
             animate={controls}
             onClick={scrollToTop}>
-            <FaArrowUp />
+            <FaArrowUp size={25}/>
         </motion.button>
     );
 }

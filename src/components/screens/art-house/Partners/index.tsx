@@ -44,8 +44,8 @@ const SamplePrevArrow = ({ onClick }: any) => (
 );
 
 
-interface Props {
-    partners?: PARTNERS[]
+type Props = {
+    partners: PARTNERS[] | any
 };
 
 
@@ -86,14 +86,14 @@ const Partners = ({ partners }: Props) => {
 
 
     return (
-        <section id='co-workers' className={styles.container}>
+        <section id='partners' className={styles.container}>
             <h2 className={`${styles.title} ${ArianAMU.className}`}>
-                {t('co-workers')}
+                {t('partners')}
             </h2>
             <div className={styles.desktop}>
                 <Swiper {...params}>
                     {
-                        partners?.map((item, index) =>
+                        partners?.map((item: any, index: number) =>
                             <SwiperSlide key={index}>
                                 <Partner item={item} />
                             </SwiperSlide>
@@ -104,7 +104,7 @@ const Partners = ({ partners }: Props) => {
             <div className={styles.mobile}>
                 <Slider {...settings}>
                     {
-                        partners?.map((item, index) => (
+                        partners?.map((item: any, index: number) => (
                             <div
                                 key={index}
                                 className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}

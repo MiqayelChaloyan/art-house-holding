@@ -1,4 +1,5 @@
-"use client"
+'use client'
+
 import { FC, memo } from 'react';
 
 import { useTranslations } from 'next-intl';
@@ -17,7 +18,7 @@ type Props = {
 };
 
 
-const News: FC<Props> = ({ data }) => {
+const News = ({ data }: Props) => {
     const newsItems = data[0].news_section.slice(0, 3);
     const t = useTranslations('sections');
 

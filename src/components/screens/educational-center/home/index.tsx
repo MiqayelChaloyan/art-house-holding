@@ -1,30 +1,32 @@
-import { useEffect } from "react";
+'use client'
 
-// import { useAppDispatch } from "@/hooks/useStore";
-// import { closeModal } from "@/store/stateModalSlice";
+import { useEffect } from 'react';
 
-import Main from "./Main";
-import About from "./About";
-import CookingCourses from "./CookingCourses";
-import News from "./News";
-import Progress from "./Progress";
-import Specialists from "./Specialists";
-import OurRating from "./OurRating";
+import { useDispatch } from 'react-redux';
+import { closeModal } from '@/store/modal_reducer';
 
-import { EDUCATIONAL_CENTER_DEFAULT } from "../../../../../sanity/sanity-queries/educational-center";
+import Main from './Main';
+import About from './About';
+import CookingCourses from './CookingCourses';
+import News from './News';
+import Progress from './Progress';
+import Specialists from './Specialists';
+import OurRating from './OurRating';
+
+import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../sanity/sanity-queries/educational-center';
 
 
-interface Props {
+type Props = {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 }
 
 
 const EducationalCenterHome = ({ data }: Props) => {
-    // const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(closeModal());
-    // }, []);
+    useEffect(() => {
+        dispatch(closeModal(false));
+    }, []);
 
     return (
         <>

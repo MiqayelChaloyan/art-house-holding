@@ -11,9 +11,9 @@ import { ART_HOUSE_HOME } from '../../../../sanity/sanity-queries/art-house';
 import { PARTNERS } from '../../../../sanity/sanity-queries/generic';
 
 
-interface RootProps {
-    data?: ART_HOUSE_HOME | any
-    partners?: PARTNERS[] | any
+type RootProps = {
+    data: ART_HOUSE_HOME[]
+    partners: PARTNERS[]
 };
 
 
@@ -21,8 +21,8 @@ export default function Home({ data, partners }: Readonly<RootProps>) {
     return (
         <Layout headerPosition='fixed'>
             <Main />
-            <Branches data={data?.our_websites} />
-            <Progress data={data?.progress_section} />
+            <Branches data={data} />
+            <Progress data={data} />
             <Partners partners={partners} />
         </Layout>
     );
