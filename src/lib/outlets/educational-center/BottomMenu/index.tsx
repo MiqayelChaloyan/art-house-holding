@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React from 'react';
 
@@ -8,8 +8,8 @@ import { usePathname } from 'next/navigation'
 
 // import { useRouter } from 'next/router';
 
-// import { useAppDispatch } from '@/hooks/useStore';
-// import { openModal } from '@/store/stateModalSlice';
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/store/modal_reducer';
 
 import Home from '@/lib/icons/educational-center/Home';
 import Courses from '@/lib/icons/educational-center/Courses';
@@ -28,7 +28,7 @@ type Props = {
 
 
 const BottomMenu = ({ locale }: Props) => {
-	// const dispatch = useAppDispatch();
+	const dispatch = useDispatch();
 	const pathname = usePathname();
 
 	return (
@@ -44,7 +44,7 @@ const BottomMenu = ({ locale }: Props) => {
 				</Link>
 				<button
 					className={styles.nav__link}
-					// onClick={() => setTimeout(() => dispatch(openModal()), 500)}
+					onClick={() => setTimeout(() => dispatch(openModal(true)), 500)}
 					title='Courses'
 				>
 					<Courses width={22} height={22} fill='white' />
@@ -58,10 +58,10 @@ const BottomMenu = ({ locale }: Props) => {
 					<PriceList width={22} height={22} fill='white' />
 				</Link>
 				<Link
-					className={`${pathname === `/${locale}${Pages.EDUCATIONAL_CO_WORKER}` ? `${styles.linkActive}` : ''} ${styles.nav__link}`}
-					href={`/${locale}${Pages.EDUCATIONAL_CO_WORKER}`}
-					aria-label='Co Worker'
-					title='Co Worker'
+					className={`${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? `${styles.linkActive}` : ''} ${styles.nav__link}`}
+					href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`}
+					aria-label='Partners'
+					title='Partners'
 				>
 					<CoWorkers width={25} height={22} fill='white' />
 				</Link>

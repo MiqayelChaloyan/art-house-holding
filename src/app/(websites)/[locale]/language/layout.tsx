@@ -47,7 +47,7 @@ async function Layout({
                 <div>
                     <Header locale={locale} />
                 </div>
-                {/* <FBMessenger /> */}
+                <FBMessenger />
                 <ScrollToTopButton/>
                 <main className="languages-main">
                     {children}
