@@ -1,43 +1,73 @@
 .container
     background: var(--color-black)
     position: relative
-    /* 2xl */
-    @media screen and ( max-width: 1536px )
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
       height: 800px !important
-    /* xl */
-    @media screen and ( max-width: 1280px )
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+      height: 800px !important
+    /* @xl */
+    @media screen and (max-width: 1440px)
       height: 700px !important
-    /* lg */
-    @media screen and ( max-width: 1024px )
+    /* @lg */
+    @media screen and (max-width: 1280px)
+      height: 700px !important
+    /* @md */
+    @media screen and (max-width: 1024px)
       height: 550px !important
-    /* md */
-    @media screen and ( max-width: 768px )
+    /* @sm */
+    @media screen and (max-width: 768px)
       height: 480px !important
-    /* sm */
-    @media screen and ( max-width: 640px )
+    /* @xs */
+    @media screen and (max-width: 600px)
       height: 390px !important
-    /* xs */
-    @media screen and ( max-width: 475px )
+    /* @2xs */
+    @media screen and (max-width: 480px)
+      height: 373px !important
+    /* @3xs */
+    @media screen and (max-width: 360px)
       height: 373px !important
 
 
 .video_player
-   display: flex
-   justify-content: space-around
-   align-items: baseline
-   height: 721px
-   @media screen and (max-device-width: 1600px) 
-       padding: 0
-   @media screen and (max-device-width: 1200px) 
-       padding: 0
-   @media screen and ( max-width: 991px )
-       display: flex
-       padding-top: 10px
-       height: 399px
-   @media screen and ( max-width: 767px )
-       display: block
-       height: 250px
-       padding-top: 0
+    display: flex
+    justify-content: space-around
+    align-items: baseline
+    height: 600px
+    margin: 40px auto
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+      height: 600px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+      height: 600px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+      height: 600px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+      height: 400px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+      height: 400px
+    /* @md */
+    @media screen and (max-width: 1024px)
+      height: 400px
+    /* @sm */
+    @media screen and (max-width: 768px)
+      height: 399px
+    /* @xs */
+    @media screen and (max-width: 600px)
+      height: 399px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+      height: 399px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+      height: 399px
 
 
 .title

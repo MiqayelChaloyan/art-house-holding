@@ -6,7 +6,20 @@ export default (S: any) =>
         .title('Base')
         .items([
             ...S.documentTypeListItems().filter(
-                (listItem: any) => !['art-house-home', 'co-workers', 'about-us', 'courses', 'languages', 'about-language', 'about-us-language', 'price-list-language'].includes(listItem.getId())
+                (listItem: any) => ![
+                    'art-house-home',
+                    'about-us',
+                    'courses',
+                    'languages',
+                    'about-language',
+                    'about-us-language',
+                    'price-list-language',
+                    'co-workers-language',
+                    'languages-select-option',
+                    'questions-language',
+                    'discounts-languages',
+                    'partners'
+                ].includes(listItem.getId())
             ),
 
             S.listItem()
@@ -39,13 +52,6 @@ export default (S: any) =>
                                         .title('Courses')
                                         .filter('_type == "courses"')
                                 ),
-                            S.listItem()
-                                .title('Co-Workers')
-                                .child(
-                                    S.documentList()
-                                        .title('Co-Workers')
-                                        .filter('_type == "co-workers"')
-                                )
                         ])
                 ),
 
@@ -82,11 +88,8 @@ export default (S: any) =>
                                 .child(S.document().schemaType('about-us-language').documentId('about-us-language')),
                             S.listItem()
                                 .title('Courses')
-                                .child(
-                                    S.documentList()
-                                        .title('Courses')
-                                        .filter('_type == "languages"')
-                                ),
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('languages-select-option').documentId('languages-select-option')),
                             S.listItem()
                                 .title('Languages')
                                 .child(
@@ -98,13 +101,39 @@ export default (S: any) =>
                                 .title('Price List')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('price-list-language').documentId('price-list-languages')),
+                            S.listItem()
+                                .title('Co-Workers')
+                                .child(
+                                    S.documentList()
+                                        .title('Co-Workers')
+                                        .filter('_type == "co-workers-language"')
+                                ),
                             // S.listItem()
-                            //     .title('Co-Workers')
+                            //     .title('Promotions')
                             //     .child(
                             //         S.documentList()
-                            //             .title('Co-Workers')
-                            //             .filter('_type == "co-workers"')
-                            //     )
+                            //             .title('Promotions')
+                            //             .filter('_type == "promotions-language"')
+                            //     ),
+                            S.listItem()
+                                .title('Discounts')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('discounts-languages').documentId('discounts-languages')),
+                        ])
+                ),
+
+            S.listItem().title('GENERIC')
+                .child(
+                    S.list()
+                        .title('Pages')
+                        .items([
+                            S.listItem()
+                                .title('Partners')
+                                .child(
+                                    S.documentList()
+                                        .title('Partners')
+                                        .filter('_type == "partners"')
+                                ),
                         ])
                 ),
         ]);

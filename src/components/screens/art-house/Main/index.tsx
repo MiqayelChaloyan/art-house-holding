@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { useTranslations } from 'next-intl';
 
@@ -12,7 +12,7 @@ const Main = () => {
     const t = useTranslations('texts');  
 
     return (
-        <div id='about' className={styles.header}>
+        <section id='about' className={styles.header}>
             <Container>
                 <div className={styles.row}>
                     <div className={styles.column}>
@@ -29,7 +29,7 @@ const Main = () => {
                     </div>
                 </div>
             </Container>
-        </div>
+        </section>
     );
 };
 

@@ -1,24 +1,36 @@
 .container
-    background: #E3E1E1
+    background: var(--color-bg-gray)
     height: max-content
     position: relative
-    /* 2xl */
-    @media screen and ( max-width: 1536px )
+    /* @4xl */
+    @media screen and (max-width: 2560px)
       height: max-content
-    /* xl */
-    @media screen and ( max-width: 1280px )
+    /* @3xl */
+    @media screen and (max-width: 1920px)
       height: max-content
-    /* lg */
-    @media screen and ( max-width: 1024px )
+    /* @2xl */
+    @media screen and (max-width: 1600px)
       height: max-content
-    /* md */
-    @media screen and ( max-width: 768px )
+    /* @xl */
+    @media screen and (max-width: 1440px)
       height: max-content
-    /* sm */
-    @media screen and ( max-width: 640px )
+    /* @lg */
+    @media screen and (max-width: 1280px)
       height: max-content
-    /* xs */
-    @media screen and ( max-width: 475px )
+    /* @md */
+    @media screen and (max-width: 1024px)
+      height: max-content
+    /* @sm */
+    @media screen and (max-width: 768px)
+      height: max-content
+    /* @xs */
+    @media screen and (max-width: 600px)
+      height: max-content
+    /* @2xs */
+    @media screen and (max-width: 480px)
+      height: max-content
+    /* @3xs */
+    @media screen and (max-width: 360px)
       height: max-content
 
 
@@ -37,33 +49,47 @@
       position: absolute
       content: ''
       right: 0
-    /* 2xl */
-    @media screen and ( max-width: 1536px )
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+      bottom: 60px
+      &:after 
+        height: 60px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+      bottom: 60px
+      &:after 
+        height: 60px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+      bottom: 60px
+      &:after 
+        height: 60px
+    /* @xl */
+    @media screen and (max-width: 1440px)
       bottom: 43px
       &:after 
         height: 45px
-    /* xl */
-    @media screen and ( max-width: 1280px )
+    /* @lg */
+    @media screen and (max-width: 1280px)
       bottom: 42px
       &:after 
         height: 45px
-    /* lg */
-    @media screen and ( max-width: 1024px )
+    /* @md */
+    @media screen and (max-width: 1024px)
       bottom: 41px
       &:after 
         height: 45px
-    /* md */
-    @media screen and ( max-width: 768px )
+    /* @sm */
+    @media screen and (max-width: 768px)
       bottom: 35px
       &:after 
         height: 37px
-    /* sm */
-    @media screen and ( max-width: 640px )
+    /* @xs */
+    @media screen and (max-width: 600px)
       display: none
 
 
 .title
-    font-family: sans-serif
     position: absolute
     margin: 0 auto
     width: 100%

@@ -30,8 +30,9 @@
         "rights": "Բոլոր իրավունքները պաշտպանված են",
         "rating-title": "Art House ուսումնական կենտրոն",
         "send-request": "Ուղարկել հայտ",
-        "take-the-test":  "Անցնել թեստ ",
-        "contact-us": "Կապ մեզ հետ"
+        "take-the-test":  "Անցնել թեստ",
+        "contact-us": "Կապ մեզ հետ",
+        "more": "Ավելին"
     },
     "buttons": {
         "contact-us": "Կապ մեզ հետ",
@@ -56,17 +57,35 @@
     },
     "contact-us-form": {
         "title": "ԿԱՊՎԵԼ ՄԵԶ ՀԵՏ",
+        "form-title-language": "ՈՒՂԱՐԿԵԼ ՀԱՅՏ",
         "name": "Անուն",
+        "last-name": "Ազգանուն",
         "full-name": "Անուն, Ազգանուն",
         "email": "Փոստի հասցե",
         "phone-number": "Հեռախոսահամար",
         "message": "Հաղորդագրություն",
         "select-course": "Ընտրել դասընթացը",
+        "select-quantity": "Դասի տևողությունը",
+        "select-duration": "Դասերի քանակը",
         "send": "Ուղարկել",
         "loading": "Բեռնվում է"
     },
     "price-list": {
         "days": "օր",
         "hour": "ժամ"
+    },
+    "titles": {
+        "price-list": "Գնացուցակ",
+        "private-lessons": "Անհատական դասեր \n օտարերկրացիների համար",
+        "english-language-lessons": "Անգլերեն լեզվի \n խորացված դասեր"
+    },
+    "tables-titles": {
+        "languages-taught": "Դասավանդվող \n լեզուներ",
+        "group-lessons": "Խմբային դասեր \n 1 ամսվա արժեք",
+        "private-lessons": "Անհատական դասեր \n 1 ամսվա արժեք",
+        "three-days-week": "Շաբաթական 3 օր",
+        "two-days-week": "Շաբաթական 2 օր",
+        "english": "Անգլերեն",
+        "duration": "Տևողությունը"
     }
 }

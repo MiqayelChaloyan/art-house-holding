@@ -1,0 +1,21 @@
+import { groq } from 'next-sanity';
+
+export const query = groq`*[_type == "about-us-language"] {
+    "_id": _id,
+    "about_us": about_us {
+        "content": content[$language],
+        "about_us_images": about_us_images,
+        "about_our_daily": about_our_daily
+    },
+    "our_daily_life": our_daily_life {
+        "our_daily_life_images": our_daily_life_images,
+        "about_our_daily": about_our_daily[] {
+            "news": news[$language],
+            "languages": languages,
+            "slug": slug.current,
+            "video_url": video_url,
+            "video_light": video_light
+        },
+    },
+}`;
+

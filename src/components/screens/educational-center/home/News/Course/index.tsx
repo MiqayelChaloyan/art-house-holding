@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, memo, useState } from 'react';
+import { memo, useState } from 'react';
 
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
@@ -8,12 +8,12 @@ import { useLocale, useTranslations } from 'next-intl';
 import Content from '@/lib/ui/readMore';
 import Button from '@/lib/ui/Button';
 
-import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
+// import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     altTwo: string
     altOne: string
     urlForImageOne: string
@@ -25,7 +25,8 @@ type Props = {
 };
 
 
-const Course: FC<Props> = (course) => {
+const Course = (course: Props) => {
+    // const router = useRouter();
     const t = useTranslations('buttons');
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
     const localActive = useLocale();
@@ -34,10 +35,10 @@ const Course: FC<Props> = (course) => {
         setIsReadMore(!isReadMore);
     };
 
-    const goCoursePage = async () => {
-        // const data = await getCourseById(course.categories._ref, localActive);
-        // return router.push(`/${localActive}/courses/${data.slug}`);
-    };
+    // const goCoursePage = async () => {
+    //     const data = await getCourseById(course.categories._ref, localActive);
+    //     return router.push(`/${localActive}/courses/${data.slug}`);
+    // };
 
     return (
         <div className={styles.course}>
@@ -74,7 +75,7 @@ const Course: FC<Props> = (course) => {
                     className={styles.image}
                     width={0}
                     height={0}
-                    sizes="100vw"
+                    sizes='100vw'
                     style={{ objectFit: 'cover' }}
                 />
                 <Image
@@ -84,13 +85,13 @@ const Course: FC<Props> = (course) => {
                     className={styles.image}
                     width={0}
                     height={0}
-                    sizes="100vw"
+                    sizes='100vw'
                     style={{ objectFit: 'cover' }}
                 />
             </div>
-            <div 
-            // onClick={goCoursePage} 
-            className={styles.courses_link_btn_arrow_mobile}>
+            <div
+                // onClick={goCoursePage} 
+                className={styles.courses_link_btn_arrow_mobile}>
                 <div className={styles.arrow_long_right}></div>
             </div>
         </div>

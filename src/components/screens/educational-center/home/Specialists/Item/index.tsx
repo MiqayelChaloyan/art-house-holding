@@ -1,15 +1,14 @@
-"use client"
+'use client'
 
 import { memo } from 'react';
-// import { useTranslation } from 'react-i18next';
 
 // import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import Button from '@/lib/ui/Button';
 
-import { urlFor } from '../../../../../../../sanity/imageUrlBuilder';
-import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+// import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
 
 import { ArianAMU } from '@/lib/constants/font';
 
@@ -23,48 +22,46 @@ const Images = ({ images }: any) => {
     return (
         <div>
             <div className={styles.gallery_row}>
-                {firstDivImages.map((image: any) => {
-                    const urlForImageOne = urlFor(image)
-                        .auto('format')
-                        .fit('max')
-                        .url();
+                {
+                    firstDivImages?.map((image: any) => {
+                        const path: { src: string, width: number, height: number } | any = urlForImage(image);
 
-                    return (
-                        <Image
-                            key={image._key}
-                            src={urlForImageOne}
-                            alt={image.alt}
-                            priority
-                            className={styles.image_gallery}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            style={{ objectFit: 'cover' }}
-                        />
-                    );
-                })}
+                        return (
+                            <Image
+                                key={image._key}
+                                src={path?.src}
+                                alt={image.alt}
+                                priority
+                                className={styles.image_gallery}
+                                width={0}
+                                height={0}
+                                sizes='100vw'
+                                style={{ objectFit: 'cover' }}
+                            />
+                        )
+                    })
+                }
             </div>
             <div className={styles.gallery_row}>
-                {secondDivImages.map((image: any) => {
-                    const urlForImageOne = urlFor(image)
-                        .auto('format')
-                        .fit('max')
-                        .url();
+                {
+                    secondDivImages?.map((image: any) => {
+                        const path: { src: string, width: number, height: number } | any = urlForImage(image);
 
-                    return (
-                        <Image
-                            key={image._key}
-                            src={urlForImageOne}
-                            alt={image.alt}
-                            priority
-                            className={styles.image_gallery}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            style={{ objectFit: 'cover' }}
-                        />
-                    );
-                })}
+                        return (
+                            <Image
+                                key={image._key}
+                                src={path?.src}
+                                alt={image.alt}
+                                priority
+                                className={styles.image_gallery}
+                                width={0}
+                                height={0}
+                                sizes='100vw'
+                                style={{ objectFit: 'cover' }}
+                            />
+                        )
+                    })
+                }
             </div>
         </div>
     );
@@ -72,13 +69,7 @@ const Images = ({ images }: any) => {
 
 
 const Item = ({ item }: any) => {
-    // const router = useRouter();
-    // const { i18n } = useTranslation();
-
-    const urlForImage = urlFor(item.specialists_section_image)
-        .auto('format')
-        .fit('max')
-        .url();
+    const path: { src: string, width: number, height: number } | any = urlForImage(item.specialists_section_image);
 
     // const goCoursePage = async () => {
     //     const data = await getCourseById(item.categories._ref, i18n.language);
@@ -90,7 +81,7 @@ const Item = ({ item }: any) => {
             <div className={styles.right}>
                 <Image
                     key={item._key}
-                    src={urlForImage}
+                    src={path?.src}
                     alt={item.specialists_section_image.alt}
                     priority
                     className={styles.img}

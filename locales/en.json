@@ -31,7 +31,8 @@
         "rating-title": "Art House Learning Center",
         "send-request": "Send request",
         "take-the-test":  "Pass the test",
-        "contact-us": "Contact us"
+        "contact-us": "Contact us",
+        "more": "More"
     },
     "buttons": {
         "contact-us": "Contact Us",
@@ -56,17 +57,35 @@
     },
     "contact-us-form": {
         "title": "CONTACT US",
+        "form-title-language": "SEND A REQUEST",
         "name": "Name",
+        "last-name": "Last Name",
         "full-name": "Name, Surname",
         "email": "Email",
         "phone-number": "Phone Number",
         "message": "Message",
         "select-course": "Select the course",
+        "select-quantity": "Quantity of classes",
+        "select-duration": "Quantity of classes",
         "send": "Send",
         "loading": "Loading"
     },
     "price-list": {
         "days": "days",
         "hour": "hour"
+    },
+    "titles": {
+        "price-list": "Price list",
+        "private-lessons": "Private lessons \n for foreigners",
+        "english-language-lessons": "Advanced English \n language classes"
+    },
+    "tables-titles": {
+        "languages-taught": "Languages \n taught",
+        "group-lessons": "Group lessons \n cost 1 month",
+        "private-lessons": "Private lessons \n cost 1 month",
+        "three-days-week": "3 days a week",
+        "two-days-week": "2 days a week",
+        "english": "English",
+        "duration": "Duration"
     }
 }

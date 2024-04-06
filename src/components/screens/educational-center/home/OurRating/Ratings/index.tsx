@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import RatingCard from '../RatingCard';
 
-import { urlFor } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 const sizes = [
     {
@@ -22,16 +22,9 @@ const sizes = [
     }
 ];
 
-const Rating = ({ data }: any) => data.map((card: any, index: number): JSX.Element => {
-    const urlForImageBackground = urlFor(card.our_rating_section_image)
-    .auto('format')
-    .fit('max')
-    .url();
-
-    const urlForImage = urlFor(card.user_image)
-    .auto('format')
-    .fit('max')
-    .url();
+const Rating = ({ data }: any) => data?.map((card: any, index: number): JSX.Element => {
+    const urlForImageBackground: { src: string, width: number, height: number } | any = urlForImage(card.our_rating_section_image);
+    const path: { src: string, width: number, height: number } | any= urlForImage(card.user_image);
 
     const urlImageBackgroundAlt = card.our_rating_section_image.alt;
     const urlImageAlt = card.user_image.alt;
@@ -39,9 +32,9 @@ const Rating = ({ data }: any) => data.map((card: any, index: number): JSX.Eleme
 
     const options = {
         name,
-        urlForImageBackground,
+        urlForImageBackground: urlForImageBackground.src,
         urlImageBackgroundAlt,
-        urlForImage,
+        urlForImage: path.src,
         urlImageAlt,
         result: card?.user_feedback,
         rating: card.rating + 1,

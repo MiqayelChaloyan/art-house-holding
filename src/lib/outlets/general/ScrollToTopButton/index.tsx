@@ -1,0 +1,46 @@
+'use client'
+
+import { motion, Variants, useAnimationControls, useScroll } from "framer-motion";
+import { useEffect } from "react";
+import { FaArrowUp } from "react-icons/fa";
+import styles from './styles.module.sass';
+
+
+const ScrollToTopContainerVariants: Variants = {
+    hide: { opacity: 1, y: 300 },
+    show: { opacity: 1, y: 0 },
+};
+
+function ScrollToTopButton() {
+    const { scrollYProgress } = useScroll();
+    const controls = useAnimationControls();
+
+    useEffect(() => {
+        return scrollYProgress.on('change', (latestValue) => {
+            if (latestValue > 0.2) {
+                controls.start('show');
+            } else {
+                controls.start('hide');
+            }
+        });
+    });
+    const isBrowser = () => typeof window !== 'undefined'; 
+
+    function scrollToTop() {
+        if (!isBrowser()) return;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    return (
+        <motion.button
+            className={styles.button}
+            variants={ScrollToTopContainerVariants}
+            initial="hide"
+            animate={controls}
+            onClick={scrollToTop}>
+            <FaArrowUp />
+        </motion.button>
+    );
+}
+
+export default ScrollToTopButton;

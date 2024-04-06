@@ -15,6 +15,9 @@ const Pages = {
     LANGUAGE_ITALIAN: '/italian',
     LANGUAGE_RUSSIAN: '/russian',
     LANGUAGE_SPANISH: '/spanish',
+    LANGUAGE_ABOUT: '/about',
+    LANGUAGE_SEND_REQUEST: '/form',
+    LANGUAGE_TAKE_TEST: '/quiz',
 }
 
 export {

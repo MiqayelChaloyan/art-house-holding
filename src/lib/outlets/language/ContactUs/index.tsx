@@ -37,7 +37,7 @@ interface Props {
 const ContactUs: FC<Props> = ({ courses }) => {
     const t = useTranslations();
 
-    const initValues = { fullName: '', email: '', phone: '', language: t('contact-us-form.select-course') };
+    const initValues = { fullName: '', email: '', phone: '', course: t('contact-us-form.select-course') };
     const initState = { isLoading: false, error: '', values: initValues };
 
     const [state, setState] = useState<any>(initState);
@@ -62,11 +62,11 @@ const ContactUs: FC<Props> = ({ courses }) => {
             fullName: state.values.fullName,
             email: state.values.email,
             phone: state.values.phone,
-            language: state.values.language
+            course: state.values.course
         };
 
         try {
-            if (formData.language !== t('contact-us-form.select-course')) {
+            if (formData.course !== t('contact-us-form.select-course')) {
                 setState((prev: any) => ({
                     ...prev,
                     isLoading: true,
@@ -163,8 +163,10 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                         />
                                         <Select
                                             data={courses}
+                                            valueName='course'
                                             handleChange={setState}
                                             state={state}
+                                            classNameProperty='large'
                                         />
                                     </div>
                                     <button type='submit' className={styles.submit}>

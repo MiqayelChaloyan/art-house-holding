@@ -31,7 +31,8 @@
         "rating-title": "Учебный центр Art House",
         "send-request": "Отправить запрос",
         "take-the-test":  "Пройди тест",
-        "contact-us": "Связаться с нами"
+        "contact-us": "Связаться с нами",
+        "more": "Более"
     },
     "buttons": {
         "contact-us": "Связаться с нами",
@@ -56,17 +57,36 @@
     },
     "contact-us-form": {
         "title": "СВЯЗАТЬСЯ С НАМИ",
+        "form-title-language": "ОТПРАВИТЬ ЗАПРОС",
         "name": "Имя",
+        "last-name": "Фамилия",
         "full-name": "Имя, Фамилия",
         "email": "Электронная почта",
         "phone-number": "Номер телефона",
         "message": "Сообщение",
         "select-course": "Выберите курс",
+        "select-quantity": "Продолжительность урока",
+        "select-duration": "Количество занятий",
         "send": "Отправлять",
         "loading": "Загрузка"
     },
     "price-list": {
         "days": "ден",
         "hour": "час"
+    },
+    "titles": {
+        "price-list": "Прайс-лист",
+        "private-lessons": "Частные уроки \n для иностранцев",
+        "english-language-lessons": "Продвинутые курсы \n английского языка"
+    },
+    "tables-titles": {
+        "languages-taught": "Преподаваемые \n языки",
+        "group-lessons": "Групповые занятия \n стоят 1 месяц.",
+        "private-lessons": "Индивидуальные занятия \n стоят 1 месяц",
+        "three-days-week": "3 дня в неделю",
+        "two-days-week": "2 дня в неделю",
+        "english": "Английский",
+        "duration": "Продолжительность"
     }
 }
+

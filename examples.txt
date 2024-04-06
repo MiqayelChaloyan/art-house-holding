@@ -564,3 +564,35 @@ e: React.ChangeEvent<HTMLInputElement>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		const path: { src: string, width: number, height: number } | any = urlForImage(item.image);
+
+
+
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+import { EmblaOptionsType } from 'embla-carousel';
+
+	const options: EmblaOptionsType = { loop: true, align: 'center',};
+	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);

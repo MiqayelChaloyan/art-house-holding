@@ -8,13 +8,17 @@ export const ImagePaths = {
         aboutUsURL: require('../../../public/assets/images/educational-center/courses.png')
     },
     LANGUAGE: {
-        // spanishURL: require('../../../public/assets/images/language/spanish.png'),
-        // russianURL: require('../../../public/assets/images/language/russian.png'),
-        // italianURL: require('../../../public/assets/images/language/italian.png'),
-        // germanURL: require('../../../public/assets/images/language/german.png'),
-        // frenchURL: require('../../../public/assets/images/language/french.png'),
-        // englishURL: require('../../../public/assets/images/language/english.png'),
-        // chineseURL: require('../../../public/assets/images/language/chinese.png'),
+        spanishURL: require('../../../public/assets/images/language/lang/spanish.png'),
+        russianURL: require('../../../public/assets/images/language/lang/russian.png'),
+        italianURL: require('../../../public/assets/images/language/lang/italian.png'),
+        germanURL: require('../../../public/assets/images/language/lang/german.png'),
+        franceURL: require('../../../public/assets/images/language/lang/france.png'),
+        englishURL: require('../../../public/assets/images/language/lang/english.png'),
+        chineURL: require('../../../public/assets/images/language/lang/chine.png'),
+
+        manURL: require('../../../public/assets/images/language/man.png'),
+        womanURL: require('../../../public/assets/images/language/woman.png'),
+
     }
 }
 

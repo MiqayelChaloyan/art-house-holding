@@ -1,5 +1,6 @@
-import ArrayMaxItems from "@/lib/utils/ArrayMaxItems";
-import { defineArrayMember } from "sanity";
+import { ClipboardIcon, BookIcon } from '@sanity/icons';
+
+import { RuleType } from '../../../ruleType';
 
 export const coursesSchemaEducationalCenter = {
     name: 'courses',
@@ -16,7 +17,7 @@ export const coursesSchemaEducationalCenter = {
             title: 'Course Name (Դասընթացի անվանումը)',
             name: 'course_name',
             type: 'object',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
                     title: 'Armenian',
@@ -42,17 +43,19 @@ export const coursesSchemaEducationalCenter = {
             options: {
                 source: 'name',
             },
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
         },
         {
             name: 'course_main',
             type: 'array',
             title: 'Course Main',
             description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: ClipboardIcon,
                     fields: [
                         {
                             name: 'slug',
@@ -61,13 +64,11 @@ export const coursesSchemaEducationalCenter = {
                             options: {
                                 source: 'name',
                             },
-                            validation: (Rule: any) => Rule.required(),
                         },
                         {
                             title: 'Title',
                             name: 'title',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -90,7 +91,6 @@ export const coursesSchemaEducationalCenter = {
                             title: 'Content',
                             name: 'content',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -117,7 +117,7 @@ export const coursesSchemaEducationalCenter = {
                             fields: [
                                 {
                                     name: 'alt',
-                                    title: 'Alt',
+                                    title: 'Alternative text',
                                     type: 'string'
                                 }
                             ]
@@ -130,7 +130,7 @@ export const coursesSchemaEducationalCenter = {
             title: 'About Courses Content',
             name: 'about_us_content',
             type: 'object',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
                     title: 'Armenian',
@@ -151,36 +151,29 @@ export const coursesSchemaEducationalCenter = {
         },
         {
             name: 'course_process',
-            type: 'array',
+            type: 'object',
             title: 'Course Process Section',
             description: 'Ոչ պակաս, քան մեկ, և ոչ ավելի, միայն դուք կարող եք դա փոփոխել',
-            of: [
+            validation: (Rule: RuleType) => Rule.required(),
+            fields: [
                 {
-                    name: 'Object',
-                    type: 'object',
+                    name: 'video_url',
+                    title: 'Video Link',
+                    type: 'string',
+                },
+                {
+                    name: 'video_light',
+                    title: 'Video Light',
+                    type: 'image',
+                    options: { hotspot: true },
                     fields: [
                         {
-                            name: 'video_url',
-                            title: 'Video Link',
-                            type: 'string',
-                            validation: (Rule: any) => Rule.required(),
-                        },
-                        {
-                            name: 'video_light',
-                            title: 'Video Light',
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-                                {
-                                    name: 'alt',
-                                    title: 'Alt',
-                                    type: 'string'
-                                }
-                            ],
-                            validation: (Rule: any) => Rule.required(),
-                        },
-                    ]
-                }
+                            name: 'alt',
+                            title: 'Alternative text',
+                            type: 'string'
+                        }
+                    ],
+                },
             ]
         },
         {
@@ -189,6 +182,7 @@ export const coursesSchemaEducationalCenter = {
             type: 'array',
             title: 'Student work Section',
             description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ',
+            validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
                     name: 'image',
@@ -219,27 +213,26 @@ export const coursesSchemaEducationalCenter = {
 
                 {
                     name: 'alt',
-                    title: 'Alt',
+                    title: 'Alternative text',
                     type: 'string'
                 }
             ],
-            validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'price_list',
             type: 'array',
-            // components: { input: ArrayMaxItems },
             title: 'Price list',
+            validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: BookIcon,
                     fields: [
                         {
                             title: 'Course Title',
                             name: 'course_title',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -263,7 +256,6 @@ export const coursesSchemaEducationalCenter = {
                             name: 'amount',
                             type: 'number',
                             initialValue: 0,
-                            validation: (Rule: any) => Rule.required(),
                         },
                         {
                             title: 'Start date',
@@ -273,7 +265,6 @@ export const coursesSchemaEducationalCenter = {
                                 dateFormat: 'YYYY-MM-DD',
                                 calendarTodayLabel: 'Today'
                             },
-                            validation: (Rule: any) => Rule.required(),
                         },
                         {
                             title: 'End date',
@@ -283,14 +274,12 @@ export const coursesSchemaEducationalCenter = {
                                 dateFormat: 'YYYY-MM-DD',
                                 calendarTodayLabel: 'Today'
                             },
-                            validation: (Rule: any) => Rule.required(),
                         },
                         {
                             name: 'duration',
                             type: 'number',
                             title: 'Duration of the course',
                             initialValue: 0,
-                            validation: (Rule: any) => Rule.required(),
                         },
                         {
                             name: 'slug',
@@ -299,7 +288,6 @@ export const coursesSchemaEducationalCenter = {
                             options: {
                                 source: 'name',
                             },
-                            validation: (Rule: any) => Rule.required(),
                         },
                     ]
                 }

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState, useEffect } from 'react';
 
@@ -7,6 +7,8 @@ import { useTranslations } from 'next-intl';
 
 // import { useTranslation } from 'react-i18next';
 
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/store/modal_reducer';
 // import { useAppDispatch } from '@/hooks/useStore';
 // import { openModal } from '@/store/stateModalSlice';
 // import { openModalLoading } from '@/store/stateLoadingLanguage';
@@ -24,7 +26,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type IHeaderProps = {
+interface IHeaderProps {
     typePosition: string
     locale: string
 };
@@ -36,7 +38,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
     const pathname = usePathname();
     const t = useTranslations('navigation');
 
-    // const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
 
     // console.log(`${locale}/${Pages.EDUCATIONAL_CO_WORKER}`, pathname)
 
@@ -53,6 +55,12 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
 
     const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
+    const handleSubmit = () => {
+        setIsOpenMenu(false);
+        // setTimeout(() => dispatch(openModal()), 500);
+        dispatch(openModal(true))
+    }
+
     return (
         <header className={cn(
             styles.box,
@@ -61,7 +69,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
             `${isOpenMenu ? styles.boxOpenMenu : ''}`
         )}>
             <div className={`container ${styles.wrap}`}>
-                <Link href={`/${locale}${Pages.EDUCATIONAL_HOME}`} aria-label='home' className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}>
+                <Link href={`/${locale}${Pages.EDUCATIONAL_HOME}`} aria-label={`/${locale}${Pages.EDUCATIONAL_HOME}`} className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}>
                     <Logo
                         width='162'
                         height='44'
@@ -77,10 +85,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         <Link href={`/${locale}${Pages.EDUCATIONAL_HOME}`} aria-label='about' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('about')}</Link>
                         <Button
                             text={t('courses')}
-                            onClick={() => {
-                                setIsOpenMenu(false);
-                                // setTimeout(() => dispatch(openModal()), 500);
-                            }}
+                            onClick={handleSubmit}
                             className={`${styles.btn} ${ArianAMU.className}`}
                         />
                         <Link href={`/${locale}${Pages.EDUCATIONAL_CO_WORKER}`} aria-label='co-workers' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_CO_WORKER}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('co-workers')}</Link>

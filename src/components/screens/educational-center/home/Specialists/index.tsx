@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
@@ -22,7 +22,7 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-quer
 import styles from './styles.module.sass';
 
 
-type SectionCoursesProps = {
+interface SectionCoursesProps {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 };
 
@@ -40,7 +40,7 @@ const SamplePrevArrow = ({ onClick }: any) => (
 );
 
 
-const Specialists: FC<SectionCoursesProps> = ({ data }) => {
+const Specialists = ({ data }: SectionCoursesProps) => {
     const t = useTranslations('sections');
 
     const slidesItems = data[0].specialists_section.map((item: any, index: number) => (

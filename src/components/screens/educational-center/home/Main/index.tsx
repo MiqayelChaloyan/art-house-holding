@@ -1,26 +1,27 @@
-"use client"
-
-import { FC } from 'react';
-
-import SlideItem from './SlideItem';
+'use client'
 
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
+import { EmblaOptionsType } from 'embla-carousel';
+
+import SlideItem from './SlideItem';
 
 import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
-import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
 	data: EDUCATIONAL_CENTER_DEFAULT[]
 };
 
 
-const Main: FC<Props> = ({ data }) => {
+const Main = ({ data }: Props) => {
 	const items = data[0].main_section;
-	const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center', duration: 4000 }, [Autoplay({ delay: 1000 })]);
+	const options: EmblaOptionsType = { loop: true, align: 'center',};
+	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
+
 
 	const scrollToElement = () => {
 		const container: HTMLElement | null = document.getElementById('contact');
@@ -29,17 +30,13 @@ const Main: FC<Props> = ({ data }) => {
 		}
 	};
 
-	const slidesItems = items.map((item: any): JSX.Element => {
-		const urlForImage = urlFor(item.image)
-			.auto('format')
-			.fit('max')
-			.url();
+	const slidesItems = items.map((item: any) => {
+		const path: { src: string, width: number, height: number } | any = urlForImage(item.image);
 
 		return (
 			<SlideItem
 				key={item.slug}
-				url={urlForImage}
-				alt={item.image.alt}
+				url={path?.src}
 				subtitle={item.title}
 				content={item.content}
 				scrollToElement={scrollToElement}

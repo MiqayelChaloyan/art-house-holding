@@ -1,0 +1,104 @@
+.section
+    margin-bottom: 40px
+
+
+.title
+    color: #006ED2
+    font-size: 70px
+    font-weight: 400
+    display: flex
+    align-items: flex-end
+    margin-bottom: 40px
+    justify-content: flex-end
+    &:after 
+        content: ''
+        flex: 0.9 1
+        margin-left: 1rem
+        height: 5px
+        background-color: #006ED2
+        border-radius: 5px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 70px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 60px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 50px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 40px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 40px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 40px
+        &:after 
+            content: ''
+            flex: 1
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 40px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 40px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 40px
+
+
+.discounts 
+    display: flex
+    justify-content: space-between
+    align-items: center
+    /* @xs */
+    @media screen and (max-width: 768px)
+        display: grid
+        justify-content: center
+
+
+.discount
+    width: 290px
+    height: 420px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 290px
+        height: 420px    
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 290px
+        height: 420px  
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 290px
+        height: 420px  
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 220px
+        height: 330px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 170px
+        height: 235px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 220px
+        height: 330px
+        margin-bottom: 50px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 220px
+        height: 330px 
+        margin-bottom: 50px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 220px
+        height: 330px
+        margin-bottom: 50px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 220px
+        height: 330px 
+        margin-bottom: 50px

@@ -1,7 +1,7 @@
 import { transporter } from '../../lib/constants/nodemailer';
 
 export default async (req, res) => {
-    const { fullName, email, phone, language } = req.body;
+    const { fullName, email, phone, course } = req.body;
 
     try {
         await transporter.sendMail({
@@ -11,11 +11,11 @@ export default async (req, res) => {
             html: `<p>You have a contact form submission</p><br>
           <p><strong>Email: </strong> ${email}</p><br>
           <p><strong>Phone: </strong> ${phone}</p><br>
-          <p><strong>Selected course: </strong> ${language}</p>
+          <p><strong>Selected course: </strong> ${course}</p>
         `
         });
 
-        console.log(fullName, email, phone, language);
+        console.log(fullName, email, phone, course);
         
     } catch (error) {
         return res.status(500).json({ error: error.message || error.toString() });

@@ -1,6 +1,8 @@
-"use client"
+'use client'
 
-import { FC, memo, useState } from 'react';
+import { memo, useState } from 'react';
+
+import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
@@ -17,15 +19,14 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import styles from './style.module.sass';
-import { useTranslations } from 'next-intl';
 
 
-type Props = {
+interface Props {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 };
 
 
-const OurRating: FC<Props> = ({ data }) => {
+const OurRating = ({ data }: Props) => {
     const [slideIndex, setSlideIndex] = useState(0);
     const ratings = data[0].our_rating_section.slice(0, 3);
     const t = useTranslations('sections');
@@ -41,7 +42,7 @@ const OurRating: FC<Props> = ({ data }) => {
         centerMode: true,
         cssEase: 'ease-out',
         arrows: false,
-        beforeChange: (current: any, next: any) => setSlideIndex(next),
+        beforeChange: (_: unknown, next: any) => setSlideIndex(next),
     };
 
     return (

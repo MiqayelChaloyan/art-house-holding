@@ -1,32 +1,23 @@
 $imagePath: '../../../../../public/assets/images/language/background.png'
 
 
-.sticky_header 
-	padding-top: 100px 
-	header
-		height: 60px 
-	.body
-		scale: 0 
-	
-
-.header
+.container
+	margin-bottom: 100px
 	width: 100% 
-	height: 250px 
+	height: 300px 
 	text-align: center 
 	position: relative 
-	position: fixed 
 	top: 0 
 	overflow: hidden 
-	transition: height 0.7s
 	background-image: url($imagePath) 
 	background-repeat: no-repeat
 	background-size: cover
-	background-position: center  
-	z-index: 100
+	background-position: center 
+	z-index: 999
 	/* @3xl */
 	@media screen and (max-width: 1920px)
 		width: 100% 
-		height: 250px 
+		height: 300px 
 	/* @2xl */
 	@media screen and (max-width: 1600px)
 		width: 100% 
@@ -51,13 +42,121 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and (max-width: 600px)
 		height: 0
 
+.stickyContainer
+	background-image: none
 
-.body
-	transition: 1s ease-in-out
+.boundary
+	height: 70px
+
+.isSticky
+	font-size: 15px
+	position: fixed
+	background-color: #006ED2
+	width: 100%
+	top: 0
+	z-index: 999
+	height: 70px
+	transition: background  0.8s linear
+	/* @xs */
+	@media screen and (max-width: 600px)
+		background-color: none
+		position: relative
+
+.nav
+	height: 70px 
+	line-height: 70px 
+	width: 100% 
+	display: flex
+	justify-content: space-evenly
+	flex-wrap: wrap
+	padding: 0 200px
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		padding: 0 200px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		padding: 0 180px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		padding: 0 150px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		padding: 0 80px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		padding: 0 80px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		display: grid
+		
+.link
+	flex: 1 0 18%
+	display: inline-block 
+	font-size: 18px
+	font-weight: 700
+	text-align: center
+	margin: 0 
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 17px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 17px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 17px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 17px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 18px
+		color: #fff
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 16px
+		color: #fff
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 16px
+		color: #fff
+
+.scrollY
+	color: #006ED2
+	&:after 
+		display: block 
+		content: '' 
+		border-bottom: solid 3px #F9CC48 
+		transform: scaleX(0) 
+		transition: .5s
+	&:hover 
+		color: #F9CC48
+		&:after 
+			transform: scaleX(1)
+	/* @xs */
+	@media screen and ( max-width: 600px )
+		color: #fff
+		height: 0
+
+.scrollX
+	color: #fff
+	&:hover 
+		color: #fff
+		background-color: #F9CC48
+		border-radius: 0
+	/* @xs */
+	@media screen and ( max-width: 600px )
+		color: #fff
+		height: 0
+
+.linkActive
+	color: #F9CC48
+
+.header
 	display: flex
 	justify-content: space-around
 	align-items: center
-	position: relative
+	margin-bottom: 30px
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: block
@@ -70,7 +169,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @3xs */
 	@media screen and (max-width: 360px)
 		margin: 50px
-
 
 .requests
 	display: flex
@@ -89,7 +187,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and (max-width: 600px)
 		display: none
 
-
 .logo
 	flex: 1
 	/* @4xl */
@@ -99,7 +196,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and (max-width: 600px)
 		display: none
 
-
 .switcher
 	flex: 1
 	/* @4xl */
@@ -108,7 +204,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: none
-
 
 .send_request
 	border-color: #006ED2 #006ED2 transparent #006ED2
@@ -150,7 +245,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: none
-
 
 .take_test
 	border-color: #F9CC48 #F9CC48 transparent #F9CC48
@@ -195,7 +289,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and (max-width: 600px)
 		display: none
 
-
 .triangle_text
 	font-size: 18px
 	font-weight: 400
@@ -228,167 +321,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and (max-width: 600px)
 		display: none
 
-
-.nav
-	position: absolute 
-	bottom: 4px
-	height: 60px 
-	line-height: 60px 
-	width: 100% 
-	display: flex
-	justify-content: space-evenly
-	flex-wrap: wrap
-	padding: 0 200px
-	z-index: 100
-	/* @4xl */
-	@media screen and (max-width: 2560px)
-		padding: 0 200px
-	/* @xl */
-	@media screen and (max-width: 1440px)
-		padding: 0 180px
-	/* @lg */
-	@media screen and (max-width: 1280px)
-		padding: 0 150px
-	/* @md */
-	@media screen and (max-width: 1024px)
-		padding: 0 80px
-	/* @sm */
-	@media screen and (max-width: 768px)
-		padding: 0 80px
-	/* @xs */
-	@media screen and (max-width: 600px)
-		position: fixed
-		top: 25px
-		left: 0
-		height: 0
-		width: 100%
-		max-width: 100%
-		background-color: #222
-		display: grid
-		padding: 0
-		transition: 0.2s
-		overflow: hidden
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		top: 25px
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		top: 25px
-
-
-.scrollY
-	background-color: #006ED2
-	a
-		color: #fff
-	/* @xs  */
-	@media screen and ( max-width: 600px )
-		background-color: #222
-
-
-.active
-	height: 100vh
-	padding: 130px 0
-	/* @xs */
-	@media screen and (max-width: 600px)
-		padding: 150px 0
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		padding: 80px 0
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		padding: 30px 0
-
-
-.link
-	flex: 1 0 18%
-	color: #006ED2
-	display: inline-block 
-	font-size: 18px
-	font-weight: 700
-	margin: 0 
-	&:after 
-		display: block 
-		content: '' 
-		border-bottom: solid 3px #F9CC48 
-		transform: scaleX(0) 
-		transition: transform 250ms ease-in-out 
-	&:hover 
-		color: #F9CC48
-		&:after 
-			transform: scaleX(1)
-	/* @xl */
-	@media screen and (max-width: 1440px)
-		font-size: 17px
-	/* @lg */
-	@media screen and (max-width: 1280px)
-		font-size: 17px
-	/* @md */
-	@media screen and (max-width: 1024px)
-		font-size: 17px
-	/* @sm */
-	@media screen and (max-width: 768px)
-		font-size: 17px
-	/* @xs */
-	@media screen and (max-width: 600px)
-		font-size: 18px
-		color: #fff
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		font-size: 16px
-		color: #fff
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		font-size: 16px
-		color: #fff
-
-
-.mobile
-	display: none
-	/* @xs */
-	@media screen and ( max-width: 600px )
-		display: block
-
-
-.mobile_triangle_text_one
-	display: none
-	/* @xs */
-	@media screen and ( max-width: 600px )
-		display: block
-		font-size: 16px
-		color: #fff
-		font-weight: 700
-		&:after 
-			display: block 
-			content: '' 
-			border-bottom: solid 3px #F9CC48 
-			transform: scaleX(0) 
-			transition: transform 250ms ease-in-out 
-		&:hover 
-			color: #F9CC48
-			&:after 
-				transform: scaleX(1)
-
-
-.mobile_triangle_text_two
-	display: none
-	/* @xs */
-	@media screen and ( max-width: 600px )
-		display: block
-		font-size: 16px
-		color: #fff
-		font-weight: 700
-		&:after 
-			display: block 
-			content: '' 
-			border-bottom: solid 3px #F9CC48 
-			transform: scaleX(0) 
-			transition: transform 250ms ease-in-out 
-		&:hover 
-			color: #F9CC48
-			&:after 
-				transform: scaleX(1)
-
-
 .menuMobile
 	display: none
 	/* @xs */
@@ -396,7 +328,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		display: flex
 		justify-content: flex-end
 		padding: 0 40px
-		background-color: #222
+		background-color: #006ED2
 		top: 0
 		position: fixed
 		height: 70px
@@ -410,7 +342,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @3xs */
 	@media screen and (max-width: 360px)
 		height: 60px
-
 
 .menuBtn
 	display: none
@@ -445,7 +376,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		border-radius: 2px
 		transition: var(--tr-time)
 
-
 .menuBtnActive
 	&:before, &:after
 		width: 33px
@@ -458,4 +388,66 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		opacity: 0
 		transform: scale(0)
 
+.active
+	background-color: #006ED2
+	height: 100vh
+	position: fixed
+	transition: .1s all
 
+.mobile
+	display: none
+	/* @xs */
+	@media screen and ( max-width: 600px )
+		display: block
+
+.mobile_triangle_text_one
+	display: none
+	/* @xs */
+	@media screen and ( max-width: 600px )
+		display: block
+		font-size: 16px
+		line-height: 80px
+		color: #fff
+		font-weight: 700
+		&:after 
+			display: block 
+			content: '' 
+			border-bottom: solid 3px #F9CC48 
+			transform: scaleX(0) 
+			transition: transform 250ms ease-in-out 
+		&:hover 
+			color: #F9CC48
+			&:after 
+				transform: scaleX(1)
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		line-height: 80px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		line-height: 60px
+
+.mobile_triangle_text_two
+	display: none
+	/* @xs */
+	@media screen and ( max-width: 600px )
+		display: block
+		font-size: 16px
+		line-height: 80px
+		color: #fff
+		font-weight: 700
+		&:after 
+			display: block 
+			content: '' 
+			border-bottom: solid 3px #F9CC48 
+			transform: scaleX(0) 
+			transition: transform 250ms ease-in-out 
+		&:hover 
+			color: #F9CC48
+			&:after 
+				transform: scaleX(1)
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		line-height: 80px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		line-height: 60px

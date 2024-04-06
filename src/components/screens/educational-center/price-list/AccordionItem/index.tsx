@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -8,10 +8,20 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import AccordionArrow from '@/lib/icons/educational-center/AccordionArrow';
 
-import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import styles from './style.module.sass';
 
+
+interface Props {
+    name: string
+    list: any
+    svg: string
+    alt: string | undefined
+    activeTab: boolean
+    index: boolean
+    activateTab: () => void
+};
 
 function daysBetweenDates(dateStr1: any, dateStr2: any) {
     const startDate = new Date(dateStr1);
@@ -22,17 +32,7 @@ function daysBetweenDates(dateStr1: any, dateStr2: any) {
     return daysDifference;
 };
 
-type Props = {
-    name: string
-    list: any
-    svg: string
-    alt: string | undefined
-    activeTab: boolean
-    index: boolean
-    activateTab: () => void
-};
-
-const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab }) => {
+const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Props) => {
     const size = useWindowSize();
     const t = useTranslations('price-list');
 
@@ -57,10 +57,7 @@ const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab 
         );
     });
 
-    const urlForSvg = urlFor(svg)
-        .auto('format')
-        .fit('max')
-        .url();
+    const pathSvg: { src: string, width: number, height: number } | any  = urlForImage(svg);
 
     return (
         <div
@@ -79,7 +76,7 @@ const Panel: FC<Props> = ({ name, list, svg, alt, activeTab, index, activateTab 
                     </button>
                 </div>
                 <div>
-                    <img src={urlForSvg} alt={alt} className={styles.svg_icon}/>
+                    <img src={pathSvg?.src} alt={alt} className={styles.svg_icon}/>
                 </div>
             </div>
             <div className={styles.panel__inner} style={innerStyle} aria-hidden={!activeTab === index}>

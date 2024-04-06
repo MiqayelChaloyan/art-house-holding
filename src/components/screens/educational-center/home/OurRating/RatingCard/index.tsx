@@ -1,3 +1,5 @@
+'use client'
+
 import { memo } from 'react';
 
 import { useTranslations } from 'next-intl';
@@ -37,7 +39,7 @@ const RatingCard = ({ options }: any) => {
                                 className={styles.user_image}
                                 width={0}
                                 height={0}
-                                sizes="100vw"
+                                sizes='100vw'
                                 style={{ objectFit: 'cover' }}
                             />
                         </div>

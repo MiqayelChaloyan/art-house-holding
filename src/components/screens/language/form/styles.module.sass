@@ -1,0 +1,221 @@
+
+.submit
+   display: flex
+   align-items: center
+   justify-content: center
+   height: 58px
+   width: 260px
+   color: #fff
+   font-weight: 500
+   text-align: center
+   border-radius: 20px
+   padding: 12px 30px
+   background-color: #006ED2
+   margin: 10px auto
+   box-shadow: 1px 13px 11px -4px #0000003d
+   span 
+         cursor: pointer 
+         display: inline-block 
+         position: relative 
+         transition: 0.5s 
+         font-size: 20px
+         z-index: 0
+         &:after 
+            content: '\00bb' 
+            position: absolute 
+            opacity: 0 
+            top: 0 
+            right: -20px 
+            transition: 0.5s 
+         /* @2xl */
+         @media screen and (max-width: 1600px)
+            font-size: 20px
+         /* @xl */
+         @media screen and (max-width: 1440px)
+            font-size: 20px
+         /* @lg */
+         @media screen and (max-width: 1280px)
+            font-size: 17px
+         /* @md */
+         @media screen and (max-width: 1024px)
+            font-size: 15px
+         /* @sm */
+         @media screen and (max-width: 768px)
+            cursor: pointer 
+            display: inline-block 
+            position: relative 
+            transition: 0.5s 
+            &:after 
+               content: '\00bb' 
+               position: absolute 
+               opacity: 0 
+               top: 0 
+               right: -20px 
+               transition: 0.5s  
+   &:hover 
+      span 
+         padding-right: 25px 
+         &:after 
+            opacity: 1 
+            right: 0 
+   /* @3xl */
+   @media screen and (max-width: 1920px)
+      font-size: 16px
+   /* @2xl */
+   @media screen and (max-width: 1600px)
+      font-size: 16px
+   /* @xl */
+   @media screen and (max-width: 1440px)
+      font-size: 16px
+   /* @lg */
+   @media screen and (max-width: 1280px)
+      font-size: 15px
+      width: 50% !important
+   /* @md */
+   @media screen and (max-width: 1024px)
+      font-size: 14px
+      height: 30px
+      margin-bottom: 16px 
+   /* @sm */
+   @media screen and (max-width: 768px)
+      font-size: 16px
+   /* @xs */
+   @media screen and (max-width: 600px)
+      font-size: 14px
+      padding: 7px 72px
+      width: 32% !important
+   /* @2xs */
+   @media screen and (max-width: 480px)  
+      font-size: 14px
+      padding: 7px 72px
+      width: 32% !important 
+   /* @3xs */  
+   @media screen and (max-width: 360px)
+      font-size: 14px
+      padding: 7px 72px
+      width: 32% !important
+
+
+.fields
+   margin-bottom: 50px
+   /* @sm */
+   @media screen and (max-width: 768px)
+      margin-bottom: 33px
+
+
+.input
+   width: 400px
+   max-width: 100%
+   height: 58px
+   font-weight: 300
+   font-size: 16px
+   box-shadow: 1px 13px 11px -4px #0000003d
+   padding: 0.675em 1em 
+   transition: .3s
+   margin: 15px 0
+   background: #fff
+   border-radius: 20px
+   &:focus
+      border-color: var(--color-primary)
+   &::placeholder
+      color: #D4C7BA
+   /* @4xl */
+   @media screen and (max-width: 2560px)
+      font-size: 16px
+   /* @3xl */
+   @media screen and (max-width: 1920px)   
+      font-size: 16px
+   /* @2xl */
+   @media screen and (max-width: 1600px)
+      font-size: 22px
+   /* @xl */
+   @media screen and (max-width: 1440px)
+      font-size: 22px
+   /* @lg */
+   @media screen and (max-width: 1280px)
+      font-size: 22px
+   /* @md */
+   @media screen and (max-width: 1024px)
+      font-size: 14px
+      height: 30px
+   /* @sm */
+   @media screen and (max-width: 768px)
+      font-size: 14px
+      width: 100%
+   /* @xs */
+   @media screen and (max-width: 600px)
+      font-size: 14px
+      width: 100%
+   /* @2xs */
+   @media screen and (max-width: 480px)
+      font-size: 14px
+      width: 100%
+   /* @3xs */
+   @media screen and (max-width: 360px)
+      font-size: 14px
+      width: 100%
+
+
+
+
+
+
+
+.row
+   display: flex
+   justify-content: space-evenly
+   position: relative
+   z-index: 10
+
+.form
+   width: 868px
+   height: 550px
+   background-color: #F9CC48
+   border-radius: 20px
+   margin: 0 auto
+   padding: 10px 0
+   position: relative
+   bottom: 74px
+   box-shadow: 1px 6px 8px 5px #0000003d
+
+
+.title
+   color: #fff
+   text-align: center
+   margin: 40px
+
+
+
+$imagePathLeft: '../../../../../public/assets/images/language/right-arrow.png'
+$imagePathRight: '../../../../../public/assets/images/language/left-arrow.png'
+$imagePathMesseges: '../../../../../public/assets/images/language/messeges.png'
+
+
+.arrow_left
+   background-image: url($imagePathLeft) 
+   background-repeat: no-repeat
+   background-size: contain
+   background-position: left  
+   height: 192px
+   z-index: 1
+   position: relative
+
+
+.arrow_right
+   background-image: url($imagePathRight) 
+   background-repeat: no-repeat
+   background-size: contain
+   background-position: right  
+   height: 125px
+   z-index: 1
+   position: relative
+   bottom: 250px
+
+
+.container
+   background-image: url($imagePathMesseges) 
+   background-repeat: no-repeat
+   background-size: 80%
+   background-position: top
+   height: max-content
+

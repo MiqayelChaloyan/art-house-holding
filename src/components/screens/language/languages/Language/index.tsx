@@ -17,7 +17,7 @@ import Container from '@/components/components/container';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { ABOUT_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
-import { urlFor } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 // slick-carousel 
 import Slider from 'react-slick';
@@ -58,10 +58,11 @@ const SamplePrevArrow = ({ onClick }: any) => (
 
 const renderImages = (images: Image[], type: string) => {
     return images.map((image: Image, index: number) => {
-        const path = urlFor(image)
-            .auto('format')
-            .fit('max')
-            .url();
+        const path:  {
+            src: string;
+            width: any;
+            height: any;
+        } | any = urlForImage(image)
 
         let className;
 
@@ -75,7 +76,7 @@ const renderImages = (images: Image[], type: string) => {
         return (
             <Image
                 key={image._key}
-                src={path}
+                src={path?.src}
                 alt={image?.alt}
                 priority
                 className={className}
@@ -104,21 +105,25 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
     const one = during_courses_images.slice(0, 3);
     const two = during_courses_images.slice(3, 6);
 
-    const urlForImage = urlFor(course_process.video_light)
-        .auto('format')
-        .fit('max')
-        .url();
+    const path:  {
+        src: string;
+        width: any;
+        height: any;
+    } | any = urlForImage(course_process.video_light)
+       
 
     const teachersRow = teachers.map((item: any) => {
-        const urlForPath = urlFor(item.teacher_image)
-            .auto('format')
-            .fit('max')
-            .url();
+        const path:  {
+            src: string;
+            width: any;
+            height: any;
+        } | any = urlForImage(item.teacher_image)
+  
 
         return (
             <div key={item.slug.current} className={styles.teacher_column}>
                 <Image
-                    src={urlForPath}
+                    src={path?.src}
                     alt={item?.teacher_image.alt}
                     priority
                     className={styles.teacher}
@@ -137,10 +142,12 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
 
 
     const slider = during_courses_images.map((image: Image, index: number) => {
-        const path = urlFor(image)
-            .auto('format')
-            .fit('max')
-            .url();
+        const path:  {
+            src: string;
+            width: any;
+            height: any;
+        } | any = urlForImage(image)
+            
 
         return (
             <div
@@ -149,7 +156,7 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
             >
                 <Image
                     key={image?._key}
-                    src={path}
+                    src={path?.src}
                     alt={image?.alt}
                     priority
                     className={styles.low_altitude_picture}
@@ -225,7 +232,7 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
 
                 <div className={styles.row_three}>
                     <div className={styles.video_player}>
-                        <Player light={urlForImage} path={course_process.video_url} />
+                        <Player light={path?.src} path={course_process.video_url} />
                     </div>
                 </div>
 

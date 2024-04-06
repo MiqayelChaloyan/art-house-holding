@@ -1,29 +1,38 @@
-import Link from 'next/link';
+'use client'
 
-import { useLocale, useTranslations } from 'next-intl';
+
 import Main from './Main';
 import About from './About';
-import Promotions from './Promotions';
+import Discounts from './Discounts';
 import OurDailyLife from './OurDailyLife';
 
 
-// import Footer from '@/components/footer';
-// import Header from '@/components/header';
 import styles from './styles.module.sass'
 import Partners from './Partners';
+import React from 'react';
+import { ABOUT_US_LANGUAGE, DISCOUNTS_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
-export default function Home({locale}: any) {
-    // const t = useTranslations('navigation');
-    // const localActive = useLocale();
 
+interface Props {
+    data: ABOUT_US_LANGUAGE[];
+    discounts: DISCOUNTS_LANGUAGE[]
+    locale: string
+}
+
+
+const Home = ({ data, discounts, locale }: Props) => {
+    // const { about_us } = data[0]
 
     return (
         <div className={styles.container}>
-            <Main/>
-            <About/>
-            <Promotions/>
-            <OurDailyLife/>
-            <Partners/>
+            <Main />
+            <About data={data} locale={locale}/>
+            <Discounts discounts={discounts}/>
+            <OurDailyLife  locale={locale} data={data}/>
+            {/* <Partners /> */}
         </div>
     );
 }
+
+
+export default Home;

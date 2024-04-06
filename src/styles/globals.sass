@@ -20,6 +20,7 @@
 	--color-primary-blue: #6AAAE6 
 	--color-light-gray: #caced1 
 	--color-double-gray: #dfdfdf 
+	--color-bg-gray: #E3E1E1
 
 	--color-gradient: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 104.37%)
 
@@ -47,6 +48,12 @@
 	--font-weight-extra-bold: 800
 	--font-weight-black: 900
 
+	--slide-title-font-size: 60px
+	--title-text-align-center: center
+	--text-align-center: center
+	--text-align-left: left
+	--button-color-primary: var(--color-white)
+
 html[data-theme='dark']
 	--text-color: var(--color-white)
 	--background: var(--color-black)
@@ -60,6 +67,9 @@ html[data-theme='light']
 
 body, h1, h2, h3, h4, p, ul, ol, li, figure, figcaption, blockquote, dl, dd
 	margin: 0
+
+html
+	scroll-behavior: smooth
 
 body
 	min-height: var(--fullheight)
@@ -182,8 +192,3 @@ $imagePath: '../../public/assets/images/language/back.avif'
 		background-image: none
 		background-color: #fff
 
-.nav
-	margin-top: 280px
-	/* @xs */
-	@media screen and (max-width: 600px)
-		margin-top: 90px
