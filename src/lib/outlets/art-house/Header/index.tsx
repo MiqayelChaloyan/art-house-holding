@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState, useEffect } from 'react';
 
@@ -58,7 +58,7 @@ const Header = ({ typePosition }: IHeaderProps) => {
             `${isOpenMenu ? styles.boxOpenMenu : ''}`
         )}>
             <div className={`container ${styles.wrap}`}>
-                <Link href={Pages.HOME} aria-label='home' className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}>
+                <Link href={Pages.HOME} aria-label='about' className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}>
                     <Logo
                         width='212'
                         height='60'
@@ -70,9 +70,9 @@ const Header = ({ typePosition }: IHeaderProps) => {
                     `${isOpenMenu ? styles.contentShow : ''}`,
                 )}>
                     <div className={styles.nav}>
-                        <ScrollLink to="about" smooth={true} duration={500} className={`${styles.link} ${linkActive === 'about' ? styles.linkActive : ''} ${ArianAMU.className}`} onClick={() => handleActiveLink('about')}>{t('about')}</ScrollLink>
-                        <ScrollLink to="branches" smooth={true} duration={500} className={`${styles.link} ${linkActive === 'branches' ? styles.linkActive : ''} ${ArianAMU.className}`} onClick={() => handleActiveLink('branches')}>{t('branches')}</ScrollLink>
-                        <ScrollLink to="co-workers" smooth={true} duration={500} className={`${styles.link} ${linkActive === 'co-workers' ? styles.linkActive : ''} ${ArianAMU.className}`} onClick={() => handleActiveLink('co-workers')}>{t('co-workers')}</ScrollLink>
+                        <ScrollLink to='about' smooth={false} duration={500} className={`${styles.link} ${linkActive === 'about' ? styles.linkActive : ''} ${ArianAMU.className}`} onClick={() => handleActiveLink('about')}>{t('about')}</ScrollLink>
+                        <ScrollLink to='branches' smooth={false} duration={500} className={`${styles.link} ${linkActive === 'branches' ? styles.linkActive : ''} ${ArianAMU.className}`} onClick={() => handleActiveLink('branches')}>{t('branches')}</ScrollLink>
+                        <ScrollLink to='partners' smooth={false} duration={500} className={`${styles.link} ${linkActive === 'partners' ? styles.linkActive : ''} ${ArianAMU.className}`} onClick={() => handleActiveLink('partners')}>{t('partners')}</ScrollLink>
                     </div>
                     <div>
                        <LocalSwitcher/>

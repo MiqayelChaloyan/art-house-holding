@@ -9,6 +9,7 @@ import { client } from "../../../../../sanity/client";
 import { headers } from "next/headers";
 import ScrollToTopButton from "@/lib/outlets/general/ScrollToTopButton";
 
+
 interface RootLayoutProps {
     children: React.ReactNode;
     params: {
@@ -16,11 +17,6 @@ interface RootLayoutProps {
     };
 }
 
-
-// async function getResources(locale: string) {
-//     const res = await getCourses(locale);
-//     return res
-// }
 
 async function getResources(locale: string) {
     // const res = await getLanguageBySlug(slug, locale);
@@ -37,7 +33,6 @@ async function Layout({
     if (!data) {
         notFound()
     }
-
 
     // const headersList = headers();
     // const domain = headersList.get('host') || "";

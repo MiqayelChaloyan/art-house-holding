@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 
 import { type Metadata } from 'next';
 
-import CoWorkers from '@/components/screens/educational-center/co-workers';
+import Partners from '@/components/screens/educational-center/partners';
 
 import { Locale } from '@/locales';
 
@@ -15,19 +15,19 @@ import { partnersQuery } from '../../../../../../sanity/services/generic-service
 
 async function getResources(locale: string) {
     const partners = await client.fetch(partnersQuery, { language: locale }, { next: { revalidate: 100 } });
-  
+
     if (!partners?.length || !partners?.length) {
-      return {
-        partners: [],
-        isError: true
-      }
+        return {
+            partners: [],
+            isError: true
+        }
     }
-  
+
     return {
-      partners,
-      isError: false
+        partners,
+        isError: false
     }
-  }
+}
 
 
 interface LayoutProps {
@@ -44,7 +44,7 @@ export default async function Page({ params: { locale } }: LayoutProps) {
         notFound()
     }
 
-    return <CoWorkers data={partners} />;
+    return <Partners data={partners} />;
 }
 
 

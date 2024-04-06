@@ -3,7 +3,7 @@
         "about": "About us",
         "branches": "Branches",
         "courses": "Courses",
-        "co-workers": "Co-Workers",
+        "partners": "Partners",
         "price-list": "Price List",
         "languages": "Languages",
         "discounts": "Promotions"
@@ -18,7 +18,7 @@
         "about-us": "About us",
         "branches": "Branches",
         "programs": "Programs",
-        "partners": "Co-Workers"
+        "partners": "Partners"
     },
     "address": {
         "address": "Address: Yerevan, Abovyan 33",
@@ -40,7 +40,7 @@
         "show-less": "Show less"
     },
     "sections": {
-        "co-worker": "Co-workers",
+        "partners": "Co-workers",
         "courses": "Courses",
         "about-courses": "About courses",
         "courses-process": "Courses process",

@@ -1,6 +1,5 @@
 'use client'
 
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -55,12 +54,10 @@ const About = ({ data, locale }: Props) => {
             height: number;
         } | any = urlForImage(item);
 
-        const result: string = path.src;
-
         return (
             <Image
                 key={index}
-                src={result}
+                src={path?.src}
                 alt={item.alt}
                 priority
                 className={styles.image}

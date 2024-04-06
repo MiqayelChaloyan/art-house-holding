@@ -12,11 +12,11 @@ import { ART_HOUSE_HOME } from '../../../../../sanity/sanity-queries/art-house';
 import styles from './styles.module.sass';
 
 
-interface Props {
-    data?: ART_HOUSE_HOME[] | any
+type Props = {
+    data: ART_HOUSE_HOME[] | any
 };
 
-interface Progress {
+type Progress = {
     title?: string
     slug?: string
     quantity?: number
@@ -24,7 +24,7 @@ interface Progress {
 
 const Progress = ({ data }: Props) => {
 
-    const items: JSX.Element[] = data?.map((item: Progress) => (
+    const items: JSX.Element[] = data?.progress_section.map((item: Progress) => (
         <div key={item.slug} className={styles.column}>
             <ProgressItem value={0} quantity={item.quantity} />
             <p className={`${styles.title} ${ArianAMU.className}`}>{item.title}</p>

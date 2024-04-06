@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-// import { useAppDispatch } from '@/hooks/useStore';
-// import { closeModal } from '@/store/stateModalSlice';
+import { useDispatch } from 'react-redux';
+import { closeModal } from '@/store/modal_reducer';
 
 import Image from 'next/image';
 
@@ -19,23 +19,23 @@ import { PARTNERS } from '../../../../../sanity/sanity-queries/generic';
 import styles from './styles.module.sass';
 
 
-interface Props {
+type Props = {
 	data: PARTNERS[]
 };
 
-const CoWorkers = ({ data }: Props) => {
+const Partners = ({ data }: Props) => {
 	const t = useTranslations('sections');
-	// const dispatch = useAppDispatch();
+	const dispatch = useDispatch();
 
-	// useEffect(() => {
-	// 	dispatch(closeModal());
-	// }, []);
+	useEffect(() => {
+		dispatch(closeModal(false));
+	}, []);
 
-	const workers = data?.map((item: any) => {
+	const partners = data?.map((item: any) => {
 		const path: { src: string, width: number, height: number } | any = urlForImage(item.logo);
 
 		return (
-			<div key={item._id} className={styles.co_worker}>
+			<div key={item._id} className={styles.partner}>
 				<div className={styles.image_container}>
 					<img src={path?.src} className={styles.image} />
 				</div>
@@ -47,15 +47,15 @@ const CoWorkers = ({ data }: Props) => {
 	});
 
 	return (
-		<section id='co-workers' className={styles.container}>
+		<section id='partners' className={styles.container}>
 			<Container>
-				<h1 className={`${styles.title} ${Inter.className}`}>{t('co-worker')}</h1>
-				<div className={styles.workers}>
-					{workers}
+				<h1 className={`${styles.title} ${Inter.className}`}>{t('partners')}</h1>
+				<div className={styles.partners}>
+					{partners}
 				</div>
 			</Container>
 		</section>
 	);
 };
 
-export default CoWorkers;
+export default Partners;

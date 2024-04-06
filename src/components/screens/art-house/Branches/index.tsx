@@ -20,48 +20,48 @@ import { ART_HOUSE_HOME } from '../../../../../sanity/sanity-queries/art-house';
 import styles from './styles.module.sass';
 
 
-interface Props {
-    data: ART_HOUSE_HOME[]
+type Props = {
+    data: ART_HOUSE_HOME[] | any
 };
 
-interface Branch {
-    company_name?: string,
-    words?: string,
+type Branch = {
+    company_name?: string
+    words?: string
     website_logo_front?: {
-        _type: string,
-        alt: string,
+        _type: string
+        alt: string
         asset: { _type: string, _ref: string }
     },
     website_logo_back?: {
-        _type: string,
-        alt: string,
+        _type: string
+        alt: string
         asset: { _ref: string, _type: string }
     },
-    slug?: string,
+    slug?: string
     web_site_url?: string
 }
 
-interface SwiperTypes {
-    effect?: 'coverflow';
-    grabCursor?: boolean;
-    centeredSlides?: boolean;
-    slidesPerView?: 'auto';
-    pagination?: boolean;
-    modules?: (typeof EffectCoverflow | typeof Pagination)[];
-    className?: string;
-    coverflowEffect?: {
-        rotate?: number;
-        stretch?: number;
-        depth?: number;
-        modifier?: number;
-        slideShadows?: boolean;
+type SwiperTypes = {
+    effect: 'coverflow'
+    grabCursor: boolean
+    centeredSlides: boolean
+    slidesPerView: 'auto'
+    pagination: boolean
+    modules: (typeof EffectCoverflow | typeof Pagination)[]
+    className: string
+    coverflowEffect: {
+        rotate: number
+        stretch: number
+        depth: number
+        modifier: number
+        slideShadows: boolean
     };
 };
 
 
 const Branches = ({ data }: Props) => {
 
-    const cards: JSX.Element[] = data?.map((item: any) => <Branch key={item.slug} item={item} locale={'en'} />);
+    const cards: JSX.Element[] = data?.our_websites.map((item: any) => <Branch key={item.slug} item={item} locale={'en'} />);
 
     const result: JSX.Element[] = cards?.map((card: JSX.Element) => (
         <SwiperSlide key={card.key}>

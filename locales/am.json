@@ -2,7 +2,7 @@
     "navigation": {
         "about": "Մեր մասին",
         "branches": "Մասնաճյուղեր",
-        "co-workers": "Գործընկերներ",
+        "partners": "Գործընկերներ",
         "price-list": "Գնացուցակ",
         "courses": "Դասընթացներ",
         "languages": "Լեզուներ",
@@ -40,7 +40,7 @@
         "show-less": "Ցույց տալ ավելի քիչ"
     },
     "sections": {
-        "co-worker": "Գործընկերներ",
+        "partners": "Գործընկերներ",
         "courses": "Դասընթացներ",
         "about-courses": "Դասընթացների մասին",
         "courses-process": "Դասընթացի ընթացքի մասին",

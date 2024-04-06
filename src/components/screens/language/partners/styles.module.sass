@@ -1,0 +1,209 @@
+
+.title
+    color: #006ED2
+    font-size: 70px
+    font-weight: 500
+    line-height: 80.49px
+    margin: 50px auto
+    text-align: center
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 70px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 60px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 50px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 40px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 40px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 40px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 40px
+        margin: 10px auto
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 40px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 40px
+
+
+.image
+    width: 170px
+    height: 170px
+    object-fit: cover
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        width: 140px
+        height: 140px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 140px
+        height: 140px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 140px
+        height: 140px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 140px
+        height: 140px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 140px
+        height: 140px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 140px
+        height: 140px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 140px
+        height: 140px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 100px
+        height: 100px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 100px
+        height: 100px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 100px
+        height: 100px
+
+
+.image_container 
+    margin: 20px
+    width: 240.6px
+    height: 249.82px
+    border-radius: 6px
+    background-color: #DBDBDB
+    display: flex
+    justify-content: center
+    align-items: center
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        width: 240.6px
+        height: 249.82px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 240.6px
+        height: 249.82px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 240.6px
+        height: 249.82px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 240.6px
+        height: 249.82px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 220px
+        height: 220px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 210px
+        height: 210px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 210px
+        height: 210px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 135px
+        height: 135px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 120px
+        height: 120px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 120px
+        height: 120px
+
+
+.partners
+    display: flex
+    flex-wrap: wrap
+
+
+.partner
+    width: 25%
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: relative
+    transition: .3s all
+    &:hover
+        .image_container
+            background-color: #006ED2 
+        .img_overlay
+            opacity: 1
+        .image
+            opacity: 0
+    @media screen and ( max-width: 1280px )
+       width: 30%
+       margin: 0 auto
+    @media screen and ( max-width: 991px )
+       width: 50%
+       display: flex
+    @media screen and ( max-width: 767px )
+       width: 50%
+
+
+.img_overlay 
+    transition: .1s all
+    opacity: 0
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    text-align: center
+
+
+.text 
+    color: #fff
+    text-align: center 
+    font-size: 17px 
+    transition: .1s all
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 17px 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 17px 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 17px 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 17px 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 17px 
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 15px 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 15px 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 11px 
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 11px 
+    /* @3xs */
+    @media screen and (max-width: 360px)        
+        font-size: 11px 

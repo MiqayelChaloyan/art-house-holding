@@ -51,24 +51,22 @@ async function Layout({
 
     return (
         <div>
-            <div className="wrapper">
+            <div className='wrapper'>
                 <RightMenu />
                 <BottomMenu locale={locale} />
-                <div className="wrapper-content">
+                <div className='wrapper-content'>
                     <Header typePosition='fixed' locale={locale} />
-                    <main className="wrapper-main">
+                    <main className='wrapper-main'>
                         {children}
                     </main>
                 </div>
                 <Footer courses={data} />
             </div>
             <Modal>
-                <CoursesModal  locale={locale} courses={data} /> 
+                <CoursesModal locale={locale} courses={data} />
             </Modal>
             {/* <ModalLoading/> */}
-            {/* <CoursesModal courses={data} /> */}
         </div>
-
     );
 }
 

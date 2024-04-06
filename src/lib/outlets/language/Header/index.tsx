@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { memo, useEffect, useState } from 'react';
 
@@ -39,7 +39,7 @@ const navigationLinks = [
     { path: Pages.LANGUAGE_LANGUAGES, label: 'languages' },
     { path: Pages.LANGUAGE_DISCOUNTS, label: 'discounts' },
     { path: Pages.LANGUAGE_PRICE_LIST, label: 'price-list' },
-    { path: Pages.LANGUAGE_CO_WORKER, label: 'co-workers' }
+    { path: Pages.LANGUAGE_PARTNERS, label: 'partners' }
 ];
 
 

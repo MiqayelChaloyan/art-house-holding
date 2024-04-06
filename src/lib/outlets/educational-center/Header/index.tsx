@@ -26,7 +26,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-interface IHeaderProps {
+type IHeaderProps = {
     typePosition: string
     locale: string
 };
@@ -57,8 +57,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
 
     const handleSubmit = () => {
         setIsOpenMenu(false);
-        // setTimeout(() => dispatch(openModal()), 500);
-        dispatch(openModal(true))
+        setTimeout(() => dispatch(openModal(true)), 500);
     }
 
     return (
@@ -88,7 +87,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                             onClick={handleSubmit}
                             className={`${styles.btn} ${ArianAMU.className}`}
                         />
-                        <Link href={`/${locale}${Pages.EDUCATIONAL_CO_WORKER}`} aria-label='co-workers' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_CO_WORKER}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('co-workers')}</Link>
+                        <Link href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`} aria-label='partners' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('partners')}</Link>
                         <Link href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`} aria-label='price-list' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('price-list')}</Link>
                     </div>
                     <div>
