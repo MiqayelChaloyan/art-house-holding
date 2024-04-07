@@ -9,9 +9,6 @@ import Image from "next/image";
 import { urlForImage } from "../../../../../../sanity/imageUrlBuilder";
 
 import Player from '@/lib/ui/video-player';
-import Link from "next/link";
-import cn from 'classnames';
-import { Pages } from "@/lib/constants/pages";
 import { useTranslations } from "next-intl";
 import { client } from "../../../../../../sanity/client";
 import { query } from "../../../../../../sanity/services/language-service/languages";
