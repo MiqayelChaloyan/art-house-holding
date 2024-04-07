@@ -52,7 +52,7 @@ export const courseBySlugQuery = groq`*[_type == "courses" && slug.current == $s
         },
         "_id": _id,
         "slug": slug.current,
-    }`;
+}`;
 
 
 
@@ -65,7 +65,7 @@ export const courseBySlugQuery = groq`*[_type == "courses" && slug.current == $s
 
 
 
-    
+
 // export const getCourseById = async (_id: string, language: string): Promise<EDUCATIONAL_CENTER_COURSES> => {
 //     const query = groq`*[_type == "courses" && _id == $_id][0] {
 //         "course_name": course_name[$language],

@@ -1,6 +1,4 @@
-"use client"
-
-import { memo } from 'react';
+'use client'
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -38,14 +36,14 @@ const LanguageGallery = ({ locale, images }: Readonly<LanguageGalleryProps>) => 
                 <Link key={index} href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${image.page}`} aria-label={image.label} className={styles.link}>
                     <Image
                         src={image.src}
-                        alt={image.alt}
+                        alt={`${index}-image`}
                         priority
                         className={styles.language}
                         width={0}
                         height={0}
                         sizes="100vw"
-                        loading="eager"
-                        quality={50}
+                        // loading="eager"
+                        // quality={50}
                     />
                 </Link>
             ))}
@@ -83,4 +81,4 @@ const Languages = ({ locale }: Readonly<RootProps>) => {
     );
 }
 
-export default memo(Languages);
+export default Languages;

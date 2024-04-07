@@ -1,6 +1,5 @@
 'use client'
 
-
 import Container from "@/components/components/container"
 
 import styles from './styles.module.sass';
@@ -13,19 +12,15 @@ import Player from '@/lib/ui/video-player';
 import Link from "next/link";
 import cn from 'classnames';
 import { Pages } from "@/lib/constants/pages";
+import { useTranslations } from "next-intl";
+import { client } from "../../../../../../sanity/client";
+import { query } from "../../../../../../sanity/services/language-service/languages";
 
-interface Props {
+
+type Props = {
     data: ABOUT_US_LANGUAGE[];
     locale: string
 }
-
-
-
-
-
-
-
-
 
 const DailyLifeImage = ({ item }: any) => {
     const path: {
@@ -55,28 +50,32 @@ const DailyLifeImage = ({ item }: any) => {
 
 
 const DailyLifeVideo = ({ item, locale }: any) => {
+    const t = useTranslations("buttons");
+    const light: { src: string, width: number, height: number } | any = urlForImage(item.video_light);
 
-    const light: {
-        src: string;
-        width: number;
-        height: number;
-    } | any = urlForImage(item.video_light);
+    const getResources = async () => {
+        const slug = "english" || item.languages._ref;
+        const language = locale;
 
+        try {
+            const data = await client.fetch(query, { slug, language }, { cache: 'no-store' });
+            console.log(data);
 
-    // const goCoursePage = async () => {
-    //     // const data = await getCourseById(item.languages._ref,locale);
-    //     return router.push(`${locale}/languages`);
-    // };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        // return router.push(`/${locale}/languages`);
+    };
 
     return (
         <div className={styles.video}>
             <div className={styles.video_player}>
-                <Player light={light} path={item.video_url} />
+                <Player light={light} path={item.video_url} radius={17}/>
             </div>
             <div className={styles.navigate}>
                 <span className={`${styles.text} ${Arial.className}`}>{item.news}</span>
                 <div className={styles.btn}>
-                    <button className={styles.view}>Դիտել</button>
+                    <button className={`${styles.view} ${Arial.className}`} onClick={getResources}>{t("view")}</button>
                 </div>
             </div>
         </div>
@@ -84,10 +83,8 @@ const DailyLifeVideo = ({ item, locale }: any) => {
 };
 
 
-
-
-
 const OurDailyLife = ({ data, locale }: Props) => {
+    const t = useTranslations("sections");
 
     const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: any, index: number) =>
         <DailyLifeImage key={item.slug.current} item={item} index={index} />
@@ -106,27 +103,22 @@ const OurDailyLife = ({ data, locale }: Props) => {
     const column1 = mixData.slice(0, Math.ceil(mixData.length / 2));
     const column2 = mixData.slice(Math.ceil(mixData.length / 2));
 
-
-
-
     return (
         <section className={styles.section}>
             <Container>
                 <div className={styles.ourDaily}>
-                    <h2 className={`${styles.title} ${Vrdznagir.className}`}>Մեր առօրյան</h2>
-
+                    <h2 className={`${styles.title} ${Vrdznagir.className}`}>{t("our-daily")}</h2>
                     <div className={styles.column}>
                         {column1}
                     </div>
                     <div className={styles.column}>
                         {column2}
                     </div>
-
                 </div>
             </Container>
         </section>
     )
-}
+};
 
 export default OurDailyLife;
 

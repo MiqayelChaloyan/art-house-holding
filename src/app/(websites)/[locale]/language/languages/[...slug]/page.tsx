@@ -19,7 +19,7 @@ interface RootLayoutProps {
 }
 
 
-async function getResources(slug: string, locale: string) {
+export async function getResources(slug: string, locale: string) {
     // const res = await getLanguageBySlug(slug, locale);
     const data = await client.fetch(query, { slug, language: locale }, { next: { revalidate: 100 } });
     return data[0]

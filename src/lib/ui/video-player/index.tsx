@@ -1,8 +1,10 @@
-"use client"
+'use client'
 
-import { FC, ReactNode, memo, useEffect, useState } from 'react';
+import { ReactNode, memo, useEffect, useState } from 'react';
 
 import ReactPlayer from 'react-player';
+
+import { IoIosPlayCircle } from 'react-icons/io';
 
 import Image from 'next/image';
 
@@ -14,10 +16,11 @@ import styles from './styles.module.sass';
 type Props = {
     light?: string | any
     path?: string
+    radius?: number | undefined
 };
 
 
-const Player: FC<Props> = ({ light, path }) => {
+const Player = ({ light, path, radius }: Props) => {
     const [filter, setFilter] = useState<boolean>(true);
     const [video, setVideo] = useState<ReactNode | any>(null);
 
@@ -40,7 +43,7 @@ const Player: FC<Props> = ({ light, path }) => {
                         width={0}
                         height={0}
                         sizes="100vw"
-                        style={{ filter: filter ? 'brightness(0.5)' : 'brightness(1)' }}
+                        style={{ filter: filter ? 'brightness(0.5)' : 'brightness(1)', borderRadius: radius ? `${radius}px` : 0 }}
                     />
                 }
                 loading="lazy"
@@ -49,10 +52,11 @@ const Player: FC<Props> = ({ light, path }) => {
                 playIcon={
                     <div className={styles.icon}>
                         <Play
-                            width='80'
-                            height='80'
+                            width={75}
+                            height={75}
                             fill='white'
                         />
+                        {/* <IoIosPlayCircle fill='white' size={iconSize}/> */}
                     </div>
                 }
                 onPlay={() => setFilter(false)}

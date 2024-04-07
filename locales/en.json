@@ -37,7 +37,8 @@
     "buttons": {
         "contact-us": "Contact Us",
         "view-more": "View more",
-        "show-less": "Show less"
+        "show-less": "Show less",
+        "view": "View"
     },
     "sections": {
         "partners": "Co-workers",
@@ -49,7 +50,8 @@
         "about": "About us",
         "news": "News",
         "specialists": "Specialists",
-        "rating": "Our rating"
+        "rating": "Our rating",
+        "our-daily": "Our daily life"
     },
     "contact": {
         "tell": "Tell.",

@@ -60,26 +60,11 @@
         font-size: 40px
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .images
     width: 100%
     height: 100%
     object-fit: cover
-    border-radius: 20px
+    border-radius: 17px
 
 
 .image
@@ -101,11 +86,11 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 300px
-        width: 300px
+        width: 270px
     /* @md */
     @media screen and (max-width: 1024px)
-        height: 257px
-        width: 500px
+        height: 300px
+        width: 220px
     /* @sm */
     @media screen and (max-width: 768px)
         height: 257px
@@ -122,13 +107,6 @@
     @media screen and (max-width: 360px)
         height: 257px
         width: 229px
-
-
-
-
-
-
-
 
 
 .video
@@ -150,11 +128,11 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 257px
-        width: 300px
+        width: 270px
     /* @md */
     @media screen and (max-width: 1024px)
-        height: 360px
-        width: 100%
+        height: 257px
+        width: 220px
     /* @sm */
     @media screen and (max-width: 768px)
         height: 360px
@@ -167,12 +145,12 @@
     @media screen and (max-width: 480px)
         height: 360px
         width: 229px
-        margin: 0 auto
+        margin: 22px auto
     /* @3xs */
     @media screen and (max-width: 360px)
         height: 360px
         width: 229px
-        margin: 0 auto
+        margin: 22px auto
 
 .video_player
     height: 361px
@@ -196,12 +174,12 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 194px
-        width: 300px
+        width: 270px
         margin-bottom: 20px
     /* @md */
     @media screen and (max-width: 1024px)
-        height: 257px
-        width: 500px
+        height: 194px
+        width: 220px
         margin-bottom: 20px
     /* @sm */
     @media screen and (max-width: 768px)
@@ -229,7 +207,7 @@
     background-color: #fff
     height: 84px
     width: 370px
-    border-radius: 20px
+    border-radius: 17px
     display: grid
     justify-content: center
     box-shadow: 0 0 4px 0px #656565
@@ -241,9 +219,13 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 84px
-        width: 300px
+        width: 270px
     /* @md */
     @media screen and (max-width: 1024px)
+        height: 84px
+        width: 220px
+    /* @sm */
+    @media screen and (max-width: 768px)
         height: 84px
         width: 500px
     /* @xs */
@@ -262,7 +244,9 @@
 .text
     font-size: 16px
     line-height: 18.4px
-    font-weight: 400
+    font-weight: 700
+    color: #656565
+    padding: 0 17px
     /* @3xl */
     @media screen and (max-width: 1920px)
         font-size: 16px
@@ -277,28 +261,28 @@
         line-height: 18.4px
     /* @lg */
     @media screen and (max-width: 1280px)
-        font-size: 16px
-        line-height: 18.4px
+        font-size: 13px
+        line-height: 17px
     /* @md */
     @media screen and (max-width: 1024px)
-        font-size: 16px
-        line-height: 18.4px
+        font-size: 12px
+        line-height: 12px
     /* @sm */
     @media screen and (max-width: 768px)
-        font-size: 16px
-        line-height: 18.4px
+        font-size: 13px
+        line-height: 15px
     /* @xs */
     @media screen and (max-width: 600px)
-        font-size: 16px
-        line-height: 18.4px
+        font-size: 13px
+        line-height: 15px
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 12px
-        line-height: 18.4px
+        font-size: 13px
+        line-height: 15px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 12px
-        line-height: 18.4px
+        font-size: 13px
+        line-height: 15px
 
 
 .btn
@@ -311,7 +295,51 @@
     width: 110px
     height: 30px
     color: #fff
-    
+    font-size: 17px
+    font-weight: 700
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 16px
+        line-height: 18.4px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 16px
+        line-height: 18.4px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 16px
+        line-height: 18.4px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        height: 25px
+        color: #fff
+        font-size: 14px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        height: 25px
+        color: #fff
+        font-size: 14px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        height: 25px
+        color: #fff
+        font-size: 14px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        height: 25px
+        color: #fff
+        font-size: 14px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        height: 25px
+        color: #fff
+        font-size: 14px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        height: 25px
+        color: #fff
+        font-size: 14px
+
 
 .column
     display: flex
@@ -319,7 +347,7 @@
     align-items: flex-start
     margin-bottom: 50px    
     /* @lg */
-    @media screen and (max-width: 1280px)
+    @media screen and (max-width: 768px)
         display: grid
-        margin-bottom: 0    
+        margin-bottom: 22px   
  
