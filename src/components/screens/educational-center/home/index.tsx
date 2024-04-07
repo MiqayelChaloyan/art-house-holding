@@ -17,7 +17,7 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../sanity/sanity-queries
 
 
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[]
+    data: EDUCATIONAL_CENTER_DEFAULT[] | any
 }
 
 

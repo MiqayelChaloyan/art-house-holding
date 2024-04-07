@@ -81,14 +81,14 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                     `${isSticky && isOpenMenu ? styles.contentSticky : ''}`,
                 )}>
                     <div className={styles.nav}>
-                        <Link href={`/${locale}${Pages.EDUCATIONAL_HOME}`} aria-label='about' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('about')}</Link>
+                        <Link href={`/${locale}${Pages.EDUCATIONAL_HOME}`} aria-label='about' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? styles.linkActive : ""} ${ArianAMU.className}`}>{t('about')}</Link>
                         <Button
                             text={t('courses')}
                             onClick={handleSubmit}
                             className={`${styles.btn} ${ArianAMU.className}`}
                         />
-                        <Link href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`} aria-label='partners' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('partners')}</Link>
-                        <Link href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`} aria-label='price-list' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ''} ${ArianAMU.className}`}>{t('price-list')}</Link>
+                        <Link href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`} aria-label='partners' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? styles.linkActive : ""} ${ArianAMU.className}`}>{t('partners')}</Link>
+                        <Link href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`} aria-label='price-list' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}>{t('price-list')}</Link>
                     </div>
                     <div>
                         <LocalSwitcher />

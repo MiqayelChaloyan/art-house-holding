@@ -13,11 +13,11 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-interface Props {
+type Props = {
     children: React.ReactElement
 }
 
-interface RootState {
+type RootState = {
     questions: Questions
     modal: stateModal
 }
@@ -27,7 +27,7 @@ const SectionCareerServices = ({ children }: Props) => {
 
     const dispatch = useDispatch();
 
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -60,7 +60,7 @@ const SectionCareerServices = ({ children }: Props) => {
                             fill='white'
                         />
                     </button>
-                    {React.cloneElement(children)}
+                    {children}
                 </div>
             </div>
         </div>

@@ -55,7 +55,7 @@ async function Layout({
                 <RightMenu />
                 <BottomMenu locale={locale} />
                 <div className='wrapper-content'>
-                    <Header typePosition='fixed' locale={locale} />
+                    <Header typePosition="fixed" locale={locale} />
                     <main className='wrapper-main'>
                         {children}
                     </main>
@@ -65,7 +65,6 @@ async function Layout({
             <Modal>
                 <CoursesModal locale={locale} courses={data} />
             </Modal>
-            {/* <ModalLoading/> */}
         </div>
     );
 }

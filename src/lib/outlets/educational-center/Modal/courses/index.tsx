@@ -1,14 +1,16 @@
-import { FC, memo } from 'react';
+'use client'
+
+import { memo } from 'react';
 
 import Link from 'next/link';
 
-
-
-import styles from './style.module.sass';
 import { useTranslations } from 'next-intl';
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 
-interface CoursesModalProps {
+import styles from './style.module.sass';
+
+
+type CoursesModalProps = {
     locale: string
     courses: EDUCATIONAL_CENTER_COURSES[] 
 };

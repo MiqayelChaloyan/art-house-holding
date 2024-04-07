@@ -20,7 +20,7 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    courses: EDUCATIONAL_CENTER_COURSES[]
+    courses: EDUCATIONAL_CENTER_COURSES[] | any
 };
 
 const group = {
@@ -28,7 +28,7 @@ const group = {
 };
 
 
-const Footer: FC<Props> = ({ courses }) => {
+const Footer = ({ courses }: Props) => {
     const t = useTranslations();
 
     const matrix = courses.reduce((acc: any, item: any, index: number) => {
