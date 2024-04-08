@@ -8,13 +8,6 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 
 import * as Action from '@/store/question_reducer'
-// english 
-// france
-// german
-// russian
-// chine
-// spanish
-// italian
 
 interface Props {
     locale: string | any
@@ -50,8 +43,8 @@ const Home: React.FC<Props> = ({ locale }) => {
                             width={0}
                             height={0}
                             sizes="100vw"
-                            draggable="false"
-                            loading="lazy"
+                            // draggable="false"
+                            // loading="lazy"
                         />
                     </Link>
                     <Link

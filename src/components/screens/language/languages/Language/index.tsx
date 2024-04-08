@@ -26,21 +26,21 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import styles from './styles.module.sass'
+import styles from './styles.module.sass';
 
 
-interface RootProps {
+type RootProps = {
     data: ABOUT_LANGUAGE
     locale: string
 };
 
-interface Image {
-    _type: string;
-    alt: string;
-    _key: string;
+type Image = {
+    _type: string
+    alt: string
+    _key: string
     asset: {
-        _ref: string;
-        _type: string;
+        _ref: string
+        _type: string
     };
 }
 
@@ -57,12 +57,8 @@ const SamplePrevArrow = ({ onClick }: any) => (
 );
 
 const renderImages = (images: Image[], type: string) => {
-    return images.map((image: Image, index: number) => {
-        const path:  {
-            src: string;
-            width: any;
-            height: any;
-        } | any = urlForImage(image)
+    return images?.map((image: Image, index: number) => {
+        const path: { src: string, width: number, height: number } | any = urlForImage(image)
 
         let className;
 
@@ -90,64 +86,57 @@ const renderImages = (images: Image[], type: string) => {
     });
 };
 
+const rows = (array: Image[], chunkSize: number) =>
+    Array.from({ length: Math.ceil(array.length / chunkSize) }, (_, index) =>
+        array.slice(index * chunkSize, (index + 1) * chunkSize)
+    );
+
 
 const Language = ({ locale, data }: Readonly<RootProps>) => {
+    const { during_courses_images, course_process, teachers } = data;
     const [slideIndex, setSlideIndex] = useState<number>(0);
-
-    const windowSize = useWindowSize();
     const pathname = usePathname();
+    const windowSize = useWindowSize();
     const slug = pathname?.split('/').pop() as string;
 
-    const language = getLanguageImagetoLocale(locale, slug)
-
-    const { during_courses_images, course_process, teachers } = data;
+    const language = getLanguageImagetoLocale(locale, slug);
 
     const one = during_courses_images.slice(0, 3);
     const two = during_courses_images.slice(3, 6);
 
-    const path:  {
-        src: string;
-        width: any;
-        height: any;
-    } | any = urlForImage(course_process.video_light)
-       
+    const path: { src: string, width: number, height: number } | any = urlForImage(course_process.video_light);
 
-    const teachersRow = teachers.map((item: any) => {
-        const path:  {
-            src: string;
-            width: any;
-            height: any;
-        } | any = urlForImage(item.teacher_image)
-  
 
-        return (
-            <div key={item.slug.current} className={styles.teacher_column}>
-                <Image
-                    src={path?.src}
-                    alt={item?.teacher_image.alt}
-                    priority
-                    className={styles.teacher}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    loading="eager"
-                    quality={50}
-                />
-                <div className={styles.fullName}>
-                    <h2>{item.fullName}</h2>
-                </div>
-            </div>
-        )
-    })
+    const teachersRow = rows(teachers, 4).map((row, rowIndex) => (
+        <div key={rowIndex} className={styles.teacher_row}>
+            {row.map((item: any) => {
+                const path: { src: string, width: number, height: number } | any = urlForImage(item.teacher_image);
+    
+                return (
+                    <div key={item.slug.current} className={styles.teacher_column}>
+                        <Image
+                            src={path?.src}
+                            alt={item?.teacher_image.alt}
+                            priority
+                            className={styles.teacher}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            loading="eager"
+                            quality={50}
+                        />
+                        <div className={styles.fullName}>
+                            <h2>{item.fullName}</h2>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    ));
 
 
     const slider = during_courses_images.map((image: Image, index: number) => {
-        const path:  {
-            src: string;
-            width: any;
-            height: any;
-        } | any = urlForImage(image)
-            
+        const path: { src: string, width: number, height: number } | any = urlForImage(image);
 
         return (
             <div
@@ -170,7 +159,6 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
         )
     });
 
-
     const settings = {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -179,12 +167,12 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
         autoplay: false,
         autoplaySpeed: 2000,
         dots: false,
-        beforeChange: (current: any, next: any) => setSlideIndex(next),
+        beforeChange: (_: any, next: any) => setSlideIndex(next),
         centerMode: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         cssEase: 'ease-out',
-    }
+    };
 
 
     return (
@@ -229,7 +217,6 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
                             </Slider>
                     }
                 </div>
-
                 <div className={styles.row_three}>
                     <div className={styles.video_player}>
                         <Player light={path?.src} path={course_process.video_url} />
@@ -242,6 +229,6 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
             </section>
         </Container>
     );
-}
+};
 
 export default memo(Language);

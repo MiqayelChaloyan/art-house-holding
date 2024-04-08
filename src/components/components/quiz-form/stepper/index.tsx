@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import styles from './styles.module.sass';
 import { Calibri } from "@/lib/constants/font";
 
-
 const Step = ({ index, trace }: any) => {
     // const done = trace < current;
     // const currentStep = trace === current;
@@ -35,7 +34,7 @@ const Stepper = ({ steps }: any) => {
             </div>
             <div className={styles.stepper}>
                 {steps.map((_: any, index: number) =>
-                    <Step key={index} trace={trace} index={index}/>
+                    <Step key={index} trace={trace} index={index} />
                 )}
             </div>
         </div>

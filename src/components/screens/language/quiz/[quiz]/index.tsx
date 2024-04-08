@@ -1,15 +1,10 @@
-// interface Props {
-//     data: any//PRICE_LIST_LANHUAGE[];
-// }
-// const Home: React.FC<Props> = ({ data }) => {
-
 import QuizForm from '@/components/components/quiz-form';
 
 import styles from './styles.module.sass';
 
 const QuizPage = () => {
     return (
-        <section id='test'>
+        <section id='quiz'>
             <div className={styles.row}>
                 <div className={styles.man} />
                 <QuizForm />

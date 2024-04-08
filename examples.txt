@@ -596,3 +596,9 @@ import { EmblaOptionsType } from 'embla-carousel';
 
 	const options: EmblaOptionsType = { loop: true, align: 'center',};
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
+
+
+
+
+
+Readonly<RootProps>

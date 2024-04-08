@@ -1,5 +1,7 @@
-import { EarthGlobeIcon, LinkIcon } from '@sanity/icons'
-import { defineField } from 'sanity';
+import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
+import { EarthGlobeIcon, UserIcon } from '@sanity/icons'
+
+import { RuleType } from '../../../ruleType';
 
 const languagesSchemaLanguage = {
     name: 'about-language',
@@ -20,13 +22,13 @@ const languagesSchemaLanguage = {
             options: {
                 source: 'name',
             },
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
         },
         {
             title: 'Text',
             name: 'text',
             type: 'object',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
                     title: 'Armenian',
@@ -52,7 +54,9 @@ const languagesSchemaLanguage = {
             name: 'during_courses_images',
             type: 'array',
             title: 'During Courses Images',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ',
+            description: 'Ոչ պակաս, քան վեց, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(6),
             of: [
                 {
                     name: 'image',
@@ -83,7 +87,7 @@ const languagesSchemaLanguage = {
                     name: 'video_url',
                     title: 'Video URL',
                     type: 'url',
-                    validation: (Rule: any) => Rule.required(),
+                    validation: (Rule: RuleType) => Rule.required(),
                 },
                 {
                     name: 'video_light',
@@ -110,12 +114,13 @@ const languagesSchemaLanguage = {
                 {
                     name: 'Object',
                     type: 'object',
+                    icon: UserIcon,
                     fields: [
                         {
                             title: 'Name, Surname',
                             name: 'fullName',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -141,7 +146,7 @@ const languagesSchemaLanguage = {
                             options: {
                                 source: 'name',
                             },
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                         },
                         {
                             name: 'teacher_image',
