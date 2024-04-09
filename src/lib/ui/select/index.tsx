@@ -1,8 +1,11 @@
-import React, { FC, memo, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 
 import { LANGUAGE } from "../../../../sanity/sanity-queries/language";
 
 import styles from './styles.module.sass';
+import { Inter } from "@/lib/constants/font";
+
+// import { useScroll } from "framer-motion";
 
 // values: {
 //     fullName: string,
@@ -16,18 +19,21 @@ type FormProps = {
     values: any
 };
 
-
 interface SelectProps {
     data: LANGUAGE[]
     state: FormProps
     valueName: string
     handleChange: (value: any) => void
     classNameProperty: string
+    isClear: boolean
 }
 
-
-const Select: FC<SelectProps> = ({ data, state, valueName, handleChange, classNameProperty }) => {
+const Select = ({ data, state, valueName, handleChange, classNameProperty, isClear }: SelectProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const componentRef = useRef<HTMLDivElement>(null);
+    // const { scrollYProgress } = useScroll();
+    // const [position, setPosition] = useState<number>(0)
+    const [num, setNum] = useState<number>(0)
 
     const handleSelect = () => {
         setIsOpen(!isOpen);
@@ -35,7 +41,7 @@ const Select: FC<SelectProps> = ({ data, state, valueName, handleChange, classNa
 
     const handleOptionClick = (e: any) => {
         const selectedText = e.currentTarget.querySelector('label').textContent;
-
+        setNum(1)
         handleChange((prev: FormProps) => ({
             ...prev,
             values: {
@@ -47,9 +53,38 @@ const Select: FC<SelectProps> = ({ data, state, valueName, handleChange, classNa
         setIsOpen(false);
     };
 
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (componentRef.current && !componentRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    // useEffect(() => {
+    //     return scrollYProgress.on('change', (latestValue) => {
+    //         if (latestValue > 0.2) {
+    //             setPosition(0)
+
+    //         } else {
+    //             setPosition(60)
+    //         }
+    //     });
+    // });
+    //style={{bottom: position > 0 ? `${position}px` : ''}}
+
+    const colorTheme = () => {
+        const color = classNameProperty !== 'large' ? (num > 0 && !isClear ? 'black' : '#D4C7BA') : '#fff';
+        return { color };
+    }
 
     return (
-        <div className={`${styles[`${classNameProperty}-select`]} ${isOpen ? styles.active : ''}`}>
+        <div ref={componentRef} className={`${styles[`${classNameProperty}-select`]} ${isOpen ? styles.active : ''}`}>
             <span
                 className={styles[`${classNameProperty}-select-button`]}
                 role="combobox"
@@ -59,7 +94,7 @@ const Select: FC<SelectProps> = ({ data, state, valueName, handleChange, classNa
                 aria-controls="select-dropdown"
                 onClick={handleSelect}
             >
-                <span className={styles[`${classNameProperty}-selected-value`]}>{state.values[valueName]}</span>
+                <span className={`${styles[`${classNameProperty}-selected-value`]} ${Inter.className}`} style={colorTheme()}>{state.values[valueName]}</span>
                 <span className={styles[`${classNameProperty}-arrow`]}></span>
             </span>
             <ul className={styles[`${classNameProperty}-select-dropdown`]} role="listbox" id="select-dropdown">

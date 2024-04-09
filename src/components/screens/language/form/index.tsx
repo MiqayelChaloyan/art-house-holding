@@ -15,6 +15,7 @@ import InputNumber from '@/lib/ui/InputNumber';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import { Inter } from '@/lib/constants/font';
 
 
 interface Props {
@@ -24,6 +25,7 @@ interface Props {
 
 const Form: FC<Props> = ({ data }) => {
     const t = useTranslations();
+    const [isClear, setIsClear] = useState(false);
 
     const initValues = {
         firstName: '',
@@ -95,6 +97,8 @@ const Form: FC<Props> = ({ data }) => {
                     isLoading: false,
                     error: error.message,
                 }));
+
+                setIsClear(true);
             }
         } catch (error: any) {
             setState((prev: any) => ({
@@ -107,7 +111,7 @@ const Form: FC<Props> = ({ data }) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.arrow_left}/>
+            <div className={styles.arrow_left} />
             <Container>
                 <div className={styles.form}>
                     <form
@@ -118,7 +122,7 @@ const Form: FC<Props> = ({ data }) => {
                         <div className={styles.fields}>
                             <div className={styles.row}>
                                 <InputField
-                                    className={cn(`${styles.input}`)}
+                                    className={cn(styles.input, Inter.className)}
                                     name='firstName'
                                     type='name'
                                     placeholder={t('contact-us-form.name')}
@@ -127,7 +131,7 @@ const Form: FC<Props> = ({ data }) => {
                                     onChange={handleChange}
                                 />
                                 <InputNumber
-                                    className={cn(`${styles.input}`)}
+                                    className={cn(styles.input, Inter.className)}
                                     name='phone'
                                     type='phone'
                                     placeholder={t('contact-us-form.phone-number')}
@@ -139,7 +143,7 @@ const Form: FC<Props> = ({ data }) => {
                             </div>
                             <div className={styles.row}>
                                 <InputField
-                                    className={cn(`${styles.input}`)}
+                                    className={cn(styles.input, Inter.className)}
                                     name='lastName'
                                     type='name'
                                     placeholder={t('contact-us-form.last-name')}
@@ -148,7 +152,7 @@ const Form: FC<Props> = ({ data }) => {
                                     onChange={handleChange}
                                 />
                                 <InputField
-                                    className={cn(`${styles.input}`)}
+                                    className={cn(styles.input, Inter.className)}
                                     name='email'
                                     type='email'
                                     placeholder={t('contact-us-form.email')}
@@ -165,6 +169,7 @@ const Form: FC<Props> = ({ data }) => {
                                     handleChange={setState}
                                     state={state}
                                     classNameProperty='small'
+                                    isClear={isClear}
                                 />
                                 <Select
                                     data={data.quantity_lessons}
@@ -172,6 +177,7 @@ const Form: FC<Props> = ({ data }) => {
                                     handleChange={setState}
                                     state={state}
                                     classNameProperty='small'
+                                    isClear={isClear}
                                 />
                                 <Select
                                     data={data.class_duration}
@@ -179,6 +185,7 @@ const Form: FC<Props> = ({ data }) => {
                                     handleChange={setState}
                                     state={state}
                                     classNameProperty='small'
+                                    isClear={isClear}
                                 />
                             </div>
                         </div>
@@ -196,7 +203,7 @@ const Form: FC<Props> = ({ data }) => {
                     </form>
                 </div>
             </Container>
-            <div className={styles.arrow_right}/>
+            <div className={styles.arrow_right} />
         </div>
     )
 }

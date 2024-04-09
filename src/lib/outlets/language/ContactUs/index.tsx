@@ -18,7 +18,7 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 
 import { Hosts } from '@/lib/constants/hosts';
-import { Vrdznagir } from '@/lib/constants/font';
+import { Inter, Vrdznagir } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
@@ -27,7 +27,6 @@ import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-
 
 interface Props {
     courses: LANGUAGE[]
@@ -108,81 +107,82 @@ const ContactUs: FC<Props> = ({ courses }) => {
             <Container>
                 <div className={styles.contact}>
                     {/* <Section direction='right'> */}
-                        <div className={styles.box}>
-                            <h1 className={`${styles.title}  ${Vrdznagir.className}`}>{t('texts.contact-us')}</h1>
-                            <div className={styles.connection} />
-                        </div>
+                    <div className={styles.box}>
+                        <h1 className={`${styles.title}  ${Vrdznagir.className}`}>{t('texts.contact-us')}</h1>
+                        <div className={styles.connection} />
+                    </div>
                     {/* </Section> */}
                     {/* <Section direction='left'> */}
-                        <div className={styles.contact_us}>
-                            <div className={styles.hosts}>
-                                <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">
-                                    <Gmail width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
-                                </Link>
-                                <Link href={Hosts.instagram} aria-label='Instagram' className={styles.social_network} target="_blank">
-                                    <Instagram width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
-                                </Link>
-                                <Link href={Hosts.facebook} aria-label='Facebook' className={styles.social_network} target="_blank">
-                                    <Facebook width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
-                                </Link>
-                            </div>
-                            <div className={styles.form}>
-                                <form
-                                    className={styles.box}
-                                    onSubmit={handleSubmit}
-                                >
-                                    <h2 className={styles.form_title}>ՈՒՂԱՐԿԵԼ ՀԱՅՏ</h2>
-                                    <div className={styles.fields}>
-                                        <InputField
-                                            className={cn(`${styles.input}`)}
-                                            name='fullName'
-                                            type='name'
-                                            placeholder={t('contact-us-form.full-name')}
-                                            requiredField={true}
-                                            value={values.fullName}
-                                            onChange={handleChange}
-                                        />
-                                        <InputField
-                                            className={cn(`${styles.input}`)}
-                                            name='email'
-                                            type='email'
-                                            placeholder={t('contact-us-form.email')}
-                                            requiredField={true}
-                                            value={values.email}
-                                            onChange={handleChange}
-                                        />
-                                        <InputNumber
-                                            className={cn(`${styles.input}`)}
-                                            name='phone'
-                                            type='phone'
-                                            placeholder={t('contact-us-form.phone-number')}
-                                            maskNumber='+374 99 99 99 99'
-                                            requiredField={true}
-                                            value={values.phone}
-                                            onChange={handleChange}
-                                        />
-                                        <Select
-                                            data={courses}
-                                            valueName='course'
-                                            handleChange={setState}
-                                            state={state}
-                                            classNameProperty='large'
-                                        />
-                                    </div>
-                                    <button type='submit' className={styles.submit}>
-                                        {isLoading ?
-                                            <span>
-                                                {`${t('contact-us-form.loading')}...`}
-                                            </span>
-                                            :
-                                            <span>
-                                                {t('contact-us-form.send')}
-                                            </span>
-                                        }
-                                    </button>
-                                </form>
-                            </div>
+                    <div className={styles.contact_us}>
+                        <div className={styles.hosts}>
+                            <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">
+                                <Gmail width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
+                            </Link>
+                            <Link href={Hosts.instagram} aria-label='Instagram' className={styles.social_network} target="_blank">
+                                <Instagram width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
+                            </Link>
+                            <Link href={Hosts.facebook} aria-label='Facebook' className={styles.social_network} target="_blank">
+                                <Facebook width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
+                            </Link>
                         </div>
+                        <div className={styles.form}>
+                            <form
+                                className={styles.box}
+                                onSubmit={handleSubmit}
+                            >
+                                <h2 className={styles.form_title}>ՈՒՂԱՐԿԵԼ ՀԱՅՏ</h2>
+                                <div className={styles.fields}>
+                                    <InputField
+                                        className={cn(styles.input, Inter.className)}
+                                        name='fullName'
+                                        type='name'
+                                        placeholder={t('contact-us-form.full-name')}
+                                        requiredField={true}
+                                        value={values.fullName}
+                                        onChange={handleChange}
+                                    />
+                                    <InputField
+                                        className={cn(styles.input, Inter.className)}
+                                        name='email'
+                                        type='email'
+                                        placeholder={t('contact-us-form.email')}
+                                        requiredField={true}
+                                        value={values.email}
+                                        onChange={handleChange}
+                                    />
+                                    <InputNumber
+                                        className={cn(styles.input, Inter.className)}
+                                        name='phone'
+                                        type='phone'
+                                        placeholder={t('contact-us-form.phone-number')}
+                                        maskNumber='+374 99 99 99 99'
+                                        requiredField={true}
+                                        value={values.phone}
+                                        onChange={handleChange}
+                                    />
+                                    <Select
+                                        data={courses}
+                                        valueName='course'
+                                        handleChange={setState}
+                                        state={state}
+                                        classNameProperty='large'
+                                        isClear={false}
+                                    />
+                                </div>
+                                <button type='submit' className={styles.submit}>
+                                    {isLoading ?
+                                        <span>
+                                            {`${t('contact-us-form.loading')}...`}
+                                        </span>
+                                        :
+                                        <span>
+                                            {t('contact-us-form.send')}
+                                        </span>
+                                    }
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                     {/* </Section> */}
                 </div>
             </Container>

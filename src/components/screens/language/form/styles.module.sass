@@ -1,5 +1,6 @@
-
 .submit
+   position: relative
+   z-index: 4
    display: flex
    align-items: center
    justify-content: center
@@ -35,7 +36,7 @@
             font-size: 20px
          /* @lg */
          @media screen and (max-width: 1280px)
-            font-size: 17px
+            font-size: 15px
          /* @md */
          @media screen and (max-width: 1024px)
             font-size: 15px
@@ -70,30 +71,37 @@
    /* @lg */
    @media screen and (max-width: 1280px)
       font-size: 15px
-      width: 50% !important
+      width: 31% !important
+      height: 50px
+      border-radius: 9px
    /* @md */
    @media screen and (max-width: 1024px)
       font-size: 14px
       height: 30px
       margin-bottom: 16px 
+      border-radius: 9px
    /* @sm */
    @media screen and (max-width: 768px)
       font-size: 16px
+      border-radius: 9px
    /* @xs */
    @media screen and (max-width: 600px)
       font-size: 14px
       padding: 7px 72px
       width: 32% !important
+      border-radius: 9px
    /* @2xs */
    @media screen and (max-width: 480px)  
       font-size: 14px
       padding: 7px 72px
       width: 32% !important 
+      border-radius: 9px
    /* @3xs */  
    @media screen and (max-width: 360px)
       font-size: 14px
       padding: 7px 72px
       width: 32% !important
+      border-radius: 9px
 
 
 .fields
@@ -133,27 +141,39 @@
       font-size: 22px
    /* @lg */
    @media screen and (max-width: 1280px)
-      font-size: 22px
+      font-size: 15px
+      height: 50px
+      width: 350px
+      margin: 10px
+      border-radius: 9px
    /* @md */
    @media screen and (max-width: 1024px)
       font-size: 14px
       height: 30px
+      border-radius: 9px
    /* @sm */
    @media screen and (max-width: 768px)
       font-size: 14px
       width: 100%
+      border-radius: 9px
    /* @xs */
    @media screen and (max-width: 600px)
-      font-size: 14px
+      font-size: 18px
       width: 100%
+      border-radius: 9px
+      height: 40px
    /* @2xs */
    @media screen and (max-width: 480px)
-      font-size: 14px
+      font-size: 18px
       width: 100%
+      border-radius: 9px
+      height: 40px
    /* @3xs */
    @media screen and (max-width: 360px)
-      font-size: 14px
+      font-size: 18px
       width: 100%
+      border-radius: 9px
+      height: 40px
 
 
 
@@ -166,6 +186,44 @@
    justify-content: space-evenly
    position: relative
    z-index: 10
+   /* @4xl */
+   @media screen and (max-width: 2560px)
+      justify-content: space-evenly
+   /* @3xl */
+   @media screen and (max-width: 1920px)
+      justify-content: space-evenly
+   /* @2xl */
+   @media screen and (max-width: 1600px)
+      justify-content: space-evenly
+   /* @xl */
+   @media screen and (max-width: 1440px)
+      justify-content: space-evenly
+   /* @lg */
+   @media screen and (max-width: 1280px)
+      justify-content: space-between
+   /* @md */
+   @media screen and (max-width: 1024px)
+      justify-content: space-between
+   /* @sm */
+   @media screen and (max-width: 768px)
+      justify-content: normal
+      display: grid
+      width: 93%
+   /* @xs */
+   @media screen and (max-width: 600px)
+      justify-content: normal
+      display: grid
+      width: 93%
+   /* @2xs */
+   @media screen and (max-width: 480px)
+      justify-content: normal
+      display: grid
+      width: 93%
+   /* @3xs */
+   @media screen and (max-width: 360px)
+      justify-content: normal
+      display: grid
+      width: 93%
 
 .form
    width: 868px
@@ -177,12 +235,95 @@
    position: relative
    bottom: 74px
    box-shadow: 1px 6px 8px 5px #0000003d
+   /* @4xl */
+   @media screen and (max-width: 2560px)
+      width: 868px
+      height: 550px
+   /* @3xl */
+   @media screen and (max-width: 1920px)
+      width: 868px
+      height: 550px   
+   /* @2xl */
+   @media screen and (max-width: 1600px)
+      width: 868px
+      height: 550px
+   /* @xl */
+   @media screen and (max-width: 1440px)
+      width: 860px
+      height: 550px
+   /* @lg */
+   @media screen and (max-width: 1280px)
+      width: 760px
+      height: 450px
+   /* @md */
+   @media screen and (max-width: 1024px)
+      width: 700px
+      height: 400px
+   /* @sm */
+   @media screen and (max-width: 768px)
+      margin: 0 auto
+      height: max-content
+      width: 311px
+   /* @xs */
+   @media screen and (max-width: 600px)
+      margin: 0 auto
+      height: max-content
+      width: 100%
+      margin-top: 100px
+   /* @2xs */
+   @media screen and (max-width: 480px)
+      margin: 0 auto
+      height: max-content
+      width: 100%
+      margin-top: 100px
+   /* @3xs */
+   @media screen and (max-width: 360px)
+      margin: 0 auto
+      height: max-content
+      width: 100%
+      margin-top: 100px
 
 
 .title
-   color: #fff
    text-align: center
+   color: #fff
+   font-size: 30px
+   font-weight: 400
    margin: 40px
+   /* @4xl */
+   @media screen and (max-width: 2560px)
+      font-size: 30px
+   /* @3xl */
+   @media screen and (max-width: 1920px)
+      font-size: 30px
+   /* @2xl */
+   @media screen and (max-width: 1600px)
+      font-size: 30px
+   /* @xl */
+   @media screen and (max-width: 1440px)
+      font-size: 30px
+   /* @lg */
+   @media screen and (max-width: 1280px)
+      font-size: 30px
+   /* @md */
+   @media screen and (max-width: 1024px)
+      font-size: 30px
+   /* @sm */
+   @media screen and (max-width: 768px)
+      font-size: 20px
+   /* @xs */
+   @media screen and (max-width: 600px)
+      font-size: 20px
+      margin-bottom: 0
+      margin: 0
+   /* @2xs */
+   @media screen and (max-width: 480px)  
+      font-size: 20px  
+      margin: 0
+   /* @3xs */  
+   @media screen and (max-width: 360px)
+      font-size: 20px
+      margin: 0
 
 
 
@@ -199,6 +340,36 @@ $imagePathMesseges: '../../../../../public/assets/images/language/messeges.png'
    height: 192px
    z-index: 1
    position: relative
+   /* @4xl */
+   @media screen and (max-width: 2560px)
+      height: 192px
+   /* @3xl */
+   @media screen and (max-width: 1920px)
+      height: 192px
+   /* @2xl */
+   @media screen and (max-width: 1600px)
+      height: 192px
+   /* @xl */
+   @media screen and (max-width: 1440px)
+      height: 192px
+   /* @lg */
+   @media screen and (max-width: 1280px)
+      height: 98px
+   /* @md */
+   @media screen and (max-width: 1024px)
+      height: 81px
+   /* @sm */
+   @media screen and (max-width: 768px)
+      display: none
+   /* @xs */
+   @media screen and (max-width: 600px)
+      display: none
+   /* @2xs */
+   @media screen and (max-width: 480px)
+      display: none
+   /* @3xs */
+   @media screen and (max-width: 360px)
+      display: none
 
 
 .arrow_right
@@ -210,6 +381,37 @@ $imagePathMesseges: '../../../../../public/assets/images/language/messeges.png'
    z-index: 1
    position: relative
    bottom: 250px
+   /* @4xl */
+   @media screen and (max-width: 2560px)
+      height: 125px
+   /* @3xl */
+   @media screen and (max-width: 1920px)
+      height: 108px
+   /* @2xl */
+   @media screen and (max-width: 1600px)
+      height: 87px
+   /* @xl */
+   @media screen and (max-width: 1440px)
+      height: 58px
+   /* @lg */
+   @media screen and (max-width: 1280px)
+      height: 39px
+      bottom: 147px
+   /* @md */
+   @media screen and (max-width: 1024px)
+      height: 46px
+   /* @sm */
+   @media screen and (max-width: 768px)
+      display: none
+   /* @xs */
+   @media screen and (max-width: 600px)
+      display: none
+   /* @2xs */
+   @media screen and (max-width: 480px)
+      display: none
+   /* @3xs */
+   @media screen and (max-width: 360px)
+      display: none
 
 
 .container
@@ -218,4 +420,6 @@ $imagePathMesseges: '../../../../../public/assets/images/language/messeges.png'
    background-size: 80%
    background-position: top
    height: max-content
-
+   /* @sm */
+   @media screen and (max-width: 768px)
+      background-image: none

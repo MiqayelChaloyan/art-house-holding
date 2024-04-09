@@ -24,7 +24,8 @@ function ScrollToTopButton() {
             }
         });
     });
-    const isBrowser = () => typeof window !== 'undefined'; 
+    
+    const isBrowser = () => typeof window !== 'undefined';
 
     function scrollToTop() {
         if (!isBrowser()) return;
@@ -38,7 +39,7 @@ function ScrollToTopButton() {
             initial="hide"
             animate={controls}
             onClick={scrollToTop}>
-            <FaArrowUp size={25}/>
+            <FaArrowUp size={25} />
         </motion.button>
     );
 }

@@ -64,7 +64,7 @@
 	border-radius: 20px 
 	color: var(--color-white) 
 	margin: 15px 0 
-	z-index: 0
+	z-index: -1
 	&.active 
 		.small-arrow 
 			transform: rotate(180deg) 
@@ -86,7 +86,10 @@
 		font-size: 15px
 	/* @lg */
 	@media screen and (max-width: 1280px)
+		height: 45px
+		margin: 10px
 		font-size: 15px
+		width: 29.7%
 	/* @md */
 	@media screen and (max-width: 1024px)
 		font-size: 14px
@@ -97,15 +100,15 @@
 		width: 100%
 	/* @xs */
 	@media screen and (max-width: 600px)
-		font-size: 14px
+		font-size: 18px
 		width: 100%
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		font-size: 14px
+		font-size: 18px
 		width: 100%
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		font-size: 14px
+		font-size: 18px
 		width: 100%
 
 
@@ -170,6 +173,7 @@
 	justify-content: space-between 
 	align-items: center 
 	outline: none
+	font-weight: 300
 	&:focus
 		outline: none !important
 	/* @4xl */
@@ -187,22 +191,31 @@
 	/* @lg */
 	@media screen and (max-width: 1280px)
 		font-size: 22px
+		border-radius: 9px
 	/* @md */
 	@media screen and (max-width: 1024px)
 		font-size: 14px
 		height: 30px
+		border-radius: 9px
 	/* @sm */
 	@media screen and (max-width: 768px)
 		font-size: 14px
+		border-radius: 9px
 	/* @xs */
 	@media screen and (max-width: 600px)
-		font-size: 14px
+		font-size: 18px
+		border-radius: 9px
+		height: 40px
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		font-size: 14px
+		font-size: 18px
+		border-radius: 9px
+		height: 40px
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		font-size: 14px
+		font-size: 18px
+		border-radius: 9px
+		height: 40px
 
 
 .large-selected-value 
@@ -214,7 +227,40 @@
 	text-align: left 
 	color: #D4C7BA 
 	font-size: 16px
-
+	padding-top: 3px
+	font-weight: 300
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 16px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 16px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 16px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 16px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 14px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 14px
+		height: 30px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 14px
+		padding-top: 3px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 16px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 16px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 16px
 
 .large-arrow 
 	border-left: 5px solid transparent 
@@ -356,3 +402,5 @@
 .small-select-dropdown li:hover,
 .small-select-dropdown input:checked~label 
 	background-color: #f2f2f2 
+
+
