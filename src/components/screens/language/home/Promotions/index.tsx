@@ -60,7 +60,7 @@ const Promotions = ({ discounts }: Props) => {
         <section className={styles.section}>
             <Container>
                 <h2 className={`${styles.title} ${Vrdznagir.className}`}>
-                {t('navigation.discounts')}
+                {t('navigation.promotions')}
                 </h2>
                 <div className={styles.discounts}>
                     {lastDiscounts}
