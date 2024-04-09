@@ -4,13 +4,15 @@ import { ReactNode, memo, useEffect, useState } from 'react';
 
 import ReactPlayer from 'react-player';
 
-import { IoIosPlayCircle } from 'react-icons/io';
+// import { IoIosPlayCircle } from 'react-icons/io';
 
 import Image from 'next/image';
 
 import Play from '@/lib/icons/educational-center/Play';
 
 import styles from './styles.module.sass';
+import { useDispatch, useSelector } from 'react-redux';
+import { onPlay } from '@/store/player_reducer';
 
 
 type Props = {
@@ -23,6 +25,15 @@ type Props = {
 const Player = ({ light, path, radius }: Props) => {
     const [filter, setFilter] = useState<boolean>(true);
     const [video, setVideo] = useState<ReactNode | any>(null);
+
+    const dispatch = useDispatch();
+    // const isPlay = useSelector((state: any) => state.player.isPlay);
+
+
+    const handlePlayVideo = () => {
+        setFilter(false)
+        dispatch(onPlay(true))
+    }
 
     useEffect(() => {
         setVideo(
@@ -59,7 +70,8 @@ const Player = ({ light, path, radius }: Props) => {
                         {/* <IoIosPlayCircle fill='white' size={iconSize}/> */}
                     </div>
                 }
-                onPlay={() => setFilter(false)}
+                onPlay={handlePlayVideo}
+                // onPause={handlePlayVideo}
             />
         );
     }, [filter]);

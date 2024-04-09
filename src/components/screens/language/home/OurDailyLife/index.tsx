@@ -2,7 +2,6 @@
 
 import Container from "@/components/components/container"
 
-import styles from './styles.module.sass';
 import { Arial, Vrdznagir } from "@/lib/constants/font";
 import { ABOUT_US_LANGUAGE } from "../../../../../../sanity/sanity-queries/language";
 import Image from "next/image";
@@ -12,6 +11,11 @@ import Player from '@/lib/ui/video-player';
 import { useTranslations } from "next-intl";
 import { client } from "../../../../../../sanity/client";
 import { query } from "../../../../../../sanity/services/language-service/languages";
+
+import styles from './styles.module.sass';
+// import { useDispatch, useSelector } from "react-redux";
+// import useWindowSize from "@/hooks/useWindowSize";
+// import { useEffect, useRef } from "react";
 
 
 type Props = {
@@ -64,10 +68,11 @@ const DailyLifeVideo = ({ item, locale }: any) => {
         // return router.push(`/${locale}/languages`);
     };
 
+
     return (
         <div className={styles.video}>
             <div className={styles.video_player}>
-                <Player light={light} path={item.video_url} radius={17}/>
+                <Player light={light} path={item.video_url} radius={17} />
             </div>
             <div className={styles.navigate}>
                 <span className={`${styles.text} ${Arial.className}`}>{item.news}</span>
@@ -81,6 +86,8 @@ const DailyLifeVideo = ({ item, locale }: any) => {
 
 
 const OurDailyLife = ({ data, locale }: Props) => {
+    // const dispatch = useDispatch();
+    // const isPlay = useSelector((state: any) => state.player.isPlay);
     const t = useTranslations("sections");
 
     const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: any, index: number) =>

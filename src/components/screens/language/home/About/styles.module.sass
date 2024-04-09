@@ -125,14 +125,21 @@
        width: 100%
        display: flex
        justify-content: space-between
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: flex
+        justify-content: space-around
+        flex-wrap: wrap
     /* @xs */
     @media screen and (max-width: 600px)
-       display: grid
-       justify-content: center
+        display: flex
+        justify-content: space-around
+        flex-wrap: wrap
 
 
 .image
     width: 100%
+    height: 100%
 
 
 .gallery_one
@@ -156,11 +163,13 @@
     /* @lg */
     @media screen and (max-width: 1280px)
        top: 0
+       width: 300px
+       height: 230px
     /* @md */
     @media screen and (max-width: 1024px)
        top: 0
-       width: 180px
-       height: 150px
+       width: 220px
+       height: 200px
     /* @sm */
     @media screen and (max-width: 768px)
        top: 0
@@ -168,12 +177,21 @@
     /* @xs */
     @media screen and (max-width: 600px)
        top: 0
+       height: 240px
+       width: 90%
+       margin-bottom: 5px
     /* @2xs */
     @media screen and (max-width: 480px)
        top: 0
+       height: 240px
+       width: 90%
+       margin-bottom: 5px
     /* @3xs */
     @media screen and (max-width: 360px)
        top: 0
+       height: 240px
+       width: 90%
+       margin-bottom: 5px
 
 
 .gallery_two
@@ -199,11 +217,13 @@
     /* @lg */
     @media screen and (max-width: 1280px)
        right: 0
+       width: 300px
+       height: 230px
     /* @md */
     @media screen and (max-width: 1024px)
        right: 0
-       width: 180px
-       height: 150px
+       width: 220px
+       height: 200px
     /* @sm */
     @media screen and (max-width: 768px)
        right: 0
@@ -211,12 +231,21 @@
     /* @xs */
     @media screen and (max-width: 600px)
        right: 0
+       width: 185px
+       height: 180px
+       margin: 5px
     /* @2xs */
     @media screen and (max-width: 480px)
        right: 0
+       width: 185px
+       height: 180px
+       margin: 5px
     /* @3xs */
     @media screen and (max-width: 360px)
        right: 0
+       width: 185px
+       height: 180px
+       margin: 5px
 
 
 .gallery_three
@@ -240,23 +269,34 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         bottom: 0
+        width: 300px
+        height: 230px
     /* @md */
     @media screen and (max-width: 1024px)
         bottom: 0
-        width: 180px
-        height: 150px
+        width: 220px
+        height: 200px
     /* @sm */
     @media screen and (max-width: 768px)
         bottom: 0
     /* @xs */
     @media screen and (max-width: 600px)
         bottom: 0
+        width: 185px
+        height: 180px
+        margin: 5px
     /* @2xs */
     @media screen and (max-width: 480px)
         bottom: 0
+        width: 185px
+        height: 180px
+        margin: 5px
     /* @3xs */
     @media screen and (max-width: 360px)
         bottom: 0
+        width: 185px
+        height: 180px
+        margin: 5px
 
 
 .buttons

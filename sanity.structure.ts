@@ -17,7 +17,7 @@ export default (S: any) =>
                     'co-workers-language',
                     'languages-select-option',
                     'questions-language',
-                    'discounts-languages',
+                    'promotions-languages',
                     'partners'
                 ].includes(listItem.getId())
             ),
@@ -116,9 +116,9 @@ export default (S: any) =>
                             //             .filter('_type == "promotions-language"')
                             //     ),
                             S.listItem()
-                                .title('Discounts')
+                                .title('Promotions')
                                 .icon(DocumentsIcon)
-                                .child(S.document().schemaType('discounts-languages').documentId('discounts-languages')),
+                                .child(S.document().schemaType('promotions-languages').documentId('promotions-languages')),
                         ])
                 ),
 

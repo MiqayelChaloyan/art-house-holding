@@ -3,7 +3,7 @@
 
 import Main from './Main';
 import About from './About';
-import Discounts from './Discounts';
+import Promotions from './Promotions';
 import OurDailyLife from './OurDailyLife';
 
 
@@ -27,7 +27,7 @@ const Home = ({ data, discounts, locale }: Props) => {
         <div className={styles.container}>
             <Main />
             <About data={data} locale={locale}/>
-            <Discounts discounts={discounts}/>
+            <Promotions discounts={discounts}/>
             <OurDailyLife  locale={locale} data={data}/>
             {/* <Partners /> */}
         </div>

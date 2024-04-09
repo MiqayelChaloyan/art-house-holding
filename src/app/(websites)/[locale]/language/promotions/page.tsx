@@ -1,4 +1,4 @@
-import Discounts from "@/components/screens/language/discounts";
+import Promotions from "@/components/screens/language/promotions";
 
 import { getTranslations } from "next-intl/server";
 
@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation';
 import { Locale } from "@/locales";
 
 import { client } from "../../../../../../sanity/client";
-import { query } from "../../../../../../sanity/services/language-service/discounts";
+import { query } from "../../../../../../sanity/services/language-service/promotions";
 
 
 interface Props {
@@ -31,7 +31,7 @@ export default async function Page({ params: { locale } }: Readonly<Props>) {
         notFound()
     }
 
-    return (<Discounts data={data}/>);
+    return (<Promotions data={data}/>);
 }
 
 

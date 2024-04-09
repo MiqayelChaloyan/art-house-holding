@@ -1,11 +1,11 @@
 import { ActivityIcon } from '@sanity/icons'
 import { RuleType } from '../../../ruleType';
 
-const discountsSchemaLanguage = {
-    name: 'discounts-languages',
+const promotionsSchemaLanguage = {
+    name: 'promotions-languages',
     type: 'document',
-    title: 'Discounts',
-    id: 'discounts-languages',
+    title: 'Promotions',
+    id: 'promotions-languages',
     initialValue: () => ({
         publishedAt: new Date().toISOString()
     }),
@@ -85,4 +85,4 @@ const discountsSchemaLanguage = {
     ],
 };
 
-export default discountsSchemaLanguage;
+export default promotionsSchemaLanguage;

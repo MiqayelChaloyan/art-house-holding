@@ -37,7 +37,7 @@ type HeaderProps = {
 const navigationLinks = [
     { path: Pages.LANGUAGE_HOME, label: 'about' },
     { path: Pages.LANGUAGE_LANGUAGES, label: 'languages' },
-    { path: Pages.LANGUAGE_DISCOUNTS, label: 'discounts' },
+    { path: Pages.LANGUAGE_PROMOTIONS, label: 'promotions' },
     { path: Pages.LANGUAGE_PRICE_LIST, label: 'price-list' },
     { path: Pages.LANGUAGE_PARTNERS, label: 'partners' }
 ];

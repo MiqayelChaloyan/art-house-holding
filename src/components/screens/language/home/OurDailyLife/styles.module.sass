@@ -1,6 +1,9 @@
 .section
     margin-bottom: 40px
-
+    /* @xs */
+    @media screen and (max-width: 768px)
+        margin-bottom: 0
+        
 
 .ourDaily
     height: max-content
@@ -24,10 +27,13 @@
     &:before 
         content: ''
         flex: 0.8 1
-        margin-left: 1rem
+        margin-left: 0
         height: 5px
         background-color: #006ED2
         border-radius: 5px
+        /* @xs */
+        @media screen and (max-width: 600px)
+            margin-left: 1rem
     /* @3xl */
     @media screen and (max-width: 1920px)
         font-size: 70px
@@ -65,7 +71,10 @@
     height: 100%
     object-fit: cover
     border-radius: 17px
-
+    /* @xs */
+    @media screen and (max-width: 768px)
+        border-radius: 0
+        
 
 .image
     width: 370px
@@ -86,7 +95,7 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 300px
-        width: 270px
+        width: 300px
     /* @md */
     @media screen and (max-width: 1024px)
         height: 300px
@@ -94,19 +103,27 @@
     /* @sm */
     @media screen and (max-width: 768px)
         height: 257px
-        width: 500px
+        width: 90%
+        margin: 0 auto
+        margin-bottom: 20px
     /* @xs */
     @media screen and (max-width: 600px)
         height: 257px
-        width: 229px
+        width: 90%
+        margin: 0 auto
+        margin-bottom: 20px
     /* @2xs */
     @media screen and (max-width: 480px)
         height: 257px
-        width: 229px
+        width: 90%
+        margin: 0 auto
+        margin-bottom: 20px    
     /* @3xs */
     @media screen and (max-width: 360px)
         height: 257px
-        width: 229px
+        width: 90%
+        margin: 0 auto
+        margin-bottom: 20px
 
 
 .video
@@ -128,29 +145,40 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 257px
-        width: 270px
+        width: 300px
     /* @md */
     @media screen and (max-width: 1024px)
         height: 257px
         width: 220px
     /* @sm */
     @media screen and (max-width: 768px)
-        height: 360px
-        width: 100%
+        height: 250px
+        width: 90%
+        position: relative
+        margin: 0 auto
+        margin-bottom: 27px
     /* @xs */
     @media screen and (max-width: 600px)
-        height: 360px
-        width: 100%
+        height: 250px
+        width: 90%
+        position: relative
+        margin: 0 auto
+        margin-bottom: 27px
     /* @2xs */
     @media screen and (max-width: 480px)
-        height: 360px
-        width: 229px
-        margin: 22px auto
+        height: 250px
+        width: 90%
+        position: relative
+        margin: 0 auto
+        margin-bottom: 27px
     /* @3xs */
     @media screen and (max-width: 360px)
-        height: 360px
-        width: 229px
-        margin: 22px auto
+        height: 250px
+        width: 90%
+        position: relative
+        margin: 0 auto
+        margin-bottom: 27px
+
 
 .video_player
     height: 361px
@@ -174,7 +202,7 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 194px
-        width: 270px
+        width: 300px
         margin-bottom: 20px
     /* @md */
     @media screen and (max-width: 1024px)
@@ -184,23 +212,23 @@
     /* @sm */
     @media screen and (max-width: 768px)
         height: 257px
-        width: 500px
-        margin-bottom: 20px
+        width: 100%
+        margin-bottom: 0
     /* @xs */
     @media screen and (max-width: 600px)
         height: 257px
-        width: 229px
-        margin-bottom: 20px
+        width: 100%
+        margin-bottom: 0
     /* @2xs */
     @media screen and (max-width: 480px)
         height: 257px
-        width: 229px
-        margin-bottom: 20px
+        width: 100%
+        margin-bottom: 0
     /* @3xs */
     @media screen and (max-width: 360px)
         height: 257px
-        width: 229px
-        margin-bottom: 20px
+        width: 100%
+        margin-bottom: 0
 
 
 .navigate
@@ -219,7 +247,7 @@
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 84px
-        width: 270px
+        width: 300px
     /* @md */
     @media screen and (max-width: 1024px)
         height: 84px
@@ -227,19 +255,32 @@
     /* @sm */
     @media screen and (max-width: 768px)
         height: 84px
-        width: 500px
+        width: 100%
+        position: absolute
+        bottom: -10px
+        background-color: transparent
+        box-shadow: none
     /* @xs */
     @media screen and (max-width: 600px)
         height: 84px
-        width: 229px
+        width: 100%
+        position: absolute
+        bottom: -10px
+        background-color: transparent
+        box-shadow: none
     /* @2xs */
     @media screen and (max-width: 480px)
         height: 84px
-        width: 229px
+        width: 100%
+        position: absolute
+        bottom: -10px
     /* @3xs */
     @media screen and (max-width: 360px)
         height: 84px
-        width: 229px
+        width: 100%
+        position: absolute
+        bottom: -10px
+
 
 .text
     font-size: 16px
@@ -271,10 +312,14 @@
     @media screen and (max-width: 768px)
         font-size: 13px
         line-height: 15px
+        padding: 0
+        color: #fff
     /* @xs */
     @media screen and (max-width: 600px)
         font-size: 13px
         line-height: 15px
+        padding: 0
+        color: #fff
     /* @2xs */
     @media screen and (max-width: 480px)
         font-size: 13px
@@ -288,6 +333,9 @@
 .btn
     display: flex
     justify-content: flex-end
+    /* @xs */
+    @media screen and (max-width: 768px)
+        justify-content: flex-start
 
 .view
     background-color: #006ED2
@@ -347,7 +395,11 @@
     align-items: flex-start
     margin-bottom: 50px    
     /* @lg */
+    @media screen and (max-width: 1280px)
+        justify-content: space-between 
+    /* @xs */
     @media screen and (max-width: 768px)
+        margin-bottom: 0  
+        justify-content: initial
+        width: 100%
         display: grid
-        margin-bottom: 22px   
- 

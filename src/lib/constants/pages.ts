@@ -5,7 +5,7 @@ const Pages = {
     EDUCATIONAL_PRICE_LIST: '/educational-center/price-list',
     LANGUAGE_HOME: '/language',
     LANGUAGE_LANGUAGES: '/language/languages',
-    LANGUAGE_DISCOUNTS: '/language/discounts',
+    LANGUAGE_PROMOTIONS: '/language/promotions',
     LANGUAGE_PRICE_LIST: '/language/price-list',
     LANGUAGE_PARTNERS: '/language/partners',
     LANGUAGE_ENGLISH: '/english',

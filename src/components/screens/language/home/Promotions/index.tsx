@@ -24,7 +24,7 @@ interface Image {
 }
 
 
-const Discounts = ({ discounts }: Props) => {
+const Promotions = ({ discounts }: Props) => {
     const t = useTranslations();
 
     const lastFour = discounts[0]?.discounts_list.slice(-4);
@@ -70,4 +70,4 @@ const Discounts = ({ discounts }: Props) => {
     )
 };
 
-export default Discounts;
+export default Promotions;

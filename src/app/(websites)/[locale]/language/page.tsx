@@ -8,7 +8,7 @@ import { Locale } from "@/locales";
 import { notFound } from 'next/navigation';
 import { client } from '../../../../../sanity/client';
 import { query } from '../../../../../sanity/services/language-service/about-us';
-import { query as discountsQuery } from "../../../../../sanity/services/language-service/discounts";
+import { query as discountsQuery } from "../../../../../sanity/services/language-service/promotions";
 
 
 
