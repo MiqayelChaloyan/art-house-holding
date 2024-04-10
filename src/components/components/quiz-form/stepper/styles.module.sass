@@ -2,21 +2,56 @@
 	display: flex
 	align-items: center
 	justify-content: space-evenly
-
-
-.stepper_contain
-	display: flex
-	align-items: center
-	justify-content: space-evenly
-	margin-bottom: 60px
-	margin-top: 20px
-
-
-.steps
-	color: #F9CC48
-	font-size: 32px
-	font-weight: 700
-	line-height: 39.06px
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		display: flex
+		align-items: center
+		justify-content: space-evenly
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		display: flex
+		align-items: center
+		justify-content: space-evenly
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		display: flex
+		align-items: center
+		justify-content: space-evenly
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		display: flex
+		align-items: center
+		justify-content: space-evenly
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		display: flex
+		align-items: center
+		justify-content: space-evenly
+	/* @md */
+	@media screen and (max-width: 1024px)
+		display: flex
+		align-items: center
+		justify-content: space-evenly
+	/* @sm */
+	@media screen and (max-width: 768px)
+		display: flex
+		align-items: center
+		justify-content: space-evenly
+	/* @xs */
+	@media screen and (max-width: 600px)
+		display: grid
+		align-items: center
+		justify-content: space-evenly
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		display: grid
+		align-items: center
+		justify-content: space-evenly
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		display: grid
+		align-items: center
+		justify-content: space-evenly
 
 
 .stepper__step
@@ -38,12 +73,252 @@
 	&:last-child
 		&:after 
 			display: none
-	
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		background-color: #A6A6A6
+		width: 12px
+		height: 12px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			content: " " 
+			display: block 
+			position: absolute 
+			height: 2px 
+			background-color: #A6A6A6 
+			width: 40px 
+			left: 100% 
+			top: calc(50% - 1px)
+		&:last-child
+			&:after 
+				display: none
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		background-color: #A6A6A6
+		width: 12px
+		height: 12px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			content: " " 
+			display: block 
+			position: absolute 
+			height: 2px 
+			background-color: #A6A6A6 
+			width: 40px 
+			left: 100% 
+			top: calc(50% - 1px)
+		&:last-child
+			&:after 
+				display: none
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		background-color: #A6A6A6
+		width: 12px
+		height: 12px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			content: " " 
+			display: block 
+			position: absolute 
+			height: 2px 
+			background-color: #A6A6A6 
+			width: 40px 
+			left: 100% 
+			top: calc(50% - 1px)
+		&:last-child
+			&:after 
+				display: none
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		background-color: #A6A6A6
+		width: 12px
+		height: 12px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			content: " " 
+			display: block 
+			position: absolute 
+			height: 2px 
+			background-color: #A6A6A6 
+			width: 40px 
+			left: 100% 
+			top: calc(50% - 1px)
+		&:last-child
+			&:after 
+				display: none
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		background-color: #A6A6A6
+		width: 12px
+		height: 12px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			content: " " 
+			display: block 
+			position: absolute 
+			height: 2px 
+			background-color: #A6A6A6 
+			width: 40px 
+			left: 100% 
+			top: calc(50% - 1px)
+		&:last-child
+			&:after 
+				display: none
+	/* @md */
+	@media screen and (max-width: 1024px)
+		background-color: #A6A6A6
+		width: 12px
+		height: 12px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			content: " " 
+			display: block 
+			position: absolute 
+			height: 2px 
+			background-color: #A6A6A6 
+			width: 40px 
+			left: 100% 
+			top: calc(50% - 1px)
+		&:last-child
+			&:after 
+				display: none
+	/* @sm */
+	@media screen and (max-width: 768px)
+		background-color: #A6A6A6
+		width: 12px
+		height: 12px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			content: " " 
+			display: block 
+			position: absolute 
+			height: 2px 
+			background-color: #A6A6A6 
+			width: 40px 
+			left: 100% 
+			top: calc(50% - 1px)
+		&:last-child
+			&:after 
+				display: none
+	/* @xs */
+	@media screen and (max-width: 600px)
+		background-color: #A6A6A6
+		width: 18px
+		height: 18px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			display: none
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		background-color: #A6A6A6
+		width: 18px
+		height: 18px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			display: none
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		background-color: #A6A6A6
+		width: 18px
+		height: 18px
+		border-radius: 50px
+		margin: 0 20px
+		position: relative
+		&:after 
+			display: none
+
+
+.line
+	display: none
+	/* @xs */
+	@media screen and (max-width: 600px)
+		display: block
+		height: 20px
+		background: #A6A6A6
+		width: 2px
+		margin: 0 auto
+	&:last-child
+		display: none
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		display: block
+		height: 20px
+		background: #A6A6A6
+		width: 2px
+		margin: 0 auto
+	&:last-child
+		display: none
+
+
+
+.done_mobile_line
+	background-color: #F9CC48
+
+
+.stepper_contain
+	display: flex
+	align-items: center
+	justify-content: space-evenly
+	margin-bottom: 60px
+	margin-top: 20px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		display: grid
+		margin-top: 0
+		margin-bottom: 0
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		display: grid
+		margin-top: 0
+		margin-bottom: 0
+
+
+.steps
+	color: #F9CC48
+	font-size: 32px
+	font-weight: 700
+	line-height: 39.06px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 20px
+		line-height: 20px
+		text-align: center
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 20px
+		line-height: 20px
+		text-align: center
+
 
 .stepper__step__done
 	background-color: #F9CC48
 	width: 12px
 	height: 12px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		width: 18px
+		height: 18px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		width: 18px
+		height: 18px
 
     
 .stepper__step__active
@@ -73,6 +348,12 @@
 		left: 100% 
 		top: calc(50% - 1px)
 		transition: 2s
+		/* @xs */
+		@media screen and (max-width: 600px)
+			display: none
+		/* @2xs */
+		@media screen and (max-width: 480px)
+			display: none
 
 
 
