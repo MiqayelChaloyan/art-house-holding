@@ -41,8 +41,9 @@ const Questions = ({ onCheked }: any) => {
                 {
                     questions?.options.map((q: any, i: number) => (
                         <li className={styles.container} key={i}>
-                            <input className={styles.radio} type="radio" id={`q${i}-option`} name="options" onChange={() => onSelect(i)} />
-                            <span className={styles.checkmark}></span>
+                            {/* <input className={styles.radio} type="radio" id={`q${i}-option`} name="options" onChange={() => onSelect(i)} /> */}
+                            <input value={q} type="checkbox" name="options" id={`q${i}-option`}  onChange={() => onSelect(i)} />
+                            {/* <span className={styles.checkmark}></span> */}
                             <label htmlFor={`q${i}-option`} className={Calibri.className}>{q}</label>
                         </li>
                     ))

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styles from './styles.module.sass';
 import { Calibri } from "@/lib/constants/font";
 
+import cn from 'classnames';
 
 const Step = ({ index, trace }: any) => {
     // const done = trace < current;
@@ -17,7 +18,12 @@ const Step = ({ index, trace }: any) => {
     // const className: string[] = [`stepper__step${activeClassName}${doneClassName}`];
 
 
-    return <div className={`${styles.stepper__step} ${activeClassName} ${doneClassName}`} />
+    return (
+        <>
+        <div className={`${styles.stepper__step} ${activeClassName} ${doneClassName}`} />
+        <div className={cn(styles.line, done ? styles.done_mobile_line : '')}></div>
+        </>
+    )
 }
 
 
