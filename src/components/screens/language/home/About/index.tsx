@@ -38,11 +38,7 @@ const About = ({ data, locale }: Props) => {
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 
     const gallery: any = data[0].about_us?.about_us_images?.map((item: Image, index: number) => {
-        const path: {
-            src: string;
-            width: number;
-            height: number;
-        } | any = urlForImage(item);
+        const path: { src: string, width: number, height: number } | any = urlForImage(item);
 
         const result: string = path.src;
 
@@ -61,6 +57,7 @@ const About = ({ data, locale }: Props) => {
             />
         );
     });
+
 
     return (
         <div className={styles.container}>

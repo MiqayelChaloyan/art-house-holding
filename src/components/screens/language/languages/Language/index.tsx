@@ -47,17 +47,17 @@ type Image = {
     };
 }
 
-const SampleNextArrow = ({ onClick }: any) => (
-    <div className={`${styles.arrow} ${styles.arrow_right}`} onClick={onClick}>
-        <SlArrowRight />
-    </div>
-);
+// const SampleNextArrow = ({ onClick }: any) => (
+//     <div className={`${styles.arrow} ${styles.arrow_right}`} onClick={onClick}>
+//         <SlArrowRight />
+//     </div>
+// );
 
-const SamplePrevArrow = ({ onClick }: any) => (
-    <div className={`${styles.arrow} ${styles.arrow_left}`} onClick={onClick}>
-        <SlArrowLeft />
-    </div>
-);
+// const SamplePrevArrow = ({ onClick }: any) => (
+//     <div className={`${styles.arrow} ${styles.arrow_left}`} onClick={onClick}>
+//         <SlArrowLeft />
+//     </div>
+// );
 
 const renderImages = (images: Image[], type: string) => {
     return images?.map((image: Image, index: number) => {
@@ -97,7 +97,7 @@ const rows = (array: Image[], chunkSize: number) =>
 
 const Language = ({ locale, data }: Readonly<RootProps>) => {
     const { during_courses_images, course_process, teachers } = data;
-    const [slideIndex, setSlideIndex] = useState<number>(0);
+    // const [slideIndex, setSlideIndex] = useState<number>(0);
     const pathname = usePathname();
     const windowSize = useWindowSize();
     const slug = pathname?.split('/').pop() as string;
@@ -169,9 +169,7 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
         return (
             <SwiperSlide key={index}
             >
-                <div
-                    // className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}
-                >
+                <div>
                     <Image
                         key={image?._key}
                         src={path?.src}

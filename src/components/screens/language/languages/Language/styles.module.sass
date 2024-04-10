@@ -201,7 +201,7 @@
 
 .gallery_row_one
     display: flex
-    justify-content: space-evenly
+    justify-content: space-between
     flex-wrap: wrap
     columns: 3
     gap: 15px
@@ -209,7 +209,7 @@
 
 
 .high_altitude_picture
-    width: 352.26px
+    width: 380px
     height: 390.47px
     object-fit: cover
     border-radius: 20px
@@ -221,29 +221,35 @@
         transition: .5s ease-in-out
     /* @3xl */
     @media screen and (max-width: 1920px)
-        width: 352.26px
+        width: 380px
         height: 390.47px
     /* @2xl */
     @media screen and (max-width: 1600px)
-        width: 320px
+        width: 360px
         height: 340px
     /* @xl */
     @media screen and (max-width: 1440px)
-        width: 320px
+        width: 360px
         height: 340px
     /* @lg */
     @media screen and (max-width: 1280px)
-        width: 250px
+        width: 300px
         height: 270px
     /* @md */
     @media screen and (max-width: 1024px)
-        width: 200px
+        width: 280px
+        height: 220px
+    @media screen and (max-width: 980px)
+        width: 270px
+        height: 220px
+    @media screen and (max-width: 900px)
+        width: 230px
         height: 220px
 
 
 .gallery_row_two
     display: flex
-    justify-content: space-evenly
+    justify-content: space-between
     flex-wrap: wrap
     columns: 3
     gap: 15px
@@ -251,7 +257,7 @@
 
 
 .low_altitude_picture
-    width: 352.26px
+    width: 380px
     height: 327.26px
     object-fit: cover
     border-radius: 20px
@@ -263,23 +269,29 @@
         transition: .5s ease-in-out
     /* @3xl */
     @media screen and (max-width: 1920px)
-        width: 352.26px
+        width: 380px
         height: 327.26px
     /* @2xl */
     @media screen and (max-width: 1600px)
-        width: 320px
+        width: 360px
         height: 300px
     /* @xl */
     @media screen and (max-width: 1440px)
-        width: 320px
+        width: 360px
         height: 300px
     /* @lg */
     @media screen and (max-width: 1280px)
-        width: 250px
+        width: 300px
         height: 250px
     /* @md */
     @media screen and (max-width: 1024px)
-        width: 200px
+        width: 280px
+        height: 200px
+    @media screen and (max-width: 980px)
+        width: 270px
+        height: 200px
+    @media screen and (max-width: 900px)
+        width: 230px
         height: 200px
     /* @sm */
     @media screen and (max-width: 768px)
@@ -294,6 +306,14 @@
     @media screen and (max-width: 600px)
         width: 250px
         height: 200px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 250px
+        height: 170px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 250px
+        height: 138px
 
 
 .slider
@@ -360,6 +380,12 @@
        height: 250px
        padding-top: 0
        margin-bottom: 50px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        height: 190px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        height: 190px
 
 
 .teacher
@@ -398,13 +424,13 @@
         border-radius: 10px
     /* @2xs */
     @media screen and (max-width: 480px)
-        width: 159px
+        width: 150px
         height: 220px
         border-radius: 10px
     /* @3xs */
     @media screen and (max-width: 360px)
-        width: 159px
-        height: 220px
+        width: 123px
+        height: 167px
         border-radius: 10px
 
 
@@ -466,7 +492,7 @@
             font-size: 14px
         /* @3xs */
         @media screen and (max-width: 360px)
-            font-size: 14px
+            font-size: 12px
     /* @3xl */
     @media screen and (max-width: 1920px)
         padding: 10px

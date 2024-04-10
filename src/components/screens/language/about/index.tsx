@@ -48,11 +48,7 @@ const About = ({ data, locale }: Props) => {
     const t = useTranslations();
 
     const gallery: any = data[0].about_us?.about_us_images?.map((item: Image, index: number) => {
-        const path: {
-            src: string;
-            width: number;
-            height: number;
-        } | any = urlForImage(item);
+        const path: { src: string, width: number, height: number } | any = urlForImage(item);
 
         return (
             <Image
@@ -120,10 +116,8 @@ const About = ({ data, locale }: Props) => {
                             {gallery[2]}
                         </div>
                     </div>
-
-
                     <div className={styles.videos}>
-                       {videos}
+                        {videos}
                     </div>
                 </div>
             </Container>
