@@ -1,6 +1,3 @@
-
-
-
 .question
 	color: #006ED2
 	font-weight: 700
@@ -10,57 +7,97 @@
 
 
 
-.label
-	margin-left: 20px
-	color: #828282
-	font-size: 25px
-	font-weight: 700
-	line-height: 30.7px
 
 
-.radio_container 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container 
+	display: flex 
 	position: relative 
 	padding-left: 35px 
-	margin-bottom: 15px 
+	align-items: center
+	margin-bottom: 12px 
 	cursor: pointer 
-	font-size: 16px 
-	display: flex
-	input 
-		position: absolute 
-		opacity: 0 
-		cursor: pointer 
-		&:checked 
-			& ~ .checkmark 
-				background-color: red 
-				width: 30px
-				height: 30px
-				padding-left: 10px
-				&:after 
-					display: block 
+	font-size: 22px 
+	-webkit-user-select: none 
+	-moz-user-select: none 
+	-ms-user-select: none 
+	user-select: none 
+	label
+		margin-left: 20px
+		color: #828282
+		font-size: 25px
+		font-weight: 700
+		line-height: 30.7px
+		cursor: pointer
+
+
+.radio
+	position: absolute 
+	opacity: 0 
+	cursor: pointer 
+	&:checked 
+		& ~ .checkmark 
+			background-color: #F9CC48 
+			&:after 
+				display: block 
 	&:hover 
 		input 
 			& ~ .checkmark 
-				background-color: green 
-	.checkmark 
-		&:after 
-			top: 7px 
-			left: 7px 
-			width: 11px 
-			height: 11px 
-			border-radius: 50% 
-			background: black 
-	label 
-		margin-left: 25px 
+				background-color: #006ED2 
+
+
+.checkmark 
+	&:after 
+		top: 5px 
+		left: 5px 
+		width: 15px 
+		height: 15px 
+		border-radius: 50% 
+		background-color: #FFFFFF 
+
 
 .checkmark 
 	position: absolute 
-	top: 0 
+	top: 2px
 	left: 0 
 	height: 25px 
 	width: 25px 
-	background-color:  yellow  
+	background-color: #006ED2 
 	border-radius: 50% 
 	&:after 
 		content: "" 
 		position: absolute 
 		display: none 
+
+
+
+.field
+	position: absolute
+
+.quiz
+	position: absolute
+	top: 100px

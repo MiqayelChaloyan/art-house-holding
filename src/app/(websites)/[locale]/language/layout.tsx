@@ -1,15 +1,15 @@
 'use server'
 
-// import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
+
+import FBMessenger from "@/lib/outlets/language/FBMessenger";
+import ScrollToTopButton from "@/lib/outlets/general/ScrollToTopButton";
 import ContactUs from "@/lib/outlets/language/ContactUs";
 import Footer from "@/lib/outlets/language/Footer";
 import Header from "@/lib/outlets/language/Header";
-import { query } from "../../../../../sanity/services/language-service/courses";
-import { notFound, useParams } from "next/navigation";
-import FBMessenger from "@/lib/outlets/language/FBMessenger";
+
 import { client } from "../../../../../sanity/client";
-import { headers } from "next/headers";
-import ScrollToTopButton from "@/lib/outlets/general/ScrollToTopButton";
+import { query } from "../../../../../sanity/services/language-service/courses";
 
 
 interface RootLayoutProps {
@@ -30,18 +30,12 @@ async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
+
     const data = await getResources(locale);
-    // console.log(store.urlPathname)
+
     if (!data) {
         notFound()
     }
-
-    // const headersList = headers();
-    // const domain = headersList.get('host') || "";
-    // const fullUrl = headersList.get('referer') || "";
-    // const [, pathname] = fullUrl.match(new RegExp(`https?:\/\/${domain}(.*)`)) || []
-    // let subString = '/language/form';
-    // let bool = store?.urlPathname.includes(subString)
 
     return (
         <div className="languages-container">
@@ -49,13 +43,12 @@ async function Layout({
                 <div>
                     <Header locale={locale} />
                 </div>
-                <FBMessenger />
+                {/* <FBMessenger /> */}
                 <ScrollToTopButton/>
                 <main className="languages-main">
                     {children}
                 </main>
             </div>
-            {/* {!bool ?  <ContactUs courses={data.languages} />: null} */}
             <ContactUs courses={data.languages} />
             <Footer/>
         </div>
@@ -63,4 +56,5 @@ async function Layout({
 }
 
 export default Layout;
+
 

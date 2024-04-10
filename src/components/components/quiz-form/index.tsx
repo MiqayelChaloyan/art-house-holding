@@ -42,7 +42,7 @@ const QuizForm = () => {
   //   setCurrent(Math.max(current - 1, 0));
   // }
 
-  const steps = Array.from({ length: questions.length + 1 }, (_, i) => i);
+  const steps = Array.from({ length: questions.length }, (_, i) => i);
 
 
   return (

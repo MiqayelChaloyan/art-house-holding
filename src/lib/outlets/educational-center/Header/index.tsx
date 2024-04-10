@@ -91,7 +91,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         <Link href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`} aria-label='price-list' className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}>{t('price-list')}</Link>
                     </div>
                     <div>
-                        <LocalSwitcher />
+                        <LocalSwitcher activeColor='#B21B1B' color='black' />
                     </div>
                 </div>
                 <button

@@ -3,6 +3,7 @@
 	align-items: center
 	justify-content: space-evenly
 
+
 .stepper_contain
 	display: flex
 	align-items: center
@@ -10,15 +11,12 @@
 	margin-bottom: 60px
 	margin-top: 20px
 
+
 .steps
 	color: #F9CC48
 	font-size: 32px
 	font-weight: 700
 	line-height: 39.06px
-
-
-
-
 
 
 .stepper__step
@@ -37,10 +35,10 @@
 		width: 40px 
 		left: 100% 
 		top: calc(50% - 1px)
-		&:first-child
-			background-color: red 
+	&:last-child
+		&:after 
+			display: none
 	
-
 
 .stepper__step__done
 	background-color: #F9CC48
@@ -58,12 +56,23 @@
 
 @keyframes pulse-animation 
 	0%
-		box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2)
+		box-shadow: 0 0 0 0px #006ED2
+		opacity: 0.5
 	100%
 		box-shadow: 0 0 0 18px rgba(0, 0, 0, 0) 
 
 
-
+.stepper__step__done
+	&:after 
+		content: " " 
+		display: block 
+		position: absolute 
+		height: 2px 
+		background-color: #F9CC48 
+		width: 40px 
+		left: 100% 
+		top: calc(50% - 1px)
+		transition: 2s
 
 
 

@@ -75,7 +75,7 @@ const Header = ({ typePosition }: IHeaderProps) => {
                         <ScrollLink to='partners' smooth={false} duration={500} className={`${styles.link} ${linkActive === 'partners' ? styles.linkActive : ''} ${ArianAMU.className}`} onClick={() => handleActiveLink('partners')}>{t('partners')}</ScrollLink>
                     </div>
                     <div>
-                       <LocalSwitcher/>
+                       <LocalSwitcher activeColor='#B21B1B' color='black'/>
                     </div>
                 </div>
                 <button

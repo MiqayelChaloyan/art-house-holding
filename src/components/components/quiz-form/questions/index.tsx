@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Action from '@/store/question_reducer'
 import { Calibri } from '@/lib/constants/font';
 
+
 const Questions = ({ onCheked }: any) => {
     const dispatch = useDispatch();
     const questions = useSelector((state: any) => state.questions.quiz[state.questions.trace]);
@@ -39,10 +40,10 @@ const Questions = ({ onCheked }: any) => {
             <ul id={questions?.id} className={styles.quiz}>
                 {
                     questions?.options.map((q: any, i: number) => (
-                       <li className={styles.radio_container} key={i}>
+                        <li className={styles.container} key={i}>
                             <input className={styles.radio} type="radio" id={`q${i}-option`} name="options" onChange={() => onSelect(i)} />
                             <span className={styles.checkmark}></span>
-                            <label htmlFor={`q${i}-option`}>{q}</label>
+                            <label htmlFor={`q${i}-option`} className={Calibri.className}>{q}</label>
                         </li>
                     ))
                 }

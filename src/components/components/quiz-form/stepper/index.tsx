@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styles from './styles.module.sass';
 import { Calibri } from "@/lib/constants/font";
 
+
 const Step = ({ index, trace }: any) => {
     // const done = trace < current;
     // const currentStep = trace === current;
@@ -30,7 +31,7 @@ const Stepper = ({ steps }: any) => {
     return (
         <div className={styles.stepper_contain}>
             <div>
-                <h2 className={`${styles.steps} ${Calibri.className}`}>{trace + 1}/{questions.length + 1}</h2>
+                <h2 className={`${styles.steps} ${Calibri.className}`}>{trace + 1}/{questions.length}</h2>
             </div>
             <div className={styles.stepper}>
                 {steps.map((_: any, index: number) =>
