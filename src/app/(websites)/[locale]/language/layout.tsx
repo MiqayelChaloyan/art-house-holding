@@ -1,3 +1,5 @@
+'use server'
+
 // import { notFound } from "next/navigation";
 import ContactUs from "@/lib/outlets/language/ContactUs";
 import Footer from "@/lib/outlets/language/Footer";
@@ -29,7 +31,7 @@ async function Layout({
     params: { locale },
 }: Readonly<RootLayoutProps>) {
     const data = await getResources(locale);
-
+    // console.log(store.urlPathname)
     if (!data) {
         notFound()
     }
@@ -39,7 +41,7 @@ async function Layout({
     // const fullUrl = headersList.get('referer') || "";
     // const [, pathname] = fullUrl.match(new RegExp(`https?:\/\/${domain}(.*)`)) || []
     // let subString = '/language/form';
-    // let bool = pathname.includes(subString)
+    // let bool = store?.urlPathname.includes(subString)
 
     return (
         <div className="languages-container">
@@ -47,14 +49,15 @@ async function Layout({
                 <div>
                     <Header locale={locale} />
                 </div>
-                {/* <FBMessenger /> */}
+                <FBMessenger />
                 <ScrollToTopButton/>
                 <main className="languages-main">
                     {children}
                 </main>
             </div>
+            {/* {!bool ?  <ContactUs courses={data.languages} />: null} */}
             <ContactUs courses={data.languages} />
-            <Footer />
+            <Footer/>
         </div>
     );
 }
