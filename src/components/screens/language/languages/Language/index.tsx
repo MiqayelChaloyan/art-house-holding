@@ -19,12 +19,15 @@ import useWindowSize from '@/hooks/useWindowSize';
 import { ABOUT_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
-// slick-carousel 
-import Slider from 'react-slick';
+// // slick-carousel 
+// import Slider from 'react-slick';
 
-// slick-carousel styles
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// // slick-carousel styles
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
+
+import { SwiperSlide } from 'swiper/react';
+import FlatList from '@/lib/ui/flatList';
 
 import styles from './styles.module.sass';
 
@@ -111,7 +114,7 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
         <div key={rowIndex} className={styles.teacher_row}>
             {row.map((item: any) => {
                 const path: { src: string, width: number, height: number } | any = urlForImage(item.teacher_image);
-    
+
                 return (
                     <div key={item.slug.current} className={styles.teacher_column}>
                         <Image
@@ -135,44 +138,73 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
     ));
 
 
+    // const slider = during_courses_images.map((image: Image, index: number) => {
+    //     const path: { src: string, width: number, height: number } | any = urlForImage(image);
+
+    //     return (
+    //         <div
+    //             key={index}
+    //             className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}
+    //         >
+    //             <Image
+    //                 key={image?._key}
+    //                 src={path?.src}
+    //                 alt={image?.alt}
+    //                 priority
+    //                 className={styles.low_altitude_picture}
+    //                 width={0}
+    //                 height={0}
+    //                 sizes="100vw"
+    //                 loading="eager"
+    //                 quality={50}
+    //             />
+    //         </div>
+    //     )
+    // });
+
+
     const slider = during_courses_images.map((image: Image, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(image);
 
         return (
-            <div
-                key={index}
-                className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}
+            <SwiperSlide key={index}
             >
-                <Image
-                    key={image?._key}
-                    src={path?.src}
-                    alt={image?.alt}
-                    priority
-                    className={styles.low_altitude_picture}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    loading="eager"
-                    quality={50}
-                />
-            </div>
+                <div
+                    // className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}
+                >
+                    <Image
+                        key={image?._key}
+                        src={path?.src}
+                        alt={image?.alt}
+                        priority
+                        className={styles.low_altitude_picture}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        loading="eager"
+                        quality={50}
+                    />
+                </div>
+            </SwiperSlide>
         )
     });
 
-    const settings = {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        speed: 500,
-        autoplay: false,
-        autoplaySpeed: 2000,
-        dots: false,
-        beforeChange: (_: any, next: any) => setSlideIndex(next),
-        centerMode: true,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-        cssEase: 'ease-out',
-    };
+
+
+    // const settings = {
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     infinite: true,
+    //     speed: 500,
+    //     autoplay: false,
+    //     autoplaySpeed: 2000,
+    //     dots: false,
+    //     beforeChange: (_: any, next: any) => setSlideIndex(next),
+    //     centerMode: true,
+    //     nextArrow: <SampleNextArrow />,
+    //     prevArrow: <SamplePrevArrow />,
+    //     cssEase: 'ease-out',
+    // };
 
 
     return (
@@ -212,9 +244,10 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
                                 </div>
                             </>
                             :
-                            <Slider {...settings}>
-                                {...slider}
-                            </Slider>
+                            // <Slider {...settings}>
+                            //     {...slider}
+                            // </Slider>
+                            <FlatList list={slider} />
                     }
                 </div>
                 <div className={styles.row_three}>

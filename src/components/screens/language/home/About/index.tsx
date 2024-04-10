@@ -62,7 +62,6 @@ const About = ({ data, locale }: Props) => {
         );
     });
 
-
     return (
         <div className={styles.container}>
             <Container>
@@ -86,7 +85,7 @@ const About = ({ data, locale }: Props) => {
                             >
                                 {t('texts.send-request')}
                             </Link>
-                              <Link
+                            <Link
                                 href={`/${locale}${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_ABOUT}`}
                                 prefetch={true}
                                 className={cn(
@@ -110,6 +109,7 @@ const About = ({ data, locale }: Props) => {
                             {gallery[2]}
                         </div>
                     </div>
+
                 </div>
             </Container>
         </div>
