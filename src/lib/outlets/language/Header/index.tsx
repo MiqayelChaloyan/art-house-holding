@@ -115,7 +115,7 @@ const Header = ({ locale }: IHeaderProps) => {
                     <Logo width={windowSize.width < 1280 ? 150 : 255.53} height={80} fill='#F9CC48' />
                 </div>
                 <div className={styles.switcher}>
-                    <LocalSwitcher activeColor='#F9CC48' color='#006ED2'/>
+                    <LocalSwitcher activeColor='#F9CC48' color='#006ED2' />
                 </div>
             </HeaderBoundary>
             <StickyBoundary sticky={isSticky} width={windowSize.width}>
@@ -135,8 +135,8 @@ const Header = ({ locale }: IHeaderProps) => {
                         </Link>
                     ))}
                     <div className={styles.mobile}>
-                        <p className={`${styles.mobile_triangle_text_one} ${Arial.className}`}>{t("texts.send-request")}</p>
-                        <p className={`${styles.mobile_triangle_text_two} ${Arial.className}`}>{t("texts.take-the-test")}</p>
+                        <Link href={`/${locale}${'/language/quiz'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_one} ${Arial.className}`}>{t("texts.send-request")}</Link>
+                        <Link href={`/${locale}${'/language/form'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_two} ${Arial.className}`}>{t("texts.take-the-test")}</Link>
                         <div className={styles.mobile_switcher}>
                             <LocalSwitcher />
                         </div>
