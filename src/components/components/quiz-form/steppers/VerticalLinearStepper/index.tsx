@@ -11,7 +11,10 @@ import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Action from '@/store/question_reducer';
 
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
+import { Calibri } from '@/lib/constants/font';
 
 
 export default function VerticalLinearStepper() {
@@ -61,9 +64,9 @@ export default function VerticalLinearStepper() {
               <Box>
                 {
                   step?.options.map((q: any, i: number) => (
-                    <div key={i} className={styles.option}>
-                      <input value={q} type="checkbox" name="options" id={`q${i}-option`} onChange={() => handleCheked(i)} />
-                      <label className={styles.label} htmlFor={`q${i}-option`}>{q}</label>
+                    <div className={styles.container} key={i}>
+                      <input type="radio" name="options" id={`q${i}-option`} onChange={() => handleCheked(i)} className={styles.radio} />
+                      <label htmlFor={`q${i}-option`} className={cn(styles.label, Calibri.className)}>{q}</label>
                     </div>
                   ))
                 }
