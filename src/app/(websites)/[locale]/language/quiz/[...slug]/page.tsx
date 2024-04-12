@@ -7,33 +7,32 @@ import { Locale } from "@/locales";
 
 import Language from "@/components/screens/language/languages/Language";
 import QuizPage from "@/components/screens/language/quiz/[quiz]";
-
-// import { query } from "../../../../../../../sanity/services/language-service/languages";
-// import { client } from "../../../../../../../sanity/client";
+import { client } from "../../../../../../../sanity/client";
+import { quizBySlugQuery } from "../../../../../../../sanity/services/language-service/quiz";
 
 
 interface RootLayoutProps {
     params: {
-        locale: string;
+        locale: string
+        slug: string
     };
 }
 
 
-// async function getResources(slug: string, locale: string) {
-//     // const res = await getLanguageBySlug(slug, locale);
-//     const data = await client.fetch(query, { slug, language: locale }, { next: { revalidate: 100 } });
-//     return data[0]
-// }
+async function getResources(slug: string, locale: string) {
+    const data = await client.fetch(quizBySlugQuery, { slug, language: locale }, { next: { revalidate: 100 } });
+    return data[0]
+}
 
 
-export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
-    // const data = await getResources(slug[0], locale);
+export default async function Page({ params: { locale, slug } }: Readonly<RootLayoutProps>) {
+    const data = await getResources(slug[0], locale);
 
-    // if (!data) {
-    //     notFound()
-    // }
+    if (!data) {
+        notFound()
+    }
 
-    return <QuizPage/>
+    return <QuizPage data={data}/>
 }
 
 

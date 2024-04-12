@@ -18,6 +18,7 @@ export default (S: any) =>
                     'languages-select-option',
                     'questions-language',
                     'promotions-languages',
+                    'languages-quiz',
                     'partners'
                 ].includes(listItem.getId())
             ),
@@ -50,8 +51,7 @@ export default (S: any) =>
                                 .child(
                                     S.documentList()
                                         .title('Courses')
-                                        .filter('_type == "courses"')
-                                ),
+                                        .filter('_type == "courses"')),
                         ])
                 ),
 
@@ -95,8 +95,7 @@ export default (S: any) =>
                                 .child(
                                     S.documentList()
                                         .title('Languages')
-                                        .filter('_type == "about-language"')
-                                ),
+                                        .filter('_type == "about-language"')),
                             S.listItem()
                                 .title('Price List')
                                 .icon(DocumentsIcon)
@@ -108,17 +107,16 @@ export default (S: any) =>
                                         .title('Co-Workers')
                                         .filter('_type == "co-workers-language"')
                                 ),
-                            // S.listItem()
-                            //     .title('Promotions')
-                            //     .child(
-                            //         S.documentList()
-                            //             .title('Promotions')
-                            //             .filter('_type == "promotions-language"')
-                            //     ),
                             S.listItem()
                                 .title('Promotions')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('promotions-languages').documentId('promotions-languages')),
+                            S.listItem()
+                                .title('Quiz')
+                                .child(
+                                    S.documentList()
+                                        .title('Quiz')
+                                        .filter('_type == "languages-quiz"')),
                         ])
                 ),
 
@@ -132,8 +130,7 @@ export default (S: any) =>
                                 .child(
                                     S.documentList()
                                         .title('Partners')
-                                        .filter('_type == "partners"')
-                                ),
+                                        .filter('_type == "partners"')),
                         ])
                 ),
         ]);

@@ -22,7 +22,7 @@ interface Image {
 }
 
 const Promotions = ({ data }: Props) => {
-    
+
     const separateArray = (array: any, size: number) => {
         return Array.from({ length: Math.ceil(array?.length / size) }, (_, index) =>
             array?.slice(index * size, index * size + size)
@@ -35,19 +35,12 @@ const Promotions = ({ data }: Props) => {
         return (
             <div className={styles.column} key={index}>
                 {item.map((discount: Image, index: number) => {
-
-                    const path: {
-                        src: string;
-                        width: number;
-                        height: number;
-                    } | any = urlForImage(discount.discount);
-
-                    const result: string = path.src;
+                    const path: { src: string, width: number, height: number } | any = urlForImage(discount.discount);
 
                     return (
                         <Image
                             key={index}
-                            src={result}
+                            src={path.src}
                             alt={discount.alt}
                             priority
                             className={styles.image}

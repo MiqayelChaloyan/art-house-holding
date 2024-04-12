@@ -11,11 +11,11 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 
 // import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { Inter } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import { Inter } from '@/lib/constants/font';
 
 
 interface Props {

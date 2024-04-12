@@ -1,13 +1,15 @@
 'use client'
 
+import { useEffect, useState } from 'react';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+
 import { useDispatch, useSelector } from 'react-redux';
 import * as Action from '@/store/question_reducer'
 
-import { Calibri } from '@/lib/constants/font';
-
-import { FaArrowRight } from 'react-icons/fa';
-
 import Questions from '../../questions';
+
+import CircularProgressBar from '@/lib/ui/circular_progress';
+import { Calibri } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
@@ -46,38 +48,109 @@ const HorizontalLinearStepper = () => {
     const questions = useSelector((state: any) => state.questions.quiz);
     const trace = useSelector((state: any) => state.questions.trace);
     // const loading = useSelector((state: any) => state.questions.isLoading);
+    const [isResultView, setIsResultView] = useState(false);
+
+    const question = useSelector((state: any) => state.questions?.quiz[state.questions.trace]);
+    const result = useSelector((state: any) => state.questions?.result);
+
+    const options = question?.options?.map((item: string, index: number) => ({ item, index, isChecked: false }));
+    const [isOptions, setIsOptions] = useState<any>(options);
+
+    const steps = Array.from({ length: questions.length }, (_, i) => i);
+
+    const isDisabled = isOptions?.some((item: any) => item.isChecked);
 
     const dispatch = useDispatch();
-
-    const question = useSelector((state: any) => state.questions.quiz[state.questions.trace]);
-    const result = useSelector((state: any) => state.questions.result);
 
     const handleNext = () => {
         if (trace < questions.length - 1) {
             dispatch(Action.moveNextAction())
+
+            setIsOptions((prevState: any) => {
+                return prevState.map((option: any) => ({
+                    ...option,
+                    isChecked: false
+                }));
+            });
         } else {
             console.log(result)
+            setIsResultView(true)
         }
     }
 
-    const handleCheked = (check: any) => {
+
+    const handleBack = () => {
+        dispatch(Action.movePrevAction())
+    };
+
+
+    const toggleAllCheckboxes = (answerIdx: string | number, checked: boolean) => {
+        setIsOptions((prevState: any) => {
+            if (prevState) {
+                return prevState.map((option: any) => ({
+                    ...option,
+                    isChecked: option.index === answerIdx ? checked : false,
+                }));
+            }
+        });
+    };
+
+    const handleCheked = (check: string) => {
         if (question.answer === question.options[check]) {
-            dispatch(Action.addResult())
+            dispatch(Action.addResult());
+            dispatch(Action.addedAnswer({
+                question: question.question,
+                wrongAnswer: false,
+                correctAnswer: question.answer
+            }))
+        } else {
+            dispatch(Action.addedAnswer({
+                question: question.question,
+                wrongAnswer: question.options[check],
+                correctAnswer: question.answer
+            }));
         }
-    }
 
-    const steps = Array.from({ length: questions.length }, (_, i) => i);
+        toggleAllCheckboxes(check, isOptions?.length ? !isOptions[check]?.isChecked : true);
+    };
+
+
+    const handleView = () => dispatch(Action.viewAnswer());
+
+    console.log(isOptions)
 
     return (
-        <div>
-            <Stepper steps={steps} />
-            <Questions onCheked={handleCheked} />
-            <div className={styles.next_button}>
-                <button className={`${styles.btn} ${styles.next}`} onClick={handleNext}>
-                    <FaArrowRight />
-                </button>
-            </div>
-        </div>
+        <>
+            {
+                !isResultView ?
+                    <div>
+                        <Stepper steps={steps} />
+                        <Questions onCheked={handleCheked} isOptions={isOptions} />
+                        <div className={styles.next_button}>
+                            {trace > 0 &&
+                                <button className={`${styles.btn} ${styles.back}`} onClick={handleBack}>
+                                    <FaArrowLeft />
+                                </button>}
+                            <button className={`${styles.btn} ${styles.next}`} style={{
+                                backgroundColor:
+                                    !isDisabled ? 'red' : 'green'
+                            }}
+                                onClick={handleNext}
+                                disabled={
+                                    !isDisabled}>
+                                {trace !== questions.length - 1 ? <FaArrowRight /> : <span>Submit</span>}
+                            </button>
+                        </div>
+                    </div>
+                    :
+                    <div>
+                        <CircularProgressBar />
+                        <p>{result}</p>
+                        <button onClick={handleView}>view</button>
+                    </div>
+            }
+        </>
+
     )
 }
 

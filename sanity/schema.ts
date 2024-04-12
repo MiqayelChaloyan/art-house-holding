@@ -9,6 +9,7 @@ import aboutUsSchemaLanguage from './schemas/language/about-us-schema';
 import priceListSchemaLanguage from './schemas/language/price-list-schema';
 import coWorkersSchemaLanguage from './schemas/language/co-workers-schema';
 import promotionsSchemaLanguage from './schemas/language/promotions-schema';
+import quizSchemaLanguage from './schemas/language/quiz-schema';
 import partnersSchema from './schemas/generic';
 
 export const schemaTypes = [
@@ -21,6 +22,7 @@ export const schemaTypes = [
   priceListSchemaLanguage,
   coWorkersSchemaLanguage,
   promotionsSchemaLanguage,
+  quizSchemaLanguage,
   partnersSchema,
 ];
 

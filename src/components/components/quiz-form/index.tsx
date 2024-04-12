@@ -15,10 +15,10 @@ const QuizForm = () => {
     <div className={styles.form}>
       <div className={styles.header}>
         {
-          windowSize.width > 600 ?
-            <HorizontalLinearStepper />
-            :
+          windowSize.width < 600 ?
             <VerticalLinearStepper />
+            :
+            <HorizontalLinearStepper />
         }
       </div>
     </div>

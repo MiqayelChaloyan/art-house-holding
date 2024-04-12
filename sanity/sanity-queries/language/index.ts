@@ -114,3 +114,20 @@ export interface DISCOUNTS_LANGUAGE {
         }
     }
 }
+
+export interface QUIZ {
+    _id: string
+    name: string
+    slug: string
+    question_logo: {
+        _type: string
+        alt: string
+        asset: { _ref: string, _type: string }
+    }
+    questions: {
+        question: string
+        slug: string
+        options: any
+        answer: string
+    }
+}

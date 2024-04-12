@@ -4,14 +4,18 @@ export interface Questions {
         quiz: any
         trace: number
         result: number
+        answer: any
         isLoading: boolean
+        isViewAnswer: boolean
 }
 
 const initialState: Questions = {
         quiz: [],
         trace: 0,
         result: 0,
-        isLoading: false
+        answer: [],
+        isLoading: false,
+        isViewAnswer: false,
 };
 
 export const questionReducer = createSlice({
@@ -49,7 +53,9 @@ export const questionReducer = createSlice({
                 quiz: [],
                 trace: 0,
                 result: 0,
-                isLoading: false
+                answer: [],
+                isLoading: false,
+                isViewAnswer: false,
             }
         },
         updateLoader: (state, action) => {
@@ -57,10 +63,19 @@ export const questionReducer = createSlice({
                 ...state,
                 isLoading: action.payload
             }
+        },
+        viewAnswer: (state) => {
+            return {
+                ...state,
+                isViewAnswer: !state.isViewAnswer
+            }
+        },
+        addedAnswer: (state, action) => {
+            state.answer.push(action.payload)
         }
     }
 })
 
-export const { startExamAction, moveNextAction, movePrevAction, addResult, resetAllAction, updateLoader } = questionReducer.actions;
+export const { startExamAction, moveNextAction, movePrevAction, addResult, resetAllAction, updateLoader, viewAnswer, addedAnswer } = questionReducer.actions;
 
 export default questionReducer.reducer;

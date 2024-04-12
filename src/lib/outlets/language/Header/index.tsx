@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
+import { useDispatch } from 'react-redux';
+import * as Action from '@/store/question_reducer'
+
 import LocalSwitcher from '@/components/components/local-switcher';
 
 import useWindowSize from '@/hooks/useWindowSize';
@@ -59,6 +62,7 @@ const Header = ({ locale }: IHeaderProps) => {
     const pathname = usePathname();
     const windowSize = useWindowSize();
     const t = useTranslations()
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
@@ -106,6 +110,7 @@ const Header = ({ locale }: IHeaderProps) => {
                             href={`/${locale}/language/quiz`}
                             aria-label={`/${locale}/language/quiz`}
                             className={`${styles.triangle_text} ${Arial.className}`}
+                            onClick={() => dispatch(Action.resetAllAction())}
                         >
                             {t("texts.take-the-test")}
                         </Link>
@@ -129,7 +134,10 @@ const Header = ({ locale }: IHeaderProps) => {
                             href={`/${locale}${link.path}`}
                             aria-label={`/${locale}${link.path}`}
                             className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}
-                            onClick={() => setIsOpenMenu(false)}
+                            onClick={() => {
+                                setIsOpenMenu(false);
+                                dispatch(Action.resetAllAction())
+                            }}
                         >
                             {t(`navigation.${link.label}`)}
                         </Link>

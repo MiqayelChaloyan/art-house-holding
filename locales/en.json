@@ -38,7 +38,8 @@
         "contact-us": "Contact Us",
         "view-more": "View more",
         "show-less": "Show less",
-        "view": "View"
+        "view": "View",
+        "go-back": "Go back"
     },
     "sections": {
         "partners": "Co-workers",
@@ -51,7 +52,8 @@
         "news": "News",
         "specialists": "Specialists",
         "rating": "Our rating",
-        "our-daily": "Our daily life"
+        "our-daily": "Our daily life",
+        "your-answers": "Your Answers"
     },
     "contact": {
         "tell": "Tell.",
