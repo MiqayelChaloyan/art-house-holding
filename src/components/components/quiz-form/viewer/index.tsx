@@ -50,7 +50,10 @@ const QuestionsViewer = () => {
                     href={`/${localActive}/language/quiz/`}
                     aria-label={`/${localActive}/language/quiz/`}
                     className={cn(styles.link, ArianAMU.className)}
-                    onClick={() => setTimeout(() => dispatch(Action.viewAnswer()), 1500)}
+                    onClick={() => {
+                        // dispatch(Action.viewAnswer());
+                       dispatch(Action.resetAllAction())
+                    }}
                 >
                     {t('buttons.go-back')}
                 </Link>

@@ -47,57 +47,34 @@ const Stepper = ({ steps }: any) => {
 const HorizontalLinearStepper = () => {
     const questions = useSelector((state: any) => state.questions.quiz);
     const trace = useSelector((state: any) => state.questions.trace);
-    // const loading = useSelector((state: any) => state.questions.isLoading);
     const [isResultView, setIsResultView] = useState(false);
+    const [isDisable, setIsDisable] = useState(false);
 
     const question = useSelector((state: any) => state.questions?.quiz[state.questions.trace]);
-    const result = useSelector((state: any) => state.questions?.result);
-
-    const options = question?.options?.map((item: string, index: number) => ({ item, index, isChecked: false }));
-    const [isOptions, setIsOptions] = useState<any>(options);
+    const score = useSelector((state: any) => state.questions?.score);
 
     const steps = Array.from({ length: questions.length }, (_, i) => i);
 
-    const isDisabled = isOptions?.some((item: any) => item.isChecked);
-
     const dispatch = useDispatch();
+
 
     const handleNext = () => {
         if (trace < questions.length - 1) {
             dispatch(Action.moveNextAction())
-
-            setIsOptions((prevState: any) => {
-                return prevState.map((option: any) => ({
-                    ...option,
-                    isChecked: false
-                }));
-            });
         } else {
-            console.log(result)
+            console.log(score)
             setIsResultView(true)
         }
-    }
+    };
 
 
     const handleBack = () => {
         dispatch(Action.movePrevAction())
     };
 
-
-    const toggleAllCheckboxes = (answerIdx: string | number, checked: boolean) => {
-        setIsOptions((prevState: any) => {
-            if (prevState) {
-                return prevState.map((option: any) => ({
-                    ...option,
-                    isChecked: option.index === answerIdx ? checked : false,
-                }));
-            }
-        });
-    };
-
     const handleCheked = (check: string) => {
         if (question.answer === question.options[check]) {
-            dispatch(Action.addResult());
+            dispatch(Action.addScore());
             dispatch(Action.addedAnswer({
                 question: question.question,
                 wrongAnswer: false,
@@ -110,14 +87,11 @@ const HorizontalLinearStepper = () => {
                 correctAnswer: question.answer
             }));
         }
-
-        toggleAllCheckboxes(check, isOptions?.length ? !isOptions[check]?.isChecked : true);
     };
 
 
     const handleView = () => dispatch(Action.viewAnswer());
 
-    console.log(isOptions)
 
     return (
         <>
@@ -125,19 +99,22 @@ const HorizontalLinearStepper = () => {
                 !isResultView ?
                     <div>
                         <Stepper steps={steps} />
-                        <Questions onCheked={handleCheked} isOptions={isOptions} />
+                        <Questions onCheked={handleCheked} setIsDisable={setIsDisable}/>
                         <div className={styles.next_button}>
-                            {trace > 0 &&
-                                <button className={`${styles.btn} ${styles.back}`} onClick={handleBack}>
+                            {/* {trace > 0 &&
+                                <button
+                                    className={`${styles.btn} ${styles.back}`}
+                                    onClick={handleBack}
+                                >
                                     <FaArrowLeft />
-                                </button>}
-                            <button className={`${styles.btn} ${styles.next}`} style={{
-                                backgroundColor:
-                                    !isDisabled ? 'red' : 'green'
-                            }}
+                                </button>
+                            } */}
+                            <button
+                                className={`${styles.btn} ${styles.next}`}
                                 onClick={handleNext}
-                                disabled={
-                                    !isDisabled}>
+                                // disabled={!isDisable}
+                                // style={{backgroundColor: !isDisable ? 'red' : 'green'}}
+                            >
                                 {trace !== questions.length - 1 ? <FaArrowRight /> : <span>Submit</span>}
                             </button>
                         </div>
@@ -145,7 +122,7 @@ const HorizontalLinearStepper = () => {
                     :
                     <div>
                         <CircularProgressBar />
-                        <p>{result}</p>
+                        <p>{score}</p>
                         <button onClick={handleView}>view</button>
                     </div>
             }

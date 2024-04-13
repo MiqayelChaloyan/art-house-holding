@@ -20,7 +20,7 @@ import { Calibri } from '@/lib/constants/font';
 export default function VerticalLinearStepper() {
   const questions = useSelector((state: any) => state.questions.quiz);
   const trace = useSelector((state: any) => state.questions.trace);
-  const result = useSelector((state: any) => state.questions.result);
+  const score = useSelector((state: any) => state.questions.score);
   const question = useSelector((state: any) => state.questions.quiz[state.questions.trace]);
 
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export default function VerticalLinearStepper() {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
     } else {
-      console.log(result)
+      console.log(score)
     }
   };
 
@@ -47,7 +47,7 @@ export default function VerticalLinearStepper() {
 
   const handleCheked = (check: any) => {
     if (question.answer === question.options[check]) {
-      dispatch(Action.addResult())
+      dispatch(Action.addScore())
     }
   }
 

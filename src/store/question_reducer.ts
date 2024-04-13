@@ -1,21 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface Questions {
-        quiz: any
-        trace: number
-        result: number
-        answer: any
-        isLoading: boolean
-        isViewAnswer: boolean
+    quiz: any
+    trace: number
+    score: number
+    answer: any
+    isLoading: boolean
+    isViewAnswer: boolean
+    checkBoxes: any
+
 }
 
+const initialCheckBoxes = [
+    { value: '', id: 0, isChecked: false },
+    { value: '', id: 1, isChecked: false },
+    { value: '', id: 2, isChecked: false },
+    { value: '', id: 3, isChecked: false }
+]
+
 const initialState: Questions = {
-        quiz: [],
-        trace: 0,
-        result: 0,
-        answer: [],
-        isLoading: false,
-        isViewAnswer: false,
+    quiz: [],
+    trace: 0,
+    score: 0,
+    answer: [],
+    isLoading: false,
+    isViewAnswer: false,
+    checkBoxes: initialCheckBoxes
 };
 
 export const questionReducer = createSlice({
@@ -30,10 +40,10 @@ export const questionReducer = createSlice({
                 quiz: quiz,
             }
         },
-        addResult: (state) => {
+        addScore: (state) => {
             return {
                 ...state,
-                result: state.result + 1,
+                score: state.score + 1,
             }
         },
         moveNextAction: (state) => {
@@ -52,10 +62,11 @@ export const questionReducer = createSlice({
             return {
                 quiz: [],
                 trace: 0,
-                result: 0,
+                score: 0,
                 answer: [],
                 isLoading: false,
                 isViewAnswer: false,
+                checkBoxes: initialCheckBoxes
             }
         },
         updateLoader: (state, action) => {
@@ -72,10 +83,34 @@ export const questionReducer = createSlice({
         },
         addedAnswer: (state, action) => {
             state.answer.push(action.payload)
-        }
+        },
+        changeInitialCheckBoxes: (state) => {
+            return {
+                ...state,
+                checkBoxes: initialCheckBoxes
+            }
+        },
+        changeCheckBoxes: (state, action) => {
+            console.log(action.payload)
+            return {
+                ...state,
+                checkBoxes: action.payload
+            }
+        },
     }
 })
 
-export const { startExamAction, moveNextAction, movePrevAction, addResult, resetAllAction, updateLoader, viewAnswer, addedAnswer } = questionReducer.actions;
+export const {
+    startExamAction,
+    moveNextAction,
+    movePrevAction,
+    addScore,
+    resetAllAction,
+    updateLoader,
+    viewAnswer,
+    addedAnswer,
+    changeInitialCheckBoxes,
+    changeCheckBoxes
+} = questionReducer.actions;
 
 export default questionReducer.reducer;

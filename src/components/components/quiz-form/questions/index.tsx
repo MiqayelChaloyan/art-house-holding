@@ -1,21 +1,68 @@
 "use client"
 
-import { EffectCallback, useEffect, useState } from 'react'
-import styles from './styles.module.sass';
+import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as Action from '@/store/question_reducer'
+import * as Action from '@/store/question_reducer';
+
 import { Calibri } from '@/lib/constants/font';
 
-import cn from 'classnames'
+import Checkbox from '@/lib/ui/checkbox/Checkbox';
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
 
 
-const Questions = ({ onCheked, isOptions }: any) => {
-    // const dispatch = useDispatch();
+// const tmp = [
+//     { value: '', id: 0, isChecked: false },
+//     { value: '', id: 1, isChecked: false },
+//     { value: '', id: 2, isChecked: false },
+//     { value: '', id: 3, isChecked: false }
+// ];
 
+const Questions = ({ onCheked }: any) => {
     const questions = useSelector((state: any) => state.questions.quiz[state.questions.trace]);
+    const question = useSelector((state: any) => state.questions?.quiz[state.questions.trace]);
+    const options = question?.options?.map((item: string, index: number) => ({ value: item, id: index, isChecked: false }));
 
-    const onSelect = (index: number) => onCheked(index)
+    const dispatch = useDispatch();
+
+    const checkBoxes = useSelector((state: any) => state.questions.checkBoxes);
+
+
+    // dispatch(Action.changeCheckBoxes(options))
+
+    // const [checkBoxes, setCheckBoxes] = useState<any>(options || tmp);
+
+    // const isButtonDisabled = (): boolean => {
+    //     if (!checkBoxes) {
+    //         return true;
+    //     }
+
+    //     const isAtLeastOneUnchecked = checkBoxes.some((checkbox: any) => !checkbox.isChecked);
+
+    //     const areAllUnchecked = checkBoxes.every((checkbox: any) => !checkbox.isChecked);
+
+    //     return !isAtLeastOneUnchecked || areAllUnchecked;
+    // };
+
+    const handleCheckBoxChange = (id: number) => {
+        const updatedCheckBoxes = checkBoxes?.map((checkbox: any) => {
+            if (checkbox.id === id) {
+                return { ...checkbox, isChecked: true };
+            } else {
+                return { ...checkbox, isChecked: false };
+            }
+        });
+
+        dispatch(Action.changeCheckBoxes(updatedCheckBoxes));
+
+        // const disabled = isButtonDisabled();
+        // setIsDisable(disabled);
+
+        onCheked(id);
+    };
 
 
     return (
@@ -23,20 +70,18 @@ const Questions = ({ onCheked, isOptions }: any) => {
             <h2 className={`${styles.question} ${Calibri.className}`}>{questions?.question}</h2>
             <ul id={questions?.id} className={styles.quiz}>
                 {
-                    questions?.options.map((q: any, i: number) => (
-                        <li className={styles.container} key={i}>
-                            <input
-                                checked={isOptions?.length ? isOptions[i]?.isChecked : false}
-                                type="radio"
-                                name="options"
+                    questions?.options.map((q: any, i: number) => {
+                        return (
+                            <Checkbox
+                                key={i}
+                                label={q}
                                 id={`q${i}-option`}
-                                onChange={() => onSelect(i)}
-                                className={styles.radio}
+                                value={checkBoxes?.length && checkBoxes[i].isChecked || false}
+                                onChange={() => handleCheckBoxChange(i)}
+                                className={styles.answer}
                             />
-                            <span className={styles.checkmark}></span>
-                            <label htmlFor={`q${i}-option`} className={cn(styles.label, Calibri.className)}>{q}</label>
-                        </li>
-                    ))
+                        )
+                    })
                 }
             </ul>
         </div>
