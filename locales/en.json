@@ -30,16 +30,20 @@
         "rights": "All rights reserved",
         "rating-title": "Art House Learning Center",
         "send-request": "Send \n request",
-        "take-the-test":  "Pass \n the test",
+        "take-the-test": "Pass \n the test",
         "contact-us": "Contact us",
-        "more": "More"
+        "more": "More",
+        "total-points": "Total quiz points",
+        "total-questions": "Total questions",
+        "quiz-result": "Quiz result"
     },
     "buttons": {
         "contact-us": "Contact Us",
         "view-more": "View more",
         "show-less": "Show less",
         "view": "View",
-        "go-back": "Go back"
+        "go-back": "Go back",
+        "confirm": "Confirm"
     },
     "sections": {
         "partners": "Co-workers",
@@ -81,7 +85,8 @@
     "titles": {
         "price-list": "Price list",
         "private-lessons": "Private lessons \n for foreigners",
-        "english-language-lessons": "Advanced English \n language classes"
+        "english-language-lessons": "Advanced English \n language classes",
+        "quiz-result": "Quiz result"
     },
     "tables-titles": {
         "languages-taught": "Languages \n taught",

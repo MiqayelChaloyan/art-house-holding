@@ -7,25 +7,16 @@ export interface Questions {
     answer: any
     isLoading: boolean
     isViewAnswer: boolean
-    checkBoxes: any
 
 }
-
-const initialCheckBoxes = [
-    { value: '', id: 0, isChecked: false },
-    { value: '', id: 1, isChecked: false },
-    { value: '', id: 2, isChecked: false },
-    { value: '', id: 3, isChecked: false }
-]
 
 const initialState: Questions = {
     quiz: [],
     trace: 0,
     score: 0,
     answer: [],
-    isLoading: false,
+    isLoading: true,
     isViewAnswer: false,
-    checkBoxes: initialCheckBoxes
 };
 
 export const questionReducer = createSlice({
@@ -64,9 +55,8 @@ export const questionReducer = createSlice({
                 trace: 0,
                 score: 0,
                 answer: [],
-                isLoading: false,
+                isLoading: true,
                 isViewAnswer: false,
-                checkBoxes: initialCheckBoxes
             }
         },
         updateLoader: (state, action) => {
@@ -84,17 +74,10 @@ export const questionReducer = createSlice({
         addedAnswer: (state, action) => {
             state.answer.push(action.payload)
         },
-        changeInitialCheckBoxes: (state) => {
+        addedDuration: (state, action) => {
             return {
                 ...state,
-                checkBoxes: initialCheckBoxes
-            }
-        },
-        changeCheckBoxes: (state, action) => {
-            console.log(action.payload)
-            return {
-                ...state,
-                checkBoxes: action.payload
+                duration: action.payload
             }
         },
     }
@@ -108,9 +91,7 @@ export const {
     resetAllAction,
     updateLoader,
     viewAnswer,
-    addedAnswer,
-    changeInitialCheckBoxes,
-    changeCheckBoxes
+    addedAnswer
 } = questionReducer.actions;
 
 export default questionReducer.reducer;

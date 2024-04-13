@@ -30,16 +30,20 @@
         "rights": "Բոլոր իրավունքները պաշտպանված են",
         "rating-title": "Art House ուսումնական կենտրոն",
         "send-request": "Ուղարկել \n հայտ",
-        "take-the-test":  "Անցնել \n թեստ",
+        "take-the-test": "Անցնել \n թեստ",
         "contact-us": "Կապ մեզ հետ",
-        "more": "Ավելին"
+        "more": "Ավելին",
+        "total-points": "Վիկտորինայի ընդհանուր միավորներ",
+        "total-questions": "Ընդհանուր հարցեր",
+        "quiz-result": "Վիկտորինայի արդյունք"
     },
     "buttons": {
         "contact-us": "Կապ մեզ հետ",
         "view-more": "Դիտել ավելին",
         "show-less": "Ցույց տալ ավելի քիչ",
         "view": "Դիտել",
-        "go-back": "Վերադառնալ"
+        "go-back": "Վերադառնալ",
+        "confirm": "Հաստատել"
     },
     "sections": {
         "partners": "Գործընկերներ",
@@ -81,7 +85,8 @@
     "titles": {
         "price-list": "Գնացուցակ",
         "private-lessons": "Անհատական դասեր \n օտարերկրացիների համար",
-        "english-language-lessons": "Անգլերեն լեզվի \n խորացված դասեր"
+        "english-language-lessons": "Անգլերեն լեզվի \n խորացված դասեր",
+        "quiz-result": "Վիկտորինայի արդյունք"
     },
     "tables-titles": {
         "languages-taught": "Դասավանդվող \n լեզուներ",

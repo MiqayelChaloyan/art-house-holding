@@ -26,13 +26,14 @@ const QuizPage = ({ data }: Props) => {
 
     const startExam = () => {
         dispatch(Action.startExamAction(data.questions))
+        dispatch(Action.updateLoader(false))
     };
 
     useEffect(() => startExam(), []);
 
 
     return (
-        <section id='quiz'>
+        <section>
             {
                 isViewAnswer ?
                     <QuestionsViewer />

@@ -30,16 +30,20 @@
         "rights": "Все права защищены",
         "rating-title": "Учебный центр Art House",
         "send-request": "Отправить \n запрос",
-        "take-the-test":  "Пройди \n тест",
+        "take-the-test": "Пройди \n тест",
         "contact-us": "Связаться с нами",
-        "more": "Более"
+        "more": "Более",
+        "total-points": "Общее количество баллов за викторину",
+        "total-questions": "Всего вопросов",
+        "quiz-result": "Результат викторины"
     },
     "buttons": {
         "contact-us": "Связаться с нами",
         "view-more": "Посмотреть больше",
         "show-less": "Показывай меньше",
         "view": "Посмотреть",
-        "go-back": "Возвращаться"
+        "go-back": "Возвращаться",
+        "confirm": "Подтверждать"
     },
     "sections": {
         "partners": "Сотрудники",
@@ -81,7 +85,8 @@
     "titles": {
         "price-list": "Прайс-лист",
         "private-lessons": "Частные уроки \n для иностранцев",
-        "english-language-lessons": "Продвинутые курсы \n английского языка"
+        "english-language-lessons": "Продвинутые курсы \n английского языка",
+        "quiz-result": "Результат викторины"
     },
     "tables-titles": {
         "languages-taught": "Преподаваемые \n языки",
@@ -93,4 +98,3 @@
         "duration": "Продолжительность"
     }
 }
-
