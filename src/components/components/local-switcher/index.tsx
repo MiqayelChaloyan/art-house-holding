@@ -117,4 +117,3 @@ export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black'
     </div>
   );
 }
-

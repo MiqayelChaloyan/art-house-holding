@@ -143,10 +143,10 @@ const Header = ({ locale }: IHeaderProps) => {
                         </Link>
                     ))}
                     <div className={styles.mobile}>
-                        <Link href={`/${locale}${'/language/quiz'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_one} ${Arial.className}`}>{t("texts.send-request")}</Link>
-                        <Link href={`/${locale}${'/language/form'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_two} ${Arial.className}`}>{t("texts.take-the-test")}</Link>
+                        <Link href={`/${locale}${'/language/form'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_one} ${Arial.className}`}>{t("texts.send-request")}</Link>
+                        <Link href={`/${locale}${'/language/quiz'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_two} ${Arial.className}`}>{t("texts.take-the-test")}</Link>
                         <div className={styles.mobile_switcher}>
-                            <LocalSwitcher />
+                            <LocalSwitcher activeColor='#F9CC48' color='#fff' />
                         </div>
                         <Logo width={150} height={80} fill='#fff' />
                     </div>

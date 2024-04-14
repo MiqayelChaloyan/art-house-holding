@@ -6,12 +6,21 @@
 
 .active
     color: red
-
+    
 
 .language
     border-right: none
     font-weight: 600
     padding: 1px 7px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        border-right: none !important
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        border-right: none !important
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        border-right: none !important
 
 
 .option
