@@ -1,11 +1,12 @@
-"use client"
+'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 import Container from '@/components/components/container';
 
+import { Vrdznagir } from '@/lib/constants/font';
 
 // slick-carousel 
 import Slider from 'react-slick';
@@ -14,10 +15,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { PARTNERS } from '../../../../../../sanity/sanity-queries/generic';
 
 import styles from './styles.module.sass';
-import { Vrdznagir } from '@/lib/constants/font';
-
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import Image from 'next/image';
 
 
 const SampleNextArrow = ({ onClick }: any) => (
@@ -32,18 +34,23 @@ const SamplePrevArrow = ({ onClick }: any) => (
     </div>
 );
 
-const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+interface Props {
+    partners: PARTNERS[]
+}
 
+const Partners = ({ partners }: Props) => {
 
-const Partners = () => {
-
-    const slidesItems = data.map((item: any, index: number) => (
-        <div key={item} style={{ width: '190px', height: '190px' }}>
-            <div style={{ backgroundColor: 'green', width: '190px', height: '190px' }}>
-                {item}
+    const slidesItems = partners.map((partner: PARTNERS | any, index: number) => {
+        const path: { src: string, width: number, height: number } | any = urlForImage(partner?.logo);
+        return (
+            <div key={index} className={styles.partner}>
+                <img
+                    src={path.src}
+                    alt={partner?.logo.alt}
+                />
             </div>
-        </div>
-    ));
+        )
+    });
 
     const settings = {
         slidesToShow: 6,
