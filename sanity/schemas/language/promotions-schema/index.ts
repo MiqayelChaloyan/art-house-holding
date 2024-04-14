@@ -26,56 +26,56 @@ const promotionsSchemaLanguage = {
                     icon: ActivityIcon,
                     fields: [
                         {
-                            title: 'Discount',
-                            name: 'discount',
+                            title: 'Procent',
+                            name: 'procent',
+                            type: 'number',
+                        },
+                        {
+                            name: 'image',
+                            type: 'image',
+                            title: 'Image',
+                            options: {
+                                hotspot: true,
+                            },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    type: 'string',
+                                    title: 'Alternative text',
+                                },
+                            ],
+                        },
+                        {
+                            name: 'slug',
+                            type: 'slug',
+                            description: "Պիտի եզակի լինի",
+                            options: {
+                                source: 'name',
+                            },
+                            validation: (Rule: RuleType) => Rule.required(),
+                        },
+                        {
+                            title: 'About the discount',
+                            description: 'Զեղչի մասին',
+                            name: 'about_discount',
                             type: 'object',
                             validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
-                                    title: 'Poster Armenian',
+                                    title: 'Armenian',
                                     name: 'am',
-                                    type: 'image',
-                                    options: {
-                                        hotspot: true,
-                                    },
-                                    fields: [
-                                        {
-                                            name: 'alt',
-                                            type: 'string',
-                                            title: 'Alternative text',
-                                        },
-                                    ],
+                                    type: 'string'
                                 },
                                 {
-                                    title: 'Poster English',
+                                    title: 'English',
                                     name: 'en',
-                                    type: 'image',
-                                    options: {
-                                        hotspot: true,
-                                    },
-                                    fields: [
-                                        {
-                                            name: 'alt',
-                                            type: 'string',
-                                            title: 'Alternative text',
-                                        },
-                                    ],
+                                    type: 'string'
                                 },
                                 {
-                                    title: 'Poster Russian',
+                                    title: 'Russian',
                                     name: 'ru',
-                                    type: 'image',
-                                    options: {
-                                        hotspot: true,
-                                    },
-                                    fields: [
-                                        {
-                                            name: 'alt',
-                                            type: 'string',
-                                            title: 'Alternative text',
-                                        },
-                                    ],
-                                },
+                                    type: 'string'
+                                }
                             ]
                         },
                     ]

@@ -1,7 +1,20 @@
 import './style.css'
+import styles from './styles.module.sass';
 
-const Loader = () => (
-    <div className="loader">Loading...</div>
+
+export const Loader = () => (
+    <div className={styles.loader}>Loading...</div>
 );
 
-export default Loader;
+
+export const LoaderPages = () => (
+    <div className="cube">
+        <div className="side"></div>
+        <div className="side"></div>
+        <div className="side"></div>
+        <div className="side"></div>
+        <div className="side"></div>
+        <div className="side"></div>
+    </div>
+);
+

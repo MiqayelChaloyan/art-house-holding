@@ -106,12 +106,14 @@ export interface PRICE_LIST_LANHUAGE {
 
 export interface DISCOUNTS_LANGUAGE {
     discounts_list: {
-        [x: string]: any;
-        discount: {
+        procent: string
+        image: {
             _type: string
             alt: string
             asset: { _ref: string, _type: string }
         }
+        slug: string
+        about_discount: string
     }
 }
 

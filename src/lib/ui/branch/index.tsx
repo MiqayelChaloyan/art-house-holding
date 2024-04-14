@@ -6,7 +6,6 @@ import { ArianAMU, Inter } from '@/lib/constants/font';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
-import Image from 'next/image';
 
 
 interface BranchProps {
@@ -22,25 +21,16 @@ interface BranchProps {
 
 
 const Branch: React.FC<BranchProps> = ({ item, locale }) => {
-
     const { company_name, words, web_site_url, website_logo_front, website_logo_back } = item;
 
-    const urlForImageFront = urlForImage(website_logo_front)
-    // .auto('format')
-    // .fit('max')
-    // .url();
+    const urlForImageFront = urlForImage(website_logo_front);
 
-    const urlForImageBack = urlForImage(website_logo_back)
-    // .auto('format')
-    // .fit('max')
-    // .url();
-
+    const urlForImageBack = urlForImage(website_logo_back);
 
     const wordsArray = words.split(' ');
 
     const titlesFront = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_front} ${Inter.className}`} >{word}</p>);
     const titlesBack = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_back} ${Inter.className}`} >{word}</p>);
-
 
     return (
         <Link href={`/${locale}/${web_site_url}`} aria-label={`${web_site_url}`} id='card'>

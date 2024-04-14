@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Action from '@/store/question_reducer';
 
 import ProgressLine from '@/lib/ui/progress-line';
-import Loader from '@/lib/ui/loading';
+import { Loader } from '@/lib/ui/loading';
 import { ArianAMU, Calibri } from '@/lib/constants/font';
 
 import cn from 'classnames';
@@ -138,7 +138,7 @@ const HorizontalLinearStepper = () => {
 
     if (isLoading) return (
         <div className={styles.loader}>
-            <Loader/>
+            <Loader />
         </div>
     );
 

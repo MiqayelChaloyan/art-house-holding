@@ -34,7 +34,7 @@ const LanguageGallery = ({ locale, images }: Readonly<LanguageGalleryProps>) => 
         <div className={styles.gallery}>
             {images.map((image: LanguageProps, index: number) => (
                 <Link key={index} href={`/${locale}${Pages.LANGUAGE_LANGUAGES}${image.page}`} aria-label={image.label} className={styles.link}>
-                    <Image
+                    {/* <Image
                         src={image.src}
                         alt={`${index}-image`}
                         priority
@@ -44,6 +44,11 @@ const LanguageGallery = ({ locale, images }: Readonly<LanguageGalleryProps>) => 
                         sizes="100vw"
                         // loading="eager"
                         // quality={50}
+                    /> */}
+                    <img
+                        src={image.src}
+                        alt={`${index}-image`}
+                        className={styles.language}
                     />
                 </Link>
             ))}

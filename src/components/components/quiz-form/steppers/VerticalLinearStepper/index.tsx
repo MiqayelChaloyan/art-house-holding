@@ -14,7 +14,7 @@ import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Action from '@/store/question_reducer';
 
-import Loader from '@/lib/ui/loading';
+import { Loader } from '@/lib/ui/loading';
 import { ArianAMU } from '@/lib/constants/font';
 
 import cn from 'classnames';

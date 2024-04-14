@@ -2,11 +2,11 @@
 
 import { memo } from 'react';
 
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
-
 import Container from '@/components/components/container';
 
 import { Vrdznagir } from '@/lib/constants/font';
+import ArrowLeft from '@/lib/icons/language/ArrowLeft';
+import ArrowRight from '@/lib/icons/language/ArrowRight';
 
 // slick-carousel 
 import Slider from 'react-slick';
@@ -24,13 +24,13 @@ import Image from 'next/image';
 
 const SampleNextArrow = ({ onClick }: any) => (
     <div className={`${styles.arrow} ${styles.arrow_right}`} onClick={onClick}>
-        <SlArrowRight />
+        <ArrowRight width='21' height='50' fill='#006ED2' />
     </div>
 );
 
 const SamplePrevArrow = ({ onClick }: any) => (
     <div className={`${styles.arrow} ${styles.arrow_left}`} onClick={onClick}>
-        <SlArrowLeft />
+        <ArrowLeft width='21' height='50' fill='#006ED2' />
     </div>
 );
 
