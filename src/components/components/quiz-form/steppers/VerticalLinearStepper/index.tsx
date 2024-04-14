@@ -230,7 +230,7 @@ const VerticalLinearStepper = () => {
                     disabled={!isAnyChecked}
                     className={ArianAMU.className}
                   >
-                    {index === questions.length ? t('buttons.confirm') : t('buttons.next')}
+                    {trace + 1 === questions.length - 1 ? t('buttons.confirm') : t('buttons.next')}
                   </Button>
                   <Button
                     disabled={index === 0}
