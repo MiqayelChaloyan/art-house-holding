@@ -1,58 +1,68 @@
 'use client'
 
-import styles from './styles.module.sass'
-import Link from "next/link";
-import { Arial } from "@/lib/constants/font";
-// import Image from "next/image";
-// import { useDispatch } from "react-redux";
+import Link from 'next/link';
+import { Arial, ArianAMU } from '@/lib/constants/font';
 
-// import * as Action from '@/store/question_reducer'
+import useWindowSize from '@/hooks/useWindowSize';
+
 import { QUIZ } from "../../../../../sanity/sanity-queries/language";
 import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
+
 
 interface Props {
     data: QUIZ[]
     locale: string | any
 }
 
+
 const Home: React.FC<Props> = ({ data, locale }) => {
-
-    // const dispatch = useDispatch();
-
-    // const handleSubmit = (locale: string) => {
-    //     // const quiz = require(`@/lib/quiz/${locale}`);
-    //     // localStorage.setItem('quiz', locale);
-    //     // dispatch(Action.startExamAction(quiz.default))
-    // }
+    const windowSize = useWindowSize();
 
     const links = data.map((lang: any, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(lang.question_logo);
 
         return (
-            <Link
-                key={lang.slug}
-                href={`/${locale}/language/quiz/${lang.slug}`}
-                aria-label={`/${locale}/language/quiz/${lang.slug}`}
-                className={styles.link}
-            // onClick={() => handleSubmit('')}
-            >
-                <img
-                    src={path.src}
-                    className={styles.language}
-                    alt={lang.question_logo.alt}
-                />
-            </Link>
+            windowSize.width > 600 ? (
+                <Link
+                    key={lang.slug}
+                    href={`/${locale}/language/quiz/${lang.slug}`}
+                    aria-label={`/${locale}/language/quiz/${lang.slug}`}
+                    className={styles.link}
+                >
+                    <img
+                        src={path.src}
+                        className={styles.language}
+                        alt={lang.question_logo.alt}
+                    />
+                </Link>
+            ) : (
+                <Link
+                    href={`/${locale}/language/quiz/${lang.slug}`}
+                    aria-label={`/${locale}/language/quiz/${lang.slug}`}
+                    className={styles.row}
+                    key={lang.slug}
+                >
+                    <img
+                        src={path.src}
+                        className={styles.language}
+                        alt={lang.question_logo.alt}
+                    />
+                    <h3 className={cn(styles.language_name, ArianAMU.className)}>{lang.name}</h3>
+                </Link>
+            )
         )
     })
 
     return (
         <section id='quiz'>
             <h1 className={`${styles.title} ${Arial.className}`}>ԸՆՏՐԵԼ ԼԵԶՈՒՆ</h1>
-
             <div className={styles.href}>
                 {links}
             </div>
-
         </section>
     );
 }

@@ -41,6 +41,33 @@
 
 .link
     margin: 40px 100px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        margin: 40px 100px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        margin: 40px 100px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        margin: 40px 100px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        margin: 40px 100px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        margin: 40px 100px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin: 40px 100px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin: 0
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        margin: 0
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        margin: 0
 
 
 .language
@@ -55,9 +82,85 @@
     &:hover
         filter: brightness(70%)
         transform: scale(1.3) rotate(360deg) 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 180px
+        height: 180px
+        &:hover
+            filter: brightness(70%)
+            transform: scale(1.3) rotate(360deg) 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 180px
+        height: 180px
+        &:hover
+            filter: brightness(70%)
+            transform: scale(1.3) rotate(360deg) 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 180px
+        height: 180px
+        &:hover
+            filter: brightness(70%)
+            transform: scale(1.3) rotate(360deg) 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 180px
+        height: 180px
+        &:hover
+            filter: brightness(70%)
+            transform: scale(1.3) rotate(360deg) 
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 180px
+        height: 180px
+        &:hover
+            filter: brightness(70%)
+            transform: scale(1.3) rotate(360deg) 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 180px
+        height: 180px
+        &:hover
+            filter: brightness(70%)
+            transform: scale(1.3) rotate(360deg) 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 80px
+        height: 80px
+        &:hover
+            filter: none
+            transform: scale(1) rotate(0) 
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 80px
+        height: 80px  
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 80px
+        height: 80px
 
 
 .href
     display: flex
     flex-wrap: wrap
     justify-content: center
+
+
+.row
+    width: 90%
+    background-color: #006ED2
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 100px
+    margin-bottom: 20px
+    padding: 10px
+    border-radius: 20px
+
+
+.language_name
+    color: #fff
+    font-size: 20px
+    font-weight: 400
+    padding-right: 20px
