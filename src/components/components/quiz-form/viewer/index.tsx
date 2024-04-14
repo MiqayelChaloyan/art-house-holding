@@ -1,18 +1,20 @@
 'use client'
 
-import { useDispatch, useSelector } from "react-redux";
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
+
+import { useDispatch, useSelector } from 'react-redux';
 import * as Action from '@/store/question_reducer';
 
-import { FaCheck } from "react-icons/fa6";
-import { IoClose } from "react-icons/io5";
+import { FaCheck } from 'react-icons/fa6';
+import { IoClose } from 'react-icons/io5';
+
+import Container from '../../container';
+import { ArianAMU } from "@/lib/constants/font";
 
 import cn from 'classnames';
 
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
 import styles from './styles.module.sass';
-import { ArianAMU, Vrdznagir } from "@/lib/constants/font";
-import Container from "../../container";
 
 
 const QuestionsViewer = () => {
@@ -39,6 +41,7 @@ const QuestionsViewer = () => {
         </div>
     ));
 
+
     return (
         <section id='answers'>
             <Container>
@@ -50,10 +53,7 @@ const QuestionsViewer = () => {
                     href={`/${localActive}/language/quiz/`}
                     aria-label={`/${localActive}/language/quiz/`}
                     className={cn(styles.link, ArianAMU.className)}
-                    onClick={() => {
-                        // dispatch(Action.viewAnswer());
-                       dispatch(Action.resetAllAction())
-                    }}
+                    onClick={() =>  dispatch(Action.resetAllAction())}
                 >
                     {t('buttons.go-back')}
                 </Link>

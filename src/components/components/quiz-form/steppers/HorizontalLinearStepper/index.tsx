@@ -50,15 +50,13 @@ const HorizontalLinearStepper = () => {
     const question = useSelector((state: any) => state.questions?.quiz[state.questions.trace]);
     const trace = useSelector((state: any) => state.questions?.trace);
     const score = useSelector((state: any) => state.questions?.score);
-    const duration = useSelector((state: any) => state.questions?.duration);
+    const isLoading = useSelector((state: any) => state.questions?.isLoading);
 
     const steps = Array.from({ length: questions.length }, (_, i) => i);
 
     const [isViewer, setIsViewer] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<boolean[]>(Array(question?.options.length).fill(false));
     const [isAnyChecked, setIsAnyChecked] = useState<boolean>(false);
-
-    const isLoading = useSelector((state: any) => state.questions?.isLoading);
 
     const t = useTranslations();
 
@@ -109,22 +107,22 @@ const HorizontalLinearStepper = () => {
     const answerResult = (score * 100) / questions.length;
 
     const color =
-    answerResult <= 15
-      ? '#DF362D'
-      : answerResult > 15 && answerResult < 45
-      ? '#F6A21E'
-      : answerResult > 45 && answerResult <= 99
-      ? '#006ED2'
-      : '#5CD85A';
+        answerResult <= 15
+            ? '#DF362D'
+            : answerResult > 15 && answerResult < 45
+                ? '#F6A21E'
+                : answerResult > 45 && answerResult <= 99
+                    ? '#006ED2'
+                    : '#5CD85A';
 
     const status =
-      answerResult <= 15
-        ? 'Failed'
-        : answerResult > 15 && answerResult < 45
-        ? 'Well'
-        : answerResult > 45 && answerResult <= 99
-        ? 'Quite well'
-        : 'Passed';
+        answerResult <= 15
+            ? 'Novice'
+            : answerResult > 15 && answerResult < 45
+                ? 'Intermediate'
+                : answerResult > 45 && answerResult <= 99
+                    ? 'Advanced'
+                    : 'Expert';
 
     if (isLoading) return <div>loading</div>;
 
@@ -181,7 +179,7 @@ const HorizontalLinearStepper = () => {
                 </ul>
             </div>
             <div className={styles.buttons}>
-                {trace > 0 ? <button className={cn(styles.btn, styles.prev)} onClick={onPrev}><FaArrowLeft fill='#fff' /></button> : null}
+                {trace !== 0 ? <button className={cn(styles.btn, styles.prev)} onClick={onPrev}><FaArrowLeft fill='#fff' /></button> : null}
                 <button className={cn(styles.btn, styles.next, !isAnyChecked ? styles.next_btn : '')} onClick={onNext} disabled={!isAnyChecked}>
                     {trace !== questions.length - 1 ? <FaArrowRight fill='#fff' /> : <span>{t('buttons.confirm')}</span>}
                 </button>
