@@ -10,6 +10,7 @@ import Header from "@/lib/outlets/language/Header";
 
 import { client } from "../../../../../sanity/client";
 import { query } from "../../../../../sanity/services/language-service/courses";
+import PlayerModal from "@/lib/outlets/language/Modal";
 
 
 interface RootLayoutProps {
@@ -49,6 +50,7 @@ async function Layout({
                     {children}
                 </main>
             </div>
+            <PlayerModal/>
             <ContactUs courses={data.languages} />
             <Footer/>
         </div>

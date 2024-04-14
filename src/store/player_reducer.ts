@@ -2,31 +2,35 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface statePlayer {
 	isPlay: boolean
+	path: string
 }
 
 const initialState: statePlayer = {
-	isPlay: false
+	isPlay: false,
+	path: ''
 };
 
 export const statePlayer = createSlice({
 	name: 'player',
 	initialState,
 	reducers: {
-		onPlay: (_, action) => {
+		onPlay: (state, action) => {
 			const isPlay = action.payload;
 			return {
+				...state,
 				isPlay
 			}
 		},
-		onPause: (_, action) => {
-			const isPlay = action.payload;
+		setPath: (state, action) => {
+			const path = action.payload;
 			return {
-				isPlay
+				...state,
+				path
 			}
 		}
 	},
 });
 
-export const { onPlay, onPause } = statePlayer.actions;
+export const { onPlay, setPath } = statePlayer.actions;
 
 export default statePlayer.reducer;

@@ -12,10 +12,10 @@ const Promotion = ({ discount, index }: any) => {
     return (
         <div key={discount.slug} className={styles.discount}>
             <div className={cn(styles.header_discount, transformRotate ? styles.header_discount_start : styles.header_discount_end)}>
-                <div>
+                <div className={styles.column}>
                     <p className={cn(styles.procent, transformRotate ? styles.procent_start : styles.procent_end, Arial.className)}>{`${discount.procent}%`}</p>
                 </div>
-                <div>
+                <div className={styles.column}>
                     <img
                         src={path?.src}
                         alt={discount?.image.alt}

@@ -12,7 +12,14 @@ import { useTranslations } from "next-intl";
 import { client } from "../../../../../../sanity/client";
 import { query } from "../../../../../../sanity/services/language-service/languages";
 
+import Play from '@/lib/icons/educational-center/Play';
+
 import styles from './styles.module.sass';
+import { useDispatch, useSelector } from "react-redux";
+import * as Action from '@/store/question_reducer';
+import { onPlay, setPath } from "@/store/player_reducer";
+import { useRouter } from "next/navigation";
+
 // import { useDispatch, useSelector } from "react-redux";
 // import useWindowSize from "@/hooks/useWindowSize";
 // import { useEffect, useRef } from "react";
@@ -24,18 +31,12 @@ type Props = {
 }
 
 const DailyLifeImage = ({ item }: any) => {
-    const path: {
-        src: string;
-        width: number;
-        height: number;
-    } | any = urlForImage(item);
-
-    const result: string = path.src;
+    const path: { src: string, width: number, height: number } | any = urlForImage(item);
 
     return (
         <div className={styles.image}>
             <Image
-                src={result}
+                src={path?.src}
                 alt={item.alt}
                 priority
                 className={styles.images}
@@ -51,28 +52,47 @@ const DailyLifeImage = ({ item }: any) => {
 
 
 const DailyLifeVideo = ({ item, locale }: any) => {
+    const router = useRouter();
+    const linkActive = useTranslations();
+    const dispatch = useDispatch();
+    const isPlay = useSelector((state: any) => state.player.isPlay);
     const t = useTranslations("buttons");
     const light: { src: string, width: number, height: number } | any = urlForImage(item.video_light);
 
     const getResources = async () => {
-        const slug = "english" || item.languages._ref;
+        const slug = item.languages._ref;
         const language = locale;
+
+        console.log(item.languages._ref)
 
         try {
             const data = await client.fetch(query, { slug, language }, { cache: 'no-store' });
-            console.log(data);
+            router.push(`language/languages/${data[0].slug.current}`)
 
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-        // return router.push(`/${locale}/languages`);
     };
 
+    const handlePlayVideo = (path: string) => {
+        dispatch(onPlay(!isPlay));
+        dispatch(setPath(path));
+    }
 
     return (
         <div className={styles.video}>
-            <div className={styles.video_player}>
+            {/* <div className={styles.video_player}>
                 <Player light={light} path={item.video_url} radius={17} />
+            </div> */}
+            <div className={styles.playing}>
+                <img src={light.src} alt='ss' className={styles.video_play} />
+                <button className={styles.icon} onClick={() => handlePlayVideo(item.video_url)}>
+                    <Play
+                        width={75}
+                        height={75}
+                        fill='white'
+                    />
+                </button>
             </div>
             <div className={styles.navigate}>
                 <span className={`${styles.text} ${Arial.className}`}>{item.news}</span>
@@ -86,8 +106,6 @@ const DailyLifeVideo = ({ item, locale }: any) => {
 
 
 const OurDailyLife = ({ data, locale }: Props) => {
-    // const dispatch = useDispatch();
-    // const isPlay = useSelector((state: any) => state.player.isPlay);
     const t = useTranslations("sections");
 
     const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: any, index: number) =>
@@ -97,7 +115,6 @@ const OurDailyLife = ({ data, locale }: Props) => {
     const videos: JSX.Element[] = data[0].our_daily_life.about_our_daily.map((item: any, index: number) =>
         <DailyLifeVideo key={item.slug} item={item} locale={locale} />
     );
-
 
     const mixData = images.reduce((acc: any, image: any, index: number) => {
         acc.push(videos[index], image);
@@ -125,32 +142,3 @@ const OurDailyLife = ({ data, locale }: Props) => {
 };
 
 export default OurDailyLife;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// {
-//     news: 'A new group of English language courses started...',
-//     languages: { _type: 'reference', _ref: '0dc29003-7c5a-437d-824c-6f4d60f5393d' },
-//     video_url: 'https://www.youtube.com/watch?v=KLuTLF3x9sA',
-//     video_light: {
-//       _type: 'image',
-//       alt: 'video light',
-//       asset: {
-//         _ref: 'image-04189acb379b928a88a1ccf4911b8e341299791c-313x271-png',
-//         _type: 'reference'
-//       }
-//     }
-//   }

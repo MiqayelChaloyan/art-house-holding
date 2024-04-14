@@ -113,7 +113,7 @@ const Form: FC<Props> = ({ data }) => {
         <div className={styles.container}>
             <div className={styles.arrow_left} />
             <Container>
-                <div className={styles.form}>
+                <div className={styles.form}> 
                     <form
                         className={styles.box}
                         onSubmit={handleSubmit}
