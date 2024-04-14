@@ -28,6 +28,7 @@ import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
+
 interface Props {
     courses: LANGUAGE[]
 };
@@ -130,7 +131,7 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                 className={styles.box}
                                 onSubmit={handleSubmit}
                             >
-                                <h2 className={styles.form_title}>ՈՒՂԱՐԿԵԼ ՀԱՅՏ</h2>
+                                <h2 className={styles.form_title}>{t('contact-us-form.form-title-language')}</h2>
                                 <div className={styles.fields}>
                                     <InputField
                                         className={cn(styles.input, Inter.className)}
