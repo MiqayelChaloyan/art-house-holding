@@ -39,6 +39,8 @@
 		input[type=radio] 
 			position: absolute 
 			visibility: hidden 
+		input[type=radio]:focus
+			outline: 0
 		label 
 			display: block 
 			position: relative 
@@ -48,6 +50,7 @@
 			margin: 2px auto 
 			z-index: 9 
 			cursor: pointer 
+			height: 40px
 			transition: all 0.25s linear 
 			/* @xs */
 			@media screen and (max-width: 600px)
@@ -117,7 +120,6 @@ input[type=radio]:checked
 		font-weight: 500
 		text-align: center
 		color: #006ED2 
-
 
 .progress
 	display: flex

@@ -43,7 +43,9 @@
         "show-less": "Show less",
         "view": "View",
         "go-back": "Go back",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "back": "Back",
+        "next": "Next"    
     },
     "sections": {
         "partners": "Co-workers",

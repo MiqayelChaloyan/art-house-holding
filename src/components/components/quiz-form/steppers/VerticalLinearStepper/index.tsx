@@ -22,61 +22,61 @@ import styles from './styles.module.sass';
 
 
 const Progress = ({ strokeWidth, percentage, color }: any) => {
-	const radius = (50 - strokeWidth / 2);
-    const pathDescription = `
+  const radius = (50 - strokeWidth / 2);
+  const pathDescription = `
       M 50,50 m 0,-${radius}
       a ${radius},${radius} 0 1 1 0,${2 * radius}
       a ${radius},${radius} 0 1 1 0,-${2 * radius}
     `;
 
-    const diameter = Math.PI * 2 * radius;
-    const progressStyle = {
-			stroke: color,
-  		strokeLinecap: 'round',
-      strokeDasharray: `${diameter}px ${diameter}px`,
-      strokeDashoffset: `${((100 - percentage) / 100 * diameter)}px`,
-    };
+  const diameter = Math.PI * 2 * radius;
+  const progressStyle = {
+    stroke: color,
+    strokeLinecap: 'round',
+    strokeDasharray: `${diameter}px ${diameter}px`,
+    strokeDashoffset: `${((100 - percentage) / 100 * diameter)}px`,
+  };
 
-    return (
-      <svg
-        className={'CircularProgressbar'}
-        viewBox="0 0 100 100"
-				width={100}
-				height={100}
+  return (
+    <svg
+      className={'CircularProgressbar'}
+      viewBox="0 0 100 100"
+      width={100}
+      height={100}
+    >
+      <path
+        className="CircularProgressbar-trail"
+        d={pathDescription}
+        strokeWidth={strokeWidth}
+        fillOpacity={0}
+        style={{
+          stroke: '#d6d6d6',
+        }}
+      />
+
+      <path
+        className="CircularProgressbar-path"
+        d={pathDescription}
+        strokeWidth={strokeWidth}
+        fillOpacity={0}
+        style={progressStyle as any}
+      />
+
+      <text
+        className="CircularProgressbar-text"
+        x={50}
+        y={50}
+        style={{
+          fill: color,
+          fontSize: '24px',
+          dominantBaseline: 'central',
+          textAnchor: 'middle',
+        }}
       >
-        <path
-          className="CircularProgressbar-trail"
-          d={pathDescription}
-          strokeWidth={strokeWidth}
-          fillOpacity={0}
-					style={{
-						stroke: '#d6d6d6',
-					}}
-        />
-
-        <path
-          className="CircularProgressbar-path"
-          d={pathDescription}
-          strokeWidth={strokeWidth}
-          fillOpacity={0}
-          style={progressStyle as any}
-        />
-
-        <text
-          className="CircularProgressbar-text"
-          x={50}
-          y={50}
-					style={{
-						fill: color,
-  					fontSize: '24px',
-  					dominantBaseline: 'central',
-  					textAnchor: 'middle',
-					}}
-        >
-          {`${percentage}%`}
-        </text>
-      </svg>
-    );
+        {`${percentage}%`}
+      </text>
+    </svg>
+  );
 };
 
 
@@ -92,6 +92,8 @@ const VerticalLinearStepper = () => {
   const [isChecked, setIsChecked] = useState<boolean[]>(Array(question?.options.length).fill(false));
   const [isAnyChecked, setIsAnyChecked] = useState<boolean>(false);
 
+  const isBrowser = () => typeof window !== 'undefined';
+
   const t = useTranslations();
 
   const dispatch = useDispatch();
@@ -106,6 +108,12 @@ const VerticalLinearStepper = () => {
     setIsAnyChecked(anyChecked);
   }, [isChecked]);
 
+  const scrollToTop = () => {
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
   const onNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
@@ -113,6 +121,7 @@ const VerticalLinearStepper = () => {
       dispatch(Action.moveNextAction());
     } else {
       setIsViewer(true);
+      scrollToTop();
     }
   };
 
@@ -139,7 +148,10 @@ const VerticalLinearStepper = () => {
     }
   };
 
-  const handleView = () => dispatch(Action.viewAnswer());
+  const handleView = () => {
+    scrollToTop()
+    dispatch(Action.viewAnswer());
+  };
 
   const answerResult = (score * 100) / questions.length;
 
@@ -161,6 +173,7 @@ const VerticalLinearStepper = () => {
           ? 'Advanced'
           : 'Expert';
 
+          
   if (isLoading) return <div>loading</div>
 
   if (isViewer) return (
@@ -168,7 +181,7 @@ const VerticalLinearStepper = () => {
       <h2 className={cn(styles.viewer_title, ArianAMU.className)}>{t('titles.quiz-result')}</h2>
 
       <div className={styles.progress}>
-        <Progress strokeWidth={8} percentage={Math.floor(answerResult)} color={color}/>
+        <Progress strokeWidth={8} percentage={Math.floor(answerResult)} color={color} />
       </div>
       <div className={styles.row}>
         <p className={ArianAMU.className}>{t('texts.total-points')}</p>
@@ -215,15 +228,17 @@ const VerticalLinearStepper = () => {
                     onClick={onNext}
                     sx={{ mt: 1, mr: 1 }}
                     disabled={!isAnyChecked}
+                    className={ArianAMU.className}
                   >
-                    {index === questions.length - 1 ? 'Ավարտել' : 'Հաջորդը'}
+                    {index === questions.length ? t('buttons.confirm') : t('buttons.next')}
                   </Button>
                   <Button
                     disabled={index === 0}
                     onClick={onPrev}
                     sx={{ mt: 1, mr: 1 }}
+                    className={ArianAMU.className}
                   >
-                    Back
+                    {t('buttons.back')}
                   </Button>
                 </div>
               </Box>

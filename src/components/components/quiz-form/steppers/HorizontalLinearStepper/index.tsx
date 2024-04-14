@@ -58,6 +58,8 @@ const HorizontalLinearStepper = () => {
     const [isChecked, setIsChecked] = useState<boolean[]>(Array(question?.options.length).fill(false));
     const [isAnyChecked, setIsAnyChecked] = useState<boolean>(false);
 
+    const isBrowser = () => typeof window !== 'undefined';
+
     const t = useTranslations();
 
     const dispatch = useDispatch();
@@ -102,7 +104,15 @@ const HorizontalLinearStepper = () => {
         }
     };
 
-    const handleView = () => dispatch(Action.viewAnswer());
+    const scrollToTop = () => {
+        if (!isBrowser()) return;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const handleView = () => {
+        scrollToTop()
+        dispatch(Action.viewAnswer());
+    };
 
     const answerResult = (score * 100) / questions.length;
 
@@ -124,6 +134,7 @@ const HorizontalLinearStepper = () => {
                     ? 'Advanced'
                     : 'Expert';
 
+                    
     if (isLoading) return <div>loading</div>;
 
     if (isViewer) return (
