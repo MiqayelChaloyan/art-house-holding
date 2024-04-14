@@ -197,7 +197,7 @@ const VerticalLinearStepper = () => {
 
   return (
     <Box sx={{ maxWidth: 400 }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper  activeStep={activeStep} orientation="vertical">
         {questions.map((step: any, index: number) => (
           <Step key={step.question}>
             <StepLabel>
