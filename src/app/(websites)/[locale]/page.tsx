@@ -96,11 +96,14 @@ export async function generateMetadata({
     openGraph: {
       title: ogTitle,
       description: ogDescription,
-      images: {
-        url: path?.src,
-        width: path?.width,
-        height: path?.height,
-      },
+      images: [
+        {
+          url: path?.src,
+          width: path?.width,
+          height: path?.height,
+          alt: 'seo-image',
+        },
+      ],
       locale,
       type: 'website'
     },
