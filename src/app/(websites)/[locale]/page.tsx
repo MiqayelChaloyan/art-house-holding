@@ -99,8 +99,8 @@ export async function generateMetadata({
       images: [
         {
           url: path?.src,
-          width: path?.width,
-          height: path?.height,
+          width: 500,
+          height: 500,
           alt: 'seo-image',
         },
       ],
