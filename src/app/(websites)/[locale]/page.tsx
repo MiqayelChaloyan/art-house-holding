@@ -24,17 +24,16 @@ interface RootLayoutProps {
 }
 
 interface Site {
-  title: string,
-  description: string,
-  canonical: string,
-  openGraph: {
-    basic: { title: string, url: string, image: string },
-    optional: {
-      locale: string,
-      site_name: string,
-      description: string
+  site_name: string,
+  ogTitle: string,
+  ogImage: {
+    _type: string,
+    asset: {
+      _ref: string,
+      _type: string
     }
-  }
+  },
+  ogDescription: string
 }
 
 
@@ -84,12 +83,14 @@ export async function generateMetadata({
   const meta = getSiteMeta(querySiteMeta, client)
   const [data]: Site[] | any = await Promise.all([meta]);
 
-  const { ogDescription, url, ogTitle, ogImage, site_name } = data[1];
+  const { ogDescription, ogTitle, ogImage } = data[1];
 
   const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN || url),
+    metadataBase: process.env.NEXT_PUBLIC_DOMAIN
+      ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
+      : new URL(`http://localhost:${process.env.PORT || 3000}`),
     title: ogTitle,
     description: ogDescription,
     openGraph: {
@@ -98,8 +99,8 @@ export async function generateMetadata({
       images: [
         {
           url: path?.src,
-          width: 1200,
-          height: 630,
+          width: path?.width,
+          height: path?.height,
           alt: 'seo-image',
         },
       ],
@@ -110,12 +111,12 @@ export async function generateMetadata({
       card: path?.src,
       title: ogTitle,
       description: ogDescription,
-      creator: `@${process.env.NEXT_PUBLIC_SITE_NAME}`,
+      creator: `@arthouse`,
       images: [
         {
           url: path?.src,
-          width: 1200,
-          height: 630,
+          width: path?.width,
+          height: path?.height,
           alt: "twitter",
         },
       ],

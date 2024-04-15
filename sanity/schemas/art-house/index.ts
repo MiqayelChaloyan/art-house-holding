@@ -43,14 +43,6 @@ const homeSchemaArtHouse = {
             group: ['og', 'meta']
         },
         {
-            type: 'url',
-            title: 'URL',
-            name: 'url',
-            description: 'Most likely either the url of the page or its canonical url',
-            validation: (Rule: RuleType) => Rule.required(),
-            group: ['og', 'meta'],
-        },
-        {
             type: 'string',
             title: 'Page Title',
             name: 'ogTitle',

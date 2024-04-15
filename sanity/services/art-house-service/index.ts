@@ -23,7 +23,6 @@ export const querySiteMeta = `
 *[_type == "art-house-home"] {
     site_name,
     ogDescription,
-    url,
     ogTitle,
     ogImage
 }`;
