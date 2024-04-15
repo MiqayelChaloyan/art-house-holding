@@ -76,7 +76,6 @@ async function getSiteMeta(
   return site
 }
 
-
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -105,7 +104,21 @@ export async function generateMetadata({
         },
       ],
       locale,
-      type: 'website'
+      type: 'website',
+    },
+    twitter: {
+      card: path?.src,
+      title: ogTitle,
+      description: ogDescription,
+      creator: "@author_here",
+      images: [
+        {
+          url: path?.src,
+          width: 500,
+          height: 630,
+          alt: "twitter",
+        },
+      ],
     },
   };
 }
