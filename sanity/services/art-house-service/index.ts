@@ -1,6 +1,7 @@
-import { groq } from 'next-sanity';
+// import { groq } from 'next-sanity';
 
-export const query = groq`*[_type == "art-house-home"] {
+export const query = 
+`*[_type == "art-house-home"] {
     "_id": _id,
     "our_websites": our_websites[] {
         "company_name": company_name,
@@ -15,4 +16,14 @@ export const query = groq`*[_type == "art-house-home"] {
         "slug": slug.current,
         "quantity": quantity
     },
+}`;
+
+
+export const querySiteMeta = `
+*[_type == "art-house-home"] {
+    site_name,
+    ogDescription,
+    url,
+    ogTitle,
+    ogImage
 }`;

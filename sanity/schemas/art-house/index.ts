@@ -8,7 +8,66 @@ const homeSchemaArtHouse = {
     type: 'document',
     title: 'Home',
     id: 'art-house',
+    groups: [
+        {
+            name: "meta",
+            title: "Site Info",
+            default: true
+        },
+        {
+            name: "og",
+            title: "Social Share Info",
+        },
+        {
+            name: "manifest",
+            title: "Web App Settings",
+            hidden: ({ document }: {
+                document: {
+                    [key: string]: never;
+                }
+            }): boolean => !(document.isPwa)
+        },
+    ],
     fields: [
+        /* Site Metadata Schema */
+        {
+            type: 'string',
+            name: 'site_name',
+            title: 'Site Name',
+            group: ['og', 'meta'],
+        },
+        {
+            type: "text",
+            name: "ogDescription",
+            title: "Social Share Description",
+            group: ['og', 'meta']
+        },
+        {
+            type: 'url',
+            title: 'URL',
+            name: 'url',
+            description: 'Most likely either the url of the page or its canonical url',
+            validation: (Rule: RuleType) => Rule.required(),
+            group: ['og', 'meta'],
+        },
+        {
+            type: 'string',
+            title: 'Page Title',
+            name: 'ogTitle',
+            description:
+                'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
+            validation: (Rule: RuleType) => Rule.required(),
+        },
+        {
+            type: 'image',
+            title: 'Image',
+            name: 'ogImage',
+            description:
+                'URL of the image that should be used in social media previews. If you define this, you must define two other OG basic properties as well: title and type.',
+            validation: (Rule: RuleType) => Rule.required(),
+            group: ['og'],
+        },
+        /* Schema */
         {
             name: 'name',
             title: 'Name',
