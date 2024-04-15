@@ -36,7 +36,6 @@ interface Site {
   ogDescription: string
 }
 
-
 async function getResources(locale: string) {
   const dataPromise = client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
   const partnersPromise = client.fetch(partnersQuery, { language: locale }, { next: { revalidate: 100 } });
@@ -101,17 +100,17 @@ export async function generateMetadata({
           url: path?.src,
           width: path?.width,
           height: path?.height,
-          alt: 'seo-image',
+          alt: "seo-image",
         },
       ],
       locale,
-      type: 'website',
+      type: "website",
     },
     twitter: {
       card: path?.src,
       title: ogTitle,
       description: ogDescription,
-      creator: `@arthouse`,
+      creator: "@arthouse",
       images: [
         {
           url: path?.src,
