@@ -20,17 +20,18 @@ import { PARTNERS } from '../../../../../../sanity/sanity-queries/generic';
 import styles from './styles.module.sass';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import Image from 'next/image';
+import useWindowSize from '@/hooks/useWindowSize';
 
 
-const SampleNextArrow = ({ onClick }: any) => (
+const SampleNextArrow = ({ onClick, fill }: any) => (
     <div className={`${styles.arrow} ${styles.arrow_right}`} onClick={onClick}>
-        <ArrowRight width='21' height='50' fill='#006ED2' />
+        <ArrowRight width='21' height='50' fill={fill} />
     </div>
 );
 
-const SamplePrevArrow = ({ onClick }: any) => (
+const SamplePrevArrow = ({ onClick, fill }: any) => (
     <div className={`${styles.arrow} ${styles.arrow_left}`} onClick={onClick}>
-        <ArrowLeft width='21' height='50' fill='#006ED2' />
+        <ArrowLeft width='21' height='50' fill={fill} />
     </div>
 );
 
@@ -39,6 +40,7 @@ interface Props {
 }
 
 const Partners = ({ partners }: Props) => {
+    const windowSize = useWindowSize();
 
     const slidesItems = partners.map((partner: PARTNERS | any, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(partner?.logo);
@@ -60,9 +62,43 @@ const Partners = ({ partners }: Props) => {
         autoplay: false,
         autoplaySpeed: 5000,
         dots: false,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'}/>,
+        prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'}/>,
         cssEase: 'ease-out',
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            }
+        ]
     };
 
 
