@@ -13,6 +13,10 @@ import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 import { ArianAMU } from '@/lib/constants/font';
 
 import styles from './style.module.sass';
+import { useRouter } from 'next/navigation';
+import { queryId } from '../../../../../../../sanity/services/educational-center-service/courses';
+import { client } from '../../../../../../../sanity/client';
+import { useLocale } from 'next-intl';
 
 
 const Images = ({ images }: any) => {
@@ -69,12 +73,25 @@ const Images = ({ images }: any) => {
 
 
 const Item = ({ item }: any) => {
+    const router = useRouter();
+    const localActive = useLocale();
     const path: { src: string, width: number, height: number } | any = urlForImage(item.specialists_section_image);
 
     // const goCoursePage = async () => {
     //     const data = await getCourseById(item.categories._ref, i18n.language);
     //     return router.push(`${i18n.language}/courses/${data.slug}`);
     // };
+
+    const getResources = async () => {
+        const _id = item.categories._ref;
+
+        try {
+            const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
+            router.push(`educational-center/${data.slug}`);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     return (
         <div key={item._key} className={styles.slide}>
@@ -99,8 +116,7 @@ const Item = ({ item }: any) => {
                 <Button
                     className={`${styles.button} ${ArianAMU.className}`}
                     text={item.course_name}
-                    onClick={() => console.log('goCoursePage')
-                    }
+                    onClick={getResources}
                 />
                 <div className={styles.gallery}>
                     {Images({ images: item.specialists_section_images })}

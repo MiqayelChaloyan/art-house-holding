@@ -18,6 +18,8 @@ import { Inter } from '@/lib/constants/font';
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
+import { useDispatch } from 'react-redux';
+import { closeModal } from '@/store/modal_reducer';
 
 
 interface Props {
@@ -26,11 +28,11 @@ interface Props {
 
 const PriceList = ({ data }: Props) => {
 	const t = useTranslations('sections');
-	// const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
 
-	// useEffect(() => {
-	// 	dispatch(closeModal());
-	// }, []);
+    useEffect(() => {
+        setTimeout(() => dispatch(closeModal(false)), 1);
+    }, [data]);
 
 	return (
 		<section id='price-list' className={styles.container}>

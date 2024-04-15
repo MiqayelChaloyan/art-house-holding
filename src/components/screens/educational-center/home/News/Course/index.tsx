@@ -11,6 +11,9 @@ import Button from '@/lib/ui/Button';
 // import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
 
 import styles from './styles.module.sass';
+import { useRouter } from 'next/navigation';
+import { client } from '../../../../../../../sanity/client';
+import { queryId } from '../../../../../../../sanity/services/educational-center-service/courses';
 
 
 interface Props {
@@ -26,7 +29,7 @@ interface Props {
 
 
 const Course = (course: Props) => {
-    // const router = useRouter();
+    const router = useRouter();
     const t = useTranslations('buttons');
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
     const localActive = useLocale();
@@ -39,6 +42,17 @@ const Course = (course: Props) => {
     //     const data = await getCourseById(course.categories._ref, localActive);
     //     return router.push(`/${localActive}/courses/${data.slug}`);
     // };
+
+    const getResources = async () => {
+        const _id = course.categories._ref;
+
+        try {
+            const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
+            router.push(`educational-center/${data.slug}`);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     return (
         <div className={styles.course}>
@@ -57,7 +71,7 @@ const Course = (course: Props) => {
                         onClick={course.scrollToElement}
                     />
                     <button
-                        // onClick={goCoursePage} 
+                        onClick={getResources} 
                         className={styles.courses_link_btn_arrow}
                     >
                         <div className={styles.arrow}>

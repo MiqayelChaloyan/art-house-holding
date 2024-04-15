@@ -25,11 +25,11 @@ type Props = {
 
 const Partners = ({ data }: Props) => {
 	const t = useTranslations('sections');
-	const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(closeModal(false));
-	}, []);
+    useEffect(() => {
+        setTimeout(() => dispatch(closeModal(false)), 1);
+    }, [data]);
 
 	const partners = data?.map((item: any) => {
 		const path: { src: string, width: number, height: number } | any = urlForImage(item.logo);

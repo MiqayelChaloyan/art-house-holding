@@ -32,8 +32,12 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
     const titlesFront = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_front} ${Inter.className}`} >{word}</p>);
     const titlesBack = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_back} ${Inter.className}`} >{word}</p>);
 
+    const onLoader = () => {
+        console.log(true)
+    }
+
     return (
-        <Link href={`/${locale}/${web_site_url}`} aria-label={`${web_site_url}`} id='card'>
+        <Link onClick={onLoader} href={`/${locale}/${web_site_url}`} aria-label={`${web_site_url}`} id='card'>
             <div className={styles.card_container}>
                 <div className={styles.card}>
                     <div className={styles.front}>
