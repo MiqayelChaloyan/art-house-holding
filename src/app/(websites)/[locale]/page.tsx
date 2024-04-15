@@ -98,8 +98,8 @@ export async function generateMetadata({
       images: [
         {
           url: path?.src,
-          width: 500,
-          height: 500,
+          width: 1200,
+          height: 630,
           alt: 'seo-image',
         },
       ],
@@ -110,11 +110,11 @@ export async function generateMetadata({
       card: path?.src,
       title: ogTitle,
       description: ogDescription,
-      creator: "@author_here",
+      creator: `@${process.env.NEXT_PUBLIC_SITE_NAME}`,
       images: [
         {
           url: path?.src,
-          width: 500,
+          width: 1200,
           height: 630,
           alt: "twitter",
         },
