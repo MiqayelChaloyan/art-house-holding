@@ -10,7 +10,7 @@ import { urlForImage } from "../../../../../../sanity/imageUrlBuilder";
 import Player from '@/lib/ui/video-player';
 import { useTranslations } from "next-intl";
 import { client } from "../../../../../../sanity/client";
-import { query } from "../../../../../../sanity/services/language-service/languages";
+import { query, queryId } from "../../../../../../sanity/services/language-service/languages";
 
 import Play from '@/lib/icons/educational-center/Play';
 
@@ -53,22 +53,17 @@ const DailyLifeImage = ({ item }: any) => {
 
 const DailyLifeVideo = ({ item, locale }: any) => {
     const router = useRouter();
-    const linkActive = useTranslations();
-    const dispatch = useDispatch();
     const isPlay = useSelector((state: any) => state.player.isPlay);
     const t = useTranslations("buttons");
     const light: { src: string, width: number, height: number } | any = urlForImage(item.video_light);
+    const dispatch = useDispatch();
 
     const getResources = async () => {
-        const slug = item.languages._ref;
-        const language = locale;
-
-        console.log(item.languages._ref)
+        const _id = item.languages._ref;
 
         try {
-            const data = await client.fetch(query, { slug, language }, { cache: 'no-store' });
-            router.push(`language/languages/${data[0].slug.current}`)
-
+            const data = await client.fetch(queryId, { _id, language: locale }, { cache: 'no-store' });
+            router.push(`language/languages/${data.slug.current}`);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -81,9 +76,6 @@ const DailyLifeVideo = ({ item, locale }: any) => {
 
     return (
         <div className={styles.video}>
-            {/* <div className={styles.video_player}>
-                <Player light={light} path={item.video_url} radius={17} />
-            </div> */}
             <div className={styles.playing}>
                 <img src={light.src} alt='ss' className={styles.video_play} />
                 <button className={styles.icon} onClick={() => handlePlayVideo(item.video_url)}>

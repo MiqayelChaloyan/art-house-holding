@@ -2,7 +2,6 @@
 
 import { notFound } from "next/navigation";
 
-import FBMessenger from "@/lib/outlets/language/FBMessenger";
 import ScrollToTopButton from "@/lib/outlets/general/ScrollToTopButton";
 import ContactUs from "@/lib/outlets/language/ContactUs";
 import Footer from "@/lib/outlets/language/Footer";
@@ -11,7 +10,6 @@ import Header from "@/lib/outlets/language/Header";
 import { client } from "../../../../../sanity/client";
 import { query } from "../../../../../sanity/services/language-service/courses";
 import PlayerModal from "@/lib/outlets/language/Modal";
-
 
 interface RootLayoutProps {
     children: React.ReactNode;
@@ -36,7 +34,7 @@ async function Layout({
 
     if (!data) {
         notFound()
-    }
+    }    
 
     return (
         <div className="languages-container">

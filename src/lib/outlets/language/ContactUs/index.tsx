@@ -27,6 +27,7 @@ import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import { usePathname } from 'next/navigation';
 
 
 interface Props {
@@ -36,6 +37,8 @@ interface Props {
 
 const ContactUs: FC<Props> = ({ courses }) => {
     const t = useTranslations();
+    const pathname = usePathname();
+    const isOpen = pathname?.includes('/form')
 
     const initValues = { fullName: '', email: '', phone: '', course: t('contact-us-form.select-course') };
     const initState = { isLoading: false, error: '', values: initValues };
@@ -103,7 +106,7 @@ const ContactUs: FC<Props> = ({ courses }) => {
     };
 
 
-    return (
+    return !isOpen && (
         <div className={styles.container}>
             <Container>
                 <div className={styles.contact}>

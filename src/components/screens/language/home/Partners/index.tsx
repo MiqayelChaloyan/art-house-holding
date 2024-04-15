@@ -21,6 +21,7 @@ import styles from './styles.module.sass';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import Image from 'next/image';
 import useWindowSize from '@/hooks/useWindowSize';
+import { useTranslations } from 'next-intl';
 
 
 const SampleNextArrow = ({ onClick, fill }: any) => (
@@ -40,6 +41,7 @@ interface Props {
 }
 
 const Partners = ({ partners }: Props) => {
+    const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 
     const slidesItems = partners.map((partner: PARTNERS | any, index: number) => {
@@ -58,13 +60,15 @@ const Partners = ({ partners }: Props) => {
         slidesToShow: 6,
         slidesToScroll: 1,
         infinite: true,
-        speed: 600,
+        speed: 500,
         autoplay: false,
-        autoplaySpeed: 5000,
+        // autoplaySpeed: 5000,
         dots: false,
         nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'}/>,
         prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'}/>,
         cssEase: 'ease-out',
+        centerMode: true,
+        centerPadding: "0",
         responsive: [
             {
                 breakpoint: 1280,
@@ -87,7 +91,8 @@ const Partners = ({ partners }: Props) => {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    dots: false
+                    dots: false,
+                    centerPadding: "5px",
                 }
             },
             {
@@ -95,7 +100,8 @@ const Partners = ({ partners }: Props) => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    dots: false
+                    dots: false,
+                    centerPadding: "5px",
                 }
             }
         ]
@@ -105,8 +111,8 @@ const Partners = ({ partners }: Props) => {
     return (
         <section id='partners' className={styles.section}>
             <Container>
-                <h2 className={`${styles.title} ${Vrdznagir.className}`}>Գործընկերներ</h2>
-                <div>
+                <h2 className={`${styles.title} ${Vrdznagir.className}`}>{t('partners')}</h2>
+                <div className={styles.slider}>
                     <Slider {...settings}>
                         {slidesItems}
                     </Slider>

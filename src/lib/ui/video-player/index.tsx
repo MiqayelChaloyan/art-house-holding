@@ -32,7 +32,7 @@ const Player = ({ light, path, radius }: Props) => {
 
     const handlePlayVideo = () => {
         setFilter(false)
-        dispatch(onPlay(true))
+        // dispatch(onPlay(true))
     }
 
     useEffect(() => {
