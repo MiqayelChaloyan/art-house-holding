@@ -1,28 +1,38 @@
 'use server'
 
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import ScrollToTopButton from "@/lib/outlets/general/ScrollToTopButton";
-import ContactUs from "@/lib/outlets/language/ContactUs";
-import Footer from "@/lib/outlets/language/Footer";
-import Header from "@/lib/outlets/language/Header";
+import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
+import ContactUs from '@/lib/outlets/language/ContactUs';
+import Footer from '@/lib/outlets/language/Footer';
+import Header from '@/lib/outlets/language/Header';
+import PlayerModal from '@/lib/outlets/language/Modal';
 
-import { client } from "../../../../../sanity/client";
-import { query } from "../../../../../sanity/services/language-service/courses";
-import PlayerModal from "@/lib/outlets/language/Modal";
+import { client } from '../../../../../sanity/client';
+
+import { query } from '../../../../../sanity/services/language-service/courses';
+import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+
 
 interface RootLayoutProps {
-    children: React.ReactNode;
+    children: React.ReactNode,
     params: {
-        locale: string
+        locale: string,
     };
 }
 
-
 async function getResources(locale: string) {
-    // const res = await getLanguageBySlug(slug, locale);
-    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-    return data[0]
+    try {
+        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+
+        if (!data?.length) {
+            return { data: [], isError: true };
+        }
+
+        return { data, isError: false };
+    } catch (error) {
+        return { data: [], isError: true };
+    }
 }
 
 async function Layout({
@@ -30,26 +40,26 @@ async function Layout({
     params: { locale },
 }: Readonly<RootLayoutProps>) {
 
-    const data = await getResources(locale);
+    const result: LANGUAGE[] | any = await getResources(locale);
 
-    if (!data) {
+    if (!result || !result.data[0]) {
         notFound()
     }    
 
     return (
-        <div className="languages-container">
-            <div className="wrapper-content">
+        <div className='languages-container'>
+            <div className='wrapper-content'>
                 <div>
                     <Header locale={locale} />
                 </div>
                 {/* <FBMessenger /> */}
                 <ScrollToTopButton/>
-                <main className="languages-main">
+                <main className='languages-main'>
                     {children}
                 </main>
             </div>
             <PlayerModal/>
-            <ContactUs courses={data.languages} />
+            <ContactUs courses={result.data[0]?.languages} />
             <Footer/>
         </div>
     );

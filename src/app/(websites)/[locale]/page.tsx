@@ -61,7 +61,12 @@ export default async function Page({ params: { locale } }: Readonly<RootLayoutPr
     notFound()
   }
 
-  return <Home data={data} partners={partners} />;
+  return (
+    <Home
+      data={data}
+      partners={partners}
+    />
+  );
 }
 
 
