@@ -14,11 +14,12 @@ import { query, queryId } from "../../../../../../sanity/services/language-servi
 
 import Play from '@/lib/icons/educational-center/Play';
 
-import styles from './styles.module.sass';
 import { useDispatch, useSelector } from "react-redux";
 import * as Action from '@/store/question_reducer';
 import { onPlay, setPath } from "@/store/player_reducer";
 import { useRouter } from "next/navigation";
+
+import styles from './styles.module.sass';
 
 // import { useDispatch, useSelector } from "react-redux";
 // import useWindowSize from "@/hooks/useWindowSize";

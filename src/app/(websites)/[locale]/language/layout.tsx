@@ -9,6 +9,7 @@ import ContactUs from '@/lib/outlets/language/ContactUs';
 import Footer from '@/lib/outlets/language/Footer';
 import Header from '@/lib/outlets/language/Header';
 import PlayerModal from '@/lib/outlets/language/Modal';
+import CircleNavigation from '@/lib/outlets/general/CircleNavigation';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -73,7 +74,8 @@ export default async function Layout({
                     <Header locale={locale} />
                 </div>
                 {/* <FBMessenger /> */}
-                <ScrollToTopButton />
+                <ScrollToTopButton theme='#006ED2' />
+                <CircleNavigation website='language centre' theme='#006ED2' />
                 <main className='languages-main'>
                     {children}
                 </main>

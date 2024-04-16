@@ -11,7 +11,7 @@ const ScrollToTopContainerVariants: Variants = {
     show: { opacity: 1, y: 0 },
 };
 
-function ScrollToTopButton() {
+function ScrollToTopButton({ theme }: any) {
     const { scrollYProgress } = useScroll();
     const controls = useAnimationControls();
 
@@ -24,7 +24,7 @@ function ScrollToTopButton() {
             }
         });
     });
-    
+
     const isBrowser = () => typeof window !== 'undefined';
 
     function scrollToTop() {
@@ -38,7 +38,9 @@ function ScrollToTopButton() {
             variants={ScrollToTopContainerVariants}
             initial="hide"
             animate={controls}
-            onClick={scrollToTop}>
+            onClick={scrollToTop}
+            style={{ background: theme }}
+        >
             <FaArrowUp size={25} />
         </motion.button>
     );
