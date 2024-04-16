@@ -1,49 +1,47 @@
-import { getTranslations } from "next-intl/server";
+'use server'
 
-import { type Metadata } from "next";
 import { notFound } from 'next/navigation';
 
-import About from "@/components/screens/language/about";
+import About from '@/components/screens/language/about';
 
-import { Locale } from "@/locales";
-
-import { client } from "../../../../../../sanity/client";
-import { query } from "../../../../../../sanity/services/language-service/about-us";
+import { client } from '../../../../../../sanity/client';
+import { query } from '../../../../../../sanity/services/language-service/about-us';
 
 
 interface Props {
     params: {
-        locale: string;
-    };
+        locale: string,
+    }
 }
-
 
 async function getResources(locale: string) {
-    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-    return data
+    try {
+        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+
+        if (!data?.length) {
+            return { data: [], isError: true };
+        }
+
+        return { data, isError: false };
+    } catch (error) {
+        return { data: [], isError: true };
+    }
 }
 
+export default async function Page({
+    params: { locale }
+}: Readonly<Props>) {
+    const result = await getResources(locale);
 
-export default async function Page({ params: { locale } }: Readonly<Props>) {
-    const data = await getResources(locale);
-
-    if (!data) {
+    if (!result || !result.data) {
         notFound()
     }
 
-    return <About data={data} locale={locale}/>;
+    return (
+        <About
+            data={result?.data}
+            locale={locale}
+        />
+    );
 };
 
-
-export async function generateMetadata({
-    params: { locale },
-}: {
-    params: { locale: Locale };
-}): Promise<Metadata> {
-    const t = await getTranslations({ locale, namespace: 'metadata' });
-
-    return {
-        title: t('title'),
-        description: t('descriptionEducationalCenter'),
-    };
-}

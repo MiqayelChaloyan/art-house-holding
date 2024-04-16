@@ -92,5 +92,8 @@
         "two-days-week": "2 days a week",
         "english": "English",
         "duration": "Duration"
+    },
+    "metadata": {
+        "introduction": "Introduction"
     }
 }

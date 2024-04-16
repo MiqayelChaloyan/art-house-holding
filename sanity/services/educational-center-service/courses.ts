@@ -1,6 +1,5 @@
-import { groq } from 'next-sanity';
-
-export const allCoursesQuery = groq`*[_type == "courses"] {
+export const allCoursesQuery = 
+`*[_type == "courses"] {
     "course_name": course_name[$language],
     "course_main": course_main[] {
         "title": title[$language],
@@ -27,7 +26,8 @@ export const allCoursesQuery = groq`*[_type == "courses"] {
     "slug": slug.current,
 }`;
 
-export const courseBySlugQuery = groq`*[_type == "courses" && slug.current == $slug] {
+export const courseBySlugQuery = 
+`*[_type == "courses" && slug.current == $slug] {
         "course_name": course_name[$language],
         "course_main": course_main[] {
             "title": title[$language],
@@ -54,7 +54,8 @@ export const courseBySlugQuery = groq`*[_type == "courses" && slug.current == $s
         "slug": slug.current,
 }`;
 
-export const queryId = groq`*[_type == "courses" && _id == $_id][0] {
+export const queryId = 
+`*[_type == "courses" && _id == $_id][0] {
     "course_name": course_name[$language],
     "course_main": course_main[] {
         "title": title[$language],

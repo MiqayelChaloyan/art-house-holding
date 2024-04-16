@@ -8,40 +8,37 @@ import Course from '@/components/screens/educational-center/course';
 import { Locale } from '@/locales';
 
 import { courseBySlugQuery } from '../../../../../../sanity/services/educational-center-service/courses';
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import { client } from '../../../../../../sanity/client';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 
-async function getResources(locale: string, slug: string) {
-    const course = await client.fetch(courseBySlugQuery, { language: locale, slug }, { next: { revalidate: 100 } });
-
-    if (!course?.length) {
-        return {
-            course: [],
-            isError: true
-        }
-    }
-
-    return {
-        course,
-        isError: false
-    }
-}
-
-
-interface LayoutProps {
+interface Props {
     params: {
         locale: string
-        slug: string[]
-    };
+        slug: string
+    }
 }
 
+async function getResources(slug: string, locale: string) {
+    try {
+        const course = await client.fetch(courseBySlugQuery, { language: locale, slug }, { next: { revalidate: 100 } });
 
-export default async function Page({ params: { locale, slug } }: LayoutProps) {
-    const { course, isError } = await getResources(locale, slug[0]);
+        if (!course?.length) {
+            return { course: [], isError: true };
+        }
+
+        return { course, isError: false };
+    } catch (error) {
+        return { course: [], isError: true };
+    }
+}
+
+export default async function Page({
+    params: { locale, slug }
+}: Readonly<Props>) {
+    const { course, isError } = await getResources(slug[0], locale);
 
     if (!course || isError) {
         notFound()
@@ -51,51 +48,55 @@ export default async function Page({ params: { locale, slug } }: LayoutProps) {
 }
 
 
-// export async function generateMetadata({
-//     params: { locale, slug },
-// }: {
-//     params: { locale: Locale, slug: string[] };
-// }): Promise<Metadata> {
-//     const { data, isError }: EDUCATIONAL_CENTER_COURSES | any = await getResources(locale, slug[0]);
+export async function generateMetadata({
+    params: { locale, slug },
+}: {
+    params: { locale: Locale, slug: string };
+}): Promise<Metadata> {
+    const { course }: any = await getResources(slug[0], locale);
+    const { course_name, about_us_content, svg, course_main: [{ title, content, image }] } = course[0];
 
-//     if (!data.length || isError) {
-//         notFound()
-//     }
+    const path: { src: string, width: string, height: string } | any = urlForImage(image);
+    const icon: { src: string, width: string, height: string } | any = urlForImage(svg);
 
-//     const { course_name, about_us_content, svg, course_main: [{ title, content, image }] } = data[0];
-
-//     const urlForImg = urlForImage(image)
-//     // .auto('format')
-//     // .fit('max')
-//     // .url();
-
-//     const urlForImageSvg = urlForImage(svg)
-//     // .auto('format')
-//     // .fit('max')
-//     // .url();
-
-//     return {
-//         metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN as string | URL),
-//         title: course_name,
-//         description: about_us_content,
-//         keywords: [course_name, title],
-//         authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
-//         icons: {
-//             icon: urlForImageSvg?.src,
-//         },
-//         openGraph: {
-//             // title: title,
-//             // description: content,
-//             // url: urlForImg?.src,
-//             type: 'website',
-//             // images: [
-//             //     {
-//             //         url: urlForImg?.src,
-//             //         width: 400,
-//             //         height: 400,
-//             //         alt: course_name,
-//             //     },
-//             // ],
-//         },
-//     };
-// }
+    return {
+        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
+            ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
+            : new URL(`http://localhost:${process.env.PORT || 3000}`),
+        title: title,
+        description: about_us_content,
+        authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
+        icons: {
+            icon: icon?.src,
+        },
+        openGraph: {
+            title: title,
+            description: content,
+            url: path?.src,
+            images: [
+                {
+                    url: path?.src,
+                    width: 500,
+                    height: 500,
+                    alt: course_name,
+                },
+            ],
+            locale,
+            type: 'website',
+        },
+        twitter: {
+            card: path?.src,
+            title: title,
+            description: about_us_content,
+            creator: "@arthouse",
+            images: [
+                {
+                    url: path?.src,
+                    width: path?.width,
+                    height: path?.height,
+                    alt: "twitter",
+                },
+            ],
+        },
+    };
+}

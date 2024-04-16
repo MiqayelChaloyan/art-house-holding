@@ -92,5 +92,8 @@
         "two-days-week": "2 дня в неделю",
         "english": "Английский",
         "duration": "Продолжительность"
+    },
+    "metadata": {
+        "introduction": "Введение"
     }
 }

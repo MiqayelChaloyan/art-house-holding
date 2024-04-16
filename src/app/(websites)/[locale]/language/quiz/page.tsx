@@ -1,29 +1,46 @@
-import Home from "@/components/screens/language/quiz";
-import { client } from "../../../../../../sanity/client";
-import { query } from "../../../../../../sanity/services/language-service/quiz";
-import { notFound } from "next/navigation";
+'use server'
+
+import { notFound } from 'next/navigation';
+
+import Home from '@/components/screens/language/quiz';
+
+import { client } from '../../../../../../sanity/client';
+import { query } from '../../../../../../sanity/services/language-service/quiz';
 
 
 interface Props {
     params: {
-        locale: string;
+        locale: string,
     };
 }
 
-
 async function getResources(locale: string) {
-    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+    try {
+        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
 
-    return data
+        if (!data) {
+            return { data: [], isError: true };
+        }
+
+        return { data, isError: false };
+    } catch (error) {
+        return { data: [], isError: true };
+    }
 }
 
+export default async function Page({
+    params: { locale }
+}: Readonly<Props>) {
+    const { data, isError } = await getResources(locale);
 
-export default async function Page({ params: { locale } }: Readonly<Props>) {
-    const data = await getResources(locale);
-
-    if (!data) {
+    if (!data || isError) {
         notFound()
     }
 
-    return <Home locale={locale} data={data}/>;
+    return (
+        <Home
+            locale={locale}
+            data={data}
+        />
+    );
 }

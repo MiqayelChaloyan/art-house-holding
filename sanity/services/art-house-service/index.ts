@@ -1,5 +1,3 @@
-// import { groq } from 'next-sanity';
-
 export const query = 
 `*[_type == "art-house-home"] {
     "_id": _id,

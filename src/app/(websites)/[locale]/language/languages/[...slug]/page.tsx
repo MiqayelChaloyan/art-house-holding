@@ -1,39 +1,54 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import { type Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { type Metadata } from 'next';
 
-import { Locale } from "@/locales";
+// import { getTranslations } from 'next-intl/server';
 
-import Language from "@/components/screens/language/languages/Language";
+import { Locale } from '@/locales';
 
-import { query } from "../../../../../../../sanity/services/language-service/languages";
-import { client } from "../../../../../../../sanity/client";
+import Language from '@/components/screens/language/languages/Language';
+
+import { query } from '../../../../../../../sanity/services/language-service/languages';
+import { client } from '../../../../../../../sanity/client';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 
-interface RootLayoutProps {
+interface Props {
     params: {
-        locale: string;
-        slug: any
-    };
+        locale: string,
+        slug: string
+    }
 }
-
 
 async function getResources(slug: string, locale: string) {
-    // const res = await getLanguageBySlug(slug, locale);
-    const data = await client.fetch(query, { slug, language: locale }, { next: { revalidate: 100 } });
-    return data[0]
+    try {
+        const data = await client.fetch(query, { slug, language: locale }, { next: { revalidate: 100 } });
+
+        if (!data?.length) {
+            return { data: [], isError: true };
+        }
+
+        return { data, isError: false };
+    } catch (error) {
+        return { data: [], isError: true };
+    }
 }
 
+export default async function Page(
+    { params: { locale, slug } }:
+        Readonly<Props>) {
+    const { data } = await getResources(slug[0], locale);
 
-export default async function Page({ params: { locale, slug } }: Readonly<RootLayoutProps>) {
-    const data = await getResources(slug[0], locale);
-
-    if (!data) {
+    if (!data.length) {
         notFound()
     }
 
-    return <Language locale={locale} data={data} />
+    return (
+        <Language
+            locale={locale}
+            data={data[0]}
+        />
+    )
 }
 
 
@@ -42,11 +57,51 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale, slug: any };
 }): Promise<Metadata> {
-    const t = await getTranslations({ locale, namespace: 'metadata' });
+    const result = await getResources(slug[0], locale);
+    // const t = await getTranslations({ locale, namespace: 'metadata' });
 
-    // const data = await getResources(slug[0], locale);
+    const { name, during_courses_images, text } = result.data[0];
+
+    // const ogTitle = `${name} ${t('introduction')}`;
+    const ogTitle = name;
+
+    const ogDescription = `${text[0].children[0].text.slice(0, 100)}...`;
+    const path: { src: string, width: string, height: string } | any = urlForImage(during_courses_images[0]);
 
     return {
-        description: t('language'),
+        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
+            ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
+            : new URL(`http://localhost:${process.env.PORT || 3000}`),
+        authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
+        title: ogTitle,
+        description: ogDescription,
+        openGraph: {
+            title: ogTitle,
+            description: ogDescription,
+            images: [
+                {
+                    url: path?.src,
+                    width: 500,
+                    height: 500,
+                    alt: "seo-image",
+                },
+            ],
+            locale,
+            type: "website",
+        },
+        twitter: {
+            card: path?.src,
+            title: ogTitle,
+            description: ogDescription,
+            creator: "@arthouse",
+            images: [
+                {
+                    url: path?.src,
+                    width: path?.width,
+                    height: path?.height,
+                    alt: "twitter",
+                },
+            ],
+        },
     };
 }

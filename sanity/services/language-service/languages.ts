@@ -1,6 +1,5 @@
-import { groq } from 'next-sanity';
-
-export const query = groq`*[_type == "about-language" && slug.current == $slug] {
+export const query = 
+`*[_type == "about-language" && slug.current == $slug] {
     "_id":  _id,
     "name": name,
     "slug": slug,
@@ -14,7 +13,8 @@ export const query = groq`*[_type == "about-language" && slug.current == $slug] 
     },
 }`;
 
-export const queryId = groq`*[_type == "about-language" && _id == $_id][0] {
+export const queryId = 
+`*[_type == "about-language" && _id == $_id][0] {
     "_id":  _id,
     "name": name,
     "slug": slug,

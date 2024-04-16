@@ -1,6 +1,5 @@
-import { groq } from 'next-sanity';
-
-export const query = groq`*[_type == "about-us"] {
+export const query = 
+`*[_type == "about-us"] {
     "slug": slug.current,
     "main_section": main_section[] {
         "title": title[$language],
@@ -44,4 +43,13 @@ export const query = groq`*[_type == "about-us"] {
         "slug": slug.current
     },
     "_id": _id,
+}`;
+
+
+export const querySiteMeta = `
+*[_type == "about-us"] {
+    site_name,
+    ogDescription,
+    ogTitle,
+    ogImage
 }`;

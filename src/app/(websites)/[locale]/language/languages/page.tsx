@@ -1,12 +1,17 @@
-import Home from "@/components/screens/language/languages";
+'use server'
+
+import Home from '@/components/screens/language/languages';
 
 
-interface RootLayoutProps {
+interface Props {
     params: {
-        locale: string | any;
-    };
+        locale: string,
+    }
 }
 
-export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
-    return <Home locale={locale}/>;
+export default async function Page(
+    { params: { locale } }:
+        Readonly<Props>) {
+    return <Home locale={locale} />
 }
+

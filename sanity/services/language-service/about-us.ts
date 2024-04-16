@@ -1,5 +1,3 @@
-// import { groq } from 'next-sanity';
-
 export const query = `
 *[_type == "about-us-language"] {
     "_id": _id,

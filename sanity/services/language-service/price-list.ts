@@ -1,7 +1,5 @@
-import { groq } from "next-sanity";
-
-
-export const query = groq`*[_type == "price-list-language"] {
+export const query = 
+`*[_type == "price-list-language"] {
     "_id":  _id,
     "name": name,
     "price_list": price_list[] {

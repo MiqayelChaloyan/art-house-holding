@@ -1,6 +1,5 @@
-import { groq } from 'next-sanity';
-
-export const partnersQuery = groq`*[_type == "partners"] {
+export const partnersQuery = 
+`*[_type == "partners"] {
     "company_name": company_name[$language],
     "cooperation": cooperation[$language],
     "implemented_projects": implemented_projects[$language],

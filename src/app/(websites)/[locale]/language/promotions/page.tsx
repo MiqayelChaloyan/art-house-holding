@@ -1,49 +1,41 @@
-import Promotions from "@/components/screens/language/promotions";
+'use server'
 
-import { getTranslations } from "next-intl/server";
-
-import { type Metadata } from "next";
 import { notFound } from 'next/navigation';
 
-import { Locale } from "@/locales";
+import Promotions from '@/components/screens/language/promotions';
 
-import { client } from "../../../../../../sanity/client";
-import { query } from "../../../../../../sanity/services/language-service/promotions";
+import { client } from '../../../../../../sanity/client';
+import { query } from '../../../../../../sanity/services/language-service/promotions';
 
 
 interface Props {
     params: {
-        locale: string;
-    };
+        locale: string
+    }
 }
-
 
 async function getResources(locale: string) {
-    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-    return data
+    try {
+        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+
+        if (!data?.length) {
+            return { data: [], isError: true };
+        }
+
+        return { data, isError: false };
+    } catch (error) {
+        return { data: [], isError: true };
+    }
 }
 
+export default async function Page({
+    params: { locale }
+}: Readonly<Props>) {
+    const { data, isError } = await getResources(locale);
 
-export default async function Page({ params: { locale } }: Readonly<Props>) {
-    const data = await getResources(locale);
-
-    if (!data) {
+    if (!data || isError) {
         notFound()
     }
 
-    return (<Promotions data={data}/>);
-}
-
-
-export async function generateMetadata({
-    params: { locale },
-}: {
-    params: { locale: Locale };
-}): Promise<Metadata> {
-    const t = await getTranslations({ locale, namespace: 'metadata' });
-
-    return {
-        title: t('title'),
-        description: t('descriptionEducationalCenter'),
-    };
+    return <Promotions data={data} />;
 }

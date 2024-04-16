@@ -1,9 +1,5 @@
-
-
-
-import { groq } from 'next-sanity';
-
-export const query = groq`*[_type == "promotions-languages"] {
+export const query = 
+`*[_type == "promotions-languages"] {
     "_id": _id,
     "discounts_list": discounts_list[] {
         "procent": procent,

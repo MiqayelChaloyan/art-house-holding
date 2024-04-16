@@ -48,6 +48,7 @@ const aboutUsSchemaLanguage = {
             description:
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
             validation: (Rule: RuleType) => Rule.required(),
+            group: ['meta']
         },
         {
             type: 'image',

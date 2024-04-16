@@ -54,7 +54,9 @@ async function getResources(locale: string) {
 }
 
 
-export default async function Page({ params: { locale } }: Readonly<RootLayoutProps>) {
+export default async function Page({
+  params: { locale }
+}: Readonly<RootLayoutProps>) {
   const { data, partners, isError } = await getResources(locale);
 
   if (!data || !partners || isError) {
@@ -84,10 +86,8 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
-  const meta = getSiteMeta(querySiteMeta, client)
-  const [data]: Site[] | any = await Promise.all([meta]);
-
-  const { ogDescription, ogTitle, ogImage } = data[1];
+  const meta: Site | any = await getSiteMeta(querySiteMeta, client)
+  const { ogDescription, ogTitle, ogImage } = meta[1];
 
   const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
 
@@ -95,6 +95,7 @@ export async function generateMetadata({
     metadataBase: process.env.NEXT_PUBLIC_DOMAIN
       ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
       : new URL(`http://localhost:${process.env.PORT || 3000}`),
+    authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
     title: ogTitle,
     description: ogDescription,
     openGraph: {
@@ -103,11 +104,12 @@ export async function generateMetadata({
       images: [
         {
           url: path?.src,
-          width: path?.width,
-          height: path?.height,
+          width: 500,
+          height: 500,
           alt: "seo-image",
         },
       ],
+      siteName: '',
       locale,
       type: "website",
     },

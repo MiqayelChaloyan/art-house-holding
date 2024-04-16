@@ -1,51 +1,42 @@
-import { notFound } from "next/navigation";
+'use server'
 
-import { type Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { notFound } from 'next/navigation';
 
-import { Locale } from "@/locales";
+import QuizPage from '@/components/screens/language/quiz/[quiz]';
 
-import Language from "@/components/screens/language/languages/Language";
-import QuizPage from "@/components/screens/language/quiz/[quiz]";
-import { client } from "../../../../../../../sanity/client";
-import { quizBySlugQuery } from "../../../../../../../sanity/services/language-service/quiz";
+import { client } from '../../../../../../../sanity/client';
+import { quizBySlugQuery } from '../../../../../../../sanity/services/language-service/quiz';
 
 
-interface RootLayoutProps {
+interface Props {
     params: {
-        locale: string
+        locale: string,
         slug: string
     };
 }
 
-
 async function getResources(slug: string, locale: string) {
-    const data = await client.fetch(quizBySlugQuery, { slug, language: locale }, { next: { revalidate: 100 } });
-    return data[0]
+    try {
+        const data = await client.fetch(quizBySlugQuery, { slug, language: locale }, { next: { revalidate: 100 } });
+
+        if (!data) {
+            return { data: [], isError: true };
+        }
+
+        return { data, isError: false };
+    } catch (error) {
+        return { data: [], isError: true };
+    }
 }
 
+export default async function Page({
+    params: { locale, slug }
+}: Readonly<Props>) {
+    const { data, isError } = await getResources(slug[0], locale);
 
-export default async function Page({ params: { locale, slug } }: Readonly<RootLayoutProps>) {
-    const data = await getResources(slug[0], locale);
-
-    if (!data) {
+    if (!data || isError) {
         notFound()
     }
 
-    return <QuizPage data={data}/>
+    return <QuizPage data={data[0]} />;
 }
-
-
-// export async function generateMetadata({
-//     params: { locale, slug },
-// }: {
-//     params: { locale: Locale, slug: any };
-// }): Promise<Metadata> {
-//     const t = await getTranslations({ locale, namespace: 'metadata' });
-
-//     // const data = await getResources(slug[0], locale);
-
-//     return {
-//         description: t('language'),
-//     };
-// }

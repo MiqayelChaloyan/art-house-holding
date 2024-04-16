@@ -1,30 +1,40 @@
-import Form from "@/components/screens/language/form";
-import { query } from "../../../../../../sanity/services/language-service/courses";
+'use server'
 
-import { client } from "../../../../../../sanity/client";
-import { notFound } from "next/navigation";
+import Form from '@/components/screens/language/form';
+import { query } from '../../../../../../sanity/services/language-service/courses';
 
+import { client } from '../../../../../../sanity/client';
+import { notFound } from 'next/navigation';
 
-async function getResources(locale: string) {
-    // const res = await getLanguageBySlug(slug, locale);
-    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-    return data[0]
-}
 
 interface Props {
     params: {
         locale: string
-    };
+    }
+}
+
+async function getResources(locale: string) {
+    try {
+        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+
+        if (!data[0]) {
+            return { data: [], isError: true };
+        }
+
+        return { data, isError: false };
+    } catch (error) {
+        return { data: [], isError: true };
+    }
 }
 
 export default async function Page({
     params: { locale },
 }: Readonly<Props>) {
-    const data = await getResources(locale);
+    const { data, isError } = await getResources(locale);
 
-    if (!data) {
+    if (!data || isError) {
         notFound()
     }
 
-    return <Form data={data}/>;
+    return <Form data={data[0]} />;
 }
