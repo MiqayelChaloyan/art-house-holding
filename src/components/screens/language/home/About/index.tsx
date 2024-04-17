@@ -64,7 +64,7 @@ const About = ({ data, locale }: Props) => {
             <Container>
                 <div className={styles.about}>
                     <div className={styles.column}>
-                        <h1 className={`${styles.title} ${Arial.className} ${Arial.className}`}>
+                        <h1 className={`${styles.title} ${Arial.className}`}>
                             {t('sections.about')}
                         </h1>
                         <p className={`${styles.text} ${Calibri.className}`}>

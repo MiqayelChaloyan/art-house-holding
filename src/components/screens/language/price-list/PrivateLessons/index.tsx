@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { Arial } from '@/lib/constants/font';
 
 import styles from './styles.module.sass';
-import { useTranslations } from 'next-intl';
 
 
 interface PrivateLessons {

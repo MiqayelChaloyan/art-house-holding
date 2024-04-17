@@ -10,41 +10,30 @@ import { GoProjectSymlink } from 'react-icons/go';
 
 import { ArianAMU } from '@/lib/constants/font';
 
-import { client } from '../../../../../sanity/client';
-import { query } from '../../../../../sanity/services/art-house-service';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { ART_HOUSE_HOME } from '../../../../../sanity/sanity-queries/art-house';
+import { BRANCHES } from '../../../../../sanity/sanity-queries/art-house';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-async function getResources(locale: string) {
-    try {
-        const branches = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+interface Props {
+    website?: string
+    branches?: BRANCHES[] | any
+    theme?: string
+}
 
-        if (!branches[0]) {
-            return { branches: [], isError: true };
-        }
-
-        return { branches, isError: false };
-    } catch (error) {
-        return { branches: [], isError: true };
-    }
-};
-
-const FloatingMenu = ({ website, theme }: any) => {
-    const [data, setData] = useState<ART_HOUSE_HOME[]>([]);
+const FloatingMenu = ({ website, branches, theme }: Props) => {
+    const [data, setData] = useState<BRANCHES[]>([]);
     const componentRef = useRef<HTMLDivElement>(null);
-    const activeLocale = useLocale();
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
-    const [isActive, setIsActive] = useState(false);
+    const [isActive, setIsActive] = useState<boolean>(false);
+    const activeLocale = useLocale();
 
     useEffect(() => {
         (async () => {
-            const { branches } = await getResources('en');
-            const websites = branches[0].our_websites.filter((branch: any, index: number) => branch.words !== website);
+            const websites = branches.our_websites.filter((branch: BRANCHES) => branch.words !== website);
             setData(websites);
         })()
     }, []);
@@ -61,14 +50,14 @@ const FloatingMenu = ({ website, theme }: any) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-
+    
     const links = data.map((link: any, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(link.website_logo_front);
 
         return (
             <li
                 key={link.slug}
-                style={{background: hoveredIndex === index ? '#F9CC48' : '', padding: '10px', transition: 'background 0.2s'}}
+                style={{ background: hoveredIndex === index ? '#F9CC48' : '' }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -82,8 +71,8 @@ const FloatingMenu = ({ website, theme }: any) => {
                             <p className={cn(styles.word, ArianAMU.className)}>{link.company_name}</p>
                             <p className={cn(styles.word, ArianAMU.className)}>{link.words}</p>
                         </div>
-                        <div className={styles.column}>
-                            <GoProjectSymlink/>
+                        <div className={styles.icon}>
+                            <GoProjectSymlink />
                         </div>
                     </div>
                 </Link>
@@ -94,7 +83,7 @@ const FloatingMenu = ({ website, theme }: any) => {
     const toggleNavigation = () => setIsActive(!isActive);
 
     return (
-        <div  ref={componentRef} className={styles.float}>
+        <div ref={componentRef} className={styles.float}>
             <div className={`${styles.navigation} ${isActive ? styles.active : ''}`} style={{ background: theme }}>
                 <div className={styles['menu-toggle']} onClick={toggleNavigation}></div>
                 <ul className={styles.menu}>

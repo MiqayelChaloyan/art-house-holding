@@ -18,8 +18,8 @@ interface RootProps {
 }
 
 async function getResources(locale: string) {
-    const dataPromise = client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-    const partnersPromise = client.fetch(partnersQuery, { language: locale }, { next: { revalidate: 100 } });
+    const dataPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+    const partnersPromise = await client.fetch(partnersQuery, { language: locale }, { next: { revalidate: 100 } });
     const discountsPromise = await client.fetch(discountsQuery, { language: locale }, { next: { revalidate: 100 } });
 
     return Promise.all([dataPromise, partnersPromise, discountsPromise])

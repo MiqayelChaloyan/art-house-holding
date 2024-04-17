@@ -17,6 +17,7 @@ import { SanityClient } from 'sanity';
 import { client } from '../../../../../sanity/client';
 
 import { query } from '../../../../../sanity/services/language-service/courses';
+import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import { querySiteMeta } from '../../../../../sanity/services/language-service/about-us';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
@@ -42,18 +43,33 @@ interface Site {
     ogDescription: string
 }
 
+const localeStrings: {
+    am: string
+    ru: string
+    en: string
+    [key: string]: string
+} = {
+    am: 'լեզվի կենտրոն',
+    ru: 'языковой центр',
+    en: 'language center'
+};
+
 async function getResources(locale: string) {
-    try {
-        const courses = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+    const coursesPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+    const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
 
-        if (!courses[0]) {
-            return { languages: [], isError: true };
-        }
+    return Promise.all([coursesPromise, branchesPromise])
+        .then(([courses, branches]) => {
+            if (!courses?.length || !branches?.length) {
+                return { courses: [], branches: [], isError: true };
+            }
 
-        return { courses, isError: false };
-    } catch (error) {
-        return { courses: [], isError: true };
-    }
+            return { courses: courses[0], branches: branches[1], isError: false };
+        })
+        .catch(error => {
+            return { courses: [], branches: [], isError: true };
+        });
+
 }
 
 export default async function Layout({
@@ -61,7 +77,7 @@ export default async function Layout({
     params: { locale },
 }: Readonly<RootLayoutProps>) {
 
-    const { courses, isError }: LANGUAGE[] | any = await getResources(locale);
+    const { courses, branches, isError }: LANGUAGE[] | any = await getResources(locale);
 
     if (!courses || isError) {
         notFound()
@@ -75,13 +91,17 @@ export default async function Layout({
                 </div>
                 {/* <FBMessenger /> */}
                 <ScrollToTopButton theme='#006ED2' />
-                <FloatingMenu website='language centre' theme='#006ED2' />
+                <FloatingMenu
+                    website={localeStrings[locale]}
+                    branches={branches}
+                    theme='#006ED2'
+                />
                 <main className='languages-main'>
                     {children}
                 </main>
             </div>
             <PlayerModal />
-            <ContactUs courses={courses[0]?.languages} />
+            <ContactUs courses={courses?.languages} />
             <Footer />
         </div>
     );

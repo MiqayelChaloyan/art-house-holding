@@ -33,7 +33,7 @@ const QuestionsViewer = () => {
                     <IoClose fill='#fff' />
                 </div>
             }
-            <div className={styles.correct} style={{ backgroundColor: item.wrongAnswer ? '#006ED2' : 'green' }}>
+            <div className={styles.correct} style={{ backgroundColor: item.wrongAnswer ? '#006ED2' : '#F9CC48' }}>
                 <p className={cn(styles.text, ArianAMU.className)}>{item.correctAnswer}</p>
                 <FaCheck fill='#fff' />
             </div>

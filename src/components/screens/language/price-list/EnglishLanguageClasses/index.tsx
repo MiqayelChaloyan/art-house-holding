@@ -15,7 +15,7 @@ interface Props {
 }
 
 interface EnglishLanguageClassesProps {
-    data: Props[];
+    data: Props[]
 }
 
 const EnglishLanguageClasses: React.FC<EnglishLanguageClassesProps> = ({ data }) => {
