@@ -11,7 +11,7 @@ import Footer from '@/lib/outlets/educational-center/Footer';
 import Modal from '@/lib/outlets/educational-center/Modal';
 import CoursesModal from '@/lib/outlets/educational-center/Modal/courses';
 import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
-import CircleNavigation from '@/lib/outlets/general/CircleNavigation';
+import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -72,7 +72,7 @@ export default async function Layout({
                 <RightMenu />
                 <BottomMenu locale={locale} />
                 {/* <ScrollToTopButton theme='#821616' />
-                <CircleNavigation website='educational center' theme='#821616' /> */}
+                <FloatingMenu website='educational center' theme='#821616' /> */}
                 <div className='wrapper-content'>
                     <Header typePosition="fixed" locale={locale} />
                     <main className='wrapper-main'>

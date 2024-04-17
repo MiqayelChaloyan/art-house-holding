@@ -2,10 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
 import { useLocale } from 'next-intl';
 
 import { GoProjectSymlink } from 'react-icons/go';
+
+import { ArianAMU } from '@/lib/constants/font';
 
 import { client } from '../../../../../sanity/client';
 import { query } from '../../../../../sanity/services/art-house-service';
@@ -31,12 +34,12 @@ async function getResources(locale: string) {
     }
 };
 
-const CircleNavigation = ({ website, theme }: any) => {
-    const [menuOpened, setMenuOpened] = useState<boolean>(false);
+const FloatingMenu = ({ website, theme }: any) => {
     const [data, setData] = useState<ART_HOUSE_HOME[]>([]);
     const componentRef = useRef<HTMLDivElement>(null);
     const activeLocale = useLocale();
-    const router = useRouter();
+    const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -49,7 +52,7 @@ const CircleNavigation = ({ website, theme }: any) => {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (componentRef.current && !componentRef.current.contains(event.target as Node)) {
-                setMenuOpened(false);
+                setIsActive(false);
             }
         };
 
@@ -59,44 +62,48 @@ const CircleNavigation = ({ website, theme }: any) => {
         };
     }, []);
 
-    const toggleMenu = () => {
-        setMenuOpened(!menuOpened);
-    };
-
-    const closeMenu = () => {
-        setMenuOpened(false);
-    };
-
-    const handleNavigate = (link: string, event: React.MouseEvent<HTMLButtonElement>) => {
-        // event.preventDefault();
-        router.push(`/${activeLocale}/${link}`);
-    };
-
     const links = data.map((link: any, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(link.website_logo_front);
-        const menuClassName = `menu${index + 1}`;
 
         return (
-            <div key={link.slug} className={cn(styles.menu, styles[menuClassName])} style={{ background: theme }}>
-                <button onClick={(e) => handleNavigate(link.web_site_url, e)}>
-                    <img src={path?.src} className={styles.logo} />
-                </button>
-            </div>
+            <li
+                key={link.slug}
+                style={{background: hoveredIndex === index ? '#F9CC48' : '', padding: '10px', transition: 'background 0.2s'}}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+            >
+                <Link
+                    href={`/${activeLocale}/${link.web_site_url}`}
+                    aria-label={`/${activeLocale}/${link.web_site_url}`}
+                >
+                    <div className={styles.link}>
+                        <img src={path?.src} className={styles.logo} />
+                        <div className={styles.column}>
+                            <p className={cn(styles.word, ArianAMU.className)}>{link.company_name}</p>
+                            <p className={cn(styles.word, ArianAMU.className)}>{link.words}</p>
+                        </div>
+                        <div className={styles.column}>
+                            <GoProjectSymlink/>
+                        </div>
+                    </div>
+                </Link>
+            </li>
         )
     });
 
+    const toggleNavigation = () => setIsActive(!isActive);
 
     return (
-        <div ref={componentRef}>
-            <div className={`${styles.menu_overlay}`} onClick={closeMenu}></div>
-            <div className={styles.button} onClick={toggleMenu} style={{ background: theme }}>
-                <GoProjectSymlink size={22} />
-            </div>
-            <div className={`${styles.cornerMenu} ${menuOpened ? styles.menuOpened : ''}`} style={{ background: theme }}>
-                {links}
+        <div  ref={componentRef} className={styles.float}>
+            <div className={`${styles.navigation} ${isActive ? styles.active : ''}`} style={{ background: theme }}>
+                <div className={styles['menu-toggle']} onClick={toggleNavigation}></div>
+                <ul className={styles.menu}>
+                    {links}
+                </ul>
             </div>
         </div>
+
     );
 };
 
-export default CircleNavigation;
+export default FloatingMenu;
