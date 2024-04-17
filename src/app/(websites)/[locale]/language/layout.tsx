@@ -75,7 +75,7 @@ export default async function Layout({
                 </div>
                 {/* <FBMessenger /> */}
                 <ScrollToTopButton theme='#006ED2' />
-                <CircleNavigation website='language centre' theme='#006ED2' />
+                {/* <CircleNavigation website='language centre' theme='#006ED2' /> */}
                 <main className='languages-main'>
                     {children}
                 </main>
