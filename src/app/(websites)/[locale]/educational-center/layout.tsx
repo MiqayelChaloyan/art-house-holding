@@ -71,8 +71,8 @@ export default async function Layout({
             <div className='wrapper'>
                 <RightMenu />
                 <BottomMenu locale={locale} />
-                <ScrollToTopButton theme='#821616' />
-                <CircleNavigation website='educational center' theme='#821616' />
+                {/* <ScrollToTopButton theme='#821616' />
+                <CircleNavigation website='educational center' theme='#821616' /> */}
                 <div className='wrapper-content'>
                     <Header typePosition="fixed" locale={locale} />
                     <main className='wrapper-main'>
