@@ -4,11 +4,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
+import { SwiperSlide } from 'swiper/react';
+
 import Container from '@/components/components/container';
 
+import FlatList from '@/lib/ui/flatList';
 import blocksToText from '@/lib/utils/BlocksToText';
 import { Pages } from '@/lib/constants/pages';
 import { Arial, Calibri } from '@/lib/constants/font';
+
+import useWindowSize from '@/hooks/useWindowSize';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
@@ -33,16 +38,17 @@ interface Image {
 
 const About = ({ data, locale }: Props) => {
     const t = useTranslations();
+    const windowSize = useWindowSize();
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 
-    const gallery: any = data[0].about_us?.about_us_images?.map((item: Image, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(item);
+    const gallery: any = data[0].about_us?.about_us_images?.map((image: Image, index: number) => {
+        const path: { src: string, width: number, height: number } | any = urlForImage(image);
 
         return (
             <Image
                 key={index}
                 src={path?.src}
-                alt={item.alt}
+                alt={image?.alt}
                 priority
                 className={styles.image}
                 width={0}
@@ -51,6 +57,28 @@ const About = ({ data, locale }: Props) => {
                 loading="eager"
                 quality={50}
             />
+        );
+    });
+
+
+    const slide: any = data[0].about_us?.about_us_images?.map((image: any, index: number) => {
+        const path: { src: string, width: number, height: number } | any = urlForImage(image);
+
+        return (
+            <SwiperSlide key={index}>
+                <Image
+                    // key={index}
+                    src={path?.src}
+                    alt={image?.alt}
+                    priority
+                    className={styles.slide}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    loading="eager"
+                    quality={50}
+                />
+            </SwiperSlide>
         );
     });
 
@@ -91,18 +119,21 @@ const About = ({ data, locale }: Props) => {
                             </Link>
                         </div>
                     </div>
-                    <div className={styles.gallery}>
-                        <div className={styles.gallery_one}>
-                            {gallery[0]}
+                    {windowSize.width > 600 ? (
+                        <div className={styles.gallery}>
+                            <div className={styles.gallery_one}>
+                                {gallery[0]}
+                            </div>
+                            <div className={styles.gallery_two}>
+                                {gallery[1]}
+                            </div>
+                            <div className={styles.gallery_three}>
+                                {gallery[2]}
+                            </div>
                         </div>
-                        <div className={styles.gallery_two}>
-                            {gallery[1]}
-                        </div>
-                        <div className={styles.gallery_three}>
-                            {gallery[2]}
-                        </div>
-                    </div>
-
+                    ) : (
+                        <FlatList list={slide} />
+                    )}
                 </div>
             </Container>
         </div>
