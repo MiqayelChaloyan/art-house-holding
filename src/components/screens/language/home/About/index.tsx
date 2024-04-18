@@ -67,7 +67,6 @@ const About = ({ data, locale }: Props) => {
         return (
             <SwiperSlide key={index}>
                 <Image
-                    // key={index}
                     src={path?.src}
                     alt={image?.alt}
                     priority
@@ -119,20 +118,20 @@ const About = ({ data, locale }: Props) => {
                             </Link>
                         </div>
                     </div>
-                    {windowSize.width > 600 ? (
-                        <div className={styles.gallery}>
-                            <div className={styles.gallery_one}>
-                                {gallery[0]}
-                            </div>
-                            <div className={styles.gallery_two}>
-                                {gallery[1]}
-                            </div>
-                            <div className={styles.gallery_three}>
-                                {gallery[2]}
-                            </div>
-                        </div>
-                    ) : (
+                    {windowSize.width < 600 ? (
                         <FlatList list={slide} />
+                    ) : (
+                        <div className={styles.gallery}>
+                        <div className={styles.gallery_one}>
+                            {gallery[0]}
+                        </div>
+                        <div className={styles.gallery_two}>
+                            {gallery[1]}
+                        </div>
+                        <div className={styles.gallery_three}>
+                            {gallery[2]}
+                        </div>
+                    </div>
                     )}
                 </div>
             </Container>

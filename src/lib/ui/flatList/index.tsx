@@ -10,12 +10,16 @@ import './styles.css';
 // required modules
 import { Pagination } from 'swiper/modules';
 
-const styles: any = {
+
+interface Props {
+    [key: string]: string,
+}
+
+const styles: Props = {
     "--swiper-pagination-color": "#F9CC48",
     "--swiper-pagination-bullet-inactive-color": "#006ED2",
     "--swiper-pagination-bullet-inactive-opacity": "1",
     "--swiper-pagination-bullet-size": "10px",
-    // "--swiper-pagination-bullet-horizontal-gap": "6px"
 }
 
 
@@ -39,7 +43,7 @@ export default function FlatList({ list }: any) {
                         spaceBetween: 10,
                     },
                     350: {
-                        slidesPerView: 1,
+                        slidesPerView: 1.2,
                         spaceBetween: 10,
                     },
                 }}
