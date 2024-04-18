@@ -1,14 +1,14 @@
 // Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
+
+// required modules
+import { Pagination, Autoplay } from 'swiper/modules';
 
 // Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 import './styles.css';
-
-// required modules
-import { Pagination } from 'swiper/modules';
 
 
 interface Props {
@@ -22,7 +22,6 @@ const styles: Props = {
     "--swiper-pagination-bullet-size": "10px",
 }
 
-
 export default function FlatList({ list }: any) {
     return (
         <>
@@ -31,6 +30,10 @@ export default function FlatList({ list }: any) {
                 spaceBetween={10}
                 pagination={{
                     clickable: true,
+                }}
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
                 }}
                 style={styles}
                 breakpoints={{
@@ -47,7 +50,7 @@ export default function FlatList({ list }: any) {
                         spaceBetween: 10,
                     },
                 }}
-                modules={[Pagination]}
+                modules={[Pagination, Autoplay]}
                 className="mySwiper"
             >
                 {list}
