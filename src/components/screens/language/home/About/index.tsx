@@ -6,9 +6,9 @@ import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import { Arial, Calibri } from '@/lib/constants/font';
 import blocksToText from '@/lib/utils/BlocksToText';
 import { Pages } from '@/lib/constants/pages';
+import { Arial, Calibri } from '@/lib/constants/font';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
@@ -31,21 +31,17 @@ interface Image {
     asset: { _ref: string, _type: string }
 }
 
-
 const About = ({ data, locale }: Props) => {
     const t = useTranslations();
-
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 
     const gallery: any = data[0].about_us?.about_us_images?.map((item: Image, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(item);
 
-        const result: string = path.src;
-
         return (
             <Image
                 key={index}
-                src={result}
+                src={path?.src}
                 alt={item.alt}
                 priority
                 className={styles.image}

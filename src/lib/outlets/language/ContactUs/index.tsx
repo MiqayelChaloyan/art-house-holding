@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, FormEvent, memo, useState } from 'react';
+import { FormEvent, memo, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import Container from '@/components/components/container';
 import Section from '@/components/components/section';
+import { usePathname } from 'next/navigation';
 
 import Gmail from '@/lib/icons/language/Gmail';
 import Instagram from '@/lib/icons/language/Instagram';
@@ -18,7 +19,7 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 
 import { Hosts } from '@/lib/constants/hosts';
-import { Inter, Vrdznagir } from '@/lib/constants/font';
+import { Arial, Inter, Vrdznagir } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
@@ -27,15 +28,13 @@ import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import { usePathname } from 'next/navigation';
 
 
 interface Props {
     courses: LANGUAGE[]
 };
 
-
-const ContactUs: FC<Props> = ({ courses }) => {
+const ContactUs = ({ courses }: Props) => {
     const t = useTranslations();
     const pathname = usePathname();
     const isOpen = pathname?.includes('/form')
@@ -120,13 +119,13 @@ const ContactUs: FC<Props> = ({ courses }) => {
                     <div className={styles.contact_us}>
                         <div className={styles.hosts}>
                             <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">
-                                <Gmail width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
+                                <Gmail width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='' />
                             </Link>
                             <Link href={Hosts.instagram} aria-label='Instagram' className={styles.social_network} target="_blank">
-                                <Instagram width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
+                                <Instagram width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='' />
                             </Link>
                             <Link href={Hosts.facebook} aria-label='Facebook' className={styles.social_network} target="_blank">
-                                <Facebook width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='#F9CC48' />
+                                <Facebook width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='' />
                             </Link>
                         </div>
                         <div className={styles.form}>
@@ -134,10 +133,10 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                 className={styles.box}
                                 onSubmit={handleSubmit}
                             >
-                                <h2 className={styles.form_title}>{t('contact-us-form.form-title-language')}</h2>
+                                <h2 className={cn(styles.form_title, Arial.className)}>{t('contact-us-form.form-title-language')}</h2>
                                 <div className={styles.fields}>
                                     <InputField
-                                        className={cn(styles.input, Inter.className)}
+                                        className={cn(styles.input, Arial.className)}
                                         name='fullName'
                                         type='name'
                                         placeholder={t('contact-us-form.full-name')}
@@ -146,7 +145,7 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                         onChange={handleChange}
                                     />
                                     <InputField
-                                        className={cn(styles.input, Inter.className)}
+                                        className={cn(styles.input, Arial.className)}
                                         name='email'
                                         type='email'
                                         placeholder={t('contact-us-form.email')}
@@ -155,7 +154,7 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                         onChange={handleChange}
                                     />
                                     <InputNumber
-                                        className={cn(styles.input, Inter.className)}
+                                        className={cn(styles.input, Arial.className)}
                                         name='phone'
                                         type='phone'
                                         placeholder={t('contact-us-form.phone-number')}
@@ -175,11 +174,11 @@ const ContactUs: FC<Props> = ({ courses }) => {
                                 </div>
                                 <button type='submit' className={styles.submit}>
                                     {isLoading ?
-                                        <span>
+                                        <span className={Arial.className}>
                                             {`${t('contact-us-form.loading')}...`}
                                         </span>
                                         :
-                                        <span>
+                                        <span className={Arial.className}>
                                             {t('contact-us-form.send')}
                                         </span>
                                     }

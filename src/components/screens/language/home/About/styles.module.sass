@@ -2,9 +2,13 @@
     display: flex
     justify-content: space-between
     align-items: flex-end
-    margin: 40px auto
+    margin: 0 auto
     /* @lg */
     @media screen and (max-width: 1280px)
+        margin: 30px auto
+        align-items: center
+    /* @lg */
+    @media screen and (max-width: 768px)
         display: grid
 
 .column
@@ -21,10 +25,10 @@
        width: 45%
     /* @lg */
     @media screen and (max-width: 1280px)
-       width: 100%
+       width: 45%
     /* @md */
     @media screen and (max-width: 1024px)
-       width: 100%
+       width: 45%
     /* @sm */
     @media screen and (max-width: 768px)
        width: 100%
@@ -118,13 +122,12 @@
     display: inline
     /* @lg */
     @media screen and (max-width: 1280px)
-       width: 100%
-       display: flex
-       justify-content: space-between
+       display: inline
     /* @sm */
     @media screen and (max-width: 768px)
         display: flex
-        justify-content: space-around
+        justify-content: space-between
+        width: 100%
     /* @xs */
     @media screen and (max-width: 600px)
         display: flex
@@ -158,18 +161,19 @@
        height: 250px
     /* @lg */
     @media screen and (max-width: 1280px)
-       top: 0
-       width: 300px
-       height: 230px
+       top: 50px
+       width: 250px
+       height: 200px
     /* @md */
     @media screen and (max-width: 1024px)
-       top: 0
-       width: 260px
+       top: 50px
+       width: 250px
        height: 200px
     @media screen and (max-width: 980px)
        top: 0
        width: 240px
-       height: 180px
+       height: 190px
+       margin-bottom: 20px
     /* @sm */
     @media screen and (max-width: 768px)
        top: 0
@@ -180,24 +184,24 @@
        top: 0
        width: 90%
        height: 250px
-       margin-bottom: 5px
+       margin-bottom: 20px
     /* @2xs */
     @media screen and (max-width: 480px)
        top: 0
        width: 90%
        height: 250px
-       margin-bottom: 5px
+       margin-bottom: 20px
     @media screen and (max-width: 400px)
        top: 0
        width: 90%
        height: 250px
-       margin-bottom: 5px
+       margin-bottom: 20px
     /* @3xs */
     @media screen and (max-width: 360px)
        top: 0
        width: 90%
        height: 190px
-       margin-bottom: 5px
+       margin-bottom: 20px
 
 .gallery_two
     width: 300px
@@ -226,18 +230,21 @@
        height: 250px
     /* @lg */
     @media screen and (max-width: 1280px)
-       right: 0
-       width: 300px
-       height: 230px
+       right: 168px
+       top: 0
+       width: 250px
+       height: 200px
     /* @md */
     @media screen and (max-width: 1024px)
-       right: 0
-       width: 260px
+       right: 168px
+       top: 0
+       width: 250px
        height: 200px
     @media screen and (max-width: 980px)
        right: 0
        width: 240px
-       height: 180px
+       height: 190px
+       margin-bottom: 20px
     /* @sm */
     @media screen and (max-width: 768px)
        right: 0
@@ -249,18 +256,18 @@
        width: 90%
        height: 250px
        margin: 5px
-       margin-bottom: 65px
+       margin-bottom: 20px
     /* @2xs */
     @media screen and (max-width: 480px)
        right: 0
        width: 90%
        height: 250px
-       margin-bottom: 62px
+       margin-bottom: 20px
     @media screen and (max-width: 400px)
        bottom: 0
        width: 90%
        height: 250px
-       margin-bottom: 62px
+       margin-bottom: 20px
     /* @3xs */
     @media screen and (max-width: 360px)
        right: 0
@@ -290,18 +297,18 @@
         height: 250px
     /* @lg */
     @media screen and (max-width: 1280px)
-        bottom: 0
-        width: 300px
-        height: 230px
+        bottom: 107px
+        width: 250px
+        height: 200px
     /* @md */
     @media screen and (max-width: 1024px)
-        bottom: 0
-        width: 260px
+        bottom: 107px
+        width: 250px
         height: 200px
     @media screen and (max-width: 980px)
         bottom: 0
         width: 240px
-        height: 180px
+        height: 190px
     /* @sm */
     @media screen and (max-width: 768px)
         bottom: 0
@@ -376,7 +383,7 @@
         font-size: 12px
         padding: 0
         text-align: center
-        width: 20% !important
+        width: 35% !important
         height: 40px
         border-radius: 15px
     /* @sm */
@@ -384,7 +391,7 @@
         font-size: 12px
         padding: 0
         text-align: center
-        width: 25% !important
+        width: 30% !important
         height: 40px
         border-radius: 15px
     /* @xs */

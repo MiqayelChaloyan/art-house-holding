@@ -1,9 +1,12 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+'use client'
 
-import { LANGUAGE } from "../../../../sanity/sanity-queries/language";
+import React, { memo, useEffect, useRef, useState } from 'react';
+
+import { LANGUAGE } from '../../../../sanity/sanity-queries/language';
+
+import { Arial } from '@/lib/constants/font';
 
 import styles from './styles.module.sass';
-import { Inter } from "@/lib/constants/font";
 
 // import { useScroll } from "framer-motion";
 
@@ -94,7 +97,7 @@ const Select = ({ data, state, valueName, handleChange, classNameProperty, isCle
                 aria-controls="select-dropdown"
                 onClick={handleSelect}
             >
-                <span className={`${styles[`${classNameProperty}-selected-value`]} ${Inter.className}`} style={colorTheme()}>{state.values[valueName]}</span>
+                <span className={`${styles[`${classNameProperty}-selected-value`]} ${Arial.className}`} style={colorTheme()}>{state.values[valueName]}</span>
                 <span className={styles[`${classNameProperty}-arrow`]}></span>
             </span>
             <ul className={styles[`${classNameProperty}-select-dropdown`]} role="listbox" id="select-dropdown">

@@ -24,6 +24,7 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    /* @md */
    @media screen and (max-width: 1024px)
       margin: 40px auto
+      justify-content: space-around
    /* @sm */
    @media screen and (max-width: 768px)
       margin: 40px auto
@@ -138,14 +139,14 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    align-items: center
    justify-content: space-evenly
    margin: 20px auto
-   width: 424px
+   width: 400px
    /* @4xl */
    @media screen and (max-width: 2560px)
       display: flex
       align-items: center
       justify-content: space-evenly
       margin: 20px auto
-      width: 424px
+      width: 400px
    /* @3xl */
    @media screen and (max-width: 1920px)
       display: flex
@@ -183,6 +184,14 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    background-color: #006ED2
    padding: 10px 10px 0 10px
    border-radius: 50px
+   transition: background-color 0.5s ease
+   svg 
+      transition: background-color 0.5s ease
+      fill: #F9CC48
+   &:hover
+      background-color: #F9CC48
+      svg
+         fill: #006ED2 
 
 
 .form
@@ -244,6 +253,7 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    color: white
    font-size: 20px
    font-weight: 700
+   margin-bottom: 30px
    /* @4xl */
    @media screen and (max-width: 2560px)
       text-align: center
@@ -280,7 +290,7 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
 
 
 .contact_us
-    width: 35%
+    width: 33%
     /* @sm */
     @media screen and (max-width: 768px)
       width: 100%
@@ -302,7 +312,7 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    padding: 12px 30px
    background-color: #006ED2
    margin: 10px auto
-   box-shadow: 1px 13px 11px -4px #0000003d
+   box-shadow: 1px 10px 11px -4px rgb(0 0 0 / 14%)
    span 
          cursor: pointer 
          display: inline-block 
@@ -398,8 +408,8 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
    max-width: 100%
    height: 40px
    font-weight: 300
-   font-size: 22px
-   box-shadow: 1px 13px 11px -4px #0000003d
+   font-size: 18px
+   box-shadow: 1px 10px 11px -4px rgb(0 0 0 / 14%)
    padding: 0.675em 1em 
    transition: .3s
    margin: 15px 0
@@ -411,23 +421,24 @@ $imagePath: '../../../../../public/assets/images/language/connection.png'
       color: #D4C7BA
    /* @4xl */
    @media screen and (max-width: 2560px)
-      font-size: 22px
+      font-size: 18px
    /* @3xl */
    @media screen and (max-width: 1920px)   
-      font-size: 22px
+      font-size: 18px
    /* @2xl */
    @media screen and (max-width: 1600px)
-      font-size: 22px
+      font-size: 18px
    /* @xl */
    @media screen and (max-width: 1440px)
-      font-size: 22px
+      font-size: 18px
    /* @lg */
    @media screen and (max-width: 1280px)
-      font-size: 22px
+      font-size: 18px
    /* @md */
    @media screen and (max-width: 1024px)
       font-size: 14px
       height: 30px
+      margin: 10px auto
    /* @sm */
    @media screen and (max-width: 768px)
       font-size: 14px
