@@ -6,7 +6,9 @@
         "price-list": "Գնացուցակ",
         "courses": "Դասընթացներ",
         "languages": "Լեզուներ",
-        "promotions": "Ակցիաներ"
+        "promotions": "Ակցիաներ",
+        "send-request": "Ուղարկել հայտ",
+        "take-the-test": "Անցնել թեստ"
     },
     "footer": {
         "about-us": "Մեր մասին",

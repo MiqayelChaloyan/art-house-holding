@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { SwiperSlide } from 'swiper/react';
 
 import Container from '@/components/components/container';
 
@@ -60,12 +59,11 @@ const About = ({ data, locale }: Props) => {
         );
     });
 
-
     const slide: any = data[0].about_us?.about_us_images?.map((image: any, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(image);
 
         return (
-            <SwiperSlide key={index}>
+            <div key={index} className={styles.flat_item}>
                 <Image
                     src={path?.src}
                     alt={image?.alt}
@@ -77,7 +75,7 @@ const About = ({ data, locale }: Props) => {
                     loading="eager"
                     quality={50}
                 />
-            </SwiperSlide>
+            </div>
         );
     });
 
@@ -118,10 +116,7 @@ const About = ({ data, locale }: Props) => {
                             </Link>
                         </div>
                     </div>
-                    {windowSize.width < 600 ? (
-                        <FlatList list={slide} />
-                    ) : (
-                        <div className={styles.gallery}>
+                    <div className={styles.gallery}>
                         <div className={styles.gallery_one}>
                             {gallery[0]}
                         </div>
@@ -132,7 +127,9 @@ const About = ({ data, locale }: Props) => {
                             {gallery[2]}
                         </div>
                     </div>
-                    )}
+                </div>
+                <div className={styles.flat_list}>
+                <FlatList list={slide}/>
                 </div>
             </Container>
         </div>

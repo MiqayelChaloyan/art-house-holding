@@ -26,20 +26,7 @@ const Home: React.FC<Props> = ({ data, locale }) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(lang.question_logo);
 
         return (
-            windowSize.width > 600 ? (
-                <Link
-                    key={lang.slug}
-                    href={`/${locale}/language/quiz/${lang.slug}`}
-                    aria-label={`/${locale}/language/quiz/${lang.slug}`}
-                    className={styles.link}
-                >
-                    <img
-                        src={path.src}
-                        className={styles.language}
-                        alt={lang.question_logo.alt}
-                    />
-                </Link>
-            ) : (
+            windowSize.width < 600 ? (
                 <Link
                     href={`/${locale}/language/quiz/${lang.slug}`}
                     aria-label={`/${locale}/language/quiz/${lang.slug}`}
@@ -52,6 +39,19 @@ const Home: React.FC<Props> = ({ data, locale }) => {
                         alt={lang.question_logo.alt}
                     />
                     <h3 className={cn(styles.language_name, ArianAMU.className)}>{lang.name}</h3>
+                </Link>
+            ) : (
+                <Link
+                    key={lang.slug}
+                    href={`/${locale}/language/quiz/${lang.slug}`}
+                    aria-label={`/${locale}/language/quiz/${lang.slug}`}
+                    className={styles.link}
+                >
+                    <img
+                        src={path.src}
+                        className={styles.language}
+                        alt={lang.question_logo.alt}
+                    />
                 </Link>
             )
         )

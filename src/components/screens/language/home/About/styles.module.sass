@@ -130,9 +130,13 @@
         width: 100%
     /* @xs */
     @media screen and (max-width: 600px)
-        display: flex
-        justify-content: space-around
-        flex-wrap: wrap
+        display: none
+
+.flatList
+    display: none
+    /* @xs */
+    @media screen and (max-width: 600px)
+        display: block
 
 .image
     width: 100%
@@ -188,27 +192,7 @@
        height: 150px
     /* @xs */
     @media screen and (max-width: 600px)
-       top: 0
-       width: 90%
-       height: 250px
-       margin-bottom: 20px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-       top: 0
-       width: 90%
-       height: 250px
-       margin-bottom: 20px
-    @media screen and (max-width: 400px)
-       top: 0
-       width: 90%
-       height: 250px
-       margin-bottom: 20px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-       top: 0
-       width: 90%
-       height: 190px
-       margin-bottom: 20px
+      display: none
 
 .gallery_two
     width: 300px
@@ -267,28 +251,7 @@
        height: 150px
     /* @xs */
     @media screen and (max-width: 600px)
-       right: 0
-       width: 90%
-       height: 250px
-       margin: 5px
-       margin-bottom: 20px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-       right: 0
-       width: 90%
-       height: 250px
-       margin-bottom: 20px
-    @media screen and (max-width: 400px)
-       bottom: 0
-       width: 90%
-       height: 250px
-       margin-bottom: 20px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-       right: 0
-       width: 90%
-       height: 190px
-       margin-bottom: 62px
+       display: none
 
 .gallery_three
     width: 300px
@@ -339,27 +302,7 @@
         height: 150px
     /* @xs */
     @media screen and (max-width: 600px)
-        bottom: 0
-        width: 90%
-        height: 250px
-        margin: 5px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        bottom: 0
-        width: 90%
-        height: 250px
-        margin: 5px
-    @media screen and (max-width: 400px)
-        bottom: 0
-        width: 90%
-        height: 250px
-        margin: 5px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        bottom: 0
-        width: 90%
-        height: 190px
-        margin: 5px
+        display: none
 
 .buttons
     display: flex
@@ -468,18 +411,21 @@
 
 
 
-.slide
-    border-radius: 10px 
-    height: 200px !important
+.flat_list
+    display: none
     /* @xs */
     @media screen and (max-width: 600px)
-        height: 260px !important
-        border-radius: 10px 
+        display: inline
     /* @2xs */
     @media screen and (max-width: 480px)
-        height: 207px !important
-        border-radius: 10px 
+        display: inline
     /* @3xs */
     @media screen and (max-width: 360px)
-        height: 158px !important
-        border-radius: 10px 
+        display: inline
+
+.flat_item
+    padding: 5px
+
+.slide
+    width: 100%
+    height: 250px

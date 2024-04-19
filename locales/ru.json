@@ -6,7 +6,9 @@
         "partners": "Коллеги",
         "price-list": "Прайс-лист",
         "languages": "Языки",
-        "promotions": "Акции"
+        "promotions": "Акции",
+        "send-request": "Отправить запрос",
+        "take-the-test": "Пройди тест"
     },
     "footer": {
         "about-us": "О нас",

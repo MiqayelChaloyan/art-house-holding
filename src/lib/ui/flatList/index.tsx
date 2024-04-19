@@ -1,60 +1,48 @@
-// Swiper React components
-import { Swiper } from 'swiper/react';
+// slick-carousel 
+import Slider from 'react-slick';
 
-// required modules
-import { Pagination, Autoplay } from 'swiper/modules';
+// slick-carousel styles
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-// Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-import './styles.css';
-
-
-interface Props {
-    [key: string]: string,
-}
-
-const styles: Props = {
-    "--swiper-pagination-color": "#F9CC48",
-    "--swiper-pagination-bullet-inactive-color": "#006ED2",
-    "--swiper-pagination-bullet-inactive-opacity": "1",
-    "--swiper-pagination-bullet-size": "10px",
-}
-
+import './styles.css'
 export default function FlatList({ list }: any) {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        // appendDots: dots => (
+        //     <div
+        //         style={{
+        //             // backgroundColor: "#ddd",
+        //             borderRadius: "10px",
+        //             padding: "10px"
+        //         }}
+        //     >
+        //         <ul style={{ margin: "0px" }}> {dots} </ul>
+        //     </div>
+        // ),
+        // customPaging: i => (
+        //     <div
+        //         style={{
+        //             width: "30px",
+        //             color: "blue",
+        //             border: "1px blue solid"
+        //         }}
+        //     >
+        //         {i + 1}
+        //     </div>
+        // )
+        dotsClass:  `slick-dots ${'dots'}`
+    };
+
+
+
     return (
-        <>
-            <Swiper
-                slidesPerView={1.2}
-                spaceBetween={10}
-                pagination={{
-                    clickable: true,
-                }}
-                autoplay={{
-                    delay: 5000,
-                    disableOnInteraction: false,
-                }}
-                style={styles}
-                breakpoints={{
-                    600: {
-                        slidesPerView: 1.2,
-                        spaceBetween: 10,
-                    },
-                    480: {
-                        slidesPerView: 1.2,
-                        spaceBetween: 10,
-                    },
-                    350: {
-                        slidesPerView: 1.2,
-                        spaceBetween: 10,
-                    },
-                }}
-                modules={[Pagination, Autoplay]}
-                className="mySwiper"
-            >
-                {list}
-            </Swiper>
-        </>
+        <Slider {...settings}>
+            {list}
+        </Slider>
     );
 }
