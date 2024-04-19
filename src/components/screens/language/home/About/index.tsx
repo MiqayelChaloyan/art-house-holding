@@ -4,18 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-
 import Container from '@/components/components/container';
 
-import FlatList from '@/lib/ui/flatList';
 import blocksToText from '@/lib/utils/BlocksToText';
 import { Pages } from '@/lib/constants/pages';
 import { Arial, Calibri } from '@/lib/constants/font';
 
-import useWindowSize from '@/hooks/useWindowSize';
-
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-
 import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 
 import cn from 'classnames';
@@ -37,7 +32,6 @@ interface Image {
 
 const About = ({ data, locale }: Props) => {
     const t = useTranslations();
-    const windowSize = useWindowSize();
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 
     const gallery: any = data[0].about_us?.about_us_images?.map((image: Image, index: number) => {
@@ -59,45 +53,6 @@ const About = ({ data, locale }: Props) => {
         );
     });
 
-    // const slide: any = data[0].about_us?.about_us_images?.map((image: any, index: number) => {
-    //     const path: { src: string, width: number, height: number } | any = urlForImage(image);
-
-    //     return (
-    //         <div key={index} className={styles.flat_item}>
-    //             <Image
-    //                 src={path?.src}
-    //                 alt={image?.alt}
-    //                 priority
-    //                 className={styles.slide}
-    //                 width={0}
-    //                 height={0}
-    //                 sizes="100vw"
-    //                 loading="eager"
-    //                 quality={50}
-    //             />
-    //         </div>
-    //     );
-    // });
-
-
-    const galleryu: any = data[0].about_us?.about_us_images?.map((image: Image, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(image);
-
-        return (
-            <Image
-                key={index}
-                src={path?.src}
-                alt={image?.alt}
-                priority
-                className={'test'}
-                width={0}
-                height={0}
-                sizes="100vw"
-                loading="eager"
-                quality={50}
-            />
-        );
-    });
 
     return (
         <div className={styles.container}>
@@ -147,8 +102,8 @@ const About = ({ data, locale }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.flat_list}>
-                <FlatList list={galleryu}/>
+                <div className={styles.expanding_gallery}>
+                    <div className={styles.expanding}>{gallery}</div>
                 </div>
             </Container>
         </div>

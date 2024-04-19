@@ -10,6 +10,9 @@
     /* @lg */
     @media screen and (max-width: 768px)
         display: grid
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin: 0 auto
 
 .column
     width: 45%
@@ -73,10 +76,10 @@
         margin-bottom: 10px
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 40px
+        font-size: 30px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 40px
+        font-size: 30px
 
 .text
     margin-bottom: 30px
@@ -132,16 +135,32 @@
     @media screen and (max-width: 600px)
         display: none
 
-.flatList
-    display: none
-    /* @xs */
-    @media screen and (max-width: 600px)
-        display: block
-
 .image
     width: 100%
     height: 100%
     object-fit: cover
+    /* @xs */
+    @media screen and (max-width: 600px)
+        --grayscale: 1 
+        transition: flex 0.5s, filter 0.5s  
+        height: 100% 
+        filter: grayscale(var(--grayscale)) brightness(var(--brightness)) 
+        object-fit: cover 
+        overflow: hidden 
+        flex: 1 
+        &:hover 
+            --brightness: 1.15 
+            --grayscale: 0 
+            flex: 6
+
+.expanding 
+    width: 80vw 
+    height: 50vmin 
+    display: flex 
+    align-items: center 
+    justify-content: center 
+    gap: 1vmin 
+    margin-bottom: 20px
 
 .gallery_one
     width: 300px
@@ -406,12 +425,7 @@
         color: #fff
         border: 1px solid #006ED2
 
-
-
-
-
-
-.flat_list
+.expanding_gallery
     display: none
     /* @xs */
     @media screen and (max-width: 600px)
@@ -423,9 +437,5 @@
     @media screen and (max-width: 360px)
         display: inline
 
-.flat_item
-    padding: 5px
 
-.slide
-    width: 100%
-    height: 250px
+   
