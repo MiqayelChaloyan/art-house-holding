@@ -29,6 +29,6 @@ const Home = ({ data, discounts, partners, locale }: Props) => {
             <Partners partners={partners}/>
         </div>
     );
-}
+};
 
 export default Home;

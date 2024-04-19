@@ -27,7 +27,7 @@ import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 // import 'slick-carousel/slick/slick-theme.css';
 
 import { SwiperSlide } from 'swiper/react';
-import FlatList from '@/lib/ui/flatList';
+// import FlatList from '@/lib/ui/flatList';
 
 import styles from './styles.module.sass';
 
@@ -245,7 +245,8 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
                             // <Slider {...settings}>
                             //     {...slider}
                             // </Slider>
-                            <FlatList list={slider} />
+                            // <FlatList list={slider} />
+                            null
                     }
                 </div>
                 <div className={styles.row_three}>
