@@ -59,26 +59,45 @@ const About = ({ data, locale }: Props) => {
         );
     });
 
-    const slide: any = data[0].about_us?.about_us_images?.map((image: any, index: number) => {
+    // const slide: any = data[0].about_us?.about_us_images?.map((image: any, index: number) => {
+    //     const path: { src: string, width: number, height: number } | any = urlForImage(image);
+
+    //     return (
+    //         <div key={index} className={styles.flat_item}>
+    //             <Image
+    //                 src={path?.src}
+    //                 alt={image?.alt}
+    //                 priority
+    //                 className={styles.slide}
+    //                 width={0}
+    //                 height={0}
+    //                 sizes="100vw"
+    //                 loading="eager"
+    //                 quality={50}
+    //             />
+    //         </div>
+    //     );
+    // });
+
+
+    const galleryu: any = data[0].about_us?.about_us_images?.map((image: Image, index: number) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(image);
 
         return (
-            <div key={index} className={styles.flat_item}>
-                <Image
-                    src={path?.src}
-                    alt={image?.alt}
-                    priority
-                    className={styles.slide}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    loading="eager"
-                    quality={50}
-                />
-            </div>
+            <Image
+                key={index}
+                src={path?.src}
+                alt={image?.alt}
+                priority
+                className={'test'}
+                width={0}
+                height={0}
+                sizes="100vw"
+                loading="eager"
+                quality={50}
+            />
         );
     });
-
 
     return (
         <div className={styles.container}>
@@ -129,7 +148,7 @@ const About = ({ data, locale }: Props) => {
                     </div>
                 </div>
                 <div className={styles.flat_list}>
-                <FlatList list={slide}/>
+                <FlatList list={galleryu}/>
                 </div>
             </Container>
         </div>
