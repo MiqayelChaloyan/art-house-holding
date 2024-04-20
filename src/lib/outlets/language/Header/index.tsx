@@ -99,6 +99,7 @@ const Header = ({ locale }: IHeaderProps) => {
                             href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
                             aria-label={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
                             className={`${styles.triangle_text} ${Arial.className}`}
+                            prefetch={true}
                         >
                             {t("texts.send-request")}
                         </Link>
@@ -126,9 +127,9 @@ const Header = ({ locale }: IHeaderProps) => {
                     styles.nav,
                     isOpenMenu ? styles.active : ''
                 )}>
-                    {(windowSize.width < 600 ? navigationLinks : navigationLinks.slice(0, 4)).map((link, index) => (
+                    {(windowSize.width < 600 ? navigationLinks : navigationLinks.slice(0, 5)).map((link, key) => (
                         <Link
-                            key={index}
+                            key={key}
                             href={`/${locale}${link.path}`}
                             aria-label={`/${locale}${link.path}`}
                             className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}

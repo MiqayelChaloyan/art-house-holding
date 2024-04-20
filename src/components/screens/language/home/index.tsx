@@ -19,7 +19,7 @@ interface Props {
     locale: string
 }
 
-const Home = ({ data, discounts, partners, locale }: Props) => {
+export default function Home ({ data, discounts, partners, locale }: Props) {
     return (
         <div>
             <Main />
@@ -30,5 +30,3 @@ const Home = ({ data, discounts, partners, locale }: Props) => {
         </div>
     );
 };
-
-export default Home;

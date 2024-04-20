@@ -106,6 +106,7 @@ export interface PRICE_LIST_LANHUAGE {
 
 export interface DISCOUNTS_LANGUAGE {
     discounts_list: {
+        [x: string]: any;
         procent: number
         image: {
             _type: string

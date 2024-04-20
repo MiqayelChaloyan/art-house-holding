@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import Container from '@/components/components/container';
 
 import Play from '@/lib/icons/educational-center/Play';
+import { Pages } from '@/lib/constants/pages';
 import { Arial, Vrdznagir } from '@/lib/constants/font';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,8 +22,8 @@ import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import styles from './styles.module.sass';
 
 
-interface Props {
-    data: ABOUT_US_LANGUAGE[];
+type Props = {
+    data: ABOUT_US_LANGUAGE[],
     locale: string
 }
 
@@ -39,8 +40,6 @@ const DailyLifeImage = ({ item }: any) => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                loading="eager"
-                quality={50}
             />
         </div>
     )
@@ -50,16 +49,17 @@ const DailyLifeImage = ({ item }: any) => {
 const DailyLifeVideo = ({ item, locale }: any) => {
     const router = useRouter();
     const t = useTranslations('buttons');
+    const dispatch = useDispatch();
+
     const isPlay = useSelector((state: any) => state.player.isPlay);
     const light: { src: string, width: number, height: number } | undefined = urlForImage(item.video_light);
-    const dispatch = useDispatch();
 
     const getResources = async () => {
         const _id = item.languages._ref;
 
         try {
             const data = await client.fetch(queryId, { _id, language: locale }, { cache: 'no-store' });
-            router.push(`language/languages/${data.slug.current}`);
+            router.push(`${Pages.LANGUAGE_LANGUAGES}/${data.slug.current}`);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -93,7 +93,7 @@ const DailyLifeVideo = ({ item, locale }: any) => {
 };
 
 
-const OurDailyLife = ({ data, locale }: Props) => {
+export default function OurDailyLife ({ data, locale }: Props) {
     const t = useTranslations('sections');
 
     const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: any, index: number) =>
@@ -116,7 +116,9 @@ const OurDailyLife = ({ data, locale }: Props) => {
         <section className={styles.section}>
             <Container>
                 <div className={styles.ourDaily}>
-                    <h2 className={`${styles.title} ${Vrdznagir.className}`}>{t('our-daily')}</h2>
+                    <h2 className={`${styles.title} ${Vrdznagir.className}`}>
+                        {t('our-daily')}
+                    </h2>
                     <div className={styles.column}>
                         {column1}
                     </div>
@@ -128,5 +130,3 @@ const OurDailyLife = ({ data, locale }: Props) => {
         </section>
     )
 };
-
-export default OurDailyLife;
