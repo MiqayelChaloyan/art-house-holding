@@ -4,19 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { SwiperSlide } from 'swiper/react';
-
 import Container from '@/components/components/container';
 
-import FlatList from '@/lib/ui/flatList';
 import blocksToText from '@/lib/utils/BlocksToText';
 import { Pages } from '@/lib/constants/pages';
 import { Arial, Calibri } from '@/lib/constants/font';
 
-import useWindowSize from '@/hooks/useWindowSize';
-
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-
 import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 
 import cn from 'classnames';
@@ -24,21 +18,20 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-interface Props {
-    data: ABOUT_US_LANGUAGE | any
+type Props = {
+    data: ABOUT_US_LANGUAGE | any,
     locale: string
 }
 
-interface Image {
+type Image = {
     _type: string,
     alt: string,
     _key: string,
     asset: { _ref: string, _type: string }
 }
 
-const About = ({ data, locale }: Props) => {
+export default function About ({ data, locale }: Props) {
     const t = useTranslations();
-    const windowSize = useWindowSize();
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 
     const gallery: any = data[0].about_us?.about_us_images?.map((image: Image, index: number) => {
@@ -54,36 +47,13 @@ const About = ({ data, locale }: Props) => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                loading="eager"
-                quality={50}
             />
         );
     });
 
 
-    const slide: any = data[0].about_us?.about_us_images?.map((image: any, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(image);
-
-        return (
-            <SwiperSlide key={index}>
-                <Image
-                    src={path?.src}
-                    alt={image?.alt}
-                    priority
-                    className={styles.slide}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    loading="eager"
-                    quality={50}
-                />
-            </SwiperSlide>
-        );
-    });
-
-
     return (
-        <div className={styles.container}>
+        <section id='about' className={styles.container}>
             <Container>
                 <div className={styles.about}>
                     <div className={styles.column}>
@@ -95,7 +65,8 @@ const About = ({ data, locale }: Props) => {
                         </p>
                         <div className={styles.buttons}>
                             <Link
-                                href={`/${locale}${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_SEND_REQUEST}`}
+                                href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
+                                aria-label={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
                                 prefetch={true}
                                 className={cn(
                                     styles.button,
@@ -107,6 +78,7 @@ const About = ({ data, locale }: Props) => {
                             </Link>
                             <Link
                                 href={`/${locale}${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_ABOUT}`}
+                                aria-label={`/${locale}${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_ABOUT}`}
                                 prefetch={true}
                                 className={cn(
                                     styles.button,
@@ -118,10 +90,7 @@ const About = ({ data, locale }: Props) => {
                             </Link>
                         </div>
                     </div>
-                    {windowSize.width < 600 ? (
-                        <FlatList list={slide} />
-                    ) : (
-                        <div className={styles.gallery}>
+                    <div className={styles.gallery}>
                         <div className={styles.gallery_one}>
                             {gallery[0]}
                         </div>
@@ -132,11 +101,11 @@ const About = ({ data, locale }: Props) => {
                             {gallery[2]}
                         </div>
                     </div>
-                    )}
+                </div>
+                <div className={styles.expanding_gallery}>
+                    <div className={styles.expanding}>{gallery}</div>
                 </div>
             </Container>
-        </div>
+        </section>
     )
 };
-
-export default About;

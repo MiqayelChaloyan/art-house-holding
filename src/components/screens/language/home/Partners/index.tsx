@@ -40,21 +40,30 @@ interface Props {
     partners: PARTNERS[]
 }
 
+const Partner = ({ partner }: PARTNERS | any) => {
+    const path: { src: string, width: number, height: number } | any = urlForImage(partner?.logo);
+    return (
+        <figure className={styles.partner}>
+            <img
+                src={path?.src}
+                alt={partner?.logo.alt}
+            />
+            {/* <figcaption>
+                <div>
+                    <h2>{partner?.company_name}</h2>
+                    <p>{partner?.cooperation}</p>
+                    <p>{partner?.implemented_projects}</p>
+                </div>
+            </figcaption> */}
+        </figure>
+    )
+}
+
 const Partners = ({ partners }: Props) => {
     const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 
-    const slidesItems = partners.map((partner: PARTNERS | any, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(partner?.logo);
-        return (
-            <div key={index} className={styles.partner}>
-                <img
-                    src={path.src}
-                    alt={partner?.logo.alt}
-                />
-            </div>
-        )
-    });
+    const slidesItems = partners.map((partner: PARTNERS | any, index: number) =>  <Partner partner={partner} key={index}/>);
 
     const settings = {
         slidesToShow: 6,
@@ -64,8 +73,8 @@ const Partners = ({ partners }: Props) => {
         autoplay: false,
         // autoplaySpeed: 5000,
         dots: false,
-        nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'}/>,
-        prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'}/>,
+        nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'} />,
+        prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'} />,
         cssEase: 'ease-out',
         centerMode: true,
         centerPadding: "0",

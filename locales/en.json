@@ -6,7 +6,9 @@
         "partners": "Partners",
         "price-list": "Price List",
         "languages": "Languages",
-        "promotions": "Promotions"
+        "promotions": "Promotions",
+        "send-request": "Send request",
+        "take-the-test": "Pass the test"
     },
     "footer": {
         "about-us": "About us",

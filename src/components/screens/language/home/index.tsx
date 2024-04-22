@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Main from './Main';
 import About from './About';
@@ -11,8 +11,6 @@ import Partners from './Partners';
 import { ABOUT_US_LANGUAGE, DISCOUNTS_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import { PARTNERS } from '../../../../../sanity/sanity-queries/generic';
 
-import styles from './styles.module.sass';
-
 
 interface Props {
     data: ABOUT_US_LANGUAGE[]
@@ -21,10 +19,9 @@ interface Props {
     locale: string
 }
 
-
-const Home = ({ data, discounts, partners, locale }: Props) => {
+export default function Home ({ data, discounts, partners, locale }: Props) {
     return (
-        <div className={styles.container}>
+        <div>
             <Main />
             <About data={data} locale={locale}/>
             <Promotions discounts={discounts}/>
@@ -32,6 +29,4 @@ const Home = ({ data, discounts, partners, locale }: Props) => {
             <Partners partners={partners}/>
         </div>
     );
-}
-
-export default Home;
+};

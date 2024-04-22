@@ -29,7 +29,6 @@ type IHeaderProps = {
 type StickyBoundaryProps = {
     children: JSX.Element[]
     sticky: boolean
-    width: number
 };
 
 type HeaderProps = {
@@ -42,18 +41,18 @@ const navigationLinks = [
     { path: Pages.LANGUAGE_LANGUAGES, label: 'languages' },
     { path: Pages.LANGUAGE_PROMOTIONS, label: 'promotions' },
     { path: Pages.LANGUAGE_PRICE_LIST, label: 'price-list' },
-    { path: Pages.LANGUAGE_PARTNERS, label: 'partners' }
+    { path: Pages.LANGUAGE_PARTNERS, label: 'partners' },
+    { path: Pages.LANGUAGE_SEND_REQUEST, label: 'send-request' },
+    { path: Pages.LANGUAGE_TAKE_TEST, label: 'take-the-test' }
 ];
 
-
-const StickyBoundary = ({ children, sticky, width }: StickyBoundaryProps) => (
+const StickyBoundary = ({ children, sticky }: StickyBoundaryProps) => (
     <div className={`${styles.boundary} ${sticky ? styles.isSticky : ''}`}>{children}</div>
 );
 
 const HeaderBoundary = ({ children }: HeaderProps) => (
     <header className={styles.header}>{children}</header>
 );
-
 
 const Header = ({ locale }: IHeaderProps) => {
     const [isSticky, setIsSticky] = useState<boolean>(false);
@@ -63,7 +62,6 @@ const Header = ({ locale }: IHeaderProps) => {
     const windowSize = useWindowSize();
     const t = useTranslations()
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         const handleScroll = () => {
@@ -98,19 +96,23 @@ const Header = ({ locale }: IHeaderProps) => {
                 <div className={styles.requests}>
                     <div className={styles.send_request}>
                         <Link
-                            href={`/${locale}/language/form`}
-                            aria-label={`/${locale}/language/form`}
+                            href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
+                            aria-label={`/${Pages.LANGUAGE_SEND_REQUEST}`}
                             className={`${styles.triangle_text} ${Arial.className}`}
+                            // prefetch={true}
+                            // passHref
                         >
                             {t("texts.send-request")}
                         </Link>
                     </div>
                     <div className={styles.take_test}>
                         <Link
-                            href={`/${locale}/language/quiz`}
-                            aria-label={`/${locale}/language/quiz`}
+                            href={`/${locale}${Pages.LANGUAGE_TAKE_TEST}`}
+                            aria-label={`/${Pages.LANGUAGE_TAKE_TEST}`}
                             className={`${styles.triangle_text} ${Arial.className}`}
                             onClick={() => dispatch(Action.resetAllAction())}
+                            // prefetch={true}
+                            // passHref
                         >
                             {t("texts.take-the-test")}
                         </Link>
@@ -123,17 +125,19 @@ const Header = ({ locale }: IHeaderProps) => {
                     <LocalSwitcher activeColor='#F9CC48' color='#006ED2' />
                 </div>
             </HeaderBoundary>
-            <StickyBoundary sticky={isSticky} width={windowSize.width}>
+            <StickyBoundary sticky={isSticky}>
                 <nav className={cn(
                     styles.nav,
                     isOpenMenu ? styles.active : ''
                 )}>
-                    {navigationLinks.map((link, index) => (
+                    {(windowSize.width < 600 ? navigationLinks : navigationLinks.slice(0, 5)).map((link, key) => (
                         <Link
-                            key={index}
+                            key={key}
                             href={`/${locale}${link.path}`}
-                            aria-label={`/${locale}${link.path}`}
+                            aria-label={`/${link.path}`}
                             className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}
+                            prefetch={true}
+                            passHref
                             onClick={() => {
                                 setIsOpenMenu(false);
                                 dispatch(Action.resetAllAction())
@@ -143,8 +147,6 @@ const Header = ({ locale }: IHeaderProps) => {
                         </Link>
                     ))}
                     <div className={styles.mobile}>
-                        <Link href={`/${locale}${'/language/form'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_one} ${Arial.className}`}>{t("texts.send-request")}</Link>
-                        <Link href={`/${locale}${'/language/quiz'}`} onClick={() => setIsOpenMenu(false)} className={`${styles.mobile_triangle_text_two} ${Arial.className}`}>{t("texts.take-the-test")}</Link>
                         <div className={styles.mobile_switcher}>
                             <LocalSwitcher activeColor='#F9CC48' color='#fff' />
                         </div>

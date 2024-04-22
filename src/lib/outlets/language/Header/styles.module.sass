@@ -88,6 +88,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: grid
+		line-height: 105px
 		
 .link
 	flex: 1 0 18%
@@ -391,7 +392,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 
 .active
 	background-color: #006ED2
-	height: 100vh
+	height: -webkit-fill-available
 	position: fixed
 	transition: .1s all
 
@@ -400,55 +401,3 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and ( max-width: 600px )
 		display: block
-
-.mobile_triangle_text_one
-	display: none
-	/* @xs */
-	@media screen and ( max-width: 600px )
-		display: block
-		font-size: 16px
-		line-height: 80px
-		color: #fff
-		font-weight: 700
-		&:after 
-			display: block 
-			content: '' 
-			border-bottom: solid 3px #F9CC48 
-			transform: scaleX(0) 
-			transition: transform 250ms ease-in-out 
-		&:hover 
-			color: #F9CC48
-			&:after 
-				transform: scaleX(1)
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		line-height: 80px
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		line-height: 60px
-
-.mobile_triangle_text_two
-	display: none
-	/* @xs */
-	@media screen and ( max-width: 600px )
-		display: block
-		font-size: 16px
-		line-height: 80px
-		color: #fff
-		font-weight: 700
-		&:after 
-			display: block 
-			content: '' 
-			border-bottom: solid 3px #F9CC48 
-			transform: scaleX(0) 
-			transition: transform 250ms ease-in-out 
-		&:hover 
-			color: #F9CC48
-			&:after 
-				transform: scaleX(1)
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		line-height: 80px
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		line-height: 60px

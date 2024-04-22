@@ -14,7 +14,6 @@ export default (S: any) =>
                     'about-language',
                     'about-us-language',
                     'price-list-language',
-                    'co-workers-language',
                     'languages-select-option',
                     'questions-language',
                     'promotions-languages',
@@ -100,13 +99,6 @@ export default (S: any) =>
                                 .title('Price List')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('price-list-language').documentId('price-list-languages')),
-                            S.listItem()
-                                .title('Co-Workers')
-                                .child(
-                                    S.documentList()
-                                        .title('Co-Workers')
-                                        .filter('_type == "co-workers-language"')
-                                ),
                             S.listItem()
                                 .title('Promotions')
                                 .icon(DocumentsIcon)

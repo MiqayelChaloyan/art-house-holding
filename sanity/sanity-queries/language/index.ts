@@ -74,12 +74,13 @@ export interface ABOUT_LANGUAGE {
     name: string
     text: any
     slug: string
+    image: any
     course_process: any
     during_courses_images: any
     teachers: any
 };
 
-export interface PRICE_LIST_LANHUAGE {
+export interface PRICE_LIST_LANGUAGE {
     _id: string
     name: string
     price_list: {
@@ -106,6 +107,7 @@ export interface PRICE_LIST_LANHUAGE {
 
 export interface DISCOUNTS_LANGUAGE {
     discounts_list: {
+        [x: string]: any;
         procent: number
         image: {
             _type: string

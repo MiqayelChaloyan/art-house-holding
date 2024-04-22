@@ -1,7 +1,5 @@
+import styles from './styles.module.sass';
 
-import styles from './styles.module.sass'
-
-const Main = () => <section className={styles.section} />
-
-export default Main;
-
+export default function Main () {
+    return  <section className={styles.section} />
+};

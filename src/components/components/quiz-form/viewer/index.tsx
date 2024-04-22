@@ -54,6 +54,7 @@ const QuestionsViewer = () => {
                     aria-label={`/${localActive}/language/quiz/`}
                     className={cn(styles.link, ArianAMU.className)}
                     onClick={() =>  dispatch(Action.resetAllAction())}
+                    scroll={true}
                 >
                     {t('buttons.go-back')}
                 </Link>

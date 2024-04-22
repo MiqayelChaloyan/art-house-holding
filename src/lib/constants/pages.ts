@@ -8,16 +8,9 @@ const Pages = {
     LANGUAGE_PROMOTIONS: '/language/promotions',
     LANGUAGE_PRICE_LIST: '/language/price-list',
     LANGUAGE_PARTNERS: '/language/partners',
-    LANGUAGE_ENGLISH: '/english',
-    LANGUAGE_GERMAN: '/german',
-    LANGUAGE_CHINESE: '/chinese',
-    LANGUAGE_FRENCH: '/french',
-    LANGUAGE_ITALIAN: '/italian',
-    LANGUAGE_RUSSIAN: '/russian',
-    LANGUAGE_SPANISH: '/spanish',
+    LANGUAGE_SEND_REQUEST: '/language/form',
+    LANGUAGE_TAKE_TEST: '/language/quiz',
     LANGUAGE_ABOUT: '/about',
-    LANGUAGE_SEND_REQUEST: '/form',
-    LANGUAGE_TAKE_TEST: '/quiz',
 }
 
 export {
