@@ -59,7 +59,7 @@ const DailyLifeVideo = ({ item, locale }: any) => {
 
         try {
             const data = await client.fetch(queryId, { _id, language: locale }, { cache: 'no-store' });
-            router.push(`${Pages.LANGUAGE_LANGUAGES}/${data.slug.current}`);
+            router.push(`language/languages/${data.slug.current}`);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
