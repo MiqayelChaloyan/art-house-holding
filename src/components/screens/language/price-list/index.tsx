@@ -5,10 +5,10 @@ import PrivateLessons from './PrivateLessons';
 import EnglishLanguageClasses from './EnglishLanguageClasses';
 
 import styles from './styles.module.sass';
-// import { PRICE_LIST_LANHUAGE } from '../../../../../sanity/sanity-queries/language';
+import { PRICE_LIST_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
 interface Props {
-    data:  any//PRICE_LIST_LANHUAGE[];
+    data:  PRICE_LIST_LANGUAGE[] | any
 }
 
 const Home: React.FC<Props> = ({ data }) => {

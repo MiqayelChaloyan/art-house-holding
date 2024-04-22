@@ -24,6 +24,63 @@ const languagesSchemaLanguage = {
             },
             validation: (Rule: RuleType) => Rule.required(),
         },
+
+        {
+            title: 'Image',
+            name: 'image',
+            type: 'object',
+            validation: (Rule: RuleType) => Rule.required(),
+            fields: [
+                {
+                    name: 'am',
+                    type: 'image',
+                    title: 'Armenian',
+                    options: {
+                        hotspot: true,
+                    },
+                    fields: [
+                        {
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alternative text',
+                        },
+                    ],
+                },
+                {
+                    name: 'en',
+                    type: 'image',
+                    title: 'English',
+                    options: {
+                        hotspot: true,
+                    },
+                    fields: [
+                        {
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alternative text',
+                        },
+                    ],
+                },
+                {
+                    name: 'ru',
+                    type: 'image',
+                    title: 'Russian',
+                    options: {
+                        hotspot: true,
+                    },
+                    fields: [
+                        {
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alternative text',
+                        },
+                    ],
+                },
+            ]
+        },
+
+
+
         {
             title: 'Text',
             name: 'text',

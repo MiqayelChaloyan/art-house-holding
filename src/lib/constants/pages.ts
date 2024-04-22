@@ -10,13 +10,6 @@ const Pages = {
     LANGUAGE_PARTNERS: '/language/partners',
     LANGUAGE_SEND_REQUEST: '/language/form',
     LANGUAGE_TAKE_TEST: '/language/quiz',
-    LANGUAGE_ENGLISH: '/english',
-    LANGUAGE_GERMAN: '/german',
-    LANGUAGE_CHINESE: '/chinese',
-    LANGUAGE_FRENCH: '/french',
-    LANGUAGE_ITALIAN: '/italian',
-    LANGUAGE_RUSSIAN: '/russian',
-    LANGUAGE_SPANISH: '/spanish',
     LANGUAGE_ABOUT: '/about',
 }
 

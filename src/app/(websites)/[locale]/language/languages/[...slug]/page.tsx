@@ -8,7 +8,7 @@ import { Locale } from '@/locales';
 
 import Language from '@/components/screens/language/languages/Language';
 
-import { query } from '../../../../../../../sanity/services/language-service/languages';
+import { querySlug } from '../../../../../../../sanity/services/language-service/languages';
 import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
@@ -22,7 +22,7 @@ interface Props {
 
 async function getResources(slug: string, locale: string) {
     try {
-        const data = await client.fetch(query, { slug, language: locale }, { next: { revalidate: 100 } });
+        const data = await client.fetch(querySlug, { slug, language: locale }, { next: { revalidate: 100 } });
 
         if (!data?.length) {
             return { data: [], isError: true };
@@ -34,9 +34,9 @@ async function getResources(slug: string, locale: string) {
     }
 }
 
-export default async function Page(
-    { params: { locale, slug } }:
-        Readonly<Props>) {
+export default async function Page({ 
+    params: { locale, slug } 
+}:Readonly<Props>) {
     const { data } = await getResources(slug[0], locale);
 
     if (!data.length) {
