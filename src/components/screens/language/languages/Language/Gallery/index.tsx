@@ -56,14 +56,20 @@ const renderImages = (images: Image[], type: string) =>
         }
 
         return (
-            <Image
+            // <Image
+            //     key={image._key}
+            //     src={path?.src}
+            //     alt={image?.alt}
+            //     className={className}
+            //     width={0}
+            //     height={0}
+            //     sizes='100vw'
+            // />
+            <img
                 key={image._key}
                 src={path?.src}
                 alt={image?.alt}
                 className={className}
-                width={0}
-                height={0}
-                sizes='100vw'
             />
         );
     });
@@ -80,13 +86,18 @@ const Gallery = ({ during_courses }: any) => {
 
         return (
             <SwiperSlide key={image._key}>
-                <Image
-                    key={image._key}
+                {/* <Image
                     src={path?.src}
                     alt={image?.alt}
+                    className={styles.swipe_image}
                     width={0}
                     height={0}
                     sizes='100vw'
+                /> */}
+                <img
+                    src={path?.src}
+                    alt={image?.alt}
+                    className={styles.swipe_image}
                 />
             </SwiperSlide>
         )
@@ -112,7 +123,7 @@ const Gallery = ({ during_courses }: any) => {
                         clickable: true,
                     }}
                     modules={[EffectCreative, Pagination]}
-                    className="mySwiper"
+                // className="mySwiper"
                 >
                     {swiperItems}
                 </Swiper>
