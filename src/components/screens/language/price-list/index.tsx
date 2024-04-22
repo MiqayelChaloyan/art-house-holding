@@ -1,17 +1,21 @@
-"use client"
+'use client'
+
+import React from 'react';
 
 import Panel from './Panel';
 import PrivateLessons from './PrivateLessons';
 import EnglishLanguageClasses from './EnglishLanguageClasses';
 
-import styles from './styles.module.sass';
 import { PRICE_LIST_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
-interface Props {
+import styles from './styles.module.sass';
+
+
+type Props = {
     data:  PRICE_LIST_LANGUAGE[] | any
 }
 
-const Home: React.FC<Props> = ({ data }) => {
+const Home= ({ data }: Props) => {
     return (
         <section id='price-list' className={styles.container}>
             <Panel data={data[0].price_list}/>
@@ -21,4 +25,4 @@ const Home: React.FC<Props> = ({ data }) => {
     );
 }
 
-export default Home
+export default React.memo(Home);

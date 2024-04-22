@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react';
+
 import Promotion from '@/lib/ui/promotion';
 
 import { DISCOUNTS_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
@@ -7,29 +9,21 @@ import { DISCOUNTS_LANGUAGE } from '../../../../../sanity/sanity-queries/languag
 import styles from './styles.module.sass';
 
 
-interface Props {
+type Props = {
     data: DISCOUNTS_LANGUAGE[]
 }
 
-interface Image {
-    alt: string;
-    discount: {
-        _type: string,
-        asset: { _ref: string, _type: string }
-    }
-}
-
 const Promotions = ({ data }: Props) => {
-    const promotions = data[0]?.discounts_list.map((discount: any, index: number) =>
+    const promotions: JSX.Element[] = data[0]?.discounts_list.map((discount: DISCOUNTS_LANGUAGE, index: number) =>
         <Promotion key={discount.slug} discount={discount} index={index} classNameProperty='large' />);
 
     return (
-        <div>
+        <section id='promotions'>
             <div className={styles.discounts}>
                 {promotions}
             </div>
-        </div>
+        </section>
     )
 };
 
-export default Promotions;
+export default React.memo(Promotions);

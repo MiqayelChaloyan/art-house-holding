@@ -1,4 +1,6 @@
-import React, { memo } from 'react';
+'use client'
+
+import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -7,26 +9,26 @@ import { Arial } from '@/lib/constants/font';
 import styles from './styles.module.sass';
 
 
-interface PrivateLessons {
-    three_week: string;
-    two_week: string;
+type PrivateLessons = {
+    three_week: string,
+    two_week: string,
 }
 
-interface Props {
-    slug: string;
-    teaching_language: string;
-    group_lessons: string;
-    private_lessons: PrivateLessons;
+type Props = {
+    slug: string,
+    teaching_language: string,
+    group_lessons: string,
+    private_lessons: PrivateLessons,
 }
 
-interface PrivateLessonsProps {
-    data: Props[];
+type PrivateLessonsProps = {
+    data: Props[]
 }
 
-const PrivateLessons: React.FC<PrivateLessonsProps> = ({ data }) => {
+const PrivateLessons = ({ data }: PrivateLessonsProps) => {
     const t = useTranslations();
 
-    const tableRows = data?.map((item: Props, index: number) => {
+    const tableRows: JSX.Element[] = data?.map((item: Props, index: number) => {
         return (
             <tr key={item?.slug || index}>
                 <td>{item.teaching_language}</td>
@@ -36,10 +38,11 @@ const PrivateLessons: React.FC<PrivateLessonsProps> = ({ data }) => {
         );
     });
 
-
     return (
         <div className={Arial.className}>
-            <h1 className={styles.title}>{t('titles.private-lessons')}</h1>
+            <h1 className={styles.title}>
+                {t('titles.private-lessons')}
+            </h1>
             <div className={styles.table}>
                 <table>
                     <thead>
@@ -65,4 +68,4 @@ const PrivateLessons: React.FC<PrivateLessonsProps> = ({ data }) => {
     );
 };
 
-export default memo(PrivateLessons);
+export default React.memo(PrivateLessons);

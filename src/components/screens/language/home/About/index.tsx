@@ -1,14 +1,17 @@
 'use client'
 
+import React from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import blocksToText from '@/lib/utils/BlocksToText';
 import { Pages } from '@/lib/constants/pages';
 import { Arial, Calibri } from '@/lib/constants/font';
+import { ImageType, UrlType } from '@/types/language';
+import blocksToText from '@/lib/utils/BlocksToText';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
@@ -19,75 +22,62 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    data: ABOUT_US_LANGUAGE | any,
+    data: ABOUT_US_LANGUAGE[],
     locale: string
 }
 
-type Image = {
-    _type: string,
-    alt: string,
-    _key: string,
-    asset: { _ref: string, _type: string }
-}
+const navigationLinks = [
+    { path: Pages.LANGUAGE_SEND_REQUEST, label: 'send-request', className: 'send-btn' },
+    { path: `${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_ABOUT}`, label: 'more', className: 'more-btn' },
+];
 
-export default function About ({ data, locale }: Props) {
+const About = ({ data, locale }: Props) => {
     const t = useTranslations();
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 
-    const gallery: any = data[0].about_us?.about_us_images?.map((image: Image, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(image);
+    const gallery: JSX.Element[] = data[0].about_us.about_us_images?.map((image: ImageType, index: number) => {
+        const path: UrlType | any = urlForImage(image);
 
         return (
             <Image
                 key={index}
                 src={path?.src}
                 alt={image?.alt}
-                priority
                 className={styles.image}
-                width={0}
-                height={0}
-                sizes="100vw"
+                width={500}
+                height={500}
+                priority
             />
         );
     });
-
 
     return (
         <section id='about' className={styles.container}>
             <Container>
                 <div className={styles.about}>
                     <div className={styles.column}>
-                        <h1 className={`${styles.title} ${Arial.className}`}>
+                        <h1 className={cn(styles.title, Arial.className)}>
                             {t('sections.about')}
                         </h1>
-                        <p className={`${styles.text} ${Calibri.className}`}>
+                        <p className={cn(styles.text, Calibri.className)}>
                             {content}...
                         </p>
                         <div className={styles.buttons}>
-                            <Link
-                                href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
-                                aria-label={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
-                                prefetch={true}
-                                className={cn(
-                                    styles.button,
-                                    Arial.className,
-                                    styles.send_btn
-                                )}
-                            >
-                                {t('texts.send-request')}
-                            </Link>
-                            <Link
-                                href={`/${locale}${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_ABOUT}`}
-                                aria-label={`/${locale}${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_ABOUT}`}
-                                prefetch={true}
-                                className={cn(
-                                    styles.button,
-                                    Arial.className,
-                                    styles.more_btn
-                                )}
-                            >
-                                {t('texts.more')}
-                            </Link>
+                            {navigationLinks.map(({ path, label, className }) => (
+                                <Link
+                                    key={label}
+                                    href={`/${locale}${path}`}
+                                    aria-label={path}
+                                    prefetch={true}
+                                    className={cn(
+                                        styles.button,
+                                        Arial.className,
+                                        styles[className]
+                                    )}
+                                >
+                                    {t(`texts.${label}`)}
+                                </Link>
+                            ))}
                         </div>
                     </div>
                     <div className={styles.gallery}>
@@ -109,3 +99,5 @@ export default function About ({ data, locale }: Props) {
         </section>
     )
 };
+
+export default React.memo(About);

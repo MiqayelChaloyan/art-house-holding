@@ -1,72 +1,54 @@
 'use client'
 
+import React from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { PortableText } from "@portabletext/react";
+import { PortableText } from '@portabletext/react';
 import Container from '@/components/components/container';
 
 import Player from '@/lib/ui/video-player';
 import { Arial, Calibri } from '@/lib/constants/font';
 import { Pages } from '@/lib/constants/pages';
-import components from "@/lib/utils/PortableTextComponents";
+import components from '@/lib/utils/PortableTextComponents';
 
 import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
-import { ABOUT_US_LANGUAGE } from "../../../../../sanity/sanity-queries/language";
+import { ABOUT_US_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+
+import { ImageType, UrlType, Video } from '@/types/language';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-interface Props {
-    data: ABOUT_US_LANGUAGE[]
+type Props = {
+    data: ABOUT_US_LANGUAGE[],
     locale: string
 }
-
-interface Image {
-    _type: string
-    alt: string
-    _key: string
-    asset: { _ref: string, _type: string }
-}
-
-interface Video {
-    video_url: string
-    _type: string,
-    _key: string,
-    video_light: {
-        _type: string,
-        alt: string,
-        asset: { _ref: string, _type: string }
-    }
-}
-
 
 const About = ({ data, locale }: Props) => {
     const t = useTranslations();
 
-    const gallery: any = data[0].about_us?.about_us_images?.map((item: Image, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(item);
+    const gallery: JSX.Element[] = data[0].about_us?.about_us_images?.map((item: ImageType, index: number) => {
+        const path: UrlType | any = urlForImage(item);
 
         return (
             <Image
                 key={index}
                 src={path?.src}
-                alt={item.alt}
-                priority
+                alt={item?.alt}
                 className={styles.image}
-                width={0}
-                height={0}
-                sizes="100vw"
-                loading="eager"
-                quality={50}
+                width={500}
+                height={500}
+                priority
             />
         );
     });
 
-    const videos = data[0]?.about_us?.about_our_daily?.map((video: Video) => {
+    const videos = data[0]?.about_us?.about_our_daily.map((video: Video) => {
         const light = urlForImage(video.video_light);
 
         return (
@@ -76,16 +58,15 @@ const About = ({ data, locale }: Props) => {
         )
     });
 
-
     return (
-        <div className={styles.container}>
+        <section id='about' className={styles.container}>
             <Container>
                 <div className={styles.about}>
                     <div className={styles.column}>
-                        <h1 className={`${styles.title} ${Arial.className}`}>
+                        <h1 className={cn(styles.title, Arial.className)}>
                             {t('sections.about')}
                         </h1>
-                        <div className={`${styles.text} ${Calibri.className}`}>
+                        <div className={cn(styles.text, Calibri.className)}>
                             <PortableText
                                 value={data[0]?.about_us?.content}
                                 components={components}
@@ -121,8 +102,8 @@ const About = ({ data, locale }: Props) => {
                     </div>
                 </div>
             </Container>
-        </div>
+        </section>
     )
 }
 
-export default About;
+export default React.memo(About);

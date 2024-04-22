@@ -1,4 +1,6 @@
-import React, { memo } from 'react';
+'use client'
+
+import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -9,23 +11,23 @@ import { Arial } from '@/lib/constants/font';
 import styles from './styles.module.sass';
 
 
-interface PrivateLessons {
-  three_week: string;
-  two_week: string;
+type PrivateLessons = {
+  three_week: string,
+  two_week: string,
 }
 
-interface Props {
-  slug: string;
-  teaching_language: string;
-  group_lessons: string;
-  private_lessons: PrivateLessons;
+type Props = {
+  slug: string,
+  teaching_language: string,
+  group_lessons: string,
+  private_lessons: PrivateLessons,
 }
 
-interface PanelProps {
-  data: Props[];
+type PanelProps = {
+  data: Props[]
 }
 
-const Panel: React.FC<PanelProps> = ({ data }) => {
+const Panel = ({ data }: PanelProps) => {
   const t = useTranslations();
   
   // const [currentPage, setCurrentPage] = useState<number>(1);
@@ -36,7 +38,7 @@ const Panel: React.FC<PanelProps> = ({ data }) => {
   // const npage = Math.ceil(data.length / recordPerPage);
   // const numbers = [...Array(npage + 1).keys()].slice(1)
 
-  const tableRows = data?.map((item: Props, index: number) => {
+  const tableRows: JSX.Element[] = data?.map((item: Props, index: number) => {
     return (
       <tr key={item?.slug || index}>
         <td>{item.teaching_language}</td>
@@ -118,4 +120,4 @@ const Panel: React.FC<PanelProps> = ({ data }) => {
   );
 };
 
-export default memo(Panel);
+export default React.memo(Panel);

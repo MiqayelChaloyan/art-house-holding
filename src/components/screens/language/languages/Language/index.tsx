@@ -1,8 +1,6 @@
 'use client'
 
-import { memo } from 'react';
-
-import { usePathname } from 'next/navigation';
+import React from 'react';
 
 import About from './About';
 import Teachers from './Teachers';
@@ -15,20 +13,19 @@ import Container from '@/components/components/container';
 import { ABOUT_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
+import { UrlType } from '@/types/language';
+
 import styles from './styles.module.sass';
 
 
-type RootProps = {
+type Props = {
     data: ABOUT_LANGUAGE
     locale: string
 };
 
-const Language = ({ locale, data }: Readonly<RootProps>) => {
+const Language = ({ locale, data }: Props) => {
     const { during_courses_images, course_process, teachers } = data;
-    const pathname = usePathname();
-    const slug = pathname?.split('/').pop() as string;
-
-    const path: { src: string, width: number, height: number } | any = urlForImage(course_process.video_light);
+    const path: UrlType | any = urlForImage(course_process.video_light);
 
     return (
         <Container>
@@ -36,7 +33,6 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
                 <About
                     image={data.image}
                     text={data.text}
-                    slug={slug}
                 />
                 <Gallery during_courses={during_courses_images} />
                 <div className={styles.row_three}>
@@ -53,4 +49,4 @@ const Language = ({ locale, data }: Readonly<RootProps>) => {
     );
 };
 
-export default memo(Language);
+export default React.memo(Language);
