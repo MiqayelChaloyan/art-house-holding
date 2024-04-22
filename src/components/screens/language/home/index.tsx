@@ -19,14 +19,19 @@ interface Props {
     locale: string
 }
 
-export default function Home ({ data, discounts, partners, locale }: Props) {
-    return (
-        <div>
-            <Main />
-            <About data={data} locale={locale}/>
-            <Promotions discounts={discounts}/>
-            <OurDailyLife  locale={locale} data={data}/>
-            <Partners partners={partners}/>
-        </div>
-    );
-};
+const Home = ({
+    data,
+    discounts,
+    partners,
+    locale
+}: Props) => (
+    <div>
+        <Main />
+        <About data={data} locale={locale} />
+        <Promotions discounts={discounts} />
+        <OurDailyLife locale={locale} data={data} />
+        <Partners partners={partners} />
+    </div>
+);
+
+export default React.memo(Home);

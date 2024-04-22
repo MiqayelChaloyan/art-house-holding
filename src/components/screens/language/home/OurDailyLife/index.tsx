@@ -1,13 +1,15 @@
 'use client'
 
-import { useRouter } from 'next/navigation';
+import React from 'react';
+
 import Image from 'next/image';
+import { notFound, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
 import Play from '@/lib/icons/educational-center/Play';
-import { Pages } from '@/lib/constants/pages';
+import { DAILY_LIFE_IMAGE, DAILY_LIFE_VIDEO, ReduxType, UrlType } from '@/types/language';
 import { Arial, Vrdznagir } from '@/lib/constants/font';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +21,8 @@ import { queryId } from '../../../../../../sanity/services/language-service/lang
 import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
 
 
@@ -27,32 +31,40 @@ type Props = {
     locale: string
 }
 
-const DailyLifeImage = ({ item }: any) => {
-    const path: { src: string, width: number, height: number } | any = urlForImage(item);
+type Video = {
+    item: DAILY_LIFE_VIDEO,
+    locale: string
+}
+
+type Image = {
+    item: DAILY_LIFE_IMAGE
+}
+
+const DailyLifeImage = ({ item }: Image) => {
+    const path: UrlType | any = urlForImage(item);
 
     return (
         <div className={styles.image}>
             <Image
                 src={path?.src}
-                alt={item.alt}
-                priority
+                alt={item?.alt}
                 className={styles.images}
-                width={0}
-                height={0}
-                sizes="100vw"
+                width={500}
+                height={500}
+                priority
             />
         </div>
     )
 };
 
 
-const DailyLifeVideo = ({ item, locale }: any) => {
-    const router = useRouter();
+const DailyLifeVideo = ({ item, locale }: Video) => {
     const t = useTranslations('buttons');
+    const router = useRouter();
     const dispatch = useDispatch();
 
-    const isPlay = useSelector((state: any) => state.player.isPlay);
-    const light: { src: string, width: number, height: number } | undefined = urlForImage(item.video_light);
+    const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
+    const light: UrlType | any = urlForImage(item.video_light);
 
     const getResources = async () => {
         const _id = item.languages._ref;
@@ -61,7 +73,7 @@ const DailyLifeVideo = ({ item, locale }: any) => {
             const data = await client.fetch(queryId, { _id, language: locale }, { cache: 'no-store' });
             router.push(`language/languages/${data.slug.current}`);
         } catch (error) {
-            console.error('Error fetching data:', error);
+            notFound();
         }
     };
 
@@ -73,8 +85,18 @@ const DailyLifeVideo = ({ item, locale }: any) => {
     return (
         <div className={styles.video}>
             <div className={styles.playing}>
-                <img src={light?.src} alt='image' className={styles.video_play} />
-                <button className={styles.icon} onClick={() => handlePlayVideo(item.video_url)}>
+                <Image
+                    src={light?.src}
+                    alt={item?.video_light.alt}
+                    className={styles.video_play}
+                    width={500}
+                    height={500}
+                    priority
+                />
+                <button
+                    className={styles.icon}
+                    onClick={() => handlePlayVideo(item.video_url)}
+                >
                     <Play
                         width={75}
                         height={75}
@@ -83,9 +105,16 @@ const DailyLifeVideo = ({ item, locale }: any) => {
                 </button>
             </div>
             <div className={styles.navigate}>
-                <span className={`${styles.text} ${Arial.className}`}>{item.news}</span>
+                <span className={cn(styles.text, Arial.className)}>
+                    {item.news}
+                </span>
                 <div className={styles.btn}>
-                    <button className={`${styles.view} ${Arial.className}`} onClick={getResources}>{t('view')}</button>
+                    <button
+                        className={cn(styles.view, Arial.className)}
+                        onClick={getResources}
+                    >
+                        {t('view')}
+                    </button>
                 </div>
             </div>
         </div>
@@ -93,14 +122,14 @@ const DailyLifeVideo = ({ item, locale }: any) => {
 };
 
 
-export default function OurDailyLife ({ data, locale }: Props) {
+const OurDailyLife = ({ data, locale }: Props) => {
     const t = useTranslations('sections');
 
-    const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: any, index: number) =>
-        <DailyLifeImage key={item.slug.current} item={item} index={index} />
+    const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: DAILY_LIFE_IMAGE | any) =>
+        <DailyLifeImage key={item.slug.current} item={item} />
     );
 
-    const videos: JSX.Element[] = data[0].our_daily_life.about_our_daily.map((item: any, index: number) =>
+    const videos: JSX.Element[] = data[0].our_daily_life.about_our_daily.map((item: DAILY_LIFE_VIDEO | any) =>
         <DailyLifeVideo key={item.slug} item={item} locale={locale} />
     );
 
@@ -113,10 +142,10 @@ export default function OurDailyLife ({ data, locale }: Props) {
     const column2 = mixData.slice(Math.ceil(mixData.length / 2));
 
     return (
-        <section className={styles.section}>
+        <section id='our-daily' className={styles.section}>
             <Container>
                 <div className={styles.ourDaily}>
-                    <h2 className={`${styles.title} ${Vrdznagir.className}`}>
+                    <h2 className={cn(styles.title, Vrdznagir.className)}>
                         {t('our-daily')}
                     </h2>
                     <div className={styles.column}>
@@ -130,3 +159,5 @@ export default function OurDailyLife ({ data, locale }: Props) {
         </section>
     )
 };
+
+export default React.memo(OurDailyLife);

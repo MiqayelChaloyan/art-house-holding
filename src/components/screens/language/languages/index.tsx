@@ -1,20 +1,26 @@
 'use client'
 
-import { useLocale } from 'next-intl';
+import React from 'react';
 
-import Container from '@/components/components/container';
+import { useLocale } from 'next-intl';
 
 import LanguageGallery from './Languages';
 
+import Container from '@/components/components/container';
 
-interface RootProps {
-    data: any
+import { ABOUT_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+
+import { LANGUAGE } from '@/types/language';
+
+
+type Props = {
+    data: ABOUT_LANGUAGE[]
 };
 
-export default function Home({ data }: Readonly<RootProps>) {
+const Home = ({ data }: Props)  => {
     const activeLocale = useLocale();
 
-    const images = data.map((language: any) => ({
+    const images = data?.map((language: LANGUAGE | any) => ({
         path: language.image,
         page: language.slug.current,
     }));
@@ -28,3 +34,5 @@ export default function Home({ data }: Readonly<RootProps>) {
         </section>
     );
 };
+
+export default React.memo(Home);

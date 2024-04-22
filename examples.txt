@@ -602,3 +602,35 @@ import { EmblaOptionsType } from 'embla-carousel';
 
 
 Readonly<RootProps>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <Image
+                key={index}
+                src={path?.src}
+                alt={image?.alt}
+                className={styles.image}
+                width={500} 
+                height={500}
+                priority
+            />

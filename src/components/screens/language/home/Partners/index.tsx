@@ -1,53 +1,65 @@
 'use client'
 
-import { memo } from 'react';
+import React from 'react';
+
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+
+import Slider from 'react-slick';
 
 import Container from '@/components/components/container';
 
 import { Arial, Vrdznagir } from '@/lib/constants/font';
+import { UrlType, PARTNER } from '@/types/language';
 import ArrowLeft from '@/lib/icons/language/ArrowLeft';
 import ArrowRight from '@/lib/icons/language/ArrowRight';
 
-// slick-carousel 
-import Slider from 'react-slick';
+import useWindowSize from '@/hooks/useWindowSize';
 
-// slick-carousel styles
+import { PARTNERS } from '../../../../../../sanity/sanity-queries/generic';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+
+import cn from 'classnames';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { PARTNERS } from '../../../../../../sanity/sanity-queries/generic';
-
 import styles from './styles.module.sass';
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import Image from 'next/image';
-import useWindowSize from '@/hooks/useWindowSize';
-import { useTranslations } from 'next-intl';
-import cn from 'classnames';
 
+
+type Props = {
+    partners: PARTNERS[]
+}
 
 const SampleNextArrow = ({ onClick, fill }: any) => (
-    <div className={`${styles.arrow} ${styles.arrow_right}`} onClick={onClick}>
+    <div className={cn(styles.arrow, styles.arrow_right)} onClick={onClick}>
         <ArrowRight width='21' height='50' fill={fill} />
     </div>
 );
 
 const SamplePrevArrow = ({ onClick, fill }: any) => (
-    <div className={`${styles.arrow} ${styles.arrow_left}`} onClick={onClick}>
+    <div className={cn(styles.arrow, styles.arrow_left)} onClick={onClick}>
         <ArrowLeft width='21' height='50' fill={fill} />
     </div>
 );
 
-interface Props {
-    partners: PARTNERS[]
-}
+const Partner = ({ partner }: PARTNER | any) => {
+    const path: UrlType | any = urlForImage(partner?.logo);
 
-const Partner = ({ partner }: PARTNERS | any) => {
-    const path: { src: string, width: number, height: number } | any = urlForImage(partner?.logo);
     return (
         <div key={partner._id} className={styles.card}>
-            <img src={path.src} alt={partner.logo.alt} className={styles.img} />
+            <Image
+                src={path?.src}
+                alt={partner.logo.alt}
+                className={styles.img}
+                width={500}
+                height={500}
+                priority
+            />
             <div className={styles.overlay}>
-                <h1 className={cn(styles['text-h1'], Arial.className)}>{partner.company_name}</h1>
+                <h1 className={cn(styles['text-h1'], Arial.className)}>
+                    {partner.company_name}
+                </h1>
                 <p className={cn(styles['text-p'], Arial.className)}>
                     {partner.cooperation}
                 </p>
@@ -57,13 +69,14 @@ const Partner = ({ partner }: PARTNERS | any) => {
             </div>
         </div>
     )
-}
+};
 
 const Partners = ({ partners }: Props) => {
     const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 
-    const slidesItems = partners.map((partner: PARTNERS | any, index: number) => <Partner partner={partner} key={index} />);
+    const slidesItems: JSX.Element[] = partners?.map((partner: PARTNERS) =>
+        <Partner partner={partner} key={partner._id} />);
 
     const settings = {
         slidesToShow: 6,
@@ -71,7 +84,6 @@ const Partners = ({ partners }: Props) => {
         infinite: true,
         speed: 500,
         autoplay: false,
-        // autoplaySpeed: 5000,
         dots: false,
         nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'} />,
         prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'} />,
@@ -116,11 +128,12 @@ const Partners = ({ partners }: Props) => {
         ]
     };
 
-
     return (
         <section id='partners' className={styles.section}>
             <Container>
-                <h2 className={`${styles.title} ${Vrdznagir.className}`}>{t('partners')}</h2>
+                <h2 className={cn(styles.title, Vrdznagir.className)}>
+                    {t('partners')}
+                </h2>
                 <div className={styles.slider}>
                     <Slider {...settings}>
                         {slidesItems}
@@ -131,6 +144,6 @@ const Partners = ({ partners }: Props) => {
     );
 };
 
-export default memo(Partners);
+export default React.memo(Partners);
 
 

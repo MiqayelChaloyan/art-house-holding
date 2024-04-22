@@ -1,3 +1,5 @@
+import { Key } from "react";
+
 export interface ABOUT_US_LANGUAGE {
     _id: string
     about_us: {
@@ -106,6 +108,7 @@ export interface PRICE_LIST_LANGUAGE {
 }
 
 export interface DISCOUNTS_LANGUAGE {
+    slug: Key | null | undefined;
     discounts_list: {
         [x: string]: any;
         procent: number

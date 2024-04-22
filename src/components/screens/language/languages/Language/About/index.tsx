@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react';
+
 import Image from 'next/image';
 
 import components from '@/lib/utils/PortableTextComponents';
@@ -7,29 +9,24 @@ import { PortableText } from '@portabletext/react';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
+import { UrlType, ABOUT } from '@/types/language';
+
 import styles from './styles.module.sass';
 
 
-const About = ({ image, text, slug }: any) => {
-    const language: { src: string, width: number, height: number } | any = urlForImage(image);
+const About = ({ image, text }: ABOUT) => {
+    const language: UrlType | any = urlForImage(image);
 
     return (
         <div className={styles.row_one}>
             <div className={styles.left_side}>
-                {/* <Image
-                    src={language.src}
-                    alt={slug}
+                <Image
+                    src={language?.src}
+                    alt={image?.alt}
+                    className={styles.image}
+                    width={500}
+                    height={500}
                     priority
-                    className={styles.image}
-                    width={0}
-                    height={0}
-                    sizes='100vw'
-                    // loading="eager"
-                /> */}
-                <img
-                    src={language.src}
-                    alt={slug}
-                    className={styles.image}
                 />
             </div>
             <div className={styles.right_side}>
@@ -42,4 +39,4 @@ const About = ({ image, text, slug }: any) => {
     )
 };
 
-export default About;
+export default React.memo(About);

@@ -60,7 +60,7 @@ export async function generateMetadata({
     const result = await getResources(slug[0], locale);
     // const t = await getTranslations({ locale, namespace: 'metadata' });
 
-    const { name, during_courses_images, text } = result.data[0];
+    const { name, during_courses_images, text } = result?.data[0] || {};
 
     // const ogTitle = `${name} ${t('introduction')}`;
     const ogTitle = name;

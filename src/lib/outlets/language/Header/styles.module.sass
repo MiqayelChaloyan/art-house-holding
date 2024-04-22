@@ -89,8 +89,14 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and (max-width: 600px)
 		display: grid
 		line-height: 70px
-		padding: 70px 0
-		
+		padding: 0
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		line-height: 70px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		line-height: 40px
+
 .link
 	flex: 1 0 18%
 	display: inline-block 

@@ -1,4 +1,6 @@
-import React, { memo } from 'react';
+'use client'
+
+import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -7,21 +9,21 @@ import { Arial } from '@/lib/constants/font';
 import styles from './styles.module.sass';
 
 
-interface Props {
-    slug: string;
-    language_type: string;
-    private_lessons: string;
-    duration: string;
+type Props = {
+    slug: string,
+    language_type: string,
+    private_lessons: string,
+    duration: string,
 }
 
-interface EnglishLanguageClassesProps {
+type EnglishLanguageClassesProps = {
     data: Props[]
 }
 
-const EnglishLanguageClasses: React.FC<EnglishLanguageClassesProps> = ({ data }) => {
+const EnglishLanguageClasses= ({ data }: EnglishLanguageClassesProps) => {
     const t = useTranslations();
 
-    const tableRows = data?.map((item: Props, index: number) => {
+    const tableRows: JSX.Element[] = data?.map((item: Props, index: number) => {
         return (
             <tr key={item?.slug || index}>
                 <td>{item.language_type}</td>
@@ -31,10 +33,11 @@ const EnglishLanguageClasses: React.FC<EnglishLanguageClassesProps> = ({ data })
         );
     });
 
-
     return (
         <div className={Arial.className}>
-            <h1 className={styles.title}>{t('titles.english-language-lessons')}</h1>
+            <h1 className={styles.title}>
+                {t('titles.english-language-lessons')}
+            </h1>
             <div className={styles.table}>
                 <table>
                     <thead>
@@ -64,4 +67,4 @@ const EnglishLanguageClasses: React.FC<EnglishLanguageClassesProps> = ({ data })
     );
 };
 
-export default memo(EnglishLanguageClasses);
+export default React.memo(EnglishLanguageClasses);
