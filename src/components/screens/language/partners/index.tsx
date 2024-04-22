@@ -1,13 +1,18 @@
 'use client'
 
 import { useTranslations } from 'next-intl';
+
+import { Arial, Vrdznagir } from '@/lib/constants/font';
+
+import Container from '@/components/components/container';
+
+import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { PARTNERS } from '../../../../../sanity/sanity-queries/generic';
 
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
-import { Inter, Vrdznagir } from '@/lib/constants/font';
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import Image from 'next/image';
-import Container from '@/components/components/container';
+
 
 type Props = {
     partners: PARTNERS[]
@@ -20,14 +25,16 @@ const Partners = ({ partners }: Props) => {
         const path: { src: string, width: number, height: number } | any = urlForImage(partner.logo);
 
         return (
-            <div key={partner._id} className={styles.partner}>
-                <div className={styles.image_container}>
-                    <img src={path?.src} className={styles.image} />
-                </div>
-                <div className={styles.img_overlay}>
-                    <p className={`${styles.text} ${Inter.className}`}>{partner.company_name}</p>
-                    <p className={`${styles.text} ${Inter.className}`}>{partner.cooperation}</p>
-                    <p className={`${styles.text} ${Inter.className}`}>{partner.implemented_projects}</p>
+            <div key={partner._id} className={styles.card}>
+                <img src={path.src} alt={partner.logo.alt} className={styles.img} />
+                <div className={styles.overlay}>
+                    <h1 className={cn(styles['text-h1'], Arial.className)}>{partner.company_name}</h1>
+                    <p className={cn(styles['text-p'], Arial.className)}>
+                        {partner.cooperation}
+                    </p>
+                    <p className={cn(styles['text-p'], Arial.className)}>
+                        {partner.implemented_projects}
+                    </p>
                 </div>
             </div>
         )

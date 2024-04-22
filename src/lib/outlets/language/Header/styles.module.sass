@@ -88,7 +88,8 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: grid
-		line-height: 105px
+		line-height: 70px
+		padding: 70px 0
 		
 .link
 	flex: 1 0 18%
@@ -139,6 +140,12 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and ( max-width: 600px )
 		color: #fff
 		height: 0
+		&:after 
+			display: block 
+			content: '' 
+			border-bottom: none
+			transform: scaleX(0) 
+			transition: .5s
 
 .scrollX
 	color: #fff
