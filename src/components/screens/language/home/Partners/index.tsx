@@ -4,7 +4,7 @@ import { memo } from 'react';
 
 import Container from '@/components/components/container';
 
-import { Vrdznagir } from '@/lib/constants/font';
+import { Arial, Vrdznagir } from '@/lib/constants/font';
 import ArrowLeft from '@/lib/icons/language/ArrowLeft';
 import ArrowRight from '@/lib/icons/language/ArrowRight';
 
@@ -22,6 +22,7 @@ import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import Image from 'next/image';
 import useWindowSize from '@/hooks/useWindowSize';
 import { useTranslations } from 'next-intl';
+import cn from 'classnames';
 
 
 const SampleNextArrow = ({ onClick, fill }: any) => (
@@ -43,19 +44,18 @@ interface Props {
 const Partner = ({ partner }: PARTNERS | any) => {
     const path: { src: string, width: number, height: number } | any = urlForImage(partner?.logo);
     return (
-        <figure className={styles.partner}>
-            <img
-                src={path?.src}
-                alt={partner?.logo.alt}
-            />
-            {/* <figcaption>
-                <div>
-                    <h2>{partner?.company_name}</h2>
-                    <p>{partner?.cooperation}</p>
-                    <p>{partner?.implemented_projects}</p>
-                </div>
-            </figcaption> */}
-        </figure>
+        <div key={partner._id} className={styles.card}>
+            <img src={path.src} alt={partner.logo.alt} className={styles.img} />
+            <div className={styles.overlay}>
+                <h1 className={cn(styles['text-h1'], Arial.className)}>{partner.company_name}</h1>
+                <p className={cn(styles['text-p'], Arial.className)}>
+                    {partner.cooperation}
+                </p>
+                <p className={cn(styles['text-p'], Arial.className)}>
+                    {partner.implemented_projects}
+                </p>
+            </div>
+        </div>
     )
 }
 
@@ -63,7 +63,7 @@ const Partners = ({ partners }: Props) => {
     const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 
-    const slidesItems = partners.map((partner: PARTNERS | any, index: number) =>  <Partner partner={partner} key={index}/>);
+    const slidesItems = partners.map((partner: PARTNERS | any, index: number) => <Partner partner={partner} key={index} />);
 
     const settings = {
         slidesToShow: 6,
