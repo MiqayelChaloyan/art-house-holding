@@ -66,6 +66,21 @@ export interface ImageType {
     alt: string;
 }
 
+export interface Quiz {
+    _id: string;
+    name: string;
+    question_logo: Path;
+    slug: string;
+    questions: Question[];
+}
+
+interface Question {
+    question: string;
+    slug: string;
+    options: string[];
+    answer: string;
+}
+
 interface Text {
     markDefs: any[];
     children: Child[];

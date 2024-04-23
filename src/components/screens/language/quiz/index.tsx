@@ -1,65 +1,80 @@
 'use client'
 
+import React from 'react';
+
 import Link from 'next/link';
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { Pages } from '@/lib/constants/pages';
 import { Arial, ArianAMU } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { QUIZ } from "../../../../../sanity/sanity-queries/language";
+import { QUIZ } from '../../../../../sanity/sanity-queries/language';
 import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
+
+import { UrlType, Quiz } from '@/types/language';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-interface Props {
-    data: QUIZ[]
-    locale: string | any
+type Props = {
+    data: QUIZ[],
+    locale: string
 }
 
-
-const Home: React.FC<Props> = ({ data, locale }) => {
+const Home = ({ data, locale }: Props) => {
+    const t = useTranslations('texts');
     const windowSize = useWindowSize();
 
-    const links = data.map((lang: any, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(lang.question_logo);
+    const links: JSX.Element[] = data?.map((lang: Quiz | any) => {
+        const path: UrlType | any = urlForImage(lang.question_logo);
 
-        return (
-            windowSize.width < 600 ? (
-                <Link
-                    href={`/${locale}/language/quiz/${lang.slug}`}
-                    aria-label={`/${locale}/language/quiz/${lang.slug}`}
-                    className={styles.row}
-                    key={lang.slug}
-                >
-                    <img
-                        src={path.src}
-                        className={styles.language}
-                        alt={lang.question_logo.alt}
-                    />
-                    <h3 className={cn(styles.language_name, ArianAMU.className)}>{lang.name}</h3>
-                </Link>
-            ) : (
-                <Link
-                    key={lang.slug}
-                    href={`/${locale}/language/quiz/${lang.slug}`}
-                    aria-label={`/${locale}/language/quiz/${lang.slug}`}
-                    className={styles.link}
-                >
-                    <img
-                        src={path.src}
-                        className={styles.language}
-                        alt={lang.question_logo.alt}
-                    />
-                </Link>
-            )
+        return locale && windowSize.width < 600 ? (
+            <Link
+                href={`/${locale}${Pages.LANGUAGE_QUIZ}/${lang.slug}`}
+                aria-label={`${Pages.LANGUAGE_QUIZ}/${lang.slug}`}
+                className={styles.row}
+                key={lang.slug}
+            >
+                <Image
+                    src={path?.src}
+                    alt={lang.question_logo.alt}
+                    className={styles.language}
+                    width={500}
+                    height={500}
+                    priority
+                />
+                <h3 className={cn(styles.language_name, ArianAMU.className)}>
+                    {lang.name}
+                </h3>
+            </Link>
+        ) : (
+            <Link
+                key={lang.slug}
+                href={`/${locale}${Pages.LANGUAGE_QUIZ}/${lang.slug}`}
+                aria-label={`${Pages.LANGUAGE_QUIZ}/${lang.slug}`}
+                className={styles.link}
+            >
+                <Image
+                    src={path?.src}
+                    alt={lang.question_logo.alt}
+                    className={styles.language}
+                    width={500}
+                    height={500}
+                    priority
+                />
+            </Link>
         )
-    })
+    });
 
     return (
         <section id='quiz'>
-            <h1 className={`${styles.title} ${Arial.className}`}>ԸՆՏՐԵԼ ԼԵԶՈՒՆ</h1>
+            <h1 className={cn(styles.title, Arial.className)}>
+                {t('select-language')}
+            </h1>
             <div className={styles.href}>
                 {links}
             </div>
@@ -67,4 +82,4 @@ const Home: React.FC<Props> = ({ data, locale }) => {
     );
 }
 
-export default Home;
+export default React.memo(Home);

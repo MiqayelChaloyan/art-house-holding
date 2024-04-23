@@ -185,16 +185,20 @@ const VerticalLinearStepper = () => {
     <div>
       <h2 className={cn(styles.viewer_title, ArianAMU.className)}>{t('titles.quiz-result')}</h2>
 
-      <div className={styles.progress}>
-        <Progress strokeWidth={8} percentage={Math.floor(answerResult)} color={color} />
-      </div>
-      <div className={styles.row}>
-        <p className={ArianAMU.className}>{t('texts.total-points')}</p>
-        <p className={ArianAMU.className}>{`${score}/${questions.length}`}</p>
-      </div>
-      <div className={styles.row}>
-        <p className={ArianAMU.className}>{t('texts.quiz-result')}</p>
-        <p className={ArianAMU.className}>{status}</p>
+      <div className={styles.result}>
+        <div className={styles.progress}>
+          <Progress strokeWidth={8} percentage={Math.floor(answerResult)} color={color} />
+        </div>
+        <div>
+          <div className={styles.row}>
+            <p className={ArianAMU.className}>{t('texts.total-points')}</p>
+            <p className={ArianAMU.className}>{`${score}/${questions.length}`}</p>
+          </div>
+          <div className={styles.row}>
+            <p className={ArianAMU.className}>{t('texts.quiz-result')}</p>
+            <p className={ArianAMU.className}>{status}</p>
+          </div>
+        </div>
       </div>
       <button className={cn(styles.btn_view, ArianAMU.className)} onClick={handleView}>{t('buttons.view')}</button>
     </div>

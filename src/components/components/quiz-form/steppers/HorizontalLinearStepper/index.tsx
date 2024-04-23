@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 import { useTranslations } from 'next-intl';
@@ -15,6 +15,7 @@ import { ArianAMU, Calibri } from '@/lib/constants/font';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import { Quiz } from '@/types/language';
 
 
 const Step = ({ index, trace }: any) => {
@@ -204,4 +205,4 @@ const HorizontalLinearStepper = () => {
     );
 };
 
-export default HorizontalLinearStepper;
+export default React.memo(HorizontalLinearStepper);

@@ -31,7 +31,8 @@
         "more": "Более",
         "total-points": "Общее количество баллов за викторину",
         "total-questions": "Всего вопросов",
-        "quiz-result": "Результат викторины"
+        "quiz-result": "Результат викторины",
+        "select-language": "Выберите язык"
     },
     "buttons": {
         "contact-us": "Связаться с нами",

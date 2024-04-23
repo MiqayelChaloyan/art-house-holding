@@ -56,6 +56,10 @@
 		.user-box 
 			width: calc(100% - 60px) 
 			transition-delay: 0s 
+		/* @2xs */
+		@media screen and (max-width: 480px)
+			width: 250px 
+			height: 330px 
 
 .menu 
 	position: absolute 
@@ -84,13 +88,16 @@
 .logo 
 	width: 50px 
 	height: max-content 
-	object-fit: cover 
+	object-fit: contain 
 	padding: 2px 
 
 .word 
 	font-size: 15px 
 	text-align: left 
 	line-height: 15px 
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 13px 
 
 .column 
 	margin-left: 10px

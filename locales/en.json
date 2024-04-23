@@ -31,7 +31,8 @@
         "more": "More",
         "total-points": "Total quiz points",
         "total-questions": "Total questions",
-        "quiz-result": "Quiz result"
+        "quiz-result": "Quiz result",
+        "select-language": "Select Language"
     },
     "buttons": {
         "contact-us": "Contact Us",

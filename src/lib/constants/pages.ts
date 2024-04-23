@@ -11,6 +11,7 @@ const Pages = {
     LANGUAGE_SEND_REQUEST: '/language/form',
     LANGUAGE_TAKE_TEST: '/language/quiz',
     LANGUAGE_ABOUT: '/about',
+    LANGUAGE_QUIZ: '/language/quiz'
 }
 
 export {

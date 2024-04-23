@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, memo, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -207,4 +207,4 @@ const Form = ({ data }: Props) => {
     )
 }
 
-export default memo(Form);
+export default React.memo(Form);
