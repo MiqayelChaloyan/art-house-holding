@@ -57,14 +57,19 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	z-index: 999
 	height: 70px
 	transition: background  0.8s linear
+	.nav
+		height: 70px 
+		line-height: 70px 
+		.linkActive
+			border-radius: 0
 	/* @xs */
 	@media screen and (max-width: 600px)
 		background-color: none
 		position: relative
 
 .nav
-	height: 70px 
-	line-height: 70px 
+	height: 50px 
+	line-height: 50px 
 	width: 100% 
 	display: flex
 	justify-content: space-evenly
@@ -98,8 +103,8 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		line-height: 40px
 
 .link
-	flex: 1 0 18%
-	display: inline-block 
+	flex: 0 0 18%
+	display: inline-block
 	font-size: 18px
 	font-weight: 700
 	text-align: center
@@ -131,14 +136,11 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 
 .scrollY
 	color: #006ED2
-	&:after 
-		display: block 
-		content: '' 
-		border-bottom: solid 3px #F9CC48 
-		transform: scaleX(0) 
-		transition: .5s
 	&:hover 
-		color: #F9CC48
+		color: #fff
+		background-color: #F9CC48
+		border-radius: 50px
+		box-shadow: 1px 10px 11px -4px rgb(0 0 0 / 14%)
 		transition: .5s
 		&:after 
 			transform: scaleX(1)
@@ -165,7 +167,14 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		height: 0
 
 .linkActive
-	color: #F9CC48
+	color: #fff
+	background-color: #F9CC48
+	border-radius: 50px
+	box-shadow: 1px 10px 11px -4px rgb(0 0 0 / 24%)
+	/* @xs */
+	@media screen and ( max-width: 600px )
+		color: #F9CC48
+		box-shadow: none
 
 .header
 	display: flex
