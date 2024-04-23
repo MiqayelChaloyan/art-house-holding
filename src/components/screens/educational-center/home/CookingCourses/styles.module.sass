@@ -26,49 +26,10 @@
       height: 390px !important
     /* @2xs */
     @media screen and (max-width: 480px)
-      height: 373px !important
+      height: 294px !important
     /* @3xs */
     @media screen and (max-width: 360px)
-      height: 373px !important
-
-
-.video_player
-    display: flex
-    justify-content: space-around
-    align-items: baseline
-    height: 600px
-    margin: 40px auto
-    /* @4xl */
-    @media screen and (max-width: 2560px)
-      height: 600px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-      height: 600px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-      height: 600px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-      height: 400px
-    /* @lg */
-    @media screen and (max-width: 1280px)
-      height: 400px
-    /* @md */
-    @media screen and (max-width: 1024px)
-      height: 400px
-    /* @sm */
-    @media screen and (max-width: 768px)
-      height: 399px
-    /* @xs */
-    @media screen and (max-width: 600px)
-      height: 250px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-      height: 250px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-      height: 250px
-
+      height: 294px !important
 
 .triangle
     display: block
@@ -165,6 +126,169 @@
       padding-right: 0
       padding-left: 0
 
+.playing
+    display: flex
+    justify-content: space-around
+    align-items: baseline
+    height: 600px
+    margin: 40px auto
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+      height: 600px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+      height: 600px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+      height: 600px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+      height: 400px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+      height: 400px
+    /* @md */
+    @media screen and (max-width: 1024px)
+      height: 400px
+    /* @sm */
+    @media screen and (max-width: 768px)
+      height: 399px
+    /* @xs */
+    @media screen and (max-width: 600px)
+      height: 250px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+      height: 250px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+      height: 250px
 
+.icon
+    svg
+        width: 75px
+        height: 75px
+        /* @3xl */
+        @media screen and (max-width: 1920px)
+            height: 75px
+            width: 75px
+        /* @2xl */
+        @media screen and (max-width: 1600px)
+            height: 75px
+            width: 75px
+        /* @xl */
+        @media screen and (max-width: 1440px)
+            height: 70px
+            width: 70px
+        /* @lg */
+        @media screen and (max-width: 1280px)
+            height: 50px
+            width: 50px
+        /* @md */
+        @media screen and (max-width: 1024px)
+            height: 45px
+            width: 45px
+        /* @sm */
+        @media screen and (max-width: 768px)
+            height: 50px
+            width: 50px
+        /* @xs */
+        @media screen and (max-width: 600px)
+            height: 45px
+            width: 45px
+            left: 50%
+            top: 50%
+        /* @2xs */
+        @media screen and (max-width: 480px)
+            height: 45px
+            width: 45px
+            left: 50%
+            top: 50%
+        /* @3xs */
+        @media screen and (max-width: 360px)
+            height: 45px
+            width: 45px
+            left: 50%
+            top: 50%
 
+.video_play
+    width: 1300px
+    height: 634px
+    object-fit: contain
+    filter: brightness(0.6)
+    position: relative
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+      height: 600px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+      height: 600px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+      height: 600px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+      height: 400px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+      height: 400px
+    /* @md */
+    @media screen and (max-width: 1024px)
+      height: 400px
+    /* @sm */
+    @media screen and (max-width: 768px)
+      height: 399px
+    /* @xs */
+    @media screen and (max-width: 600px)
+      height: 140px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+      height: 140px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+      height: 140px
+
+.overlay 
+    position: absolute 
+    top: 0 
+    bottom: 0 
+    left: 0 
+    right: 0 
+    height: 100% 
+    width: 100% 
+
+.icon
+    position: absolute 
+    top: 50% 
+    left: 50% 
+    transform: translate(-50%, 0%) 
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+      transform: translate(-50%, -20%) 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+      transform: translate(-50%, -50%) 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+      transform: translate(-50%, -50%) 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+      transform: translate(-50%, -120%) 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+      transform: translate(-50%, -140%) 
+    /* @md */
+    @media screen and (max-width: 1024px)
+      transform: translate(-50%, -10%) 
+    /* @sm */
+    @media screen and (max-width: 768px)
+      transform: translate(-50%, 120%) 
+    /* @xs */
+    @media screen and (max-width: 600px)
+      transform: translate(-50%, -50%) 
+    /* @2xs */
+    @media screen and (max-width: 480px)
+      transform: translate(-50%, 20%) 
+    /* @3xs */
+    @media screen and (max-width: 360px)
+      transform: translate(-50%, 20%) 
 

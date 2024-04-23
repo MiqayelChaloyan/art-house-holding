@@ -12,6 +12,7 @@ import Modal from '@/lib/outlets/educational-center/Modal';
 import CoursesModal from '@/lib/outlets/educational-center/Modal/courses';
 import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
 import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
+import PlayerModal from '@/lib/outlets/general/PlayerModal';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -19,7 +20,9 @@ import { SanityClient } from 'sanity';
 import { client } from '../../../../../sanity/client';
 import { allCoursesQuery } from '../../../../../sanity/services/educational-center-service/courses';
 import { querySiteMeta } from '../../../../../sanity/services/educational-center-service/about-us';
+import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
 
 interface RootLayoutProps {
@@ -42,48 +45,67 @@ interface Site {
     ogDescription: string
 }
 
+const localeStrings: {
+    am: string
+    ru: string
+    en: string
+    [key: string]: string
+} = {
+    am: 'ուսումնական կենտրոն',
+    ru: 'образовательный центр',
+    en: 'educational center'
+};
+
 async function getResources(locale: string) {
-    try {
-        const data = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
+    const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
+    const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
 
-        if (!data) {
-            return { data: [], isError: true };
-        }
+    return Promise.all([coursesPromise, branchesPromise])
+        .then(([courses, branches]) => {
+            if (!courses?.length || !branches?.length) {
+                return { courses: [], branches: [], isError: true };
+            }
 
-        return { data, isError: false };
-    } catch (error) {
-        return { data: [], isError: true };
-    }
+            return { courses, branches: branches[1], isError: false };
+        })
+        .catch(error => {
+            return { courses: [], branches: [], isError: true };
+        });
 }
 
 export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
-    const { data, isError } = await getResources(locale);
+    const { courses, branches, isError }: LANGUAGE[] | any = await getResources(locale);
 
-    if (!data || isError) {
+    if (!courses || !branches || isError) {
         notFound()
     }
-
     return (
         <div>
             <div className='wrapper'>
                 <RightMenu />
                 <BottomMenu locale={locale} />
-                {/* <ScrollToTopButton theme='#821616' />
-                <FloatingMenu website='educational center' theme='#821616' /> */}
+                <ScrollToTopButton theme='#821616' />
+                <FloatingMenu
+                    website={localeStrings[locale]}
+                    branches={branches}
+                    theme='#821616'
+                    hover='#111111'
+                />
                 <div className='wrapper-content'>
                     <Header typePosition="fixed" locale={locale} />
                     <main className='wrapper-main'>
                         {children}
                     </main>
                 </div>
-                <Footer courses={data} />
+                <Footer courses={courses} />
             </div>
             <Modal>
-                <CoursesModal locale={locale} courses={data} />
+                <CoursesModal locale={locale} courses={courses} />
             </Modal>
+            <PlayerModal/>
         </div>
     );
 }

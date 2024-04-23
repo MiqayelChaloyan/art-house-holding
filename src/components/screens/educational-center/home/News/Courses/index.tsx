@@ -1,16 +1,16 @@
 'use client'
 
-import { memo } from 'react';
+import React from 'react';
 
 import Course from '../Course';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { UrlType } from '@/types/educational-center';
 
 
-interface Props {
+type Props = {
     data: any
 };
-
 
 const Courses = ({ data }: Props) => {
     const scrollToElement = () => {
@@ -21,9 +21,9 @@ const Courses = ({ data }: Props) => {
     };
 
     return (
-        data.map((item: any): JSX.Element => {
-            const path1: { src: string, width: number, height: number } | any = urlForImage(item.news_image_one);
-            const path2: { src: string, width: number, height: number } | any = urlForImage(item.news_image_two);
+        data?.map((item: any): JSX.Element => {
+            const path1: UrlType | any = urlForImage(item.news_image_one);
+            const path2: UrlType | any = urlForImage(item.news_image_two);
 
             const course = {
                 subtitle: item.subtitle,
@@ -43,4 +43,4 @@ const Courses = ({ data }: Props) => {
         ));
 };
 
-export default memo(Courses);
+export default React.memo(Courses);

@@ -1,20 +1,23 @@
-import { memo } from 'react';
+'use client'
+
+import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
 import Button from '@/lib/ui/Button';
 import { Inter } from '@/lib/constants/font';
 
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
 
 
-interface Props {
-    url: string
-    subtitle: string
-    content: any
+type Props = {
+    url: string,
+    subtitle: string,
+    content: any,
     scrollToElement: (value: number) => void
 };
-
 
 const SlideItem = ({ url, subtitle, content, scrollToElement }: Props) => {
     const description = content.length <= 312 ? content : content.slice(0, 313) + '...';
@@ -24,10 +27,10 @@ const SlideItem = ({ url, subtitle, content, scrollToElement }: Props) => {
         <div className={styles.emplay_slide} style={{ backgroundImage: `url(${url})` }}>
             <div className={styles.container}>
                 <div className={styles.contact}>
-                    <h1 className={`${styles.title} ${Inter.className}`}>{subtitle}</h1>
+                    <h1 className={cn(styles.title, Inter.className)}>{subtitle}</h1>
                     <p className={Inter.className}>{description}</p>
                     <Button
-                        className={`${styles.contact_us_button} ${Inter.className}`}
+                        className={cn(styles.contact_us_button, Inter.className)}
                         text={t('contact-us')}
                         onClick={scrollToElement}
                     />
@@ -37,4 +40,4 @@ const SlideItem = ({ url, subtitle, content, scrollToElement }: Props) => {
     );
 };
 
-export default memo(SlideItem);
+export default React.memo(SlideItem);

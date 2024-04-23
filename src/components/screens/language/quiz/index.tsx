@@ -79,7 +79,7 @@ const Home = ({ data, locale }: Props) => {
                 {links}
             </div>
         </section>
-    );
-}
+    )
+};
 
 export default React.memo(Home);

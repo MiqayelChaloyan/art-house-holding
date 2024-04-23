@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { closeModal } from '@/store/modal_reducer';
@@ -17,7 +17,7 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../sanity/sanity-queries
 
 
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[] | any
+    data: EDUCATIONAL_CENTER_DEFAULT[]
 }
 
 
@@ -41,4 +41,4 @@ const EducationalCenterHome = ({ data }: Props) => {
     )
 }
 
-export default EducationalCenterHome;
+export default React.memo(EducationalCenterHome);

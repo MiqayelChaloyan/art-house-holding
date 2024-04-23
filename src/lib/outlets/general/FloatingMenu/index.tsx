@@ -22,9 +22,10 @@ interface Props {
     website?: string
     branches?: BRANCHES[] | any
     theme?: string
+    hover?: string
 }
 
-const FloatingMenu = ({ website, branches, theme }: Props) => {
+const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
     const [data, setData] = useState<BRANCHES[]>([]);
     const componentRef = useRef<HTMLDivElement>(null);
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
@@ -57,7 +58,7 @@ const FloatingMenu = ({ website, branches, theme }: Props) => {
         return (
             <li
                 key={link.slug}
-                style={{ background: hoveredIndex === index ? '#F9CC48' : '' }}
+                style={{ background: hoveredIndex === index ? hover : '' }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
             >

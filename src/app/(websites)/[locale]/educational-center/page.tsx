@@ -5,13 +5,12 @@ import { notFound } from 'next/navigation';
 import Home from '@/components/screens/educational-center/home';
 
 import { client } from '../../../../../sanity/client';
-
 import { query } from '../../../../../sanity/services/educational-center-service/about-us';
 
 
 interface RootProps {
     params: {
-        locale: string
+        locale: string,
     };
 }
 

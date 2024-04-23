@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react';
+
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { EmblaOptionsType } from 'embla-carousel';
@@ -9,13 +11,14 @@ import SlideItem from './SlideItem';
 import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
+import { UrlType } from '@/types/educational-center';
+
 import styles from './styles.module.sass';
 
 
-interface Props {
+type Props = {
 	data: EDUCATIONAL_CENTER_DEFAULT[]
 };
-
 
 const Main = ({ data }: Props) => {
 	const items = data[0].main_section;
@@ -31,7 +34,7 @@ const Main = ({ data }: Props) => {
 	};
 
 	const slidesItems = items.map((item: any) => {
-		const path: { src: string, width: number, height: number } | any = urlForImage(item.image);
+		const path: UrlType | any = urlForImage(item.image);
 
 		return (
 			<SlideItem
@@ -58,4 +61,4 @@ const Main = ({ data }: Props) => {
 	);
 };
 
-export default Main;
+export default React.memo(Main);

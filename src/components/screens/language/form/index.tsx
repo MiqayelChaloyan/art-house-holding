@@ -160,7 +160,6 @@ const Form = ({ data }: Props) => {
                                     onChange={handleChange}
                                 />
                             </div>
-
                             <div className={styles.row}>
                                 <Select
                                     data={data.languages}
@@ -205,6 +204,6 @@ const Form = ({ data }: Props) => {
             <div className={styles.arrow_right} />
         </div>
     )
-}
+};
 
 export default React.memo(Form);

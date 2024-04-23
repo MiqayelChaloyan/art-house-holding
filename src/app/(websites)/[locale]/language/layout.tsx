@@ -8,7 +8,7 @@ import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
 import ContactUs from '@/lib/outlets/language/ContactUs';
 import Footer from '@/lib/outlets/language/Footer';
 import Header from '@/lib/outlets/language/Header';
-import PlayerModal from '@/lib/outlets/language/Modal';
+import PlayerModal from '@/lib/outlets/general/PlayerModal';
 import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 
 import { Locale } from '@/locales';
@@ -79,7 +79,7 @@ export default async function Layout({
 
     const { courses, branches, isError }: LANGUAGE[] | any = await getResources(locale);
 
-    if (!courses || isError) {
+    if (!courses || !branches || isError) {
         notFound()
     }
 
@@ -95,6 +95,7 @@ export default async function Layout({
                     website={localeStrings[locale]}
                     branches={branches}
                     theme='#006ED2'
+                    hover='#F9CC48'
                 />
                 <main className='languages-main'>
                     {children}

@@ -1,19 +1,18 @@
 'use client'
 
-import { memo, useState } from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
+import { notFound, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
 import Content from '@/lib/ui/readMore';
 import Button from '@/lib/ui/Button';
 
-// import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
-
-import styles from './styles.module.sass';
-import { useRouter } from 'next/navigation';
 import { client } from '../../../../../../../sanity/client';
 import { queryId } from '../../../../../../../sanity/services/educational-center-service/courses';
+
+import styles from './styles.module.sass';
 
 
 interface Props {
@@ -38,11 +37,6 @@ const Course = (course: Props) => {
         setIsReadMore(!isReadMore);
     };
 
-    // const goCoursePage = async () => {
-    //     const data = await getCourseById(course.categories._ref, localActive);
-    //     return router.push(`/${localActive}/courses/${data.slug}`);
-    // };
-
     const getResources = async () => {
         const _id = course.categories._ref;
 
@@ -50,7 +44,7 @@ const Course = (course: Props) => {
             const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
             router.push(`educational-center/${data.slug}`);
         } catch (error) {
-            console.error('Error fetching data:', error);
+            notFound()
         }
     };
 
@@ -104,7 +98,7 @@ const Course = (course: Props) => {
                 />
             </div>
             <div
-                // onClick={goCoursePage} 
+                onClick={getResources} 
                 className={styles.courses_link_btn_arrow_mobile}>
                 <div className={styles.arrow_long_right}></div>
             </div>
@@ -112,4 +106,4 @@ const Course = (course: Props) => {
     );
 };
 
-export default memo(Course);
+export default React.memo(Course);
