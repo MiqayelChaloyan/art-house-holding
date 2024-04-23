@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { FC, FormEvent, memo, useState } from 'react';
+import { FormEvent, memo, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -10,20 +10,19 @@ import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 
-// import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
-import { Inter } from '@/lib/constants/font';
+import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { Arial } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-interface Props {
-    data: any
+type Props = {
+    data: LANGUAGE[] | any
 };
 
-
-const Form: FC<Props> = ({ data }) => {
+const Form = ({ data }: Props) => {
     const t = useTranslations();
     const [isClear, setIsClear] = useState(false);
 
@@ -122,7 +121,7 @@ const Form: FC<Props> = ({ data }) => {
                         <div className={styles.fields}>
                             <div className={styles.row}>
                                 <InputField
-                                    className={cn(styles.input, Inter.className)}
+                                    className={cn(styles.input, Arial.className)}
                                     name='firstName'
                                     type='name'
                                     placeholder={t('contact-us-form.name')}
@@ -131,7 +130,7 @@ const Form: FC<Props> = ({ data }) => {
                                     onChange={handleChange}
                                 />
                                 <InputNumber
-                                    className={cn(styles.input, Inter.className)}
+                                    className={cn(styles.input, Arial.className)}
                                     name='phone'
                                     type='phone'
                                     placeholder={t('contact-us-form.phone-number')}
@@ -143,7 +142,7 @@ const Form: FC<Props> = ({ data }) => {
                             </div>
                             <div className={styles.row}>
                                 <InputField
-                                    className={cn(styles.input, Inter.className)}
+                                    className={cn(styles.input, Arial.className)}
                                     name='lastName'
                                     type='name'
                                     placeholder={t('contact-us-form.last-name')}
@@ -152,7 +151,7 @@ const Form: FC<Props> = ({ data }) => {
                                     onChange={handleChange}
                                 />
                                 <InputField
-                                    className={cn(styles.input, Inter.className)}
+                                    className={cn(styles.input, Arial.className)}
                                     name='email'
                                     type='email'
                                     placeholder={t('contact-us-form.email')}
