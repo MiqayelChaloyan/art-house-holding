@@ -35,6 +35,10 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if(!isSticky) {
+            setIsSticky(window.scrollY > 0);
+        }
+
         const handleScroll = () => {
             setIsSticky(window.scrollY > 0);
         };
@@ -42,6 +46,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
+
     }, []);
 
     const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);

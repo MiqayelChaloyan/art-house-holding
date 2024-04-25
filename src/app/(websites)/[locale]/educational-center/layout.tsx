@@ -105,7 +105,7 @@ export default async function Layout({
             <Modal>
                 <CoursesModal locale={locale} courses={courses} />
             </Modal>
-            <PlayerModal/>
+            <PlayerModal />
         </div>
     );
 }

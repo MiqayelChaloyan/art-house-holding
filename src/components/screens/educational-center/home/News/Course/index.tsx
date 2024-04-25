@@ -8,7 +8,7 @@ import { notFound, useRouter } from 'next/navigation';
 import Button from '@/lib/ui/Button';
 import { Arial, Inter } from '@/lib/constants/font';
 
-import { Content as Props, UrlType } from '@/types/educational-center';
+import { Content as Props, UrlType, Course as CourseType } from '@/types/educational-center';
 
 import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
@@ -23,7 +23,7 @@ const Content = ({ content, isReadMore, minimumHeight }: Props) => (
     <p className={cn(styles.content, Inter.className)}>{isReadMore ? content.slice(0, minimumHeight) + '...' : content}</p>
 );
 
-const Course = ({ course }: any) => {
+const Course = ({ course }: CourseType | any) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
     const router = useRouter();
     const t = useTranslations();
@@ -96,7 +96,7 @@ const Course = ({ course }: any) => {
     )
 };
 
-const Gallery = ({ course }: any) => {
+const Gallery = ({ course }: CourseType | any) => {
     const leftPath: UrlType | any = urlForImage(course.news_image_one);
     const rightPath: UrlType | any = urlForImage(course.news_image_two);
 
@@ -108,8 +108,7 @@ const Gallery = ({ course }: any) => {
     )
 };
 
-
-const CourseMobileCard = ({ course }: any) => {
+const CourseMobileCard = ({ course }: CourseType | any) => {
     const leftPath: UrlType | any = urlForImage(course.news_image_one);
     const rightPath: UrlType | any = urlForImage(course.news_image_two);
 

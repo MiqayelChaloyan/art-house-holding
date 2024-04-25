@@ -42,25 +42,25 @@ const CookingCourses = ({ data }: Props) => {
                 <div className={styles.playing}>
                     <Image
                         src={path?.src}
-                        alt={'item?.video_light.alt'}
+                        alt='alt'
                         className={styles.video_play}
-                        width={0}
-                        height={0}
+                        width={500}
+                        height={500}
                         sizes="100vw"
                         priority
                     />
-                  <div className={styles.overlay}>
-                  <button
-                        className={styles.icon}
-                        onClick={() => handlePlayVideo(data[0].cooking_courses.video_url)}
-                    >
-                        <Play
-                            width={75}
-                            height={75}
-                            fill='#fff'
-                        />
-                    </button>
-                  </div>
+                    <div className={styles.overlay}>
+                        <button
+                            className={styles.icon}
+                            onClick={() => handlePlayVideo(data[0].cooking_courses.video_url)}
+                        >
+                            <Play
+                                width={75}
+                                height={75}
+                                fill='#fff'
+                            />
+                        </button>
+                    </div>
                 </div>
             </Container>
         </section>
