@@ -76,6 +76,11 @@ const Course = ({ course }: any) => {
                     onClick={getResources}
                 />
             </div>
+            <Button
+                    text={t('texts.more')}
+                    className={cn(styles['more-btn-mobile'], Arial.className)}
+                    onClick={getResources}
+                />
            </div>
         </div>
     )

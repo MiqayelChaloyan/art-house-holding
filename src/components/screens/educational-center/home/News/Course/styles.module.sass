@@ -88,7 +88,7 @@
     /* @xs */
     @media screen and (max-width: 600px)
         width: 100%
-        height: 198px
+        height: 250px
     /* @2xs */
     @media screen and (max-width: 480px)
         width: 100%
@@ -200,6 +200,7 @@
     /* @sm */
     @media screen and (max-width: 768px)
         margin-bottom: 3px
+        width: 80%
     /* @xs */
     @media screen and (max-width: 600px)
         margin-bottom: 3px
@@ -431,3 +432,21 @@
                 transform: rotate(90deg) 
             &:after 
                 transform: translate(-33px) rotate(45deg) 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: none
+
+.more-btn-mobile
+    display: none
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: initial
+        border: solid 3px #C62020     
+        border-right: 0 
+        border-bottom: 0 
+        border-top: 0
+        top: calc(50% - 9px) 
+        border-radius: 2px 
+        padding-left: 10px
+        font-size: 11px
+        width: 10%
