@@ -56,7 +56,8 @@ const Course = ({ course }: any) => {
         <div className={styles.left}>
             <h2 className={cn(styles.subtitle, Inter.className)}>{course.subtitle}</h2>
             <Content content={course.content} isReadMore={isReadMore} minimumHeight={minimumHeight} />
-            <div className={styles['btn-group']}>
+           <div className={styles.group}>
+           <div className={styles['btn-group']}>
                 <Button
                     text={isReadMore ? t('buttons.view-more') : t('buttons.show-less')}
                     className={cn(styles.button, styles['view-more-btn'], Arial.className)}
@@ -68,13 +69,14 @@ const Course = ({ course }: any) => {
                     onClick={scrollToElement}
                 />
             </div>
-            <div className={styles['button-more']} onClick={getResources}>
+            <div className={styles['button-more']}>
                 <Button
                     text={t('texts.more')}
                     className={cn(styles.link, Arial.className)}
-                    onClick={null}
+                    onClick={getResources}
                 />
             </div>
+           </div>
         </div>
     )
 };
