@@ -22,7 +22,6 @@ type IHeaderProps = {
     typePosition: string
 };
 
-
 const Header = ({ typePosition }: IHeaderProps) => {
     const [isSticky, setIsSticky] = useState<boolean>(false);
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);

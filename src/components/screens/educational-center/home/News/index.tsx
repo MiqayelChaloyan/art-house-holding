@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, memo } from 'react';
+import { memo } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -11,7 +11,6 @@ import Courses from './Courses';
 import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
-
 
 type Props = {
     data: EDUCATIONAL_CENTER_DEFAULT[]
@@ -27,7 +26,7 @@ const News = ({ data }: Props) => {
             <div className={styles.triangle} />
             <Container>
                 <h1 className={styles.title}>{t('news')}</h1>
-                <div className={styles.cooking_courses}>
+                <div className={styles.news}>
                     <Courses data={newsItems} />
                 </div>
             </Container>

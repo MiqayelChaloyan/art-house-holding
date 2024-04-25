@@ -1,37 +1,41 @@
 'use client'
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-import Image from 'next/image';
-import { notFound, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import { notFound, useRouter } from 'next/navigation';
 
-import Content from '@/lib/ui/readMore';
 import Button from '@/lib/ui/Button';
+import { Arial, Inter } from '@/lib/constants/font';
+
+import { Content as Props, UrlType } from '@/types/educational-center';
 
 import { client } from '../../../../../../../sanity/client';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 import { queryId } from '../../../../../../../sanity/services/educational-center-service/courses';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-interface Props {
-    altTwo: string
-    altOne: string
-    urlForImageOne: string
-    urlForImageTwo: string
-    scrollToElement: any
-    content: any
-    subtitle: string
-    categories: any
-};
+const Content = ({ content, isReadMore, minimumHeight }: Props) => (
+    <p className={cn(styles.content, Inter.className)}>{isReadMore ? content.slice(0, minimumHeight) + '...' : content}</p>
+);
 
-
-const Course = (course: Props) => {
-    const router = useRouter();
-    const t = useTranslations('buttons');
+const Course = ({ course }: any) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
+    const router = useRouter();
+    const t = useTranslations();
     const localActive = useLocale();
+    const minimumHeight = 200;
+
+    const scrollToElement = () => {
+        const container: HTMLElement | null = document.getElementById('contact');
+        if (container) {
+            container.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        }
+    };
 
     const toggleReadMore = () => {
         setIsReadMore(!isReadMore);
@@ -49,61 +53,62 @@ const Course = (course: Props) => {
     };
 
     return (
-        <div className={styles.course}>
-            <div className={styles.content}>
-                <h3 className={styles.subtitle}>{course.subtitle}</h3>
-                <Content content={course.content} isReadMore={isReadMore} />
-                <div className={styles.buttons_group}>
-                    <Button
-                        className={styles.view_btn}
-                        text={isReadMore ? t('view-more') : t('show-less')}
-                        onClick={toggleReadMore}
-                    />
-                    <Button
-                        className={styles.button}
-                        text={t('contact-us')}
-                        onClick={course.scrollToElement}
-                    />
-                    <button
-                        onClick={getResources} 
-                        className={styles.courses_link_btn_arrow}
-                    >
-                        <div className={styles.arrow}>
-                            <div className={styles.arrow_top}></div>
-                            <div className={styles.arrow_bottom}></div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div className={styles.images}>
-                <Image
-                    src={course.urlForImageOne}
-                    alt={course.altOne}
-                    priority
-                    className={styles.image}
-                    width={0}
-                    height={0}
-                    sizes='100vw'
-                    style={{ objectFit: 'cover' }}
+        <div className={styles.left}>
+            <h2 className={cn(styles.subtitle, Inter.className)}>{course.subtitle}</h2>
+            <Content content={course.content} isReadMore={isReadMore} minimumHeight={minimumHeight} />
+            <div className={styles['btn-group']}>
+                <Button
+                    text={isReadMore ? t('buttons.view-more') : t('buttons.show-less')}
+                    className={cn(styles.button, styles['view-more-btn'], Arial.className)}
+                    onClick={toggleReadMore}
                 />
-                <Image
-                    src={course.urlForImageTwo}
-                    alt={course.altTwo}
-                    priority
-                    className={styles.image}
-                    width={0}
-                    height={0}
-                    sizes='100vw'
-                    style={{ objectFit: 'cover' }}
+                <Button
+                    text={t('buttons.contact-us')}
+                    className={cn(styles.button, styles['contact-us-btn'], Arial.className)}
+                    onClick={scrollToElement}
                 />
             </div>
-            <div
-                onClick={getResources} 
-                className={styles.courses_link_btn_arrow_mobile}>
-                <div className={styles.arrow_long_right}></div>
+            <div className={styles['button-more']} onClick={getResources}>
+                <Button
+                    text={t('texts.more')}
+                    className={cn(styles.link, Arial.className)}
+                    onClick={null}
+                />
             </div>
         </div>
-    );
+    )
 };
 
-export default React.memo(Course);
+const Gallery = ({ course }: any) => {
+    const leftPath: UrlType | any = urlForImage(course.news_image_one);
+    const rightPath: UrlType | any = urlForImage(course.news_image_two);
+
+    return (
+        <div className={styles.right}>
+            <img src={leftPath.src} alt={course.news_image_one.alt} className={styles.image} />
+            <img src={rightPath.src} alt={course.news_image_two.alt} className={styles.image} />
+        </div>
+    )
+};
+
+
+const CourseMobileCard = ({ course }: any) => {
+    const leftPath: UrlType | any = urlForImage(course.news_image_one);
+    const rightPath: UrlType | any = urlForImage(course.news_image_two);
+
+    return (
+        <div style={{ display: 'ruby', margin: '0 auto' }}>
+            <div className={styles.right}>
+                <img src={leftPath.src} alt={course.news_image_one.alt} className={styles.image} />
+                <img src={rightPath.src} alt={course.news_image_two.alt} className={styles.image} />
+            </div>
+            <Course course={course} />
+        </div>
+    )
+}
+
+export {
+    Course,
+    Gallery,
+    CourseMobileCard
+};

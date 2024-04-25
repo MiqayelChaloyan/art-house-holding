@@ -1,288 +1,422 @@
-.courses
-   bottom: 82px
-   position: relative 
-   background: black
+.right
+    display: flex
+    position: relative
+    bottom: 100px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+    /* @md */
+    @media screen and (max-width: 1024px)
+        bottom: 0
+    /* @sm */
+    @media screen and (max-width: 768px)
+        position: initial
+    /* @xs */
+    @media screen and (max-width: 600px)
+        position: initial
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        position: initial
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        position: initial
 
-.content
-   width: 39%
-   @media screen and (max-device-width: 1600px) 
-     width: 40%
-   @media screen and (max-width: 1200px )
-     width: 37%
-   @media screen and ( max-width: 991px )
-     width: 41%
-     text-align: left
-     margin: 0 auto
-   @media screen and ( max-width: 767px )
-     width: 100%
-     text-align: center
-     margin: 0 auto
-     p
-        font-size: 12px
-        color: #313131
-        /* sm */
-        @media screen and ( max-width: 640px )
-          font-size: 16px
-          width: 100%
-          text-align: left  
-        /* xs */
-        @media screen and ( max-width: 475px )
-          font-size: 14px
-          width: 100%
-          text-align: left  
+.left
+    display: grid
+    width: 80%
+    margin-bottom: 70px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        margin-bottom: 17px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        margin-bottom: 0
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 100%
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 100%
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 100%
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 100%
+
+.image
+    margin: 10px
+    width: 313px
+    height: 399px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 210px
+        height: 280px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 210px
+        height: 280px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 180px
+        height: 210px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 100%
+        height: 240px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 100%
+        height: 198px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 100%
+        height: 170px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 100%
+        height: 150px
 
 .subtitle
     font-size: 26px
+    color: #313131
+    line-height: 31.47px
     font-weight: 600
-    line-height: 31px
     margin-bottom: 15px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 21px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 19px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 18px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 18px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 18px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 18px
+
+.content
+    font-size: 14px
     color: #313131
-    @media screen and ( max-width: 991px )
-       font-size: 15px
-    @media screen and ( max-width: 767px )
-       font-size: 22px
-
-.images
-   width: 50%       
-   display: flex
-   bottom: 100px
-   position: relative
-   left: 0
-   @media screen and (max-device-width: 1200px) 
-     bottom: 103px  
-     right: 0
-     left: 0
-   @media screen and (max-device-width: 1600px) 
-     right: 0
-   @media screen and ( max-width: 991px )
-     bottom: 100px
-     left: 5px
-     display: flex
-     justify-content: center
-   @media screen and ( max-width: 767px )
-     bottom: 0
-     left: 0
-     display: flex
-     justify-content: center
-     margin: 0 auto
-
-.image
-   width: 260px
-   height: 360px
-   margin: 10px
-   border-radius: 40px
-   @media screen and ( max-width: 1600px )
-      width: 224px
-      height: 277px
-      margin: 20px
-   @media screen and (max-device-width: 1400px) 
-      width: 201px
-      height: 254px
-   @media screen and ( max-width: 1200px )
-      width: 266px
-      height: 286px
-      margin: 20px
-   @media screen and ( max-width: 991px )
-      width: 177px
-      height: 177px
-      margin: 20px
-   @media screen and ( max-width: 767px )
-      width: 200px
-      height: 200px
-      margin: 20px
-
-.cooking_courses
-    background: #E3E1E1
-    display: grid
-    padding: 33px
-    @media screen and (max-device-width: 1600px) 
-      padding: 68px
-    @media screen and ( max-width: 991px )
-      padding-top: 0
-      padding: 44px
-    @media screen and ( max-width: 767px )
-      padding-top: 28px
-
-.button
-   display: flex
-   align-items: center
-   justify-content: center
-   width: 50%
-   height: 50px
-   color: #fff
-   font-weight: 500
-   text-align: center
-   border-radius: 50px
-   padding: 12px 20px
-   background: #C62020
-   margin: 10px auto
-   transition: 0.4s
-   &:hover
-     transition: 0.4s
-     background-color: #E3E1E1
-     border: 3px solid #C62020
-     color: #C62020
-   @media screen and ( max-width: 1400px )
-     font-size: 15px
-   @media screen and ( max-width: 1200px )
-     font-size: 15px
-   @media screen and ( max-width: 991px )
-     width: 60%
-     height: 33px
-     font-size: 12px
-     padding: 8px 0
-     &:hover
-        background-color: #C62020
-        border: none
-   @media screen and ( max-width: 767px )
-     font-size: 15px
-     padding: 8px 16px
-     width: 100%
-     height: 43px
-   /* xs */
-   @media screen and ( max-width: 475px )
-     font-size: 14px
-     padding: 7px 10px
-     width: 40%
-     height: 30px
-
-.course
-   display: flex
-   justify-content: space-around
-   align-items: self-start
-   height: max-content
-   @media screen and (max-device-width: 1600px) 
-   @media screen and (max-device-width: 1200px) 
-     display: flex
-     padding: 0
-   @media screen and ( max-width: 991px )
-     display: flex
-     top: 0
-     height: max-content
-   @media screen and ( max-width: 767px )
-     display: block
-     height: max-content
-
-.buttons_group
-    display: flex
-    justify-content: center
-    align-items: center
-    @media screen and ( max-width: 767px )
-       display: flex
-       margin-top: 10px
-
-.view_btn
-    color: #313131
-    text-decoration: underline
-    @media screen and ( max-width: 1200px )
-        font-size: 15px
-    @media screen and ( max-width: 991px )
-        width: 60%
+    line-height: 30.73px
+    font-weight: 600
+    text-align: left
+    width: 100%
+    margin-bottom: 40px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        line-height: 24.73px
+        margin-bottom: 20px
+        font-size: 13px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        line-height: 17.73px
+        margin-bottom: 10px
         font-size: 12px
-    @media screen and ( max-width: 767px )
-        font-size: 15px
-        padding: 8px 5px
-        width: 100%
-    /* xs */
-    @media screen and ( max-width: 475px )
+    /* @sm */
+    @media screen and (max-width: 768px)
+        line-height: 16.73px
+        margin-bottom: 10px
+        font-size: 12px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        line-height: 17.73px
+        margin-bottom: 10px
+        font-size: 11px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        line-height: 15.73px
+        margin-bottom: 7px
+        font-size: 10px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        line-height: 14.73px
+        margin-bottom: 5px
+        font-size: 10px
+
+.btn-group
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 15px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+    /* @md */
+    @media screen and (max-width: 1024px)
+        margin-bottom: 3px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-bottom: 3px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin-bottom: 3px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        margin-bottom: 3px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        margin-bottom: 3px
+
+.contact-us-btn
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 50%
+    height: 50px
+    color: #fff
+    font-weight: 500
+    text-align: center
+    border-radius: 50px
+    padding: 12px 20px
+    background: #C62020
+    margin: 10px auto
+    transition: 0.4s
+    border: 3px solid #C62020
+    &:hover
+      transition: 0.4s
+      background-color: #E3E1E1
+      border: 3px solid #C62020
+      color: #C62020
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 40%
+        height: 40px
         font-size: 14px
-        padding: 7px 10px
+        border: 2px solid #C62020
+        &:hover
+          border: 2px solid #C62020
+    /* @md */
+    @media screen and (max-width: 1024px)
         width: 50%
         height: 30px
+        font-size: 12px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 40%
+        height: 40px
+        font-size: 14px
+        border: 2px solid #C62020
+        &:hover
+          border: 2px solid #C62020
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 45%
+        height: 30px
+        font-size: 11px
+        border: 2px solid #C62020
+        &:hover
+          border: 2px solid #C62020
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 45%
+        height: 30px
+        font-size: 11px
+        border: 2px solid #C62020
+        &:hover
+          border: 2px solid #C62020
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 45%
+        height: 30px
+        font-size: 11px
+        border: 2px solid #C62020
+        &:hover
+          border: 2px solid #C62020
 
-.arrow
-  cursor: pointer
-  height: 30px
-  position: absolute
-  transform: translateX(-50%) translateY(-50%)
-  transition: transform 0.1s
-  width: 30px
-  @media screen and ( max-width: 991px )
-    width: 18px
-  @media screen and ( max-width: 767px )
-    width: 32px
-    margin-left: 10px
+.view-more-btn
+    color: #313131
+    &:after 
+        content: "" 
+        display: block 
+        width: 100% 
+        padding-top: 20px 
+        border-bottom: 1px solid black 
+        transition: 0.5s 
+        /* @lg */
+        @media screen and (max-width: 1280px)
+            padding-top: 10px 
+    &:hover
+        color: #C62020
+        &:after
+            width: 15%
+            border-bottom: 1px solid #C62020 
+            /* @lg */
+            @media screen and (max-width: 1280px)
+                width: 10%
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 14px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 11px
 
-.arrow_top, .arrow_bottom
-  background-color: #C62020
-  height: 4px
-  left: -5px
-  position: absolute
-  top: 50%
-  width: 100%
-
-.arrow_top:after, .arrow_bottom:after
-  background-color: black
-  content: ""
-  height: 100%
-  position: absolute
-  top: 0
-  transition: all 0.15s
-
-.arrow_top
-  transform: rotate(45deg)
-  transform-origin: bottom right
-
-.arrow_top:after
-  left: 100%
-  right: 0
-  transition-delay: 0s
-
-.arrow_bottom
-  transform: rotate(-45deg)
-  transform-origin: top right
-
-.arrow_bottom:after
-  left: 0
-  right: 100%
-  transition-delay: 0.15s
-
-.arrow:hover .arrow_top:after
-  left: 0
-  transition-delay: 0.15s
-
-.arrow:hover .arrow_bottom:after
-  right: 0
-  transition-delay: 0s
-
-.arrow:active
-  transform: translateX(-50%) translateY(-50%) scale(0.9)
-
-.courses_link_btn_arrow_mobile
-    display: none
-    @media screen and ( max-width: 767px )
-        display: block
-        margin: 0 auto
-        width: 8%
-        margin-bottom: 20px
-        color: black
-    
-.courses_link_btn_arrow
-    display: block
-    @media screen and ( max-width: 991px )
-      margin-left: 29px
-    @media screen and ( max-width: 767px )
-      display: none
-
-.arrow_long_right 
-    box-sizing: border-box 
+.button-more 
+    display: flex 
+    align-items: center 
+    padding: 10px 0 
     position: relative 
-    display: block 
-    transform: scale(var(--ggs,1)) 
-    border-top: 2px solid transparent 
-    border-bottom: 2px solid transparent 
-    box-shadow: inset 0 0 0 2px 
-    width: 24px 
-    height: 6px 
-    &::after 
-      content: "" 
-      display: block 
-      box-sizing: border-box 
-      position: absolute 
-      width: 6px 
-      height: 6px 
-      border-top: 2px solid 
-      border-right: 2px solid 
-      transform: rotate(45deg) 
-      right: 0 
-      bottom: -2px 
+    cursor: pointer 
+    .link 
+        background-color: transparent 
+        font-size: 17px 
+        letter-spacing: 2px 
+        color: black 
+        position: relative 
+        transition: all 0.3s ease-in-out 
+        cursor: pointer 
+        border: 0 
+        padding-left: 20px 
+        left: 0 
+        line-height: auto 
+        overflow: hidden 
+        /* @lg */
+        @media screen and (max-width: 1280px)
+            font-size: 14px
+        /* @md */
+        @media screen and (max-width: 1024px)
+            font-size: 13px
+        /* @xs */
+        @media screen and (max-width: 600px)
+            font-size: 11px
+        &:before 
+            content: "" 
+            background-color: #C62020 
+            width: 3px 
+            height: 100% 
+            position: absolute 
+            z-index: 2 
+            left: 0px 
+            top: 0px 
+            border-radius: 50px 
+            transition: all 0.3s ease-in-out 
+        &:after 
+            content: "" 
+            width: 15px 
+            height: 15px 
+            display: flex 
+            align-items: center 
+            background-color: transparent 
+            position: absolute 
+            border: solid 3px #C62020 
+            border-left: 0 
+            border-bottom: 0 
+            top: calc(50% - 9px) 
+            border-radius: 2px 
+            transform: translateX(-42px) rotate(45deg) 
+            transition: all 0.3s 0.2s ease-in-out 
+            /* @4xl */
+            @media screen and (max-width: 2560px)
+                top: calc(50% - 9px) 
+            /* @3xl */
+            @media screen and (max-width: 1920px)
+                top: calc(50% - 8px) 
+            /* @2xl */
+            @media screen and (max-width: 1600px)
+                top: calc(50% - 8px) 
+            /* @xl */
+            @media screen and (max-width: 1440px)
+                top: calc(50% - 8px) 
+            /* @lg */
+            @media screen and (max-width: 1280px)
+                top: calc(50% - 8px) 
+            /* @md */
+            @media screen and (max-width: 1024px)
+                top: calc(50% - 7px) 
+            /* @sm */
+            @media screen and (max-width: 768px)
+                top: calc(50% - 7px) 
+            /* @xs */
+            @media screen and (max-width: 600px)
+                top: calc(50% - 7px) 
+            /* @2xs */
+            @media screen and (max-width: 480px)
+                top: calc(50% - 7px) 
+            /* @3xs */
+            @media screen and (max-width: 360px)
+                top: calc(50% - 7px) 
+    &:before 
+        content: "" 
+        background-color: black 
+        width: 0 
+        height: 100% 
+        position: absolute 
+        right: 0 
+        top: 0px 
+        border-radius: 3px 
+        transition: all 0.4s 0.3s ease-in-out 
+    &:hover 
+        &:before 
+            width: 100% 
+            height: 100% 
+            left: 0 
+            bottom: 0px 
+        .link 
+            padding-left: 50px 
+            color: #fff 
+            &:before 
+                left: 17px 
+                transform: rotate(90deg) 
+            &:after 
+                transform: translate(-33px) rotate(45deg) 
+
+

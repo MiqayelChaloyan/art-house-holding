@@ -34,9 +34,9 @@ const EducationalCenterHome = ({ data }: Props) => {
             <About data={data} />
             <CookingCourses data={data} />
             <News data={data} />
-            <Progress data={data} />
-            <Specialists data={data} />
-            <OurRating data={data} /> 
+            {/* <Progress data={data} /> */}
+            {/* <Specialists data={data} /> */}
+            {/* <OurRating data={data} />  */}
         </>
     )
 }

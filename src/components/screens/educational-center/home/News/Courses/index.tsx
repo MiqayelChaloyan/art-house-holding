@@ -2,45 +2,36 @@
 
 import React from 'react';
 
-import Course from '../Course';
+import useWindowSize from '@/hooks/useWindowSize';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-import { UrlType } from '@/types/educational-center';
+import { Course, CourseMobileCard, Gallery } from '../Course';
+
+import { Course as CourseProps } from '@/types/educational-center';
+
+import styles from './styles.module.sass';
 
 
 type Props = {
-    data: any
-};
+    data: CourseProps[]
+}
 
 const Courses = ({ data }: Props) => {
-    const scrollToElement = () => {
-        const container: HTMLElement | null = document.getElementById('contact');
-        if (container) {
-            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    };
+    const windowSize = useWindowSize();
 
-    return (
-        data?.map((item: any): JSX.Element => {
-            const path1: UrlType | any = urlForImage(item.news_image_one);
-            const path2: UrlType | any = urlForImage(item.news_image_two);
+    const courses: JSX.Element[] = data?.map((course: CourseProps) => <Course key={course.slug} course={course} />);
+    const gallery: JSX.Element[] = data?.map((course: CourseProps) => <Gallery key={course.slug} course={course} />);
+    const mobile: JSX.Element[] = data?.map((course: CourseProps) => <CourseMobileCard key={course.slug} course={course} />);
 
-            const course = {
-                subtitle: item.subtitle,
-                urlForImageOne: path1.src,
-                urlForImageTwo: path2.src,
-                content: item.content,
-                scrollToElement,
-                altOne: item.news_image_one.alt,
-                altTwo: item.news_image_two.alt,
-                categories: item.categories
-            };            
-
-            return (
-                <Course  {...course} key={item.slug} />
-            );
-        }
-        ));
+    return windowSize.width < 768 ? (mobile) : (
+        <div className={styles.column}>
+            <div className={styles.row}>
+                {courses}
+            </div>
+            <div className={styles.row}>
+                {gallery}
+            </div>
+        </div>
+    )
 };
 
 export default React.memo(Courses);
