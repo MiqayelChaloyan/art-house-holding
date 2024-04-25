@@ -97,7 +97,7 @@ const CourseMobileCard = ({ course }: any) => {
     const rightPath: UrlType | any = urlForImage(course.news_image_two);
 
     return (
-        <div style={{ display: 'ruby', margin: '0 auto' }}>
+        <div className={styles.card}>
             <div className={styles.right}>
                 <img src={leftPath.src} alt={course.news_image_one.alt} className={styles.image} />
                 <img src={rightPath.src} alt={course.news_image_two.alt} className={styles.image} />
