@@ -1,22 +1,19 @@
 'use client'
 
-import { memo } from 'react';
+import React from 'react';
 
-// import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { notFound, useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 import Button from '@/lib/ui/Button';
-
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-// import { getCourseById } from '../../../../../../../sanity/services/educational-center-service/courses';
-
 import { ArianAMU } from '@/lib/constants/font';
 
-import styles from './style.module.sass';
-import { useRouter } from 'next/navigation';
 import { queryId } from '../../../../../../../sanity/services/educational-center-service/courses';
 import { client } from '../../../../../../../sanity/client';
-import { useLocale } from 'next-intl';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+
+import styles from './style.module.sass';
 
 
 const Images = ({ images }: any) => {
@@ -77,11 +74,6 @@ const Item = ({ item }: any) => {
     const localActive = useLocale();
     const path: { src: string, width: number, height: number } | any = urlForImage(item.specialists_section_image);
 
-    // const goCoursePage = async () => {
-    //     const data = await getCourseById(item.categories._ref, i18n.language);
-    //     return router.push(`${i18n.language}/courses/${data.slug}`);
-    // };
-
     const getResources = async () => {
         const _id = item.categories._ref;
 
@@ -89,7 +81,7 @@ const Item = ({ item }: any) => {
             const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
             router.push(`educational-center/${data.slug}`);
         } catch (error) {
-            console.error('Error fetching data:', error);
+            notFound()
         }
     };
 
@@ -126,4 +118,4 @@ const Item = ({ item }: any) => {
     );
 };
 
-export default memo(Item);
+export default React.memo(Item);

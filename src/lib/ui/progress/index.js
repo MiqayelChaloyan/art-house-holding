@@ -10,7 +10,7 @@ const ProgressItem = ({ value = 0, quantity }) => {
 
     useEffect(() => {
         if (percent < quantity) {
-            setTimeout(() => setPercent(newval => newval + 1), 30);
+            setTimeout(() => setPercent(newval => newval + 1), 20);
         }
     }, [percent]);
 

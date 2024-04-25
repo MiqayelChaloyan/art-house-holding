@@ -85,7 +85,7 @@ export default async function Layout({
     return (
         <div>
             <div className='wrapper'>
-                <RightMenu />
+                <RightMenu locale={locale}/>
                 <BottomMenu locale={locale} />
                 <ScrollToTopButton theme='#821616' />
                 <FloatingMenu

@@ -27,7 +27,6 @@ const group = {
     ['margin']: '0 auto'
 };
 
-
 const Footer = ({ courses }: Props) => {
     const t = useTranslations();
 
@@ -51,7 +50,6 @@ const Footer = ({ courses }: Props) => {
             }
         </div>
     ));
-
 
     return (
         <footer id='footer' className={styles.footer}>

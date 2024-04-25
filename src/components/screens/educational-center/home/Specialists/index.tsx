@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react';
+import React from 'react';
 
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
@@ -22,10 +22,9 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-quer
 import styles from './styles.module.sass';
 
 
-interface SectionCoursesProps {
+type Props = {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 };
-
 
 const SampleNextArrow = ({ onClick }: any) => (
     <div className={`${styles.arrow} ${styles.arrow_right}`} onClick={onClick}>
@@ -40,7 +39,7 @@ const SamplePrevArrow = ({ onClick }: any) => (
 );
 
 
-const Specialists = ({ data }: SectionCoursesProps) => {
+const Specialists = ({ data }: Props) => {
     const t = useTranslations('sections');
 
     const slidesItems = data[0].specialists_section.map((item: any, index: number) => (
@@ -76,6 +75,6 @@ const Specialists = ({ data }: SectionCoursesProps) => {
     );
 };
 
-export default memo(Specialists);
+export default React.memo(Specialists);
 
 

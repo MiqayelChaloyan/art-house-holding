@@ -20,7 +20,6 @@ type Props = {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 }
 
-
 const EducationalCenterHome = ({ data }: Props) => {
     const dispatch = useDispatch();
 
@@ -34,9 +33,9 @@ const EducationalCenterHome = ({ data }: Props) => {
             <About data={data} />
             <CookingCourses data={data} />
             <News data={data} />
-            {/* <Progress data={data} /> */}
-            {/* <Specialists data={data} /> */}
-            {/* <OurRating data={data} />  */}
+            <Progress data={data} />
+            <Specialists data={data} />
+            <OurRating data={data} /> 
         </>
     )
 }

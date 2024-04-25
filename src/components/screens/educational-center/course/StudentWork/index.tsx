@@ -64,7 +64,6 @@ const StudentWork = ({ course }: Props) => {
     });
 
     const handleLoad = () => setInitialLoadCourses(initialLoadCourses + 4);
-
     const handleBackLoad = () => setInitialLoadCourses(initialLoadCourses - 4);
 
     return (
@@ -103,7 +102,7 @@ const StudentWork = ({ course }: Props) => {
                             </div>
                         )
                     }
-                    {course[0]?.student_works.length < 8 ? (
+                    {course[0]?.student_works.length < initialLoadCourses ? (
                         <div className={styles.block_buttons}>
                             <div className={styles.btn_group}>
                                 <Button

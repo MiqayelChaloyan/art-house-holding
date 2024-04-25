@@ -10,11 +10,12 @@ import '@/styles/globals.sass';
 
 import styles from './styles.module.sass';
 
-
 export default function NotFound() {
-
     return (
         <html lang='en'>
+            <head>
+                <title>Page Not found</title>
+            </head>
             <body className={`${styles.link} ${ArianAMU.className}`}>
                 <Container>
                     <div className={styles.not_found}>

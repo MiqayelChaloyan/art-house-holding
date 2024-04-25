@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react';
+import React from 'react';
 
 import Container from '@/components/components/container';
 
@@ -12,10 +12,9 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-quer
 import styles from './styles.module.sass';
 
 
-interface Props {
+type Props = {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 };
-
 
 const Progress = ({ data }: Props) => {
     const uploadProgress = data[0].progress_section;
@@ -41,4 +40,4 @@ const Progress = ({ data }: Props) => {
     );
 };
 
-export default memo(Progress);
+export default React.memo(Progress);
