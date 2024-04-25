@@ -326,119 +326,6 @@
         justify-content: flex-start
         align-items: center
 
-
-.button-more 
-    display: flex 
-    align-items: center 
-    padding: 10px 0 
-    position: relative 
-    cursor: pointer 
-    .link 
-        background-color: transparent 
-        font-size: 17px 
-        letter-spacing: 2px 
-        color: black 
-        position: relative 
-        transition: all 0.3s ease-in-out 
-        cursor: pointer 
-        border: 0 
-        padding-left: 20px 
-        left: 0 
-        line-height: auto 
-        overflow: hidden 
-        /* @lg */
-        @media screen and (max-width: 1280px)
-            font-size: 14px
-        /* @md */
-        @media screen and (max-width: 1024px)
-            font-size: 13px
-        /* @xs */
-        @media screen and (max-width: 600px)
-            font-size: 11px
-        &:before 
-            content: "" 
-            background-color: #C62020 
-            width: 3px 
-            height: 100% 
-            position: absolute 
-            z-index: 2 
-            left: 0px 
-            top: 0px 
-            border-radius: 50px 
-            transition: all 0.3s ease-in-out 
-        &:after 
-            content: "" 
-            width: 15px 
-            height: 15px 
-            display: flex 
-            align-items: center 
-            background-color: transparent 
-            position: absolute 
-            border: solid 3px #C62020 
-            border-left: 0 
-            border-bottom: 0 
-            top: calc(50% - 9px) 
-            border-radius: 2px 
-            transform: translateX(-42px) rotate(45deg) 
-            transition: all 0.3s 0.2s ease-in-out 
-            /* @4xl */
-            @media screen and (max-width: 2560px)
-                top: calc(50% - 9px) 
-            /* @3xl */
-            @media screen and (max-width: 1920px)
-                top: calc(50% - 8px) 
-            /* @2xl */
-            @media screen and (max-width: 1600px)
-                top: calc(50% - 8px) 
-            /* @xl */
-            @media screen and (max-width: 1440px)
-                top: calc(50% - 8px) 
-            /* @lg */
-            @media screen and (max-width: 1280px)
-                top: calc(50% - 8px) 
-            /* @md */
-            @media screen and (max-width: 1024px)
-                top: calc(50% - 7px) 
-            /* @sm */
-            @media screen and (max-width: 768px)
-                top: calc(50% - 7px) 
-            /* @xs */
-            @media screen and (max-width: 600px)
-                top: calc(50% - 7px) 
-            /* @2xs */
-            @media screen and (max-width: 480px)
-                top: calc(50% - 7px) 
-            /* @3xs */
-            @media screen and (max-width: 360px)
-                top: calc(50% - 7px) 
-    &:before 
-        content: "" 
-        background-color: black 
-        width: 0 
-        height: 100% 
-        position: absolute 
-        right: 0 
-        top: 0px 
-        border-radius: 3px 
-        transition: all 0.4s 0.3s ease-in-out 
-    &:hover 
-        &:before 
-            width: 100% 
-            height: 100% 
-            left: 0 
-            bottom: 0px 
-        .link 
-            padding-left: 50px 
-            color: #fff 
-            &:before 
-                left: 17px 
-                transform: rotate(90deg) 
-            &:after 
-                transform: translate(-33px) rotate(45deg) 
-    /* @sm */
-    @media screen and (max-width: 768px)
-        display: none
-
 .more-btn-mobile
     display: none
     /* @sm */
@@ -453,3 +340,142 @@
         padding-left: 10px
         font-size: 11px
         width: 10%
+
+
+/*Arrow Button UI*/
+.arrow 
+    list-style: none 
+    display: initial
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: none
+
+.the-arrow 
+    width: 64px 
+    transition: all 0.2s 
+    &.-left 
+        position: absolute 
+        top: 60% 
+        left: 0 
+        & > .shaft 
+            width: 0 
+            background-color: #313131 
+            &:before 
+                transform: rotate(0) 
+            &:after 
+                transform: rotate(0) 
+    &.-right 
+        top: 3px 
+        & > .shaft 
+            width: 52px 
+            transition-delay: 0.2s 
+            &:before 
+                transform: rotate(40deg) 
+            &:after 
+                transform: rotate(-40deg) 
+    & > .shaft 
+        background-color: #313131 
+        display: block 
+        height: 1px 
+        position: relative 
+        transition: all 0.2s 
+        transition-delay: 0 
+        will-change: transform 
+        &:before 
+            transform-origin: top right 
+        &:after 
+            transform-origin: bottom right 
+
+.the-arrow.-left>.shaft:before,
+.the-arrow.-left>.shaft:after 
+    width: 0 
+    background-color: #313131 
+
+.the-arrow.-right>.shaft:before,
+.the-arrow.-right>.shaft:after 
+    width: 8px 
+    transition-delay: 0.3s 
+    transition: all 0.5s 
+
+.the-arrow>.shaft:before,
+.the-arrow>.shaft:after 
+    background-color: #313131 
+    content: "" 
+    display: block 
+    height: 1px 
+    position: absolute 
+    top: 0 
+    right: 0 
+    transition: all 0.2s 
+    transition-delay: 0 
+
+.animated-arrow 
+    display: inline-block 
+    color: #313131 
+    font-size: 1.25em 
+    text-decoration: none 
+    position: relative 
+    transition: all 0.2s 
+    &:hover 
+        color: #C62020 
+        & > .the-arrow 
+            &.-left 
+                & > .shaft 
+                    width: 52px 
+                    transition-delay: 0.1s 
+                    background-color: #C62020 
+                    &:before 
+                        transform: rotate(40deg) 
+                    &:after 
+                        transform: rotate(-40deg) 
+        & > .main 
+            transform: translateX(80px) 
+            & > .the-arrow 
+                &.-right 
+                    & > .shaft 
+                        width: 0 
+                        transform: translateX(200%) 
+                        transition-delay: 0 
+                        &:before 
+                            transform: rotate(0) 
+                        &:after 
+                            transform: rotate(0) 
+    & > .main 
+        display: flex 
+        align-items: center 
+        transition: all 0.2s 
+        & > .text 
+            margin: 0 16px 0 0 
+            line-height: 1 
+        & > .the-arrow 
+            position: relative 
+
+.animated-arrow:hover>.the-arrow.-left>.shaft:before,
+.animated-arrow:hover>.the-arrow.-left>.shaft:after 
+    width: 8px 
+    transition-delay: 0.1s 
+    background-color: #C62020 
+
+.animated-arrow:hover>.main>.the-arrow.-right>.shaft:before,
+.animated-arrow:hover>.main>.the-arrow.-right>.shaft:after 
+    width: 0 
+    transition-delay: 0 
+    transition: all 0.1s 
+
+.text 
+    font-size: 19px 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 14px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 12px
+
+
+
+
+
+
+
+
+
