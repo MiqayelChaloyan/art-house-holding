@@ -73,7 +73,7 @@
         "message": "Сообщение",
         "select-course": "Выберите курс",
         "select-quantity": "Продолжительность урока",
-        "select-duration": "Количество занятий",
+        "select-course-type": "Тип курса",
         "send": "Отправлять",
         "loading": "Загрузка"
     },

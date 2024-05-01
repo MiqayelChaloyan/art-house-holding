@@ -226,8 +226,17 @@ $assetPath: "../../../../../public/assets/images/art-house/footerBackground.png"
 .social_network
     margin: 3px
 
-
 .box
     /* md */
     @media screen and ( max-width: 768px )
         margin-bottom: 20px
+
+
+.social_network
+   transition: var(--tr-time)
+   svg 
+      transition: var(--tr-time)
+      fill: #FFFFFF
+   &:hover
+      svg
+        fill: #B21B1B

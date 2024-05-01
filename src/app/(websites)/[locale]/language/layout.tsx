@@ -102,7 +102,7 @@ export default async function Layout({
                 </main>
             </div>
             <PlayerModal />
-            <ContactUs courses={courses?.languages} />
+            <ContactUs courses={courses?.course_name} />
             <Footer />
         </div>
     );

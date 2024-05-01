@@ -1,16 +1,16 @@
 export const query = 
 `*[_type == "languages-select-option"] {
     "_id": _id,
-    "languages": languages[] {
-        "course": course[$language],
+    "course_name": course_name[] {
+        "course_name": course_name[$language],
         "slug": slug.current,
     },
-    "quantity_lessons": quantity_lessons[] {
-        "quantity": quantity[$language],
+    "week_number_of_lessons": week_number_of_lessons[] {
+        "week_number_of_lessons": week_number_of_lessons[$language],
         "slug": slug.current,
     },
-    "class_duration": class_duration[] {
-        "duration": duration[$language],
+    "course_type": course_type[] {
+        "course_type": course_type[$language],
         "slug": slug.current,
     },
 }`;

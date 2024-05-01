@@ -17,10 +17,10 @@ const coursesSchemaLanguage = {
         },
 
         {
-            name: 'languages',
+            name: 'course_name',
             type: 'array',
             // components: { input: ArrayMaxItems },
-            title: 'Languages',
+            title: 'Course Name (Դասընթացի անվանումը)',
             of: [
                 {
                     name: 'Object',
@@ -29,7 +29,7 @@ const coursesSchemaLanguage = {
                     fields: [
                         {
                             title: 'Course Name (Դասընթացի անվանումը)',
-                            name: 'course',
+                            name: 'course_name',
                             type: 'object',
                             validation: (Rule: any) => Rule.required(),
                             fields: [
@@ -68,10 +68,10 @@ const coursesSchemaLanguage = {
 
 
         {
-            name: 'quantity_lessons',
+            name: 'week_number_of_lessons',
             type: 'array',
             // components: { input: ArrayMaxItems },
-            title: 'Quantity of lessons per week',
+            title: 'Quantity of lessons per week (Դասերի քանակը շաբաթական)',
             of: [
                 {
                     name: 'Object',
@@ -80,7 +80,7 @@ const coursesSchemaLanguage = {
                     fields: [
                         {
                             title: 'Quantity of lessons per week (Դասերի քանակը շաբաթական)',
-                            name: 'quantity',
+                            name: 'week_number_of_lessons',
                             type: 'object',
                             validation: (Rule: any) => Rule.required(),
                             fields: [
@@ -104,7 +104,7 @@ const coursesSchemaLanguage = {
                         {
                             name: 'slug',
                             type: 'slug',
-                            description: "Պիտի եզակի լինի",
+                            description: "Number of classes in weekly numbers (Դասերի քանակը շաբաթական' թվերով)",
                             maxLength: 9,
                             options: {
                                 source: 'name',
@@ -119,10 +119,10 @@ const coursesSchemaLanguage = {
 
 
         {
-            name: 'class_duration',
+            name: 'course_type',
             type: 'array',
             // components: { input: ArrayMaxItems },
-            title: 'Class duration',
+            title: 'Course type (Դասընթացի տեսակը)',
             of: [
                 {
                     name: 'Object',
@@ -130,8 +130,8 @@ const coursesSchemaLanguage = {
                     icon: ClockIcon,
                     fields: [
                         {
-                            title: 'Class duration (Դասի տևողությունը)',
-                            name: 'duration',
+                            title: 'Course type (Դասընթացի տեսակը)',
+                            name: 'course_type',
                             type: 'object',
                             validation: (Rule: any) => Rule.required(),
                             fields: [
@@ -155,7 +155,7 @@ const coursesSchemaLanguage = {
                         {
                             name: 'slug',
                             type: 'slug',
-                            description: "Պիտի եզակի լինի",
+                            description: "96֊խմբային, 98֊անհատական, 146-ընտանեկան փաթեթ, 150-անհատական լեզվակիր մասնագետ",
                             maxLength: 9,
                             options: {
                                 source: 'name',

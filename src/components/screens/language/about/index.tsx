@@ -9,7 +9,8 @@ import { useTranslations } from 'next-intl';
 import { PortableText } from '@portabletext/react';
 import Container from '@/components/components/container';
 
-import Player from '@/lib/ui/video-player';
+import VideoPlayer from './player';
+
 import { Arial, Calibri } from '@/lib/constants/font';
 import { Pages } from '@/lib/constants/pages';
 import components from '@/lib/utils/PortableTextComponents';
@@ -49,12 +50,14 @@ const About = ({ data, locale }: Props) => {
     });
 
     const videos = data[0]?.about_us?.about_our_daily.map((video: Video) => {
-        const light = urlForImage(video.video_light);
+        const path: UrlType | any = urlForImage(video.video_light);
 
         return (
-            <div className={styles.video_player} key={video._key}>
-                <Player light={light} path={video.video_url} />
-            </div>
+            <VideoPlayer
+                key={video._key}
+                light={path}
+                link={video.video_url}
+            />
         )
     });
 
@@ -74,7 +77,7 @@ const About = ({ data, locale }: Props) => {
                         </div>
                         <div className={styles.buttons}>
                             <Link
-                                href={`/${locale}${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_TAKE_TEST}`}
+                                href={`/${locale}${Pages.LANGUAGE_TAKE_TEST}`}
                                 prefetch={true}
                                 className={cn(
                                     styles.button,
@@ -97,6 +100,9 @@ const About = ({ data, locale }: Props) => {
                             {gallery[2]}
                         </div>
                     </div>
+                    <div className={styles.expanding_gallery}>
+                        <div className={styles.expanding}>{gallery}</div>
+                    </div>
                     <div className={styles.videos}>
                         {videos}
                     </div>
@@ -104,6 +110,6 @@ const About = ({ data, locale }: Props) => {
             </Container>
         </section>
     )
-}
+};
 
 export default React.memo(About);

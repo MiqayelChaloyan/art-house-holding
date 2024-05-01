@@ -73,7 +73,7 @@
         "message": "Message",
         "select-course": "Select the course",
         "select-quantity": "Quantity of classes",
-        "select-duration": "Quantity of classes",
+        "select-course-type": "Course type",
         "send": "Send",
         "loading": "Loading"
     },

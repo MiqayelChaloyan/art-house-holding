@@ -2,12 +2,10 @@
 
 import React from 'react';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
-
-import Play from '@/lib/icons/educational-center/Play';
+import Player from '@/components/components/player';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
@@ -41,29 +39,11 @@ const CourseProcess = ({ course }: Props) => {
         <section id='video-player' className={styles.container}>
             <Container>
                 <h1 className={styles.title}>{t('courses-process')}</h1>
-                <div className={styles.playing}>
-                    <Image
-                        src={path?.src}
-                        alt='alt'
-                        className={styles.video_play}
-                        width={500}
-                        height={500}
-                        sizes="100vw"
-                        priority
-                    />
-                    <div className={styles.overlay}>
-                        <button
-                            className={styles.icon}
-                            onClick={() => handlePlayVideo(course[0].course_process.video_url)}
-                        >
-                            <Play
-                                width={75}
-                                height={75}
-                                fill='#fff'
-                            />
-                        </button>
-                    </div>
-                </div>
+                <Player
+                    path={path}
+                    video_url={course[0].course_process.video_url}
+                    handlePlayVideo={handlePlayVideo}
+                />
             </Container>
         </section>
     );

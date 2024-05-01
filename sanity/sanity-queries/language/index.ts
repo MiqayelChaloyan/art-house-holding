@@ -57,16 +57,16 @@ export interface ABOUT_US_LANGUAGE {
 export interface LANGUAGE {
     _id: string
     slug: string
-    languages: {
+    course_name: {
         course: string
         slug: string
     }
-    quantity_lessons: {
+    week_number_of_lessons: {
         quantity: string
         slug: string
     }
-    class_duration: {
-        duration: string
+    course_type: {
+        course_type: string
         slug: string
     }
 };

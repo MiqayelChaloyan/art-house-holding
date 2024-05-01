@@ -152,3 +152,22 @@ interface Questions {
     isLoading: boolean;
     isViewAnswer: boolean;
 }
+
+/* Form types */
+export interface FormLarge {
+    first_name: string;
+    last_name: string;
+    phone: string;
+    email: string;
+    training_center: number;
+    course_name: string;
+    week_number_of_lessons: string;
+    course_type: string;
+}
+
+export interface FormSmall {
+    full_name: string;
+    email: string;
+    phone: string;
+    course_name: string;
+}

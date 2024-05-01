@@ -44,6 +44,7 @@ const Select = ({ data, state, valueName, handleChange, classNameProperty, isCle
 
     const handleOptionClick = (e: any) => {
         const selectedText = e.currentTarget.querySelector('label').textContent;
+
         setNum(1)
         handleChange((prev: FormProps) => ({
             ...prev,
@@ -103,8 +104,8 @@ const Select = ({ data, state, valueName, handleChange, classNameProperty, isCle
             <ul className={styles[`${classNameProperty}-select-dropdown`]} role="listbox" id="select-dropdown">
                 {data?.map((item: any, index: number) => (
                     <li key={item?.slug.current || index} role="option" onClick={handleOptionClick} tabIndex={index}>
-                        <input type="radio" id={item?.valueName} name={valueName} />
-                        <label htmlFor={item?.[valueName]}>{item?.[valueName]}</label>
+                        <input type="radio" id={item?.slug} name={valueName} />
+                        <label htmlFor={item?.valueName}>{item?.[valueName]}</label>
                     </li>
                 ))}
             </ul>

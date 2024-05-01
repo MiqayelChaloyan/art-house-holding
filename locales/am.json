@@ -73,7 +73,7 @@
         "message": "Հաղորդագրություն",
         "select-course": "Ընտրել դասընթացը",
         "select-quantity": "Դասի տևողությունը",
-        "select-duration": "Դասերի քանակը",
+        "select-course-type": "Դասընթացի տեսակը",
         "send": "Ուղարկել",
         "loading": "Բեռնվում է"
     },

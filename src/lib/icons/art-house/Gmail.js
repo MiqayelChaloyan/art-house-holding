@@ -7,7 +7,7 @@ function logo({ width, height, fill }) {
             </g>
             <defs>
                 <clipPath id="clip0_1288_273">
-                    <rect width="48" height="48" fill="white" />
+                    <rect width="48" height="48" fill={fill} />
                 </clipPath>
             </defs>
         </svg>

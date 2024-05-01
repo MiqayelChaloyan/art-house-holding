@@ -3,6 +3,7 @@
     justify-content: space-between
     align-items: flex-end
     margin: 40px auto
+    height: max-content
     /* @lg */
     @media screen and (max-width: 1280px)
         display: grid
@@ -92,134 +93,49 @@
        justify-content: center
     /* @xs */
     @media screen and (max-width: 600px)
-       display: grid
-       justify-content: center
+        display: none
 
 .image
     width: 100%
     height: 100%
     object-fit: cover
-    /* @sm */
-    @media screen and (max-width: 768px)
-       height: 260px
-       width: 350px
-
-.gallery_one
-    width: 360px
-    height: 346px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-       width: 360px
-       height: 346px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-       width: 360px
-       height: 346px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-    /* @lg */
-    @media screen and (max-width: 1280px)
-        height: 290px
-        width: 290px
-    /* @md */
-    @media screen and (max-width: 1024px)
-        height: 210px
-        width: 210px
-    /* @sm */
-    @media screen and (max-width: 768px)
-       margin-bottom: 0
-       height: 291.33px
-       width: 350px
     /* @xs */
     @media screen and (max-width: 600px)
-       height: 291.33px
-       width: 350px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-       height: 291.33px
-       width: 350px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-       height: 291.33px
-       width: 350px
+        --grayscale: 1 
+        transition: flex 0.5s, filter 0.5s  
+        height: 100% 
+        filter: grayscale(var(--grayscale)) brightness(var(--brightness)) 
+        object-fit: cover 
+        overflow: hidden 
+        flex: 1 
+        &:hover 
+            --brightness: 1.15 
+            --grayscale: 0 
+            flex: 6    
 
-.gallery_two
-    width: 360px
-    height: 346px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-       width: 360px
-       height: 346px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-       width: 360px
-       height: 346px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-    /* @lg */
-    @media screen and (max-width: 1280px)
-        height: 290px
-        width: 290px
-    /* @md */
-    @media screen and (max-width: 1024px)
-        height: 210px
-        width: 210px
-    /* @sm */
-    @media screen and (max-width: 768px)
-       margin-bottom: 0
-       height: 291.33px
-       width: 350px
+.expanding 
+    width: 80vw 
+    height: 50vmin 
+    display: flex 
+    align-items: center 
+    justify-content: center 
+    gap: 1vmin 
+    margin-bottom: 20px
+
+.expanding_gallery
+    display: none
     /* @xs */
     @media screen and (max-width: 600px)
-       height: 291.33px
-       width: 350px
+        display: inline
+        margin: 0 auto
     /* @2xs */
     @media screen and (max-width: 480px)
-       height: 291.33px
-       width: 350px
+        display: inline
+        margin: 0 auto
     /* @3xs */
     @media screen and (max-width: 360px)
-       height: 291.33px
-       width: 350px
-
-.gallery_three
-    width: 360px
-    height: 346px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-       width: 360px
-       height: 346px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-       width: 360px
-       height: 346px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-     /* @lg */
-    @media screen and (max-width: 1280px)
-        height: 290px
-        width: 290px
-    /* @md */
-    @media screen and (max-width: 1024px)
-        height: 210px
-        width: 210px
-    /* @sm */
-    @media screen and (max-width: 768px)
-       margin-bottom: 0
-       height: 291.33px
-       width: 350px
-    /* @xs */
-    @media screen and (max-width: 600px)
-       height: 291.33px
-       width: 350px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-       height: 291.33px
-       width: 350px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-       height: 291.33px
-       width: 350px
+        display: inline
+        margin: 0 auto
 
 .buttons
     display: flex
@@ -284,25 +200,28 @@
         height: 30px
     /* @xs */
     @media screen and (max-width: 600px)
-        font-size: 11px
+        font-size: 12px
         padding: 0
         text-align: center
-        width: 111px !important
-        height: 30px
+        width: 40% !important
+        height: 40px
+        border-radius: 10px
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 11px
+        font-size: 12px
         padding: 0
         text-align: center
-        width: 111px !important
-        height: 30px
+        width: 40% !important
+        height: 40px
+        border-radius: 10px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 11px
+        font-size: 12px
         padding: 0
         text-align: center
-        width: 111px !important
-        height: 30px
+        width: 40% !important
+        height: 35px
+        border-radius: 10px
 
 .send_btn
     background-color: #F9CC48
@@ -465,33 +384,44 @@
         display: grid
         justify-content: center
 
-.video_player
-    height: 376.33px
-    width: 570px
-    margin-bottom: 60px
+
+.gallery_one,
+.gallery_two,
+.gallery_three
+    width: 360px
+    height: 320px
     /* @3xl */
     @media screen and (max-width: 1920px)
-        height: 376.33px
-        width: 570px
+       width: 360px
+       height: 320px
     /* @2xl */
     @media screen and (max-width: 1600px)
-        height: 376.33px
-        width: 570px
+       width: 360px
+       height: 320px
     /* @xl */
     @media screen and (max-width: 1440px)
-        height: 376.33px
-        width: 570px
     /* @lg */
     @media screen and (max-width: 1280px)
         height: 290px
-        width: 450px
-        margin-bottom: 0
+        width: 290px
     /* @md */
     @media screen and (max-width: 1024px)
-        height: 290px
-        width: 330px
+        height: 210px
+        width: 210px
     /* @sm */
     @media screen and (max-width: 768px)
-        height: 280px
-        width: 350px
-        margin-bottom: 30px
+       margin-bottom: 0
+       height: 291.33px
+       width: 350px
+    /* @xs */
+    @media screen and (max-width: 600px)
+       height: 291.33px
+       width: 350px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+       height: 291.33px
+       width: 350px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+       height: 291.33px
+       width: 350px

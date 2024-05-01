@@ -59,16 +59,16 @@ const Footer = () => {
                             <h2 className={`${styles.hosts_title} ${ArianAMU.className}`}>{t('texts.follow-us')}</h2>
                             <div className={styles.hosts}>
                                 <Link href={Hosts.facebook} aria-label='Facebook' className={styles.social_network} target="_blank">
-                                    <Facebook width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='white' />
+                                    <Facebook width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='' />
                                 </Link>
                                 <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">
-                                    <Gmail width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='white' />
+                                    <Gmail width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='' />
                                 </Link>
                                 <Link href={Hosts.instagram} aria-label='Instagram' className={styles.social_network} target="_blank">
-                                    <Instagram width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='white' />
+                                    <Instagram width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='' />
                                 </Link>
                                 <Link href={Hosts.linkedin} aria-label='LinkedIn' className={styles.social_network} target="_blank">
-                                    <Linkedin width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='white' />
+                                    <Linkedin width={windowSize.width <= 1024 ? 20 : 40} height={windowSize.width <= 1024 ? 20 : 40} fill='' />
                                 </Link>
                             </div>
                         </div>

@@ -67,4 +67,21 @@ const SectionCareerServices = ({ children }: Props) => {
     );
 };
 
-export default SectionCareerServices;
+export default React.memo(SectionCareerServices);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

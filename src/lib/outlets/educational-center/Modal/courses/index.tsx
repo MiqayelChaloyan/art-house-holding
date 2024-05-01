@@ -1,50 +1,50 @@
 'use client'
 
-import { memo } from 'react';
+import React from 'react';
 
 import Link from 'next/link';
-
 import { useTranslations } from 'next-intl';
+import { notFound } from 'next/navigation';
+
+import { Pages } from '@/lib/constants/pages';
+
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 
-import styles from './style.module.sass';
+import styles from './styles.module.sass';
 
 
-type CoursesModalProps = {
+type Props = {
     locale: string
-    courses: EDUCATIONAL_CENTER_COURSES[] 
+    courses: EDUCATIONAL_CENTER_COURSES[]
 };
 
-// const chunkSize = 7;
-
-// const chunkArray = (arr: any, size: number) => {
-//     return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
-//         arr.slice(i * size, i * size + size)
-//     );
-// };
-
-const CoursesModal = ({ locale, courses }: CoursesModalProps) => {
-    // const data = chunkArray(courses, chunkSize);
+const CoursesModal = ({
+    locale, courses
+}: Props) => {
     const t = useTranslations('navigation');
 
     if (!courses) {
-        return null;
+        return notFound();
     };
-
-    const coursesList = courses.map((course: any) => (
-        <Link href={`/${locale}/educational-center/${course.slug}`} key={course._id} className={styles.link}>
-            <p className={styles.course}>{course.course_name}</p>
-        </Link>
-    ));
 
     return (
         <div className={styles.courses_container}>
-            <p className={styles.title}>{t('courses')}</p>
+            <p className={styles.title}>
+                {t('courses')}
+            </p>
             <div className={styles.list}>
-                {coursesList}
+                {courses.map((course: any) => (
+                    <Link
+                        key={course._id}
+                        href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`}
+                        className={styles.link}
+                    >
+                        <p className={styles.course}>{course.course_name}</p>
+                    </Link>
+                ))}
             </div>
         </div>
     );
 };
 
-export default memo(CoursesModal);
+export default React.memo(CoursesModal);

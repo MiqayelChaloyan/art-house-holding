@@ -2,11 +2,8 @@
 
 import React from 'react';
 
-import Image from 'next/image';
-
 import Container from '@/components/components/container';
-
-import Play from '@/lib/icons/educational-center/Play';
+import Player from '@/components/components/player';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
@@ -39,28 +36,12 @@ const CookingCourses = ({ data }: Props) => {
             <div className={styles.triangle} />
             <Container>
                 <h1 className={styles.title}>{data[0].cooking_courses.video_section_title}</h1>
-                <div className={styles.playing}>
-                    <Image
-                        src={path?.src}
-                        alt='alt'
-                        className={styles.video_play}
-                        width={500}
-                        height={500}
-                        sizes="100vw"
-                        priority
+                <div className={styles.player}>
+                    <Player
+                        path={path}
+                        video_url={data[0].cooking_courses.video_url}
+                        handlePlayVideo={handlePlayVideo}
                     />
-                    <div className={styles.overlay}>
-                        <button
-                            className={styles.icon}
-                            onClick={() => handlePlayVideo(data[0].cooking_courses.video_url)}
-                        >
-                            <Play
-                                width={75}
-                                height={75}
-                                fill='#fff'
-                            />
-                        </button>
-                    </div>
                 </div>
             </Container>
         </section>

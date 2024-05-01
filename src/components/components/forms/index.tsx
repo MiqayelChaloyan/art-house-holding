@@ -12,6 +12,9 @@ import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
+// TODO
+import { sendContactMessage } from '@/api';
+
 
 interface Props {
 	className?: string
@@ -19,13 +22,13 @@ interface Props {
 	children: React.ReactNode
 };
 
-const initValues = { name: '', email: '', phone: '', message: '' };
+const initValues = { name: '', email: '', phone: '', training_center: 46, message: '' };
 const initState = { isLoading: false, error: '', values: initValues };
 
 const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 	const [state, setState] = useState<any>(initState);
 	const { values, isLoading, error } = state;
-    const t = useTranslations('contact-us-form');
+	const t = useTranslations('contact-us-form');
 
 	const handleChange = ({ target }: any) =>
 		setState((prev: any) => ({
@@ -42,33 +45,31 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 			name: state.values.name,
 			email: state.values.email,
 			phone: state.values.phone,
+			training_center: 46,
 			message: `${state.values.message}`
 		};
 
 		try {
+
 			setState((prev: any) => ({
 				...prev,
 				isLoading: true,
 			}));
-			const res = await fetch('/api/contact', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(formData),
-			});
 
-			const { error } = await res.json();
-			if (error) {
-				console.log('Error !!');
-				return;
-			};
-			
+			const res = await sendContactMessage(formData);
+			console.log(res)
+
+			// if (res?.status !== 200) {
+			// 	console.log('Error !!');
+			// 	return;
+			// };
+
 			setState(() => ({
 				...initState,
 				isLoading: false,
-				error: error.message,
+				error: '',
 			}));
+
 		} catch (error: any) {
 			setState((prev: any) => ({
 				...prev,
@@ -76,6 +77,38 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 				error: error.message,
 			}));
 		}
+
+		// try {
+		// setState((prev: any) => ({
+		// 	...prev,
+		// 	isLoading: true,
+		// }));
+		// 	const res = await fetch('/api/contact', {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify(formData),
+		// 	});
+
+		// 	const { error } = await res.json();
+		// 	if (error) {
+		// 		console.log('Error !!');
+		// 		return;
+		// 	};
+
+		// setState(() => ({
+		// 	...initState,
+		// 	isLoading: false,
+		// 	error: error.message,
+		// }));
+		// } catch (error: any) {
+		// 	setState((prev: any) => ({
+		// 		...prev,
+		// 		isLoading: false,
+		// 		error: error.message,
+		// 	}));
+		// }
 	};
 
 	return (

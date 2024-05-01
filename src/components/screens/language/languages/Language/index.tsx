@@ -6,16 +6,19 @@ import About from './About';
 import Teachers from './Teachers';
 import Gallery from './Gallery';
 
-import Player from '@/lib/ui/video-player';
+// import Player from '@/lib/ui/video-player';
 
 import Container from '@/components/components/container';
 
 import { ABOUT_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
-import { UrlType } from '@/types/language';
+import { ReduxType, UrlType } from '@/types/language';
 
 import styles from './styles.module.sass';
+import Player from '@/components/components/player';
+import { useDispatch, useSelector } from 'react-redux';
+import { onPlay, setPath } from '@/store/player_reducer';
 
 
 type Props = {
@@ -27,6 +30,14 @@ const Language = ({ locale, data }: Props) => {
     const { during_courses_images, course_process, teachers } = data;
     const path: UrlType | any = urlForImage(course_process.video_light);
 
+    const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
+    const dispatch = useDispatch();
+
+    const handlePlayVideo = (path: string) => {
+        dispatch(onPlay(!isPlay));
+        dispatch(setPath(path));
+    };
+
     return (
         <Container>
             <section id='language' className={styles.container}>
@@ -37,9 +48,14 @@ const Language = ({ locale, data }: Props) => {
                 <Gallery during_courses={during_courses_images} />
                 <div className={styles.row_three}>
                     <div className={styles.video_player}>
-                        <Player
+                        {/* <Player
                             light={path?.src}
                             path={course_process.video_url}
+                        /> */}
+                        <Player
+                            path={path}
+                            video_url={course_process.video_url}
+                            handlePlayVideo={handlePlayVideo}
                         />
                     </div>
                 </div>
