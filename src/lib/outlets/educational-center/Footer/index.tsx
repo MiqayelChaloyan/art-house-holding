@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import Link from 'next/link';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import GoogleMaps from '@/components/components/google-map';
 import FormAppointment from '@/components/components/forms';
@@ -17,6 +17,7 @@ import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries
 // import { MapProvider } from '@/lib/providers';
 
 import styles from './styles.module.sass';
+import { Pages } from '@/lib/constants/pages';
 
 
 type Props = {
@@ -29,6 +30,7 @@ const group = {
 
 const Footer = ({ courses }: Props) => {
     const t = useTranslations();
+    const locale = useLocale();
 
     const matrix = courses.reduce((acc: any, item: any, index: number) => {
         const rowIndex = Math.floor(index / 6);
@@ -43,7 +45,7 @@ const Footer = ({ courses }: Props) => {
         <div key={rowIndex} className={styles.row}>
             {
                 row.map((course: any) => (
-                    <Link key={course.slug} href={`/courses/${course.slug}`} aria-label={course.course_name} className={styles.link}>
+                    <Link key={course.slug} href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`} aria-label={course.course_name} className={styles.link}>
                         <p className={styles.copyright}>{course.course_name}</p>
                     </Link>
                 ))

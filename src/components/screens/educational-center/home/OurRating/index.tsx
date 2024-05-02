@@ -21,10 +21,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import styles from './style.module.sass';
 
 
-interface Props {
+type Props = {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 };
-
 
 const OurRating = ({ data }: Props) => {
     const [slideIndex, setSlideIndex] = useState(0);
