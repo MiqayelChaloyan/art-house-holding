@@ -11,7 +11,13 @@ const Pages = {
     LANGUAGE_SEND_REQUEST: '/language/form',
     LANGUAGE_TAKE_TEST: '/language/quiz',
     LANGUAGE_ABOUT: '/about',
-    LANGUAGE_QUIZ: '/language/quiz'
+    LANGUAGE_QUIZ: '/language/quiz',
+
+    DESIGN_HOME: '/design',
+    DESIGN_PRICE_LIST: '/design/price-list',
+    DESIGN_CONTACT: '/design/contact',
+    DESIGN_PORTFOLIO: '/design/portfolio',
+    DESIGN_ORDERS: '/design/orders',
 }
 
 export {

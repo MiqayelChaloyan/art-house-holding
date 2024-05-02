@@ -1,5 +1,6 @@
 'use server'
 
+import Home from '@/components/screens/design/home';
 import { notFound } from 'next/navigation';
 
 // import Home from '@/components/screens/language/home';
@@ -45,10 +46,6 @@ export default async function Page({
     //     notFound()
     // }
 
-    return (
-        <div style={{backgroundColor: 'green', height: '700px'}}>
-            design
-        </div>
-    )
+    return (<Home/>)
 }
 

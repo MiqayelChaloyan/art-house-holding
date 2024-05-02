@@ -19,6 +19,8 @@ import LocalSwitcher from '@/components/components/local-switcher';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import Image from 'next/image';
+import { ImagePaths } from '@/lib/constants';
 
 
 type IHeaderProps = {
@@ -35,7 +37,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!isSticky) {
+        if (!isSticky) {
             setIsSticky(window.scrollY > 0);
         }
 
@@ -65,14 +67,17 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
         )}>
             <div className={`container ${styles.wrap}`}>
                 <Link
-                    href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
-                    aria-label={`${Pages.EDUCATIONAL_HOME}`}
-                    className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}
+                    href={`/${locale}${Pages.DESIGN_HOME}`}
+                    aria-label={`${Pages.DESIGN_HOME}`}
+                    className={cn(styles.logo)}
                 >
-                    <Logo
-                        width='162'
-                        height='44'
-                        fill='#111111'
+                    <Image
+                        src={ImagePaths.DESIGN.headerLogoURL}
+                        alt='logo'
+                        className={styles.image}
+                        width={500}
+                        height={500}
+                        priority
                     />
                 </Link>
                 <div className={cn(
@@ -81,38 +86,55 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                     `${isSticky && isOpenMenu ? styles.contentSticky : ''}`,
                 )}>
                     <div className={styles.nav}>
-                        <Link
+                        {/* <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
                             aria-label={`${Pages.EDUCATIONAL_HOME}`}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
-                            {t('about')}
-                        </Link>
-                        <Button
+                            ԲԱԺԻՆՆԵՐ
+                        </Link> */}
+                        {/* <Button
                             text={t('courses')}
                             onClick={handleSubmit}
                             className={cn(styles.btn, ArianAMU.className)}
-                        />
+                        /> */}
                         <Link
                             onClick={toggleMenuClick}
-                            href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`}
-                            aria-label={`${Pages.EDUCATIONAL_PARTNERS}`}
-                            className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? styles.linkActive : ""} ${ArianAMU.className}`}
+                            href={`/${locale}${Pages.DESIGN_PRICE_LIST}`}
+                            aria-label={`${Pages.DESIGN_PRICE_LIST}`}
+                            className={`${styles.link} ${pathname === `/${locale}${Pages.DESIGN_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
-                            {t('partners')}
+                            {/* {t('partners')} */}
+                            ԳՆԱՑՈՒՑԱԿ
                         </Link>
-                        <Link
+                        {/* <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
                             aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
-                            {t('price-list')}
-                        </Link>
+                            ՊԱՏՎԵՐՆԵՐ
+                        </Link> */}
+                        {/* <Link
+                            onClick={toggleMenuClick}
+                            href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
+                            aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
+                            className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
+                        >
+                            Պորտֆոլիո
+                        </Link> */}
+                        {/* <Link
+                            onClick={toggleMenuClick}
+                            href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
+                            aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
+                            className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
+                        >
+                            ԿԱՊ
+                        </Link> */}
                     </div>
                     <div>
-                        <LocalSwitcher activeColor='#B21B1B' color='#fff' />
+                        <LocalSwitcher activeColor='#8E685C' color='#fff' />
                     </div>
                 </div>
                 <button

@@ -23,21 +23,13 @@ import { sendRequest } from '@/api';
 
 type Props = {
     data: LANGUAGE[] | any
+    courses: LANGUAGE[] | any
 };
 
-const Form = ({ data }: Props) => {
+
+const Form = ({ data, courses }: Props) => {
     const t = useTranslations();
     const [isClear, setIsClear] = useState(false);
-
-    // 'first_name' => 'Name', 
-    //         'last_name' => 'Last Name', 
-    //         'phone' => '+374 00 000 000', 
-    //         'email' => 'test@gmail.com', 
-    //         'training_center' => 44, 
-    //         'course_name' => 'Չինարեն', 
-    //         'week_number_of_lessons' => 2, 
-    //         'course_type' => 98, 
-    //         'time_schedule' => 650,
 
     const initValues = {
         first_name: '',
@@ -67,11 +59,18 @@ const Form = ({ data }: Props) => {
         }));
     }
 
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const course_type = data.course_type.filter((item: any) => item.course_type === state.values.course_type);
         const week_number_of_lessons = data.week_number_of_lessons.filter((item: any) => item.week_number_of_lessons === state.values.week_number_of_lessons);
+
+        // const course_name = courses.filter((item: any) => {
+        //     if(item.slug === state.values.course_name) {
+        //         console.log(item.course_name)
+        //     }
+        // });
 
         const formData = {
             first_name: state.values.first_name,
@@ -128,48 +127,6 @@ const Form = ({ data }: Props) => {
                 error: error.message,
             }));
         }
-
-        // try {
-        //     if (
-        //         formData.course !== t('contact-us-form.select-course') ||
-        //         formData.quantity !== t('contact-us-form.select-quantity') ||
-        //         formData.duration !== t('contact-us-form.select-duration')
-        //     ) {
-        //         setState((prev: any) => ({
-        //             ...prev,
-        //             isLoading: true,
-        //         }));
-
-        //         const res = await fetch('/api/select-request', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //             },
-        //             body: JSON.stringify(formData),
-        //         });
-
-        //         const { error } = await res.json();
-
-        //         if (error) {
-        //             console.log('Error !!');
-        //             return;
-        //         };
-
-        //         setState(() => ({
-        //             ...initState,
-        //             isLoading: false,
-        //             error: error.message,
-        //         }));
-
-        //         setIsClear(true);
-        //     }
-        // } catch (error: any) {
-        //     setState((prev: any) => ({
-        //         ...prev,
-        //         isLoading: false,
-        //         error: error.message,
-        //     }));
-        // }
     };
 
 

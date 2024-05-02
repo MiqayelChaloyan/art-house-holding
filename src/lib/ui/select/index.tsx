@@ -34,6 +34,7 @@ interface SelectProps {
 const Select = ({ data, state, valueName, handleChange, classNameProperty, isClear }: SelectProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const componentRef = useRef<HTMLDivElement>(null);
+
     // const { scrollYProgress } = useScroll();
     // const [position, setPosition] = useState<number>(0)
     const [num, setNum] = useState<number>(0)

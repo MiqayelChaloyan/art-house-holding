@@ -22,7 +22,7 @@ interface Props {
 	children: React.ReactNode
 };
 
-const initValues = { name: '', email: '', phone: '', training_center: 46, message: '' };
+const initValues = { full_name: '', email: '', phone: '', training_center: 46, message: '' };
 const initState = { isLoading: false, error: '', values: initValues };
 
 const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
@@ -42,7 +42,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = {
-			name: state.values.name,
+			full_name: state.values.full_name,
 			email: state.values.email,
 			phone: state.values.phone,
 			training_center: 46,
@@ -122,11 +122,11 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 			<div className={styles.fields}>
 				<InputField
 					className={cn(`${styles.input}`)}
-					name='name'
-					type='name'
+					name='full_name'
+					type='full_name'
 					placeholder={t('name')}
 					requiredField={true}
-					value={values.name}
+					value={values.full_name}
 					onChange={handleChange}
 				/>
 				<InputField

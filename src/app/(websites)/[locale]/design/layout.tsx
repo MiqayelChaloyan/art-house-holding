@@ -1,26 +1,27 @@
 'use server'
 
+import Footer from "@/lib/outlets/design/Footer";
 import Header from "@/lib/outlets/design/Header";
 
-// import { notFound } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 // import { type Metadata } from 'next';
 
-// import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
+import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
 // import ContactUs from '@/lib/outlets/language/ContactUs';
 // import Footer from '@/lib/outlets/language/Footer';
 // import Header from '@/lib/outlets/language/Header';
 // import PlayerModal from '@/lib/outlets/general/PlayerModal';
-// import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
+import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 
 // import { Locale } from '@/locales';
 // import { SanityClient } from 'sanity';
 
-// import { client } from '../../../../../sanity/client';
+import { client } from '../../../../../sanity/client';
 
 // import { query } from '../../../../../sanity/services/language-service/courses';
-// import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
-// import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
+import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 // import { querySiteMeta } from '../../../../../sanity/services/language-service/about-us';
 // import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 
@@ -45,51 +46,58 @@ interface RootLayoutProps {
 //     ogDescription: string
 // }
 
-// const localeStrings: {
-//     am: string
-//     ru: string
-//     en: string
-//     [key: string]: string
-// } = {
-//     am: 'լեզվի կենտրոն',
-//     ru: 'языковой центр',
-//     en: 'language center'
-// };
+const localeStrings: {
+    am: string
+    ru: string
+    en: string
+    [key: string]: string
+} = {
+    am: 'դիզայն ստուդիա',
+    ru: 'студия дизайна',
+    en: 'design studio'
+};
 
-// async function getResources(locale: string) {
-//     const coursesPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-//     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
+async function getResources(locale: string) {
+    // const coursesPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+    const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
 
-//     return Promise.all([coursesPromise, branchesPromise])
-//         .then(([courses, branches]) => {
-//             if (!courses?.length || !branches?.length) {
-//                 return { courses: [], branches: [], isError: true };
-//             }
+    return Promise.all([branchesPromise])
+        .then(([branches]) => {
+            if (!branches?.length) {
+                return { branches: [], isError: true };
+            }
 
-//             return { courses: courses[0], branches: branches[1], isError: false };
-//         })
-//         .catch(error => {
-//             return { courses: [], branches: [], isError: true };
-//         });
+            return { branches: branches[1], isError: false };
+        })
+        .catch(error => {
+            return { branches: [], isError: true };
+        });
 
-// }
+}
 
 export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
 
-    // const { courses, branches, isError }: LANGUAGE[] | any = await getResources(locale);
+    const { branches, isError }: LANGUAGE[] | any = await getResources(locale);
 
-    // if (!courses || !branches || isError) {
-    //     notFound()
-    // }
+    if (!branches || isError) {
+        notFound()
+    }
 
     return (
         <div className='design-container'>
-            <Header typePosition="fixed" locale={locale}/>
+            <Header typePosition="fixed" locale={locale} />
+            <ScrollToTopButton theme='#8E685C' />
+            <FloatingMenu
+                website={localeStrings[locale]}
+                branches={branches}
+                theme='#8E685C'
+                hover='#4B352B'
+            />
             {children}
-            <footer style={{backgroundColor: 'black', height: '250px'}}>footer</footer>
+            <Footer />
         </div>
     );
 }

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -9,17 +9,16 @@ import Instagram from '@/lib/icons/language/Instagram';
 import Facebook from '@/lib/icons/language/Facebook';
 
 import { Hosts } from '@/lib/constants/hosts';
+import { Arial } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
 import styles from './styles.module.sass';
-import { Arial } from '@/lib/constants/font';
 
 
 const Footer = () => {
     const windowSize = useWindowSize();
     const t = useTranslations('address');
-
 
     return (
         <footer className={styles.footer}>

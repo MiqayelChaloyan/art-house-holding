@@ -9,12 +9,12 @@ import { FormLarge, FormSmall } from '@/types/language';
 
 
 // Language
-// SEND ??
-export const send = async (formData: FormSmall) => {
+// SEND CONTACT US
+export const send = async (contactUs: FormSmall) => {
     try {
-        console.log(formData)
+        console.log(contactUs)
         const response = await axios.post(BASE_URL, null, {
-            params: { formData },
+            params: { contactUs },
             timeout: 10000
         });
 
@@ -22,7 +22,7 @@ export const send = async (formData: FormSmall) => {
             status: response.status
         };
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 
@@ -39,17 +39,17 @@ export const sendRequest = async (formData: FormLarge) => {
             status: response.status
         };
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 
 // Educational Center
-// SEND CONTACT MESSAGE
-export const sendContactMessage = async (formData: Form) => {
+// SEND CONTACT US
+export const sendContactMessage = async (contactUs: Form) => {
     try {
-        console.log(formData)
+        console.log(contactUs)
         const response = await axios.post(BASE_URL, null, {
-            params: { formData },
+            params: { contactUs },
             timeout: 10000
         });
 
@@ -57,6 +57,6 @@ export const sendContactMessage = async (formData: Form) => {
             status: response.status
         };
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
