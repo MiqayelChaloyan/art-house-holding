@@ -57,9 +57,15 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	z-index: 999
 	height: 70px
 	transition: background  0.8s linear
+	/* @xs */
+	@media screen and (max-width: 600px)
+		height: 100vh
 	.nav
 		height: 70px 
 		line-height: 70px 
+		/* @xs */
+		@media screen and (max-width: 600px)
+			height: 100vh
 		.linkActive
 			border-radius: 0
 			color: #F9CC48

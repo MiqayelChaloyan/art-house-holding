@@ -6,19 +6,18 @@ import About from './About';
 import Teachers from './Teachers';
 import Gallery from './Gallery';
 
-// import Player from '@/lib/ui/video-player';
-
 import Container from '@/components/components/container';
+import Player from '@/components/components/player';
+
+import { ReduxType, UrlType } from '@/types/language';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { onPlay, setPath } from '@/store/player_reducer';
 
 import { ABOUT_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
-import { ReduxType, UrlType } from '@/types/language';
-
 import styles from './styles.module.sass';
-import Player from '@/components/components/player';
-import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/store/player_reducer';
 
 
 type Props = {
