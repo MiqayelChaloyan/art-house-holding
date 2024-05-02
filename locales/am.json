@@ -32,7 +32,10 @@
         "total-points": "Վիկտորինայի ընդհանուր միավորներ",
         "total-questions": "Ընդհանուր հարցեր",
         "quiz-result": "Վիկտորինայի արդյունք",
-        "select-language": "Ընտրել Լեզուն"
+        "select-language": "Ընտրել Լեզուն",
+        "send-message-success": "Ձեր նամակը հաջողությամբ ուղարկվեց",
+        "send-message-failure": "Ինչ որ բան այնպես չգնաց, խնդրում ենք փորձել նորից"
+
     },
     "buttons": {
         "contact-us": "Կապ մեզ հետ",

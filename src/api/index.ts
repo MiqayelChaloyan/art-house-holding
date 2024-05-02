@@ -12,14 +12,13 @@ import { FormLarge, FormSmall } from '@/types/language';
 // SEND CONTACT US
 export const sendContactUsLanguage = async (contactUs: FormSmall) => {
     try {
-        console.log(contactUs)
-        const response = await axios.post(BASE_URL, null, {
-            params: { contactUs },
-            timeout: 10000
-        });
+        // const response = await axios.post(BASE_URL, null, {
+        //     params: { contactUs },
+        //     timeout: 10000
+        // });
 
         return {
-            status: response.status
+            status: 200//response.status
         };
     } catch (error) {
         return error

@@ -32,7 +32,9 @@
         "total-points": "Total quiz points",
         "total-questions": "Total questions",
         "quiz-result": "Quiz result",
-        "select-language": "Select Language"
+        "select-language": "Select Language",
+        "send-message-success": "Your email was sent successfully",
+        "send-message-failure": "Something went wrong, please try again"
     },
     "buttons": {
         "contact-us": "Contact Us",

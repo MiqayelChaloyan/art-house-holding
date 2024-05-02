@@ -5,13 +5,14 @@ import React, { FormEvent, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
+import Snackbar from '@/components/components/snackbar';
 
 import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
+import { Arial } from '@/lib/constants/font';
 
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
-import { Arial } from '@/lib/constants/font';
 
 import { sendRequest } from '@/api';
 
@@ -25,10 +26,14 @@ type Props = {
     courses: LANGUAGE[] | any
 };
 
-
 const Form = ({ data, courses }: Props) => {
     const t = useTranslations();
     const [isClear, setIsClear] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [info, setInfo] = useState({
+        status: 'success',
+        content: t('texts.send-message-success')
+    });
 
     const initValues = {
         first_name: '',
@@ -96,8 +101,24 @@ const Form = ({ data, courses }: Props) => {
                 const res: { status: number } | any = await sendRequest(formData);
 
                 if (res?.status !== 200) {
+                    setOpen(true);
+                    setInfo({
+                        status: 'info',
+                        content: t('texts.send-message-failure')
+                    });
+                    setState((prev: any) => ({
+                        ...prev,
+                        isLoading: false,
+                    }))
                     return;
                 };
+
+                setOpen(true);
+
+                setInfo({
+                    status: 'success',
+                    content: t('texts.send-message-success')
+                });
 
                 setState(() => ({
                     ...initState,
@@ -113,11 +134,20 @@ const Form = ({ data, courses }: Props) => {
                 isLoading: false,
                 error: error.message,
             }));
+
+            setOpen(true);
+            setInfo({
+                status: 'info',
+                content: t('texts.send-message-failure')
+            });
         }
     };
 
+    const handleClose = () => setOpen(false);
+
     return (
         <div className={styles.container}>
+            <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.arrow_left} />
             <Container>
                 <div className={styles.form}>

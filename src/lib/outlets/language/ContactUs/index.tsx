@@ -2,13 +2,13 @@
 
 import { FormEvent, memo, useState } from 'react';
 
-import { useTranslations } from 'next-intl';
-
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 import Container from '@/components/components/container';
-import Section from '@/components/components/section';
-import { usePathname } from 'next/navigation';
+// import Section from '@/components/components/section';
+import Snackbar from '@/components/components/snackbar';
 
 import Gmail from '@/lib/icons/language/Gmail';
 import Instagram from '@/lib/icons/language/Instagram';
@@ -19,7 +19,7 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 
 import { Hosts } from '@/lib/constants/hosts';
-import { Arial, Inter, Vrdznagir } from '@/lib/constants/font';
+import { Arial, Vrdznagir } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
@@ -40,6 +40,11 @@ const ContactUs = ({ courses }: Props) => {
     const t = useTranslations();
     const pathname = usePathname();
     const isOpen = pathname?.includes('/form')
+    const [open, setOpen] = useState(false);
+    const [info, setInfo] = useState({
+        status: 'success',
+        content: t('texts.send-message-success')
+    });
 
     const initValues = { full_name: '', email: '', phone: '', course_name: t('contact-us-form.select-course'), training_center: 44, };
     const initState = { isLoading: false, error: '', values: initValues };
@@ -81,8 +86,24 @@ const ContactUs = ({ courses }: Props) => {
             const res: { status: number } | any = await sendContactUsLanguage(formData);
 
             if (res?.status !== 200) {
+                setOpen(true);
+                setInfo({
+                    status: 'info',
+                    content: t('texts.send-message-failure')
+                });
+                setState((prev: any) => ({
+                    ...prev,
+                    isLoading: false,
+                }))
                 return;
             };
+
+            setOpen(true);
+
+            setInfo({
+                status: 'success',
+                content: t('texts.send-message-success')
+            });
 
             setState(() => ({
                 ...initState,
@@ -95,12 +116,20 @@ const ContactUs = ({ courses }: Props) => {
                 isLoading: false,
                 error: error.message,
             }));
+
+            setOpen(true);
+            setInfo({
+                status: 'info',
+                content: t('texts.send-message-failure')
+            });
         }
     };
 
+    const handleClose = () => setOpen(false);
 
     return !isOpen && (
         <div className={styles.container}>
+            <Snackbar open={open} handleChange={handleClose} info={info}/>
             <Container>
                 <div className={styles.contact}>
                     {/* <Section direction='right'> */}

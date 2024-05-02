@@ -32,7 +32,9 @@
         "total-points": "Общее количество баллов за викторину",
         "total-questions": "Всего вопросов",
         "quiz-result": "Результат викторины",
-        "select-language": "Выберите язык"
+        "select-language": "Выберите язык",
+        "send-message-success": "Ваше письмо было успешно отправлено",
+        "send-message-failure": "Что-то пошло не так. Пожалуйста, попробуйте еще раз"
     },
     "buttons": {
         "contact-us": "Связаться с нами",

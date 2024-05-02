@@ -4,6 +4,8 @@ import React, { useState, FormEvent } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import Snackbar from '@/components/components/snackbar';
+
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import TextareaField from '@/lib/ui/TextareaField';
@@ -27,7 +29,12 @@ const initState = { isLoading: false, error: '', values: initValues };
 const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 	const [state, setState] = useState<any>(initState);
 	const { values, isLoading, error } = state;
-	const t = useTranslations('contact-us-form');
+	const t = useTranslations();
+    const [open, setOpen] = useState(false);
+    const [info, setInfo] = useState({
+        status: 'success',
+        content: t('texts.send-message-success')
+    });
 
 	const handleChange = ({ target }: any) =>
 		setState((prev: any) => ({
@@ -49,7 +56,6 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 		};
 
 		try {
-
 			setState((prev: any) => ({
 				...prev,
 				isLoading: true,
@@ -58,8 +64,24 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 			const res: { status: number } | any = await sendContactUsEducational(formData);
 
 			if (res?.status !== 200) {
-				return;
-			};
+                setOpen(true);
+                setInfo({
+                    status: 'info',
+                    content: t('texts.send-message-failure')
+                });
+                setState((prev: any) => ({
+                    ...prev,
+                    isLoading: false,
+                }))
+                return;
+            };
+
+			setOpen(true);
+
+			setInfo({
+                status: 'success',
+                content: t('texts.send-message-success')
+            });
 
 			setState(() => ({
 				...initState,
@@ -73,14 +95,23 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 				isLoading: false,
 				error: error.message,
 			}));
+
+			setOpen(true);
+            setInfo({
+                status: 'info',
+                content: t('texts.send-message-failure')
+            });
 		}
 	};
+
+	const handleClose = () => setOpen(false);
 
 	return (
 		<form
 			className={cn(className, styles.box)}
 			onSubmit={handleSubmit}
 		>
+			<Snackbar open={open} handleChange={handleClose} info={info}/>
 			<div className={styles.contact_us_header}>
 				{children}
 			</div>
@@ -89,7 +120,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 					className={cn(`${styles.input}`)}
 					name='full_name'
 					type='full_name'
-					placeholder={t('name')}
+					placeholder={t('contact-us-form.name')}
 					requiredField={true}
 					value={values.full_name}
 					onChange={handleChange}
@@ -98,7 +129,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 					className={cn(`${styles.input}`)}
 					name='email'
 					type='email'
-					placeholder={t('email')}
+					placeholder={t('contact-us-form.email')}
 					requiredField={true}
 					value={values.email}
 					onChange={handleChange}
@@ -107,7 +138,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 					className={cn(`${styles.input}`)}
 					name='phone'
 					type='phone'
-					placeholder={t('phone-number')}
+					placeholder={t('contact-us-form.phone-number')}
 					maskNumber='+374 99 99 99 99'
 					requiredField={true}
 					value={values.phone}
@@ -116,7 +147,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 				<TextareaField
 					className={cn(`${styles.textarea}`)}
 					name='message'
-					placeholder={t('message')}
+					placeholder={t('contact-us-form.message')}
 					requiredField={false}
 					value={values.message}
 					onChange={handleChange}
@@ -124,10 +155,10 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 			</div>
 			<button className={`${styles.submit}`} style={{ width }}>
 				{isLoading ?
-					`${t('loading')}...`
+					`${t('contact-us-form.loading')}...`
 					:
 					<span>
-						{t('send')}
+						{t('contact-us-form.send')}
 					</span>
 				}
 			</button>
