@@ -10,7 +10,7 @@ import { FormLarge, FormSmall } from '@/types/language';
 
 // Language
 // SEND CONTACT US
-export const send = async (contactUs: FormSmall) => {
+export const sendContactUsLanguage = async (contactUs: FormSmall) => {
     try {
         console.log(contactUs)
         const response = await axios.post(BASE_URL, null, {
@@ -45,7 +45,7 @@ export const sendRequest = async (formData: FormLarge) => {
 
 // Educational Center
 // SEND CONTACT US
-export const sendContactMessage = async (contactUs: Form) => {
+export const sendContactUsEducational = async (contactUs: Form) => {
     try {
         console.log(contactUs)
         const response = await axios.post(BASE_URL, null, {

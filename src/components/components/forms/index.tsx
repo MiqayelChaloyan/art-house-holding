@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState, FormEvent } from 'react';
 
@@ -8,12 +8,11 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import TextareaField from '@/lib/ui/TextareaField';
 
+import { sendContactUsEducational } from '@/api';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-
-// TODO
-import { sendContactMessage } from '@/api';
 
 
 interface Props {
@@ -56,13 +55,11 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 				isLoading: true,
 			}));
 
-			const res = await sendContactMessage(formData);
-			console.log(res)
+			const res: { status: number } | any = await sendContactUsEducational(formData);
 
-			// if (res?.status !== 200) {
-			// 	console.log('Error !!');
-			// 	return;
-			// };
+			if (res?.status !== 200) {
+				return;
+			};
 
 			setState(() => ({
 				...initState,
@@ -77,38 +74,6 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 				error: error.message,
 			}));
 		}
-
-		// try {
-		// setState((prev: any) => ({
-		// 	...prev,
-		// 	isLoading: true,
-		// }));
-		// 	const res = await fetch('/api/contact', {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		},
-		// 		body: JSON.stringify(formData),
-		// 	});
-
-		// 	const { error } = await res.json();
-		// 	if (error) {
-		// 		console.log('Error !!');
-		// 		return;
-		// 	};
-
-		// setState(() => ({
-		// 	...initState,
-		// 	isLoading: false,
-		// 	error: error.message,
-		// }));
-		// } catch (error: any) {
-		// 	setState((prev: any) => ({
-		// 		...prev,
-		// 		isLoading: false,
-		// 		error: error.message,
-		// 	}));
-		// }
 	};
 
 	return (

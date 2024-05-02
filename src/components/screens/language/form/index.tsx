@@ -13,12 +13,11 @@ import InputNumber from '@/lib/ui/InputNumber';
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import { Arial } from '@/lib/constants/font';
 
+import { sendRequest } from '@/api';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-
-// TODO from api
-import { sendRequest } from '@/api';
 
 
 type Props = {
@@ -94,21 +93,9 @@ const Form = ({ data, courses }: Props) => {
                     isLoading: true,
                 }));
 
-                const res = await sendRequest(formData);
-                console.log(res)
-
-                // const res = await fetch('/api/select-request', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify(formData),
-                // });
-
-                // const { error } = await res.json();
+                const res: { status: number } | any = await sendRequest(formData);
 
                 if (res?.status !== 200) {
-                    console.log('Error !!');
                     return;
                 };
 
@@ -128,8 +115,6 @@ const Form = ({ data, courses }: Props) => {
             }));
         }
     };
-
-
 
     return (
         <div className={styles.container}>
