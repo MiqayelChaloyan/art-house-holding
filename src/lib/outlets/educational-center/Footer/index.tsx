@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import Link from 'next/link';
 
@@ -11,13 +11,13 @@ import FormHeader from '@/components/components/form-header';
 import Logo from '@/lib/icons/educational-center/Logo';
 import Email from '@/lib/icons/educational-center/Email';
 import Phone from '@/lib/icons/educational-center/Phone';
+import { Pages } from '@/lib/constants/pages';
 
 import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
 
 // import { MapProvider } from '@/lib/providers';
 
 import styles from './styles.module.sass';
-import { Pages } from '@/lib/constants/pages';
 
 
 type Props = {

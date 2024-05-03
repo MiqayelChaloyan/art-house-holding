@@ -1,5 +1,5 @@
-export const query = 
-`*[_type == "languages-select-option"] {
+export const query =
+    `*[_type == "languages-select-option"] {
     "_id": _id,
     "course_name": course_name[] {
         "course_name": course_name[$language],
@@ -16,3 +16,10 @@ export const query =
 }`;
 
 
+export const queryFilterCourses = 
+    `*[_type == "languages-select-option"] {
+        "course_name": course_name[] {
+            "course_name": course_name[$language],
+            "slug": slug.current,
+        },
+    }`;

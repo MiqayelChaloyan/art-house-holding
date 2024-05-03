@@ -1,6 +1,6 @@
 'use client'
 
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { LANGUAGE } from '../../../../sanity/sanity-queries/language';
 
@@ -8,15 +8,7 @@ import { Arial } from '@/lib/constants/font';
 
 import styles from './styles.module.sass';
 
-// import { useScroll } from "framer-motion";
 
-// values: {
-//     fullName: string,
-//     email: string,
-//     phone: string,
-//     language: string
-// } 
-// ^
 type FormProps = {
     isLoading: boolean,
     values: any
@@ -29,14 +21,20 @@ interface SelectProps {
     handleChange: (value: any) => void
     classNameProperty: string
     isClear: boolean
+    getValueToSlug: (key: string, slug: number) => void
 }
 
-const Select = ({ data, state, valueName, handleChange, classNameProperty, isClear }: SelectProps) => {
+const Select = ({
+    data,
+    state,
+    valueName,
+    handleChange,
+    classNameProperty,
+    isClear,
+    getValueToSlug
+}: SelectProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const componentRef = useRef<HTMLDivElement>(null);
-
-    // const { scrollYProgress } = useScroll();
-    // const [position, setPosition] = useState<number>(0)
     const [num, setNum] = useState<number>(0)
 
     const handleSelect = () => {
@@ -45,8 +43,12 @@ const Select = ({ data, state, valueName, handleChange, classNameProperty, isCle
 
     const handleOptionClick = (e: any) => {
         const selectedText = e.currentTarget.querySelector('label').textContent;
+        const selectedId = e.currentTarget.querySelector('label').id;
 
-        setNum(1)
+        setNum(1);
+
+        getValueToSlug(valueName, selectedId);
+
         handleChange((prev: FormProps) => ({
             ...prev,
             values: {
@@ -71,18 +73,6 @@ const Select = ({ data, state, valueName, handleChange, classNameProperty, isCle
         };
     }, []);
 
-    // useEffect(() => {
-    //     return scrollYProgress.on('change', (latestValue) => {
-    //         if (latestValue > 0.2) {
-    //             setPosition(0)
-
-    //         } else {
-    //             setPosition(60)
-    //         }
-    //     });
-    // });
-    //style={{bottom: position > 0 ? `${position}px` : ''}}
-
     const colorTheme = () => {
         const color = classNameProperty !== 'large' ? (num > 0 && !isClear ? 'black' : '#D4C7BA') : '#fff';
         return { color };
@@ -105,8 +95,8 @@ const Select = ({ data, state, valueName, handleChange, classNameProperty, isCle
             <ul className={styles[`${classNameProperty}-select-dropdown`]} role="listbox" id="select-dropdown">
                 {data?.map((item: any, index: number) => (
                     <li key={item?.slug.current || index} role="option" onClick={handleOptionClick} tabIndex={index}>
-                        <input type="radio" id={item?.slug} name={valueName} />
-                        <label htmlFor={item?.valueName}>{item?.[valueName]}</label>
+                        <input type="radio" id={valueName} name={valueName} />
+                        <label htmlFor={item?.valueName} id={item?.slug}>{item?.[valueName]}</label>
                     </li>
                 ))}
             </ul>
@@ -114,4 +104,4 @@ const Select = ({ data, state, valueName, handleChange, classNameProperty, isCle
     );
 };
 
-export default memo(Select);
+export default React.memo(Select);

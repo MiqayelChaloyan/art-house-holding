@@ -15,6 +15,7 @@ import { Arial } from '@/lib/constants/font';
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
 import { sendRequest } from '@/api';
+import { FormLarge } from '@/types/language';
 
 import cn from 'classnames';
 
@@ -24,6 +25,12 @@ import styles from './styles.module.sass';
 type Props = {
     data: LANGUAGE[] | any
     courses: LANGUAGE[] | any
+};
+
+type FormProps = {
+    isLoading: boolean,
+    error: boolean,
+    values: FormLarge
 };
 
 const Form = ({ data, courses }: Props) => {
@@ -46,12 +53,12 @@ const Form = ({ data, courses }: Props) => {
         course_type: t('contact-us-form.select-course-type'),
     };
 
-    const initState = { isLoading: false, error: '', values: initValues };
+    const initState = { isLoading: false, error: false, values: initValues };
 
-    const [state, setState] = useState<any>(initState);
+    const [state, setState] = useState<FormProps>(initState);
+    const [course, setCourse] = useState<string>('');
 
-    const { values, isLoading, error } = state;
-
+    const { values, isLoading } = state;
 
     const handleChange = ({ target }: any) => {
         setState((prev: any) => ({
@@ -63,18 +70,11 @@ const Form = ({ data, courses }: Props) => {
         }));
     }
 
-
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const course_type = data.course_type.filter((item: any) => item.course_type === state.values.course_type);
-        const week_number_of_lessons = data.week_number_of_lessons.filter((item: any) => item.week_number_of_lessons === state.values.week_number_of_lessons);
-
-        // const course_name = courses.filter((item: any) => {
-        //     if(item.slug === state.values.course_name) {
-        //         console.log(item.course_name)
-        //     }
-        // });
+        const course_type = data.course_type.filter((item: { course_type: string }) => item.course_type === state.values.course_type);
+        const week_number_of_lessons = data.week_number_of_lessons.filter((item: { week_number_of_lessons: string }) => item.week_number_of_lessons === state.values.week_number_of_lessons);
 
         const formData = {
             first_name: state.values.first_name,
@@ -82,7 +82,7 @@ const Form = ({ data, courses }: Props) => {
             phone: state.values.phone,
             email: state.values.email,
             training_center: 44,
-            course_name: state.values.course_name,
+            course_name: course,
             week_number_of_lessons: week_number_of_lessons[0].slug,
             course_type: course_type[0].slug,
         };
@@ -123,7 +123,7 @@ const Form = ({ data, courses }: Props) => {
                 setState(() => ({
                     ...initState,
                     isLoading: false,
-                    error: '',
+                    error: false,
                 }));
 
                 setIsClear(true);
@@ -132,7 +132,7 @@ const Form = ({ data, courses }: Props) => {
             setState((prev: any) => ({
                 ...prev,
                 isLoading: false,
-                error: error.message,
+                error: true,
             }));
 
             setOpen(true);
@@ -144,6 +144,16 @@ const Form = ({ data, courses }: Props) => {
     };
 
     const handleClose = () => setOpen(false);
+
+    const getValueToSlug = (valueName: string, slug: number) => {
+        const course = valueName === 'course_name' && courses.course_name.find((item: { course_name: string, slug: number }) => {
+            return item.slug === slug;
+        });
+
+        if (course.course_name) {
+            return setCourse(course.course_name);
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -206,6 +216,7 @@ const Form = ({ data, courses }: Props) => {
                                     state={state}
                                     classNameProperty='small'
                                     isClear={isClear}
+                                    getValueToSlug={getValueToSlug}
                                 />
                                 <Select
                                     data={data.week_number_of_lessons}
@@ -214,6 +225,7 @@ const Form = ({ data, courses }: Props) => {
                                     state={state}
                                     classNameProperty='small'
                                     isClear={isClear}
+                                    getValueToSlug={getValueToSlug}
                                 />
                                 <Select
                                     data={data.course_type}
@@ -222,6 +234,7 @@ const Form = ({ data, courses }: Props) => {
                                     state={state}
                                     classNameProperty='small'
                                     isClear={isClear}
+                                    getValueToSlug={getValueToSlug}
                                 />
                             </div>
                         </div>

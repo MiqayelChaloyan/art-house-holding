@@ -16,7 +16,7 @@ import { SanityClient } from 'sanity';
 
 import { client } from '../../../../../sanity/client';
 
-import { query } from '../../../../../sanity/services/language-service/courses';
+import { query, queryFilterCourses } from '../../../../../sanity/services/language-service/courses';
 import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import { querySiteMeta } from '../../../../../sanity/services/language-service/about-us';
@@ -57,17 +57,18 @@ const localeStrings: {
 async function getResources(locale: string) {
     const coursesPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
+    const languagesPromise = await client.fetch(queryFilterCourses, { language: 'am' }, { next: { revalidate: 100 } });
 
-    return Promise.all([coursesPromise, branchesPromise])
-        .then(([courses, branches]) => {
-            if (!courses?.length || !branches?.length) {
-                return { courses: [], branches: [], isError: true };
+    return Promise.all([coursesPromise, branchesPromise, languagesPromise])
+        .then(([courses, branches, languages]) => {
+            if (!courses?.length || !branches?.length || !languages?.length) {
+                return { courses: [], branches: [], languages: [], isError: true };
             }
 
-            return { courses: courses[0], branches: branches[1], isError: false };
+            return { courses: courses[0], branches: branches[1], languages: languages[0], isError: false };
         })
         .catch(error => {
-            return { courses: [], branches: [], isError: true };
+            return { courses: [], branches: [], languages: [], isError: true };
         });
 
 }
@@ -77,9 +78,9 @@ export default async function Layout({
     params: { locale },
 }: Readonly<RootLayoutProps>) {
 
-    const { courses, branches, isError }: LANGUAGE[] | any = await getResources(locale);
+    const { courses, branches, languages, isError }: LANGUAGE[] | any = await getResources(locale);
 
-    if (!courses || !branches || isError) {
+    if (!courses || !branches || !languages || isError) {
         notFound()
     }
 
@@ -102,7 +103,7 @@ export default async function Layout({
                 </main>
             </div>
             <PlayerModal />
-            <ContactUs courses={courses?.course_name} />
+            <ContactUs courses={courses?.course_name} languages={languages}/>
             <Footer />
         </div>
     );

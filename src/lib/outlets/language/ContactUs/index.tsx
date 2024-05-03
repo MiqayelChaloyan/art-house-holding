@@ -26,19 +26,28 @@ import useWindowSize from '@/hooks/useWindowSize';
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
 import { sendContactUsLanguage } from '@/api';
+import { FormSmall } from '@/types/language';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-interface Props {
+type Props = {
     courses: LANGUAGE[]
+    languages: LANGUAGE[] | any
 };
 
-const ContactUs = ({ courses }: Props) => {
+type FormProps = {
+    isLoading: boolean,
+    error: boolean,
+    values: FormSmall
+};
+
+const ContactUs = ({ courses, languages }: Props) => {
     const t = useTranslations();
     const pathname = usePathname();
+    const [course, setCourse] = useState<string>('');
     const isOpen = pathname?.includes('/form')
     const [open, setOpen] = useState(false);
     const [info, setInfo] = useState({
@@ -47,9 +56,9 @@ const ContactUs = ({ courses }: Props) => {
     });
 
     const initValues = { full_name: '', email: '', phone: '', course_name: t('contact-us-form.select-course'), training_center: 44, };
-    const initState = { isLoading: false, error: '', values: initValues };
+    const initState = { isLoading: false, error: false, values: initValues };
 
-    const [state, setState] = useState<any>(initState);
+    const [state, setState] = useState<FormProps>(initState);
     const windowSize = useWindowSize();
 
     const { values, isLoading, error } = state;
@@ -71,7 +80,7 @@ const ContactUs = ({ courses }: Props) => {
             full_name: state.values.full_name,
             email: state.values.email,
             phone: state.values.phone,
-            course_name: state.values.course_name,
+            course_name: course,
             training_center: 44,
         };
 
@@ -108,13 +117,13 @@ const ContactUs = ({ courses }: Props) => {
             setState(() => ({
                 ...initState,
                 isLoading: false,
-                error: '',
+                error: false,
             }));
         } catch (error: any) {
             setState((prev: any) => ({
                 ...prev,
                 isLoading: false,
-                error: error.message,
+                error: true,
             }));
 
             setOpen(true);
@@ -126,6 +135,16 @@ const ContactUs = ({ courses }: Props) => {
     };
 
     const handleClose = () => setOpen(false);
+
+    const getValueToSlug = (valueName: string, slug: number) => {
+        const course = valueName === 'course_name' && languages.course_name.find((item: { course_name: string, slug: number }) => {
+            return item.slug === slug;
+        });
+
+        if (course.course_name) {
+            return setCourse(course.course_name);
+        }
+    };
 
     return !isOpen && (
         <div className={styles.container}>
@@ -193,6 +212,7 @@ const ContactUs = ({ courses }: Props) => {
                                         state={state}
                                         classNameProperty='large'
                                         isClear={false}
+                                        getValueToSlug={getValueToSlug}
                                     />
                                 </div>
                                 <button type='submit' className={styles.submit}>
