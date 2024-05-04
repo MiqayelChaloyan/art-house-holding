@@ -79,6 +79,7 @@ const Course = ({ position }: CourseProps) => {
                                 Ինտերիեր դիզայնի մասնագիտացված
                                 դասընթացներն իրենց մեջ ներառում են
                             </p>
+                            <button className={styles['view-btn']}>Կարդալ ավելին</button>
                         </div>
                         <div
                             className={styles.slide}

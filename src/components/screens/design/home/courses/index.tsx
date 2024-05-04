@@ -8,7 +8,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass'
 
 
-const data = [1,2,3,4];
+const data = [1,2];
 
 const Courses = () => {
     return (
