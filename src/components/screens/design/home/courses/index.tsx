@@ -1,22 +1,27 @@
 'use client'
-import cn from 'classnames';
-import styles from './styles.module.sass'
-import { Arial } from '@/lib/constants/font';
 import Course from './course';
 
+import { Arial } from '@/lib/constants/font';
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass'
+
+
+const data = [1,2,3,4];
 
 const Courses = () => {
-
     return (
-        <div style={{ backgroundColor: '#ffffff', height: 'max-content' }}>
+        <section id='design-courses' className={styles['design-courses']}>
             <div className={styles.titles}>
                 <h2 className={cn(styles['title-back'], Arial.className)}>COURSES</h2>
                 <h1 className={cn(styles.title, Arial.className)}>ԴԱՍԸՆԹԱՑՆԵՐ</h1>
             </div>
 
-            <Course position='left'/>
-            <Course position='right'/>
-        </div>
+            {data.map(item => (
+                <Course key={item} position={item % 2 !== 0 ? 'left' : 'right'}/>
+            ))}
+        </section>
     )
 };
 

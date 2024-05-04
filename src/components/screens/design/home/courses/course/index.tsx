@@ -1,10 +1,19 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+
 import Image from 'next/image';
-import styles from './styles.module.sass';
+
 import { ImagePaths } from '@/lib/constants';
+
 import Container from '@/components/components/container';
+
+import { Arial } from '@/lib/constants/font';
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
+
 
 const data = [
     {
@@ -22,7 +31,6 @@ const data = [
 ];
 
 
-
 interface CourseProps {
     position: 'left' | 'right';
 }
@@ -35,76 +43,71 @@ const Course = ({ position }: CourseProps) => {
             setIndex((prevIndex) => (prevIndex + 1) % data.length);
         }, 5000);
 
-        return () => clearTimeout(timer); // Cleanup function to clear the timeout
-    }, [index]); // Trigger the effect whenever index changes
+        return () => clearTimeout(timer);
+    }, [index]);
+
+    const boxClass = position === 'left' ? 'box-left' : 'box-right';
+    const cornerClass = position === 'left' ? 'corner-left' : 'corner-right';
+    const cornerLargeClass = position === 'left' ? 'corner-large-left' : 'corner-large-right';
+    const viewClass = position === 'left' ? 'view-left' : 'view-right';
+    const partCornerClass = position === 'left' ? 'corner-part-left' : 'corner-part-right';
 
     return (
-        <Container>
-            {position === 'left' ? (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div>
-                        <Image
-                            src={ImagePaths.DESIGN.staplerURL.default.src}
-                            alt='stapler'
-                            className={styles.image}
-                            width={500}
-                            height={500}
-                            priority
-                        />
-                        <figure className={styles.imagesContainer}>
-                            {data.map((item) => (
-                                <img
-                                    key={item.index}
-                                    className={`${styles.slide} ${index === item.index ? styles.active : styles.next}`}
-                                    src={item.path}
-                                    alt='alt'
-                                />
-                            ))}
-                        </figure>
-                    </div>
-                    <div>
-                        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nihil quaerat, eius rerum, aliquam ipsam asperiores in dignissimos
-                            unde dicta iste pariatur sit natus consequuntur modi nobis eveniet
-                            cumque odit. Quisquam nulla, eos repellat commodi quaerat eaque
-                            veritatis! Qui, vel labore.
-                        </h2>
-                    </div>
+        <div className={styles.section}>
+            <div className={styles[viewClass]}>
+                <div className={styles[cornerClass]}>
+                    <p className={cn(styles['view-text'], Arial.className)}>
+                        Կարդալ ավելին
+                    </p>
                 </div>
-            ) : (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div>
-                        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nihil quaerat, eius rerum, aliquam ipsam asperiores in dignissimos
-                            unde dicta iste pariatur sit natus consequuntur modi nobis eveniet
-                            cumque odit. Quisquam nulla, eos repellat commodi quaerat eaque
-                            veritatis! Qui, vel labore.
-                        </h2>
+            </div>
+            <div className={styles.card}>
+                <Container>
+                    <div className={cn(styles.box, styles[boxClass])}>
+                        <div className={styles.right}>
+                            <h2 className={cn(styles.title, Arial.className)}>
+                                INTERIOR {'\n'} DESIGN
+                            </h2>
+                            <div className={styles.design}>
+                                <div className={styles[cornerLargeClass]}>
+                                    <p className={cn(styles['design-title'], Arial.className)}>
+                                        ԻՆՏԵՐԻԵՐԻ ԴԻԶԱՅՆ
+                                    </p>
+                                </div>
+                            </div>
+                            <p className={cn(styles.content, Arial.className)}>
+                                Ինտերիեր դիզայնի մասնագիտացված
+                                դասընթացներն իրենց մեջ ներառում են
+                            </p>
+                        </div>
+                        <div
+                            className={styles.slide}
+                        >
+                            <Image
+                                src={ImagePaths.DESIGN.staplerURL.default.src}
+                                alt='stapler'
+                                className={styles.stapler}
+                                width={500}
+                                height={500}
+                                priority
+                            />
+                            <figure className={styles.imagesContainer}>
+                                {data.map((item) => (
+                                    <img
+                                        key={item.index}
+                                        className={`${styles['design-image']} ${index === item.index ? styles.active : styles.next}`}
+                                        src={item.path}
+                                        alt='alt'
+                                    />
+                                ))}
+                            </figure>
+                        </div>
                     </div>
-                    <div>
-                        <Image
-                            src={ImagePaths.DESIGN.staplerURL.default.src}
-                            alt='stapler'
-                            className={styles.image}
-                            width={500}
-                            height={500}
-                            priority
-                        />
-                        <figure className={styles.imagesContainer}>
-                            {data.map((item) => (
-                                <img
-                                    key={item.index}
-                                    className={`${styles.slide} ${index === item.index ? styles.active : styles.next}`}
-                                    src={item.path}
-                                    alt='alt'
-                                />
-                            ))}
-                        </figure>
-                    </div>
-                </div>
-            )}
-        </Container>
+                </Container>
+            </div>
+            <div className={styles[partCornerClass]} />
+        </div>
     )
-}
+};
 
-export default Course;
+export default React.memo(Course);
