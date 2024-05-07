@@ -19,7 +19,7 @@ const Courses = () => {
             </div>
 
             {data.map(item => (
-                <Course key={item} position={item % 2 !== 0 ? 'left' : 'right'} />
+                <Course key={item} position={item % 2 === 0 ? 'left' : 'right'} />
             ))}
         </section>
     )

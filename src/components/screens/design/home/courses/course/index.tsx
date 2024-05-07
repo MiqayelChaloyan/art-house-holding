@@ -51,6 +51,8 @@ const Course = ({ position }: CourseProps) => {
     const cornerLargeClass = position === 'left' ? 'corner-large-left' : 'corner-large-right';
     const viewClass = position === 'left' ? 'view-left' : 'view-right';
     const partCornerClass = position === 'left' ? 'corner-part-left' : 'corner-part-right';
+    const slideClass = position === 'left' ? 'slide-left' : 'slide-right';
+    const titleClass = position === 'left' ? 'title-left' : 'title-right';
 
     return (
         <div className={styles.section}>
@@ -65,7 +67,7 @@ const Course = ({ position }: CourseProps) => {
                 <Container>
                     <div className={cn(styles.box, styles[boxClass])}>
                         <div className={styles.right}>
-                            <h2 className={cn(styles.title, Arial.className)}>
+                            <h2 className={cn(styles.title, styles[titleClass], Arial.className)}>
                                 INTERIOR {'\n'} DESIGN
                             </h2>
                             <div className={styles.design}>
@@ -82,7 +84,7 @@ const Course = ({ position }: CourseProps) => {
                             <button className={styles['view-btn']}>Կարդալ ավելին</button>
                         </div>
                         <div
-                            className={styles.slide}
+                            className={cn(styles[slideClass])}
                         >
                             <Image
                                 src={ImagePaths.DESIGN.staplerURL.default.src}
