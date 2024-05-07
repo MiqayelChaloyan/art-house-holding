@@ -29,7 +29,6 @@ async function getResources(locale: string) {
 }
 
 
-
 export default async function Page({
     params: { locale },
 }: Readonly<Props>) {
