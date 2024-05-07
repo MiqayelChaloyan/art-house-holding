@@ -66,8 +66,8 @@ const ComingSoon = ({ data }: any) => {
                             fill='#FFFFFF'
                         />
                     </Link>
-                    <h1 className={cn(styles.title, ArianAMU.className)}>We're Launching Soon</h1>
-                    <h4 className={cn(styles.text, ArianAMU.className)}>We're  creating something exiting in the house and about to launch soon.</h4>
+                    <h1 className={cn(styles.title, ArianAMU.className)}>Were Launching Soon</h1>
+                    <h4 className={cn(styles.text, ArianAMU.className)}>Were  creating something exiting in the house and about to launch soon.</h4>
                     <div className={styles.hosts}>
                         {hosts}
                     </div>
