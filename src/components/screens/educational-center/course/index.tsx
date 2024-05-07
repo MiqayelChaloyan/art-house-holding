@@ -6,7 +6,7 @@ import About from './About';
 import CourseProcess from './CourseProcess';
 import StudentWork from './StudentWork';
 
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
+import { EDUCATIONAL_CENTER_COURSES, HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
 
 import { useDispatch } from 'react-redux';
 import { closeModal } from '@/store/modal_reducer';
@@ -17,9 +17,10 @@ import Main from './Main';
 
 interface CoursePageProps {
     course: EDUCATIONAL_CENTER_COURSES | any
+    socialData: HOSTS
 }
 
-const Course = ({ course }: CoursePageProps) => {
+const Course = ({ course, socialData }: CoursePageProps) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const Course = ({ course }: CoursePageProps) => {
     return (
         <>
             <Main course={course} />
-            <About course={course}/>
+            <About course={course} socialData={socialData}/>
             <CourseProcess course={course} />
             <StudentWork course={course} />
             <PriceList course={course} />

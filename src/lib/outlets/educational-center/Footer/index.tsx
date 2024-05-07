@@ -13,7 +13,7 @@ import Email from '@/lib/icons/educational-center/Email';
 import Phone from '@/lib/icons/educational-center/Phone';
 import { Pages } from '@/lib/constants/pages';
 
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
+import { EDUCATIONAL_CENTER_COURSES, HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
 
 // import { MapProvider } from '@/lib/providers';
 
@@ -21,14 +21,16 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    courses: EDUCATIONAL_CENTER_COURSES[] | any
+    courses: EDUCATIONAL_CENTER_COURSES[]
+    socialData: HOSTS
 };
 
 const group = {
     ['margin']: '0 auto'
 };
 
-const Footer = ({ courses }: Props) => {
+const Footer = ({ courses, socialData }: Props) => {
+    const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
     const t = useTranslations();
     const locale = useLocale();
 
@@ -59,15 +61,25 @@ const Footer = ({ courses }: Props) => {
                 <div id='contact' className={styles.box}>
                     <div className={styles.contact}>
                         <FormAppointment width='30%'>
-                            <FormHeader display='grid' color='white' justifyContent='center' title={t('contact-us-form.title')} fill='white' group={group} />
+                            <FormHeader
+                                display='grid'
+                                color='white'
+                                justifyContent='center'
+                                title={t('contact-us-form.title')}
+                                fill='white'
+                                group={group}
+                                social_links={socialData?.social_links}
+                            />
                         </FormAppointment>
                     </div>
                 </div>
                 <div className={styles.google_map}>
                     {/* <MapProvider> */}
-                        <GoogleMaps width='100%' height='100%'/>
+                    <GoogleMaps width='100%' height='100%' />
                     {/* </MapProvider> */}
-                    <p className={styles.address}>{t('address.address')}</p>
+                    <p className={styles.address}>
+                        {t('address.address')}
+                    </p>
                 </div>
                 <div className={styles.links}>
                     <div className={styles.courses_links}>
@@ -81,23 +93,37 @@ const Footer = ({ courses }: Props) => {
                                 fill='#111111'
                             />
                         </div>
-                        <Link href='tel:+37477111111' aria-label='Phone' className={styles.icon}>
+                        <Link
+                            href={tel}
+                            aria-label='Phone'
+                            className={styles.icon}
+                        >
                             <Phone
                                 width='20'
                                 height='20'
                                 fill='white'
                             />
-                            <p className={styles.info_web}>{t('contact.tell')} +374 77 11 11 11</p>
+                            <p className={styles.info_web}>
+                                {t('contact.tell')} {socialData?.phone_number}
+                            </p>
                         </Link>
-                        <Link href='mailto:art.house@bk.ru' aria-label='Email' className={styles.icon}>
+                        <Link
+                            href={`mailto:${socialData?.email}`}
+                            aria-label='Email'
+                            className={styles.icon}
+                        >
                             <Email
                                 width='20'
                                 height='20'
                                 fill='white'
                             />
-                            <p className={styles.info_web}>{t('contact.email')} art.house@bk.ru</p>
+                            <p className={styles.info_web}>
+                                {t('contact.email')} {socialData?.email}
+                            </p>
                         </Link>
-                        <p className={styles.info_web}>{t('address.street')}</p>
+                        <p className={styles.info_web}>
+                            {t('address.street')}
+                        </p>
                     </div>
                 </div>
             </div>

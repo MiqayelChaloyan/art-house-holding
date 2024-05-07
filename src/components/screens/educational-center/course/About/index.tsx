@@ -10,20 +10,21 @@ import FormHeader from '@/components/components/form-header';
 
 import { Inter } from '@/lib/constants/font';
 
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
+import { EDUCATIONAL_CENTER_COURSES, HOSTS } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './style.module.sass';
 
 
 interface Props {
     course: EDUCATIONAL_CENTER_COURSES[]
+    socialData: HOSTS
 };
 
 const group = {
     ['margin']: '0',
 };
 
-const About = ({ course }: Props) => {
+const About = ({ course, socialData }: Props) => {
     const { about_us_content } = course[0] as any;
     const content = about_us_content.length <= 1000 ? about_us_content : about_us_content.slice(0, 1000) + '...';
     const t = useTranslations();
@@ -46,6 +47,7 @@ const About = ({ course }: Props) => {
                                 title={t('contact-us-form.title')}
                                 fill='#111111'
                                 group={group}
+                                social_links={socialData?.social_links}
                             />
                         </FormAppointment>
                     </div>

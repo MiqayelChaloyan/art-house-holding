@@ -1,7 +1,7 @@
 import { ProjectsIcon, TrendUpwardIcon } from '@sanity/icons';
 
 import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
-import { RuleType } from '../../ruleType';
+import { RuleType } from '../../../ruleType';
 
 const homeSchemaArtHouse = {
     name: 'art-house-home',

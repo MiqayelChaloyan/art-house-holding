@@ -138,3 +138,16 @@ export interface QUIZ {
         answer: string
     }
 }
+
+export interface Social_Links {
+    [x: string]: any;
+    _key: Key | null | undefined,
+    social_link: string;
+    social_name: string,
+}
+
+export interface HOSTS {
+    name: string,
+    phone_number: string,
+    social_links: Social_Links,
+}

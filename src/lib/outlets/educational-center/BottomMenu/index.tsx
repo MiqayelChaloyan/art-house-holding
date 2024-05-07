@@ -19,15 +19,18 @@ import Contact from '@/lib/icons/educational-center/Contact';
 
 import { Pages } from '@/lib/constants/pages';
 
+import { HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
+
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
+	socialData: HOSTS
 	locale: string
 };
 
-
-const BottomMenu = ({ locale }: Props) => {
+const BottomMenu = ({ locale, socialData }: Props) => {
+	const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
 	const dispatch = useDispatch();
 	const pathname = usePathname();
 
@@ -67,7 +70,7 @@ const BottomMenu = ({ locale }: Props) => {
 				</Link>
 				<Link
 					className={styles.nav__link}
-					href='tel:+37477111111'
+					href={tel}
 					aria-label='Contact us'
 					title='Contact us'
 				>

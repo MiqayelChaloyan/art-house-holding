@@ -8,7 +8,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass'
 
 
-const data = [1,2];
+const data = [1, 2, 3, 4, 5];
 
 const Courses = () => {
     return (
@@ -19,7 +19,7 @@ const Courses = () => {
             </div>
 
             {data.map(item => (
-                <Course key={item} position={item % 2 !== 0 ? 'left' : 'right'}/>
+                <Course key={item} position={item % 2 !== 0 ? 'left' : 'right'} />
             ))}
         </section>
     )

@@ -1,3 +1,5 @@
+import { Key } from 'react';
+
 export interface ART_HOUSE_HOME {
     _id: string
     name: string
@@ -56,4 +58,18 @@ export interface BRANCHES {
     },
     slug: { current: string }
     web_site_url: string
+}
+
+
+export interface Social_Links {
+    _key: Key | null | undefined,
+    social_link: string;
+    social_name: string,
+}
+
+
+export interface HOSTS {
+    name: string,
+    phone_numbers: any,
+    social_links: Social_Links,
 }

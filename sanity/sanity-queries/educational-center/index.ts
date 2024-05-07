@@ -1,3 +1,5 @@
+import { Key } from 'react';
+
 export interface EDUCATIONAL_CENTER_DEFAULT {
     _id: string
     slug: string
@@ -22,3 +24,17 @@ export interface EDUCATIONAL_CENTER_COURSES {
     svg: any
     price_list: any
 };
+
+export interface Social_Links {
+    [x: string]: any;
+    _key: Key | null | undefined,
+    social_link: string;
+    social_name: string,
+}
+
+export interface HOSTS {
+    name: string,
+    phone_number: string,
+    email: string,
+    social_links: Social_Links,
+}

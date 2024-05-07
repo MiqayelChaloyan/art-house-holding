@@ -23,6 +23,7 @@ import { querySiteMeta } from '../../../../../sanity/services/educational-center
 import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { querySocial } from '../../../../../sanity/services/educational-center-service/contact-us';
 
 
 interface RootLayoutProps {
@@ -59,17 +60,18 @@ const localeStrings: {
 async function getResources(locale: string) {
     const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
+    const socialPromise = await client.fetch(querySocial, { language: 'en' }, { next: { revalidate: 100 } });
 
-    return Promise.all([coursesPromise, branchesPromise])
-        .then(([courses, branches]) => {
-            if (!courses?.length || !branches?.length) {
-                return { courses: [], branches: [], isError: true };
+    return Promise.all([coursesPromise, branchesPromise, socialPromise])
+        .then(([courses, branches, social]) => {
+            if (!courses?.length || !branches?.length || !social?.length) {
+                return { courses: [], branches: [], social: [], isError: true };
             }
 
-            return { courses, branches: branches[1], isError: false };
+            return { courses, branches: branches[1], social: social[0], isError: false };
         })
         .catch(error => {
-            return { courses: [], branches: [], isError: true };
+            return { courses: [], branches: [], social: [], isError: true };
         });
 }
 
@@ -77,16 +79,23 @@ export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
-    const { courses, branches, isError }: LANGUAGE[] | any = await getResources(locale);
+    const {
+        courses,
+        branches,
+        social,
+        isError
+    }: LANGUAGE[] | any = await getResources(locale);
 
-    if (!courses || !branches || isError) {
+    if (!courses || !branches || !social || isError) {
         notFound()
-    }
+    };
+
+
     return (
         <div>
             <div className='wrapper'>
-                <RightMenu locale={locale}/>
-                <BottomMenu locale={locale} />
+                <RightMenu locale={locale} socialData={social} />
+                <BottomMenu locale={locale} socialData={social} />
                 <ScrollToTopButton theme='#821616' />
                 <FloatingMenu
                     website={localeStrings[locale]}
@@ -100,7 +109,7 @@ export default async function Layout({
                         {children}
                     </main>
                 </div>
-                <Footer courses={courses} />
+                <Footer courses={courses} socialData={social} />
             </div>
             <Modal>
                 <CoursesModal locale={locale} courses={courses} />

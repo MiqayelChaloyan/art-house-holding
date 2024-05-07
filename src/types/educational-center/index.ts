@@ -38,3 +38,9 @@ export interface Form {
     phone: string;
     message: string;
 }
+
+export interface socialNetwork {
+    google: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+    instagram: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+    facebook: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+};

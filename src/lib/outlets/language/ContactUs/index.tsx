@@ -18,15 +18,16 @@ import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 
-import { Hosts } from '@/lib/constants/hosts';
 import { Arial, Vrdznagir } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { HOSTS, LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
 import { sendContactUsLanguage } from '@/api';
-import { FormSmall } from '@/types/language';
+import { FormSmall, socialNetwork } from '@/types/language';
+
+import { Social_Links } from '../../../../../sanity/sanity-queries/language';
 
 import cn from 'classnames';
 
@@ -36,6 +37,7 @@ import styles from './styles.module.sass';
 type Props = {
     courses: LANGUAGE[]
     languages: LANGUAGE[] | any
+    socialData: HOSTS
 };
 
 type FormProps = {
@@ -44,23 +46,51 @@ type FormProps = {
     values: FormSmall
 };
 
-const ContactUs = ({ courses, languages }: Props) => {
+const socialNetworkComponents: socialNetwork = {
+    facebook: Facebook,
+    instagram: Instagram,
+    gmail: Gmail,
+};
+
+const ContactUs = ({ courses, languages, socialData }: Props) => {
     const t = useTranslations();
     const pathname = usePathname();
     const [course, setCourse] = useState<string>('');
     const isOpen = pathname?.includes('/form')
     const [open, setOpen] = useState(false);
+    const windowSize = useWindowSize();
     const [info, setInfo] = useState({
         status: 'success',
         content: t('texts.send-message-success')
+    });
+
+    const hosts = socialData?.social_links.map((host: Social_Links) => {
+        const socialName = host?.social_name.toLowerCase();
+        const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
+        const SocialIcon = (socialNetworkComponents as any)[socialName];
+        if (!SocialIcon) return null;
+
+        return (
+            <Link
+                key={host._key}
+                href={link}
+                aria-label={host?.social_name}
+                className={styles.social_network}
+                target="_blank"
+            >
+                <SocialIcon
+                    width={windowSize.width <= 1024 ? 20 : 30}
+                    height={windowSize.width <= 1024 ? 20 : 30}
+                    fill=''
+                />
+            </Link>
+        )
     });
 
     const initValues = { full_name: '', email: '', phone: '', course_name: t('contact-us-form.select-course'), training_center: 44, };
     const initState = { isLoading: false, error: false, values: initValues };
 
     const [state, setState] = useState<FormProps>(initState);
-    const windowSize = useWindowSize();
-
     const { values, isLoading, error } = state;
 
 
@@ -148,34 +178,30 @@ const ContactUs = ({ courses, languages }: Props) => {
 
     return !isOpen && (
         <div className={styles.container}>
-            <Snackbar open={open} handleChange={handleClose} info={info}/>
+            <Snackbar open={open} handleChange={handleClose} info={info} />
             <Container>
                 <div className={styles.contact}>
                     {/* <Section direction='right'> */}
                     <div className={styles.box}>
-                        <h1 className={`${styles.title}  ${Vrdznagir.className}`}>{t('texts.contact-us')}</h1>
+                        <h1 className={cn(styles.title, Vrdznagir.className)}>
+                            {t('texts.contact-us')}
+                        </h1>
                         <div className={styles.connection} />
                     </div>
                     {/* </Section> */}
                     {/* <Section direction='left'> */}
                     <div className={styles.contact_us}>
                         <div className={styles.hosts}>
-                            <Link href={Hosts.gmail} aria-label='Gmail' className={styles.social_network} target="_blank">
-                                <Gmail width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='' />
-                            </Link>
-                            <Link href={Hosts.instagram} aria-label='Instagram' className={styles.social_network} target="_blank">
-                                <Instagram width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='' />
-                            </Link>
-                            <Link href={Hosts.facebook} aria-label='Facebook' className={styles.social_network} target="_blank">
-                                <Facebook width={windowSize.width <= 1280 ? 20 : 30} height={windowSize.width <= 1280 ? 20 : 30} fill='' />
-                            </Link>
+                            {hosts}
                         </div>
                         <div className={styles.form}>
                             <form
                                 className={styles.box}
                                 onSubmit={handleSubmit}
                             >
-                                <h2 className={cn(styles.form_title, Arial.className)}>{t('contact-us-form.form-title-language')}</h2>
+                                <h2 className={cn(styles.form_title, Arial.className)}>
+                                    {t('contact-us-form.form-title-language')}
+                                </h2>
                                 <div className={styles.fields}>
                                     <InputField
                                         className={cn(styles.input, Arial.className)}

@@ -171,3 +171,9 @@ export interface FormSmall {
     phone: string;
     course_name: string;
 }
+
+export interface socialNetwork {
+    gmail: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+    instagram: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+    facebook: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+};

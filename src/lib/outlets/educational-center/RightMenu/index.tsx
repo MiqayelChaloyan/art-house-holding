@@ -10,34 +10,39 @@ import PriceList from '@/lib/icons/educational-center//PriceList';
 import CoWorkers from '@/lib/icons/educational-center//CoWorkers';
 import Contact from '@/lib/icons/educational-center//Contact';
 
-import styles from './styles.module.sass';
 import { Pages } from '@/lib/constants/pages';
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/store/modal_reducer';
 
+import { HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
 
-type Props = {
-    locale: string
+import styles from './styles.module.sass';
+
+
+interface Props {
+	socialData: HOSTS
+	locale: string
 };
 
-const RightMenu = ({locale}: Props) => {
-    const dispatch = useDispatch();
+const RightMenu = ({ locale, socialData }: Props) => {
+	const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
+	const dispatch = useDispatch();
 
 	return (
 		<div className={styles.nav_menu}>
 			<div className={styles.nav_list}>
 				<Link
 					className={styles.btn_home}
-					href={`/${locale}${Pages.EDUCATIONAL_HOME}`}	
-                    aria-label={`${Pages.EDUCATIONAL_HOME}`}
-					// title='Home'
+					href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
+					aria-label={`${Pages.EDUCATIONAL_HOME}`}
+				// title='Home'
 				>
 					<Home width={20} height={20} fill='white' />
 				</Link>
 				<button
 					className={styles.btn_courses}
 					onClick={() => setTimeout(() => dispatch(openModal(true)), 500)}
-					// title='Courses'
+				// title='Courses'
 				>
 					<Courses width={20} height={20} fill='white' />
 				</button>
@@ -45,7 +50,7 @@ const RightMenu = ({locale}: Props) => {
 					className={styles.btn_price_list}
 					href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
 					aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
-					// title='Price List'
+				// title='Price List'
 				>
 					<PriceList width={20} height={20} fill='white' />
 				</Link>
@@ -53,15 +58,15 @@ const RightMenu = ({locale}: Props) => {
 					className={styles.btn_co_worker}
 					href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`}
 					aria-label={`${Pages.EDUCATIONAL_PARTNERS}`}
-					// title='Co Worker'
+				// title='Co Worker'
 				>
 					<CoWorkers width={25} height={20} fill='white' />
 				</Link>
 				<Link
 					className={styles.btn_contact_us}
-					href='tel:+37477111111'
+					href={tel}
 					aria-label='Contact us'
-					// title='Contact us'
+				// title='Contact us'
 				>
 					<Contact width={20} height={20} fill='white' />
 				</Link>

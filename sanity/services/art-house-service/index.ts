@@ -24,3 +24,11 @@ export const querySiteMeta = `
     ogTitle,
     ogImage
 }`;
+
+
+export const querySocial = `
+*[_type == "art-house-contact-us"] {
+    name,
+    phone_numbers,
+    social_links
+}`;

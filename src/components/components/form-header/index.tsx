@@ -1,4 +1,6 @@
-"use client"
+'use client'
+
+import React from 'react';
 
 import Link from 'next/link';
 
@@ -6,12 +8,20 @@ import Instagram from '@/lib/icons/educational-center/Instagram';
 import Google from '@/lib/icons/educational-center/Google';
 import Facebook from '@/lib/icons/educational-center/Facebook';
 
-import { Hosts } from '@/lib/constants/hosts';
-
 import useWindowSize from '@/hooks/useWindowSize';
+
+import { socialNetwork } from '@/types/educational-center';
+
+import { Social_Links } from '../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
 
+
+const socialNetworkComponents: socialNetwork = {
+    facebook: Facebook,
+    instagram: Instagram,
+    google: Google,
+};
 
 interface Props {
     display?: string,
@@ -21,11 +31,42 @@ interface Props {
     fill?: string
     group?: object
     fontSize?: string
+    social_links?: Social_Links
 };
 
+const FormHeader = ({
+    display,
+    color,
+    justifyContent,
+    fontSize,
+    title,
+    fill,
+    group,
+    social_links
+}: Props) => {
+    const windowSize = useWindowSize();
 
-const FormHeader: React.FC<Props> = ({ display, color, justifyContent, fontSize, title, fill, group }) => {
-    const window = useWindowSize();
+    const hosts = social_links?.map((host: Social_Links) => {
+        const socialName = host?.social_name.toLowerCase();
+        const SocialIcon = (socialNetworkComponents as any)[socialName];
+        if (!SocialIcon) return null;
+
+        return (
+            <Link
+                key={host._key}
+                href={host?.social_link}
+                aria-label={host?.social_name}
+                className={styles.icon}
+                target="_blank"
+            >
+                <SocialIcon
+                    width={windowSize.width < 1000 ? 15 : 23}
+                    height={windowSize.width < 1000 ? 15 : 23}
+                    fill={fill}
+                />
+            </Link>
+        )
+    });
 
     return (
         <div className={styles.containerForm} style={{ display, justifyContent }}>
@@ -33,30 +74,10 @@ const FormHeader: React.FC<Props> = ({ display, color, justifyContent, fontSize,
                 <h1 className={styles.title} style={{ color }}>{title}</h1>
             </div>
             <div style={{ ...group }}>
-                <Link href={Hosts.facebook} aria-label='Facebook' className={styles.icon} target="_blank">
-                    <Facebook
-                        width={window.width > 1000 ? 23 : 15}
-                        height={window.width > 1000 ? 23 : 15}
-                        fill={fill}
-                    />
-                </Link>
-                <Link href={Hosts.instagram} aria-label='Instagram' className={styles.icon} target="_blank">
-                    <Instagram
-                        width={window.width > 1000 ? 23 : 15}
-                        height={window.width > 1000 ? 23 : 15}
-                        fill={fill}
-                    />
-                </Link>
-                <Link href={Hosts.google} aria-label='Google' className={styles.icon} target="_blank">
-                    <Google
-                        width={window.width > 1000 ? 23 : 15}
-                        height={window.width > 1000 ? 23 : 15}
-                        fill={fill}
-                    />
-                </Link>
+               {hosts}
             </div>
         </div>
     );
 };
 
-export default FormHeader;
+export default React.memo(FormHeader);

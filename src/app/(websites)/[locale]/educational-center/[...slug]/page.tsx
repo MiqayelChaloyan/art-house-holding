@@ -8,6 +8,7 @@ import Course from '@/components/screens/educational-center/course';
 import { Locale } from '@/locales';
 
 import { courseBySlugQuery } from '../../../../../../sanity/services/educational-center-service/courses';
+import { querySocial } from '../../../../../../sanity/services/educational-center-service/contact-us';
 
 import { client } from '../../../../../../sanity/client';
 
@@ -24,27 +25,28 @@ interface Props {
 async function getResources(slug: string, locale: string) {
     try {
         const course = await client.fetch(courseBySlugQuery, { language: locale, slug }, { next: { revalidate: 100 } });
+        const social = await client.fetch(querySocial, { language: 'en' }, { next: { revalidate: 100 } });
 
-        if (!course?.length) {
-            return { course: [], isError: true };
+        if (!course?.length || !social?.length) {
+            return { course: [], social: [], isError: true };
         }
 
-        return { course, isError: false };
+        return { course, social: social[0], isError: false };
     } catch (error) {
-        return { course: [], isError: true };
+        return { course: [], social: [], isError: true };
     }
 }
 
 export default async function Page({
     params: { locale, slug }
 }: Readonly<Props>) {
-    const { course, isError } = await getResources(slug[0], locale);
+    const { course, social, isError } = await getResources(slug[0], locale);
 
-    if (!course || isError) {
+    if (!course || !social || isError) {
         notFound()
     }
 
-    return <Course course={course} />;
+    return <Course course={course} socialData={social}/>;
 }
 
 

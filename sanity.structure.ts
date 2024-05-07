@@ -8,9 +8,12 @@ export default (S: any) =>
             ...S.documentTypeListItems().filter(
                 (listItem: any) => ![
                     'art-house-home',
+                    'art-house-contact-us',
                     'about-us',
                     'courses',
+                    'educational-center-contact-us',
                     'languages',
+                    'language-contact-us',
                     'about-language',
                     'about-us-language',
                     'price-list-language',
@@ -32,6 +35,10 @@ export default (S: any) =>
                                 .title('Home')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('art-house-home').documentId('art-house')),
+                            S.listItem()
+                                .title('Contact Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('art-house-contact-us').documentId('art-house-contact-us')),
                         ])
                 ),
 
@@ -51,6 +58,10 @@ export default (S: any) =>
                                     S.documentList()
                                         .title('Courses')
                                         .filter('_type == "courses"')),
+                            S.listItem()
+                                .title('Contact Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('educational-center-contact-us').documentId('educational-center-contact-us')),
                         ])
                 ),
 
@@ -109,6 +120,10 @@ export default (S: any) =>
                                     S.documentList()
                                         .title('Quiz')
                                         .filter('_type == "languages-quiz"')),
+                            S.listItem()
+                                .title('Contact Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('language-contact-us').documentId('language-contact-us')),
                         ])
                 ),
 
