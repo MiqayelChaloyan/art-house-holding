@@ -19,17 +19,23 @@ import { Social_Links } from '../../../../sanity/sanity-queries/art-house';
 import { useEffect } from 'react';
 
 // import settings from '../../../../public/assets/gif/settings.gif';
+import { TiSocialFacebook } from "react-icons/ti";
+import { BsInstagram } from "react-icons/bs";
+import { SiGmail } from "react-icons/si";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { TypeAnimation } from 'react-type-animation';
+
 
 const ComingSoon = ({ data }: any) => {
     const currentYear = new Date().getFullYear();
     const windowSize = useWindowSize();
 
 
-    const socialNetworkComponents: socialNetwork = {
-        facebook: Facebook,
-        instagram: Instagram,
-        gmail: Gmail,
-        linkedin: Linkedin
+    const socialNetworkComponents: any = {
+        facebook: TiSocialFacebook,
+        instagram: BsInstagram,
+        gmail: SiGmail,
+        linkedin: FaLinkedinIn
     };
 
     const hosts = data?.social_links.map((host: Social_Links) => {
@@ -47,9 +53,9 @@ const ComingSoon = ({ data }: any) => {
                 target="_blank"
             >
                 <SocialIcon
-                    width={windowSize.width <= 1024 ? 20 : 40}
-                    height={windowSize.width <= 1024 ? 20 : 40}
-                    fill=''
+                    size={windowSize.width <= 1024 ? 20 : 30}
+                // height={windowSize.width <= 1024 ? 20 : 40}
+                // fill=''
                 />
             </Link>
         )
@@ -66,8 +72,22 @@ const ComingSoon = ({ data }: any) => {
                             fill='#FFFFFF'
                         />
                     </Link>
-                    <h1 className={cn(styles.title, ArianAMU.className)}>Were Launching Soon</h1>
-                    <h4 className={cn(styles.text, ArianAMU.className)}>Were  creating something exiting in the house and about to launch soon.</h4>
+                    <h1 className={cn(styles.title, ArianAMU.className)}>Were <span>Launching</span> Soon</h1>
+                    <TypeAnimation
+                        sequence={[
+                            'Were creating something exiting in the house and about to launch soon.',
+                            1000,
+                            'Stay in the loop and get the latest by following us on social media!',
+                            1000,
+                            'See you on our socials!',
+                            1000
+                        ]}
+                        wrapper="span"
+                        speed={50}
+                        className={cn(styles.text, ArianAMU.className)}
+                        style={{ display: 'inline-block' }}
+                        repeat={Infinity}
+                    />
                     <div className={styles.hosts}>
                         {hosts}
                     </div>
@@ -78,6 +98,9 @@ const ComingSoon = ({ data }: any) => {
             </div>
             <div className={styles.right}>
                 <div className={styles.astronautas} />
+                <Link href={Pages.HOME} aria-label='about' className={cn(styles.button)}>
+                    <p>Go Back</p>
+                </Link>
             </div>
         </section>
     )
