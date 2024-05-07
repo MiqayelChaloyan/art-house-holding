@@ -26,7 +26,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    socialData: HOSTS | any
+    socialData: HOSTS | null
 };
 
 const socialNetworkComponents: socialNetwork = {
