@@ -61,7 +61,7 @@ export default (S: any) =>
                             S.listItem()
                                 .title('Contact Us')
                                 .icon(DocumentsIcon)
-                                .child(S.document().schemaType('educational-center-contact-us').documentId('educational-center-contact-us')),
+                                .child(S.document().schemaType('educational-center-contact-us').documentId('contact-us-educational-center')),
                         ])
                 ),
 
@@ -123,7 +123,7 @@ export default (S: any) =>
                             S.listItem()
                                 .title('Contact Us')
                                 .icon(DocumentsIcon)
-                                .child(S.document().schemaType('language-contact-us').documentId('language-contact-us')),
+                                .child(S.document().schemaType('language-contact-us').documentId('contact-us-language')),
                         ])
                 ),
 

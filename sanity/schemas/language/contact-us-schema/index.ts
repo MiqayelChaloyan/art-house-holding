@@ -7,7 +7,7 @@ const contactUsSchemaLanguage = {
     name: 'language-contact-us',
     type: 'document',
     title: 'Contact Us',
-    id: 'language-contact-us',
+    id: 'contact-us-language',
     fields: [
         {
             name: 'name',

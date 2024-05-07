@@ -24,7 +24,7 @@ const Promotion = ({
     classNameProperty
 }: CardProps) => {
     const aboutText = discount.about_discount.length > 150 ?
-        discount.about_discount.slice(0, 150) + '...' : discount.about_discount;
+        discount.about_discount.slice(0, 200) + '...' : discount.about_discount;
     const path: { src: string, width: number, height: number } | any = urlForImage(discount.image);
     const transformRotate = index % 2 === 0;
 

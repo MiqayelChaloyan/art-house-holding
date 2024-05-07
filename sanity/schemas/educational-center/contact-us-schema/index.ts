@@ -7,7 +7,7 @@ const contactUsSchemaEducationalCenter = {
     name: 'educational-center-contact-us',
     type: 'document',
     title: 'Contact Us',
-    id: 'educational-center-contact-us',
+    id: 'contact-us-educational-center',
     fields: [
         {
             name: 'name',
