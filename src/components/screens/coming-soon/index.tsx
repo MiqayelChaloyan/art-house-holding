@@ -1,29 +1,25 @@
 'use client'
 
-import Logo from '@/lib/icons/art-house/LogoFooter'
+import Link from 'next/link';
+
+import { TypeAnimation } from 'react-type-animation';
+
+import { TiSocialFacebook } from 'react-icons/ti';
+import { BsInstagram } from 'react-icons/bs';
+import { SiGmail } from 'react-icons/si';
+import { FaLinkedinIn } from 'react-icons/fa6';
+
+import useWindowSize from '@/hooks/useWindowSize';
+
+import Logo from '@/lib/icons/art-house/LogoFooter';
+import { Pages } from '@/lib/constants/pages';
 import { ArianAMU } from '@/lib/constants/font';
 
-import Facebook from '@/lib/icons/art-house/Facebook';
-import Instagram from '@/lib/icons/art-house/Instagram';
-import Gmail from '@/lib/icons/art-house/Gmail';
-import Linkedin from '@/lib/icons/art-house/Linkedin';
+import { Social_Links } from '../../../../sanity/sanity-queries/art-house';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import Link from 'next/link';
-import { Pages } from '@/lib/constants/pages';
-import { socialNetwork } from '@/types/art-house';
-import useWindowSize from '@/hooks/useWindowSize';
-import { Social_Links } from '../../../../sanity/sanity-queries/art-house';
-import { useEffect } from 'react';
-
-// import settings from '../../../../public/assets/gif/settings.gif';
-import { TiSocialFacebook } from "react-icons/ti";
-import { BsInstagram } from "react-icons/bs";
-import { SiGmail } from "react-icons/si";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { TypeAnimation } from 'react-type-animation';
 
 
 const ComingSoon = ({ data }: any) => {
@@ -52,19 +48,15 @@ const ComingSoon = ({ data }: any) => {
                 className={styles.social_network}
                 target="_blank"
             >
-                <SocialIcon
-                    size={windowSize.width <= 1024 ? 20 : 30}
-                // height={windowSize.width <= 1024 ? 20 : 40}
-                // fill=''
-                />
+                <SocialIcon size={windowSize.width <= 1024 ? 17 : 30} />
             </Link>
         )
     });
 
     return (
         <section className={styles.container}>
-            <div className={styles.left}>
-                <div className={styles.header}>
+            <div className={styles.right_box}>
+                <div className={styles.info}>
                     <Link href={Pages.HOME} aria-label='about' className={cn(styles.logo)}>
                         <Logo
                             width={350}
@@ -96,14 +88,14 @@ const ComingSoon = ({ data }: any) => {
                     </p>
                 </div>
             </div>
-            <div className={styles.right}>
-                <div className={styles.astronautas} />
+            <div className={styles.left_box}>
+                <div className={styles.settings} />
                 <Link href={Pages.HOME} aria-label='about' className={cn(styles.button)}>
                     <p>Go Back</p>
                 </Link>
             </div>
         </section>
     )
-}
+};
 
 export default ComingSoon;
