@@ -12,6 +12,7 @@ export default (S: any) =>
                     'about-us',
                     'courses',
                     'educational-center-contact-us',
+                    'educational-lessons-select-option',
                     'languages',
                     'language-contact-us',
                     'about-language',
@@ -58,6 +59,10 @@ export default (S: any) =>
                                     S.documentList()
                                         .title('Courses')
                                         .filter('_type == "courses"')),
+                            S.listItem()
+                                .title('Lessons')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('educational-lessons-select-option').documentId('educational-lessons-select-option')),
                             S.listItem()
                                 .title('Contact Us')
                                 .icon(DocumentsIcon)

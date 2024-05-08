@@ -74,7 +74,7 @@ const Select = ({
     }, []);
 
     const colorTheme = () => {
-        const color = classNameProperty !== 'large' ? (num > 0 && !isClear ? 'black' : '#D4C7BA') : '#fff';
+        const color = classNameProperty !== 'large' && classNameProperty !== 'large-educational' ? (num > 0 && !isClear ? 'black' : '#D4C7BA') : '#fff';
         return { color };
     }
 

@@ -8,36 +8,56 @@ import Snackbar from '@/components/components/snackbar';
 
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
-import TextareaField from '@/lib/ui/TextareaField';
+import Select from '@/lib/ui/select';
 
 import { sendContactUsEducational } from '@/api';
+
+import { Form } from '@/types/educational-center';
+
+import { LESSONS } from '../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import { Arial } from '@/lib/constants/font';
 
 
 interface Props {
 	className?: string
 	width?: string
 	children: React.ReactNode
+	lessons: LESSONS[] | any
+	lessonsArmenian: LESSONS[] | any
 };
 
-const initValues = { full_name: '', email: '', phone: '', training_center: 46, message: '' };
-const initState = { isLoading: false, error: '', values: initValues };
+type Lesson  = { 
+	course_name: string, 
+	slug: string | number
+};
 
-const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
-	const [state, setState] = useState<any>(initState);
-	const { values, isLoading, error } = state;
+type FormProps = {
+	isLoading: boolean,
+	error: boolean,
+	values: Form
+};
+
+const FormAppointment = ({ className, width, children, lessons, lessonsArmenian }: Props) => {
+	const [course, setCourse] = useState<string>('');
+	const [open, setOpen] = useState(false);
 	const t = useTranslations();
-    const [open, setOpen] = useState(false);
-    const [info, setInfo] = useState({
-        status: 'success',
-        content: t('texts.send-message-success')
-    });
+	const [info, setInfo] = useState({
+		status: 'success',
+		content: t('texts.send-message-success')
+	});
+
+	const initValues = { full_name: '', email: '', phone: '', training_center: 46, course_name: t('contact-us-form.select-course'), };
+	const initState = { isLoading: false, error: false, values: initValues };
+
+	const [state, setState] = useState<FormProps>(initState);
+	const { values, isLoading, error } = state;
 
 	const handleChange = ({ target }: any) =>
-		setState((prev: any) => ({
+		setState((prev: FormProps) => ({
 			...prev,
 			values: {
 				...prev.values,
@@ -47,77 +67,91 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
 		const formData = {
 			full_name: state.values.full_name,
 			email: state.values.email,
 			phone: state.values.phone,
-			training_center: 46,
-			message: `${state.values.message}`
+			course_name: course,
+			training_center: 46
 		};
 
 		try {
-			setState((prev: any) => ({
-				...prev,
-				isLoading: true,
-			}));
+
+			if (formData.course_name !== t('contact-us-form.select-course')) {
+				setState((prev: FormProps) => ({
+					...prev,
+					isLoading: true,
+				}))
+			};
 
 			const res: { status: number } | any = await sendContactUsEducational(formData);
 
 			if (res?.status !== 200) {
-                setOpen(true);
-                setInfo({
-                    status: 'info',
-                    content: t('texts.send-message-failure')
-                });
-                setState((prev: any) => ({
-                    ...prev,
-                    isLoading: false,
-                }))
-                return;
-            };
+				setOpen(true);
+				setInfo({
+					status: 'info',
+					content: t('texts.send-message-failure')
+				});
+				setState((prev: FormProps) => ({
+					...prev,
+					isLoading: false,
+				}))
+				return;
+			};
 
 			setOpen(true);
 
 			setInfo({
-                status: 'success',
-                content: t('texts.send-message-success')
-            });
+				status: 'success',
+				content: t('texts.send-message-success')
+			});
 
 			setState(() => ({
 				...initState,
 				isLoading: false,
-				error: '',
+				error: false,
 			}));
 
 		} catch (error: any) {
-			setState((prev: any) => ({
+			setState((prev: FormProps) => ({
 				...prev,
 				isLoading: false,
 				error: error.message,
 			}));
 
 			setOpen(true);
-            setInfo({
-                status: 'info',
-                content: t('texts.send-message-failure')
-            });
+			setInfo({
+				status: 'info',
+				content: t('texts.send-message-failure')
+			});
 		}
 	};
 
 	const handleClose = () => setOpen(false);
+
+	const getValueToSlug = (valueName: string, slug: number) => {
+		const course = valueName === 'course_name' && lessonsArmenian?.find((lesson: Lesson) => {
+			return lesson.slug === slug;
+		});
+
+		if (course.course_name) {
+			return setCourse(course.course_name);
+		}
+	};
 
 	return (
 		<form
 			className={cn(className, styles.box)}
 			onSubmit={handleSubmit}
 		>
-			<Snackbar open={open} handleChange={handleClose} info={info}/>
+			<Snackbar open={open} handleChange={handleClose} info={info} />
 			<div className={styles.contact_us_header}>
 				{children}
 			</div>
 			<div className={styles.fields}>
 				<InputField
-					className={cn(`${styles.input}`)}
+					className={cn(styles.input, Arial.className)}
 					name='full_name'
 					type='full_name'
 					placeholder={t('contact-us-form.name')}
@@ -126,7 +160,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 					onChange={handleChange}
 				/>
 				<InputField
-					className={cn(`${styles.input}`)}
+					className={cn(styles.input, Arial.className)}
 					name='email'
 					type='email'
 					placeholder={t('contact-us-form.email')}
@@ -135,7 +169,7 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 					onChange={handleChange}
 				/>
 				<InputNumber
-					className={cn(`${styles.input}`)}
+					className={cn(styles.input, Arial.className)}
 					name='phone'
 					type='phone'
 					placeholder={t('contact-us-form.phone-number')}
@@ -144,13 +178,14 @@ const FormAppointment: React.FC<Props> = ({ className, width, children }) => {
 					value={values.phone}
 					onChange={handleChange}
 				/>
-				<TextareaField
-					className={cn(`${styles.textarea}`)}
-					name='message'
-					placeholder={t('contact-us-form.message')}
-					requiredField={false}
-					value={values.message}
-					onChange={handleChange}
+				<Select
+					data={lessons}
+					valueName='course_name'
+					handleChange={setState}
+					state={state}
+					classNameProperty='large-educational'
+					isClear={false}
+					getValueToSlug={getValueToSlug}
 				/>
 			</div>
 			<button className={`${styles.submit}`} style={{ width }}>

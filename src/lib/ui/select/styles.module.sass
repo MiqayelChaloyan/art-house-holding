@@ -411,3 +411,185 @@
 	background-color: #f2f2f2 
 
 
+/* Educational Center */
+
+.large-educational-select
+	position: relative 
+	width: 100% 
+	max-width: 100% 
+	font-weight: 300
+	font-size: 18px
+	box-shadow: 1px 10px 11px -4px rgb(0 0 0 / 14%)
+	border-radius: 4px 
+	color: red
+	margin: 15px 0 
+	z-index: 0
+	&.active 
+		.large-educational-arrow 
+			transform: rotate(180deg) 
+		.large-educational-select-dropdown 
+			opacity: 1 
+			visibility: visible 
+			transform: scaleY(1) 
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 18px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 18px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 18px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 15px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 15px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 14px
+		height: 30px
+		margin: 10px auto
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 14px
+		width: 100%
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 14px
+		width: 100%
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 14px
+		width: 100%
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 14px
+		width: 100%
+
+
+.large-educational-select-button
+	width: 100% 
+	font-size: 19px 
+	height: 40px 
+	border-radius: 4px 
+	background-color: #fff
+	padding: 0.675em 0.4em 
+	box-shadow: 1px 10px 11px -4px rgb(0 0 0 / 14%)
+	border: #fff
+	cursor: pointer 
+	display: flex 
+	justify-content: space-between 
+	align-items: center 
+	outline: none
+	&:focus
+		outline: none !important
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 19px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 19px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 16px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 14px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 14px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 14px
+		height: 30px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 14px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 14px
+		border-radius: 4px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 14px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 14px
+
+
+.large-educational-selected-value 
+	text-align: left 
+	color: #313131 !important
+	font-weight: 300
+
+.large-educational-arrow 
+	border-left: 5px solid transparent 
+	border-right: 5px solid transparent 
+	border-top: 6px solid gray 
+	transition: transform ease-in-out 0.3s 
+
+
+.large-educational-select-dropdown 
+	position: absolute 
+	list-style: none 
+	width: 100% 
+	box-shadow: 1px 13px 11px -4px #0000003d
+	background-color: var(--color-white) 
+	border: 1px solid var(--color-light-gray) 
+	border-radius: 4px 
+	padding: 0.675em 1em 
+	margin-top: 8px 
+	max-height: 150px 
+	overflow-y: auto 
+	transition: 0.5s ease 
+	transform: scaleY(0) 
+	opacity: 0 
+	z-index: 9 
+	visibility: hidden
+	&:focus-within 
+		box-shadow: none
+	/* @sm */
+	@media screen and (max-width: 768px)
+		max-height: 96px
+	li 
+		position: relative 
+		cursor: pointer 
+		display: flex 
+		gap: 1rem 
+		align-items: center 
+		label 
+			width: 100% 
+			padding: 8px 0
+			cursor: pointer 
+			display: flex 
+			gap: 1rem 
+			align-items: center 
+			color: black
+			font-size: 18px
+			/* @sm */
+			@media screen and (max-width: 768px)
+				padding: 0 0
+				font-size: 14px
+	&::-webkit-scrollbar 
+		width: 7px 
+	&::-webkit-scrollbar-track 
+		background: #f1f1f1 
+		border-radius: 25px 
+	&::-webkit-scrollbar-thumb 
+		background: #ccc 
+		border-radius: 25px 
+	input 
+		&:focus 
+			& ~ label 
+				background-color: var(--color-double-gray) 
+	input[type="radio"] 
+		position: absolute 
+		left: 0 
+		opacity: 0 
+
+
+.large-educational-select-dropdown li:hover,
+.large-educational-select-dropdown input:checked~label 
+	background-color: #f2f2f2 

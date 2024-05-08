@@ -13,7 +13,7 @@ import Email from '@/lib/icons/educational-center/Email';
 import Phone from '@/lib/icons/educational-center/Phone';
 import { Pages } from '@/lib/constants/pages';
 
-import { EDUCATIONAL_CENTER_COURSES, HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
+import { EDUCATIONAL_CENTER_COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
 
 // import { MapProvider } from '@/lib/providers';
 
@@ -23,13 +23,15 @@ import styles from './styles.module.sass';
 type Props = {
     courses: EDUCATIONAL_CENTER_COURSES[]
     socialData: HOSTS
+    lessons: LESSONS[]
+    lessonsArmenian: LESSONS[]
 };
 
 const group = {
     ['margin']: '0 auto'
 };
 
-const Footer = ({ courses, socialData }: Props) => {
+const Footer = ({ courses, socialData, lessons, lessonsArmenian }: Props) => {
     const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
     const t = useTranslations();
     const locale = useLocale();
@@ -60,11 +62,12 @@ const Footer = ({ courses, socialData }: Props) => {
             <div>
                 <div id='contact' className={styles.box}>
                     <div className={styles.contact}>
-                        <FormAppointment width='30%'>
+                        <FormAppointment width='30%' lessons={lessons[0]?.course_name} lessonsArmenian={lessonsArmenian[0]?.course_name}>
                             <FormHeader
                                 display='grid'
                                 color='white'
                                 justifyContent='center'
+                                alignItems='center'
                                 title={t('contact-us-form.title')}
                                 fill='white'
                                 group={group}

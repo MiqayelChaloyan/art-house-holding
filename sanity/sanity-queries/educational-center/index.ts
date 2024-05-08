@@ -38,3 +38,11 @@ export interface HOSTS {
     email: string,
     social_links: Social_Links,
 }
+
+export interface LESSONS {
+    _id: string
+    course_name: {
+        course: string
+        slug: string
+    }
+};

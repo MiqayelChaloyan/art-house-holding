@@ -10,7 +10,7 @@ import FormHeader from '@/components/components/form-header';
 
 import { Inter } from '@/lib/constants/font';
 
-import { EDUCATIONAL_CENTER_COURSES, HOSTS } from '../../../../../../sanity/sanity-queries/educational-center';
+import { EDUCATIONAL_CENTER_COURSES, HOSTS, LESSONS } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './style.module.sass';
 
@@ -18,13 +18,20 @@ import styles from './style.module.sass';
 interface Props {
     course: EDUCATIONAL_CENTER_COURSES[]
     socialData: HOSTS
+    lessons: LESSONS[]
+    lessonsArmenian: LESSONS[]
 };
 
 const group = {
-    ['margin']: '0',
+    ['margin']: '5px',
 };
 
-const About = ({ course, socialData }: Props) => {
+const About = ({
+    course,
+    socialData,
+    lessons,
+    lessonsArmenian
+}: Props) => {
     const { about_us_content } = course[0] as any;
     const content = about_us_content.length <= 1000 ? about_us_content : about_us_content.slice(0, 1000) + '...';
     const t = useTranslations();
@@ -39,11 +46,12 @@ const About = ({ course, socialData }: Props) => {
                         <p className={Inter.className}>{content}</p>
                     </div>
                     <div className={styles.form_box}>
-                        <FormAppointment width='30%'>
+                        <FormAppointment width='30%' lessons={lessons} lessonsArmenian={lessonsArmenian}>
                             <FormHeader
                                 display='flex'
                                 color='black'
-                                justifyContent='space-around'
+                                justifyContent='center'
+                                alignItems='self-end'
                                 title={t('contact-us-form.title')}
                                 fill='#111111'
                                 group={group}

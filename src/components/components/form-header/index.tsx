@@ -27,6 +27,7 @@ interface Props {
     display?: string,
     color?: string
     justifyContent?: string
+    alignItems?: string,
     title?: string
     fill?: string
     group?: object
@@ -38,6 +39,7 @@ const FormHeader = ({
     display,
     color,
     justifyContent,
+    alignItems,
     fontSize,
     title,
     fill,
@@ -69,7 +71,7 @@ const FormHeader = ({
     });
 
     return (
-        <div className={styles.containerForm} style={{ display, justifyContent }}>
+        <div className={styles.containerForm} style={{ display, justifyContent, alignItems }}>
             <div style={{ ...group }}>
                 <h1 className={styles.title} style={{ color }}>{title}</h1>
             </div>

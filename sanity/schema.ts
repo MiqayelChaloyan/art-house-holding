@@ -5,6 +5,7 @@ import contactUsSchemaArtHouse from './schemas/art-house/contact-us-schema';
 import aboutUsSchemaEducationalCenter from './schemas/educational-center/about-us-schema';
 import coursesSchemaEducationalCenter from './schemas/educational-center/courses-schema';
 import contactUsSchemaEducationalCenter from './schemas/educational-center/contact-us-schema';
+import lessonsSchemaEducationCenter from './schemas/educational-center/lessons-schema';
 import coursesSchemaLanguage from './schemas/language/courses-schema';
 import languagesSchemaLanguage from './schemas/language/languages-schema';
 import aboutUsSchemaLanguage from './schemas/language/about-us-schema';
@@ -20,6 +21,7 @@ export const schemaTypes = [
   aboutUsSchemaEducationalCenter,
   coursesSchemaEducationalCenter,
   contactUsSchemaEducationalCenter,
+  lessonsSchemaEducationCenter,
   aboutUsSchemaLanguage,
   coursesSchemaLanguage,
   languagesSchemaLanguage,

@@ -95,7 +95,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
 
 
     const handleChange = ({ target }: any) =>
-        setState((prev: any) => ({
+        setState((prev: FormProps) => ({
             ...prev,
             values: {
                 ...prev.values,
@@ -116,7 +116,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
 
         try {
             if (formData.course_name !== t('contact-us-form.select-course')) {
-                setState((prev: any) => ({
+                setState((prev: FormProps) => ({
                     ...prev,
                     isLoading: true,
                 }))
@@ -130,7 +130,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
                     status: 'info',
                     content: t('texts.send-message-failure')
                 });
-                setState((prev: any) => ({
+                setState((prev: FormProps) => ({
                     ...prev,
                     isLoading: false,
                 }))
@@ -150,7 +150,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
                 error: false,
             }));
         } catch (error: any) {
-            setState((prev: any) => ({
+            setState((prev: FormProps) => ({
                 ...prev,
                 isLoading: false,
                 error: true,

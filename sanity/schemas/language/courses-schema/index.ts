@@ -1,6 +1,4 @@
-import { EarthGlobeIcon } from '@sanity/icons';
-import {CalendarIcon} from '@sanity/icons'
-import {ClockIcon} from '@sanity/icons'
+import { EarthGlobeIcon, CalendarIcon, ClockIcon } from '@sanity/icons';
 
 import { RuleType } from '../../../ruleType';
 
@@ -19,7 +17,6 @@ const coursesSchemaLanguage = {
         {
             name: 'course_name',
             type: 'array',
-            // components: { input: ArrayMaxItems },
             title: 'Course Name (Դասընթացի անվանումը)',
             of: [
                 {
@@ -64,13 +61,9 @@ const coursesSchemaLanguage = {
                 }
             ]
         },
-       
-
-
         {
             name: 'week_number_of_lessons',
             type: 'array',
-            // components: { input: ArrayMaxItems },
             title: 'Quantity of lessons per week (Դասերի քանակը շաբաթական)',
             of: [
                 {
@@ -115,13 +108,9 @@ const coursesSchemaLanguage = {
                 }
             ]
         },
-
-
-
         {
             name: 'course_type',
             type: 'array',
-            // components: { input: ArrayMaxItems },
             title: 'Course type (Դասընթացի տեսակը)',
             of: [
                 {
@@ -166,8 +155,6 @@ const coursesSchemaLanguage = {
                 }
             ]
         },
-
-
     ],
 };
 
