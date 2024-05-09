@@ -53,7 +53,7 @@ const CoursesModal = ({
                         className={styles.link}
                         onClick={handlecloseModal}
                     >
-                        <p className={cn(styles.course, slug[0] === course.slug ? styles['active-lessons'] : styles.lessons)}>
+                        <p className={cn(styles.course, slug && slug[0] === course.slug ? styles['active-lessons'] : styles.lessons)}>
                             {course.course_name}
                         </p>
                     </Link>
