@@ -1,8 +1,12 @@
-import { memo } from 'react';
+'use client'
+
+import React from 'react';
 
 import RatingCard from '../RatingCard';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { UrlType } from '@/types/educational-center';
+import { OUR_RATING } from '../../../../../../../sanity/sanity-queries/educational-center';
 
 const sizes = [
     {
@@ -22,26 +26,31 @@ const sizes = [
     }
 ];
 
-const Rating = ({ data }: any) => data?.map((card: any, index: number): JSX.Element => {
-    const urlForImageBackground: { src: string, width: number, height: number } | any = urlForImage(card.our_rating_section_image);
-    const path: { src: string, width: number, height: number } | any= urlForImage(card.user_image);
+type Props = {
+    data: OUR_RATING[]
+};
 
-    const urlImageBackgroundAlt = card.our_rating_section_image.alt;
-    const urlImageAlt = card.user_image.alt;
-    const name = card.user_name;
+const Rating = ({ data }: Readonly<Props>) =>
+    data?.map((card: OUR_RATING, index: number): JSX.Element => {
+        const urlForImageBackground: UrlType | any = urlForImage(card.our_rating_section_image);
+        const path: UrlType | any = urlForImage(card.user_image);
 
-    const options = {
-        name,
-        urlForImageBackground: urlForImageBackground.src,
-        urlImageBackgroundAlt,
-        urlForImage: path.src,
-        urlImageAlt,
-        result: card?.user_feedback,
-        rating: card.rating + 1,
-        ...sizes[index],
-    };
+        const urlImageBackgroundAlt = card.our_rating_section_image.alt;
+        const urlImageAlt = card.user_image.alt;
+        const name = card.user_name;
 
-    return <RatingCard key={card.slug} options={options} />;
+        const options = {
+            name,
+            urlForImageBackground: urlForImageBackground.src,
+            urlImageBackgroundAlt,
+            urlForImage: path.src,
+            urlImageAlt,
+            result: card?.user_feedback,
+            rating: card.rating + 1,
+            ...sizes[index],
+        };
+
+        return <RatingCard key={card._key} options={options} />;
 });
 
-export default memo(Rating);
+export default React.memo(Rating);

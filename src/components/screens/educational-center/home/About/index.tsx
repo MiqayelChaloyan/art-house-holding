@@ -8,13 +8,12 @@ import { useTranslations } from 'next-intl';
 import Container from '@/components/components/container';
 
 import Button from '@/lib/ui/Button';
-import { ImagePaths } from '@/lib/constants';
 import { Arial, Inter } from '@/lib/constants/font';
 
 import { Content as ContentType, UrlType } from '@/types/educational-center';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
+import { ABOUT } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
@@ -22,21 +21,22 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[]
+    data: ABOUT
 }
 
 const Content = ({ content, isReadMore, minimumHeight }: ContentType) => (
     <p className={cn(styles.content, Inter.className)}>{isReadMore ? content.slice(0, minimumHeight) + '...' : content}</p>
 );
 
-const About = ({ data }: Props) => {
+const About = ({ 
+    data: { about_us_content, about_us_image } 
+}: Readonly<Props>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
-    const { about_us_content, about_us_image } = data[0].about_us;
     const path: UrlType | any = urlForImage(about_us_image);
     const minimumHeight = 1000;
     const t = useTranslations();
 
-    const toggleReadMore = () =>  setIsReadMore(!isReadMore);
+    const toggleReadMore = () => setIsReadMore(!isReadMore);
 
     return (
         <section id='about-us' className={styles.container}>

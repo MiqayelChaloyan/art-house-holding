@@ -7,28 +7,28 @@ import Container from '@/components/components/container';
 import ProgressItem from '@/lib/ui/progress';
 import { Inter } from '@/lib/constants/font';
 
-import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
+import { PROGRESS } from '../../../../../../sanity/sanity-queries/educational-center';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[]
+    data: PROGRESS[]
 };
 
 const Progress = ({ data }: Props) => {
-    const uploadProgress = data[0].progress_section;
 
-    const items = uploadProgress.map((item: any) => {
-        return (
-            <div key={item.slug} className={styles.column}>
-                <ProgressItem value={0} quantity={item.quantity} />
-                <p className={`${styles.title} ${Inter.className}`}>{item.title}</p>
-            </div>
-        );
-    });
+    const items = data?.map((item: PROGRESS) => (
+        <div key={item._key} className={styles.column}>
+            <ProgressItem value={0} quantity={item.quantity} />
+            <p className={cn(styles.title, Inter.className)}>
+                {item.title}
+            </p>
+        </div>
+    ));
 
-    
     return (
         <section id='circle-progress' className={styles.container}>
             <Container>

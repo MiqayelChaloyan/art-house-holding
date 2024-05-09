@@ -20,7 +20,7 @@ type Props = {
     data: EDUCATIONAL_CENTER_DEFAULT[]
 }
 
-const EducationalCenterHome = ({ data }: Props) => {
+const EducationalCenterHome = ({ data }: Readonly<Props>) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -29,13 +29,13 @@ const EducationalCenterHome = ({ data }: Props) => {
 
     return (
         <>
-            <Main data={data} />
-            <About data={data} />
-            <CookingCourses data={data} />
+            <Main data={data[0]?.main_section} />
+            <About data={data[0]?.about_us} />
+            <CookingCourses data={data[0]?.cooking_courses} />
             <News data={data[0]?.section} />
-            <Progress data={data} />
-            <Specialists data={data} />
-            <OurRating data={data} /> 
+            <Progress data={data[0]?.progress_section} />
+            <Specialists data={data[0]?.specialists_section} />
+            <OurRating data={data[0]?.our_rating_section} /> 
         </>
     )
 }

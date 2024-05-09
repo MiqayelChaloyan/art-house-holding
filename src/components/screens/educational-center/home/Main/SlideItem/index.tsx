@@ -7,19 +7,19 @@ import { useTranslations } from 'next-intl';
 import Button from '@/lib/ui/Button';
 import { Inter } from '@/lib/constants/font';
 
+import { SlideItem as Props } from '@/types/educational-center';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    url: string,
-    subtitle: string,
-    content: any,
-    scrollToElement: (value: number) => void
-};
-
-const SlideItem = ({ url, subtitle, content, scrollToElement }: Props) => {
+const SlideItem = ({
+    url,
+    subtitle,
+    content,
+    scrollToElement
+}: Readonly<Props>) => {
     const description = content.length <= 312 ? content : content.slice(0, 313) + '...';
     const t = useTranslations('buttons');
 

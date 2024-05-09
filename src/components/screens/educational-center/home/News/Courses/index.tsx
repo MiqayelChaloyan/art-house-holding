@@ -6,21 +6,21 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import { Course, CourseMobileCard, Gallery } from '../Course';
 
-import { Course as CourseProps } from '@/types/educational-center';
+import { LESSON } from '../../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
 
 
 type Props = {
-    data: CourseProps[]
+    data: LESSON[]
 }
 
-const Courses = ({ data }: Props) => {
+const Courses = ({ data }: Readonly<Props>) => {
     const windowSize = useWindowSize();
 
-    const courses: JSX.Element[] = data?.map((course: CourseProps) => <Course key={course.slug} course={course} />);
-    const gallery: JSX.Element[] = data?.map((course: CourseProps) => <Gallery key={course.slug} course={course} />);
-    const mobile: JSX.Element[] = data?.map((course: CourseProps) => <CourseMobileCard key={course.slug} course={course} />);
+    const courses: JSX.Element[] = data?.map((course: LESSON) => <Course key={course._key} course={course} />);
+    const gallery: JSX.Element[] = data?.map((course: LESSON) => <Gallery key={course._key} course={course} />);
+    const mobile: JSX.Element[] = data?.map((course: LESSON) => <CourseMobileCard key={course._key} course={course} />);
 
     return windowSize.width < 768 ? (mobile) : (
         <div className={styles.column}>

@@ -2,16 +2,20 @@
 
 import RatingCard from '../RatingCard';
 
+import { Options, UrlType } from '@/types/educational-center';
+
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-const MobileCards = (data: any, slideIndex: any) => {
-    const feedbacks = data.map((card: any, index: string): JSX.Element => {
+const MobileCards = (data: Options | any, slideIndex: string | number) => {
+    const feedbacks = data?.map((card: Options | any, index: string): JSX.Element => {
 
-        const urlForImageBackground: { src: string, width: number, height: number } | any = urlForImage(card.our_rating_section_image);
-        const path: { src: string, width: number, height: number } | any = urlForImage(card.user_image);
+        const urlForImageBackground: UrlType | any = urlForImage(card.our_rating_section_image);
+        const path: UrlType | any = urlForImage(card.user_image);
 
         const urlImageBackgroundAlt = card.our_rating_section_image.alt;
         const urlImageAlt = card.user_image.alt;
@@ -28,7 +32,9 @@ const MobileCards = (data: any, slideIndex: any) => {
         };
 
         return (
-            <div key={card.slug}  className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}>
+            <div key={card.slug} className={index === slideIndex ?
+                cn(styles.slide, styles.slide_active) : styles.slide}
+            >
                 <RatingCard options={options} />
             </div>
         );

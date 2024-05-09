@@ -6,15 +6,16 @@ import Container from '@/components/components/container';
 
 import Courses from './Courses';
 
-import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
+import { SECTON } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
 
+
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[] | any
+    data: SECTON
 };
 
-const News = ({ data }: Props) => (
+const News = ({ data }: Readonly<Props>) => (
     <section id='cooking-courses' className={styles.container}>
         <div className={styles.triangle} />
         <Container>

@@ -19,6 +19,8 @@ import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
 // slick-carousel 
 import Slider from 'react-slick';
 
+import cn from 'classnames';
+
 // Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -29,14 +31,13 @@ import 'swiper/css/autoplay';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import cn from 'classnames';
-
 import styles from './styles.module.sass';
 
 
 type Props = {
     partners: PARTNER[]
 };
+
 interface SampleNextArrowProps { onClick: () => void };
 interface SamplePrevArrowProps { onClick: () => void };
 

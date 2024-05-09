@@ -64,6 +64,7 @@ export const aboutUsSchemaEducationalCenter = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             name: 'main_section',
@@ -133,14 +134,6 @@ export const aboutUsSchemaEducationalCenter = {
                                     type: 'string'
                                 }
                             ]
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
                         },
                     ]
                 }
@@ -331,15 +324,6 @@ export const aboutUsSchemaEducationalCenter = {
                                     ]
                                 },
                                 {
-                                    name: 'slug',
-                                    type: 'slug',
-                                    description: "Պիտի եզակի լինի",
-                                    options: {
-                                        source: 'name',
-                                    },
-                                    validation: (Rule: any) => Rule.required(),
-                                },
-                                {
                                     name: 'image_one',
                                     title: 'Image 1',
                                     type: 'image',
@@ -417,15 +401,6 @@ export const aboutUsSchemaEducationalCenter = {
                             ]
                         },
                         {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: any) => Rule.required(),
-                        },
-                        {
                             title: 'Quantity',
                             name: 'quantity',
                             type: 'number',
@@ -495,15 +470,6 @@ export const aboutUsSchemaEducationalCenter = {
                             ]
                         },
                         {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: any) => Rule.required(),
-                        },
-                        {
                             name: 'specialists_section_image',
                             title: 'Specialists Section Image',
                             type: 'image',
@@ -529,6 +495,8 @@ export const aboutUsSchemaEducationalCenter = {
                             type: 'array',
                             title: 'Specialists Sections Images',
                             description: 'Ոչ պակաս, քան ութ, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                            components: { input: ArrayMaxItems },
+                            validation: (Rule: RuleType) => Rule.max(8),
                             of: [
                                 {
                                     name: 'image',
@@ -626,15 +594,6 @@ export const aboutUsSchemaEducationalCenter = {
                                     type: 'string'
                                 }
                             ]
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: any) => Rule.required(),
                         },
                         {
                             name: 'our_rating_section_image',

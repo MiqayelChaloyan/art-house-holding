@@ -50,7 +50,7 @@ export default (S: any) =>
                         .title('Pages')
                         .items([
                             S.listItem()
-                                .title('About Us')
+                                .title('Home')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('about-us').documentId('about-us-educational-center')),
                             S.listItem()

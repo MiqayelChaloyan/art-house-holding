@@ -14,7 +14,7 @@ const Partner = ({ partner }: Readonly<PARTNER | any>) => {
     const path: UrlType | any = urlForImage(partner.logo);
 
     return (
-        <div className={styles.co_worker}>
+        <div className={styles.partner}>
             <div className={styles.logo}>
                 <img src={path?.src} alt={partner.logo.alt} className={styles.svg_icon} />
             </div>

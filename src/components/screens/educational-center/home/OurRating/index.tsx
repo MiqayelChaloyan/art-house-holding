@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -9,7 +9,7 @@ import Container from '@/components/components/container';
 import Rating from './Ratings';
 import MobileCards from './MobileCards';
 
-import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
+import { OUR_RATING } from '../../../../../../sanity/sanity-queries/educational-center';
 
 // slick-carousel 
 import Slider from 'react-slick';
@@ -18,16 +18,15 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import styles from './style.module.sass';
+import styles from './styles.module.sass';
 
 
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[]
+    data: OUR_RATING[]
 };
 
-const OurRating = ({ data }: Props) => {
+const OurRating = ({ data }: Readonly<Props>) => {
     const [slideIndex, setSlideIndex] = useState(0);
-    const ratings = data[0].our_rating_section.slice(0, 3);
     const t = useTranslations('sections');
 
     const settings = {
@@ -41,21 +40,23 @@ const OurRating = ({ data }: Props) => {
         centerMode: true,
         cssEase: 'ease-out',
         arrows: false,
-        beforeChange: (_: unknown, next: any) => setSlideIndex(next),
+        beforeChange: (_: unknown, next: number) => setSlideIndex(next),
     };
 
     return (
         <section id='our-rating' className={styles.container}>
             <Container>
-                <h1 className={styles.title}>{t('rating')}</h1>
+                <h1 className={styles.title}>
+                    {t('rating')}
+                </h1>
                 <div className={styles.feedbacks}>
                     <div className={styles.row}>
-                        <Rating data={ratings} />
+                        <Rating data={data} />
                     </div>
                 </div>
                 <div className={styles.mobile_cards}>
                     <Slider {...settings} className={styles.slider}>
-                        {MobileCards(ratings, slideIndex)}
+                        {MobileCards(data, slideIndex)}
                     </Slider>
                 </div>
             </Container>
@@ -63,4 +64,4 @@ const OurRating = ({ data }: Props) => {
     );
 };
 
-export default memo(OurRating);
+export default React.memo(OurRating);

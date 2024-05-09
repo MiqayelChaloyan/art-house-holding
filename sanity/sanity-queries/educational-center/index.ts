@@ -1,17 +1,91 @@
 import { Key } from 'react';
 
-export interface EDUCATIONAL_CENTER_DEFAULT {
-    _id: string
-    slug: string
-    main_section: any
-    about_us: any
-    cooking_courses: any
-    section: any
-    progress_section: any
-    specialists_section: any
-    our_rating_section: any
-    video_section_title: any
+export interface Asset {
+    _type: string,
+    alt: string,
+    _ref: string
 };
+
+interface Ref {
+    _ref: string,
+    _type: string
+}
+
+export interface MAIN {
+    _key: string,
+    content: string,
+    image: Asset,
+    title: string
+}
+
+export interface ABOUT {
+    about_us_content: string,
+    about_us_image: Asset,
+}
+
+export interface VIDEO {
+    video_section_title: string,
+    video_light: Asset,
+    video_url: string,
+};
+
+export interface LESSON {
+    _key: string,
+    subtitle: string,
+    content: string,
+    image_one: Asset,
+    image_two: Asset,
+    categories: Ref,
+}
+
+export interface SECTON {
+    section_title: string,
+    lessons: LESSON[],
+};
+
+export interface PROGRESS {
+    _key: string,
+    title: string,
+    quantity: string | number
+};
+
+export interface SPECIALIST {
+    _key: string,
+    title: string,
+    course_name: string,
+    specialists_section_image: Asset,
+    categories: string,
+    specialists_section_images: Asset[],
+};
+
+export interface OUR_RATING {
+    _key: string,
+    user_name: string,
+    user_image: Asset,
+    user_feedback: string,
+    our_rating_section_image: Asset,
+    rating: string,
+};
+
+export interface EDUCATIONAL_CENTER_DEFAULT {
+    main_section: MAIN[],
+    about_us: ABOUT,
+    cooking_courses: VIDEO,
+    section: SECTON,
+    progress_section: PROGRESS[],
+    specialists_section: SPECIALIST[],
+    our_rating_section: OUR_RATING[]
+};
+
+
+
+
+
+
+
+
+
+
 
 export interface EDUCATIONAL_CENTER_COURSES {
     _id: string

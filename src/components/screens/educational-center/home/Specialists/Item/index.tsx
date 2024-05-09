@@ -9,70 +9,74 @@ import { useLocale } from 'next-intl';
 import Button from '@/lib/ui/Button';
 import { ArianAMU } from '@/lib/constants/font';
 
+import { UrlType } from '@/types/educational-center';
+
 import { queryId } from '../../../../../../../sanity/services/educational-center-service/courses';
 import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { Asset } from '../../../../../../../sanity/sanity-queries/educational-center';
+
+import cn from 'classnames';
 
 import styles from './style.module.sass';
 
 
-const Images = ({ images }: any) => {
+type Props = {
+    images: Asset[]
+};
+
+const Images = ({ images }: Readonly<Props>) => {
     const firstDivImages = images.slice(0, Math.ceil(images.length / 2));
     const secondDivImages = images.slice(Math.ceil(images.length / 2));
 
     return (
         <div>
             <div className={styles.gallery_row}>
-                {
-                    firstDivImages?.map((image: any) => {
-                        const path: { src: string, width: number, height: number } | any = urlForImage(image);
+                {firstDivImages?.map((image: any) => {
+                    const path: UrlType | any = urlForImage(image);
 
-                        return (
-                            <Image
-                                key={image._key}
-                                src={path?.src}
-                                alt={image.alt}
-                                priority
-                                className={styles.image_gallery}
-                                width={0}
-                                height={0}
-                                sizes='100vw'
-                                style={{ objectFit: 'cover' }}
-                            />
-                        )
-                    })
-                }
+                    return (
+                        <Image
+                            key={image._key}
+                            src={path?.src}
+                            alt={image.alt}
+                            priority
+                            className={styles.image_gallery}
+                            width={0}
+                            height={0}
+                            sizes='100vw'
+                            style={{ objectFit: 'cover' }}
+                        />
+                    )
+                })}
             </div>
             <div className={styles.gallery_row}>
-                {
-                    secondDivImages?.map((image: any) => {
-                        const path: { src: string, width: number, height: number } | any = urlForImage(image);
+                {secondDivImages?.map((image: any) => {
+                    const path: UrlType | any = urlForImage(image);
 
-                        return (
-                            <Image
-                                key={image._key}
-                                src={path?.src}
-                                alt={image.alt}
-                                priority
-                                className={styles.image_gallery}
-                                width={0}
-                                height={0}
-                                sizes='100vw'
-                                style={{ objectFit: 'cover' }}
-                            />
-                        )
-                    })
-                }
+                    return (
+                        <Image
+                            key={image._key}
+                            src={path?.src}
+                            alt={image.alt}
+                            priority
+                            className={styles.image_gallery}
+                            width={0}
+                            height={0}
+                            sizes='100vw'
+                            style={{ objectFit: 'cover' }}
+                        />
+                    )
+                })}
             </div>
         </div>
     );
 };
 
-
 const Item = ({ item }: any) => {
     const router = useRouter();
     const localActive = useLocale();
-    const path: { src: string, width: number, height: number } | any = urlForImage(item.specialists_section_image);
+    const path: UrlType | any = urlForImage(item.specialists_section_image);
 
     const getResources = async () => {
         const _id = item.categories._ref;
@@ -103,10 +107,12 @@ const Item = ({ item }: any) => {
             <div className={styles.left}>
                 <div className={styles.header}>
                     <div className={styles.point} />
-                    <h2 className={`${styles.teacher} ${ArianAMU.className}`}>{item.title}</h2>
+                    <h2 className={cn(styles.teacher, ArianAMU.className)}>
+                        {item.title}
+                    </h2>
                 </div>
                 <Button
-                    className={`${styles.button} ${ArianAMU.className}`}
+                    className={cn(styles.button, ArianAMU.className)}
                     text={item.course_name}
                     onClick={getResources}
                 />

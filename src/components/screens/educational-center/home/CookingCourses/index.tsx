@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-queries/educational-center';
+import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import { UrlType } from '@/types/educational-center';
 import { ReduxType } from '@/types/language';
@@ -18,11 +18,11 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[]
+    data: VIDEO
 };
 
-const CookingCourses = ({ data }: Props) => {
-    const path: UrlType | any = urlForImage(data[0].cooking_courses.video_light)
+const CookingCourses = ({ data }: Readonly<Props>) => {
+    const path: UrlType | any = urlForImage(data?.video_light)
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
 
@@ -35,11 +35,13 @@ const CookingCourses = ({ data }: Props) => {
         <section id='video-player' className={styles.container}>
             <div className={styles.triangle} />
             <Container>
-                <h1 className={styles.title}>{data[0].cooking_courses.video_section_title}</h1>
+                <h1 className={styles.title}>
+                    {data?.video_section_title}
+                </h1>
                 <div className={styles.player}>
                     <Player
                         path={path}
-                        video_url={data[0].cooking_courses.video_url}
+                        video_url={data?.video_url}
                         handlePlayVideo={handlePlayVideo}
                     />
                 </div>
