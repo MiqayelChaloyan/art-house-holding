@@ -1,6 +1,7 @@
 .container
     position: relative
     background: #E3E1E1
+    height: max-content
     @media screen and ( max-width: 991px )
        bottom: 0
        height: 450px
@@ -9,48 +10,27 @@
        height: max-content
 
 .about_us
-   display: flex
-   justify-content: space-around
-   align-items: baseline
-   height: 520px
-   @media screen and (max-device-width: 1600px) 
-       padding: 0
-   @media screen and (max-device-width: 1200px) 
-       padding: 0
-   @media screen and ( max-width: 991px )
-       display: flex
-       padding-top: 0
-       height: 513px
-   @media screen and ( max-width: 767px )
-       display: block
-       height: max-content
-   h2
-      font-size: 24px
-      @media screen and ( max-width: 991px )
-        text-align: center
-        padding: 35px 0 35px 0
-      @media screen and ( max-width: 767px )
-        text-align: center
-        padding: 35px 0 35px 0
-   p
-     width: 100%
-     padding-right: var(--container-gap)
-     padding-left: var(--container-gap)
-     font-size: 18px
-     text-align: left
-     @media screen and (max-width: 1200px )
-       width: 90%
-       font-size: 16px
-     @media screen and ( max-width: 991px )
-       width: 100%
-       font-size: 13px
-     @media screen and ( max-width: 767px )
-       margin: 0 auto   
-       width: 100%
-       text-align: left
-       font-size: 16px
-       margin-bottom: 27px
-
+    display: flex
+    justify-content: space-around
+    align-items: flex-start
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+        height: max-content
+    /* xl */
+    @media screen and ( max-width: 1280px )
+        width: 92%
+    /* lg */
+    @media screen and ( max-width: 1024px )
+        width: 100%
+        height: max-content
+    /* md */
+    @media screen and ( max-width: 768px )
+        width: 100%
+        display: grid
+        justify-content: center
+        align-items: center
+        height: max-content
+        margin-bottom: 40px
 
 .about_box
     width: 100%
@@ -169,3 +149,93 @@
       width: 100%
       position: relative
       margin-bottom: 20px
+
+
+
+.content
+    width: 100%
+    padding-right: var(--container-gap)
+    padding-left: var(--container-gap)
+    color: #313131
+    font-size: 18px
+    text-align: left
+    font-weight: var(--font-weight-semi-bold)
+    height: max-content
+    margin-bottom: 20px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 16px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 16px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        line-height: 24.73px
+        margin-bottom: 20px
+        padding-right: 0
+        font-size: 15px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        line-height: 17.73px
+        margin-bottom: 10px
+        font-size: 12px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        line-height: 16.73px
+        margin-bottom: 10px
+        font-size: 12px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        line-height: 17.73px
+        font-size: 14px
+        padding-left: 0
+        margin-bottom: 15px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        line-height: 15.73px
+        font-size: 14px
+        padding-left: 0
+        margin-bottom: 15px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        line-height: 14.73px
+        font-size: 14px
+        padding-left: 0
+        margin-bottom: 15px
+
+
+.view-more-btn
+    color: #313131
+    padding-right: var(--container-gap)
+    padding-left: var(--container-gap)
+    margin-bottom: 50px
+    font-size: 18px
+    &:after 
+        content: "" 
+        display: block 
+        width: 100% 
+        padding-top: 10px 
+        border-bottom: 1px solid black 
+        transition: 0.5s 
+        /* @lg */
+        @media screen and (max-width: 1280px)
+            padding-top: 10px 
+    &:hover
+        color: #C62020
+        &:after
+            width: 15%
+            border-bottom: 1px solid #C62020 
+            /* @lg */
+            @media screen and (max-width: 1280px)
+                width: 10%
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 14px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 11px
+        padding-left: 0

@@ -16,13 +16,16 @@ export const query =
         "video_url": video_url,
         "video_light": video_light,
     },
-    "news_section": news_section[] {
-        "subtitle": subtitle[$language],
-        "content": content[$language],
-        "news_image_one": news_image_one,
-        "news_image_two": news_image_two,
-        "slug": slug.current,
-        "categories": categories,
+    "section": section {
+        "section_title": section_title[$language],
+        "lessons": lessons[] {
+            "subtitle": subtitle[$language],
+            "content": content[$language],
+            "image_one": image_one,
+            "image_two": image_two,
+            "slug": slug.current,
+            "categories": categories,
+        },
     },
     "progress_section": progress_section[] {
         "title": title[$language],

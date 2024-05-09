@@ -1,8 +1,6 @@
 'use client'
 
-import { memo } from 'react';
-
-import { useTranslations } from 'next-intl';
+import React from 'react';
 
 import Container from '@/components/components/container';
 
@@ -13,25 +11,21 @@ import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../../sanity/sanity-quer
 import styles from './styles.module.sass';
 
 type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[]
+    data: EDUCATIONAL_CENTER_DEFAULT[] | any
 };
 
+const News = ({ data }: Props) => (
+    <section id='cooking-courses' className={styles.container}>
+        <div className={styles.triangle} />
+        <Container>
+            <h1 className={styles.title}>
+                {data?.section_title}
+            </h1>
+            <div className={styles.news}>
+                <Courses data={data?.lessons} />
+            </div>
+        </Container>
+    </section>
+);
 
-const News = ({ data }: Props) => {
-    const newsItems = data[0].news_section.slice(0, 3);
-    const t = useTranslations('sections');
-
-    return (
-        <section id='cooking-courses' className={styles.container}>
-            <div className={styles.triangle} />
-            <Container>
-                <h1 className={styles.title}>{t('news')}</h1>
-                <div className={styles.news}>
-                    <Courses data={newsItems} />
-                </div>
-            </Container>
-        </section>
-    );
-};
-
-export default memo(News);
+export default React.memo(News);

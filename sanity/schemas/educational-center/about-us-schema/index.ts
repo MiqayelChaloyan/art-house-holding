@@ -243,110 +243,141 @@ export const aboutUsSchemaEducationalCenter = {
             ]
         },
         {
-            name: 'news_section',
-            type: 'array',
-            title: 'News Section',
-            components: { input: ArrayMaxItems },
-            validation: (Rule: RuleType) => Rule.max(3),
-            description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
-            of: [
+            name: 'section',
+            type: 'object',
+            title: 'Section Lessons',
+            validation: (Rule: RuleType) => Rule.required(),
+            fields: [
                 {
-                    name: 'Object',
+                    title: 'Section Title',
+                    name: 'section_title',
                     type: 'object',
-                    icon: ClipboardIcon,
+                    validation: (Rule: any) => Rule.required(),
                     fields: [
                         {
-                            title: 'News Section Title',
-                            name: 'subtitle',
-                            type: 'object',
-                            validation: (Rule: any) => Rule.required(),
-                            fields: [
-                                {
-                                    title: 'Armenian',
-                                    name: 'am',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'English',
-                                    name: 'en',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'Russian',
-                                    name: 'ru',
-                                    type: 'string'
-                                }
-                            ]
+                            title: 'Armenian',
+                            name: 'am',
+                            type: 'string'
                         },
                         {
-                            title: 'News Section Content',
-                            name: 'content',
-                            type: 'object',
-                            validation: (Rule: any) => Rule.required(),
-                            fields: [
-                                {
-                                    title: 'Armenian',
-                                    name: 'am',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'English',
-                                    name: 'en',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'Russian',
-                                    name: 'ru',
-                                    type: 'string'
-                                }
-                            ]
+                            title: 'English',
+                            name: 'en',
+                            type: 'string'
                         },
                         {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: any) => Rule.required(),
-                        },
-                        {
-                            name: 'news_image_one',
-                            title: 'News Section Image 1',
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-
-                                {
-                                    name: 'alt',
-                                    title: 'Alternative text',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            name: 'news_image_two',
-                            title: 'News Section Image 2',
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-
-                                {
-                                    name: 'alt',
-                                    title: 'Alt',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            name: 'categories',
-                            type: 'reference',
-                            title: 'Course Category',
-                            to: [{ type: 'courses' }],
-                            validation: (Rule: any) => Rule.required(),
-                        },
+                            title: 'Russian',
+                            name: 'ru',
+                            type: 'string'
+                        }
                     ]
-                }
+                },
+                {
+                    name: 'lessons',
+                    type: 'array',
+                    title: 'Lessons',
+                    components: { input: ArrayMaxItems },
+                    validation: (Rule: RuleType) => Rule.max(3),
+                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                    of: [
+                        {
+                            name: 'Object',
+                            type: 'object',
+                            icon: ClipboardIcon,
+                            fields: [
+                                {
+                                    title: 'Lessons Title',
+                                    name: 'subtitle',
+                                    type: 'object',
+                                    validation: (Rule: any) => Rule.required(),
+                                    fields: [
+                                        {
+                                            title: 'Armenian',
+                                            name: 'am',
+                                            type: 'string'
+                                        },
+                                        {
+                                            title: 'English',
+                                            name: 'en',
+                                            type: 'string'
+                                        },
+                                        {
+                                            title: 'Russian',
+                                            name: 'ru',
+                                            type: 'string'
+                                        }
+                                    ]
+                                },
+                                {
+                                    title: 'Content',
+                                    name: 'content',
+                                    type: 'object',
+                                    validation: (Rule: any) => Rule.required(),
+                                    fields: [
+                                        {
+                                            title: 'Armenian',
+                                            name: 'am',
+                                            type: 'string'
+                                        },
+                                        {
+                                            title: 'English',
+                                            name: 'en',
+                                            type: 'string'
+                                        },
+                                        {
+                                            title: 'Russian',
+                                            name: 'ru',
+                                            type: 'string'
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: 'slug',
+                                    type: 'slug',
+                                    description: "Պիտի եզակի լինի",
+                                    options: {
+                                        source: 'name',
+                                    },
+                                    validation: (Rule: any) => Rule.required(),
+                                },
+                                {
+                                    name: 'image_one',
+                                    title: 'Image 1',
+                                    type: 'image',
+                                    options: { hotspot: true },
+                                    fields: [
+
+                                        {
+                                            name: 'alt',
+                                            title: 'Alternative text',
+                                            type: 'string'
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: 'image_two',
+                                    title: 'Image 2',
+                                    type: 'image',
+                                    options: { hotspot: true },
+                                    fields: [
+
+                                        {
+                                            name: 'alt',
+                                            title: 'Alt',
+                                            type: 'string'
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: 'categories',
+                                    type: 'reference',
+                                    title: 'Course Category',
+                                    to: [{ type: 'courses' }],
+                                    validation: (Rule: any) => Rule.required(),
+                                },
+                            ]
+                        }
+                    ]
+                },
             ]
         },
         {

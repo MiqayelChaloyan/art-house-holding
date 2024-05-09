@@ -6,7 +6,7 @@ export interface EDUCATIONAL_CENTER_DEFAULT {
     main_section: any
     about_us: any
     cooking_courses: any
-    news_section: any
+    section: any
     progress_section: any
     specialists_section: any
     our_rating_section: any

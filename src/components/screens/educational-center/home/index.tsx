@@ -27,12 +27,14 @@ const EducationalCenterHome = ({ data }: Props) => {
         dispatch(closeModal(false));
     }, []);
 
+    console.log(data[0].section)
+
     return (
         <>
             <Main data={data} />
             <About data={data} />
             <CookingCourses data={data} />
-            <News data={data} />
+            <News data={data[0]?.section} />
             <Progress data={data} />
             <Specialists data={data} />
             <OurRating data={data} /> 

@@ -97,26 +97,26 @@ const Course = ({ course }: CourseType | any) => {
 };
 
 const Gallery = ({ course }: CourseType | any) => {
-    const leftPath: UrlType | any = urlForImage(course.news_image_one);
-    const rightPath: UrlType | any = urlForImage(course.news_image_two);
+    const leftPath: UrlType | any = urlForImage(course.image_one);
+    const rightPath: UrlType | any = urlForImage(course.image_two);
 
     return (
         <div className={styles.right}>
-            <img src={leftPath.src} alt={course.news_image_one.alt} className={styles.image} />
-            <img src={rightPath.src} alt={course.news_image_two.alt} className={styles.image} />
+            <img src={leftPath.src} alt={course.image_one.alt} className={styles.image} />
+            <img src={rightPath.src} alt={course.image_two.alt} className={styles.image} />
         </div>
     )
 };
 
 const CourseMobileCard = ({ course }: CourseType | any) => {
-    const leftPath: UrlType | any = urlForImage(course.news_image_one);
-    const rightPath: UrlType | any = urlForImage(course.news_image_two);
+    const leftPath: UrlType | any = urlForImage(course.image_one);
+    const rightPath: UrlType | any = urlForImage(course.image_two);
 
     return (
         <div className={styles.card}>
             <div className={styles.right}>
-                <img src={leftPath.src} alt={course.news_image_one.alt} className={styles.image} />
-                <img src={rightPath.src} alt={course.news_image_two.alt} className={styles.image} />
+                <img src={leftPath.src} alt={course.image_one.alt} className={styles.image} />
+                <img src={rightPath.src} alt={course.image_two.alt} className={styles.image} />
             </div>
             <Course course={course} />
         </div>
