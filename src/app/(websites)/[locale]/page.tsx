@@ -5,8 +5,9 @@ import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
 import Home from '@/components/screens/art-house';
-
 import { Locale } from '@/locales';
+
+import { UrlType } from '@/types/art-house';
 
 import { SanityClient } from 'sanity';
 
@@ -15,26 +16,14 @@ import { client } from '../../../../sanity/client';
 import { partnersQuery } from '../../../../sanity/services/generic-service';
 import { query, querySiteMeta } from '../../../../sanity/services/art-house-service';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+import { Site } from '../../../../sanity/sanity-queries/art-house';
 
 
 interface RootLayoutProps {
   params: {
     locale: string,
   }
-}
-
-interface Site {
-  site_name: string,
-  ogTitle: string,
-  ogImage: {
-    _type: string,
-    asset: {
-      _ref: string,
-      _type: string
-    }
-  },
-  ogDescription: string
-}
+};
 
 async function getResources(locale: string) {
   const dataPromise = client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
@@ -88,8 +77,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const meta: Site | any = await getSiteMeta(querySiteMeta, client)
   const { ogDescription, ogTitle, ogImage } = meta[1];
-
-  const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
+  const path: UrlType | any = urlForImage(ogImage);
 
   return {
     metadataBase: process.env.NEXT_PUBLIC_DOMAIN
@@ -109,7 +97,6 @@ export async function generateMetadata({
           alt: "seo-image",
         },
       ],
-      siteName: '',
       locale,
       type: "website",
     },
@@ -128,7 +115,7 @@ export async function generateMetadata({
       ],
     },
   };
-}
+};
 
 
 

@@ -55,7 +55,7 @@ export default async function Page({
         notFound()
     }
 
-    return <Course course={course} socialData={social} lessons={lessons} lessonsArmenian={lessonsArmenian}/>;
+    return <Course course={course} socialData={social} lessons={lessons} lessonsArmenian={lessonsArmenian} />;
 }
 
 
@@ -93,7 +93,7 @@ export async function generateMetadata({
                 },
             ],
             locale,
-            type: 'website',
+            type: "website",
         },
         twitter: {
             card: path?.src,

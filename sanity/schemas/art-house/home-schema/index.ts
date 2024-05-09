@@ -64,11 +64,15 @@ const homeSchemaArtHouse = {
             name: 'name',
             title: 'Name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             name: 'our_websites',
             type: 'array',
             title: 'Websites',
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(5),
+            description: 'Ոչ պակաս, քան հինգ և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
             of: [
                 {
                     name: 'Object',
@@ -130,14 +134,6 @@ const homeSchemaArtHouse = {
                             ]
                         },
                         {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                        },
-                        {
                             name: 'web_site_url',
                             title: 'Website url',
                             type: 'string',
@@ -180,14 +176,6 @@ const homeSchemaArtHouse = {
                                     type: 'string'
                                 }
                             ]
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
                         },
                         {
                             title: 'Quantity',

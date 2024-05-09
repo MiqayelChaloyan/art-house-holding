@@ -13,6 +13,7 @@ const contactUsSchemaArtHouse = {
             name: 'name',
             title: 'Name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             title: 'Phone Numbers',

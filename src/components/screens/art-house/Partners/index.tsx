@@ -1,17 +1,23 @@
 'use client'
 
-import { memo, useState } from 'react';
+import React, { useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 import { useTranslations } from 'next-intl';
+
+import Partner from '@/lib/ui/parnter';
+import { ArianAMU } from '@/lib/constants/font';
+
+import useWindowSize from '@/hooks/useWindowSize';
+
+import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 // Swiper 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
 
-import Partner from '@/lib/ui/parnter';
-import useWindowSize from '@/hooks/useWindowSize';
-import { ArianAMU } from '@/lib/constants/font';
+// slick-carousel 
+import Slider from 'react-slick';
 
 // Swiper styles
 import 'swiper/css';
@@ -19,40 +25,37 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-// slick-carousel 
-import Slider from 'react-slick';
-
 // slick-carousel styles
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { PARTNERS } from '../../../../../sanity/sanity-queries/generic';
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-const SampleNextArrow = ({ onClick }: any) => (
-    <div className={`${styles.arrow} ${styles.arrow_right}`} onClick={onClick}>
+type Props = {
+    partners: PARTNER[]
+};
+interface SampleNextArrowProps { onClick: () => void };
+interface SamplePrevArrowProps { onClick: () => void };
+
+const SampleNextArrow = ({ onClick }: SampleNextArrowProps | any) => (
+    <div className={cn(styles.arrow, styles.arrow_right)} onClick={onClick}>
         <SlArrowRight />
     </div>
 );
 
-const SamplePrevArrow = ({ onClick }: any) => (
-    <div className={`${styles.arrow} ${styles.arrow_left}`} onClick={onClick}>
+const SamplePrevArrow = ({ onClick }: SamplePrevArrowProps | any) => (
+    <div className={cn(styles.arrow, styles.arrow_left)} onClick={onClick}>
         <SlArrowLeft />
     </div>
 );
 
-
-type Props = {
-    partners: PARTNERS[] | any
-};
-
-
-const Partners = ({ partners }: Props) => {
+const Partners = ({ partners }: Readonly<Props>) => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
-    const windowSize = useWindowSize();
     const t = useTranslations('navigation');
+    const windowSize = useWindowSize();
 
     const params = {
         slidesPerView: windowSize.width <= 1280 ? 5 : 9,
@@ -77,46 +80,43 @@ const Partners = ({ partners }: Props) => {
         autoplay: true,
         autoplaySpeed: 2000,
         dots: false,
-        beforeChange: (_: unknown, next: any) => setSlideIndex(next),
+        beforeChange: (_: unknown, next: number) => setSlideIndex(next),
         centerMode: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         cssEase: 'ease-out',
     };
 
-
     return (
         <section id='partners' className={styles.container}>
-            <h2 className={`${styles.title} ${ArianAMU.className}`}>
+            <h2 className={cn(styles.title, ArianAMU.className)}>
                 {t('partners')}
             </h2>
             <div className={styles.desktop}>
                 <Swiper {...params}>
-                    {
-                        partners?.map((item: any, index: number) =>
-                            <SwiperSlide key={index}>
-                                <Partner item={item} />
-                            </SwiperSlide>
-                        )
-                    }
+                    {partners?.map((partner: PARTNER) =>
+                        <SwiperSlide key={partner._id}>
+                            <Partner partner={partner} />
+                        </SwiperSlide>
+                    )}
                 </Swiper>
             </div>
             <div className={styles.mobile}>
                 <Slider {...settings}>
-                    {
-                        partners?.map((item: any, index: number) => (
-                            <div
-                                key={index}
-                                className={index === slideIndex ? `${styles.slide} ${styles.slide_active}` : styles.slide}
-                            >
-                                <Partner item={item} />
-                            </div>
-                        ))
-                    }
+                    {partners?.map((partner: PARTNER, index: number) => (
+                        <div
+                            key={index}
+                            className={index === slideIndex ?
+                                cn(styles.slide, styles.slide_active) : styles.slide
+                            }
+                        >
+                            <Partner partner={partner} />
+                        </div>
+                    ))}
                 </Slider>
             </div>
         </section>
     );
 };
 
-export default memo(Partners);
+export default React.memo(Partners);

@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl';
 import Container from '@/components/components/container';
 import { ArianAMU } from '@/lib/constants/font';
 
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
 
 
@@ -20,7 +22,7 @@ const Main = () => {
                     </div>
                     <div className={styles.column}>
                         <div className={styles.art_house_logo} />
-                        <p className={`${styles.text} ${ArianAMU.className}`}>
+                        <p className={cn(styles.text, ArianAMU.className)}>
                             {t('main-title')}
                         </p>
                     </div>

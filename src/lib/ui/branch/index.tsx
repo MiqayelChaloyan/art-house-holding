@@ -1,43 +1,40 @@
-import { memo } from 'react';
+'use client'
+
+import React from 'react';
 
 import Link from 'next/link';
 
 import { ArianAMU, Inter } from '@/lib/constants/font';
+
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+import { BRANCH } from '../../../../sanity/sanity-queries/art-house';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-interface BranchProps {
-    item: {
-        company_name: string;
-        words: string;
-        web_site_url: string;
-        website_logo_front: string;
-        website_logo_back: string;
-    }
+interface Props {
+    item: BRANCH
     locale: string
 };
 
-
-const Branch: React.FC<BranchProps> = ({ item, locale }) => {
+const Branch = ({
+    item,
+    locale
+}: Readonly<Props>) => {
     const { company_name, words, web_site_url, website_logo_front, website_logo_back } = item;
 
     const urlForImageFront = urlForImage(website_logo_front);
-
     const urlForImageBack = urlForImage(website_logo_back);
 
     const wordsArray = words.split(' ');
 
-    const titlesFront = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_front} ${Inter.className}`} >{word}</p>);
-    const titlesBack = wordsArray.map((word: string, index: number) => <p key={index} className={`${styles.title_back} ${Inter.className}`} >{word}</p>);
-
-    const onLoader = () => {
-        console.log(true)
-    }
+    const titlesFront = wordsArray.map((word: string, index: number) => <p key={index} className={cn(styles.title_front, Inter.className)} >{word}</p>);
+    const titlesBack = wordsArray.map((word: string, index: number) => <p key={index} className={cn(styles.title_back, Inter.className)} >{word}</p>);
 
     return (
-        <Link onClick={onLoader} href={`/${locale}/${web_site_url}`} aria-label={`${web_site_url}`} id='card'>
+        <Link href={`/${locale}/${web_site_url}`} aria-label={`${web_site_url}`} id='card'>
             <div className={styles.card_container}>
                 <div className={styles.card}>
                     <div className={styles.front}>
@@ -45,7 +42,7 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
                             <img src={urlForImageFront?.src} alt={company_name} className={styles.logo} />
                         </div>
                         <div className={styles.words}>
-                            <p className={`${styles.title_front} ${ArianAMU.className}`}>{company_name}</p>
+                            <p className={cn(styles.title_front, ArianAMU.className)}>{company_name}</p>
                             {titlesFront}
                         </div>
                     </div>
@@ -54,7 +51,7 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
                             <img src={urlForImageBack?.src} alt={company_name} className={styles.logo} />
                         </div>
                         <div className={styles.words}>
-                            <p className={`${styles.title_back} ${ArianAMU.className}`}>{company_name}</p>
+                            <p className={cn(styles.title_back, ArianAMU.className)}>{company_name}</p>
                             {titlesBack}
                         </div>
                     </div>
@@ -64,5 +61,5 @@ const Branch: React.FC<BranchProps> = ({ item, locale }) => {
     );
 };
 
-export default memo(Branch);
+export default React.memo(Branch);
 

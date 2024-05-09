@@ -10,6 +10,7 @@ const partnersSchema = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
        {
             title: 'Company Name (Ընկերության Անվանումը)',
@@ -79,14 +80,6 @@ const partnersSchema = {
                     type: 'string'
                 }
             ]
-        },
-        {
-            name: 'slug',
-            type: 'slug',
-            options: {
-                source: 'name',
-            },
-            validation: (Rule: RuleType) => Rule.required(),
         },
         {
             name: 'logo',

@@ -4,13 +4,9 @@ export const ImagePaths = {
         logoURL: require('../../../public/assets/images/art-house/artHouseLogo.png'),
         flashLightURL: require('../../../public/assets/images/art-house/flashLight.png')
     },
-    ART_EDUCATIONAL_CENTER: {
-        aboutUsURL: require('../../../public/assets/images/educational-center/courses.png')
-    },
     LANGUAGE: {
         manURL: require('../../../public/assets/images/language/man.png'),
         womanURL: require('../../../public/assets/images/language/woman.png'),
-
     },
     DESIGN: {
         logoURL: require('../../../public/assets/images/design/logo.png'),
