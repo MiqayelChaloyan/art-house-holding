@@ -27,8 +27,6 @@ const EducationalCenterHome = ({ data }: Props) => {
         dispatch(closeModal(false));
     }, []);
 
-    console.log(data[0].section)
-
     return (
         <>
             <Main data={data} />
