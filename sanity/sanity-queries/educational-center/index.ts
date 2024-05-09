@@ -4,7 +4,7 @@ export interface EDUCATIONAL_CENTER_DEFAULT {
     _id: string
     slug: string
     main_section: any
-    about_us_content: any
+    about_us: any
     cooking_courses: any
     news_section: any
     progress_section: any

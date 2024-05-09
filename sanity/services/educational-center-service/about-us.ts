@@ -7,7 +7,10 @@ export const query =
         "image": image,
         "slug": slug.current
     },
-    "about_us_content": about_us_content[$language],
+    "about_us": about_us {
+        "about_us_content": about_us_content[$language],
+        "about_us_image": about_us_image,
+    },
     "cooking_courses": cooking_courses {
         "video_section_title": video_section_title[$language],
         "video_url": video_url,

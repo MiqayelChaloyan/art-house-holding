@@ -29,8 +29,8 @@ export const aboutUsSchemaEducationalCenter = {
         },
     ],
     fields: [
-          /* Site Metadata Schema */
-          {
+        /* Site Metadata Schema */
+        {
             type: 'string',
             name: 'site_name',
             title: 'Site Name',
@@ -147,26 +147,48 @@ export const aboutUsSchemaEducationalCenter = {
             ],
         },
         {
-            title: 'About Us Content',
-            name: 'about_us_content',
+            name: 'about_us',
             type: 'object',
+            title: 'About Us',
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
-                    title: 'Armenian',
-                    name: 'am',
-                    type: 'string'
+                    title: 'About Us Content',
+                    name: 'about_us_content',
+                    type: 'object',
+                    validation: (Rule: RuleType) => Rule.required(),
+                    fields: [
+                        {
+                            title: 'Armenian',
+                            name: 'am',
+                            type: 'string'
+                        },
+                        {
+                            title: 'English',
+                            name: 'en',
+                            type: 'string'
+                        },
+                        {
+                            title: 'Russian',
+                            name: 'ru',
+                            type: 'string'
+                        }
+                    ]
                 },
                 {
-                    title: 'English',
-                    name: 'en',
-                    type: 'string'
+                    name: 'about_us_image',
+                    title: 'About Us Image',
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        {
+                            name: 'alt',
+                            title: 'Alternative text',
+                            type: 'string'
+                        }
+                    ],
+                    validation: (Rule: any) => Rule.required(),
                 },
-                {
-                    title: 'Russian',
-                    name: 'ru',
-                    type: 'string'
-                }
             ]
         },
         {
