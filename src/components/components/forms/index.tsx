@@ -131,9 +131,9 @@ const FormAppointment = ({
 
 	const handleClose = () => setOpen(false);
 
-	const getValueToSlug = (valueName: string, slug: string | number) => {
+	const getValueToSlug = (valueName: string, slug: string | number | undefined) => {
 		const course = valueName === 'course_name' && lessonsArmenian?.find((lesson: LESSON) => {
-			return lesson.slug == slug;
+			return lesson?.slug == slug;
 		});
 
 		if (course.course_name) {
