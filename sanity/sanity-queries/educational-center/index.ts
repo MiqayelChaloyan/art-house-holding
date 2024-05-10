@@ -126,7 +126,7 @@ export interface HOSTS {
 };
 
 export interface LESSON {
-    slug: number | string,
+    slug: number,
     course: string
 };
 
