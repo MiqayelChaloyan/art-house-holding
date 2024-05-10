@@ -11,7 +11,7 @@ import { closeModal } from '@/store/modal_reducer';
 
 import { Pages } from '@/lib/constants/pages';
 
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
+import { COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
@@ -20,7 +20,7 @@ import styles from './styles.module.sass';
 
 type Props = {
     locale: string
-    courses: EDUCATIONAL_CENTER_COURSES[]
+    courses: COURSES[]
 };
 
 const CoursesModal = ({
