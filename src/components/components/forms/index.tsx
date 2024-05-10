@@ -15,7 +15,7 @@ import { sendContactUsEducational } from '@/api';
 
 import { Form } from '@/types/educational-center';
 
-import { LESSON } from '../../../../sanity/sanity-queries/educational-center';
+import { LESSON, LESSONS } from '../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
@@ -23,11 +23,11 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-	className?: string
-	width?: string
-	children: React.ReactNode
-	lessons: LESSON[]
-	lessonsArmenian: LESSON[]
+	className?: string,
+	width?: string,
+	children: React.ReactNode,
+	lessons: LESSON[] | any,
+	lessonsArmenian: LESSON[] | any
 };
 
 type FormProps = {
@@ -131,9 +131,9 @@ const FormAppointment = ({
 
 	const handleClose = () => setOpen(false);
 
-	const getValueToSlug = (valueName: string, slug: number) => {
+	const getValueToSlug = (valueName: string, slug: string | number) => {
 		const course = valueName === 'course_name' && lessonsArmenian?.find((lesson: LESSON) => {
-			return lesson.slug === slug;
+			return lesson.slug == slug;
 		});
 
 		if (course.course_name) {
