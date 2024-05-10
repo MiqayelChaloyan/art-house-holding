@@ -10,13 +10,13 @@ import Slider from 'react-slick';
 import Container from '@/components/components/container';
 
 import { Arial, Vrdznagir } from '@/lib/constants/font';
-import { UrlType, PARTNER } from '@/types/language';
+import { UrlType } from '@/types/language';
 import ArrowLeft from '@/lib/icons/language/ArrowLeft';
 import ArrowRight from '@/lib/icons/language/ArrowRight';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { PARTNERS } from '../../../../../../sanity/sanity-queries/generic';
+import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';
@@ -28,7 +28,7 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    partners: PARTNERS[]
+    partners: PARTNER[]
 }
 
 const SampleNextArrow = ({ onClick, fill }: any) => (
@@ -75,7 +75,7 @@ const Partners = ({ partners }: Props) => {
     const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 
-    const slidesItems: JSX.Element[] = partners?.map((partner: PARTNERS) =>
+    const slidesItems: JSX.Element[] = partners?.map((partner: PARTNER) =>
         <Partner partner={partner} key={partner._id} />);
 
     const settings = {
