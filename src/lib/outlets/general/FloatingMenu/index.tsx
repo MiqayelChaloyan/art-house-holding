@@ -11,7 +11,7 @@ import { GoProjectSymlink } from 'react-icons/go';
 import { ArianAMU } from '@/lib/constants/font';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { BRANCHES } from '../../../../../sanity/sanity-queries/art-house';
+import { BRANCH } from '../../../../../sanity/sanity-queries/art-house';
 
 import cn from 'classnames';
 
@@ -20,13 +20,13 @@ import styles from './styles.module.sass';
 
 interface Props {
     website?: string
-    branches?: BRANCHES[] | any
+    branches?: BRANCH[] | any
     theme?: string
     hover?: string
 }
 
 const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
-    const [data, setData] = useState<BRANCHES[]>([]);
+    const [data, setData] = useState<BRANCH[]>([]);
     const componentRef = useRef<HTMLDivElement>(null);
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -34,7 +34,7 @@ const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
 
     useEffect(() => {
         (async () => {
-            const websites = branches.our_websites.filter((branch: BRANCHES) => branch.words !== website);
+            const websites = branches?.our_websites.filter((branch: BRANCH) => branch.words !== website);
             setData(websites);
         })()
     }, []);
