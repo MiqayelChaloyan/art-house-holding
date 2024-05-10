@@ -14,13 +14,13 @@ import Container from '@/components/components/container';
 import { Inter } from '@/lib/constants/font';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { PARTNERS } from '../../../../../sanity/sanity-queries/generic';
+import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 import styles from './styles.module.sass';
 
 
 type Props = {
-	data: PARTNERS[]
+	data: PARTNER[]
 };
 
 const Partners = ({ data }: Props) => {
