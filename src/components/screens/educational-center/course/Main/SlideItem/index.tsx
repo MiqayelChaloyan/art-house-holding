@@ -1,23 +1,33 @@
-import { memo } from 'react';
+'use client'
+
+import React from 'react';
 
 import Container from '@/components/components/container';
 import { Inter } from '@/lib/constants/font';
 
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
 
 
-interface Props {
-    url: string;
-    title: string;
-    content: any;
+type Props = {
+    url: string,
+    title: string,
+    content: string,
 };
 
-const SlideItem = ({ url, title, content }: Props) => (
+const SlideItem = ({
+    url,
+    title,
+    content
+}: Readonly<Props>) => (
     <div className={styles.emplay_slide} style={{ backgroundImage: `url(${url})` }}>
         <div className={styles.container}>
             <Container>
                 <div className={styles.contact}>
-                    <h1 className={`${styles.title} ${Inter.className}`}>{title}</h1>
+                    <h1 className={cn(styles.title, Inter.className)}>
+                        {title}
+                    </h1>
                     <p className={Inter.className}>{content}</p>
                 </div>
             </Container>
@@ -25,4 +35,4 @@ const SlideItem = ({ url, title, content }: Props) => (
     </div>
 );
 
-export default memo(SlideItem);
+export default React.memo(SlideItem);

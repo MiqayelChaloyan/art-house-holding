@@ -18,14 +18,14 @@ const contactUsSchemaLanguage = {
             name: 'phone_number',
             title: 'Phone Number',
             type: 'string',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: RuleType) => Rule.required(),
         },
         {
             name: 'social_links',
             type: 'array',
             title: 'Social Links',
             description: 'You can only add these Gmail, Instagram, Facebook.',
-            validation: (Rule: any) => Rule.max(3),
+            validation: (Rule: RuleType) => Rule.max(3),
             components: { input: ArrayMaxItems },
             of: [
                 {

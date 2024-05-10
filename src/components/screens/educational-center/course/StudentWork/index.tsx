@@ -12,8 +12,10 @@ import { Arial, Inter } from '@/lib/constants/font';
 import Container from '@/components/components/container';
 import Fancybox from '@/components/components/fancybox';
 
+import { UrlType } from '@/types/educational-center';
+
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
+import { STUDENT_WORK } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
@@ -21,7 +23,7 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    course: EDUCATIONAL_CENTER_COURSES[]
+    course: STUDENT_WORK[]
 };
 
 const options = {
@@ -44,7 +46,7 @@ const options = {
     },
 };
 
-const StudentWork = ({ course }: Props) => {
+const StudentWork = ({ course }: Readonly<Props>) => {
     const [initialLoadCourses, setInitialLoadCourses] = useState<number>(8);
     const t = useTranslations();
 
@@ -57,14 +59,14 @@ const StudentWork = ({ course }: Props) => {
         }
     };
 
-    const images = course[0].student_works.slice(0, initialLoadCourses).map((item: any) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(item);
+    const images = course?.slice(0, initialLoadCourses).map((item: STUDENT_WORK) => {
+        const path: UrlType | any = urlForImage(item);
 
         return (
             <Link key={item._key} data-fancybox="gallery" href={path?.src}>
                 <Image
                     src={path?.src}
-                    alt={item.alt}
+                    alt={item?.alt}
                     priority
                     className={styles.work_img}
                     width={0}
@@ -90,16 +92,16 @@ const StudentWork = ({ course }: Props) => {
                     </Fancybox>
                 </div>
                 <div className={styles.block_buttons}>
-                    {course[0].student_works.length > 8 && course[0].student_works.length !== initialLoadCourses &&
+                    {course.length > 8 && course.length !== initialLoadCourses &&
                         <div className={styles.btn_group}>
                             <Button
                                 className={cn(styles['view-more-btn'], Arial.className)}
-                                text={course[0].student_works.length >= initialLoadCourses ? t('buttons.view-more') : t('buttons.show-less')}
-                                onClick={course[0].student_works.length >= initialLoadCourses ? handleLoad : handleBackLoad}
+                                text={course.length >= initialLoadCourses ? t('buttons.view-more') : t('buttons.show-less')}
+                                onClick={course.length >= initialLoadCourses ? handleLoad : handleBackLoad}
                             />
                         </div>
                     }
-                    {course[0].student_works.length === initialLoadCourses && course[0].student_works.length > 8 &&
+                    {course.length === initialLoadCourses && course.length > 8 &&
                         <div className={styles.btn_group}>
                             <Button
                                 className={cn(styles['view-more-btn'], Arial.className)}

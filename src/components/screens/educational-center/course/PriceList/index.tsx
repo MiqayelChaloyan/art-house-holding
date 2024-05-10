@@ -1,19 +1,25 @@
 'use client'
 
+import React from 'react';
+
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
+import { Inter } from '@/lib/constants/font';
+
+import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/educational-center';
+
+import cn from 'classnames';
 
 import styles from './style.module.sass';
 
 
-interface Props {
-    course: EDUCATIONAL_CENTER_COURSES | any
+type Props = {
+    price_list: PRICE_LIST[]
 };
 
-function daysBetweenDates(dateStr1: any, dateStr2: any) {
+function daysBetweenDates(dateStr1: string, dateStr2: string) {
     const startDate = new Date(dateStr1);
     const endDate = new Date(dateStr2);
     const timeDifference = endDate.getTime() - startDate.getTime();
@@ -22,13 +28,13 @@ function daysBetweenDates(dateStr1: any, dateStr2: any) {
     return daysDifference;
 };
 
-const PriceList= ({ course }: Props) => {
+const PriceList= ({ price_list }: Readonly<Props>) => {
     const t = useTranslations();
 
-    const table = course[0].price_list && course[0].price_list.map((item: any) => {
+    const table = price_list && price_list?.map((item: PRICE_LIST) => {
         const result = daysBetweenDates(item.startDate, item.endDate);
         return (
-            <table key={item.slug} className={styles.price_list_table}>
+            <table key={item._key} className={styles.price_list_table}>
                 <thead>
                     <tr className={styles.list}>
                         <td>{item.course_title}</td>
@@ -44,7 +50,9 @@ const PriceList= ({ course }: Props) => {
     return (
         <section id='price-list' className={styles.container}>
             <Container>
-                <h1 className={styles.title}>{t('sections.price-list')}</h1>
+                <h1 className={cn(styles.title, Inter.className)}>
+                    {t('sections.price-list')}
+                </h1>
             </Container>
             <div className={styles.table}>
                 {table}
@@ -53,4 +61,4 @@ const PriceList= ({ course }: Props) => {
     );
 };
 
-export default PriceList;
+export default React.memo(PriceList);

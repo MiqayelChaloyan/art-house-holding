@@ -12,6 +12,7 @@ export const coursesSchemaEducationalCenter = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Դասընթացի անվանումը'
         },
         {
             title: 'Course Name (Դասընթացի անվանումը)',
@@ -39,7 +40,7 @@ export const coursesSchemaEducationalCenter = {
         {
             name: 'slug',
             type: 'slug',
-            description: "Պիտի եզակի լինի",
+            description: "slug-ը պիտի լինի դասընթացի անվանումը՝ փոքրատառերով և պիտի եզակի լինի",
             options: {
                 source: 'name',
             },
@@ -57,14 +58,6 @@ export const coursesSchemaEducationalCenter = {
                     type: 'object',
                     icon: ClipboardIcon,
                     fields: [
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                        },
                         {
                             title: 'Title',
                             name: 'title',
@@ -153,7 +146,6 @@ export const coursesSchemaEducationalCenter = {
             name: 'course_process',
             type: 'object',
             title: 'Course Process Section',
-            description: 'Ոչ պակաս, քան մեկ, և ոչ ավելի, միայն դուք կարող եք դա փոփոխել',
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
@@ -280,14 +272,6 @@ export const coursesSchemaEducationalCenter = {
                             type: 'number',
                             title: 'Duration of the course',
                             initialValue: 0,
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
                         },
                     ]
                 }

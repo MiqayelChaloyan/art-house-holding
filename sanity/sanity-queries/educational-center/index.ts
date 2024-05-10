@@ -77,26 +77,38 @@ export interface EDUCATIONAL_CENTER_DEFAULT {
     our_rating_section: OUR_RATING[]
 };
 
+export interface COURSE_MAIN {
+    content: string,
+    image: Asset,
+    title: string,
+    _key: string,
+};
 
+export interface STUDENT_WORK {
+    _key: string,
+    asset: Asset,
+    alt: string,
+    _type: string,
+};
 
+export interface PRICE_LIST {
+    amount: number,
+    course_title: string,
+    duration: number,
+    endDate: string,
+    startDate: string,
+    _key: string,
+};
 
-
-
-
-
-
-
-
-export interface EDUCATIONAL_CENTER_COURSES {
-    _id: string
-    slug: { current: string }
-    course_name: any
-    course_main: any
-    about_us_content: any
-    course_process: any
-    student_works: any
-    svg: any
-    price_list: any
+export interface COURSES {
+    _id: string,
+    slug: { current: string },
+    course_main: COURSE_MAIN[],
+    about_us_content: string,
+    course_process: VIDEO,
+    student_works: STUDENT_WORK[],
+    price_list: PRICE_LIST[],
+    svg: Asset,
 };
 
 export interface Social_Links {
@@ -111,12 +123,14 @@ export interface HOSTS {
     phone_number: string,
     email: string,
     social_links: Social_Links,
-}
+};
+
+export interface LESSON {
+    slug: { current: string | number },
+    course: string
+};
 
 export interface LESSONS {
-    _id: string
-    course_name: {
-        course: string
-        slug: string
-    }
+    _id: string,
+    course_name: LESSON[]
 };

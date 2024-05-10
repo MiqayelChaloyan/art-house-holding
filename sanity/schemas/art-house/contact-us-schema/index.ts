@@ -21,7 +21,7 @@ const contactUsSchemaArtHouse = {
             type: 'array',
             of: [{ type: 'string' }],
             description: 'You can only add three phone number',
-            validation: (Rule: any) => Rule.max(3).unique(),
+            validation: (Rule: RuleType | any) => Rule.max(3).unique(),
             components: { input: ArrayMaxItems },
         },
         {
@@ -29,7 +29,7 @@ const contactUsSchemaArtHouse = {
             type: 'array',
             title: 'Social Links',
             description: 'You can only add these Facebook, Instagram, Gmail, Linkedin.',
-            validation: (Rule: any) => Rule.max(4),
+            validation: (Rule: RuleType) => Rule.max(4),
             components: { input: ArrayMaxItems },
             of: [
                 {

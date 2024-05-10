@@ -2,10 +2,10 @@ export const allCoursesQuery =
 `*[_type == "courses"] {
     "course_name": course_name[$language],
     "course_main": course_main[] {
+        "_key": _key,
         "title": title[$language],
         "content": content[$language],
         "image": image,
-        "slug": slug.current
     },
     "about_us_content": about_us_content[$language],
     "course_process": course_process {
@@ -15,12 +15,12 @@ export const allCoursesQuery =
     "student_works": student_works,
     "svg": svg,
     "price_list": price_list[] {
+        "_key": _key,
         "course_title": course_title[$language],
         "amount": amount,
         "startDate": startDate,
         "endDate": endDate,
         "duration": duration,
-        "slug": slug.current
     },
     "_id": _id,
     "slug": slug.current,
@@ -30,10 +30,10 @@ export const courseBySlugQuery =
 `*[_type == "courses" && slug.current == $slug] {
         "course_name": course_name[$language],
         "course_main": course_main[] {
+            "_key": _key,
             "title": title[$language],
             "content": content[$language],
             "image": image,
-            "slug": slug.current
         },
         "about_us_content": about_us_content[$language],
         "course_process": course_process {
@@ -43,12 +43,12 @@ export const courseBySlugQuery =
         "student_works": student_works,
         "svg": svg,
         "price_list": price_list[] {
+            "_key": _key,
             "course_title": course_title[$language],
             "amount": amount,
             "startDate": startDate,
             "endDate": endDate,
             "duration": duration,
-            "slug": slug.current
         },
         "_id": _id,
         "slug": slug.current,
@@ -58,10 +58,10 @@ export const queryId =
 `*[_type == "courses" && _id == $_id][0] {
     "course_name": course_name[$language],
     "course_main": course_main[] {
+        "_key": _key,
         "title": title[$language],
         "content": content[$language],
         "image": image,
-        "slug": slug.current
     },
     "about_us_content": about_us_content[$language],
     "course_process": course_process[] {
@@ -71,12 +71,12 @@ export const queryId =
     "student_works": student_works,
     "svg": svg,
     "price_list": price_list[] {
+        "_key": _key,
         "course_title": course_title[$language],
         "amount": amount,
         "startDate": startDate,
         "endDate": endDate,
         "duration": duration,
-        "slug": slug.current
     },
     "_id": _id,
     "slug": slug.current,

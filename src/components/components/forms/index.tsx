@@ -9,30 +9,25 @@ import Snackbar from '@/components/components/snackbar';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import Select from '@/lib/ui/select';
+import { Arial } from '@/lib/constants/font';
 
 import { sendContactUsEducational } from '@/api';
 
 import { Form } from '@/types/educational-center';
 
-import { LESSONS } from '../../../../sanity/sanity-queries/educational-center';
+import { LESSON } from '../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import { Arial } from '@/lib/constants/font';
 
 
-interface Props {
+type Props = {
 	className?: string
 	width?: string
 	children: React.ReactNode
-	lessons: LESSONS[] | any
-	lessonsArmenian: LESSONS[] | any
-};
-
-type Lesson  = { 
-	course_name: string, 
-	slug: string | number
+	lessons: LESSON[]
+	lessonsArmenian: LESSON[]
 };
 
 type FormProps = {
@@ -41,7 +36,13 @@ type FormProps = {
 	values: Form
 };
 
-const FormAppointment = ({ className, width, children, lessons, lessonsArmenian }: Props) => {
+const FormAppointment = ({
+	className,
+	width,
+	children,
+	lessons,
+	lessonsArmenian
+}: Readonly<Props>) => {
 	const [course, setCourse] = useState<string>('');
 	const [open, setOpen] = useState(false);
 	const t = useTranslations();
@@ -131,7 +132,7 @@ const FormAppointment = ({ className, width, children, lessons, lessonsArmenian 
 	const handleClose = () => setOpen(false);
 
 	const getValueToSlug = (valueName: string, slug: number) => {
-		const course = valueName === 'course_name' && lessonsArmenian?.find((lesson: Lesson) => {
+		const course = valueName === 'course_name' && lessonsArmenian?.find((lesson: LESSON) => {
 			return lesson.slug === slug;
 		});
 
@@ -201,4 +202,4 @@ const FormAppointment = ({ className, width, children, lessons, lessonsArmenian 
 	);
 };
 
-export default FormAppointment;
+export default React.memo(FormAppointment);

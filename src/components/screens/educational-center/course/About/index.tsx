@@ -8,23 +8,23 @@ import Container from '@/components/components/container';
 import FormAppointment from '@/components/components/forms';
 import FormHeader from '@/components/components/form-header';
 
+import Button from '@/lib/ui/Button';
 import { Arial, Inter } from '@/lib/constants/font';
 
-import { Content as ContentType, UrlType } from '@/types/educational-center';
+import { Content as ContentType } from '@/types/educational-center';
 
-import { EDUCATIONAL_CENTER_COURSES, HOSTS, LESSONS } from '../../../../../../sanity/sanity-queries/educational-center';
+import { COURSES, HOSTS, LESSON } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
 import styles from './style.module.sass';
-import Button from '@/lib/ui/Button';
 
 
 interface Props {
-    course: EDUCATIONAL_CENTER_COURSES[]
+    course: COURSES
     socialData: HOSTS
-    lessons: LESSONS[]
-    lessonsArmenian: LESSONS[]
+    lessons: LESSON[]
+    lessonsArmenian: LESSON[]
 };
 
 const group = {
@@ -36,17 +36,16 @@ const Content = ({ content, isReadMore, minimumHeight }: ContentType) => (
 );
 
 const About = ({
-    course,
+    course: { about_us_content },
     socialData,
     lessons,
     lessonsArmenian
-}: Props) => {
-    const { about_us_content } = course[0] as EDUCATIONAL_CENTER_COURSES;
+}: Readonly<Props>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
+    const t = useTranslations();
     const minimumHeight = 1000;
 
-    const t = useTranslations();
-
+    
     const toggleReadMore = () => setIsReadMore(!isReadMore);
 
     return (
