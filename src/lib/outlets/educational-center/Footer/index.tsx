@@ -13,7 +13,7 @@ import Email from '@/lib/icons/educational-center/Email';
 import Phone from '@/lib/icons/educational-center/Phone';
 import { Pages } from '@/lib/constants/pages';
 
-import { EDUCATIONAL_CENTER_COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
+import { COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
 
 // import { MapProvider } from '@/lib/providers';
 
@@ -21,7 +21,7 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    courses: EDUCATIONAL_CENTER_COURSES[]
+    courses: COURSES[]
     socialData: HOSTS
     lessons: LESSONS[]
     lessonsArmenian: LESSONS[]
