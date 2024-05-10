@@ -14,6 +14,7 @@ const quizSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             title: 'Question Language image',

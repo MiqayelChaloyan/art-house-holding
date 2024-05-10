@@ -64,6 +64,7 @@ const aboutUsSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             title: 'About us',
@@ -120,7 +121,7 @@ const aboutUsSchemaLanguage = {
                     name: 'about_our_daily',
                     type: 'array',
                     title: 'Videos about our daily life',
-                    description: 'Ոչ պակաս, քան երկու, և ոչ ավելի, միայն դուք կարող եք դա փոփոխել',
+                    description: 'Ոչ պակաս, քան երկու, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
                     components: { input: ArrayMaxItems },
                     validation: (Rule: RuleType) => Rule.max(2),
                     of: [
@@ -154,20 +155,6 @@ const aboutUsSchemaLanguage = {
                 },
             ],
         },
-
-
-
-
-
-        // {
-        //     name: 'our_daily_life',
-        //     type: 'array',
-        //     components: { input: ArrayMaxItems },
-        //     validation: (Rule: RuleType) => Rule.max(2),
-        //     title: 'Our Daily Life',
-            
-        // },
-
         {
             title: 'Our Daily Life',
             name: 'our_daily_life',
@@ -206,7 +193,7 @@ const aboutUsSchemaLanguage = {
                     name: 'about_our_daily',
                     type: 'array',
                     title: 'Videos about our daily life',
-                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դա փոփոխել',
+                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
                     components: { input: ArrayMaxItems },
                     validation: (Rule: RuleType) => Rule.max(3),
                     of: [
@@ -244,14 +231,14 @@ const aboutUsSchemaLanguage = {
                                     to: [{ type: 'about-language' }],
                                     validation: (Rule: any) => Rule.required(),
                                 },
-                                {
-                                    name: 'slug',
-                                    type: 'slug',
-                                    options: {
-                                        source: 'name',
-                                    },
-                                    validation: (Rule: any) => Rule.required(),
-                                },
+                                // {
+                                //     name: 'slug',
+                                //     type: 'slug',
+                                //     options: {
+                                //         source: 'name',
+                                //     },
+                                //     validation: (Rule: any) => Rule.required(),
+                                // },
                                 {
                                     name: 'video_url',
                                     title: 'Video Link',

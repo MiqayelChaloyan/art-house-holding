@@ -16,6 +16,7 @@ const priceListSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             name: 'price_list',

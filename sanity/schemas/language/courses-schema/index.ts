@@ -12,6 +12,7 @@ const coursesSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
 
         {

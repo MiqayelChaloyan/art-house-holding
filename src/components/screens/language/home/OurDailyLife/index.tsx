@@ -130,7 +130,7 @@ const OurDailyLife = ({ data, locale }: Props) => {
     );
 
     const videos: JSX.Element[] = data[0].our_daily_life.about_our_daily.map((item: DAILY_LIFE_VIDEO | any) =>
-        <DailyLifeVideo key={item.slug} item={item} locale={locale} />
+        <DailyLifeVideo key={item._key} item={item} locale={locale} />
     );
 
     const mixData = images.reduce((acc: any, image: any, index: number) => {

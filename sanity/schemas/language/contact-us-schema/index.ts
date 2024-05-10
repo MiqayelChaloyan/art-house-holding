@@ -13,6 +13,7 @@ const contactUsSchemaLanguage = {
             name: 'name',
             title: 'Name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             name: 'phone_number',

@@ -14,6 +14,7 @@ const languagesSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             name: 'slug',

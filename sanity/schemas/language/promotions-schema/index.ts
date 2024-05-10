@@ -14,6 +14,7 @@ const promotionsSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Չփոփոխել անվանումը'
         },
         {
             name: 'discounts_list',

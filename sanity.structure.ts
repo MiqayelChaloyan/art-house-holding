@@ -98,7 +98,7 @@ export default (S: any) =>
                         .title('Pages')
                         .items([
                             S.listItem()
-                                .title('About Us')
+                                .title('Home')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('about-us-language').documentId('about-us-language')),
                             S.listItem()

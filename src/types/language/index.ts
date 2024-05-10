@@ -1,3 +1,19 @@
+interface Asset {
+    _ref: string;
+    _type: string;
+}
+
+interface Image {
+    asset: Asset;
+    _type: string;
+    alt: string;
+}
+
+interface Ref {
+    _type: string;
+    _ref: string;
+}
+
 export interface ImageType {
     _type: string;
     alt: string;
@@ -21,11 +37,11 @@ export interface PARTNER {
 }
 
 export interface DAILY_LIFE_VIDEO {
-    video_light: Image;
-    news: string;
-    languages: Asset;
-    slug: string;
-    video_url: string;
+    _key: string,
+    video_light: Image,
+    news: string,
+    languages: Ref,
+    video_url: string,
 }
 
 export interface Video {
@@ -105,17 +121,6 @@ interface Path {
     _type: string;
     alt: string;
     asset: Asset;
-}
-
-interface Image {
-    asset: Asset;
-    _type: string;
-    alt: string;
-}
-
-interface Asset {
-    _ref: string;
-    _type: string;
 }
 
 interface Slug {

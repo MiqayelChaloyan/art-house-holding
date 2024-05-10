@@ -9,9 +9,9 @@ export const query = `
     "our_daily_life": our_daily_life {
         "our_daily_life_images": our_daily_life_images,
         "about_our_daily": about_our_daily[] {
+            "_key": _key,
             "news": news[$language],
             "languages": languages,
-            "slug": slug.current,
             "video_url": video_url,
             "video_light": video_light
         },
