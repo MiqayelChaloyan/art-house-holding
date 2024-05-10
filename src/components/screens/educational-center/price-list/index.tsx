@@ -15,7 +15,7 @@ import Accordion from './Accordion';
 
 import { Inter } from '@/lib/constants/font';
 
-import { EDUCATIONAL_CENTER_COURSES } from '../../../../../sanity/sanity-queries/educational-center';
+import { PRICE_LIST } from '../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
 import { useDispatch } from 'react-redux';
@@ -23,7 +23,7 @@ import { closeModal } from '@/store/modal_reducer';
 
 
 interface Props {
-	data: EDUCATIONAL_CENTER_COURSES[]
+	data: PRICE_LIST[]
 }
 
 const PriceList = ({ data }: Props) => {
