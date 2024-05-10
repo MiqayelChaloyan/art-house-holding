@@ -9,13 +9,13 @@ import OurDailyLife from './OurDailyLife';
 import Partners from './Partners';
 
 import { ABOUT_US_LANGUAGE, DISCOUNTS_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
-import { PARTNERS } from '../../../../../sanity/sanity-queries/generic';
+import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 
 interface Props {
     data: ABOUT_US_LANGUAGE[]
     discounts: DISCOUNTS_LANGUAGE[]
-    partners: PARTNERS[]
+    partners: PARTNER[]
     locale: string
 }
 
