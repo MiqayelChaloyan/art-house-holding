@@ -9,7 +9,7 @@ import Container from '@/components/components/container';
 import Promotion from '@/lib/ui/promotion';
 import { Vrdznagir } from '@/lib/constants/font';
 
-import { DISCOUNTS_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
+import { DISCOUNT } from '../../../../../../sanity/sanity-queries/language';
 
 import cn from 'classnames';
 
@@ -17,11 +17,11 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    discounts: DISCOUNTS_LANGUAGE[]
+    discounts: DISCOUNT[]
 }
 
 const Promotions = ({ discounts }: Props) => {
-    const lastFour: DISCOUNTS_LANGUAGE[] = discounts[0]?.discounts_list.slice(-4);
+    const lastFour: DISCOUNT[] = discounts[0]?.discounts_list.slice(-4);
     const t = useTranslations();
 
     return (
@@ -31,9 +31,9 @@ const Promotions = ({ discounts }: Props) => {
                     {t('navigation.promotions')}
                 </h2>
                 <div className={styles.discounts}>
-                    {lastFour?.map((discount: DISCOUNTS_LANGUAGE, index: number) =>
+                    {lastFour?.map((discount: DISCOUNT, index: number) =>
                         <Promotion
-                            key={discount.slug}
+                            key={discount?._key}
                             discount={discount}
                             index={index}
                             classNameProperty='small'

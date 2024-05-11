@@ -25,4 +25,4 @@ export default function Snackbars({open, handleChange, info}: any) {
       </Snackbar>
     </div>
   );
-}
+};

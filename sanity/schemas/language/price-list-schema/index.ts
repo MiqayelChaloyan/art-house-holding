@@ -80,16 +80,6 @@ const priceListSchemaLanguage = {
                                 },
                             ]
                         },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            maxLength: 9,
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: RuleType) => Rule.required(),
-                        },
                     ]
                 }
             ]
@@ -149,16 +139,6 @@ const priceListSchemaLanguage = {
                                     type: 'number'
                                 },
                             ]
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            maxLength: 9,
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: RuleType) => Rule.required(),
                         },
                     ]
                 },
@@ -228,16 +208,6 @@ const priceListSchemaLanguage = {
                                     type: 'string'
                                 }
                             ]
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            maxLength: 9,
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: RuleType) => Rule.required(),
                         },
                     ],
                 },

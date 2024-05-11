@@ -27,9 +27,10 @@ const promotionsSchemaLanguage = {
                     icon: ActivityIcon,
                     fields: [
                         {
-                            title: 'Procent',
+                            title: 'Discount limit',
                             name: 'procent',
                             type: 'number',
+                            description: 'Զեղչի սահմանաչափ',
                         },
                         {
                             name: 'image',
@@ -45,15 +46,6 @@ const promotionsSchemaLanguage = {
                                     title: 'Alternative text',
                                 },
                             ],
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: RuleType) => Rule.required(),
                         },
                         {
                             title: 'About the discount',

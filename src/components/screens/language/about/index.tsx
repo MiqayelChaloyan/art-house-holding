@@ -28,9 +28,9 @@ import styles from './styles.module.sass';
 type Props = {
     data: ABOUT_US_LANGUAGE[],
     locale: string
-}
+};
 
-const About = ({ data, locale }: Props) => {
+const About = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations();
 
     const gallery: JSX.Element[] = data[0].about_us?.about_us_images?.map((item: ImageType, index: number) => {

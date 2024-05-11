@@ -8,23 +8,23 @@ import Promotions from './Promotions';
 import OurDailyLife from './OurDailyLife';
 import Partners from './Partners';
 
-import { ABOUT_US_LANGUAGE, DISCOUNTS_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { ABOUT_US_LANGUAGE, DISCOUNT } from '../../../../../sanity/sanity-queries/language';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 
 interface Props {
-    data: ABOUT_US_LANGUAGE[]
-    discounts: DISCOUNTS_LANGUAGE[]
-    partners: PARTNER[]
-    locale: string
-}
+    data: ABOUT_US_LANGUAGE[],
+    discounts: DISCOUNT[],
+    partners: PARTNER[],
+    locale: string,
+};
 
 const Home = ({
     data,
     discounts,
     partners,
     locale
-}: Props) => (
+}: Readonly<Props>) => (
     <div>
         <Main />
         <About data={data} locale={locale} />

@@ -31,7 +31,7 @@ const navigationLinks = [
     { path: `${Pages.LANGUAGE_HOME}${Pages.LANGUAGE_ABOUT}`, label: 'more', className: 'more-btn' },
 ];
 
-const About = ({ data, locale }: Props) => {
+const About = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations();
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 

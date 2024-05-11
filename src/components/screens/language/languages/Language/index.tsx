@@ -14,18 +14,21 @@ import { ReduxType, UrlType } from '@/types/language';
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
 
-import { ABOUT_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
+import { LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
 
 type Props = {
-    data: ABOUT_LANGUAGE
+    data: LANGUAGE
     locale: string
 };
 
-const Language = ({ locale, data }: Props) => {
+const Language = ({ 
+    locale, 
+    data 
+}: Readonly<Props>) => {
     const { during_courses_images, course_process, teachers } = data;
     const path: UrlType | any = urlForImage(course_process.video_light);
 
@@ -47,10 +50,6 @@ const Language = ({ locale, data }: Props) => {
                 <Gallery during_courses={during_courses_images} />
                 <div className={styles.row_three}>
                     <div className={styles.video_player}>
-                        {/* <Player
-                            light={path?.src}
-                            path={course_process.video_url}
-                        /> */}
                         <Player
                             path={path}
                             video_url={course_process.video_url}

@@ -6,26 +6,21 @@ import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/lib/constants/font';
 
+import { ENGLISH_COURSE } from '../../../../../../sanity/sanity-queries/language';
+
 import styles from './styles.module.sass';
 
 
-type Props = {
-    slug: string,
-    language_type: string,
-    private_lessons: string,
-    duration: string,
-}
-
 type EnglishLanguageClassesProps = {
-    data: Props[]
-}
+    data: ENGLISH_COURSE[],
+};
 
-const EnglishLanguageClasses= ({ data }: EnglishLanguageClassesProps) => {
+const EnglishLanguageClasses= ({ data }: Readonly<EnglishLanguageClassesProps>) => {
     const t = useTranslations();
 
-    const tableRows: JSX.Element[] = data?.map((item: Props, index: number) => {
+    const tableRows: JSX.Element[] = data?.map((item: ENGLISH_COURSE) => {
         return (
-            <tr key={item?.slug || index}>
+            <tr key={item._key}>
                 <td>{item.language_type}</td>
                 <td>{item.private_lessons}</td>
                 <td>{item.duration}</td>

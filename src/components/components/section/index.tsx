@@ -11,7 +11,6 @@ interface Props {
     direction?: "left" | "right"
 }
 
-
 const Section = ({ children, direction }: Props) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
@@ -37,10 +36,7 @@ const Section = ({ children, direction }: Props) => {
                 children
             )}
         </div>
-
-
     )
-}
-
+};
 
 export default Section;

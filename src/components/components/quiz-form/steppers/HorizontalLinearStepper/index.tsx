@@ -15,7 +15,6 @@ import { ArianAMU, Calibri } from '@/lib/constants/font';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import { Quiz } from '@/types/language';
 
 
 const Step = ({ index, trace }: any) => {

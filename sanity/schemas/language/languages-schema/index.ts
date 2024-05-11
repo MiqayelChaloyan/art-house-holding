@@ -19,7 +19,7 @@ const languagesSchemaLanguage = {
         {
             name: 'slug',
             type: 'slug',
-            description: "Պիտի եզակի լինի",
+            description: "slug-ը պիտի լինի դասընթացի անվանումը՝ փոքրատառերով և պիտի եզակի լինի",
             options: {
                 source: 'name',
             },
@@ -196,15 +196,6 @@ const languagesSchemaLanguage = {
                                     type: 'string'
                                 }
                             ]
-                        },
-                        {
-                            name: 'slug',
-                            type: 'slug',
-                            description: "Պիտի եզակի լինի",
-                            options: {
-                                source: 'name',
-                            },
-                            validation: (Rule: RuleType) => Rule.required(),
                         },
                         {
                             name: 'teacher_image',

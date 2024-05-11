@@ -8,26 +8,16 @@ import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/lib/constants/font';
 
+import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/language';
+
 import styles from './styles.module.sass';
 
 
-type PrivateLessons = {
-  three_week: string,
-  two_week: string,
-}
-
-type Props = {
-  slug: string,
-  teaching_language: string,
-  group_lessons: string,
-  private_lessons: PrivateLessons,
-}
-
 type PanelProps = {
-  data: Props[]
-}
+  data: PRICE_LIST[],
+};
 
-const Panel = ({ data }: PanelProps) => {
+const Panel = ({ data }: Readonly<PanelProps>) => {
   const t = useTranslations();
   
   // const [currentPage, setCurrentPage] = useState<number>(1);
@@ -38,9 +28,9 @@ const Panel = ({ data }: PanelProps) => {
   // const npage = Math.ceil(data.length / recordPerPage);
   // const numbers = [...Array(npage + 1).keys()].slice(1)
 
-  const tableRows: JSX.Element[] = data?.map((item: Props, index: number) => {
+  const tableRows: JSX.Element[] = data?.map((item: PRICE_LIST) => {
     return (
-      <tr key={item?.slug || index}>
+      <tr key={item._key}>
         <td>{item.teaching_language}</td>
         <td>{item.group_lessons}</td>
         <td>{item.private_lessons.three_week}</td>

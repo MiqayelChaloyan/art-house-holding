@@ -12,7 +12,7 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import { Arial } from '@/lib/constants/font';
 
-import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { COURSE_NAME, COURSE_TYPE, FORM, WEEK_NUMBER_LESSONS, COURSES } from '../../../../../sanity/sanity-queries/language';
 
 import { sendRequest } from '@/api';
 import { FormLarge } from '@/types/language';
@@ -23,8 +23,8 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    data: LANGUAGE[] | any
-    courses: LANGUAGE[] | any
+    data: FORM | any,
+    courses: COURSES[] | any,
 };
 
 type FormProps = {
@@ -33,7 +33,7 @@ type FormProps = {
     values: FormLarge
 };
 
-const Form = ({ data, courses }: Props) => {
+const Form = ({ data, courses }: Readonly<Props>) => {
     const t = useTranslations();
     const [isClear, setIsClear] = useState(false);
     const [open, setOpen] = useState(false);
@@ -61,7 +61,7 @@ const Form = ({ data, courses }: Props) => {
     const { values, isLoading } = state;
 
     const handleChange = ({ target }: any) => {
-        setState((prev: any) => ({
+        setState((prev: FormProps) => ({
             ...prev,
             values: {
                 ...prev.values,
@@ -73,8 +73,8 @@ const Form = ({ data, courses }: Props) => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const course_type = data.course_type.filter((item: { course_type: string }) => item.course_type === state.values.course_type);
-        const week_number_of_lessons = data.week_number_of_lessons.filter((item: { week_number_of_lessons: string }) => item.week_number_of_lessons === state.values.week_number_of_lessons);
+        const course_type = data.course_type.filter((item: COURSE_TYPE) => item.course_type === state.values.course_type);
+        const week_number_of_lessons = data.week_number_of_lessons.filter((item: WEEK_NUMBER_LESSONS) => item.week_number_of_lessons === state.values.week_number_of_lessons);
 
         const formData = {
             first_name: state.values.first_name,
@@ -93,7 +93,7 @@ const Form = ({ data, courses }: Props) => {
                 formData.week_number_of_lessons !== t('contact-us-form.select-quantity') ||
                 formData.course_type !== t('contact-us-form.select-course-type')
             ) {
-                setState((prev: any) => ({
+                setState((prev: FormProps) => ({
                     ...prev,
                     isLoading: true,
                 }));
@@ -106,7 +106,7 @@ const Form = ({ data, courses }: Props) => {
                         status: 'info',
                         content: t('texts.send-message-failure')
                     });
-                    setState((prev: any) => ({
+                    setState((prev: FormProps) => ({
                         ...prev,
                         isLoading: false,
                     }))
@@ -129,7 +129,7 @@ const Form = ({ data, courses }: Props) => {
                 setIsClear(true);
             }
         } catch (error: any) {
-            setState((prev: any) => ({
+            setState((prev: FormProps) => ({
                 ...prev,
                 isLoading: false,
                 error: true,
@@ -146,7 +146,7 @@ const Form = ({ data, courses }: Props) => {
     const handleClose = () => setOpen(false);
 
     const getValueToSlug = (valueName: string, slug: number) => {
-        const course = valueName === 'course_name' && courses.course_name.find((item: { course_name: string, slug: number }) => {
+        const course = valueName === 'course_name' && courses.course_name.find((item: COURSE_NAME) => {
             return item.slug === slug;
         });
 

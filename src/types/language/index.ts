@@ -1,31 +1,31 @@
 interface Asset {
     _ref: string;
     _type: string;
-}
+};
 
 interface Image {
     asset: Asset;
     _type: string;
     alt: string;
-}
+};
 
 interface Ref {
     _type: string;
     _ref: string;
-}
+};
 
 export interface ImageType {
     _type: string;
     alt: string;
     _key: string;
-    asset: { _ref: string, _type: string }
-}
+    asset: Asset;
+};
 
 export interface UrlType {
     src: string;
     width: number;
     height: number;
-}
+};
 
 export interface PARTNER {
     cooperation: string;
@@ -34,7 +34,7 @@ export interface PARTNER {
     slug: string;
     logo: Image;
     company_name: string;
-}
+};
 
 export interface DAILY_LIFE_VIDEO {
     _key: string,
@@ -42,14 +42,14 @@ export interface DAILY_LIFE_VIDEO {
     news: string,
     languages: Ref,
     video_url: string,
-}
+};
 
 export interface Video {
     video_url: string;
     _type: string;
     _key: string;
     video_light: Image;
-}
+};
 
 export interface DAILY_LIFE_IMAGE {
     _key: string;
@@ -57,45 +57,39 @@ export interface DAILY_LIFE_IMAGE {
     slug: Slug;
     _type: string;
     alt: string;
-}
+};
 
 export interface LANGUAGE {
-    path: Path;
+    path: Image;
     page: string;
-}
+};
 
 export interface ABOUT {
     image: Image;
     text: Text[];
-}
-
-export interface Teachers {
-    fullName: string;
-    teacher_image: Path;
-    slug: Slug;
-}
+};
 
 export interface ImageType {
     asset: Asset;
     _type: string;
     _key: string;
     alt: string;
-}
+};
 
 export interface Quiz {
     _id: string;
     name: string;
-    question_logo: Path;
+    question_logo: Image;
     slug: string;
     questions: Question[];
-}
+};
 
 interface Question {
     question: string;
     slug: string;
     options: string[];
     answer: string;
-}
+};
 
 interface Text {
     markDefs: any[];
@@ -103,30 +97,19 @@ interface Text {
     _type: string;
     style: string;
     _key: string;
-}
+};
 
 interface Child {
     _type: string;
     marks: any[];
     text: string;
     _key: string;
-}
-
-interface Asset {
-    _ref: string;
-    _type: string;
-}
-
-interface Path {
-    _type: string;
-    alt: string;
-    asset: Asset;
-}
+};
 
 interface Slug {
     current: string;
     _type: string;
-}
+};
 
 /* REDUX STATE TYPES */
 export interface ReduxType {
@@ -134,20 +117,20 @@ export interface ReduxType {
     modal: Modal;
     player: Player;
     loader: Loader;
-}
+};
 
 interface Loader {
     isLoader: boolean;
-}
+};
 
 interface Player {
     isPlay: boolean;
     path: string;
-}
+};
 
 interface Modal {
     isOpen: boolean;
-}
+};
 
 interface Questions {
     quiz: any[];
@@ -156,7 +139,7 @@ interface Questions {
     answer: any[];
     isLoading: boolean;
     isViewAnswer: boolean;
-}
+};
 
 /* Form types */
 export interface FormLarge {
@@ -168,14 +151,14 @@ export interface FormLarge {
     course_name: string;
     week_number_of_lessons: string;
     course_type: string;
-}
+};
 
 export interface FormSmall {
     full_name: string;
     email: string;
     phone: string;
     course_name: string;
-}
+};
 
 export interface socialNetwork {
     gmail: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,

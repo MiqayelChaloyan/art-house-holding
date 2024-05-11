@@ -18,9 +18,9 @@ import styles from './styles.module.sass'
 type Props = {
     light: UrlType,
     link: string
-}
+};
 
-const VideoPlayer = ({ light, link }: Props) => {
+const VideoPlayer = ({ light, link }: Readonly<Props>) => {
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
 

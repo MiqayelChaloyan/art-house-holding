@@ -8,9 +8,9 @@ export const query =
     "during_courses_images": during_courses_images,
     "course_process": course_process,
     "teachers": teachers[] {
+        "_key": _key,
         "fullName": fullName[$language],
         "teacher_image": teacher_image,
-        "slug": slug,
     },
 }`;
 
@@ -24,9 +24,9 @@ export const querySlug =
     "during_courses_images": during_courses_images,
     "course_process": course_process,
     "teachers": teachers[] {
+        "_key": _key,
         "fullName": fullName[$language],
         "teacher_image": teacher_image,
-        "slug": slug,
     },
 }`;
 
@@ -40,8 +40,8 @@ export const queryId =
     "during_courses_images": during_courses_images,
     "course_process": course_process,
     "teachers": teachers[] {
+        "_key": _key,
         "fullName": fullName[$language],
         "teacher_image": teacher_image,
-        "slug": slug,
     },
 }`;

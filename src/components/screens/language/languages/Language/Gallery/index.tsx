@@ -9,7 +9,9 @@ import { EffectCreative, Pagination } from 'swiper/modules';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
-import { ImageType, UrlType } from '@/types/language';
+import { ImageType as Type, UrlType } from '@/types/language';
+
+import { COURSE_IMAGES } from '../../../../../../../sanity/sanity-queries/language';
 
 import 'swiper/css';
 import 'swiper/css/effect-creative';
@@ -20,9 +22,13 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
+type Props = {
+    during_courses: COURSE_IMAGES[],
+}
+
 interface Style {
     [key: string]: string,
-}
+};
 
 const style: Style = {
     "--swiper-pagination-color": "#F9CC48",
@@ -32,8 +38,8 @@ const style: Style = {
     "--swiper-pagination-bullet-horizontal-gap": "5px"
 };
 
-const renderImages = (images: ImageType[], type: string) =>
-    images?.map((image: ImageType, index: number) => {
+const renderImages = (images: Type[], type: string) =>
+    images?.map((image: Type, index: number) => {
         const path: UrlType | any = urlForImage(image);
 
         let className;
@@ -77,14 +83,15 @@ const settings = {
     modules: [EffectCreative, Pagination]
 };
 
-
-const Gallery = ({ during_courses }: any) => {
+const Gallery = ({ during_courses }: Readonly<Props>) => {
     const windowSize = useWindowSize();
+
+    console.log(during_courses)
 
     const one = during_courses.slice(0, 3);
     const two = during_courses.slice(3, 6);
 
-    const swiperItems = during_courses?.map((image: ImageType) => {
+    const swiperItems = during_courses?.map((image: COURSE_IMAGES) => {
         const path: UrlType | any = urlForImage(image);
 
         return (

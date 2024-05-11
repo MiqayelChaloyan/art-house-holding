@@ -12,10 +12,10 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    data:  PRICE_LIST_LANGUAGE[] | any
-}
+    data:  PRICE_LIST_LANGUAGE[],
+};
 
-const Home= ({ data }: Props) => {
+const Home= ({ data }: Readonly<Props>) => {
     return (
         <section id='price-list' className={styles.container}>
             <Panel data={data[0].price_list}/>

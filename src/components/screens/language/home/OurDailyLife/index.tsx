@@ -58,7 +58,7 @@ const DailyLifeImage = ({ item }: Image) => {
 };
 
 
-const DailyLifeVideo = ({ item, locale }: Video) => {
+const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
     const t = useTranslations('buttons');
     const router = useRouter();
     const dispatch = useDispatch();
@@ -122,7 +122,7 @@ const DailyLifeVideo = ({ item, locale }: Video) => {
 };
 
 
-const OurDailyLife = ({ data, locale }: Props) => {
+const OurDailyLife = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations('sections');
 
     const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: DAILY_LIFE_IMAGE | any) =>

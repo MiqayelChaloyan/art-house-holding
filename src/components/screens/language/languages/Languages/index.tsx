@@ -11,20 +11,22 @@ import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import { UrlType } from '@/types/language';
 
+import { ImageType } from '../../../../../../sanity/sanity-queries/language';
+
 import styles from './styles.module.sass';
 
 
 type LanguageProps = {
-    path: string,
+    path: ImageType,
     page: string,
 };
 
 type LanguageGalleryProps = {
-    locale: string
-    images: any
+    locale: string,
+    images: LanguageProps[]
 };
 
-const LanguageGallery = ({ locale, images }: LanguageGalleryProps) => {
+const LanguageGallery = ({ locale, images }: Readonly<LanguageGalleryProps>) => {
     return (
         <div className={styles.gallery}>
             {images.map((image: LanguageProps, index: number) => {

@@ -29,7 +29,7 @@ import styles from './styles.module.sass';
 
 type Props = {
     partners: PARTNER[]
-}
+};
 
 const SampleNextArrow = ({ onClick, fill }: any) => (
     <div className={cn(styles.arrow, styles.arrow_right)} onClick={onClick}>
@@ -71,7 +71,7 @@ const Partner = ({ partner }: PARTNER | any) => {
     )
 };
 
-const Partners = ({ partners }: Props) => {
+const Partners = ({ partners }: Readonly<Props>) => {
     const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 

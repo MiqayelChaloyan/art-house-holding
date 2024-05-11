@@ -20,10 +20,10 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    partners: PARTNER[]
+    partners: PARTNER[],
 };
 
-const Partners = ({ partners }: Props) => {
+const Partners = ({ partners }: Readonly<Props>) => {
     const t = useTranslations('navigation');
 
     const result: JSX.Element[] = partners?.map((partner: PARTNER) => {
