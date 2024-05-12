@@ -21,22 +21,22 @@ type Props = {
 };
 
 const Main = ({ course }: Readonly<Props>) => {
-	const options: EmblaOptionsType = { loop: true, align: 'center',};
+	const options: EmblaOptionsType = { loop: true, align: 'center', };
 	const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
 
-	const slidesItems = course?.map((item: COURSE_MAIN) => {
-        const path: UrlType | any = urlForImage(item.image);
-        const content = item.content.length > 272 ? item.content.slice(0, 272) + '...' : item.content;
-            
-        return (
-            <SlideItem
-                key={item._key}
-                url={path?.src}
-                title={item.title}
-                content={content}
-            />
-        );
-    });
+	const slidesItems = course?.map((item: COURSE_MAIN, index: number) => {
+		const path: UrlType | any = urlForImage(item.image);
+		const content = item.content.length > 272 ? item.content.slice(0, 272) + '...' : item.content;
+
+		return (
+			<SlideItem
+				key={item._key || index}
+				url={path?.src}
+				title={item.title}
+				content={content}
+			/>
+		);
+	});
 
 
 	return (

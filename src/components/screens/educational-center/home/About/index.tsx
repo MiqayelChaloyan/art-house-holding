@@ -28,8 +28,8 @@ const Content = ({ content, isReadMore, minimumHeight }: ContentType) => (
     <p className={cn(styles.content, Inter.className)}>{isReadMore ? content.slice(0, minimumHeight) + '...' : content}</p>
 );
 
-const About = ({ 
-    data: { about_us_content, about_us_image } 
+const About = ({
+    data: { about_us_content, about_us_image }
 }: Readonly<Props>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
     const path: UrlType | any = urlForImage(about_us_image);
@@ -47,12 +47,18 @@ const About = ({
                 </h1>
                 <div className={styles.about}>
                     <div className={styles.box}>
-                        <Content content={about_us_content} isReadMore={isReadMore} minimumHeight={minimumHeight} />
-                        <Button
-                            text={isReadMore ? t('buttons.view-more') : t('buttons.show-less')}
-                            className={cn(styles.button, styles['view-more-btn'], Arial.className)}
-                            onClick={toggleReadMore}
-                        />
+                        {about_us_content.length > minimumHeight ?
+                            <>
+                                <Content content={about_us_content} isReadMore={isReadMore} minimumHeight={minimumHeight} />
+                                <Button
+                                    text={isReadMore ? t('buttons.view-more') : t('buttons.show-less')}
+                                    className={cn(styles.button, styles['view-more-btn'], Arial.className)}
+                                    onClick={toggleReadMore}
+                                />
+                            </>
+                            :
+                            <p className={cn(styles.content, Inter.className)}>{about_us_content}</p>
+                        }
                     </div>
                     <div className={styles.box}>
                         <Image

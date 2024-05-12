@@ -31,12 +31,12 @@ const Main = ({ data }: Readonly<Props>) => {
 		}
 	};
 
-	const slidesItems = data?.map((item: any) => {
+	const slidesItems = data?.map((item: any, index: number) => {
 		const path: UrlType | any = urlForImage(item.image);
 
 		return (
 			<SlideItem
-				key={item._key}
+				key={item._key || index}
 				url={path?.src}
 				subtitle={item.title}
 				content={item.content}
