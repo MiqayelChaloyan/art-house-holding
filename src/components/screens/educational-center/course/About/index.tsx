@@ -22,7 +22,7 @@ import styles from './style.module.sass';
 
 interface Props {
     course: COURSES
-    socialData: HOSTS
+    socialData: HOSTS | any
     lessons: LESSON[]
     lessonsArmenian: LESSON[]
 };
