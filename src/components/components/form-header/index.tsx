@@ -48,7 +48,7 @@ const FormHeader = ({
 }: Props) => {
     const windowSize = useWindowSize();
 
-    const hosts = social_links?.map((host: Social_Links) => {
+    const hosts = social_links?.map((host: Social_Links | any) => {
         const socialName = host?.social_name.toLowerCase();
         const SocialIcon = (socialNetworkComponents as any)[socialName];
         if (!SocialIcon) return null;
