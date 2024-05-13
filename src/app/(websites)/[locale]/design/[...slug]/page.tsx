@@ -1,6 +1,6 @@
 'use server'
 
-import Home from '@/components/screens/design/price-list';
+import Home from '@/components/screens/design/course';
 
 
 interface Props {

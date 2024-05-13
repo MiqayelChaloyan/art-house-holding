@@ -59,15 +59,15 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
     return (
         <header className={cn(
             styles.box,
-            `${typePosition === 'fixed' ? styles.boxFixed : ''}`,
-            `${isSticky ? styles.boxScrolled : ''}`,
-            `${isOpenMenu ? styles.boxOpenMenu : ''}`
+            typePosition === 'fixed' ? styles.boxFixed : '',
+            isSticky ? styles.boxScrolled : '',
+            isOpenMenu ? styles.boxOpenMenu : ''
         )}>
             <div className={`container ${styles.wrap}`}>
                 <Link
                     href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
-                    aria-label={`${Pages.EDUCATIONAL_HOME}`}
-                    className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}
+                    aria-label={Pages.EDUCATIONAL_HOME}
+                    className={cn(styles.logo, isSticky ? styles.logoSticky : '')}
                 >
                     <Logo
                         width='162'
@@ -84,7 +84,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
-                            aria-label={`${Pages.EDUCATIONAL_HOME}`}
+                            aria-label={Pages.EDUCATIONAL_HOME}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
                             {t('about')}
@@ -97,7 +97,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`}
-                            aria-label={`${Pages.EDUCATIONAL_PARTNERS}`}
+                            aria-label={Pages.EDUCATIONAL_PARTNERS}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
                             {t('partners')}
@@ -105,7 +105,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
-                            aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
+                            aria-label={Pages.EDUCATIONAL_PRICE_LIST}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
                             {t('price-list')}
@@ -118,7 +118,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                 <button
                     className={cn(
                         styles.menuBtn,
-                        `${isOpenMenu ? styles.menuBtnActive : ''}`,
+                        isOpenMenu ? styles.menuBtnActive : '',
                     )}
                     onClick={toggleMenuClick}
                     title='Art Training Center'

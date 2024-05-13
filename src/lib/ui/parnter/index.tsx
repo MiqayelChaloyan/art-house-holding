@@ -13,6 +13,8 @@ import styles from './styles.module.sass';
 const Partner = ({ partner }: Readonly<PARTNER | any>) => {
     const path: UrlType | any = urlForImage(partner.logo);
 
+    console.log(partner)
+
     return (
         <div className={styles.partner}>
             <div className={styles.logo}>

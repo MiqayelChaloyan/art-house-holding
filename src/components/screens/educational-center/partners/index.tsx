@@ -7,11 +7,11 @@ import { useTranslations } from 'next-intl';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '@/store/modal_reducer';
 
-import Image from 'next/image';
-
 import Container from '@/components/components/container';
 
 import { Inter } from '@/lib/constants/font';
+
+import { UrlType } from '@/types/educational-center';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
@@ -31,8 +31,8 @@ const Partners = ({ data }: Props) => {
         setTimeout(() => dispatch(closeModal(false)), 1);
     }, [data]);
 
-	const partners = data?.map((item: any) => {
-		const path: { src: string, width: number, height: number } | any = urlForImage(item.logo);
+	const partners = data?.map((item: PARTNER) => {
+		const path: UrlType | any = urlForImage(item.logo);
 
 		return (
 			<div key={item._id} className={styles.partner}>

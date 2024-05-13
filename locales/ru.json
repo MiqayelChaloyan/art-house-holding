@@ -8,7 +8,11 @@
         "languages": "Языки",
         "promotions": "Акции",
         "send-request": "Отправить запрос",
-        "take-the-test": "Пройди тест"
+        "take-the-test": "Пройди тест",
+        "departments": "Разделы",
+        "orders": "Заказы",
+        "portfolio": "Портфолио",
+        "contact": "Контакт"
     },
     "footer": {
         "about-us": "О нас",

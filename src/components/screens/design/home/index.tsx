@@ -1,26 +1,34 @@
 'use client'
 
-import Courses from "./courses";
-import OurDay from "./our-day";
-import OurTeam from "./our-team";
-import Partners from "./partners";
-import Progress from "./progress";
+import Courses from './courses';
+import OurDay from './our-day';
+import OurTeam from './our-team';
+import Partners from './partners';
+import Progress from './progress';
 
+import { DESIGN } from '../../../../../sanity/sanity-queries/design';
+import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
+
+
+type Props = {
+    data: DESIGN[],
+    partners: PARTNER[],
+    locale: string
+};
 
 const Home = ({
     data,
     partners,
     locale,
-}: any) => {
-// console.log(data)
+}: Readonly<Props>) => {
     return (
         <div>
             <div style={{ backgroundColor: 'green', height: '710px' }}></div>
             <Courses />
             <OurDay />
-            <Progress />
+            <Progress data={data[0].progress_section} />
             <OurTeam />
-            <Partners />
+            {/* <Partners data={partners}/> */}
         </div>
     )
 };

@@ -8,7 +8,11 @@
         "languages": "Languages",
         "promotions": "Promotions",
         "send-request": "Send request",
-        "take-the-test": "Pass the test"
+        "take-the-test": "Pass the test",
+        "departments": "Sections",
+        "orders": "Orders",
+        "portfolio": "Portfolio",
+        "contact": "Contact"
     },
     "footer": {
         "about-us": "About us",

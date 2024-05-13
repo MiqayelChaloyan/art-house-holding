@@ -1,14 +1,43 @@
+'use client'
+
+import React from 'react';
+
+import Container from '@/components/components/container';
+
+import ProgressItem from '@/lib/ui/progress';
+import { ArianAMU } from '@/lib/constants/font';
+
+import { PROGRESS } from '../../../../../../sanity/sanity-queries/design';
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
 
 
-const Progress = () => {
-
-    return (
-        <div>
-            <div style={{ backgroundColor: 'red', height: '500px' }}>
-                Progress
-            </div>
-        </div>
-    )
+type Props = {
+    data: PROGRESS[]
 };
 
-export default Progress;
+const Progress = ({ data }: Readonly<Props>) => {
+
+    const items: JSX.Element[] = data?.map((item: PROGRESS) => (
+        <div key={item._key} className={styles.column}>
+            <ProgressItem value={0} quantity={item.quantity} />
+            <p className={cn(styles.title, ArianAMU.className)}>
+                {item.title}
+            </p>
+        </div>
+    ));
+
+    return (
+        <section id='circle-progress' className={styles.container}>
+            <Container>
+                <div className={styles.row}>
+                    {items}
+                </div>
+            </Container>
+        </section>
+    );
+};
+
+export default React.memo(Progress);

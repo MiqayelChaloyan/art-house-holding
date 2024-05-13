@@ -97,7 +97,7 @@ const Header = ({ locale }: IHeaderProps) => {
                     <div className={styles.send_request}>
                         <Link
                             href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
-                            aria-label={`/${Pages.LANGUAGE_SEND_REQUEST}`}
+                            aria-label={Pages.LANGUAGE_SEND_REQUEST}
                             className={`${styles.triangle_text} ${Arial.className}`}
                             // prefetch={true}
                             // passHref
@@ -108,7 +108,7 @@ const Header = ({ locale }: IHeaderProps) => {
                     <div className={styles.take_test}>
                         <Link
                             href={`/${locale}${Pages.LANGUAGE_TAKE_TEST}`}
-                            aria-label={`/${Pages.LANGUAGE_TAKE_TEST}`}
+                            aria-label={Pages.LANGUAGE_TAKE_TEST}
                             className={`${styles.triangle_text} ${Arial.className}`}
                             onClick={() => dispatch(Action.resetAllAction())}
                             // prefetch={true}
@@ -134,7 +134,7 @@ const Header = ({ locale }: IHeaderProps) => {
                         <Link
                             key={key}
                             href={`/${locale}${link.path}`}
-                            aria-label={`/${link.path}`}
+                            aria-label={link.path}
                             className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}
                             prefetch={true}
                             passHref
@@ -157,7 +157,7 @@ const Header = ({ locale }: IHeaderProps) => {
                     <button
                         className={cn(
                             styles.menuBtn,
-                            `${isOpenMenu ? styles.menuBtnActive : ''}`,
+                            isOpenMenu ? styles.menuBtnActive : '',
                         )}
                         onClick={toggleMenuClick}
                         title='Language'

@@ -23,7 +23,8 @@ export default (S: any) =>
                     'promotions-languages',
                     'languages-quiz',
                     'about-us-design',
-                    'contact-us-design',
+                    'design-contact-us',
+                    'courses-design',
                     'partners'
                 ].includes(listItem.getId())
             ),
@@ -85,6 +86,12 @@ export default (S: any) =>
                                 .title('Contact Us')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
+                            S.listItem()
+                                .title('Courses')
+                                .child(
+                                    S.documentList()
+                                        .title('Courses')
+                                        .filter('_type == "courses-design"')),
                         ])
                 ),
 

@@ -1,3 +1,9 @@
+export interface UrlType {
+    src: string,
+    width: number,
+    height: number,
+};
+
 export interface socialNetwork {
     facebook: (props: { size: string | number; fill: string | number } | any) => JSX.Element,
     x: ({ size, fill }: { size: string | number; fill: string | number } | any) => JSX.Element,

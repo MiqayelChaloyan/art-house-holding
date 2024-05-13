@@ -52,12 +52,12 @@ const Header = ({ typePosition }: IHeaderProps) => {
     return (
         <header className={cn(
             styles.box,
-            `${typePosition === 'fixed' ? styles.boxFixed : ''}`,
-            `${isSticky ? styles.boxScrolled : ''}`,
-            `${isOpenMenu ? styles.boxOpenMenu : ''}`
+            typePosition === 'fixed' ? styles.boxFixed : '',
+            isSticky ? styles.boxScrolled : '',
+            isOpenMenu ? styles.boxOpenMenu : ''
         )}>
             <div className={`container ${styles.wrap}`}>
-                <Link href={Pages.HOME} aria-label='about' className={cn(styles.logo, `${isSticky ? styles.logoSticky : ''}`)}>
+                <Link href={Pages.HOME} aria-label='about' className={cn(styles.logo, isSticky ? styles.logoSticky : '')}>
                     <Logo
                         width='212'
                         height='60'
@@ -80,7 +80,7 @@ const Header = ({ typePosition }: IHeaderProps) => {
                 <button
                     className={cn(
                         styles.menuBtn,
-                        `${isOpenMenu ? styles.menuBtnActive : ''}`,
+                        isOpenMenu ? styles.menuBtnActive : '',
                     )}
                     onClick={toggleMenuClick}
                     title='Art House Holding'

@@ -12,7 +12,7 @@ import { closeModal } from '@/store/modal_reducer';
 import { Pages } from '@/lib/constants/pages';
 import { Arial } from '@/lib/constants/font';
 
-import { COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
+// import { COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
@@ -21,7 +21,7 @@ import styles from './styles.module.sass';
 
 type Props = {
     locale: string
-    courses: COURSES[]
+    courses: any
 };
 
 const CoursesModal = ({
@@ -30,6 +30,8 @@ const CoursesModal = ({
 }: Props) => {
     const params = useParams();    
     const { slug } = params;
+
+    // console.log(courses)
 
     const dispatch = useDispatch();
 
@@ -44,13 +46,13 @@ const CoursesModal = ({
     return (
         <div className={styles.courses_container}>
             <p className={cn(styles.title, Arial.className)}>
-                {t('courses')}
+                {t('departments')}
             </p>
             <div className={styles.list}>
                 {courses.map((course: any) => (
                     <Link
                         key={course._id}
-                        href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`}
+                        href={`/${locale}${Pages.DESIGN_HOME}/${course.slug}`}
                         className={styles.link}
                         onClick={handlecloseModal}
                     >

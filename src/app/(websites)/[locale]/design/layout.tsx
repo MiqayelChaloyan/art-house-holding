@@ -9,6 +9,8 @@ import Header from "@/lib/outlets/design/Header";
 
 import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
 import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
+import Modal from '@/lib/outlets/design/Modal';
+import CoursesModal from '@/lib/outlets/design/Modal/courses';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -18,6 +20,9 @@ import { client } from '../../../../../sanity/client';
 import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { querySiteMeta, querySocial } from '../../../../../sanity/services/design-service/about-us';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { allCoursesQuery } from '../../../../../sanity/services/design-service/courses';
+import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
+import { HOSTS } from '../../../../../sanity/sanity-queries/design';
 
 
 interface RootLayoutProps {
@@ -39,6 +44,13 @@ interface Site {
     ogDescription: string
 }
 
+type TYPES = {
+    branches: PARTNER[],
+    courses: any,
+    social: HOSTS | any,
+    isError: boolean,
+}
+
 const localeStrings: {
     am: string
     ru: string
@@ -52,18 +64,19 @@ const localeStrings: {
 
 async function getResources(locale: string) {
     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
+    const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
     const socialPromise = await client.fetch(querySocial, { language: 'en' }, { next: { revalidate: 100 } });
 
-    return Promise.all([branchesPromise, socialPromise])
-        .then(([branches, social]) => {
-            if (!branches?.length || !social?.length) {
-                return { branches: [], social: [], isError: true };
+    return Promise.all([branchesPromise, coursesPromise, socialPromise])
+        .then(([branches, courses, social]) => {
+            if (!branches?.length || !courses?.length || !social?.length) {
+                return { branches: [], courses: [], social: [], isError: true };
             }
 
-            return { branches: branches[1], social: social[0], isError: false };
+            return { branches: branches[1], courses, social: social[0], isError: false };
         })
         .catch(error => {
-            return { branches: [], social: [], isError: true };
+            return { branches: [], courses: [], social: [], isError: true };
         });
 }
 
@@ -72,24 +85,29 @@ export default async function Layout({
     params: { locale },
 }: Readonly<RootLayoutProps>) {
 
-    const { branches, social, isError }: any = await getResources(locale);
+    const { branches, courses, social, isError }: TYPES = await getResources(locale);
 
-    if (!branches || !social || isError) {
+    if (!branches || !courses || !social || isError) {
         notFound()
     }
 
     return (
-        <div className='design-container'>
-            <Header typePosition="fixed" locale={locale} />
-            <ScrollToTopButton theme='#8E685C' />
-            <FloatingMenu
-                website={localeStrings[locale]}
-                branches={branches}
-                theme='#8E685C'
-                hover='#4B352B'
-            />
-            {children}
-            <Footer socialData={social} />
+        <div>
+            <div className='design-container'>
+                <Header typePosition="fixed" locale={locale} />
+                <ScrollToTopButton theme='#8E685C' />
+                <FloatingMenu
+                    website={localeStrings[locale]}
+                    branches={branches}
+                    theme='#8E685C'
+                    hover='#4B352B'
+                />
+                {children}
+                <Footer socialData={social} />
+            </div>
+            <Modal>
+                <CoursesModal locale={locale} courses={courses} />
+            </Modal>
         </div>
     );
 }
