@@ -2,6 +2,10 @@
 
 import React from 'react';
 
+import { Arial } from '@/lib/constants/font';
+
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
 
 
@@ -9,12 +13,15 @@ import styles from './styles.module.sass';
 //     data:  PRICE_LIST_LANGUAGE[] | any
 // }
 
-const Home= () => {
-    return (
-        <section id='price-list' className={styles.container}>
-          <h1>price list</h1>
-        </section>
-    );
+const Home = () => {
+  return (
+    <section id='price-list' className={styles.container}>
+      <div className={styles.titles}>
+        <h2 className={cn(styles['title-back'], Arial.className)}>COURSES</h2>
+        <h1 className={cn(styles.title, Arial.className)}>ԴԱՍԸՆԹԱՑՆԵՐ</h1>
+      </div>
+    </section>
+  );
 }
 
 export default React.memo(Home);

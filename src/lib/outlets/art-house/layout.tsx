@@ -22,7 +22,7 @@ const Layout = ({
     children,
     headerPosition
 }: Props) => {
-    const [socialData, setSocialData] = useState<HOSTS | null>(null);
+    const [socialData, setSocialData] = useState<HOSTS | any>(null);
 
     useEffect(() => {
         const fetchData = async () => {
