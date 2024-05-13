@@ -1,3 +1,5 @@
+'use client'
+
 import Courses from "./courses";
 import OurDay from "./our-day";
 import OurTeam from "./our-team";

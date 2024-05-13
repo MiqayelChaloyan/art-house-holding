@@ -15,6 +15,8 @@ import quizSchemaLanguage from './schemas/language/quiz-schema';
 import partnersSchema from './schemas/generic';
 import contactUsSchemaLanguage from './schemas/language/contact-us-schema';
 
+import aboutUsSchemaDesign from './schemas/design/about-us-schema';
+
 export const schemaTypes = [
   homeSchemaArtHouse,
   contactUsSchemaArtHouse,
@@ -29,6 +31,7 @@ export const schemaTypes = [
   promotionsSchemaLanguage,
   quizSchemaLanguage,
   contactUsSchemaLanguage,
+  aboutUsSchemaDesign,
   partnersSchema,
 ];
 

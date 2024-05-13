@@ -8,14 +8,15 @@ const aboutUsSchemaLanguage = {
     title: 'About Us',
     id: 'about-us-language',
     groups: [
-        {
-            name: "meta",
-            title: "Site Info",
-            default: true
-        },
+        // {
+        //     name: "meta",
+        //     title: "Site Info",
+        //     default: true
+        // },
         {
             name: "og",
             title: "Social Share Info",
+            default: true
         },
         {
             name: "manifest",
@@ -29,18 +30,12 @@ const aboutUsSchemaLanguage = {
     ],
     fields: [
          /* Site Metadata Schema */
-         {
-            type: 'string',
-            name: 'site_name',
-            title: 'Site Name',
-            group: ['og', 'meta'],
-        },
-        {
-            type: "text",
-            name: "ogDescription",
-            title: "Social Share Description",
-            group: ['og', 'meta']
-        },
+        //  {
+        //     type: 'string',
+        //     name: 'site_name',
+        //     title: 'Site Name',
+        //     group: ['og', 'meta'],
+        // },
         {
             type: 'string',
             title: 'Page Title',
@@ -48,7 +43,13 @@ const aboutUsSchemaLanguage = {
             description:
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
             validation: (Rule: RuleType) => Rule.required(),
-            group: ['meta']
+            group: ['og']
+        },
+        {
+            type: "text",
+            name: "ogDescription",
+            title: "Social Share Description",
+            group: ['og']
         },
         {
             type: 'image',

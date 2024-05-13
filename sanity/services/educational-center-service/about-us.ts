@@ -52,7 +52,6 @@ export const query =
 
 export const querySiteMeta = `
 *[_type == "about-us"] {
-    site_name,
     ogDescription,
     ogTitle,
     ogImage

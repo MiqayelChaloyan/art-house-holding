@@ -22,6 +22,7 @@ export default (S: any) =>
                     'questions-language',
                     'promotions-languages',
                     'languages-quiz',
+                    'about-us-design',
                     'partners'
                 ].includes(listItem.getId())
             ),
@@ -76,8 +77,9 @@ export default (S: any) =>
                         .title('Pages')
                         .items([
                             S.listItem()
-                                .title('Brand')
-                                .child(S.document().schemaType('Brand').documentId('Brand')),
+                                .title('Home')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('about-us-design').documentId('about-us-design')),
                         ])
                 ),
 

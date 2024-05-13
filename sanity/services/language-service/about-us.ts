@@ -20,7 +20,6 @@ export const query = `
 
 export const querySiteMeta = `
 *[_type == "about-us-language"] {
-    site_name,
     ogDescription,
     ogTitle,
     ogImage

@@ -78,7 +78,7 @@ export async function generateMetadata({
   const meta: Site | any = await getSiteMeta(querySiteMeta, client)
   const { ogDescription, ogTitle, ogImage } = meta[1];
   const path: UrlType | any = urlForImage(ogImage);
-
+console.log(ogTitle)
   return {
     metadataBase: process.env.NEXT_PUBLIC_DOMAIN
       ? new URL(process.env.NEXT_PUBLIC_DOMAIN)

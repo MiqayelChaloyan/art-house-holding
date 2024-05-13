@@ -1,13 +1,13 @@
-import { ProjectsIcon, TrendUpwardIcon } from '@sanity/icons';
+import { ClipboardIcon, TrendUpwardIcon } from '@sanity/icons';
 
 import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
 
-const homeSchemaArtHouse = {
-    name: 'art-house-home',
+export const aboutUsSchemaDesign = {
+    name: 'about-us-design',
     type: 'document',
     title: 'Home',
-    id: 'art-house',
+    id: 'about-us-design',
     groups: [
         // {
         //     name: "meta",
@@ -63,100 +63,28 @@ const homeSchemaArtHouse = {
         },
         /* Schema */
         {
-            name: 'name',
             title: 'Name',
+            name: 'name',
             type: 'string',
             description: 'Չփոփոխել անվանումը'
         },
         {
-            name: 'our_websites',
+            name: 'main_section',
             type: 'array',
-            title: 'Websites',
-            components: { input: ArrayMaxItems },
-            validation: (Rule: RuleType) => Rule.max(5),
-            description: 'Ոչ պակաս, քան հինգ և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            title: 'Main Section',
+            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
                     name: 'Object',
                     type: 'object',
-                    icon: ProjectsIcon,
-                    validation: (Rule: RuleType) => Rule.required(),
+                    icon: ClipboardIcon,
                     fields: [
                         {
                             title: 'Company Name (Ընկերության Անվանումը)',
                             name: 'company_name',
                             type: 'string'
                         },
-                        {
-                            title: 'Website Title',
-                            name: 'words',
-                            type: 'object',
-                            fields: [
-                                {
-                                    title: 'Armenian',
-                                    name: 'am',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'English',
-                                    name: 'en',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'Russian',
-                                    name: 'ru',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            title: 'Website Logo Front',
-                            name: 'website_logo_front',
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-                                {
-                                    name: 'alt',
-                                    title: 'Alternative text',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            title: 'Website Logo Back',
-                            name: 'website_logo_back',
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-                                {
-                                    name: 'alt',
-                                    title: 'Alternative text',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            name: 'web_site_url',
-                            title: 'Website url',
-                            type: 'string',
-                        },
-                    ]
-                }
-            ],
-        },
-        {
-            name: 'progress_section',
-            type: 'array',
-            title: 'Progress Section',
-            components: { input: ArrayMaxItems },
-            validation: (Rule: RuleType) => Rule.max(4),
-            description: 'Ոչ պակաս, քան չորս և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
-            of: [
-                {
-                    type: 'object',
-                    name: 'tag',
-                    icon: TrendUpwardIcon,
-                    fields: [
                         {
                             title: 'Title',
                             name: 'title',
@@ -180,10 +108,64 @@ const homeSchemaArtHouse = {
                             ]
                         },
                         {
+                            title: 'Course Image',
+                            name: 'image',
+                            type: 'image',
+                            options: { hotspot: true },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    title: 'Alternative text',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ],
+        },
+        {
+            name: 'progress_section',
+            type: 'array',
+            title: 'Progress Section',
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(4),
+            description: 'Ոչ պակաս, քան չորս և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            of: [
+                {
+                    type: 'object',
+                    name: 'tag',
+                    icon: TrendUpwardIcon,
+                    fields: [
+                        {
+                            title: 'Title',
+                            name: 'title',
+                            type: 'object',
+                            validation: (Rule: any) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
                             title: 'Quantity',
                             name: 'quantity',
                             type: 'number',
                             initialValue: 0,
+                            validation: (Rule: any) => Rule.required(),
                         },
                     ]
                 }
@@ -192,4 +174,4 @@ const homeSchemaArtHouse = {
     ],
 };
 
-export default homeSchemaArtHouse;
+export default aboutUsSchemaDesign;
