@@ -22,7 +22,7 @@ import styles from './styles.module.sass';
 
 type Props = {
     courses: COURSES[]
-    socialData: HOSTS
+    socialData: HOSTS | any
     lessons: LESSONS[]
     lessonsArmenian: LESSONS[]
 };

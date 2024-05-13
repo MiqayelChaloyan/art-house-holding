@@ -17,8 +17,8 @@ const Home = () => {
   return (
     <section id='price-list' className={styles.container}>
       <div className={styles.titles}>
-        <h2 className={cn(styles['title-back'], Arial.className)}>COURSES</h2>
-        <h1 className={cn(styles.title, Arial.className)}>ԴԱՍԸՆԹԱՑՆԵՐ</h1>
+        <h2 className={cn(styles['title-back'], Arial.className)}>PROMOTIONS</h2>
+        <h1 className={cn(styles.title, Arial.className)}>ԱԿՑԻԱՆԵՐ</h1>
       </div>
     </section>
   );
