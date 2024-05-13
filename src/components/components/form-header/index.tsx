@@ -32,7 +32,7 @@ interface Props {
     fill?: string
     group?: object
     fontSize?: string
-    social_links?: Social_Links
+    social_links?: Social_Links[]
 };
 
 const FormHeader = ({
