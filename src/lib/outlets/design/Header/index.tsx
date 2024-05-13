@@ -86,19 +86,19 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                     `${isSticky && isOpenMenu ? styles.contentSticky : ''}`,
                 )}>
                     <div className={styles.nav}>
-                        {/* <Link
+                        <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
                             aria-label={`${Pages.EDUCATIONAL_HOME}`}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
                             ԲԱԺԻՆՆԵՐ
-                        </Link> */}
-                        {/* <Button
+                        </Link>
+                        <Button
                             text={t('courses')}
                             onClick={handleSubmit}
                             className={cn(styles.btn, ArianAMU.className)}
-                        /> */}
+                        />
                         <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.DESIGN_PRICE_LIST}`}
@@ -108,30 +108,30 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                             {/* {t('partners')} */}
                             ԳՆԱՑՈՒՑԱԿ
                         </Link>
-                        {/* <Link
+                        <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
                             aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
                             ՊԱՏՎԵՐՆԵՐ
-                        </Link> */}
-                        {/* <Link
+                        </Link>
+                        <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
                             aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
                             Պորտֆոլիո
-                        </Link> */}
-                        {/* <Link
+                        </Link>
+                        <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
                             aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
                             className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
                         >
                             ԿԱՊ
-                        </Link> */}
+                        </Link>
                     </div>
                     <div>
                         <LocalSwitcher activeColor='#8E685C' color='#fff' />

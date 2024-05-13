@@ -33,7 +33,7 @@ const socialNetworkComponents: socialNetwork = {
     gmail: Gmail,
 };
 
-const Footer = ({ socialData }: Props) => {
+const Footer = ({ socialData }: Readonly<Props>) => {
     const windowSize = useWindowSize();
     const currentYear = new Date().getFullYear();
     const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');

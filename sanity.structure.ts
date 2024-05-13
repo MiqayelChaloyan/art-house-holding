@@ -23,6 +23,7 @@ export default (S: any) =>
                     'promotions-languages',
                     'languages-quiz',
                     'about-us-design',
+                    'contact-us-design',
                     'partners'
                 ].includes(listItem.getId())
             ),
@@ -80,6 +81,10 @@ export default (S: any) =>
                                 .title('Home')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('about-us-design').documentId('about-us-design')),
+                            S.listItem()
+                                .title('Contact Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
                         ])
                 ),
 

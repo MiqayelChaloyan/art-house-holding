@@ -30,12 +30,6 @@ export interface Form {
     course_name: string;
 };
 
-export interface socialNetwork {
-    google: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
-    instagram: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
-    facebook: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
-};
-
 export interface SlideItem {
     url: string;
     subtitle: string;
@@ -54,4 +48,10 @@ export interface Options {
     urlImageAlt: string;
     result: string;
     rating: string;
-}
+};
+
+export interface socialNetwork {
+    google: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+    instagram: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+    facebook: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
+};

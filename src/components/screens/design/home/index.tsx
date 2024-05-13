@@ -7,16 +7,20 @@ import Partners from "./partners";
 import Progress from "./progress";
 
 
-const Home = () => {
-
+const Home = ({
+    data,
+    partners,
+    locale,
+}: any) => {
+// console.log(data)
     return (
         <div>
             <div style={{ backgroundColor: 'green', height: '710px' }}></div>
             <Courses />
             <OurDay />
-            <Progress/>
-            <OurTeam/>
-            <Partners/>
+            <Progress />
+            <OurTeam />
+            <Partners />
         </div>
     )
 };

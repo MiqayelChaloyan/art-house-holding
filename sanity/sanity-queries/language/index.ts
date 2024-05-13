@@ -1,5 +1,3 @@
-import { Key } from 'react';
-
 interface Asset {
     _ref: string;
     _type: string;
@@ -188,14 +186,14 @@ export interface FORM {
 };
 
 export interface Social_Links {
-    [x: string]: any;
-    _key: Key | null | undefined;
-    social_link: string;
+    _key: string,
+    _type: string,
+    social_link: string,
     social_name: string,
 };
 
 export interface HOSTS {
     name: string;
     phone_number: string;
-    social_links: Social_Links;
+    social_links: Social_Links[];
 };

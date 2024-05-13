@@ -35,7 +35,6 @@ interface RootLayoutProps {
 }
 
 interface Site {
-    site_name: string,
     ogTitle: string,
     ogImage: {
         _type: string,

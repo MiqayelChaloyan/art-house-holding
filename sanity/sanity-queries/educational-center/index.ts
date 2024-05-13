@@ -1,5 +1,3 @@
-import { Key } from 'react';
-
 export interface Asset {
     _type: string,
     alt: string,
@@ -112,11 +110,11 @@ export interface COURSES {
 };
 
 export interface Social_Links {
-    [x: string]: any;
-    _key: Key | null | undefined,
-    social_link: string;
+    _key: string,
+    _type: string,
+    social_link: string,
     social_name: string,
-}
+};
 
 export interface HOSTS {
     name: string,

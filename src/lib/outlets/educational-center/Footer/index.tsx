@@ -31,7 +31,12 @@ const group = {
     ['margin']: '0 auto'
 };
 
-const Footer = ({ courses, socialData, lessons, lessonsArmenian }: Props) => {
+const Footer = ({
+    courses,
+    socialData,
+    lessons,
+    lessonsArmenian
+}: Readonly<Props>) => {
     const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
     const t = useTranslations();
     const locale = useLocale();

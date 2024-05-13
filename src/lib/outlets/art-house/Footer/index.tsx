@@ -26,7 +26,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    socialData: any | HOSTS
+    socialData: HOSTS
 };
 
 const socialNetworkComponents: socialNetwork = {
@@ -36,7 +36,7 @@ const socialNetworkComponents: socialNetwork = {
     linkedin: Linkedin
 };
 
-const Footer = ({ socialData }: Props) => {
+const Footer = ({ socialData }: Readonly<Props>) => {
     const windowSize = useWindowSize();
     const currentYear = new Date().getFullYear();
     const t = useTranslations();
