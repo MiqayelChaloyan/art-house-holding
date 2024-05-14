@@ -52,7 +52,7 @@ const priceListSchemaDesign = {
             description: 'Դուք կարող եք ավելացնել ցանկացած քանակի ուղեցույցներ',
             validation: (Rule: RuleType) => Rule.required(),
             // validation: (Rule: RuleType) => Rule.max(5),
-            // components: { input: ArrayMaxItems },
+            // components: { input: ArrayMaxItems }
             of: [
                 {
                     name: 'Object',
