@@ -79,9 +79,6 @@ const languagesSchemaLanguage = {
                 },
             ]
         },
-
-
-
         {
             title: 'Text',
             name: 'text',

@@ -25,6 +25,7 @@ export default (S: any) =>
                     'about-us-design',
                     'design-contact-us',
                     'courses-design',
+                    'price-list-design',
                     'partners'
                 ].includes(listItem.getId())
             ),
@@ -83,15 +84,19 @@ export default (S: any) =>
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('about-us-design').documentId('about-us-design')),
                             S.listItem()
-                                .title('Contact Us')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
-                            S.listItem()
                                 .title('Courses')
                                 .child(
                                     S.documentList()
                                         .title('Courses')
                                         .filter('_type == "courses-design"')),
+                            S.listItem()
+                                .title('Price List')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('price-list-design').documentId('price-list-design')),
+                            S.listItem()
+                                .title('Contact Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
                         ])
                 ),
 

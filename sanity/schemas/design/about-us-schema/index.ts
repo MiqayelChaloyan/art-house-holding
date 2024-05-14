@@ -125,6 +125,57 @@ export const aboutUsSchemaDesign = {
             ],
         },
         {
+            name: 'our_day',
+            type: 'object',
+            title: 'Our Day Video',
+            validation: (Rule: RuleType) => Rule.required(),
+            fields: [
+                // {
+                //     title: 'Video Section Title',
+                //     name: 'video_section_title',
+                //     type: 'object',
+                //     validation: (Rule: any) => Rule.required(),
+                //     fields: [
+                //         {
+                //             title: 'Armenian',
+                //             name: 'am',
+                //             type: 'string'
+                //         },
+                //         {
+                //             title: 'English',
+                //             name: 'en',
+                //             type: 'string'
+                //         },
+                //         {
+                //             title: 'Russian',
+                //             name: 'ru',
+                //             type: 'string'
+                //         }
+                //     ]
+                // },
+                {
+                    name: 'video_url',
+                    title: 'Video Link',
+                    type: 'string',
+                    validation: (Rule: any) => Rule.required(),
+                },
+                {
+                    name: 'video_light',
+                    title: 'Video Light',
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        {
+                            name: 'alt',
+                            title: 'Alternative text',
+                            type: 'string'
+                        }
+                    ],
+                    validation: (Rule: any) => Rule.required(),
+                },
+            ]
+        },
+        {
             name: 'progress_section',
             type: 'array',
             title: 'Progress Section',
