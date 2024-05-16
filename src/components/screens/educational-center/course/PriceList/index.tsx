@@ -49,7 +49,7 @@ const PriceList= ({ price_list }: Readonly<Props>) => {
 
     return (
         <section id='price-list' className={styles.container}>
-            <Container>
+            <Container className='container'>
                 <h1 className={cn(styles.title, Inter.className)}>
                     {t('sections.price-list')}
                 </h1>

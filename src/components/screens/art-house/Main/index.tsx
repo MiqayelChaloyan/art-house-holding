@@ -15,7 +15,7 @@ const Main = () => {
 
     return (
         <section id='about' className={styles.header}>
-            <Container>
+            <Container className='container'>
                 <div className={styles.row}>
                     <div className={styles.column}>
                         <div className={styles.watch} />

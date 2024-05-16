@@ -36,7 +36,7 @@ const PriceList = ({ data }: Props) => {
 
 	return (
 		<section id='price-list' className={styles.container}>
-			<Container>
+			<Container className='container'>
 				<h1 className={`${styles.title} ${Inter.className}`}>{t('price-list')}</h1>
 				<Accordion courses={data} />
 			</Container>

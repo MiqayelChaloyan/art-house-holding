@@ -179,7 +179,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
     return !isOpen && (
         <div className={styles.container}>
             <Snackbar open={open} handleChange={handleClose} info={info} />
-            <Container>
+            <Container className='container'>
                 <div className={styles.contact}>
                     {/* <Section direction='right'> */}
                     <div className={styles.box}>

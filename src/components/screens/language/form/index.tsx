@@ -159,7 +159,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
         <div className={styles.container}>
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.arrow_left} />
-            <Container>
+            <Container className='container'>
                 <div className={styles.form}>
                     <form
                         className={styles.box}

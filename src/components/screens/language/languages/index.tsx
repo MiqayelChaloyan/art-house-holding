@@ -25,7 +25,7 @@ const Home = ({ data }: Readonly<Props>)  => {
 
     return (
         <section id='language'>
-            <Container>
+            <Container className='container'>
                 <LanguageGallery locale={activeLocale} images={images.slice(0, 4)} />
                 <LanguageGallery locale={activeLocale} images={images.slice(4, 7)} />
             </Container>

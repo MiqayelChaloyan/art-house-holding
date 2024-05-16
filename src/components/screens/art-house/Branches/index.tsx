@@ -55,7 +55,7 @@ const Branches = ({ data }: Readonly<Props>) => {
 
     return (
         <section id='branches' className={styles.container}>
-            <Container>
+            <Container className='container'>
                 <div className={styles.cards}>
                     {cards}
                 </div>

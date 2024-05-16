@@ -130,7 +130,7 @@ const Partners = ({ partners }: Readonly<Props>) => {
 
     return (
         <section id='partners' className={styles.section}>
-            <Container>
+            <Container className='container'>
                 <h2 className={cn(styles.title, Vrdznagir.className)}>
                     {t('partners')}
                 </h2>

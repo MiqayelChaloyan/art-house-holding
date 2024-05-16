@@ -65,7 +65,7 @@ const Specialists = ({ data }: Readonly<Props>) => {
     return (
         <section id='specialists' className={styles.container}>
             <div className={styles.triangle} />
-            <Container>
+            <Container className='container'>
                 <h1 className={styles.title}>
                     {t('specialists')}
                 </h1>

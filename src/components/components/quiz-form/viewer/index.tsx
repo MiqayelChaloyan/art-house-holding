@@ -44,7 +44,7 @@ const QuestionsViewer = () => {
 
     return (
         <section id='answers'>
-            <Container>
+            <Container className='container'>
                 <h1 className={cn(styles.title, ArianAMU.className)}>{t('sections.your-answers')}</h1>
                 <div className={styles.container}>
                     {answers}

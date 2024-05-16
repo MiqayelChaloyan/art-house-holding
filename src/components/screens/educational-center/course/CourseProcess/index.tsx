@@ -37,7 +37,7 @@ const CourseProcess = ({ course }: Readonly<Props>) => {
 
     return (
         <section id='video-player' className={styles.container}>
-            <Container>
+            <Container className='container'>
                 <h1 className={styles.title}>{t('courses-process')}</h1>
                 <Player
                     path={path}

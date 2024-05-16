@@ -45,7 +45,7 @@ const OurRating = ({ data }: Readonly<Props>) => {
 
     return (
         <section id='our-rating' className={styles.container}>
-            <Container>
+            <Container className='container'>
                 <h1 className={styles.title}>
                     {t('rating')}
                 </h1>

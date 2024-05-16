@@ -7,6 +7,11 @@ export const allCoursesQuery = `
     "gallery_of_course": gallery_of_course,
     "conditions": conditions[][$language],
     "guides": guides[][$language],
+    "portfolio": portfolio[] {
+        "_key": _key,
+        "author": author[$language],
+        "image": image,
+    },
 }`;
 
 
@@ -19,6 +24,11 @@ export const courseBySlugQuery = `
     "gallery_of_course": gallery_of_course,
     "conditions": conditions[][$language],
     "guides": guides[][$language],
+    "portfolio": portfolio[] {
+        "_key": _key,
+        "author": author[$language],
+        "image": image,
+    },
 }`;
 
 export const queryId = `
@@ -30,4 +40,9 @@ export const queryId = `
     "gallery_of_course": gallery_of_course,
     "conditions": conditions[][$language],
     "guides": guides[][$language],
+    "portfolio": portfolio[] {
+        "_key": _key,
+        "author": author[$language],
+        "image": image,
+    },
 }`;

@@ -23,7 +23,7 @@ const SlideItem = ({
 }: Readonly<Props>) => (
     <div className={styles.emplay_slide} style={{ backgroundImage: `url(${url})` }}>
         <div className={styles.container}>
-            <Container>
+            <Container className='container'>
                 <div className={styles.contact}>
                     <h1 className={cn(styles.title, Inter.className)}>
                         {title}

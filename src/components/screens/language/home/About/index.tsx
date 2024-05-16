@@ -53,7 +53,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
 
     return (
         <section id='about' className={styles.container}>
-            <Container>
+            <Container className='container'>
                 <div className={styles.about}>
                     <div className={styles.column}>
                         <h1 className={cn(styles.title, Arial.className)}>

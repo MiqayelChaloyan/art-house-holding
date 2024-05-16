@@ -41,7 +41,7 @@ const Language = ({
     };
 
     return (
-        <Container>
+        <Container className='container'>
             <section id='language' className={styles.container}>
                 <About
                     image={data.image}

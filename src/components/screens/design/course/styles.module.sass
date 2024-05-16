@@ -1,3 +1,319 @@
 .container
-    height: 900px
-    background: green
+    height: max-content
+    padding-top: 150px
+
+.line
+    width: 400px
+    height: 3.05px
+    margin-bottom: 40px
+    background-color: #5F401B
+
+.course
+    display: flex
+    justify-content: space-between
+    height: max-content
+    margin-bottom: 50px
+
+
+.left
+    width: 40%
+
+.active
+    display: block
+
+.next
+    display: none
+    transition: opacity 2s linear
+    opacity: 0.2
+
+.design-image
+    width: 400px
+    height: 600px
+    transition: opacity 2s linear
+    opacity: 1
+    z-index: 2
+    position: relative
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        width: 400px
+        height: 600px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 400px
+        height: 600px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 400px
+        height: 600px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 350px
+        height: 500px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 350px
+        height: 500px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 300px
+        height: 450px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 250px
+        height: 350px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 150px
+        height: 200px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        width: 150px
+        height: 200px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        width: 150px
+        height: 170px
+
+.right
+    width: 60%
+
+.titles
+    width: 100%
+
+.title-top
+    font-size: 65px
+    font-weight: 700
+    color: #D7D3CE
+    text-align: center
+    line-height: 80.49px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 65px
+        line-height: 80.49px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 65px
+        line-height: 80.49px
+
+.triangle
+    position: relative
+    &:before 
+        top: 0 
+        background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
+        content: "" 
+        position: absolute 
+        right: 100% 
+        width: 90px 
+        height: 100% 
+    
+.title
+    background-color: #8E685C
+    color: white
+    font-size: 35px
+    line-height: 40.25px
+    font-weight: 700
+    margin-top: 2em
+    width: 58.7%
+    display: flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    padding-top: 0.50em
+    padding-right: 1em
+    padding-bottom: 0.50em
+
+.conditions
+    width: 90%
+    margin-top: 150px
+
+.list
+    list-style-position: inside
+
+.condition
+    list-style: disc
+    color: #818181
+    font-weight: 700
+    font-size: 18px
+    &::marker 
+        color: #8E685C
+        font-size: 2.1rem 
+
+.roadbooks
+    margin: 0 auto
+    background-color: #8E685C
+    margin-bottom: 50px
+    width: 80%
+    
+.guide
+    width: 70%
+    color: #FFFFFF
+    font-weight: 700
+    font-size: 20px
+    text-align: left
+    margin: 0 auto
+    padding: 20px
+
+
+.porfolio
+    height: 800px
+    width: 100%
+
+.section-titles
+    margin-top: 50px
+
+.title-portfolio
+    font-size: 90px
+    font-weight: 700
+    color: #362906
+    text-align: center
+    line-height: 130px
+    position: relative
+    z-index: 2
+    &:before
+        content: ''
+        position: absolute
+        background-color: #5F401B
+        width: 47%
+        height: 3px
+        bottom: 0
+        right: 0
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 90px
+        line-height: 130px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 90px
+        line-height: 130px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 90px
+        line-height: 130px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 90px
+        line-height: 130px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 90px
+        line-height: 130px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 90px
+        line-height: 130px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 50px
+        line-height: 90px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 30px
+        line-height: 90px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 30px
+        line-height: 90px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 30px
+        line-height: 90px
+
+.title-back
+    font-size: 100px
+    font-weight: 700
+    color: #D7D3CE
+    text-align: center
+    line-height: 130px
+    position: relative
+    top: 55px
+    right: 230px
+    z-index: 0
+    &:after
+        content: ''
+        position: absolute
+        background-color: #5F401B
+        width: 57%
+        height: 3px
+        top: 0
+        left: 0
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 100px
+        line-height: 130px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 100px
+        line-height: 130px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 100px
+        line-height: 130px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 90px
+        line-height: 130px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 80px
+        line-height: 130px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 80px
+        line-height: 130px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 50px
+        right: 120px
+        line-height: 100px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 35px
+        right: 70px
+        line-height: 50px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 35px
+        line-height: 50px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 35px
+        line-height: 50px
+
+
+.link
+    border: 1px solid black
+    background-color: #FFFFFF
+    font-size: 20px
+    color: black

@@ -1,5 +1,6 @@
 .container
-    height: 700px
+    height: max-content
+    padding-top: 150px
 
 .titles
     margin-top: 100px
@@ -121,3 +122,102 @@
     @media screen and (max-width: 360px)
         font-size: 35px
         line-height: 50px
+
+.navigation
+    display: grid    
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+    margin: 0 100px
+
+.triangle
+    margin: 30px
+    text-align: center
+    aside
+        margin: 20px 0 
+        line-height: 34px 
+        position: relative 
+        cursor: pointer 
+        user-select: none 
+        transition: all 0.5s 
+        &:hover 
+            &.course-button 
+                background-color:  #6E5E4A     
+                &:after
+                    border-color: transparent  #6E5E4A      
+                &:before
+                    border-color: transparent  #6E5E4A   
+        &.course-button 
+            background-color: #4B352B 
+            &:before 
+                left: -17px 
+                border-width: 17px 17px 17px 0 
+            &:after 
+                right: -17px 
+                border-width: 17px 0 17px 17px 
+    aside.course-button:after, aside.course-button:before 
+        transition: all 0.5s 
+        border-color: transparent #4B352B  
+    aside:before, aside:after 
+        content: '' 
+        position: absolute 
+        height: 0 
+        width: 0 
+        border-style: solid 
+        border-width: 0 
+
+.link
+    color: #FFFFFF
+    font-size: 18px
+    line-height: 0.5em
+
+.active
+    margin: 30px
+    text-align: center
+    aside
+        margin: 20px 0 
+        line-height: 34px 
+        position: relative 
+        cursor: pointer 
+        user-select: none 
+        transition: all 0.5s 
+        &:hover 
+            &.course-button 
+                background-color:  #6E5E4A     
+                &:after
+                    border-color: transparent  #6E5E4A      
+                &:before
+                    border-color: transparent  #6E5E4A   
+        &.course-button 
+            background-color: #6E5E4A 
+            &:before 
+                left: -17px 
+                border-width: 17px 17px 17px 0 
+            &:after 
+                right: -17px 
+                border-width: 17px 0 17px 17px 
+    aside.course-button:after, aside.course-button:before 
+        transition: all 0.5s 
+        border-color: transparent #6E5E4A  
+    aside:before, aside:after 
+        content: '' 
+        position: absolute 
+        height: 0 
+        width: 0 
+        border-style: solid 
+        border-width: 0 
+
+.line
+    position: relative
+    &:before 
+        content: " " 
+        display: block 
+        height: 2px 
+        width: 100px 
+        position: absolute 
+        top: 50%
+        left: -20px 
+        background: #4B352B   
+
+.btn
+    &:last-child
+        .line
+            display: none

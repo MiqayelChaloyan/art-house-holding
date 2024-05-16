@@ -4,6 +4,11 @@ interface Asset {
     _ref: string
 };
 
+interface AssetRef {
+    _type: string,
+    _ref: string
+};
+
 export interface MAIN {
     _key: string,
     company_name: string,
@@ -21,6 +26,33 @@ export interface DESIGN {
     _id: string,
     main_section: MAIN[],
     progress_section: PROGRESS[],
+};
+
+
+export interface GALLERY {
+    alt: string,
+    _type: string,
+    _key: string,
+    asset: AssetRef
+};
+
+
+export interface PORTFOLIO {
+    _key: string,
+    author: string,
+    image: Asset
+};
+
+
+export interface COURSE {
+    _id: string,
+    slug: string,
+    course_name: string,
+    name: string,
+    conditions: string[],
+    guides: string[],
+    gallery_of_course: GALLERY[],
+    portfolio: PORTFOLIO[],
 };
 
 export interface Social_Links {

@@ -31,8 +31,10 @@ $imagePath: '../../public/assets/images/language/back.avif'
 	--container-width: 1200px
 	--container-width-min: 430px
 	--container-gap: 30px
+	--box-gap: 1px
 	--container-gap-mobile: 30px
 	--container: calc(#{var(--container-width)} + (#{var(--container-gap)} * 2))
+	--box: calc(#{var(--container-width)} + (#{var(--box-gap)} * 400))
 
 	--tr-time: .4s
 	--tr-time-card-rotate: .7s
@@ -167,6 +169,20 @@ iframe
 	@media screen and ( max-width: 767px )
 		max-width: 100%
 
+.box
+	width: 100%
+	max-width: var(--box)
+	margin-left: auto
+	margin-right: auto
+	padding-right: var(--box-gap)
+	padding-left: var(--box-gap)
+	@media screen and ( max-width: 1280px )
+		max-width: 991px
+	@media screen and ( max-width: 991px )
+		max-width: 100%
+	@media screen and ( max-width: 767px )
+		max-width: 100%
+
 .languages-container
 	background-image: url($imagePath) 
 	background-repeat: no-repeat
@@ -178,4 +194,13 @@ iframe
 		background-image: none
 		background-color: #fff
 
-
+.design-container
+	background-image: url($imagePath) 
+	background-repeat: no-repeat
+	background-size: 100% 100%
+	background-position: center  
+	height: max-content
+	/* @xs */
+	@media screen and (max-width: 600px)
+		background-image: none
+		background-color: #fff

@@ -1,4 +1,4 @@
-import { SparklesIcon, BulbOutlineIcon, CheckmarkIcon } from '@sanity/icons';
+import { SparklesIcon, BulbOutlineIcon, CheckmarkIcon, ImagesIcon } from '@sanity/icons';
 
 import { RuleType } from '../../../ruleType';
 import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
@@ -130,6 +130,59 @@ export const coursesSchemaDesign = {
                             name: 'ru',
                             type: 'string'
                         }
+                    ]
+                }
+            ],
+        },
+
+        {
+            name: 'portfolio',
+            type: 'array',
+            title: 'Portfolio',
+            description: 'Դուք կարող եք ավելացնել ցանկացած թվով աշխատանքներ, առնվազն երկու հատ',
+            validation: (Rule: RuleType) => Rule.required(),
+            of: [
+                {
+                    name: 'Object',
+                    type: 'object',
+                    icon: ImagesIcon,
+                    fields: [
+                        {
+                            title: 'Author (name, surname)',
+                            description: 'Հեղինակի անուն, ազգանունը',
+                            name: 'author',
+                            type: 'object',
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Image',
+                            name: 'image',
+                            type: 'image',
+                            options: { hotspot: true },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    title: 'Alternative text',
+                                    type: 'string'
+                                }
+                            ]
+                        },
                     ]
                 }
             ],

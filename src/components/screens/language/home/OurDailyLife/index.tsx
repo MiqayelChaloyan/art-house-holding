@@ -143,7 +143,7 @@ const OurDailyLife = ({ data, locale }: Readonly<Props>) => {
 
     return (
         <section id='our-daily' className={styles.section}>
-            <Container>
+            <Container className='container'>
                 <div className={styles.ourDaily}>
                     <h2 className={cn(styles.title, Vrdznagir.className)}>
                         {t('our-daily')}

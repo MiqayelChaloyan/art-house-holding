@@ -57,7 +57,7 @@ const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
 
         return (
             <li
-                key={link.slug}
+                key={index}
                 style={{ background: hoveredIndex === index ? hover : '' }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}

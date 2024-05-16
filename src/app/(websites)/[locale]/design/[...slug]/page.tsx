@@ -45,7 +45,7 @@ export default async function Page({
     }
 
     return (
-        <Course />
+        <Course course={course[0]}/>
     )
 }
 

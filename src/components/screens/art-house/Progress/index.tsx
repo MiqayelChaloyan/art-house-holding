@@ -31,7 +31,7 @@ const Progress = ({ data }: Readonly<Props>) => {
 
     return (
         <section id='circle-progress' className={styles.container}>
-            <Container>
+            <Container className='container'>
                 <div className={styles.row}>
                     {items}
                 </div>

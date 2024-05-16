@@ -92,7 +92,7 @@ export default async function Layout({
     }
 
     return (
-        <div>
+        <>
             <div className='design-container'>
                 <Header typePosition="fixed" locale={locale} />
                 <ScrollToTopButton theme='#8E685C' />
@@ -108,7 +108,7 @@ export default async function Layout({
             <Modal>
                 <CoursesModal locale={locale} courses={courses} />
             </Modal>
-        </div>
+        </>
     );
 }
 

@@ -80,7 +80,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
 
     return (
         <footer id='footer' className={styles.footer}>
-            <Container>
+            <Container className='container'>
                 <div className={styles.section}>
                     <div className={styles.box}>
                         <Link href='#about-us' aria-label='About us' className={styles.icon}>

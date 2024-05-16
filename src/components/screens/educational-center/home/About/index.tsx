@@ -41,7 +41,7 @@ const About = ({
     return (
         <section id='about-us' className={styles.container}>
             <div className={styles.triangle} />
-            <Container>
+            <Container className='container'>
                 <h1 className={cn(styles.title, Inter.className)}>
                     {t('sections.about')}
                 </h1>

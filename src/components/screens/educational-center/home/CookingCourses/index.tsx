@@ -34,7 +34,7 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
     return (
         <section id='video-player' className={styles.container}>
             <div className={styles.triangle} />
-            <Container>
+            <Container className='container'>
                 <h1 className={styles.title}>
                     {data?.video_section_title}
                 </h1>

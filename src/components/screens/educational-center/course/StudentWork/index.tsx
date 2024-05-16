@@ -84,7 +84,7 @@ const StudentWork = ({ course }: Readonly<Props>) => {
     return (
         <section id='student-work' className={styles.container}>
             <div className={styles.triangle} />
-            <Container>
+            <Container className='container'>
                 <h1 className={`${styles.title} ${Inter.className}`}>{t('sections.student-work')}</h1>
                 <div className={styles.student_work}>
                     <Fancybox options={options}>

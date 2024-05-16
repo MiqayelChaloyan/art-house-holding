@@ -17,7 +17,7 @@ export default function NotFound() {
                 <title>Page Not found</title>
             </head>
             <body className={`${styles.link} ${ArianAMU.className}`}>
-                <Container>
+                <Container className='container'>
                     <div className={styles.not_found}>
                         <div className={styles.left}>
                             <h2 className={styles.title}> 404 </h2>

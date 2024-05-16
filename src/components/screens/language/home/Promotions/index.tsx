@@ -26,7 +26,7 @@ const Promotions = ({ discounts }: Props) => {
 
     return (
         <section id='promotions' className={styles.section}>
-            <Container>
+            <Container className='container'>
                 <h2 className={cn(styles.title, Vrdznagir.className)}>
                     {t('navigation.promotions')}
                 </h2>

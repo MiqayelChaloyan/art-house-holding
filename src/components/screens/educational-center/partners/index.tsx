@@ -48,7 +48,7 @@ const Partners = ({ data }: Props) => {
 
 	return (
 		<section id='partners' className={styles.container}>
-			<Container>
+			<Container className='container'>
 				<h1 className={`${styles.title} ${Inter.className}`}>{t('partners')}</h1>
 				<div className={styles.partners}>
 					{partners}
