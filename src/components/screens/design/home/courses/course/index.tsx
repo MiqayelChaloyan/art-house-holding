@@ -64,7 +64,7 @@ const Course = ({ position }: CourseProps) => {
                 </div>
             </div>
             <div className={styles.card}>
-                <Container>
+                <Container className='box'>
                     <div className={cn(styles.box, styles[boxClass])}>
                         <div className={styles.right}>
                             <h2 className={cn(styles.title, styles[titleClass], Arial.className)}>
