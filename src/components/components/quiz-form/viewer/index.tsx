@@ -11,6 +11,7 @@ import { IoClose } from 'react-icons/io5';
 
 import Container from '../../container';
 import { ArianAMU } from "@/lib/constants/font";
+import { Pages } from '@/lib/constants/pages';
 
 import cn from 'classnames';
 
@@ -50,8 +51,8 @@ const QuestionsViewer = () => {
                     {answers}
                 </div>
                 <Link
-                    href={`/${localActive}/language/quiz/`}
-                    aria-label={`/${localActive}/language/quiz/`}
+                    href={`/${localActive}${Pages.LANGUAGE_TAKE_TEST}/`}
+                    aria-label={`/${localActive}${Pages.LANGUAGE_TAKE_TEST}/`}
                     className={cn(styles.link, ArianAMU.className)}
                     onClick={() =>  dispatch(Action.resetAllAction())}
                     scroll={true}

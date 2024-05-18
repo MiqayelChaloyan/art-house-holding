@@ -11,8 +11,12 @@ import { onPlay, setPath } from '@/store/player_reducer';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-center';
 
+import { Inter } from '@/lib/constants/font';
+
 import { UrlType } from '@/types/educational-center';
 import { ReduxType } from '@/types/language';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
@@ -35,7 +39,7 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
         <section id='video-player' className={styles.container}>
             <div className={styles.triangle} />
             <Container className='container'>
-                <h1 className={styles.title}>
+                <h1 className={cn(styles.title, Inter.className)}>
                     {data?.video_section_title}
                 </h1>
                 <div className={styles.player}>

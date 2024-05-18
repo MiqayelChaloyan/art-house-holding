@@ -9,6 +9,8 @@ import Container from '@/components/components/container';
 import Rating from './Ratings';
 import MobileCards from './MobileCards';
 
+import { Inter } from '@/lib/constants/font';
+
 import { OUR_RATING } from '../../../../../../sanity/sanity-queries/educational-center';
 
 // slick-carousel 
@@ -17,6 +19,8 @@ import Slider from 'react-slick';
 // slick-carousel styles
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
@@ -46,7 +50,7 @@ const OurRating = ({ data }: Readonly<Props>) => {
     return (
         <section id='our-rating' className={styles.container}>
             <Container className='container'>
-                <h1 className={styles.title}>
+                <h1 className={cn(styles.title, Inter.className)}>
                     {t('rating')}
                 </h1>
                 <div className={styles.feedbacks}>

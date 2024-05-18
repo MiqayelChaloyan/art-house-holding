@@ -57,6 +57,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
                 key={video._key}
                 light={path}
                 link={video.video_url}
+                alt={video.video_light.alt}
             />
         )
     });

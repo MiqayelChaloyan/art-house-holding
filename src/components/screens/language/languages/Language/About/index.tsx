@@ -14,7 +14,7 @@ import { UrlType, ABOUT } from '@/types/language';
 import styles from './styles.module.sass';
 
 
-const About = ({ image, text }: ABOUT) => {
+const About = ({ image, text }: Readonly<ABOUT>) => {
     const language: UrlType | any = urlForImage(image);
 
     return (

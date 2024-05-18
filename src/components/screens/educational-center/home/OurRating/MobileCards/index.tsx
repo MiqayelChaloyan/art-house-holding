@@ -32,8 +32,10 @@ const MobileCards = (data: Options | any, slideIndex: string | number) => {
         };
 
         return (
-            <div key={card.slug} className={index === slideIndex ?
-                cn(styles.slide, styles.slide_active) : styles.slide}
+            <div
+                key={card._key}
+                className={index === slideIndex ?
+                    cn(styles.slide, styles.slide_active) : styles.slide}
             >
                 <RatingCard options={options} />
             </div>

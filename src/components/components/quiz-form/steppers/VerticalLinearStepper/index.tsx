@@ -183,8 +183,9 @@ const VerticalLinearStepper = () => {
 
   if (isViewer) return (
     <div>
-      <h2 className={cn(styles.viewer_title, ArianAMU.className)}>{t('titles.quiz-result')}</h2>
-
+      <h2 className={cn(styles.viewer_title, ArianAMU.className)}>
+        {t('titles.quiz-result')}
+      </h2>
       <div className={styles.result}>
         <div className={styles.progress}>
           <Progress strokeWidth={8} percentage={Math.floor(answerResult)} color={color} />
@@ -200,12 +201,14 @@ const VerticalLinearStepper = () => {
           </div>
         </div>
       </div>
-      <button className={cn(styles.btn_view, ArianAMU.className)} onClick={handleView}>{t('buttons.view')}</button>
+      <button className={cn(styles.btn_view, ArianAMU.className)} onClick={handleView}>
+        {t('buttons.view')}
+      </button>
     </div>
   )
 
   return (
-    <Box sx={{ maxWidth: 400 }}>
+    <Box sx={{ maxWidth: 400 }} className={styles['vertical-linear-stepper']}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {questions.map((step: any, index: number) => (
           <Step key={step.question}>
@@ -218,11 +221,11 @@ const VerticalLinearStepper = () => {
                   {question?.options.map((q: any, i: number) => (
                     <li key={i}>
                       <input
-                        type="radio"
+                        type='radio'
                         value={q}
                         id={`q${i}-option`}
                         onChange={() => onSelect(i)}
-                        checked={isChecked[i]}
+                        checked={isChecked[i] || false}
                       />
                       <label className={styles.text_primary} htmlFor={`q${i}-option`}>{q}</label>
                       <div className={styles.check}></div>

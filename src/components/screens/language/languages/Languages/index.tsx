@@ -41,7 +41,7 @@ const LanguageGallery = ({ locale, images }: Readonly<LanguageGalleryProps>) => 
                     >
                         <Image
                             src={path?.src}
-                            alt={image?.page}
+                            alt={image?.path.alt}
                             className={styles.language}
                             width={500}
                             height={500}

@@ -17,10 +17,11 @@ import styles from './styles.module.sass'
 
 type Props = {
     light: UrlType,
-    link: string
+    link: string,
+    alt: string
 };
 
-const VideoPlayer = ({ light, link }: Readonly<Props>) => {
+const VideoPlayer = ({ light, link, alt }: Readonly<Props>) => {
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
 
@@ -33,7 +34,7 @@ const VideoPlayer = ({ light, link }: Readonly<Props>) => {
         <div className={styles.playing}>
                 <Image
                     src={light?.src}
-                    alt={'item'}
+                    alt={alt}
                     className={styles.video_play}
                     width={500}
                     height={500}

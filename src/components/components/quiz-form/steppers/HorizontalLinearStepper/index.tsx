@@ -144,7 +144,9 @@ const HorizontalLinearStepper = () => {
 
     if (isViewer) return (
         <div className={styles.viewer_result}>
-            <h2 className={cn(styles.viewer_title, ArianAMU.className)}>{t('titles.quiz-result')}</h2>
+            <h2 className={cn(styles.viewer_title, ArianAMU.className)}>
+                {t('titles.quiz-result')}
+            </h2>
             <ProgressLine
                 backgroundColor="lightblue"
                 visualParts={[
@@ -168,13 +170,15 @@ const HorizontalLinearStepper = () => {
             </div>
 
             <div className={styles.buttons_view}>
-                <button className={cn(styles.btn_view, ArianAMU.className)} onClick={handleView}>{t('buttons.view')}</button>
+                <button className={cn(styles.btn_view, ArianAMU.className)} onClick={handleView}>
+                    {t('buttons.view')}
+                </button>
             </div>
         </div>
     );
 
     return (
-        <div>
+        <div className={styles['horizontal-linear-stepper']}>
             <Stepper steps={steps} />
             <div className={styles.questions}>
                 <h2 className={cn(styles.text_light, question?.question.length >= 100 ? styles.long : styles.short)}>{question?.question}</h2>
@@ -182,12 +186,12 @@ const HorizontalLinearStepper = () => {
                     {question?.options.map((q: any, i: number) => (
                         <li key={i}>
                             <input
-                                type="radio"
+                                type='radio'
                                 value={q}
                                 id={`q${i}-option`}
                                 onChange={() => onSelect(i)}
-                                checked={isChecked[i]}
-                            />
+                                checked={isChecked[i] || false}
+                                />
                             <label className={styles.text_primary} htmlFor={`q${i}-option`}>{q}</label>
                             <div className={styles.check}></div>
                         </li>

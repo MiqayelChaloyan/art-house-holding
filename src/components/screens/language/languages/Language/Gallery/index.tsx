@@ -86,8 +86,6 @@ const settings = {
 const Gallery = ({ during_courses }: Readonly<Props>) => {
     const windowSize = useWindowSize();
 
-    console.log(during_courses)
-
     const one = during_courses.slice(0, 3);
     const two = during_courses.slice(3, 6);
 

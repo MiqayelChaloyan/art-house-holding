@@ -18,7 +18,7 @@ type Props = {
     data: PROGRESS[]
 };
 
-const Progress = ({ data }: Props) => {
+const Progress = ({ data }: Readonly<Props>) => {
 
     const items = data?.map((item: PROGRESS) => (
         <div key={item._key} className={styles.column}>

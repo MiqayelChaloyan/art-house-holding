@@ -10,6 +10,8 @@ import Container from '@/components/components/container';
 
 import Item from './Item';
 
+import { Inter } from '@/lib/constants/font';
+
 // slick-carousel 
 import Slider from 'react-slick';
 
@@ -66,7 +68,7 @@ const Specialists = ({ data }: Readonly<Props>) => {
         <section id='specialists' className={styles.container}>
             <div className={styles.triangle} />
             <Container className='container'>
-                <h1 className={styles.title}>
+                <h1 className={cn(styles.title, Inter.className)}>
                     {t('specialists')}
                 </h1>
                 <div className={styles.specialists}>

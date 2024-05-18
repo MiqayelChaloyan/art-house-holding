@@ -16,6 +16,8 @@ import { UrlType } from '@/types/educational-center';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
 
 
@@ -37,11 +39,11 @@ const Partners = ({ data }: Props) => {
 		return (
 			<div key={item._id} className={styles.partner}>
 				<div className={styles.image_container}>
-					<img src={path?.src} className={styles.image} />
+					<img src={path?.src} alt={item.logo.alt} className={styles.image} />
 				</div>
-				<p className={`${styles.text} ${Inter.className}`}>{item.company_name}</p>
-				<p className={`${styles.text} ${Inter.className}`}>{item.cooperation}</p>
-				<p className={`${styles.text} ${Inter.className}`}>{item.implemented_projects}</p>
+				<p className={cn(styles.text, Inter.className)}>{item.company_name}</p>
+				<p className={cn(styles.text, Inter.className)}>{item.cooperation}</p>
+				<p className={cn(styles.text, Inter.className)}>{item.implemented_projects}</p>
 			</div>
 		);
 	});
@@ -49,7 +51,9 @@ const Partners = ({ data }: Props) => {
 	return (
 		<section id='partners' className={styles.container}>
 			<Container className='container'>
-				<h1 className={`${styles.title} ${Inter.className}`}>{t('partners')}</h1>
+				<h1 className={cn(styles.title, Inter.className)}>
+					{t('partners')}
+				</h1>
 				<div className={styles.partners}>
 					{partners}
 				</div>
