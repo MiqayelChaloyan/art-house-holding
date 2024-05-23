@@ -23,7 +23,7 @@ const Gallery = ({ category }: Readonly<Props>) => {
 
             return (
                 <Portfolio
-                    key={elem._key || index}
+                    key={elem._key + index}
                     src={path?.src}
                     alt={elem.image.alt}
                     author={elem.author}

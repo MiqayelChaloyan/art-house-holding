@@ -22,13 +22,6 @@ export interface PROGRESS {
     quantity: number
 };
 
-export interface DESIGN {
-    _id: string,
-    main_section: MAIN[],
-    progress_section: PROGRESS[],
-};
-
-
 export interface GALLERY {
     alt: string,
     _type: string,
@@ -36,13 +29,11 @@ export interface GALLERY {
     asset: AssetRef
 };
 
-
 export interface PORTFOLIO {
     _key: string,
     author: string,
     image: Asset
 };
-
 
 export interface COURSE {
     _id: string,
@@ -53,6 +44,23 @@ export interface COURSE {
     guides: string[],
     gallery_of_course: GALLERY[],
     portfolio: PORTFOLIO[],
+};
+
+export interface HOME_COURSES {
+    _key: string,
+    name: string,
+    title: string,
+    course_name: string,
+    about_course: string,
+    gallery_of_course: GALLERY[],
+    categories: AssetRef
+};
+
+export interface DESIGN {
+    _id: string,
+    main_section: MAIN[],
+    courses: HOME_COURSES[],
+    progress_section: PROGRESS[],
 };
 
 export interface Social_Links {
@@ -66,4 +74,14 @@ export interface HOSTS {
     name: string,
     phone_number: string,
     social_links: Social_Links[],
+};
+
+export interface LESSON {
+    slug: number | string,
+    course_name: string,
+};
+
+export interface LESSONS {
+    _id: string,
+    course_name: LESSON[]
 };

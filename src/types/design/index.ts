@@ -4,6 +4,22 @@ export interface UrlType {
     height: number,
 };
 
+export interface SlideItem {
+    url: string;
+    company_name: string;
+    title: string;
+    scrollToElement: (value: number) => void;
+};
+
+/* Form types */
+export interface FormContactUs {
+    full_name: string;
+    email: string;
+    phone: string;
+    training_center: number;
+    course_name: string;
+};
+
 export interface socialNetwork {
     facebook: (props: { size: string | number; fill: string | number } | any) => JSX.Element,
     x: ({ size, fill }: { size: string | number; fill: string | number } | any) => JSX.Element,

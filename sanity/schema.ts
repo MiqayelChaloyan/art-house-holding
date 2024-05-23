@@ -19,6 +19,7 @@ import aboutUsSchemaDesign from './schemas/design/about-us-schema';
 import contactUsSchemaDesign from './schemas/design/contact-us-schema';
 import coursesSchemaDesign from './schemas/design/courses-schema';
 import priceListSchemaDesign from './schemas/design/price-list-schema';
+import lessonsSchemaDesign from './schemas/design/lessons-schema';
 
 export const schemaTypes = [
   homeSchemaArtHouse,
@@ -38,6 +39,7 @@ export const schemaTypes = [
   contactUsSchemaDesign,
   coursesSchemaDesign,
   priceListSchemaDesign,
+  lessonsSchemaDesign,
   partnersSchema,
 ];
 

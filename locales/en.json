@@ -48,7 +48,10 @@
         "go-back": "Go back",
         "confirm": "Confirm",
         "back": "Back",
-        "next": "Next"    
+        "next": "Next",
+        "view-all": "View all",
+        "read-more": "Read more",
+        "register": "Register"
     },
     "sections": {
         "partners": "Co-workers",

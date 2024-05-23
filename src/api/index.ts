@@ -57,3 +57,26 @@ export const sendContactUsEducational = async (contactUs: Form) => {
         return error
     }
 }
+
+
+// Design
+// SEND CONTACT US
+export const sendContactUsDesign = async (contactUs: FormSmall) => {
+    try {
+        console.log(contactUs)
+        // const response = await axios.post(BASE_URL, null, {
+        //     params: { contactUs },
+        //     timeout: 10000
+        // });
+
+        // return {
+        //     status: response.status
+        // };
+
+        return {
+            status: 200
+        };
+    } catch (error) {
+        return error
+    }
+}

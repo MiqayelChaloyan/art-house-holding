@@ -2,11 +2,11 @@ import { RocketIcon } from '@sanity/icons'
 
 import { RuleType } from '../../../ruleType';
 
-const lessonsSchemaEducationCenter = {
-    name: 'educational-lessons-select-option',
+const lessonsSchemaDesign = {
+    name: 'design-lessons-select-option',
     type: 'document',
     title: 'Courses',
-    id: 'educational-lessons-select-option',
+    id: 'design-lessons-select-option',
     fields: [
         {
             title: 'Name',
@@ -64,4 +64,4 @@ const lessonsSchemaEducationCenter = {
     ],
 };
 
-export default lessonsSchemaEducationCenter;
+export default lessonsSchemaDesign;

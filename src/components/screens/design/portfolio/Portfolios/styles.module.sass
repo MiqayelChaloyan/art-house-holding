@@ -12,6 +12,7 @@
     text-align: center
     line-height: 130px
     position: relative
+    text-transform: uppercase
     z-index: 2
     &:before
         content: ''
@@ -123,14 +124,13 @@
         font-size: 35px
         line-height: 50px
 
-.navigation
-    display: grid    
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
-    margin: 0 100px
+
 
 .triangle
     margin: 30px
     text-align: center
+    position: relative
+    z-index: 5
     aside
         margin: 20px 0 
         line-height: 34px 
@@ -163,15 +163,51 @@
         width: 0 
         border-style: solid 
         border-width: 0 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin: 0
 
 .link
     color: #FFFFFF
     font-size: 18px
     line-height: 0.5em
+    text-transform: uppercase
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 18px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 18px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 15px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 13px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 12px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 10px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 9px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 14px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 14px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 14px
 
 .active
     margin: 30px
     text-align: center
+    position: relative
+    z-index: 5
     aside
         margin: 20px 0 
         line-height: 34px 
@@ -204,6 +240,9 @@
         width: 0 
         border-style: solid 
         border-width: 0 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin: 0
 
 .line
     position: relative
@@ -221,3 +260,48 @@
     &:last-child
         .line
             display: none
+
+.navigation
+    display: grid    
+    grid-template-columns: repeat(6, 1fr)
+    margin: 0 100px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        grid-template-columns: repeat(6, 1fr)
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        grid-template-columns: repeat(6, 1fr)
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        grid-template-columns: repeat(5, 1fr)
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        grid-template-columns: repeat(5, 1fr)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        grid-template-columns: repeat(4, 1fr)
+    /* @md */
+    @media screen and (max-width: 1024px)
+        grid-template-columns: repeat(3, 1fr)
+    /* @sm */
+    @media screen and (max-width: 768px)
+        grid-template-columns: repeat(2, 1fr)
+    /* @xs */
+    @media screen and (max-width: 600px)
+        grid-template-columns: repeat(1, 1fr)
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        grid-template-columns: repeat(1, 1fr)
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        grid-template-columns: repeat(1, 1fr)
+
+ 
+.line
+    /* @xs */
+    @media screen and (max-width: 600px)
+        &:before
+            display: none
+
+
+

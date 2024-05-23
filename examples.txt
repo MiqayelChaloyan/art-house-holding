@@ -634,3 +634,65 @@ Readonly<RootProps>
                 height={500}
                 priority
             />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.line
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        &:nth-child(7n)
+            &:before
+                display: none
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        &:nth-child(7n)
+            &:before
+                display: none
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        &:nth-child(8n)
+            &:before
+                display: none
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        &:nth-child(7n)
+            &:before
+                display: none
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        &:nth-child(7n)
+            &:before
+                display: none
+    /* @md */
+    @media screen and (max-width: 1024px)
+        &:nth-child(7n)
+            &:before
+                display: none
+    /* @sm */
+    @media screen and (max-width: 768px)
+        &:nth-child(7n)
+            &:before
+                display: none
+    /* @xs */
+    @media screen and (max-width: 600px)
+        &:before
+            display: none

@@ -19,10 +19,12 @@ import { client } from '../../../../../sanity/client';
 
 import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { querySiteMeta, querySocial } from '../../../../../sanity/services/design-service/about-us';
+import { query as lessonsQuery } from '../../../../../sanity/services/design-service/lessons';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { allCoursesQuery } from '../../../../../sanity/services/design-service/courses';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
-import { HOSTS } from '../../../../../sanity/sanity-queries/design';
+import { HOSTS, LESSON, LESSONS } from '../../../../../sanity/sanity-queries/design';
+import ContactUs from '@/lib/outlets/design/ContactUs';
 
 
 interface RootLayoutProps {
@@ -48,6 +50,8 @@ type TYPES = {
     branches: PARTNER[],
     courses: any,
     social: HOSTS | any,
+    lessons: LESSONS[],
+    lessonsArmenian: LESSONS[],
     isError: boolean,
 }
 
@@ -66,17 +70,19 @@ async function getResources(locale: string) {
     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
     const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
     const socialPromise = await client.fetch(querySocial, { language: 'en' }, { next: { revalidate: 100 } });
+    const lessonsPromise = await client.fetch(lessonsQuery, { language: locale }, { next: { revalidate: 100 } });
+    const lessonsAmPromise = await client.fetch(lessonsQuery, { language: 'am' }, { next: { revalidate: 100 } });
 
-    return Promise.all([branchesPromise, coursesPromise, socialPromise])
-        .then(([branches, courses, social]) => {
-            if (!branches?.length || !courses?.length || !social?.length) {
-                return { branches: [], courses: [], social: [], isError: true };
+    return Promise.all([branchesPromise, coursesPromise, socialPromise, lessonsPromise, lessonsAmPromise])
+        .then(([branches, courses, social, lessons, lessonsArmenian]) => {
+            if (!branches?.length || !courses?.length || !social?.length || !lessons?.length || !lessonsArmenian?.length) {
+                return { branches: [], courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
             }
 
-            return { branches: branches[1], courses, social: social[0], isError: false };
+            return { branches: branches[1], courses, social: social[0], lessons, lessonsArmenian, isError: false };
         })
         .catch(error => {
-            return { branches: [], courses: [], social: [], isError: true };
+            return { branches: [], courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
         });
 }
 
@@ -85,9 +91,16 @@ export default async function Layout({
     params: { locale },
 }: Readonly<RootLayoutProps>) {
 
-    const { branches, courses, social, isError }: TYPES = await getResources(locale);
+    const {
+        branches,
+        courses,
+        social,
+        lessons,
+        lessonsArmenian,
+        isError
+    }: TYPES = await getResources(locale);
 
-    if (!branches || !courses || !social || isError) {
+    if (!branches || !courses || !social || !lessons || !lessonsArmenian || isError) {
         notFound()
     }
 
@@ -103,6 +116,7 @@ export default async function Layout({
                     hover='#4B352B'
                 />
                 {children}
+                <ContactUs lessons={lessons} lessonsArmenian={lessonsArmenian}/>
                 <Footer socialData={social} />
             </div>
             <Modal>

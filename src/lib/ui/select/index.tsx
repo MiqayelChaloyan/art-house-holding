@@ -3,8 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { LANGUAGE } from '../../../../sanity/sanity-queries/language';
+import { LESSON } from '../../../../sanity/sanity-queries/design';
 
 import { Arial } from '@/lib/constants/font';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
@@ -15,7 +18,7 @@ type FormProps = {
 };
 
 interface SelectProps {
-    data: LANGUAGE[]
+    data: LANGUAGE[] | LESSON[]
     state: FormProps
     valueName: string
     handleChange: (value: any) => void
@@ -79,7 +82,10 @@ const Select = ({
     }
 
     return (
-        <div ref={componentRef} className={`${styles[`${classNameProperty}-select`]} ${isOpen ? styles.active : ''}`}>
+        <div
+            ref={componentRef}
+            className={cn(styles[`${classNameProperty}-select`], isOpen ? styles.active : '', Arial.className)}
+        >
             <span
                 className={styles[`${classNameProperty}-select-button`]}
                 role="combobox"
@@ -89,7 +95,7 @@ const Select = ({
                 aria-controls="select-dropdown"
                 onClick={handleSelect}
             >
-                <span className={`${styles[`${classNameProperty}-selected-value`]} ${Arial.className}`} style={colorTheme()}>{state.values[valueName]}</span>
+                <span className={styles[`${classNameProperty}-selected-value`]} style={colorTheme()}>{state.values[valueName]}</span>
                 <span className={styles[`${classNameProperty}-arrow`]}></span>
             </span>
             <ul className={styles[`${classNameProperty}-select-dropdown`]} role="listbox" id="select-dropdown">

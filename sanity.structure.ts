@@ -26,6 +26,7 @@ export default (S: any) =>
                     'design-contact-us',
                     'courses-design',
                     'price-list-design',
+                    'design-lessons-select-option',
                     'partners'
                 ].includes(listItem.getId())
             ),
@@ -97,6 +98,10 @@ export default (S: any) =>
                                 .title('Contact Us')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
+                            S.listItem()
+                                .title('Lessons')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('design-lessons-select-option').documentId('design-lessons-select-option')),
                         ])
                 ),
 

@@ -4,12 +4,6 @@ export interface UrlType {
     height: number;
 };
 
-interface Newsimageone {
-    _type: string;
-    alt: string;
-    asset: Asset;
-};
-
 interface Asset {
     _ref: string;
     _type: string;

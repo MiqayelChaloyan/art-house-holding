@@ -1,14 +1,16 @@
 'use client'
 
-import Courses from './courses';
-import OurDay from './our-day';
-import OurTeam from './our-team';
-import Partners from './partners';
-import Progress from './progress';
+import Main from './Main';
+import Courses from './Courses';
+import OurDay from './OurDay';
+import OurTeam from './OurTeam';
+import Partners from './Partners';
+import Progress from './Progress';
 
 import { DESIGN } from '../../../../../sanity/sanity-queries/design';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
+import styles from './styles.module.sass';
 
 type Props = {
     data: DESIGN[],
@@ -22,12 +24,12 @@ const Home = ({
     locale,
 }: Readonly<Props>) => {
     return (
-        <div>
-            <div style={{ backgroundColor: 'green', height: '710px' }}></div>
-            <Courses />
-            <OurDay />
-            <Progress data={data[0].progress_section} />
-            <OurTeam />
+        <div className={styles.container}>
+            <Main data={data[0].main_section} />
+            <Courses courses={data[0].courses} />
+            {/* <OurDay /> */}
+            {/* <Progress data={data[0].progress_section} /> */}
+            {/* <OurTeam /> */}
             {/* <Partners data={partners}/> */}
         </div>
     )

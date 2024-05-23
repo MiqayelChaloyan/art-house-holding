@@ -9,11 +9,6 @@ export const aboutUsSchemaDesign = {
     title: 'Home',
     id: 'about-us-design',
     groups: [
-        // {
-        //     name: "meta",
-        //     title: "Site Info",
-        //     default: true
-        // },
         {
             name: "og",
             title: "Social Share Info",
@@ -30,13 +25,6 @@ export const aboutUsSchemaDesign = {
         },
     ],
     fields: [
-        /* Site Metadata Schema */
-        // {
-        //     type: 'string',
-        //     name: 'site_name',
-        //     title: 'Site Name',
-        //     group: ['og', 'meta'],
-        // },
         {
             type: 'string',
             title: 'Page Title',
@@ -119,6 +107,103 @@ export const aboutUsSchemaDesign = {
                                     type: 'string'
                                 }
                             ]
+                        },
+                    ]
+                }
+            ],
+        },
+        {
+            name: 'courses',
+            type: 'array',
+            title: 'Courses',
+            description: 'Դուք կարող եք ավելացնել հինգ դասընթաց',
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(5),
+            of: [
+                {
+                    name: 'Object',
+                    type: 'object',
+                    icon: ClipboardIcon,
+                    fields: [
+                        {
+                            title: 'Name',
+                            name: 'name',
+                            type: 'string',
+                            description: 'Դասընթացի անվանումը` անգլերեն'
+                        },
+                        {
+                            title: 'Course Name',
+                            name: 'course_name',
+                            type: 'object',
+                            description: 'Դասընթացի անվանումը',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'About Course',
+                            name: 'about_course',
+                            type: 'object',
+                            description: 'Դասընթացի մասին',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            name: 'gallery_of_course',
+                            type: 'array',
+                            title: 'Gallery of Course',
+                            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+                            of: [{
+                                type: 'image', alt: 'alt',
+                                fields: [
+                                    {
+                                        name: 'alt',
+                                        type: 'string',
+                                        title: 'Alternative text',
+                                    },
+                                ],
+                            }],
+                            options: {
+                                layout: 'grid',
+                            },
+                        },
+                        {
+                            name: 'categories',
+                            type: 'reference',
+                            title: 'Course Category',
+                            to: [{ type: 'courses-design' }],
+                            validation: (Rule: any) => Rule.required(),
                         },
                     ]
                 }

@@ -6,59 +6,11 @@
 	transition: opacity 2s linear
 	opacity: 0.2
 
-.design-image
-	width: 400px
-	height: 600px
-	transition: opacity 2s linear
-	opacity: 1
-	z-index: 2
-	position: relative
-	/* @4xl */
-	@media screen and (max-width: 2560px)
-		width: 400px
-		height: 600px
-	/* @3xl */
-	@media screen and (max-width: 1920px)
-		width: 400px
-		height: 600px
-	/* @2xl */
-	@media screen and (max-width: 1600px)
-		width: 400px
-		height: 600px
-	/* @xl */
-	@media screen and (max-width: 1440px)
-		width: 350px
-		height: 500px
-	/* @lg */
-	@media screen and (max-width: 1280px)
-		width: 350px
-		height: 500px
-	/* @md */
-	@media screen and (max-width: 1024px)
-		width: 300px
-		height: 450px
-	/* @sm */
-	@media screen and (max-width: 768px)
-		width: 250px
-		height: 350px
-	/* @xs */
-	@media screen and (max-width: 600px)
-		width: 150px
-		height: 200px
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		width: 150px
-		height: 200px
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		width: 150px
-		height: 170px
-
 .stapler
 	width: 300px
 	margin: 0 auto
 	position: relative
-	top: 3px
+	top: 10px
 	z-index: 5
 	/* @4xl */
 	@media screen and (max-width: 2560px)
@@ -335,7 +287,7 @@
 	font-weight: 700
 	line-height: 103.57px
 	color: #D7D3CE
-	margin-bottom: 50px
+	margin-bottom: 150px
 	/* @4xl */
 	@media screen and (max-width: 2560px)
 		font-size: 90px
@@ -402,8 +354,14 @@
 	@media screen and (max-width: 480px)
 		text-align: center
 
+
+.design-title-left
+	text-align: left
+
+.design-title-right
+	text-align: right
+
 .design-title
-	text-align: center
 	font-size: 30px
 	font-weight: 700
 	color: #FFFFFF
@@ -516,12 +474,6 @@
 	@media screen and (max-width: 360px)
 		width: 60%
 
-.design
-	margin-bottom: 20px
-	/* @xs */
-	@media screen and (max-width: 600px)
-		margin-bottom: 0
-
 /* Card UI Left */
 .box-left
 	flex-direction: row
@@ -557,14 +509,17 @@
 		bottom: 70px
 
 .corner-large-left
-	width: 100%
-	height: 80px 
-	background-color: #8E685C 
-	position: relative 
+	position: absolute
+	text-align: center
+	background: #8E685C
+	left: 0
+	bottom: 33%
+	width: 45%
+	height: 80px
+	margin-bottom: 40px
 	display: flex
 	align-items: center
-	justify-content: flex-end
-	left: 0
+	justify-content: center
 	&:before 
 		top: 0px 
 		background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -575,14 +530,12 @@
 		height: 100%
 	/* @4xl */
 	@media screen and (max-width: 2560px)
-		width: 100%
-		height: 80px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		justify-content: flex-end
+		position: absolute
+		background: #8E685C
 		left: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -593,14 +546,12 @@
 			height: 100%
 	/* @3xl */
 	@media screen and (max-width: 1920px)
-		width: 100%
-		height: 80px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		justify-content: flex-end
+		position: absolute
+		background: #8E685C
 		left: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -611,14 +562,12 @@
 			height: 100%
 	/* @2xl */
 	@media screen and (max-width: 1600px)
-		width: 100%
-		height: 80px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		justify-content: flex-end
+		position: absolute
+		background: #8E685C
 		left: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -629,14 +578,12 @@
 			height: 100%
 	/* @xl */
 	@media screen and (max-width: 1440px)
-		width: 100%
-		height: 60px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		justify-content: flex-end
+		position: absolute
+		background: #8E685C
 		left: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -647,14 +594,12 @@
 			height: 100%
 	/* @lg */
 	@media screen and (max-width: 1280px)
-		width: 100%
-		height: 70px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		justify-content: flex-end
+		position: absolute
+		background: #8E685C
 		left: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -665,14 +610,12 @@
 			height: 100%
 	/* @md */
 	@media screen and (max-width: 1024px)
-		width: 100%
-		height: 60px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		justify-content: flex-end
+		position: absolute
+		background: #8E685C
 		left: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -682,14 +625,12 @@
 			width: 90px 
 			height: 100%
 	@media screen and (max-width: 980px)
-		width: 80%
-		height: 50px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		justify-content: flex-end
+		position: absolute
+		background: #8E685C
 		left: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top right, #8E685C 50%, transparent 51%) 
@@ -726,55 +667,6 @@
 		background-color: transparent
 		&:before 
 			width: 0
-
-.corner-part-left
-	height: 80px 
-	background-color: #8E685C 
-	position: absolute
-	left: 0
-	width: 24%
-	bottom: 280px
-	/* @4xl */
-	@media screen and (max-width: 2560px)
-		width: 24%
-		bottom: 280px
-		height: 80px 
-	/* @3xl */
-	@media screen and (max-width: 1920px)
-		width: 24%
-		bottom: 280px
-		height: 80px 
-	/* @2xl */
-	@media screen and (max-width: 1600px)
-		width: 20%
-		bottom: 280px
-		height: 80px 
-	/* @xl */
-	@media screen and (max-width: 1440px)
-		width: 20%
-		bottom: 250px
-		height: 60px 
-	/* @lg */
-	@media screen and (max-width: 1280px)
-		width: 20%
-		bottom: 226px
-		height: 70px 
-	/* @md */
-	@media screen and (max-width: 1024px)
-		width: 20%
-		bottom: 221px
-		height: 60px 
-	@media screen and (max-width: 980px)
-		width: 10%
-		bottom: 226px
-		height: 50px
-	/* @sm */
-	@media screen and (max-width: 768px)
-		display: none
-	/* @xs */
-	@media screen and (max-width: 600px)
-		display: none
-
 
 /* Card UI Right */
 .box-right
@@ -922,13 +814,17 @@
 	z-index: 0
 
 .corner-large-right
-	width: 100%
-	height: 80px 
-	background-color: #8E685C 
-	position: relative 
+	position: absolute
+	background: #8E685C
+	right: 0
+	bottom: 33%
+	width: 45%
+	height: 80px
+	margin-bottom: 40px
 	display: flex
 	align-items: center
-	left: 0
+	justify-content: center
+	padding-right: 80px
 	&:before 
 		top: 0px 
 		background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -939,13 +835,12 @@
 		height: 100% 
 	/* @4xl */
 	@media screen and (max-width: 2560px)
-		width: 100%
-		height: 80px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		left: 0
+		position: absolute
+		background: #8E685C
+		right: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -956,13 +851,12 @@
 			height: 100% 
 	/* @3xl */
 	@media screen and (max-width: 1920px)
-		width: 100%
-		height: 80px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		left: 0
+		position: absolute
+		background: #8E685C
+		right: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -973,13 +867,12 @@
 			height: 100% 
 	/* @2xl */
 	@media screen and (max-width: 1600px)
-		width: 100%
-		height: 80px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		left: 0
+		position: absolute
+		background: #8E685C
+		right: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -990,13 +883,12 @@
 			height: 100% 
 	/* @xl */
 	@media screen and (max-width: 1440px)
-		width: 100%
-		height: 60px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		left: 0
+		position: absolute
+		background: #8E685C
+		right: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -1007,13 +899,12 @@
 			height: 100% 
 	/* @lg */
 	@media screen and (max-width: 1280px)
-		width: 100%
-		height: 70px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		left: 0
+		position: absolute
+		background: #8E685C
+		right: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -1024,13 +915,12 @@
 			height: 100% 
 	/* @md */
 	@media screen and (max-width: 1024px)
-		width: 100%
-		height: 60px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		left: 0
+		position: absolute
+		background: #8E685C
+		right: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -1040,13 +930,12 @@
 			width: 90px 
 			height: 100% 
 	@media screen and (max-width: 980px)
-		width: 80%
-		height: 50px 
-		background-color: #8E685C 
-		position: relative 
-		display: flex
-		align-items: center
-		left: 20px
+		position: absolute
+		background: #8E685C
+		right: 0
+		bottom: 33%
+		width: 45%
+		height: 80px
 		&:before 
 			top: 0px 
 			background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
@@ -1084,50 +973,55 @@
 		&:before 
 			width: 0
 
-.corner-part-right
-	height: 80px 
-	background-color: #8E685C 
-	position: absolute
-	right: 0
-	width: 24%
-	bottom: 279px
+
+.design-image
+	width: 400px
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+	height: 600px
+	position: relative
+	transition: all .2s
+	opacity: 1
+	z-index: 2
+	position: relative
 	/* @4xl */
 	@media screen and (max-width: 2560px)
-		width: 24%
-		bottom: 279px
-		height: 80px 
+		width: 400px
+		height: 600px
 	/* @3xl */
 	@media screen and (max-width: 1920px)
-		width: 24%
-		bottom: 279px
-		height: 80px 
+		width: 400px
+		height: 600px
 	/* @2xl */
 	@media screen and (max-width: 1600px)
-		width: 20%
-		bottom: 280px
-		height: 80px 
+		width: 400px
+		height: 600px
 	/* @xl */
 	@media screen and (max-width: 1440px)
-		width: 20%
-		bottom: 249px
-		height: 60px 
+		width: 350px
+		height: 500px
 	/* @lg */
 	@media screen and (max-width: 1280px)
-		width: 20%
-		bottom: 226px
-		height: 70px 
+		width: 350px
+		height: 500px
 	/* @md */
 	@media screen and (max-width: 1024px)
-		width: 20%
-		bottom: 221px
-		height: 60px 
-	@media screen and (max-width: 980px)
-		width: 10%
-		bottom: 226px
-		height: 50px
+		width: 300px
+		height: 450px
 	/* @sm */
 	@media screen and (max-width: 768px)
-		display: none
+		width: 250px
+		height: 350px
 	/* @xs */
 	@media screen and (max-width: 600px)
-		display: none
+		width: 150px
+		height: 200px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		width: 150px
+		height: 200px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		width: 150px
+		height: 170px
