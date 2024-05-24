@@ -27,10 +27,10 @@ const Home = ({
         <div className={styles.container}>
             <Main data={data[0].main_section} />
             <Courses courses={data[0].courses} />
-            {/* <OurDay /> */}
-            {/* <Progress data={data[0].progress_section} /> */}
-            {/* <OurTeam /> */}
-            {/* <Partners data={partners}/> */}
+            <OurDay our_day={data[0].our_day}/>
+            <Progress data={data[0].progress_section} />
+            <OurTeam />
+            <Partners data={partners}/>
         </div>
     )
 };

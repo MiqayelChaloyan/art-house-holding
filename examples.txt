@@ -696,3 +696,54 @@ Readonly<RootProps>
     @media screen and (max-width: 600px)
         &:before
             display: none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////
+
+.hex 
+    position: relative 
+    float: left 
+    height: 100px 
+    min-width: 100px 
+    padding: 12px 
+    margin: 4px 
+    font-weight: bold 
+    text-align: center 
+    background: linear-gradient(to right, rgb(199, 41, 41), rgb(243, 67, 54)) 
+    -webkit-clip-path: polygon(25px 0px, calc(100% - 25px) 0px, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0px 50%) 
+    &.gradient-bg 
+        color: white 
+        &:before 
+            background: linear-gradient(to right, rgb(199, 41, 41), rgb(243, 67, 54)) 
+    &:before 
+        position: absolute 
+        content: '' 
+        height: calc(100% - 14px) 
+        width: calc(100% - 14px) 
+        left: 7px 
+        top: 7px 
+        -webkit-clip-path: polygon(22px 0px, calc(100% - 22px) 0px, 100% 50%, calc(100% - 22px) 100%, 22px 100%, 0px 50%) 
+        z-index: -1 
+    span 
+        display: block 
+        margin-top: 50px 
+        padding: 8px 
+        transform: translateY(-50%) 

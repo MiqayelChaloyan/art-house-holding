@@ -10,7 +10,7 @@ import { HOME_COURSES } from '../../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
-import styles from './styles.module.sass'
+import styles from './styles.module.sass';
 
 
 type Props = {
@@ -30,6 +30,7 @@ const Courses = ({ courses }: Readonly<Props>) => {
             {courses.map((course, index) => (
                 <Course key={course._key} position={index % 2 === 0 ? 'left' : 'right'} course={course} />
             ))}
+
         </section>
     )
 };

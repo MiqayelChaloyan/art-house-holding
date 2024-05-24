@@ -4,19 +4,16 @@ import React, { useState, useEffect } from 'react';
 
 import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
-
 import { useLocale, useTranslations } from 'next-intl';
-
-import { ImagePaths } from '@/lib/constants';
 
 import Container from '@/components/components/container';
 
 import { Arial } from '@/lib/constants/font';
+import { ImagePaths } from '@/lib/constants';
 
 import { UrlType } from '@/types/design';
 
 import { client } from '../../../../../../../sanity/client';
-
 import { queryId } from '../../../../../../../sanity/services/design-service/courses';
 
 import { HOME_COURSES } from '../../../../../../../sanity/sanity-queries/design';
@@ -93,14 +90,12 @@ const Course = ({ course, position }: CourseProps) => {
                 </div>
             </div>
             <div className={styles[cornerLargeClass]}>
-                <div className={styles.corner}>
-                    <p className={cn(styles['design-title'], styles[titleDesignClass], Arial.className)}>
-                        {course_name}
-                    </p>
-                </div>
+                <p className={cn(styles['design-title'], styles[titleDesignClass], Arial.className)}>
+                    {course_name}
+                </p>
             </div>
             <div className={styles.card}>
-                <Container className='box'>
+                <Container className='container'>
                     <div className={cn(styles.box, styles[boxClass])}>
                         <div className={styles.right}>
                             <h2 className={cn(styles.title, styles[titleClass], Arial.className)}>
@@ -116,9 +111,7 @@ const Course = ({ course, position }: CourseProps) => {
                                 {t('read-more')}
                             </button>
                         </div>
-                        <div
-                            className={cn(styles[slideClass])}
-                        >
+                        <div className={cn(styles[slideClass])}>
                             <Image
                                 src={ImagePaths.DESIGN.staplerURL.default.src}
                                 alt='stapler'

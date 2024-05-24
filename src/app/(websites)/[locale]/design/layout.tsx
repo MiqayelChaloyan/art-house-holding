@@ -25,6 +25,7 @@ import { allCoursesQuery } from '../../../../../sanity/services/design-service/c
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 import { HOSTS, LESSON, LESSONS } from '../../../../../sanity/sanity-queries/design';
 import ContactUs from '@/lib/outlets/design/ContactUs';
+import PlayerModal from '@/lib/outlets/general/PlayerModal';
 
 
 interface RootLayoutProps {
@@ -122,6 +123,7 @@ export default async function Layout({
             <Modal>
                 <CoursesModal locale={locale} courses={courses} />
             </Modal>
+            <PlayerModal />
         </>
     );
 }

@@ -15,6 +15,10 @@ export const query = `
         "gallery_of_course": gallery_of_course,
         "categories": categories
     },
+    "our_day": our_day {
+        "video_url": video_url,
+        "video_light": video_light,
+    },
     "progress_section": progress_section[] {
         "_key": _key,
         "title": title[$language],

@@ -22,6 +22,7 @@ import { HOSTS, Social_Links } from '../../../../../sanity/sanity-queries/design
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import Container from '@/components/components/container';
 
 
 interface Props {
@@ -66,32 +67,34 @@ const Footer = ({ socialData }: Readonly<Props>) => {
 
     return (
         <footer className={styles.footer}>
-            <div className={styles.column}>
-                <div className={styles.logo}>
-                    <Image
-                        src={ImagePaths.DESIGN.logoURL}
-                        alt='logo'
-                        className={styles.image}
-                        width={500}
-                        height={500}
-                        priority
-                    />
-                </div>
-                <div>
-                    <div className={styles.address}>
-                        <span className={Arial.className}>{t('street')}</span>
-                        <Link href={tel} aria-label={socialData?.phone_number} className={styles.icon}>
-                            <p className={cn(styles.phone, Arial.className)}>{socialData?.phone_number}</p>
-                        </Link>
+            <Container className='container'>
+                <div className={styles.column}>
+                    <div className={styles.logo}>
+                        <Image
+                            src={ImagePaths.DESIGN.logoURL}
+                            alt='logo'
+                            className={styles.image}
+                            width={500}
+                            height={500}
+                            priority
+                        />
                     </div>
-                    <p className={`${styles.reserved} ${Arial.className}`}>
-                        {`©️ ${currentYear} ART HOUSE`}
-                    </p>
+                    <div>
+                        <div className={styles.address}>
+                            <span className={Arial.className}>{t('street')}</span>
+                            <Link href={tel} aria-label={socialData?.phone_number} className={styles.icon}>
+                                <p className={cn(styles.phone, Arial.className)}>{socialData?.phone_number}</p>
+                            </Link>
+                        </div>
+                        <p className={`${styles.reserved} ${Arial.className}`}>
+                            {`©️ ${currentYear} ART HOUSE`}
+                        </p>
+                    </div>
+                    <div className={styles.hosts}>
+                        {hosts}
+                    </div>
                 </div>
-                <div className={styles.hosts}>
-                    {hosts}
-                </div>
-            </div>
+            </Container>
         </footer>
     )
 };

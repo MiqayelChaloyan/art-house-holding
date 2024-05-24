@@ -56,11 +56,17 @@ export interface HOME_COURSES {
     categories: AssetRef
 };
 
+export interface OUR_DAY {
+    video_light: Asset,
+    video_url: string,
+}
+
 export interface DESIGN {
     _id: string,
     main_section: MAIN[],
     courses: HOME_COURSES[],
     progress_section: PROGRESS[],
+    our_day: OUR_DAY,
 };
 
 export interface Social_Links {

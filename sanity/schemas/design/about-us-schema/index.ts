@@ -215,29 +215,6 @@ export const aboutUsSchemaDesign = {
             title: 'Our Day Video',
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
-                // {
-                //     title: 'Video Section Title',
-                //     name: 'video_section_title',
-                //     type: 'object',
-                //     validation: (Rule: any) => Rule.required(),
-                //     fields: [
-                //         {
-                //             title: 'Armenian',
-                //             name: 'am',
-                //             type: 'string'
-                //         },
-                //         {
-                //             title: 'English',
-                //             name: 'en',
-                //             type: 'string'
-                //         },
-                //         {
-                //             title: 'Russian',
-                //             name: 'ru',
-                //             type: 'string'
-                //         }
-                //     ]
-                // },
                 {
                     name: 'video_url',
                     title: 'Video Link',

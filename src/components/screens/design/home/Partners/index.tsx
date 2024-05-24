@@ -115,7 +115,6 @@ const Partners = ({ data }: Readonly<Props>) => {
                 <h2 className={cn(styles['title-back'], Arial.className)}>OUR PARTNERS</h2>
                 <h1 className={cn(styles.title, Arial.className)}>ՄԵՐ ԳՈՐԾԸՆԿԵՐՆԵՐԸ</h1>
             </div>
-
             <div className={styles.desktop}>
                 <Swiper {...params}>
                     {partners}
