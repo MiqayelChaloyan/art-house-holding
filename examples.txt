@@ -747,3 +747,80 @@ Readonly<RootProps>
         margin-top: 50px 
         padding: 8px 
         transform: translateY(-50%) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.link
+	display: flex
+	align-items: center
+	justify-content: center
+	position: relative
+	color: var(--color-white)
+	font-size: 20px
+	font-weight: 600
+	padding: 0 10px 4px 10px
+	text-transform: uppercase
+	&:hover
+		color: #C62020
+	@media screen and ( max-width: 1280px )
+		font-size: 18px
+	@media screen and ( max-width: 991px )
+		font-size: 20px
+	&:after
+		content: ""
+		width: 100%
+		height: 3px
+		background: #C62020
+		position: absolute
+		top: 100%
+		left: 0
+		transition: var(--tr-time)
+		opacity: 0
+
+
+
+	transition: var(--tr-time)
+	&:hover
+		color: var(--color-white)
+		background-color: #4B352B
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.design-container
+	background-image: url($imagePath) 
+	background-repeat: no-repeat
+	background-size: 100% 100%
+	background-position: center  
+	height: max-content
+	/* @xs */
+	@media screen and (max-width: 600px)
+		background-image: none
+		background-color: #fff

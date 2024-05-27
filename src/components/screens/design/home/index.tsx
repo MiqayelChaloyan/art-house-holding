@@ -26,11 +26,14 @@ const Home = ({
     return (
         <div className={styles.container}>
             <Main data={data[0].main_section} />
-            <Courses courses={data[0].courses} />
+            <div style={{backgroundColor: 'green', height: '400px'}}></div>
             <OurDay our_day={data[0].our_day}/>
             <Progress data={data[0].progress_section} />
+            <div style={{backgroundColor: 'blue', height: '400px'}}></div>
+            {/* <Courses courses={data[0].courses} />
+            <Progress data={data[0].progress_section} />
             <OurTeam />
-            <Partners data={partners}/>
+            <Partners data={partners}/> */}
         </div>
     )
 };

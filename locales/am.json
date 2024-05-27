@@ -39,7 +39,6 @@
         "select-language": "Ընտրել Լեզուն",
         "send-message-success": "Ձեր նամակը հաջողությամբ ուղարկվեց",
         "send-message-failure": "Ինչ որ բան այնպես չգնաց, խնդրում ենք փորձել նորից"
-
     },
     "buttons": {
         "contact-us": "Կապ մեզ հետ",
@@ -104,7 +103,12 @@
         "three-days-week": "Շաբաթական 3 օր",
         "two-days-week": "Շաբաթական 2 օր",
         "english": "Անգլերեն",
-        "duration": "Տևողությունը"
+        "duration": "Տևողությունը",
+        "course": "Դասընթաց",
+        "group": "Խմբային",
+        "individual": "Անհատական",
+        "duration-all": "Տևողություն \n Խմբային/Անհատական",
+        "hours-all": "Ժամեր \n Խմբային/Անհատական"
     },
     "metadata": {
         "introduction": "Հիմունքներ"

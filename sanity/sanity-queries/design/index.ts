@@ -35,6 +35,21 @@ export interface PORTFOLIO {
     image: Asset
 };
 
+export interface PRICES {
+    course: string,
+    group_lessons: number,
+    personal_lessons: number,
+    duration: string,
+    hours_lessons: string
+}
+
+export interface PRICE_LIST {
+    _id: string,
+    informatie: string,
+    our_advantages: string[],
+    price_list: PRICES[]
+};
+
 export interface COURSE {
     _id: string,
     slug: string,

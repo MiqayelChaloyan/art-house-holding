@@ -4,23 +4,28 @@ import React from 'react';
 
 import { Arial } from '@/lib/constants/font';
 
+import { PRICE_LIST } from '../../../../../sanity/sanity-queries/design';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import Promotions from './Promotions';
+import PriceList from './PriceList';
 
 
-// type Props = {
-//     data:  PRICE_LIST_LANGUAGE[] | any
-// }
+type Props = {
+  data: PRICE_LIST
+}
 
-const Home = () => {
+const Home = ({ data }: Readonly<Props>) => {
   return (
-    <section id='price-list' className={styles.container}>
-      <div className={styles.titles}>
-        <h2 className={cn(styles['title-back'], Arial.className)}>PROMOTIONS</h2>
-        <h1 className={cn(styles.title, Arial.className)}>ԱԿՑԻԱՆԵՐ</h1>
-      </div>
-    </section>
+    <div className={styles.container}>
+      <Promotions
+        informatie={data?.informatie}
+        our_advantages={data?.our_advantages}
+      />
+      <PriceList data={data?.price_list} />
+    </div>
   );
 }
 

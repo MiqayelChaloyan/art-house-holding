@@ -34,12 +34,11 @@ const navigationLinks = [
     { path: Pages.DESIGN_CONTACT, label: 'contact' },
 ];
 
-const Header = ({ typePosition, locale }: IHeaderProps) => {
+const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
     const [isSticky, setIsSticky] = useState<boolean>(false);
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
-    const pathname = usePathname();
     const t = useTranslations('navigation');
-
+    const pathname = usePathname();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -62,7 +61,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
     const handleSubmit = () => {
         setIsOpenMenu(false);
         setTimeout(() => dispatch(openModal(true)), 500);
-    }
+    };
 
     return (
         <header className={cn(
@@ -95,27 +94,23 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         <Button
                             text={t('departments')}
                             onClick={handleSubmit}
-                            className={cn(styles.btn, ArianAMU.className)}
+                            className={cn(styles.link, ArianAMU.className)}
                         />
                         {navigationLinks.map((link, key) => (
                             <Link
                                 key={key}
                                 href={`/${locale}${link.path}`}
                                 aria-label={link.path}
-                                className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}
+                                className={`${styles.link} ${styles.from_center} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}
                                 prefetch={true}
                                 passHref
-                                onClick={() => {
-                                    setIsOpenMenu(false);
-                                }}
+                                onClick={() => setIsOpenMenu(false)}
                             >
                                 {t(`${link.label}`)}
                             </Link>
                         ))}
                     </div>
-                    <div>
-                        <LocalSwitcher activeColor='#8E685C' color='#fff' />
-                    </div>
+                    <LocalSwitcher activeColor='#8E685C' color='#fff' />
                 </div>
                 <button
                     className={cn(

@@ -8,7 +8,6 @@ export interface SlideItem {
     url: string;
     company_name: string;
     title: string;
-    scrollToElement: (value: number) => void;
 };
 
 /* Form types */

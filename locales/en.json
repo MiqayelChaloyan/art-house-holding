@@ -103,7 +103,12 @@
         "three-days-week": "3 days a week",
         "two-days-week": "2 days a week",
         "english": "English",
-        "duration": "Duration"
+        "duration": "Duration",
+        "course": "Course",
+        "group": "Group",
+        "individual": "Individual",
+        "duration-all": "Duration \n Group/Individual",
+        "hours-all": "Hours \n Group/Individual"
     },
     "metadata": {
         "introduction": "Introduction"

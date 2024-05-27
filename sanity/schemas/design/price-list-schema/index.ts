@@ -20,8 +20,8 @@ const priceListSchemaDesign = {
             description: 'Չփոփոխել անվանումը'
         },
         {
-            title: 'Text',
-            name: 'text',
+            title: 'Informatie',
+            name: 'informatie',
             type: 'object',
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
@@ -46,13 +46,11 @@ const priceListSchemaDesign = {
             ]
         },
         {
-            name: 'guides',
+            name: 'our_advantages',
             type: 'array',
-            title: 'Guides',
-            description: 'Դուք կարող եք ավելացնել ցանկացած քանակի ուղեցույցներ',
+            title: 'Our advantages',
+            description: 'Դուք կարող եք ավելացնել ցանկացած քանակի (Տեքստը չպետք է լինի 250 նիշից ավելի)',
             validation: (Rule: RuleType) => Rule.required(),
-            // validation: (Rule: RuleType) => Rule.max(5),
-            // components: { input: ArrayMaxItems }
             of: [
                 {
                     name: 'Object',
@@ -62,7 +60,7 @@ const priceListSchemaDesign = {
                         {
                             title: 'Armenian',
                             name: 'am',
-                            type: 'string'
+                            type: 'string',
                         },
                         {
                             title: 'English',
@@ -81,7 +79,7 @@ const priceListSchemaDesign = {
         {
             name: 'price_list',
             type: 'array',
-            title: 'Price list',
+            title: 'Price List',
             description: 'Գնացուցակ',
             of: [
                 {

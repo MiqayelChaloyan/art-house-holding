@@ -25,7 +25,7 @@ const Main = ({ data }: Readonly<Props>) => {
 	const options: EmblaOptionsType = { loop: true, align: 'center',};
 	const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
 
-	const slidesItems = data?.map((item: any, index: number) => {
+	const slidesItems = data?.map((item: any) => {
 		const path: UrlType | any = urlForImage(item.image);
 
 		return (
@@ -34,7 +34,6 @@ const Main = ({ data }: Readonly<Props>) => {
 				url={path?.src}
                 company_name={item.company_name}
 				title={item.title}
-				scrollToElement={() => console.log('click')}
 			/>
 		);
 	});
