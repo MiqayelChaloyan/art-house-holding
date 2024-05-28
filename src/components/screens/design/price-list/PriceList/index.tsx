@@ -43,11 +43,10 @@ const PriceList = ({ data }: Readonly<Props>) => {
 
     return (
         <section id='price-list' className={styles.container}>
-            {/* <div className={styles.titles}>
+            <div className={styles.titles}>
                 <h2 className={cn(styles['title-back'], Arial.className)}>PRICE LIST</h2>
                 <h1 className={cn(styles.title, Arial.className)}>ԳՆԱՑՈՒՑԱԿ</h1>
-            </div> */}
-
+            </div>
 
             <div className={cn(styles.table, Arial.className)}>
                 <table>

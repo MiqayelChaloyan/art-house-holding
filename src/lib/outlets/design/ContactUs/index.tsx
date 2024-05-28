@@ -142,7 +142,7 @@ const ContactUs = ({ lessons, lessonsArmenian }: Props) => {
     };
 
 
-    return !isOpen && (
+    return (
         <div className={styles.container}>
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
