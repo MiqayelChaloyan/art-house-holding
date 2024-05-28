@@ -20,10 +20,10 @@ type Props = {
 const Home = ({ data }: Readonly<Props>) => {
   return (
     <div className={styles.container}>
-      <Promotions
+      {/* <Promotions
         informatie={data?.informatie}
         our_advantages={data?.our_advantages}
-      />
+      /> */}
       <PriceList data={data?.price_list} />
     </div>
   );
