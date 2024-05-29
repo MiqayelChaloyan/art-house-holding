@@ -14,7 +14,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     data: PROGRESS[]
 };
 

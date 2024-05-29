@@ -29,7 +29,7 @@ interface CourseProps {
     position: 'left' | 'right';
 }
 
-const Course = ({ course, position }: CourseProps) => {
+const Course = ({ course, position }: Readonly<CourseProps>) => {
     const [index, setIndex] = useState<number>(0);
     const router = useRouter();
     const t = useTranslations('buttons');
@@ -61,7 +61,7 @@ const Course = ({ course, position }: CourseProps) => {
         return (
             <div
                 key={image._key}
-                className={`${styles['design-image']} ${index === imageIndex ? styles.active : styles.next}`}
+                className={cn(styles['design-image'], index === imageIndex ? styles.active : styles.next)}
                 style={{ backgroundImage: `url(${path?.src})` }} />
         )
     })
@@ -73,7 +73,7 @@ const Course = ({ course, position }: CourseProps) => {
             const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
             router.push(`design/${data.slug}`);
         } catch (error) {
-            notFound()
+            notFound();
         }
     };
 

@@ -58,7 +58,7 @@ const SamplePrevArrow = ({ onClick }: SamplePrevArrowProps | any) => (
 
 const Partners = ({ data }: Readonly<Props>) => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
-    const t = useTranslations('navigation');
+    const t = useTranslations('sections');
     const windowSize = useWindowSize();
 
     const params = {
@@ -113,7 +113,7 @@ const Partners = ({ data }: Readonly<Props>) => {
         <section id='partners' className={styles.container}>
             <div className={styles.titles}>
                 <h2 className={cn(styles['title-back'], Arial.className)}>OUR PARTNERS</h2>
-                <h1 className={cn(styles.title, Arial.className)}>ՄԵՐ ԳՈՐԾԸՆԿԵՐՆԵՐԸ</h1>
+                <h1 className={cn(styles.title, Arial.className)}>{t('our-partners')}</h1>
             </div>
             <div className={styles.desktop}>
                 <Swiper {...params}>

@@ -40,7 +40,7 @@ const ContactUs = ({ lessons, lessonsArmenian }: Props) => {
     const pathname = usePathname();
     const [course, setCourse] = useState<string>('');
     const isOpen = pathname?.includes('/design') 
-    console.log(pathname)
+    // console.log(pathname)
         // ||
         // pathname?.includes('/design/orders') ||
         // pathname?.includes('/design/contact');

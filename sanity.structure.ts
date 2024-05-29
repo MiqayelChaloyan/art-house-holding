@@ -126,7 +126,7 @@ export default (S: any) =>
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('about-us-language').documentId('about-us-language')),
                             S.listItem()
-                                .title('Courses')
+                                .title('Lessons')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('languages-select-option').documentId('languages-select-option')),
                             S.listItem()

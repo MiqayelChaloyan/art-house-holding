@@ -36,16 +36,19 @@
         line-height: 130px
     /* @xl */
     @media screen and (max-width: 1440px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
     /* @lg */
     @media screen and (max-width: 1280px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
     /* @md */
     @media screen and (max-width: 1024px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
+    @media screen and (max-width: 980px)
+        font-size: 60px
+        line-height: 90px
     /* @sm */
     @media screen and (max-width: 768px)
         font-size: 50px
@@ -53,15 +56,23 @@
     /* @xs */
     @media screen and (max-width: 600px)
         font-size: 30px
-        line-height: 90px
+        line-height: 60px
+        &:before
+            content: ''
+            position: absolute
+            background-color: #5F401B
+            width: 47%
+            height: 2px
+            bottom: 0
+            right: 0
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 30px
-        line-height: 90px
+        font-size: 27px
+        line-height: 50px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 30px
-        line-height: 90px
+        font-size: 25px
+        line-height: 50px
 
 .title-back
     font-size: 100px
@@ -70,14 +81,14 @@
     text-align: center
     line-height: 130px
     position: relative
-    top: 55px
-    right: 230px
+    top: 65px
+    right: 11%
     z-index: 0
     &:after
         content: ''
         position: absolute
         background-color: #5F401B
-        width: 57%
+        width: 53%
         height: 3px
         top: 0
         left: 0
@@ -93,43 +104,67 @@
     @media screen and (max-width: 1600px)
         font-size: 100px
         line-height: 130px
+        right: 210px 
     /* @xl */
     @media screen and (max-width: 1440px)
-        font-size: 90px
+        font-size: 80px
         line-height: 130px
+        top: 80px
+        right: 170px 
     /* @lg */
     @media screen and (max-width: 1280px)
         font-size: 80px
         line-height: 130px
+        right: 180px
     /* @md */
     @media screen and (max-width: 1024px)
         font-size: 80px
         line-height: 130px
+        right: 170px
+    @media screen and (max-width: 980px)
+        font-size: 60px
+        line-height: 90px
+        top: 45px
+        right: 120px
     /* @sm */
     @media screen and (max-width: 768px)
         font-size: 50px
-        right: 120px
+        right: 100px
         line-height: 100px
+        top: 60px
     /* @xs */
     @media screen and (max-width: 600px)
         font-size: 35px
-        right: 70px
-        line-height: 50px
+        right: 75px
+        line-height: 60px
+        top: 36px
+        &:after
+            content: ''
+            position: absolute
+            background-color: #5F401B
+            width: 53%
+            height: 2px
+            top: 0
+            left: 0
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 35px
+        font-size: 28px
+        right: 58px
         line-height: 50px
+        top: 32px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 35px
+        font-size: 25px
+        right: 55px
         line-height: 50px
+        top: 32px
 
 .player
     margin: 70px auto
 
 .link
     background-color: #4B352B
-    width: 202px
+    width: 240px
     height: 66px
     color: #FFFFFF
     font-size: 18px

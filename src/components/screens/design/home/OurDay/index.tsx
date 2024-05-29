@@ -1,20 +1,28 @@
-import cn from 'classnames';
-import styles from './styles.module.sass'
-import { Arial } from '@/lib/constants/font';
-import { OUR_DAY } from '../../../../../../sanity/sanity-queries/design';
-import { UrlType } from '@/types/design';
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { useDispatch, useSelector } from 'react-redux';
-import { ReduxType } from '@/types/language';
-import { onPlay, setPath } from '@/store/player_reducer';
-import Player from '@/components/components/player';
-import Container from '@/components/components/container';
+'use client'
+
 import Link from 'next/link';
-import { Pages } from '@/lib/constants/pages';
 import { useLocale, useTranslations } from 'next-intl';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { onPlay, setPath } from '@/store/player_reducer';
 
-type Props = {
+import Player from '@/components/components/player';
+import Container from '@/components/components/container';
+
+import { Arial } from '@/lib/constants/font';
+import { Pages } from '@/lib/constants/pages';
+import { UrlType } from '@/types/design';
+import { ReduxType } from '@/types/language';
+
+import { OUR_DAY } from '../../../../../../sanity/sanity-queries/design';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
+
+
+interface Props {
     our_day: OUR_DAY
 };
 
@@ -22,7 +30,7 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
     const path: UrlType | any = urlForImage(our_day?.video_light)
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
-    const t = useTranslations('buttons');
+    const t = useTranslations();
     const localActive = useLocale();
 
     const handlePlayVideo = (path: string) => {
@@ -34,7 +42,7 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
         <div className={styles.container}>
             <div className={styles.titles}>
                 <h2 className={cn(styles['title-back'], Arial.className)}>OUR DAY</h2>
-                <h1 className={cn(styles.title, Arial.className)}>ՄԵՐ ԱՌՕՐՅԱՆ</h1>
+                <h1 className={cn(styles.title, Arial.className)}>{t('sections.our-day')}</h1>
             </div>
             <Container className='container'>
                 <div className={styles.player}>
@@ -53,7 +61,7 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
                     prefetch={true}
                     passHref
                 >
-                    {t('register-now')}
+                    {t('buttons.register-now')}
                 </Link>
             </div>
         </div>

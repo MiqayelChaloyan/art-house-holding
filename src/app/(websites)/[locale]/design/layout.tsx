@@ -117,7 +117,7 @@ export default async function Layout({
                     hover='#4B352B'
                 />
                 {children}
-                <ContactUs lessons={lessons} lessonsArmenian={lessonsArmenian}/>
+                {/* <ContactUs lessons={lessons} lessonsArmenian={lessonsArmenian}/> */}
                 <Footer socialData={social} />
             </div>
             <Modal>
