@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
-import FormAppointment from '@/components/components/forms';
+import FormAppointment from '@/components/components/form-educational';
 import FormHeader from '@/components/components/form-header';
 
 import Button from '@/lib/ui/Button';

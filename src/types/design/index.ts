@@ -19,6 +19,15 @@ export interface FormContactUs {
     course_name: string;
 };
 
+export interface FormOrder {
+    full_name: string;
+    email: string;
+    phone: string;
+    order: string;
+    message: string;
+    training_center: number;
+};
+
 export interface socialNetwork {
     facebook: (props: { size: string | number; fill: string | number } | any) => JSX.Element,
     x: ({ size, fill }: { size: string | number; fill: string | number } | any) => JSX.Element,

@@ -78,6 +78,7 @@
     "contact-us-form": {
         "title": "СВЯЗАТЬСЯ С НАМИ",
         "form-title-language": "ОТПРАВИТЬ ЗАПРОС",
+        "form-title-order": "Заказать",
         "name": "Имя",
         "last-name": "Фамилия",
         "full-name": "Имя, Фамилия",

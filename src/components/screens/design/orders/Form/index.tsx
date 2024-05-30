@@ -6,37 +6,36 @@ import { useTranslations } from 'next-intl';
 
 import Snackbar from '@/components/components/snackbar';
 
-import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
+import TextareaField from '@/lib/ui/TextareaField';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial, Calibri } from '@/lib/constants/font';
 
-import { sendContactUsDesign } from '@/api';
-import { FormContactUs } from '@/types/design';
+import { sendOrderDesign } from '@/api';
+import { FormOrder } from '@/types/design';
 
-import { LESSON, LESSONS } from '../../../../sanity/sanity-queries/design';
+import { ORDER } from '../../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    lessons: LESSONS[],
-    lessonsArmenian: LESSONS[],
-    classNameProperty: 'small' | 'large',
+interface Props {
+    orders: ORDER[],
+    ordersArmenian: ORDER[]
 };
 
 type FormProps = {
     isLoading: boolean,
     error: boolean,
-    values: FormContactUs
+    values: FormOrder
 };
 
-const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) => {
+const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
     const t = useTranslations();
-    const [course, setCourse] = useState<string>('');
+    const [orderValue, setOrderValue] = useState<ORDER | null>(null);
 
     const [open, setOpen] = useState(false);
     const [info, setInfo] = useState({
@@ -44,12 +43,11 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
         content: t('texts.send-message-success')
     });
 
-    const initValues = { full_name: '', email: '', phone: '', course_name: t('contact-us-form.select-course'), training_center: 44, };
+    const initValues = { full_name: '', email: '', phone: '', order: '', message: '', training_center: 44, };
     const initState = { isLoading: false, error: false, values: initValues };
 
     const [state, setState] = useState<FormProps>(initState);
     const { values, isLoading, error } = state;
-
 
     const handleChange = ({ target }: any) =>
         setState((prev: FormProps) => ({
@@ -67,45 +65,47 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
             full_name: state.values.full_name,
             email: state.values.email,
             phone: state.values.phone,
-            course_name: course,
+            order: orderValue?.order_name,
+            message: state.values.message,
             training_center: 44,
         };
 
         try {
-            if (formData.course_name !== t('contact-us-form.select-course')) {
+            if (orderValue) {
                 setState((prev: FormProps) => ({
                     ...prev,
                     isLoading: true,
-                }))
-            };
+                }));
 
-            const res: { status: number } | any = await sendContactUsDesign(formData);
+                const res: { status: number } | any = await sendOrderDesign(formData);
 
-            if (res?.status !== 200) {
+                if (res?.status !== 200) {
+                    setOpen(true);
+                    setInfo({
+                        status: 'info',
+                        content: t('texts.send-message-failure')
+                    });
+                    setState((prev: FormProps) => ({
+                        ...prev,
+                        isLoading: false,
+                    }))
+                    return;
+                };
+
+                setOrderValue(null);
                 setOpen(true);
+
                 setInfo({
-                    status: 'info',
-                    content: t('texts.send-message-failure')
+                    status: 'success',
+                    content: t('texts.send-message-success')
                 });
-                setState((prev: FormProps) => ({
-                    ...prev,
+
+                setState(() => ({
+                    ...initState,
                     isLoading: false,
-                }))
-                return;
+                    error: false,
+                }));
             };
-
-            setOpen(true);
-
-            setInfo({
-                status: 'success',
-                content: t('texts.send-message-success')
-            });
-
-            setState(() => ({
-                ...initState,
-                isLoading: false,
-                error: false,
-            }));
         } catch (error: any) {
             setState((prev: FormProps) => ({
                 ...prev,
@@ -123,32 +123,46 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
 
     const handleClose = () => setOpen(false);
 
-    const getValueToSlug = (valueName: string, slug: number | string) => {
-        const course: LESSON | any = valueName === 'course_name' && lessonsArmenian[0]?.course_name.find((item: LESSON) => {
+    const getValueToSlug = (slug: number | string) => {
+        const order: ORDER | any = ordersArmenian?.find((item: ORDER) => {
             return item.slug === slug;
         });
 
-        if (course.course_name) {
-            return setCourse(course.course_name);
+        if (order.order_name) {
+            return setOrderValue(order);
         }
     };
+
+    const ordersButtons = orders.map((order: ORDER) => (
+        <button
+            key={order.slug}
+            className={cn(styles['order-button'], Calibri.className, orderValue?.slug === order.slug && styles.disabled)}
+            onClick={() => getValueToSlug(order.slug)}
+            type='button'
+            disabled={orderValue?.slug === order.slug}
+        >
+            {order.order_name}
+        </button>
+    )
+    );
+
 
     return (
         <div className={styles.container}>
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
-                <div className={cn(styles.contact_us, classNameProperty === 'small' && styles.line)}>
-                    {classNameProperty === 'small' && <h2 className={cn(styles.form_title, Arial.className)}>
-                        {t('contact-us-form.form-title-language')}
-                    </h2>}
-                    <div className={styles[`${classNameProperty}-form`]}>
+                <div className={cn(styles.contact_us, styles.line)}>
+                    <h2 className={cn(styles.form_title, Arial.className)}>
+                        {t('contact-us-form.form-title-order')}
+                    </h2>
+                    <div className={styles.form}>
                         <form
                             className={styles.box}
                             onSubmit={handleSubmit}
                         >
                             <div className={styles.fields}>
                                 <InputField
-                                    className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
+                                    className={cn(styles.input, Arial.className)}
                                     name='full_name'
                                     type='name'
                                     placeholder={t('contact-us-form.full-name')}
@@ -157,7 +171,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                                     onChange={handleChange}
                                 />
                                 <InputField
-                                    className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
+                                    className={cn(styles.input, Arial.className)}
                                     name='email'
                                     type='email'
                                     placeholder={t('contact-us-form.email')}
@@ -166,7 +180,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                                     onChange={handleChange}
                                 />
                                 <InputNumber
-                                    className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
+                                    className={cn(styles.input, Arial.className)}
                                     name='phone'
                                     type='phone'
                                     placeholder={t('contact-us-form.phone-number')}
@@ -175,17 +189,19 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                                     value={values.phone}
                                     onChange={handleChange}
                                 />
-                                <Select
-                                    data={lessons[0].course_name}
-                                    valueName='course_name'
-                                    handleChange={setState}
-                                    state={state}
-                                    classNameProperty={`${classNameProperty}-design`}
-                                    isClear={false}
-                                    getValueToSlug={getValueToSlug}
+                                <div className={styles.orders}>
+                                    {ordersButtons}
+                                </div>
+                                <TextareaField
+                                    className={cn(styles.textarea, Arial.className)}
+                                    name='message'
+                                    placeholder={t('contact-us-form.message')}
+                                    requiredField={true}
+                                    value={values.message}
+                                    onChange={handleChange}
                                 />
                             </div>
-                            <button type='submit' className={styles[`${classNameProperty}-button`]}>
+                            <button type='submit' className={styles.button}>
                                 {isLoading ?
                                     <span className={Arial.className}>
                                         {`${t('contact-us-form.loading')}...`}
@@ -204,4 +220,4 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
     )
 };
 
-export default React.memo(ContactUsForm);
+export default OrderForm;

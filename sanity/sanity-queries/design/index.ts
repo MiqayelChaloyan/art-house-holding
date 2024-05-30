@@ -110,7 +110,13 @@ export interface LESSON {
     course_name: string,
 };
 
+export interface ORDER {
+    slug: number | string,
+    order_name: string,
+};
+
 export interface LESSONS {
     _id: string,
-    course_name: LESSON[]
+    course_name: LESSON[],
+    order_name: ORDER[]
 };

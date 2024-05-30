@@ -18,7 +18,7 @@ const coursesSchemaLanguage = {
         {
             name: 'course_name',
             type: 'array',
-            title: 'Course Name (Դասընթացի անվանումը)',
+            title: 'Lessons Names (Դասընթացների անվանումները)',
             of: [
                 {
                     name: 'Object',

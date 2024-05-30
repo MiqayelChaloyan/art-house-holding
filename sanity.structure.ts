@@ -99,7 +99,7 @@ export default (S: any) =>
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
                             S.listItem()
-                                .title('Lessons')
+                                .title('Lessons & Orders')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('design-lessons-select-option').documentId('design-lessons-select-option')),
                         ])

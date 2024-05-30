@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
 import GoogleMaps from '@/components/components/google-map';
-import FormAppointment from '@/components/components/forms';
+import FormAppointment from '@/components/components/form-educational';
 import FormHeader from '@/components/components/form-header';
 
 import Logo from '@/lib/icons/educational-center/Logo';

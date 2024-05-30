@@ -78,6 +78,7 @@
     "contact-us-form": {
         "title": "CONTACT US",
         "form-title-language": "SEND A REQUEST",
+        "form-title-order": "To Order",
         "name": "Name",
         "last-name": "Last Name",
         "full-name": "Name, Surname",

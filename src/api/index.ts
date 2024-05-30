@@ -79,4 +79,25 @@ export const sendContactUsDesign = async (contactUs: FormSmall) => {
     } catch (error) {
         return error
     }
+};
+
+// SEND ORDER
+export const sendOrderDesign = async (order: any) => {
+    try {
+        console.log(order)
+        // const response = await axios.post(BASE_URL, null, {
+        //     params: { contactUs },
+        //     timeout: 10000
+        // });
+
+        // return {
+        //     status: response.status
+        // };
+
+        return {
+            status: 200
+        };
+    } catch (error) {
+        return error
+    }
 }
