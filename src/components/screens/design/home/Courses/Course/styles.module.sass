@@ -88,22 +88,22 @@
 	@media screen and (max-width: 768px)
 		display: grid
 		justify-content: flex-end
-		width: 400px
+		width: 50%
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: grid
 		justify-content: center
-		width: 400px
+		width: 50%
 	/* @2xs */
 	@media screen and (max-width: 480px)
 		display: grid
 		justify-content: center
-		width: 400px
+		width: 50%
 	/* @3xs */
 	@media screen and (max-width: 360px)
 		display: grid
 		justify-content: center
-		width: 400px
+		width: 50%
 
 .slide-right
 	display: grid
@@ -159,25 +159,29 @@
 		height: 30px
 		font-size: 13px
 		border-radius: 10px
+		margin-top: 50px
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: block
 		height: 30px
 		font-size: 13px
 		border-radius: 10px
+		margin-top: 50px
 	/* @2xs */
 	@media screen and (max-width: 480px)
 		display: block
 		height: 30px
 		font-size: 13px
-		border-radius: 10px
+		border-radius: 7px
+		margin-top: 20px
 	/* @3xs */
 	@media screen and (max-width: 360px)
 		display: block
 		height: 30px	   		
 		font-size: 10px
-		width: 120px
-		border-radius: 10px
+		width: 100px
+		border-radius: 5px
+		margin-top: 0
 
 .box
 	display: flex
@@ -224,28 +228,28 @@
 	@media screen and (max-width: 768px)
 		display: flex
 		justify-content: space-between
-		align-items: flex-end
+		align-items: center
 		margin-bottom: 50px
 		margin: 0 auto
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: flex
 		justify-content: space-between
-		align-items: flex-end
+		align-items: center
 		margin-bottom: 50px
 		margin: 0 auto
 	/* @2xs */
 	@media screen and (max-width: 480px)
 		display: flex
 		justify-content: space-between
-		align-items: flex-end
+		align-items: center
 		margin-bottom: 50px
 		margin: 0 auto
 	/* @3xs */
 	@media screen and (max-width: 360px)
 		display: flex
 		justify-content: space-between
-		align-items: flex-end
+		align-items: center
 		margin-bottom: 50px
 		margin: 0 auto
 
@@ -318,9 +322,9 @@
 		margin-bottom: 20px
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		font-size: 20px
-		line-height: 20px
-		margin-bottom: 20px
+		font-size: 15px
+		line-height: 15px
+		margin-bottom: 15px
 
 .title-left
 	text-align: left
@@ -365,6 +369,16 @@
 		font-size: 17px
 	@media screen and (max-width: 980px)
 		font-size: 14px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		display: none
+
+
+.design-title-mobile
+	font-size: 30px
+	font-weight: 700
+	color: #FFFFFF
+	margin-right: 0
 	/* @sm */
 	@media screen and (max-width: 768px)
 		font-size: 20px
@@ -417,7 +431,7 @@
 		margin-bottom: 20px
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		font-size: 12px
+		font-size: 10px
 		margin-bottom: 20px
 	/* @3xs */
 	@media screen and (max-width: 360px)
@@ -447,15 +461,19 @@
 	/* @sm */
 	@media screen and (max-width: 768px)
 		width: 50%
+		margin-top: 70px
 	/* @xs */
 	@media screen and (max-width: 600px)
 		width: 50%
+		margin-top: 70px
 	/* @2xs */
 	@media screen and (max-width: 480px)
 		width: 50%
+		margin-top: 70px
 	/* @3xs */
 	@media screen and (max-width: 360px)
 		width: 50%
+		margin-top: 70px
 
 /* Card UI Left */
 .box-left
@@ -612,6 +630,9 @@
 	bottom: 120px
 	width: 100%
 	z-index: 0
+	/* @md */
+	@media screen and (max-width: 1024px)
+		bottom: 100px
 	/* @sm */
 	@media screen and (max-width: 768px)
 		bottom: 70px
@@ -750,40 +771,7 @@
 			height: 100%
 	/* @sm */
 	@media screen and (max-width: 768px)
-		width: 54%
-		background-color: transparent
-		justify-content: center
-		height: 0
-		bottom: 50%
-		&:before 
-			width: 0
-	/* @xs */
-	@media screen and (max-width: 600px)
-		width: 54%
-		background-color: transparent
-		justify-content: center
-		height: 0
-		bottom: 50%
-		&:before 
-			width: 0
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		width: 54%
-		background-color: transparent
-		justify-content: flex-start
-		height: 0
-		bottom: 50%
-		&:before 
-			width: 0
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		width: 54%
-		background-color: transparent
-		justify-content: flex-start
-		height: 0
-		bottom: 50%
-		&:before 
-			width: 0
+		display: none
 
 /* Card UI Right */
 .box-right
@@ -940,6 +928,9 @@
 	bottom: 80px
 	width: 100%
 	z-index: 0
+	/* @md */
+	@media screen and (max-width: 1024px)
+		bottom: 50px
 
 .corner-large-right
 	position: absolute
@@ -1128,6 +1119,6 @@
 		height: 200px
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		width: 150px
+		width: 130px
 		height: 170px
 

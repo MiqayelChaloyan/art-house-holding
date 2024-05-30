@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/lib/constants/font';
@@ -28,7 +29,6 @@ import './swiper.css';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import Image from 'next/image';
 
 
 interface Props {
@@ -99,7 +99,7 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     }}
-                    modules={[EffectCoverflow, Pagination, Navigation]}
+                    modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
                 >
                     {workers}
                     <div className='swiper-pagination'></div>
