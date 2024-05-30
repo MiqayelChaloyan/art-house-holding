@@ -1,4 +1,4 @@
-import { ClipboardIcon, TrendUpwardIcon } from '@sanity/icons';
+import { ClipboardIcon, TrendUpwardIcon, UserIcon } from '@sanity/icons';
 
 import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
@@ -283,6 +283,83 @@ export const aboutUsSchemaDesign = {
                     ]
                 }
             ]
+        },
+        {
+            name: 'workers',
+            type: 'array',
+            title: 'Workers',
+            description: 'Դուք կարող եք ավելացնել ցանկացած թվով աշխատողների',
+            validation: (Rule: RuleType) => Rule.required(),
+            of: [
+                {
+                    name: 'Object',
+                    type: 'object',
+                    icon: UserIcon,
+                    fields: [
+                        {
+                            title: 'Worker',
+                            name: 'worker',
+                            type: 'object',
+                            description: 'Անուն, Ազգանուն',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: "The employee's profession",
+                            name: 'profession',
+                            type: 'object',
+                            description: 'Աշխատողի մասնագիտությունը',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Worker Image',
+                            name: 'worker_image',
+                            type: 'image',
+                            options: { hotspot: true },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    title: 'Alternative text',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ],
         },
     ],
 };

@@ -17,7 +17,7 @@ import { UrlType } from '@/types/educational-center';
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
 	data: MAIN[]
 };
 

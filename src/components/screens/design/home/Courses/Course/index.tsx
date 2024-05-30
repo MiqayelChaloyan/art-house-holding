@@ -89,11 +89,11 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                     </button>
                 </div>
             </div>
-            <div className={styles[cornerLargeClass]}>
-                <p className={cn(styles['design-title'], styles[titleDesignClass], Arial.className)}>
-                    {course_name}
-                </p>
-            </div>
+             <div className={styles[cornerLargeClass]}>
+                 <p className={cn(styles['design-title'], styles[titleDesignClass], Arial.className)}>
+                     {course_name}
+                 </p>
+            </div> 
             <div className={styles.card}>
                 <Container className='container'>
                     <div className={cn(styles.box, styles[boxClass])}>

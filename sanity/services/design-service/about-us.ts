@@ -24,6 +24,12 @@ export const query = `
         "title": title[$language],
         "quantity": quantity
     },
+    "workers": workers[] {
+        "_key": _key,
+        "worker": worker[$language],
+        "profession": profession[$language],
+        "worker_image": worker_image,
+    },
 }`;
 
 export const querySiteMeta = `

@@ -1,16 +1,70 @@
 'use client'
 
+import React from 'react';
+
 import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/lib/constants/font';
 
+import Container from '@/components/components/container';
+
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+
+import { WORKER } from '../../../../../../sanity/sanity-queries/design';
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
+
+import { UrlType } from '@/types/design';
+
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
+import './swiper.css';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import Image from 'next/image';
 
 
-const OurTeam = () => {
+interface Props {
+    data: WORKER[]
+};
+
+const OurTeam = ({ data }: Readonly<Props>) => {
     const t = useTranslations('sections');
+
+    const workers = data?.map((worker: WORKER) => {
+        const path: UrlType | any = urlForImage(worker.worker_image);
+
+        return (
+            <SwiperSlide key={worker._key} className='card'>
+                <div className='swiper-slide-content'>
+                    <Image
+                        priority
+                        src={path?.src}
+                        height={500}
+                        width={500}
+                        alt={worker.worker_image.alt}
+                    />
+                    <div className='overlay'>
+                        <div className='items' />
+                        <div className='worker items'>
+                            <p className={Arial.className}>{worker.worker}</p>
+                            <hr />
+                        </div>
+                        <div className='profession items'>
+                            <p className={Arial.className}>{worker.profession}</p>
+                        </div>
+                    </div>
+                </div>
+            </SwiperSlide>
+        )
+    });
 
     return (
         <div className={styles.container}>
@@ -18,8 +72,47 @@ const OurTeam = () => {
                 <h2 className={cn(styles['title-back'], Arial.className)}>OUR TEAM</h2>
                 <h1 className={cn(styles.title, Arial.className)}>{t('our-team')}</h1>
             </div>
+
+            <Container className='container'>
+                <Swiper
+                    effect='coverflow'
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView='auto'
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
+                    coverflowEffect={{
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 2,
+                        slideShadows: true,
+                    }}
+                    spaceBetween={50}
+                    loop={true}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }}
+                    modules={[EffectCoverflow, Pagination, Navigation]}
+                >
+                    {workers}
+                    <div className='swiper-pagination'></div>
+                    <div className='swiper-button-prev'>
+                        <RiArrowLeftSLine size={70} color='#362906' />
+                    </div>
+                    <div className='swiper-button-next'>
+                        <RiArrowRightSLine size={70} color='#362906' />
+                    </div>
+                </Swiper>
+            </Container>
         </div>
-    )
+    );
 };
 
-export default OurTeam;
+export default React.memo(OurTeam);

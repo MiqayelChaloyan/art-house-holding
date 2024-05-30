@@ -29,7 +29,7 @@ const Home = ({
             <Courses courses={data[0].courses} />
             <OurDay our_day={data[0].our_day}/>
             <Progress data={data[0].progress_section} />
-            <OurTeam />
+            <OurTeam data={data[0].workers} />
             <Partners data={partners}/>
         </div>
     )

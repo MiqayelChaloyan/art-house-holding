@@ -76,12 +76,20 @@ export interface OUR_DAY {
     video_url: string,
 }
 
+export interface WORKER {
+    _key: string,
+    worker: string,
+    profession: string,
+    worker_image: Asset,
+}
+
 export interface DESIGN {
     _id: string,
     main_section: MAIN[],
     courses: HOME_COURSES[],
     progress_section: PROGRESS[],
     our_day: OUR_DAY,
+    workers: WORKER[]
 };
 
 export interface Social_Links {
