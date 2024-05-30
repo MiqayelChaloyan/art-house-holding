@@ -62,7 +62,7 @@ const Partners = ({ data }: Readonly<Props>) => {
     const windowSize = useWindowSize();
 
     const params = {
-        slidesPerView: windowSize.width <= 1600 ? windowSize.width <= 1440 ? 2 : 4 : 7,
+        slidesPerView: windowSize.width <= 1600 ? windowSize.width <= 1440 ? 3 : 4 : 7,
         spaceBetween: 90,
         freeMode: true,
         pagination: {

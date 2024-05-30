@@ -11,6 +11,8 @@ import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
 import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 import Modal from '@/lib/outlets/design/Modal';
 import CoursesModal from '@/lib/outlets/design/Modal/courses';
+import ContactUs from '@/lib/outlets/design/ContactUs';
+import PlayerModal from '@/lib/outlets/general/PlayerModal';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -23,9 +25,7 @@ import { query as lessonsQuery } from '../../../../../sanity/services/design-ser
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { allCoursesQuery } from '../../../../../sanity/services/design-service/courses';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
-import { HOSTS, LESSON, LESSONS } from '../../../../../sanity/sanity-queries/design';
-import ContactUs from '@/lib/outlets/design/ContactUs';
-import PlayerModal from '@/lib/outlets/general/PlayerModal';
+import { HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/design';
 
 
 interface RootLayoutProps {
@@ -85,7 +85,7 @@ async function getResources(locale: string) {
         .catch(error => {
             return { branches: [], courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
         });
-}
+};
 
 export default async function Layout({
     children,
@@ -103,7 +103,7 @@ export default async function Layout({
 
     if (!branches || !courses || !social || !lessons || !lessonsArmenian || isError) {
         notFound()
-    }
+    };
 
     return (
         <>
@@ -117,7 +117,11 @@ export default async function Layout({
                     hover='#4B352B'
                 />
                 {children}
-                {/* <ContactUs lessons={lessons} lessonsArmenian={lessonsArmenian}/> */}
+                <ContactUs
+                    locale={locale}
+                    lessons={lessons}
+                    lessonsArmenian={lessonsArmenian}
+                />
                 <Footer socialData={social} />
             </div>
             <Modal>
@@ -126,7 +130,7 @@ export default async function Layout({
             <PlayerModal />
         </>
     );
-}
+};
 
 
 async function getSiteMeta(
