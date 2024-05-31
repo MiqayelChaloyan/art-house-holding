@@ -14,7 +14,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     data: PRICES[]
 }
 
@@ -72,4 +72,4 @@ const PriceList = ({ data }: Readonly<Props>) => {
     )
 };
 
-export default PriceList;
+export default React.memo(PriceList);

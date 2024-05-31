@@ -2,18 +2,15 @@
 
 import React from 'react';
 
-import { Arial } from '@/lib/constants/font';
-
-import { PRICE_LIST } from '../../../../../sanity/sanity-queries/design';
-
-import cn from 'classnames';
-
-import styles from './styles.module.sass';
 import Promotions from './Promotions';
 import PriceList from './PriceList';
 
+import { PRICE_LIST } from '../../../../../sanity/sanity-queries/design';
 
-type Props = {
+import styles from './styles.module.sass';
+
+
+interface Props {
   data: PRICE_LIST
 }
 

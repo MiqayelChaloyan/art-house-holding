@@ -1,34 +1,33 @@
 .container
     height: max-content
-    margin-bottom: 100px
 
 .titles
     margin-top: 100px
 
 .title
-    font-size: 110px
+    font-size: 90px
     font-weight: 700
     color: #362906
     text-align: center
     line-height: 130px
     position: relative
+    text-transform: uppercase
     z-index: 2
-    left: 0
     &:before
         content: ''
         position: absolute
         background-color: #5F401B
-        width: 30%
+        width: 47%
         height: 3px
         bottom: 0
-        left: 0
+        right: 0
     /* @4xl */
     @media screen and (max-width: 2560px)
-        font-size: 110px
+        font-size: 90px
         line-height: 130px
     /* @3xl */
     @media screen and (max-width: 1920px)
-        font-size: 110px
+        font-size: 90px
         line-height: 130px
     /* @2xl */
     @media screen and (max-width: 1600px)
@@ -36,16 +35,19 @@
         line-height: 130px
     /* @xl */
     @media screen and (max-width: 1440px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
     /* @lg */
     @media screen and (max-width: 1280px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
     /* @md */
     @media screen and (max-width: 1024px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
+    @media screen and (max-width: 980px)
+        font-size: 60px
+        line-height: 90px
     /* @sm */
     @media screen and (max-width: 768px)
         font-size: 50px
@@ -53,80 +55,108 @@
     /* @xs */
     @media screen and (max-width: 600px)
         font-size: 30px
-        line-height: 90px
+        line-height: 60px
+        &:before
+            content: ''
+            position: absolute
+            background-color: #5F401B
+            width: 47%
+            height: 2px
+            bottom: 0
+            right: 0
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 30px
-        line-height: 90px
+        font-size: 27px
+        line-height: 50px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 30px
-        line-height: 90px
+        font-size: 25px
+        line-height: 50px
 
 .title-back
-    font-size: 120px
+    font-size: 100px
     font-weight: 700
     color: #D7D3CE
     text-align: center
     line-height: 130px
     position: relative
-    top: 55px
-    right: 0
+    top: 65px
+    right: 11%
     z-index: 0
     &:after
         content: ''
         position: absolute
         background-color: #5F401B
-        width: 25%
+        width: 53%
         height: 3px
         top: 0
-        right: 0
+        left: 0
     /* @4xl */
     @media screen and (max-width: 2560px)
-        font-size: 120px
+        font-size: 100px
         line-height: 130px
     /* @3xl */
     @media screen and (max-width: 1920px)
-        font-size: 120px
+        font-size: 100px
         line-height: 130px
     /* @2xl */
     @media screen and (max-width: 1600px)
         font-size: 100px
         line-height: 130px
+        right: 210px 
     /* @xl */
     @media screen and (max-width: 1440px)
-        font-size: 90px
+        font-size: 80px
         line-height: 130px
+        top: 80px
+        right: 170px 
     /* @lg */
     @media screen and (max-width: 1280px)
         font-size: 80px
         line-height: 130px
+        right: 180px
     /* @md */
     @media screen and (max-width: 1024px)
         font-size: 80px
         line-height: 130px
+        right: 170px
+    @media screen and (max-width: 980px)
+        font-size: 60px
+        line-height: 90px
+        top: 45px
+        right: 120px
     /* @sm */
     @media screen and (max-width: 768px)
         font-size: 50px
-        right: 120px
+        right: 100px
         line-height: 100px
+        top: 60px
     /* @xs */
     @media screen and (max-width: 600px)
         font-size: 35px
-        right: 70px
-        line-height: 50px
+        right: 75px
+        line-height: 60px
+        top: 36px
+        &:after
+            content: ''
+            position: absolute
+            background-color: #5F401B
+            width: 53%
+            height: 2px
+            top: 0
+            left: 0
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 35px
+        font-size: 28px
+        right: 58px
         line-height: 50px
+        top: 32px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 35px
+        font-size: 25px
+        right: 55px
         line-height: 50px
-
-
-
-
+        top: 32px
 
 .informatie
     background-color: #D4C6B9
@@ -153,19 +183,22 @@
         /* @md */
         @media screen and (max-width: 1024px)
             font-size: 14px
-            line-height: 17.8px
+            line-height: 30px
         /* @sm */
         @media screen and (max-width: 768px)
             font-size: 14px
+            line-height: 19px
         /* @xs */
         @media screen and (max-width: 600px)
             font-size: 14px
         /* @2xs */
         @media screen and (max-width: 480px)
-            font-size: 14px
+            font-size: 13px
+            line-height: 17px
         /* @3xs */
         @media screen and (max-width: 360px)
-            font-size: 14px
+            font-size: 11px
+            line-height: 17px
     h5
         color: #4B352B
         font-size: 24px
@@ -182,22 +215,22 @@
             font-size: 18px
         /* @lg */
         @media screen and (max-width: 1280px)
-            font-size: 18px
+            font-size: 15px
         /* @md */
         @media screen and (max-width: 1024px)
-            font-size: 18px
+            font-size: 14px
         /* @sm */
         @media screen and (max-width: 768px)
-            font-size: 18px
+            font-size: 14px
         /* @xs */
         @media screen and (max-width: 600px)
-            font-size: 18px
+            font-size: 14px
         /* @2xs */
         @media screen and (max-width: 480px)
-            font-size: 18px
+            font-size: 13px
         /* @3xs */
         @media screen and (max-width: 360px)
-            font-size: 18px
+            font-size: 11px
     a
         color: #4B352B
         font-size: 24px
@@ -226,10 +259,10 @@
             font-size: 14px
         /* @2xs */
         @media screen and (max-width: 480px)
-            font-size: 14px
+            font-size: 13px
         /* @3xs */
         @media screen and (max-width: 360px)
-            font-size: 14px
+            font-size: 11px
     del
         color: #4B352B
         font-size: 24px
@@ -258,29 +291,18 @@
             font-size: 14px
         /* @2xs */
         @media screen and (max-width: 480px)
-            font-size: 14px
+            font-size: 13px
         /* @3xs */
         @media screen and (max-width: 360px)
-            font-size: 14px
+            font-size: 11px
     /* @sm */
     @media screen and (max-width: 768px)
         width: 100%
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        padding: 15px
+        margin: 10px auto
+        text-align: center    
 
 .hex 
     position: relative 
@@ -314,6 +336,250 @@
     &.gradient-border 
         &:before 
             background-color: rgb(245, 246, 248) 
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 50% 
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 50% 
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 50% 
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 50% 
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 70% 
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @md */
+    @media screen and (max-width: 1024px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 70%
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    @media screen and (max-width: 980px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 80% 
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 90%
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        -webkit-clip-path: polygon(70px 0px, calc(100% - 70px) 0px, 100% 50%, calc(100% - 70px) 100%, 70px 100%, 0px 50%) 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 95%
+            height: 127px 
+            margin: 20px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        -webkit-clip-path: polygon(0 0px, calc(100%) 0px, 100% 50%, calc(100%) 100%, 0 100%, 0px 50%) 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 90% 
+            height: 127px 
+            margin: 7px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        height: 127px 
+        min-width: 100px 
+        padding: 12px 
+        margin: 4px 
+        -webkit-clip-path: polygon(0 0px, calc(100%) 0px, 100% 50%, calc(100%) 100%, 0 100%, 0px 50%) 
+        &.gradient-bg 
+            color: white 
+            display: flex 
+            justify-content: space-evenly 
+            align-items: center 
+            width: 90% 
+            height: 127px 
+            margin: 7px auto 
+        &:before 
+            position: absolute 
+            content: '' 
+            height: calc(100% - 14px) 
+            width: calc(100% - 14px) 
+            left: 7px 
+            top: 7px 
+            z-index: -1 
 
 .our-advantages 
     width: 70% 
@@ -321,6 +587,71 @@
     font-size: 16px 
     line-height: 18.4px 
     font-weight: 700 
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 16px 
+        line-height: 18.4px 
+        font-weight: 700
+        width: 70% 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 16px 
+        line-height: 18.4px 
+        font-weight: 700
+        width: 70% 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 16px 
+        line-height: 18.4px 
+        font-weight: 700
+        width: 70% 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 16px 
+        line-height: 18.4px 
+        font-weight: 700
+        width: 70% 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 16px 
+        line-height: 18.4px 
+        font-weight: 700
+        width: 70% 
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 16px 
+        line-height: 18.4px 
+        font-weight: 700
+        width: 70% 
+    @media screen and (max-width: 980px)
+        font-size: 14px
+        line-height: 16px
+        font-weight: 700
+        width: 70% 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 14px
+        line-height: 16px
+        font-weight: 700
+        width: 70% 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 12px
+        line-height: 14px
+        font-weight: 700
+        width: 70% 
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 12px
+        line-height: 14px
+        font-weight: 700
+        width: 70% 
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 10px
+        line-height: 14px
+        font-weight: 700
+        width: 80% 
 
 .advantages 
     display: grid 
