@@ -26,7 +26,7 @@ interface BoxProps {
 
 const Box = ({ advantages, iconSize }: BoxProps) => (
     <div className={cn(styles.hex, styles['gradient-bg'])}>
-        <Vector width={iconSize < 980 ? 30 : 68.42} height={38.07} fill='#FFFFFF' />
+        <Vector width={iconSize > 980 ? 68.42 : 30} height={38.07} fill='#FFFFFF' />
         <p className={cn(styles['our-advantages'], Arial.className)}>{advantages}</p>
     </div>
 );
