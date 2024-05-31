@@ -36,32 +36,33 @@ import styles from './styles.module.sass';
 interface Props {
     data: WORKER[]
 };
+
 const OurTeam = ({ data }: Readonly<Props>) => {
     const t = useTranslations('sections');
-    const [isSwiperInView, setIsSwiperInView] = useState(false);
-    const swiperRef = useRef<HTMLDivElement>(null);
+    // const [isSwiperInView, setIsSwiperInView] = useState(false);
+    // const swiperRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsSwiperInView(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.1 }
-        );
+    // useEffect(() => {
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             if (entry.isIntersecting) {
+    //                 setIsSwiperInView(true);
+    //                 observer.disconnect();
+    //             }
+    //         },
+    //         { threshold: 0.1 }
+    //     );
 
-        if (swiperRef.current) {
-            observer.observe(swiperRef.current);
-        }
+    //     if (swiperRef.current) {
+    //         observer.observe(swiperRef.current);
+    //     }
 
-        return () => {
-            if (swiperRef.current) {
-                observer.unobserve(swiperRef.current);
-            }
-        };
-    }, []);
+    //     return () => {
+    //         if (swiperRef.current) {
+    //             observer.unobserve(swiperRef.current);
+    //         }
+    //     };
+    // }, []);
 
     const workers = data?.map((worker: WORKER) => {
         const path: UrlType | any = urlForImage(worker.worker_image);
@@ -92,13 +93,14 @@ const OurTeam = ({ data }: Readonly<Props>) => {
     });
 
     return (
-        <div className={styles.container} ref={swiperRef}>
+        <div className={styles.container}> 
+        {/* //ref={swiperRef} */}
             <div className={styles.titles}>
                 <h2 className={cn(styles['title-back'], Arial.className)}>OUR TEAM</h2>
                 <h1 className={cn(styles.title, Arial.className)}>{t('our-team')}</h1>
             </div>
 
-            {isSwiperInView && (
+            {/* {isSwiperInView && ( */}
                 <Container className='container'>
                     <Swiper
                         effect='coverflow'
@@ -138,7 +140,7 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                         </div>
                     </Swiper>
                 </Container>
-            )}
+            {/* )} */}
         </div>
     );
 };
