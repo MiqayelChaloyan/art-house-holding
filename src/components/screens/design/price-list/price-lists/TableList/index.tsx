@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/lib/constants/font';
 
-import { PRICES } from '../../../../../../sanity/sanity-queries/design';
+import { PRICES } from '../../../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
@@ -15,13 +15,13 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: PRICES[]
-}
+    data: PRICES[],
+};
 
-const PriceList = ({ data }: Readonly<Props>) => {
+const TableList = ({ data }: Readonly<Props>) => {
     const t = useTranslations('tables-titles');
 
-    const tableRows: JSX.Element[] = data?.map((item: any) => {
+    const tableRows: JSX.Element[] = data?.map((item: PRICES) => {
         return (
             <tr key={item._key}>
                 <td className={styles.course}>{item.course}</td>
@@ -42,12 +42,7 @@ const PriceList = ({ data }: Readonly<Props>) => {
     });
 
     return (
-        <section id='price-list' className={styles.container}>
-            <div className={styles.titles}>
-                <h2 className={cn(styles['title-back'], Arial.className)}>PRICE LIST</h2>
-                <h1 className={cn(styles.title, Arial.className)}>ԳՆԱՑՈՒՑԱԿ</h1>
-            </div>
-
+        <div className={styles.container}>
             <div className={cn(styles.table, Arial.className)}>
                 <table>
                     <thead>
@@ -68,8 +63,8 @@ const PriceList = ({ data }: Readonly<Props>) => {
                     </tbody>
                 </table>
             </div>
-        </section>
+        </div>
     )
 };
 
-export default React.memo(PriceList);
+export default React.memo(TableList);

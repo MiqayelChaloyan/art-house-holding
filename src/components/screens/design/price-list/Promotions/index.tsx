@@ -21,7 +21,7 @@ import styles from './styles.module.sass';
 
 interface BoxProps {
     advantages: string,
-    iconSize: number
+    iconSize: number,
 };
 
 const Box = ({ advantages, iconSize }: BoxProps) => (
@@ -56,4 +56,4 @@ const Promotions = ({ informatie, our_advantages }: Readonly<Props>) => {
     )
 };
 
-export default Promotions;
+export default React.memo(Promotions);

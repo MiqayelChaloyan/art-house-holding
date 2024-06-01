@@ -36,6 +36,7 @@ export interface PORTFOLIO {
 };
 
 export interface PRICES {
+    _key: string
     course: string,
     group_lessons: number,
     personal_lessons: number,
