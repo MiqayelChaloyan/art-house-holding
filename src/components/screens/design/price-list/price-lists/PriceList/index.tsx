@@ -33,9 +33,9 @@ const PriceList = ({ data }: Readonly<Props>) => {
                 <h1 className={cn(styles.title, Arial.className)}>{t('price-list')}</h1>
             </div>
             <div>
-                {windowSize.width > 600 ?
-                    <TableList data={data} /> :
-                    <AccordionList data={data} />
+                {windowSize.width < 600 ?
+                    <AccordionList data={data} /> :
+                    <TableList data={data} /> 
                 }
             </div>
         </section>
