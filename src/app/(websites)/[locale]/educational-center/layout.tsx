@@ -13,6 +13,7 @@ import CoursesModal from '@/lib/outlets/educational-center/Modal/courses';
 import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
 import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 import PlayerModal from '@/lib/outlets/general/PlayerModal';
+import GoBack from '@/lib/outlets/general/GoBack';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -98,6 +99,7 @@ export default async function Layout({
     return (
         <div>
             <div className='wrapper'>
+                {/* <GoBack locale={locale} theme='#821616'/> */}
                 <RightMenu locale={locale} socialData={social} />
                 <BottomMenu locale={locale} socialData={social} />
                 <ScrollToTopButton theme='#821616' />

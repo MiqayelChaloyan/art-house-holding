@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import useWindowSize from '@/hooks/useWindowSize';
-
 import Promotions from './Promotions';
 import PriceList from './price-lists/PriceList';
 

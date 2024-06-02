@@ -13,6 +13,7 @@ import Modal from '@/lib/outlets/design/Modal';
 import CoursesModal from '@/lib/outlets/design/Modal/courses';
 import ContactUs from '@/lib/outlets/design/ContactUs';
 import PlayerModal from '@/lib/outlets/general/PlayerModal';
+import GoBack from '@/lib/outlets/general/GoBack';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -109,6 +110,7 @@ export default async function Layout({
         <>
             <div className='design-container'>
                 <Header typePosition="fixed" locale={locale} />
+                <GoBack locale={locale} theme='#8E685C'/>
                 <ScrollToTopButton theme='#8E685C' />
                 <FloatingMenu
                     website={localeStrings[locale]}

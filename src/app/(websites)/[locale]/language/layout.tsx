@@ -10,6 +10,7 @@ import Footer from '@/lib/outlets/language/Footer';
 import Header from '@/lib/outlets/language/Header';
 import PlayerModal from '@/lib/outlets/general/PlayerModal';
 import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
+import GoBack from '@/lib/outlets/general/GoBack';
 
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
@@ -98,6 +99,7 @@ export default async function Layout({
                     <Header locale={locale} />
                 </div>
                 {/* <FBMessenger /> */}
+                {/* <GoBack locale={locale} theme='#006ED2'/> */}
                 <ScrollToTopButton theme='#006ED2' />
                 <FloatingMenu
                     website={localeStrings[locale]}

@@ -45,7 +45,7 @@ const AccordionItem = ({ handleToggle, active, course }: Readonly<AccordionItemP
                 className={cn(styles['accordion-toggle'], active === id ? styles.active : '')}
             >
                 <div>
-                    <h5 className={styles['accordion-title']}>{course_name}</h5>
+                    <h5 className={cn(styles['accordion-title'], Arial.className)}>{course_name}</h5>
                 </div>
                 <div>
                     <RiArrowDownSLine className={styles['accordion-icon']} size={20} color='#fff' />
