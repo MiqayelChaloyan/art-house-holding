@@ -46,21 +46,15 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
     [searchParams]
   );
 
-  const navbar: React.JSX.Element[] = courses?.map(({ course_name, _id, name }: COURSE) => (
+  const navbar: React.JSX.Element[] = courses?.map(({ course_name, _id, name }: COURSE, index: number) => (
     <Link
       key={_id}
       href={pathname + '?' + createQueryString('name', name)}
-      className={cn(styles.btn, styles.line)}
+      className={cn(styles.link, styles.line, property === name ? styles.active : '', Arial.className)}
     >
-      <div className={cn(property === name ? styles.active : styles.triangle)}>
-        <aside className={styles['course-button']}>
-          <span
-            className={cn(styles.link, Arial.className)}
-          >
-            {course_name}
-          </span>
-        </aside>
-      </div>
+      <span>
+        {course_name}
+      </span>
     </Link>
   ));
 
@@ -69,29 +63,23 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
       <div className={styles.navigation}>
         <Link
           href={pathname + '?' + createQueryString('name', defaultSearchParam)}
-          className={cn(styles.btn)}
+          className={cn(styles.link, styles.line, !property || property === defaultSearchParam ? styles.active : '', Arial.className)}
         >
-          <div className={cn(!property || property === defaultSearchParam ? styles.active : styles.triangle)}>
-            <aside className={styles['course-button']}>
-              <span
-                className={cn(styles.link, Arial.className)}
-              >
-                {t('buttons.view-all')}
-              </span>
-            </aside>
-          </div>
+          <span>
+            {t('buttons.view-all')}
+          </span>
         </Link>
         {navbar}
       </div>
       <div className={styles.titles}>
         <h2 className={cn(styles['title-back'], Arial.className)}>PORTFOLIO</h2>
         <h1 className={cn(styles.title, Arial.className)}>
-           {t('navigation.portfolio')}
+          {t('navigation.portfolio')}
         </h1>
       </div>
-      <Container className='box'>
+      {/* <Container className='box'>
         <Gallery category={category} />
-      </Container>
+      </Container> */}
     </section>
   );
 };

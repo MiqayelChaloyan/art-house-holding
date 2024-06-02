@@ -99,7 +99,7 @@ export default async function Layout({
                     <Header locale={locale} />
                 </div>
                 {/* <FBMessenger /> */}
-                {/* <GoBack locale={locale} theme='#006ED2'/> */}
+                <GoBack locale={locale} theme='#006ED2'/>
                 <ScrollToTopButton theme='#006ED2' />
                 <FloatingMenu
                     website={localeStrings[locale]}

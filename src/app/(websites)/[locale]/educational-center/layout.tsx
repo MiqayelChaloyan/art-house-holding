@@ -99,7 +99,7 @@ export default async function Layout({
     return (
         <div>
             <div className='wrapper'>
-                {/* <GoBack locale={locale} theme='#821616'/> */}
+                <GoBack locale={locale} theme='#821616'/>
                 <RightMenu locale={locale} socialData={social} />
                 <BottomMenu locale={locale} socialData={social} />
                 <ScrollToTopButton theme='#821616' />

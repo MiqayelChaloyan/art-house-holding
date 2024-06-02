@@ -14,7 +14,7 @@ const Home = ({ courses }: Readonly<Props>) => {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <Portfolios courses={courses}/>
         </div>
     )

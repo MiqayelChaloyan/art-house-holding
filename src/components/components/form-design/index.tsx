@@ -137,7 +137,8 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
         <div className={styles.container}>
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
-                <div className={cn(styles.contact_us, classNameProperty === 'small' && styles.line)}>
+                <div className={cn(styles.contact_us)}> 
+                {/* classNameProperty === 'small' && styles.line */}
                     {classNameProperty === 'small' && <h2 className={cn(styles.form_title, Arial.className)}>
                         {t('contact-us-form.form-title-language')}
                     </h2>}

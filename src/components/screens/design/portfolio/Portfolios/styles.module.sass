@@ -3,7 +3,7 @@
     padding-top: 150px
 
 .titles
-    margin-top: 100px
+    margin-top: 0
 
 .title
     font-size: 90px
@@ -36,16 +36,19 @@
         line-height: 130px
     /* @xl */
     @media screen and (max-width: 1440px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
     /* @lg */
     @media screen and (max-width: 1280px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
     /* @md */
     @media screen and (max-width: 1024px)
-        font-size: 90px
+        font-size: 70px
         line-height: 130px
+    @media screen and (max-width: 980px)
+        font-size: 60px
+        line-height: 90px
     /* @sm */
     @media screen and (max-width: 768px)
         font-size: 50px
@@ -53,15 +56,23 @@
     /* @xs */
     @media screen and (max-width: 600px)
         font-size: 30px
-        line-height: 90px
+        line-height: 60px
+        &:before
+            content: ''
+            position: absolute
+            background-color: #5F401B
+            width: 47%
+            height: 2px
+            bottom: 0
+            right: 0
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 30px
-        line-height: 90px
+        font-size: 27px
+        line-height: 50px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 30px
-        line-height: 90px
+        font-size: 25px
+        line-height: 50px
 
 .title-back
     font-size: 100px
@@ -70,14 +81,14 @@
     text-align: center
     line-height: 130px
     position: relative
-    top: 55px
-    right: 230px
+    top: 65px
+    right: 11%
     z-index: 0
     &:after
         content: ''
         position: absolute
         background-color: #5F401B
-        width: 57%
+        width: 53%
         height: 3px
         top: 0
         left: 0
@@ -93,156 +104,171 @@
     @media screen and (max-width: 1600px)
         font-size: 100px
         line-height: 130px
+        right: 210px 
     /* @xl */
     @media screen and (max-width: 1440px)
-        font-size: 90px
+        font-size: 80px
         line-height: 130px
+        top: 80px
+        right: 170px 
     /* @lg */
     @media screen and (max-width: 1280px)
         font-size: 80px
         line-height: 130px
+        right: 180px
     /* @md */
     @media screen and (max-width: 1024px)
         font-size: 80px
         line-height: 130px
+        right: 170px
+    @media screen and (max-width: 980px)
+        font-size: 60px
+        line-height: 90px
+        top: 45px
+        right: 120px
     /* @sm */
     @media screen and (max-width: 768px)
         font-size: 50px
-        right: 120px
+        right: 100px
         line-height: 100px
+        top: 60px
     /* @xs */
     @media screen and (max-width: 600px)
         font-size: 35px
-        right: 70px
-        line-height: 50px
+        right: 75px
+        line-height: 60px
+        top: 36px
+        &:after
+            content: ''
+            position: absolute
+            background-color: #5F401B
+            width: 53%
+            height: 2px
+            top: 0
+            left: 0
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 35px
+        font-size: 28px
+        right: 58px
         line-height: 50px
+        top: 32px
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 35px
+        font-size: 25px
+        right: 55px
         line-height: 50px
+        top: 32px
 
-
-
-.triangle
-    margin: 30px
-    text-align: center
-    position: relative
-    z-index: 5
-    aside
-        margin: 20px 0 
-        line-height: 34px 
-        position: relative 
-        cursor: pointer 
-        user-select: none 
-        transition: all 0.5s 
-        &:hover 
-            &.course-button 
-                background-color:  #6E5E4A     
-                &:after
-                    border-color: transparent  #6E5E4A      
-                &:before
-                    border-color: transparent  #6E5E4A   
-        &.course-button 
-            background-color: #4B352B 
-            &:before 
-                left: -17px 
-                border-width: 17px 17px 17px 0 
-            &:after 
-                right: -17px 
-                border-width: 17px 0 17px 17px 
-    aside.course-button:after, aside.course-button:before 
-        transition: all 0.5s 
-        border-color: transparent #4B352B  
-    aside:before, aside:after 
-        content: '' 
-        position: absolute 
-        height: 0 
-        width: 0 
-        border-style: solid 
-        border-width: 0 
-    /* @xs */
-    @media screen and (max-width: 600px)
-        margin: 0
-
-.link
-    color: #FFFFFF
-    font-size: 18px
-    line-height: 0.5em
-    text-transform: uppercase
+.navigation
+    display: grid    
+    grid-template-columns: repeat(8, 1fr)
+    gap: 20px
+    margin: 0 50px
     /* @4xl */
     @media screen and (max-width: 2560px)
-        font-size: 18px
+        grid-template-columns: repeat(8, 1fr)
     /* @3xl */
     @media screen and (max-width: 1920px)
-        font-size: 18px
+        grid-template-columns: repeat(8, 1fr)
     /* @2xl */
     @media screen and (max-width: 1600px)
-        font-size: 15px
+        grid-template-columns: repeat(6, 1fr)
     /* @xl */
     @media screen and (max-width: 1440px)
-        font-size: 13px
+        grid-template-columns: repeat(5, 1fr)
     /* @lg */
     @media screen and (max-width: 1280px)
-        font-size: 12px
+        grid-template-columns: repeat(5, 1fr)
+    @media screen and (max-width: 1150px)
+        grid-template-columns: repeat(4, 1fr)
     /* @md */
     @media screen and (max-width: 1024px)
-        font-size: 10px
+        grid-template-columns: repeat(4, 1fr)
+    @media screen and (max-width: 950px)
+        grid-template-columns: repeat(3, 1fr)
+        margin: 0 100px
     /* @sm */
     @media screen and (max-width: 768px)
-        font-size: 9px
+        grid-template-columns: repeat(3, 1fr)
+        margin: 0 80px
     /* @xs */
     @media screen and (max-width: 600px)
-        font-size: 14px
+        grid-template-columns: repeat(3, 1fr)
+        margin: 0 50px
+    @media screen and (max-width: 550px)
+        grid-template-columns: repeat(1, 1fr)
     /* @2xs */
     @media screen and (max-width: 480px)
-        font-size: 14px
+        grid-template-columns: repeat(1, 1fr)
     /* @3xs */
     @media screen and (max-width: 360px)
-        font-size: 14px
+        grid-template-columns: repeat(1, 1fr)
 
-.active
-    margin: 30px
-    text-align: center
-    position: relative
-    z-index: 5
-    aside
-        margin: 20px 0 
-        line-height: 34px 
+.link
+    filter: drop-shadow(1px 1px 3px #D4C6B9) 
+    span 
+        display: inline-block 
         position: relative 
-        cursor: pointer 
-        user-select: none 
-        transition: all 0.5s 
-        &:hover 
-            &.course-button 
-                background-color:  #6E5E4A     
-                &:after
-                    border-color: transparent  #6E5E4A      
-                &:before
-                    border-color: transparent  #6E5E4A   
-        &.course-button 
-            background-color: #6E5E4A 
-            &:before 
-                left: -17px 
-                border-width: 17px 17px 17px 0 
-            &:after 
-                right: -17px 
-                border-width: 17px 0 17px 17px 
-    aside.course-button:after, aside.course-button:before 
-        transition: all 0.5s 
-        border-color: transparent #6E5E4A  
-    aside:before, aside:after 
-        content: '' 
-        position: absolute 
-        height: 0 
-        width: 0 
-        border-style: solid 
-        border-width: 0 
+        color: #fff 
+        font-weight: 500 
+        text-decoration: none 
+        text-transform: uppercase 
+        padding: 10px 
+        width: 200px
+        font-size: 15px
+        text-align: center 
+        clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%) 
+        background-color: #4B352B 
+        background-image: radial-gradient(200% 70% at center 20%, #4B352B -30%, #4B352B 49%, #4B352B 50%, #4B352B 150%) 
+        background-repeat: no-repeat 
+        transition: all .5s 
+        z-index: 5
+    &:hover 
+        span 
+            background-image: radial-gradient(200% 70% at center 20%, #6E5E4A -30%, #6E5E4A 49%, #6E5E4A 50%, #6E5E4A 150%) 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        span
+            width: 150px
+            font-size: 10px
     /* @xs */
     @media screen and (max-width: 600px)
-        margin: 0
+        span
+            width: 140px
+            font-size: 8px
+    @media screen and (max-width: 550px)
+        span
+            width: 70%
+            height: 40px
+            font-size: 14px
+            display: flex
+            justify-content: center
+            align-items: center
+            margin: 0 auto
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        span
+            width: 70%
+            height: 30px
+            font-size: 12px
+            display: flex
+            justify-content: center
+            align-items: center
+            margin: 0 auto
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        span
+            width: 70%
+            height: 40px
+            font-size: 10px
+            display: flex
+            justify-content: center
+            align-items: center
+            margin: 0 auto
+
+.active
+    span
+        background-image: radial-gradient(200% 70% at center 20%, #6E5E4A -30%, #6E5E4A 49%, #6E5E4A 50%, #6E5E4A 150%) 
 
 .line
     position: relative
@@ -250,58 +276,143 @@
         content: " " 
         display: block 
         height: 2px 
-        width: 100px 
+        width: 100% 
         position: absolute 
-        top: 50%
-        left: -20px 
-        background: #4B352B   
-
-.btn
-    &:last-child
-        .line
+        top: 47%
+        left: 25px
+        background: #4B352B 
+    &:nth-child(8n)
+        &:before 
             display: none
-
-.navigation
-    display: grid    
-    grid-template-columns: repeat(6, 1fr)
-    margin: 0 100px
-    /* @4xl */
-    @media screen and (max-width: 2560px)
-        grid-template-columns: repeat(6, 1fr)
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-        grid-template-columns: repeat(6, 1fr)
+    &:last-child
+        &:before 
+            display: none
     /* @2xl */
     @media screen and (max-width: 1600px)
-        grid-template-columns: repeat(5, 1fr)
+        &:nth-child(6n)
+            &:before 
+                display: none
+        &:nth-child(8n)
+            &:before 
+                content: " " 
+                display: block 
+                height: 2px 
+                width: 100% 
+                position: absolute 
+                top: 47%
+                left: 25px
+                background: #4B352B 
+        &:last-child
+            &:before 
+                display: none
     /* @xl */
     @media screen and (max-width: 1440px)
-        grid-template-columns: repeat(5, 1fr)
-    /* @lg */
+        &:nth-child(5n)
+            &:before 
+                display: none
+        &:nth-child(6n)
+            &:before 
+                content: " " 
+                display: block 
+                height: 2px 
+                width: 100% 
+                position: absolute 
+                top: 47%
+                left: 25px
+                background: #4B352B 
+        &:last-child
+            &:before 
+                display: none
+    /* @xl */
     @media screen and (max-width: 1280px)
-        grid-template-columns: repeat(4, 1fr)
-    /* @md */
-    @media screen and (max-width: 1024px)
-        grid-template-columns: repeat(3, 1fr)
+        &:nth-child(5n)
+            &:before 
+                display: none
+        &:nth-child(6n)
+            &:before 
+                content: " " 
+                display: block 
+                height: 2px 
+                width: 100% 
+                position: absolute 
+                top: 47%
+                left: 25px
+                background: #4B352B 
+        &:last-child
+            &:before 
+                display: none
+    @media screen and (max-width: 1150px)
+        &:nth-child(4n)
+            &:before 
+                display: none
+        &:nth-child(5n)
+            &:before 
+                content: " " 
+                display: block 
+                height: 2px 
+                width: 100% 
+                position: absolute 
+                top: 49%
+                left: 25px
+                background: #4B352B 
+        &:last-child
+            &:before 
+                display: none
+    @media screen and (max-width: 950px)
+        &:nth-child(3n)
+            &:before 
+                display: none
+        &:nth-child(4n)
+            &:before 
+                content: " " 
+                display: block 
+                height: 2px 
+                width: 100% 
+                position: absolute 
+                top: 47%
+                left: 25px
+                background: #4B352B 
+        &:last-child
+            &:before 
+                display: none
     /* @sm */
     @media screen and (max-width: 768px)
-        grid-template-columns: repeat(2, 1fr)
-    /* @xs */
-    @media screen and (max-width: 600px)
-        grid-template-columns: repeat(1, 1fr)
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        grid-template-columns: repeat(1, 1fr)
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        grid-template-columns: repeat(1, 1fr)
-
- 
-.line
+        &:nth-child(3n)
+            &:before 
+                display: none
+        &:nth-child(4n)
+            &:before 
+                content: " " 
+                display: block 
+                height: 2px 
+                width: 100% 
+                position: absolute 
+                top: 47%
+                left: 25px
+                background: #4B352B 
+        &:last-child
+            &:before 
+                display: none
     /* @xs */
     @media screen and (max-width: 600px)
         &:before
-            display: none
-
-
-
+            top: 53%
+        &:nth-child(3n)
+            &:before 
+                display: none
+        &:nth-child(4n)
+            &:before 
+                content: " " 
+                display: block 
+                height: 2px 
+                width: 100% 
+                position: absolute 
+                top: 53%
+                left: 25px
+                background: #4B352B 
+        &:last-child
+            &:before 
+                display: none
+    @media screen and (max-width: 550px)
+        &:before
+            display: none !important

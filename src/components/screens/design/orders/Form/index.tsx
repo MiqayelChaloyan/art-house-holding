@@ -151,7 +151,8 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
         <div className={styles.container}>
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
-                <div className={cn(styles.contact_us, styles.line)}>
+                <div className={cn(styles.contact_us)}>  
+                {/* styles.line */}
                     <h2 className={cn(styles.form_title, Arial.className)}>
                         {t('contact-us-form.form-title-order')}
                     </h2>
