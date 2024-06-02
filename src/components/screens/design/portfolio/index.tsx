@@ -5,19 +5,16 @@ import Portfolios from './Portfolios';
 
 import { COURSE } from '../../../../../sanity/sanity-queries/design';
 
-type Props = {
+interface Props {
     courses: COURSE[],
+    data: any
 };
 
-
-const Home = ({ courses }: Readonly<Props>) => {
-
-    return (
-        <div>
-            {/* <Header /> */}
-            <Portfolios courses={courses}/>
-        </div>
-    )
-}
+const Home = ({ courses, data }: Readonly<Props>) => (
+    <div>
+        <Header data={data} />
+        <Portfolios courses={courses} />
+    </div>
+);
 
 export default Home;

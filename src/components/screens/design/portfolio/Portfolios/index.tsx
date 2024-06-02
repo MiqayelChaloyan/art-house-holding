@@ -18,7 +18,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
   courses: COURSE[],
 };
 
@@ -77,9 +77,9 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
           {t('navigation.portfolio')}
         </h1>
       </div>
-      {/* <Container className='box'>
+      <div className={styles.gallery}>
         <Gallery category={category} />
-      </Container> */}
+      </div>
     </section>
   );
 };

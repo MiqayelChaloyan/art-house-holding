@@ -119,11 +119,11 @@ export default async function Layout({
                     hover='#4B352B'
                 />
                 {children}
-                {/* <ContactUs
+                <ContactUs
                     locale={locale}
                     lessons={lessons}
                     lessonsArmenian={lessonsArmenian}
-                /> */}
+                />
                 <Footer socialData={social} />
             </div>
             <Modal>

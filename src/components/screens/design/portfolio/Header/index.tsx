@@ -1,55 +1,37 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+'use client'
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
+import React from 'react';
 
-import './styles.css';
+import { Arial } from '@/lib/constants/font';
 
-// import required modules
-import { Navigation } from 'swiper/modules';
+import { UrlType } from '@/types/design';
+
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { PORTFOLIO } from '../../../../../../sanity/sanity-queries/design';
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
 
 
-// const settings = {
-//     autoplay: {
-//         delay: 5000,
-//         speed: 500
-//     }
-// };
+interface Props {
+    data: PORTFOLIO,
+};
 
-export default function Header() {
+const Header = ({ data }: Readonly<Props>) => {
+    const path: UrlType | any = urlForImage(data.image);
+    const list = data?.advantages.map((elem, index) => <li key={index}>{elem}</li>);
+
     return (
-        <>
-            <Swiper
-                // rewind={true}
-                navigation={true}
-                // {...settings}
-                modules={[Navigation]}
-                className="mySwiper"
-            >
-                <SwiperSlide>
-                    <div style={{ width: '100%', height: '700px', backgroundColor: 'red' }}>
-                        Slide 1
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div style={{ width: '100%', height: '700px', backgroundColor: 'black' }}>
-                        Slide 2
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div style={{ width: '100%', height: '700px', backgroundColor: 'yellow' }}>
-                        Slide 3
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div style={{ width: '100%', height: '700px', backgroundColor: 'green' }}>
-                        Slide 4
-                    </div>
-                </SwiperSlide>
-            </Swiper>
-        </>
+        <div>
+            <div className={styles.image} style={{ backgroundImage: `url(${path?.src})` }} />
+            <div className={cn(styles.list, Arial.className)}>
+                <ul>
+                    {list}
+                </ul>
+            </div>
+        </div>
     );
-}
+};
+
+export default Header;

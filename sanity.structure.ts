@@ -27,7 +27,8 @@ export default (S: any) =>
                     'courses-design',
                     'price-list-design',
                     'design-lessons-select-option',
-                    'partners'
+                    'partners',
+                    'portfolio-design'
                 ].includes(listItem.getId())
             ),
 
@@ -102,6 +103,10 @@ export default (S: any) =>
                                 .title('Lessons & Orders')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('design-lessons-select-option').documentId('design-lessons-select-option')),
+                            S.listItem()
+                                .title('Portfolio')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('portfolio-design').documentId('portfolio-design')),
                         ])
                 ),
 

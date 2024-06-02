@@ -51,6 +51,12 @@ export interface PRICE_LIST {
     price_list: PRICES[]
 };
 
+export interface PORTFOLIO {
+    _id: string,
+    image: Asset,
+    advantages: string[],
+};
+
 export interface COURSE {
     _id: string,
     slug: string,
