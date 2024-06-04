@@ -64,7 +64,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                 className={cn(styles['design-image'], index === imageIndex ? styles.active : styles.next)}
                 style={{ backgroundImage: `url(${path?.src})` }} />
         )
-    })
+    });
 
     const getResources = async () => {
         const _id = categories._ref;

@@ -45,7 +45,7 @@ export default async function Page({
     }
 
     return (
-        <Course course={course[0]}/>
+        <Course locale={locale} course={course[0]}/>
     )
 }
 
@@ -56,10 +56,10 @@ export async function generateMetadata({
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
     const { course }: any = await getResources(slug[0], locale);
-console.log(course)
-    const ogTitle = course[0].course_name;
-    const ogImage = course[0].gallery_of_course[0];
-    const ogDescription = course[0].guides[0];
+
+    const ogTitle = 'course[0].course_name';
+    const ogImage = 'course[0].gallery_of_course[0]';
+    const ogDescription = 'course[0].guides[0]';
     const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
 
     return {

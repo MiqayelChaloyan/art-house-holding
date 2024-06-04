@@ -11,31 +11,39 @@ import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
+import { SwiperSlide } from 'swiper/react';
+import FlatList from '../flat-list';
 
+
+import './style.css'
 type Props = {
     category: COURSE[],
 };
 
 const Gallery = ({ category }: Readonly<Props>) => {
-    const gallery: React.JSX.Element[]  = category.flatMap((item: COURSE, index: number) => {
+    const gallery: React.JSX.Element[] = category.flatMap((item: COURSE, index: number) => {
         return item.portfolio.map((elem: PORTFOLIO) => {
             const path: UrlType | any = urlForImage(elem.image);
 
             return (
-                <Portfolio
+                // <SwiperSlide
+                // >
+                    <Portfolio
                     key={elem._key + index}
-                    src={path?.src}
-                    alt={elem.image.alt}
-                    author={elem.author}
-                    course_name={item.course_name}
-                />
+                        src={path?.src}
+                        alt={elem.image.alt}
+                        author={elem.author}
+                        course_name={item.course_name}
+                    />
+                // </SwiperSlide>
             );
         });
     });
 
     return (
         <div className={styles.portfolios}>
-            {gallery}
+            {/* {gallery} */}
+            <FlatList list={gallery}/>
         </div>
     );
 };
