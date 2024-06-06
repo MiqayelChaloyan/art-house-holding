@@ -17,4 +17,3 @@ export const LoaderPages = () => (
         <div className="side"></div>
     </div>
 );
-

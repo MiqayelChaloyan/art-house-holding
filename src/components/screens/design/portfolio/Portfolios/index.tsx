@@ -6,8 +6,7 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
-// import Gallery from '@/components/components/gallery';
+import Gallery from '@/components/components/gallery';
 
 import { Arial } from '@/lib/constants/font';
 
@@ -30,6 +29,14 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
   const searchParams = useSearchParams();
   const property: string | null = searchParams.get('name');
   const [category, setCategory] = useState<COURSE[]>(courses);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const navigationEntries = window.performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    if (navigationEntries.length > 0 && navigationEntries[0].type === 'reload') {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     const filteredCourses = property && property !== defaultSearchParam ? courses.filter((elem: COURSE) => elem.name === property) : courses;
@@ -50,6 +57,7 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
     <Link
       key={_id}
       href={pathname + '?' + createQueryString('name', name)}
+      scroll={false}
       className={cn(styles.link, styles.line, property === name ? styles.active : '', Arial.className)}
     >
       <span>
@@ -63,6 +71,7 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
       <div className={styles.navigation}>
         <Link
           href={pathname + '?' + createQueryString('name', defaultSearchParam)}
+          scroll={false}
           className={cn(styles.link, styles.line, !property || property === defaultSearchParam ? styles.active : '', Arial.className)}
         >
           <span>
@@ -77,9 +86,13 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
           {t('navigation.portfolio')}
         </h1>
       </div>
-      {/* <div className={styles.gallery}>
-        <Gallery category={category} />
-      </div> */}
+      <div className={styles.gallery}>
+        {loading ?
+          <div className={styles['loader-card']} />
+           :
+          <Gallery projects={category} />
+        }
+      </div>
     </section>
   );
 };

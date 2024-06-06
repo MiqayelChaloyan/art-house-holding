@@ -4,6 +4,8 @@ import React from 'react';
 
 import Portfolio from '@/lib/ui/portfolio-image-card';
 
+import useWindowSize from '@/hooks/useWindowSize';
+
 import { UrlType } from '@/types/design';
 
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
@@ -15,43 +17,57 @@ import { SwiperSlide } from 'swiper/react';
 import FlatList from '../flat-list';
 
 
-import './style.css';
-
-type Props = {
-    projects: PORTFOLIO[],
+interface Props {
+    projects: COURSE[],
 };
 
+const generateGalleryItems = (projects: COURSE[]) => {
+    return projects.reduce((acc, item: COURSE) => {
+        item.portfolio.forEach((elem: PORTFOLIO, index: number) => {
+            const path: UrlType | any = urlForImage(elem.image);
+            const randomNumber = Math.random();
+
+            const portfolioElement = (
+                <Portfolio
+                    key={elem._key + randomNumber}
+                    src={path?.src}
+                    alt={elem.image.alt}
+                    author={elem.author}
+                    course_name={item.course_name}
+                />
+            );
+
+            const desktopCard = portfolioElement;
+            const mobileCard = (
+                <SwiperSlide key={elem._key + randomNumber}>
+                    {portfolioElement}
+                </SwiperSlide>
+            );
+
+            acc.desktopCards.push(desktopCard);
+            acc.mobileCards.push(mobileCard);
+        });
+        return acc;
+    }, { desktopCards: [] as JSX.Element[], mobileCards: [] as JSX.Element[] });
+};
+
+
 const Gallery = ({ projects }: Readonly<Props>) => {
-    console.log(projects)
-
-    // console.log(projects)
-    
-    // const gallery: React.JSX.Element[] = projects.flatMap((item: COURSE, index: number) => {
-    //     return item.portfolio.map((elem: PORTFOLIO) => {
-    //         const path: UrlType | any = urlForImage(elem.image);
-
-    //         return (
-    //             // <SwiperSlide
-    //             // >
-    //             <Portfolio
-    //                 key={elem._key + index}
-    //                 src={path?.src}
-    //                 alt={elem.image.alt}
-    //                 author={elem.author}
-    //                 course_name={item.course_name}
-    //             />
-    //             // </SwiperSlide>
-    //         );
-    //     });
-    // });
-
-   
+    const windoSize = useWindowSize();
+    const { desktopCards, mobileCards } = generateGalleryItems(projects);
 
     return (
-        <div className={styles.portfolios}>
-            {/* {gallery} */}
-            {/* <FlatList list={gallery} /> */}
-        </div>
+        <>
+            {windoSize.width <= 768 ? (
+                <div className={styles['portfolios-mobile']}>
+                    <FlatList list={mobileCards} />
+                </div>
+            ) : (
+                <div className={styles.portfolios}>
+                {desktopCards}
+            </div>
+            )}
+        </>
     );
 };
 

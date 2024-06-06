@@ -43,15 +43,15 @@
         line-height: 130px
     /* @lg */
     @media screen and (max-width: 1280px)
-        font-size: 70px
-        line-height: 130px
+        font-size: 60px
+        line-height: 120px
     /* @md */
     @media screen and (max-width: 1024px)
-        font-size: 70px
-        line-height: 130px
-    @media screen and (max-width: 980px)
         font-size: 60px
-        line-height: 90px
+        line-height: 120px
+    @media screen and (max-width: 980px)
+        font-size: 40px
+        line-height: 60px
     /* @sm */
     @media screen and (max-width: 768px)
         font-size: 50px
@@ -116,18 +116,18 @@
         right: 170px 
     /* @lg */
     @media screen and (max-width: 1280px)
-        font-size: 80px
-        line-height: 130px
+        font-size: 60px
+        line-height: 120px
         right: 180px
     /* @md */
     @media screen and (max-width: 1024px)
-        font-size: 80px
-        line-height: 130px
+        font-size: 60px
+        line-height: 120px
         right: 170px
     @media screen and (max-width: 980px)
-        font-size: 60px
-        line-height: 90px
-        top: 45px
+        font-size: 40px
+        line-height: 60px
+        top: 30px
         right: 120px
     /* @sm */
     @media screen and (max-width: 768px)
@@ -418,8 +418,8 @@
         position: absolute
         background: #8E685C
         right: 0
-        top: 30%
-        width: 54%
+        top: 22%
+        width: 52%
         height: 50px
         justify-content: center
         &:before 
@@ -427,7 +427,7 @@
             background: linear-gradient(to top left, #8E685C 50%, transparent 51%) 
             content: "" 
             position: absolute 
-            right: 100%
+            right: 99.5%
             width: 45px 
             height: 100% 
     /* @sm */
@@ -666,6 +666,8 @@
     justify-content: center
     margin: 0 auto
     box-shadow: 0 4px 4px 0 #00000024
+    @media screen and (max-width: 980px)
+        margin: -1px auto
     /* @sm */
     @media screen and (max-width: 768px)
         width: 100%
