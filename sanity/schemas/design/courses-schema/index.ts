@@ -139,7 +139,7 @@ export const coursesSchemaDesign = {
             name: 'portfolio',
             type: 'array',
             title: 'Portfolio',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով աշխատանքներ, առնվազն երկու հատ',
+            description: 'Դուք կարող եք ավելացնել ցանկացած թվով աշխատանքներ, առնվազն չորս հատ',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {

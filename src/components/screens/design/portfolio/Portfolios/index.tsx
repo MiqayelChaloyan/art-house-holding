@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
-import Gallery from '@/components/components/gallery';
+// import Gallery from '@/components/components/gallery';
 
 import { Arial } from '@/lib/constants/font';
 
@@ -77,9 +77,9 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
           {t('navigation.portfolio')}
         </h1>
       </div>
-      <div className={styles.gallery}>
+      {/* <div className={styles.gallery}>
         <Gallery category={category} />
-      </div>
+      </div> */}
     </section>
   );
 };

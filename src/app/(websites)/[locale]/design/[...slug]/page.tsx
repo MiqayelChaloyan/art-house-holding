@@ -57,9 +57,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { course }: any = await getResources(slug[0], locale);
 
-    const ogTitle = 'course[0].course_name';
-    const ogImage = 'course[0].gallery_of_course[0]';
-    const ogDescription = 'course[0].guides[0]';
+    const ogTitle = course[0].course_name;
+    const ogImage = course[0].gallery_of_course[0];
+    const ogDescription = course[0].guides[0];
     const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
 
     return {

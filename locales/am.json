@@ -49,7 +49,7 @@
         "confirm": "Հաստատել",
         "back": "Նախորդը",
         "next": "Հաջորդը",
-        "view-all": "Դիտել ամբողջը",
+        "view-all": "Դիտել բոլորը",
         "read-more": "Կարդալ ավելին",
         "register": "Գրանցվել",
         "register-now": "Գրանցվիր հիմա"
@@ -70,7 +70,8 @@
         "our-team": "Մեր թիմը",
         "our-partners": "Մեր Գործընկերները",
         "contact-us": "Կապ մեզ հետ",
-        "promotions": "Ակցիաներ"
+        "promotions": "Ակցիաներ",
+        "portfolios": "Պորտֆոլիոներ"
     },
     "contact": {
         "tell": "Հեռ.",

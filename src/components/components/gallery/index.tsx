@@ -2,12 +2,12 @@
 
 import React from 'react';
 
-import Portfolio from '@/lib/ui/portfolio';
+import Portfolio from '@/lib/ui/portfolio-image-card';
 
 import { UrlType } from '@/types/design';
 
-import { COURSE, PORTFOLIO } from '../../../../sanity/sanity-queries/design';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+import { COURSE, PORTFOLIO } from '../../../../sanity/sanity-queries/design';
 
 import styles from './styles.module.sass';
 
@@ -15,35 +15,42 @@ import { SwiperSlide } from 'swiper/react';
 import FlatList from '../flat-list';
 
 
-import './style.css'
+import './style.css';
+
 type Props = {
-    category: COURSE[],
+    projects: PORTFOLIO[],
 };
 
-const Gallery = ({ category }: Readonly<Props>) => {
-    const gallery: React.JSX.Element[] = category.flatMap((item: COURSE, index: number) => {
-        return item.portfolio.map((elem: PORTFOLIO) => {
-            const path: UrlType | any = urlForImage(elem.image);
+const Gallery = ({ projects }: Readonly<Props>) => {
+    console.log(projects)
 
-            return (
-                // <SwiperSlide
-                // >
-                    <Portfolio
-                    key={elem._key + index}
-                        src={path?.src}
-                        alt={elem.image.alt}
-                        author={elem.author}
-                        course_name={item.course_name}
-                    />
-                // </SwiperSlide>
-            );
-        });
-    });
+    // console.log(projects)
+    
+    // const gallery: React.JSX.Element[] = projects.flatMap((item: COURSE, index: number) => {
+    //     return item.portfolio.map((elem: PORTFOLIO) => {
+    //         const path: UrlType | any = urlForImage(elem.image);
+
+    //         return (
+    //             // <SwiperSlide
+    //             // >
+    //             <Portfolio
+    //                 key={elem._key + index}
+    //                 src={path?.src}
+    //                 alt={elem.image.alt}
+    //                 author={elem.author}
+    //                 course_name={item.course_name}
+    //             />
+    //             // </SwiperSlide>
+    //         );
+    //     });
+    // });
+
+   
 
     return (
         <div className={styles.portfolios}>
             {/* {gallery} */}
-            <FlatList list={gallery}/>
+            {/* <FlatList list={gallery} /> */}
         </div>
     );
 };

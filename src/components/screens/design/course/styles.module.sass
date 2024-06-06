@@ -3,7 +3,7 @@
     padding-top: 150px
 
 .section-titles
-    margin-top: 150px
+    margin-top: 100px
     /* @sm */
     @media screen and (max-width: 768px)
         margin-top: 50px
@@ -194,7 +194,7 @@
         margin-bottom: 40px
     /* @md */
     @media screen and (max-width: 1024px)
-        width: 280px
+        width: 250px
         height: 2px
         margin-bottom: 40px
     /* @sm */
@@ -204,19 +204,19 @@
         margin-bottom: 40px
     /* @xs */
     @media screen and (max-width: 600px)
-        width: 370px
+        width: 50%
         height: 2px
         margin-bottom: 40px
     /* @2xs */
     @media screen and (max-width: 480px)
-        width: 370px
+        width: 50%
         height: 2px
-        margin-bottom: 40px
+        margin-bottom: 25px
     /* @3xs */
     @media screen and (max-width: 360px)
-        width: 370px
+        width: 50%
         height: 2px
-        margin-bottom: 40px
+        margin-bottom: 25px
 
 .course
     display: flex
@@ -272,20 +272,20 @@
         height: 350px
     /* @sm */
     @media screen and (max-width: 768px)
-        width: 250px
-        height: 350px
+        width: 400px
+        height: 600px
     /* @xs */
     @media screen and (max-width: 600px)
-        width: 150px
-        height: 200px
+        width: 400px
+        height: 600px
     /* @2xs */
     @media screen and (max-width: 480px)
-        width: 150px
-        height: 200px
+        width: 75%
+        height: 450px
     /* @3xs */
     @media screen and (max-width: 360px)
-        width: 150px
-        height: 170px
+        width: 75%
+        height: 450px
 
 .left
     width: 40%
@@ -298,7 +298,6 @@
     /* @sm */
     @media screen and (max-width: 768px)
         width: 100%
-
 
 .design-corner-large-right
     position: absolute
@@ -573,12 +572,20 @@
     justify-content: flex-start
 
 .condition
-    list-style: none
     color: #818181
     font-weight: 700
     font-size: 18px
     padding-left: 15px
     line-height: 33.66px
+    list-style-type: none 
+    display: flex
+    flex-direction: row
+    align-items: center
+    &:before 
+        content: '\2022' 
+        color: #8E685C
+        font-size: 2rem 
+        margin-right: 10px
     /* @4xl */
     @media screen and (max-width: 2560px)
         font-size: 18px
@@ -632,6 +639,8 @@
         line-height: 20px
         padding-left: 15px
         font-weight: 700
+        &:before 
+            font-size: 1.3rem 
     /* @2xs */
     @media screen and (max-width: 480px)
         font-size: 13px
@@ -644,55 +653,6 @@
         line-height: 20px
         padding-left: 15px
         font-weight: 700
-
-.dote
-    background-color: #8E685C
-    width: 12px
-    height: 12px
-    border-radius: 50%
-    /* @4xl */
-    @media screen and (max-width: 2560px)
-        width: 12px
-        height: 12px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-        width: 12px
-        height: 12px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-        width: 12px
-        height: 12px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-        width: 10px
-        height: 10px
-    /* @lg */
-    @media screen and (max-width: 1280px)
-        width: 8px
-        height: 8px
-    /* @md */
-    @media screen and (max-width: 1024px)
-        width: 8px
-        height: 8px
-    @media screen and (max-width: 980px)
-        width: 8px
-        height: 8px
-    /* @sm */
-    @media screen and (max-width: 768px)
-        width: 10px
-        height: 10px
-    /* @xs */
-    @media screen and (max-width: 600px)
-        width: 10px
-        height: 10px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        width: 10px
-        height: 10px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        width: 10px
-        height: 10px
 
 .hex 
     height: max-content 
@@ -705,9 +665,11 @@
     align-items: center
     justify-content: center
     margin: 0 auto
+    box-shadow: 0 4px 4px 0 #00000024
     /* @sm */
     @media screen and (max-width: 768px)
         width: 100%
+        margin: -1px auto
 
 .our-advantages 
     text-align: left 
@@ -772,28 +734,77 @@
         line-height: 20px
         font-weight: 700
 
+.projects
+    display: flex
+    justify-content: center
+    margin: 50px auto
 
+.button
+    display: flex
+    justify-content: center
+    margin: 50px auto
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.link
+    font-weight: 700
+    font-size: 14px
+    line-height: 16.52px
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #4B352B
+    border: 2px solid #4B352B
+    width: 180px
+    height: 50px
+    padding: 20px
+    cursor: pointer
+    transition: color 400ms
+    position: relative
+    z-index: 1
+    box-shadow: 0 4px 4px 0 #00000024
+    text-transform: uppercase
+    &:before 
+        content: '' 
+        position: absolute 
+        top: 0 
+        left: 0 
+        right: 0 
+        bottom: 0 
+        background: #8E685C
+        z-index: -1 
+        transition: transform 400ms ease-out 
+        transform: scaleX(0) 
+        transform-origin: left 
+    &:hover 
+        color: #fff 
+        border: 2px solid #8E685C 
+        &:before 
+            transform: scaleX(1) 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 14px
+        width: 160px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 14px
+        height: 30px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 14px
+        padding: 7px 0
+        width: 25%
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 14px
+        padding: 7px 0
+        width: 30%
+    /* @2xs */
+    @media screen and (max-width: 480px)  
+        font-size: 14px
+        padding: 7px 0
+        width: 35%
+    /* @3xs */  
+    @media screen and (max-width: 360px)
+        font-size: 14px
+        padding: 7px 0
+        width: 45%
 

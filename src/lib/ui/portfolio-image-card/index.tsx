@@ -17,7 +17,7 @@ type Props = {
     course_name: string,
 };
 
-const Portfolio = ({
+const PortfolioImageCard = ({
     src,
     alt,
     author,
@@ -46,4 +46,4 @@ const Portfolio = ({
     </figure>
 );
 
-export default React.memo(Portfolio);
+export default React.memo(PortfolioImageCard);
