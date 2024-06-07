@@ -1,19 +1,18 @@
 'use client'
 
-import Header from './Header';
-import Portfolios from './Portfolios';
+// import Header from './Header';
+// import Portfolios from './Portfolios';
 
-import { COURSE } from '../../../../../sanity/sanity-queries/design';
+// import { COURSE } from '../../../../../sanity/sanity-queries/design';
 
-interface Props {
-    courses: COURSE[],
-    data: any
-};
+// interface Props {
+//     courses: COURSE[],
+//     data: any
+// };
 
-const Home = ({ courses, data }: Readonly<Props>) => (
+const Home = () => (
     <div>
-        <Header data={data} />
-        <Portfolios courses={courses} />
+        <h1 style={{backgroundColor: 'red', fontSize: 100, color: 'white', margin: '100px auto'}}>PORTFOLIO</h1>
     </div>
 );
 

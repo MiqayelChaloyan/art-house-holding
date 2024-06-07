@@ -7,10 +7,16 @@ export const allCoursesQuery = `
     "gallery_of_course": gallery_of_course,
     "conditions": conditions[][$language],
     "guides": guides[][$language],
-    "portfolio": portfolio[] {
+    "portfolios": portfolios[] {
         "_key": _key,
         "author": author[$language],
         "image": image,
+        "background_image": background_image,
+        "slug": slug.current,
+        "title_images_array": title_images_array[] {
+            "title": title[$language],
+            "images": images[],
+        }
     },
 }`;
 
@@ -24,10 +30,16 @@ export const courseBySlugQuery = `
     "gallery_of_course": gallery_of_course,
     "conditions": conditions[][$language],
     "guides": guides[][$language],
-    "portfolio": portfolio[] {
+    "portfolios": portfolios[] {
         "_key": _key,
         "author": author[$language],
         "image": image,
+        "background_image": background_image,
+        "slug": slug.current,
+        "title_images_array": title_images_array[] {
+            "title": title[$language],
+            "images": images[],
+        }
     },
 }`;
 
@@ -40,9 +52,30 @@ export const queryId = `
     "gallery_of_course": gallery_of_course,
     "conditions": conditions[][$language],
     "guides": guides[][$language],
-    "portfolio": portfolio[] {
+    "portfolios": portfolios[] {
         "_key": _key,
         "author": author[$language],
         "image": image,
+        "background_image": background_image,
+        "slug": slug.current,
+        "title_images_array": title_images_array[] {
+            "title": title[$language],
+            "images": images[],
+        }
+    },
+}`;
+
+export const queryBySlugCard = `
+*[_type == "courses-design"] {
+    "portfolios": portfolios[slug.current == $slug] {
+        "_key": _key,
+        "author": author[$language],
+        "image": image,
+        "background_image": background_image,
+        "slug": slug.current,
+        "title_images_array": title_images_array[] {
+            "title": title[$language],
+            "images": images[],
+        }
     },
 }`;

@@ -29,10 +29,16 @@ export interface GALLERY {
     asset: AssetRef
 };
 
-export interface PORTFOLIO {
+export interface PORTFOLIOS {
     _key: string,
     author: string,
-    image: Asset
+    image: Asset,
+    background_image: Asset,
+    slug: string,
+    title_images_array: {
+        title: string,
+        images: Asset[]
+    }
 };
 
 export interface PRICES {
@@ -51,11 +57,11 @@ export interface PRICE_LIST {
     price_list: PRICES[]
 };
 
-export interface PORTFOLIO {
-    _id: string,
-    image: Asset,
-    advantages: string[],
-};
+// export interface PORTFOLIO {
+//     _id: string,
+//     image: Asset,
+//     advantages: string[],
+// };
 
 export interface COURSE {
     _id: string,
@@ -65,7 +71,7 @@ export interface COURSE {
     conditions: string[],
     guides: string[],
     gallery_of_course: GALLERY[],
-    portfolio: PORTFOLIO[],
+    portfolios: PORTFOLIOS[],
 };
 
 export interface HOME_COURSES {

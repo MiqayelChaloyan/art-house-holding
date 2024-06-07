@@ -45,8 +45,8 @@ const Box = ({ guide, iconSize }: Readonly<BoxProps>) => (
 
 
 const Course = ({ locale, course }: Readonly<Props>) => {
-  const { gallery_of_course, course_name, conditions, guides, name, portfolio } = course;
-  const latestProjects = portfolio?.slice(Math.max(portfolio.length - 4, 0)) ?? [];
+  const { gallery_of_course, course_name, conditions, guides, name, portfolios } = course;
+  const latestProjects = portfolios?.slice(Math.max(portfolios.length - 4, 0)) ?? [];
   const [index, setIndex] = useState<number>(0);
   const windoSize = useWindowSize();
   const t = useTranslations();
@@ -71,7 +71,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
         width={500}
         alt={image.alt}
         className={cn(styles['design-image'], index === imageIndex ? styles.active : styles.next)}
-        objectFit='cover'
+        // objectFit='cover'
       />
     )
   });
@@ -85,25 +85,21 @@ const Course = ({ locale, course }: Readonly<Props>) => {
     <Box key={guideIndex} guide={guide} iconSize={windoSize.width} />);
 
   const { desktopCards, mobileCards } = latestProjects.reduce((acc, project) => {
-    const path: UrlType | any = urlForImage(project.image);
-
     const desktopCard = (
       <PortfolioImageCard
         key={project._key}
-        src={path?.src}
-        alt={project.image.alt}
-        author={project.author}
         course_name={course_name}
+        project={project}
+        slug={course.slug}
       />
     );
 
     const mobileCard = (
       <SwiperSlide key={project._key}>
         <PortfolioImageCard
-          src={path?.src}
-          alt={project.image.alt}
-          author={project.author}
           course_name={course_name}
+          project={project}
+          slug={course.slug}
         />
       </SwiperSlide>
     );
@@ -162,7 +158,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
         <div className={styles.button}>
           <Link
             href={{
-              pathname: `/${locale}${Pages.DESIGN_PORTFOLIO}`,
+              pathname: `/${locale}${Pages.DESIGN_PORTFOLIOS}`,
               query: { name },
             }}
             className={cn(styles.link, Arial.className)}

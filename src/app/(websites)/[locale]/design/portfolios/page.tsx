@@ -2,7 +2,7 @@
 
 import { notFound } from 'next/navigation';
 
-import Home from '@/components/screens/design/portfolio';
+import Home from '@/components/screens/design/portfolios';
 
 import { allCoursesQuery } from '../../../../../../sanity/services/design-service/courses';
 import { query } from '../../../../../../sanity/services/design-service/portfolio';

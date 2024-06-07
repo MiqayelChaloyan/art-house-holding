@@ -1,20 +1,17 @@
 'use client'
 
 import React from 'react';
+import { SwiperSlide } from 'swiper/react';
+
+import FlatList from '../flat-list';
 
 import Portfolio from '@/lib/ui/portfolio-image-card';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { UrlType } from '@/types/design';
-
-import { urlForImage } from '../../../../sanity/imageUrlBuilder';
-import { COURSE, PORTFOLIO } from '../../../../sanity/sanity-queries/design';
+import { COURSE, PORTFOLIOS } from '../../../../sanity/sanity-queries/design';
 
 import styles from './styles.module.sass';
-
-import { SwiperSlide } from 'swiper/react';
-import FlatList from '../flat-list';
 
 
 interface Props {
@@ -23,17 +20,15 @@ interface Props {
 
 const generateGalleryItems = (projects: COURSE[]) => {
     return projects.reduce((acc, item: COURSE) => {
-        item.portfolio.forEach((elem: PORTFOLIO, index: number) => {
-            const path: UrlType | any = urlForImage(elem.image);
+        item.portfolios.forEach((elem: PORTFOLIOS) => {
             const randomNumber = Math.random();
 
             const portfolioElement = (
                 <Portfolio
                     key={elem._key + randomNumber}
-                    src={path?.src}
-                    alt={elem.image.alt}
-                    author={elem.author}
+                    project={elem}
                     course_name={item.course_name}
+                    slug={item.slug}
                 />
             );
 
@@ -66,7 +61,7 @@ const Gallery = ({ projects }: Readonly<Props>) => {
                 <div className={styles.portfolios}>
                 {desktopCards}
             </div>
-            )}
+            )} 
         </>
     );
 };

@@ -30,7 +30,7 @@ type IHeaderProps = {
 const navigationLinks = [
     { path: Pages.DESIGN_PRICE_LIST, label: 'price-list' },
     { path: Pages.DESIGN_ORDERS, label: 'orders' },
-    { path: Pages.DESIGN_PORTFOLIO, label: 'portfolio' },
+    { path: Pages.DESIGN_PORTFOLIOS, label: 'portfolios' },
     { path: Pages.DESIGN_CONTACT, label: 'contact' },
 ];
 

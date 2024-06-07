@@ -12,6 +12,7 @@ import { courseBySlugQuery } from '../../../../../../sanity/services/design-serv
 import { client } from '../../../../../../sanity/client';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { COURSE } from '../../../../../../sanity/sanity-queries/design';
 
 
 interface Props {
@@ -45,7 +46,7 @@ export default async function Page({
     }
 
     return (
-        <Course locale={locale} course={course[0]}/>
+        <Course locale={locale} course={course[0]} />
     )
 }
 
@@ -55,7 +56,7 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
-    const { course }: any = await getResources(slug[0], locale);
+    const { course }: { course: COURSE[], isError: boolean } = await getResources(slug[0], locale);
 
     const ogTitle = course[0].course_name;
     const ogImage = course[0].gallery_of_course[0];

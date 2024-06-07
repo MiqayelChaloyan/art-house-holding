@@ -83,7 +83,7 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
       <div className={styles.titles}>
         <h2 className={cn(styles['title-back'], Arial.className)}>PORTFOLIO</h2>
         <h1 className={cn(styles.title, Arial.className)}>
-          {t('navigation.portfolio')}
+          {t('navigation.portfolios')}
         </h1>
       </div>
       <div className={styles.gallery}>

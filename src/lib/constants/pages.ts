@@ -15,7 +15,7 @@ const Pages = {
     DESIGN_HOME: '/design',
     DESIGN_PRICE_LIST: '/design/price-list',
     DESIGN_CONTACT: '/design/contact',
-    DESIGN_PORTFOLIO: '/design/portfolio', //?name=All
+    DESIGN_PORTFOLIOS: '/design/portfolios', //?name=All
     DESIGN_ORDERS: '/design/orders',
 }
 
