@@ -7,10 +7,8 @@ import Course from '@/components/screens/design/course';
 
 import { Locale } from '@/locales';
 
-import { courseBySlugQuery } from '../../../../../../sanity/services/design-service/courses';
-
 import { client } from '../../../../../../sanity/client';
-
+import { courseBySlugQuery } from '../../../../../../sanity/services/design-service/courses';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { COURSE } from '../../../../../../sanity/sanity-queries/design';
 
@@ -43,17 +41,11 @@ export default async function Page({
 
     const { course, isError }: any = await getResources(decodedQuery, locale);
 
-    // if (!course || isError) {
-    //     notFound()
-    // }
+    if (!course || isError) {
+        notFound()
+    }
 
-
-    // 'autocad%26archicad'
-    console.log(course[0])
-
-    return (
-        <Course locale={locale} course={course[0]} />
-    )
+    return (<Course locale={locale} course={course[0]} />)
 }
 
 
@@ -62,12 +54,12 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
-    const { course }: { course: COURSE[], isError: boolean } = await getResources(slug[0], locale);
+    const { course }: { course: COURSE[], isError: boolean } = await getResources(decodeURIComponent(slug[0]), locale);
 
     const ogTitle = course[0].course_name;
     const ogImage = course[0].gallery_of_course[0];
     const ogDescription = course[0].guides[0];
-    const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
+    const path: { src: string, width: number, height: number } | any = urlForImage(ogImage);
 
     return {
         metadataBase: process.env.NEXT_PUBLIC_DOMAIN
@@ -106,4 +98,4 @@ export async function generateMetadata({
             ],
         },
     };
-}
+};
