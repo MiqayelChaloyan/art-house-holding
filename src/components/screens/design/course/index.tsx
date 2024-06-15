@@ -13,7 +13,7 @@ import FlatList from '@/components/components/flat-list';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import Checkmark from '@/lib/icons/design/Checkmark';
-import PortfolioImageCard from '@/lib/ui/portfolio-image-card';
+import PortfolioImageCard from '@/lib/ui/portfolio-card';
 import { Pages } from '@/lib/constants/pages';
 import { Arial } from '@/lib/constants/font';
 
@@ -28,13 +28,13 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-  locale: string,
-  course: COURSE,
+  locale: string;
+  course: COURSE;
 };
 
 interface BoxProps {
-  guide: string,
-  iconSize: number,
+  guide: string;
+  iconSize: number;
 };
 
 const Box = ({ guide, iconSize }: Readonly<BoxProps>) => (
@@ -71,7 +71,6 @@ const Course = ({ locale, course }: Readonly<Props>) => {
         width={500}
         alt={image.alt}
         className={cn(styles['design-image'], index === imageIndex ? styles.active : styles.next)}
-        // objectFit='cover'
       />
     )
   });
@@ -91,6 +90,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
         course_name={course_name}
         project={project}
         slug={course.slug}
+        type='portfolios'
       />
     );
 
@@ -100,6 +100,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
           course_name={course_name}
           project={project}
           slug={course.slug}
+          type='portfolios'
         />
       </SwiperSlide>
     );

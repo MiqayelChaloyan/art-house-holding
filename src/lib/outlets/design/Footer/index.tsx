@@ -9,8 +9,8 @@ import { FaInstagram } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { GrLinkedinOption } from 'react-icons/gr';
 
-// import { Hosts } from '@/lib/constants/hosts';
-import { Arial } from '@/lib/constants/font';
+import Container from '@/components/components/container';
+import { Arial, ArianAMU } from '@/lib/constants/font';
 import { ImagePaths } from '@/lib/constants';
 
 import useWindowSize from '@/hooks/useWindowSize';
@@ -22,7 +22,6 @@ import { HOSTS, Social_Links } from '../../../../../sanity/sanity-queries/design
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import Container from '@/components/components/container';
 
 
 interface Props {
@@ -40,8 +39,21 @@ const socialNetworkComponents: socialNetwork = {
 const Footer = ({ socialData }: Readonly<Props>) => {
     const currentYear = new Date().getFullYear();
     const windowSize = useWindowSize();
-    const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
     const t = useTranslations('address');
+
+    const phoneNumbers = socialData?.phone_numbers.map((number: string, index: number) => {
+        const phoneNumber = index < socialData.phone_numbers.length - 1 ? `${number}, ` : `${number}`;
+        const tel = 'tel:' + number.replace(/\s/g, '');
+
+        return (
+            <Link key={number} href={tel} aria-label={number} className={styles.icon}>
+                <p className={cn(styles.info_web, ArianAMU.className)}>
+                    {phoneNumber}
+                </p>
+            </Link>
+        )
+    });
+
 
     const hosts = socialData?.social_links.map((host: Social_Links) => {
         const socialName = host?.social_name.toLowerCase();
@@ -55,7 +67,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                 href={link}
                 aria-label={host?.social_name}
                 className={styles.social_network}
-                target="_blank"
+                target='_blank'
             >
                 <SocialIcon
                     size={windowSize.width <= 1024 ? 20 : 30}
@@ -82,8 +94,13 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                     <div>
                         <div className={styles.address}>
                             <span className={Arial.className}>{t('street')}</span>
-                            <Link href={tel} aria-label={socialData?.phone_number} className={styles.icon}>
-                                <p className={cn(styles.phone, Arial.className)}>{socialData?.phone_number}</p>
+                            <div className={styles.phone_numbers}>
+                                {phoneNumbers}
+                            </div>
+                            <Link href={`mailto:${socialData?.email}`} aria-label='Email'>
+                                <p className={styles.info_web}>
+                                    {socialData?.email}
+                                </p>
                             </Link>
                         </div>
                         <p className={`${styles.reserved} ${Arial.className}`}>

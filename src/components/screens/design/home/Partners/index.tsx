@@ -38,7 +38,7 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    data: PARTNER[]
+    data: PARTNER[];
 };
 
 interface SampleNextArrowProps { onClick: () => void };

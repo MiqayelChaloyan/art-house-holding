@@ -29,7 +29,19 @@ export interface GALLERY {
     asset: AssetRef
 };
 
-export interface PORTFOLIOS {
+export interface PORTFOLIO {
+    _key: string,
+    author: string,
+    image: Asset,
+    background_image: Asset,
+    slug: string,
+    title_images_array: {
+        title: string,
+        images: Asset[]
+    }
+};
+
+export interface ORDER {
     _key: string,
     author: string,
     image: Asset,
@@ -57,11 +69,11 @@ export interface PRICE_LIST {
     price_list: PRICES[]
 };
 
-// export interface PORTFOLIO {
-//     _id: string,
-//     image: Asset,
-//     advantages: string[],
-// };
+export interface PORTFOLIOS {
+    _id: string,
+    image: Asset,
+    advantages: string[],
+};
 
 export interface COURSE {
     _id: string,
@@ -71,7 +83,8 @@ export interface COURSE {
     conditions: string[],
     guides: string[],
     gallery_of_course: GALLERY[],
-    portfolios: PORTFOLIOS[],
+    portfolios: PORTFOLIO[],
+    orders: ORDER[],
 };
 
 export interface HOME_COURSES {
@@ -114,7 +127,8 @@ export interface Social_Links {
 
 export interface HOSTS {
     name: string,
-    phone_number: string,
+    email: string,
+    phone_numbers: string[],
     social_links: Social_Links[],
 };
 
@@ -123,7 +137,7 @@ export interface LESSON {
     course_name: string,
 };
 
-export interface ORDER {
+export interface ORDERS {
     slug: number | string,
     order_name: string,
 };

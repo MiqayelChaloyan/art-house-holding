@@ -1,4 +1,4 @@
-import { DocumentsIcon } from '@sanity/icons'
+import { DocumentsIcon } from '@sanity/icons';
 
 
 export default (S: any) =>
@@ -104,7 +104,7 @@ export default (S: any) =>
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('design-lessons-select-option').documentId('design-lessons-select-option')),
                             S.listItem()
-                                .title('Portfolio')
+                                .title('Portfolios')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('portfolio-design').documentId('portfolio-design')),
                         ])

@@ -135,7 +135,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
 
     return (
         <div className={styles.container}>
-                                    <div className={styles.line} />
+            {/* <div className={styles.line} /> */}
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
                 <div className={cn(styles.contact_us)}>
@@ -143,66 +143,66 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                     {classNameProperty === 'small' && <h2 className={cn(styles.form_title, Arial.className)}>
                         {t('contact-us-form.form-title-language')}
                     </h2>}
-                        <div className={styles[`${classNameProperty}-form`]}>
-                            <form
-                                className={styles.box}
-                                onSubmit={handleSubmit}
-                            >
-                                <div className={styles.fields}>
-                                    <InputField
-                                        className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
-                                        name='full_name'
-                                        type='name'
-                                        placeholder={t('contact-us-form.full-name')}
-                                        requiredField={true}
-                                        value={values.full_name}
-                                        onChange={handleChange}
-                                    />
-                                    <InputField
-                                        className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
-                                        name='email'
-                                        type='email'
-                                        placeholder={t('contact-us-form.email')}
-                                        requiredField={true}
-                                        value={values.email}
-                                        onChange={handleChange}
-                                    />
-                                    <InputNumber
-                                        className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
-                                        name='phone'
-                                        type='phone'
-                                        placeholder={t('contact-us-form.phone-number')}
-                                        maskNumber='+374 99 99 99 99'
-                                        requiredField={true}
-                                        value={values.phone}
-                                        onChange={handleChange}
-                                    />
-                                    <Select
-                                        data={lessons[0].course_name}
-                                        valueName='course_name'
-                                        handleChange={setState}
-                                        state={state}
-                                        classNameProperty={`${classNameProperty}-design`}
-                                        isClear={false}
-                                        getValueToSlug={getValueToSlug}
-                                    />
-                                </div>
-                                <button type='submit' className={styles[`${classNameProperty}-button`]}>
-                                    {isLoading ?
-                                        <span className={Arial.className}>
-                                            {`${t('contact-us-form.loading')}...`}
-                                        </span>
-                                        :
-                                        <span className={Arial.className}>
-                                            {t('contact-us-form.send')}
-                                        </span>
-                                    }
-                                </button>
-                            </form>
-                        </div>
+                    <div className={styles[`${classNameProperty}-form`]}>
+                        <form
+                            className={styles.box}
+                            onSubmit={handleSubmit}
+                        >
+                            <div className={styles.fields}>
+                                <InputField
+                                    className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
+                                    name='full_name'
+                                    type='name'
+                                    placeholder={t('contact-us-form.full-name')}
+                                    requiredField={true}
+                                    value={values.full_name}
+                                    onChange={handleChange}
+                                />
+                                <InputField
+                                    className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
+                                    name='email'
+                                    type='email'
+                                    placeholder={t('contact-us-form.email')}
+                                    requiredField={true}
+                                    value={values.email}
+                                    onChange={handleChange}
+                                />
+                                <InputNumber
+                                    className={cn(styles.input, styles[`${classNameProperty}-input-bg`], Arial.className)}
+                                    name='phone'
+                                    type='phone'
+                                    placeholder={t('contact-us-form.phone-number')}
+                                    maskNumber='+374 99 99 99 99'
+                                    requiredField={true}
+                                    value={values.phone}
+                                    onChange={handleChange}
+                                />
+                                <Select
+                                    data={lessons[0].course_name}
+                                    valueName='course_name'
+                                    handleChange={setState}
+                                    state={state}
+                                    classNameProperty={`${classNameProperty}-design`}
+                                    isClear={false}
+                                    getValueToSlug={getValueToSlug}
+                                />
+                            </div>
+                            <button type='submit' className={styles[`${classNameProperty}-button`]}>
+                                {isLoading ?
+                                    <span className={Arial.className}>
+                                        {`${t('contact-us-form.loading')}...`}
+                                    </span>
+                                    :
+                                    <span className={Arial.className}>
+                                        {t('contact-us-form.send')}
+                                    </span>
+                                }
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div className={styles.line} />
+            {/* <div className={styles.line} /> */}
         </div>
     )
 };

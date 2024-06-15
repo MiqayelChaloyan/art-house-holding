@@ -25,9 +25,9 @@ import styles from './styles.module.sass';
 
 
 interface CourseProps {
-    course: HOME_COURSES,
+    course: HOME_COURSES;
     position: 'left' | 'right';
-}
+};
 
 const Course = ({ course, position }: Readonly<CourseProps>) => {
     const [index, setIndex] = useState<number>(0);

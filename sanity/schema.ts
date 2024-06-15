@@ -20,7 +20,7 @@ import contactUsSchemaDesign from './schemas/design/contact-us-schema';
 import coursesSchemaDesign from './schemas/design/courses-schema';
 import priceListSchemaDesign from './schemas/design/price-list-schema';
 import lessonsSchemaDesign from './schemas/design/lessons-schema';
-import portfolioSchemaDesign from './schemas/design/portfolio-schema';
+import portfolioSchemaDesign from './schemas/design/portfolios-schema';
 
 export const schemaTypes = [
   homeSchemaArtHouse,

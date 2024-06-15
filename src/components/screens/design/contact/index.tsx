@@ -16,8 +16,8 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-  lessons: LESSONS[]
-  lessonsArmenian: LESSONS[]
+  lessons: LESSONS[];
+  lessonsArmenian: LESSONS[];
 };
 
 const Home = ({ lessons, lessonsArmenian }: Readonly<Props>) => {

@@ -15,10 +15,19 @@ const contactUsSchemaDesign = {
             type: 'string',
         },
         {
-            name: 'phone_number',
-            title: 'Phone Number',
+            name: 'email',
+            title: 'Email',
             type: 'string',
             validation: (Rule: RuleType) => Rule.required(),
+        },
+        {
+            title: 'Phone Numbers',
+            name: 'phone_numbers',
+            type: 'array',
+            of: [{ type: 'string' }],
+            description: 'You can only add two phone number',
+            validation: (Rule: RuleType | any) => Rule.max(2).unique(),
+            components: { input: ArrayMaxItems },
         },
         {
             name: 'social_links',

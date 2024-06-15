@@ -23,7 +23,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    our_day: OUR_DAY
+    our_day: OUR_DAY;
 };
 
 const OurDay = ({ our_day }: Readonly<Props>) => {

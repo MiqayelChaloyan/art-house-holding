@@ -8,33 +8,30 @@ import { Arial } from '@/lib/constants/font';
 
 import { UrlType } from '@/types/design';
 
-import { PORTFOLIOS } from '../../../../sanity/sanity-queries/design';
+import { PORTFOLIO } from '../../../../sanity/sanity-queries/design';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 
 interface Props {
-    project: PORTFOLIOS,
+    project: PORTFOLIO,
     course_name: string,
-    slug: string
+    slug: string,
+    type: string
 };
 
-const PortfolioImageCard = ({ project, course_name, slug }: Readonly<Props>) => {
+const PortfolioImageCard = ({ project, course_name, slug, type }: Readonly<Props>) => {
     const cardImagePath: UrlType | any = urlForImage(project.image);
-    const { author, image: { alt } } = project;
-    let modifiedQuery = author.replace(/ /g, '_');
+    const activeLocale = useLocale();
+    const { _key, author, image: { alt } } = project;
 
     return (
-        <Link
-            href={{
-                pathname: `/en/design/portfolios/${slug}`,
-                query: { author: modifiedQuery },
-            }}
-        >
+        <Link href={{ pathname: `/${activeLocale}/design/${type}/${encodeURIComponent(slug)}`, query: { name: _key } }}>
             <figure className={styles.figure}>
                 <Image
                     priority

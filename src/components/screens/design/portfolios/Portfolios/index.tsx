@@ -7,7 +7,6 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import Gallery from '@/components/components/gallery';
-
 import { Arial } from '@/lib/constants/font';
 
 import { COURSE } from '../../../../../../sanity/sanity-queries/design';
@@ -18,7 +17,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-  courses: COURSE[],
+  courses: COURSE[];
 };
 
 const defaultSearchParam = 'All';
@@ -28,41 +27,33 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const property: string | null = searchParams.get('name');
-  const [category, setCategory] = useState<COURSE[]>(courses);
-  const [loading, setLoading] = useState<boolean>(true);
-
+  const [allCourses, setAllCourses] = useState<COURSE[]>(courses);
+  const [category, setCategory] = useState<COURSE[]>([]);
+  
   useEffect(() => {
-    const navigationEntries = window.performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
-    if (navigationEntries.length > 0 && navigationEntries[0].type === 'reload') {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const filteredCourses = property && property !== defaultSearchParam ? courses.filter((elem: COURSE) => elem.name === property) : courses;
+    const filteredCourses = property && property !== defaultSearchParam
+      ? allCourses?.filter((elem: COURSE) => elem.name === property)
+      : allCourses;
     setCategory(filteredCourses);
   }, [property, courses]);
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString())
-      params.set(name, value)
-
-      return params.toString()
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+      return params.toString();
     },
     [searchParams]
   );
 
-  const navbar: React.JSX.Element[] = courses?.map(({ course_name, _id, name }: COURSE, index: number) => (
+  const navbar: React.JSX.Element[] = allCourses?.map(({ course_name, _id, name }: COURSE) => (
     <Link
       key={_id}
-      href={pathname + '?' + createQueryString('name', name)}
+      href={`${pathname}?${createQueryString('name', name)}`}
       scroll={false}
       className={cn(styles.link, styles.line, property === name ? styles.active : '', Arial.className)}
     >
-      <span>
-        {course_name}
-      </span>
+      <span>{course_name}</span>
     </Link>
   ));
 
@@ -70,13 +61,11 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
     <section id='portfolio' className={styles.container}>
       <div className={styles.navigation}>
         <Link
-          href={pathname + '?' + createQueryString('name', defaultSearchParam)}
+          href={`${pathname}?${createQueryString('name', defaultSearchParam)}`}
           scroll={false}
           className={cn(styles.link, styles.line, !property || property === defaultSearchParam ? styles.active : '', Arial.className)}
         >
-          <span>
-            {t('buttons.view-all')}
-          </span>
+          <span>{t('buttons.view-all')}</span>
         </Link>
         {navbar}
       </div>
@@ -87,11 +76,11 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
         </h1>
       </div>
       <div className={styles.gallery}>
-        {loading ?
+        {category.length === 0 ? (
           <div className={styles['loader-card']} />
-           :
-          <Gallery projects={category} />
-        }
+        ) : (
+          <Gallery projects={category} type='portfolios' />
+        )}
       </div>
     </section>
   );

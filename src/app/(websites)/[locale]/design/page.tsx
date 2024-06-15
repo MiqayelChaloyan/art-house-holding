@@ -12,9 +12,9 @@ import { query } from '../../../../../sanity/services/design-service/about-us';
 
 interface RootProps {
     params: {
-        locale: string,
+        locale: string;
     }
-}
+};
 
 async function getResources(locale: string) {
     const dataPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
@@ -31,7 +31,7 @@ async function getResources(locale: string) {
         .catch(error => {
             return { data: [], partners: [], isError: true };
         });
-}
+};
 
 export default async function Page({
     params: { locale }

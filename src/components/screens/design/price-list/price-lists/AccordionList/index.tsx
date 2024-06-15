@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 import { RiArrowDownSLine } from 'react-icons/ri';
 
-import { PRICES } from '../../../../../../../sanity/sanity-queries/design';
+import { COURSE, PRICES } from '../../../../../../../sanity/sanity-queries/design';
 
 import { Arial } from '@/lib/constants/font';
 
@@ -16,14 +16,14 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: PRICES[],
-}
+    data: PRICES[];
+};
 
 interface AccordionItemProps {
-    handleToggle: (id: number) => void,
-    active: number | null,
-    course: PRICES | any,
-}
+    handleToggle: (id: number) => void;
+    active: number | null;
+    course: COURSE | any;
+};
 
 const AccordionItem = ({ handleToggle, active, course }: Readonly<AccordionItemProps>) => {
     const contentEl = useRef<HTMLDivElement>(null);
@@ -87,11 +87,11 @@ const AccordionItem = ({ handleToggle, active, course }: Readonly<AccordionItemP
 };
 
 const AccordionList = ({ data }: Readonly<Props>) => {
-    const [active, setActive] = useState<number | null>(null);
+    const [active, setActive] = useState<number>(0);
 
     const handleToggle = (index: number) => {
         if (active === index) {
-            setActive(null);
+            setActive(0);
         } else {
             setActive(index);
         }

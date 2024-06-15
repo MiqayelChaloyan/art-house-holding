@@ -39,11 +39,17 @@ async function getResources(slug: string, locale: string) {
 export default async function Page({
     params: { locale, slug }
 }: Readonly<Props>) {
-    const { course, isError }: any = await getResources(slug[0], locale);
+    const decodedQuery = decodeURIComponent(slug[0]);
 
-    if (!course || isError) {
-        notFound()
-    }
+    const { course, isError }: any = await getResources(decodedQuery, locale);
+
+    // if (!course || isError) {
+    //     notFound()
+    // }
+
+
+    // 'autocad%26archicad'
+    console.log(course[0])
 
     return (
         <Course locale={locale} course={course[0]} />

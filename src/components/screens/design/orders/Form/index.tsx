@@ -15,7 +15,7 @@ import { Arial, Calibri } from '@/lib/constants/font';
 import { sendOrderDesign } from '@/api';
 import { FormOrder } from '@/types/design';
 
-import { ORDER } from '../../../../../../sanity/sanity-queries/design';
+import { ORDERS } from '../../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
@@ -23,8 +23,8 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    orders: ORDER[],
-    ordersArmenian: ORDER[]
+    orders:  any, //ORDERS[]
+    ordersArmenian: any //ORDERS[]
 };
 
 type FormProps = {
@@ -35,7 +35,7 @@ type FormProps = {
 
 const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
     const t = useTranslations();
-    const [orderValue, setOrderValue] = useState<ORDER | null>(null);
+    const [orderValue, setOrderValue] = useState<ORDERS | any>([]);
 
     const [open, setOpen] = useState(false);
     const [info, setInfo] = useState({
@@ -92,7 +92,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
                     return;
                 };
 
-                setOrderValue(null);
+                setOrderValue([]);
                 setOpen(true);
 
                 setInfo({
@@ -124,7 +124,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
     const handleClose = () => setOpen(false);
 
     const getValueToSlug = (slug: number | string) => {
-        const order: ORDER | any = ordersArmenian?.find((item: ORDER) => {
+        const order: ORDERS | any = ordersArmenian?.find((item: ORDERS) => {
             return item.slug === slug;
         });
 
@@ -133,7 +133,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
         }
     };
 
-    const ordersButtons = orders.map((order: ORDER) => (
+    const ordersButtons = orders.map((order: ORDERS) => (
         <button
             key={order.slug}
             className={cn(styles['order-button'], Calibri.className, orderValue?.slug === order.slug && styles.disabled)}

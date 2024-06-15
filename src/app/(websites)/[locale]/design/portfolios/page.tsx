@@ -4,17 +4,23 @@ import { notFound } from 'next/navigation';
 
 import Home from '@/components/screens/design/portfolios';
 
+import { client } from '../../../../../../sanity/client';
 import { allCoursesQuery } from '../../../../../../sanity/services/design-service/courses';
 import { query } from '../../../../../../sanity/services/design-service/portfolio';
-
-import { client } from '../../../../../../sanity/client';
+import { COURSE, PORTFOLIO } from '../../../../../../sanity/sanity-queries/design';
 
 
 interface Props {
     params: {
-        locale: string,
+        locale: string;
     }
-}
+};
+
+type TYPES = {
+    data: PORTFOLIO[];
+    courses: COURSE[];
+    isError: boolean;
+};
 
 async function getResources(locale: string) {
     try {
@@ -22,19 +28,19 @@ async function getResources(locale: string) {
         const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
 
         if (!courses?.length || !data.length) {
-            return { portfolios: [], data: [], isError: true };
+            return { courses: [], data: [], isError: true };
         }
 
         return { courses, data: data[0], isError: false };
     } catch (error) {
         return { courses: [], data: [], isError: true };
     }
-}
+};
 
 export default async function Page({
     params: { locale }
 }: Readonly<Props>) {
-    const { courses, data, isError }: any = await getResources(locale);
+    const { courses, data, isError }: TYPES = await getResources(locale);
 
     if (!courses || !data || isError) {
         notFound()
@@ -43,4 +49,4 @@ export default async function Page({
     return (
         <Home courses={courses} data={data}/>
     )
-}
+};

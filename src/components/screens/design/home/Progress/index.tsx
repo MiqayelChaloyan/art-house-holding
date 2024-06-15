@@ -15,11 +15,10 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: PROGRESS[]
+    data: PROGRESS[];
 };
 
 const Progress = ({ data }: Readonly<Props>) => {
-
     const items: JSX.Element[] = data?.map((item: PROGRESS) => (
         <div key={item._key} className={styles.column}>
             <ProgressItem value={0} quantity={item.quantity} />

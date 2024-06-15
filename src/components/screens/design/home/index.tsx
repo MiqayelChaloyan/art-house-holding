@@ -12,10 +12,10 @@ import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 import styles from './styles.module.sass';
 
-type Props = {
-    data: DESIGN[],
-    partners: PARTNER[],
-    locale: string
+interface Props {
+    data: DESIGN[];
+    partners: PARTNER[];
+    locale: string;
 };
 
 const Home = ({

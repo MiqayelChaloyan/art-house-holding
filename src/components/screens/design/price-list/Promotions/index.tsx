@@ -20,8 +20,8 @@ import styles from './styles.module.sass';
 
 
 interface BoxProps {
-    advantages: string,
-    iconSize: number,
+    advantages: string;
+    iconSize: number;
 };
 
 const Box = ({ advantages, iconSize }: BoxProps) => (
@@ -35,7 +35,7 @@ const Promotions = ({ informatie, our_advantages }: Readonly<Props>) => {
     const t = useTranslations('sections');
     const windoSize = useWindowSize();
 
-    const advantages = our_advantages.map((elem: any, index: number) => <Box key={index} advantages={elem} iconSize={windoSize.width}/>);
+    const advantages = our_advantages.map((elem: string, index: number) => <Box key={index} advantages={elem} iconSize={windoSize.width}/>);
 
     return (
         <section id='promotions' className={styles.container}>

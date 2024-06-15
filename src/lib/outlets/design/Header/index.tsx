@@ -22,9 +22,9 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type IHeaderProps = {
-    typePosition: string
-    locale: string
+interface IHeaderProps {
+    typePosition: string;
+    locale: string;
 };
 
 const navigationLinks = [

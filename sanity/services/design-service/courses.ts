@@ -16,6 +16,19 @@ export const allCoursesQuery = `
         "title_images_array": title_images_array[] {
             "title": title[$language],
             "images": images[],
+            "_key": _key,
+        }
+    },
+    "orders": orders[] {
+        "_key": _key,
+        "author": author[$language],
+        "image": image,
+        "background_image": background_image,
+        "slug": slug.current,
+        "title_images_array": title_images_array[] {
+            "title": title[$language],
+            "images": images[],
+            "_key": _key,
         }
     },
 }`;
@@ -39,6 +52,19 @@ export const courseBySlugQuery = `
         "title_images_array": title_images_array[] {
             "title": title[$language],
             "images": images[],
+            "_key": _key,
+        }
+    },
+    "orders": orders[] {
+        "_key": _key,
+        "author": author[$language],
+        "image": image,
+        "background_image": background_image,
+        "slug": slug.current,
+        "title_images_array": title_images_array[] {
+            "title": title[$language],
+            "images": images[],
+            "_key": _key,
         }
     },
 }`;
@@ -61,13 +87,10 @@ export const queryId = `
         "title_images_array": title_images_array[] {
             "title": title[$language],
             "images": images[],
+            "_key": _key,
         }
     },
-}`;
-
-export const queryBySlugCard = `
-*[_type == "courses-design"] {
-    "portfolios": portfolios[slug.current == $slug] {
+    "orders": orders[] {
         "_key": _key,
         "author": author[$language],
         "image": image,
@@ -76,6 +99,7 @@ export const queryBySlugCard = `
         "title_images_array": title_images_array[] {
             "title": title[$language],
             "images": images[],
+            "_key": _key,
         }
     },
 }`;

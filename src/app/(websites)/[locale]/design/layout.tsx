@@ -26,35 +26,35 @@ import { query as lessonsQuery } from '../../../../../sanity/services/design-ser
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { allCoursesQuery } from '../../../../../sanity/services/design-service/courses';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
-import { HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/design';
+import { COURSE, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/design';
 
 
 interface RootLayoutProps {
-    children: React.ReactNode,
+    children: React.ReactNode;
     params: {
-        locale: string,
+        locale: string;
     };
 }
 
 interface Site {
-    ogTitle: string,
+    ogTitle: string;
     ogImage: {
-        _type: string,
+        _type: string;
         asset: {
-            _ref: string,
-            _type: string
+            _ref: string;
+            _type: string;
         }
     },
-    ogDescription: string
+    ogDescription: string;
 }
 
 type TYPES = {
-    branches: PARTNER[],
-    courses: any,
-    social: HOSTS | any,
-    lessons: LESSONS[],
-    lessonsArmenian: LESSONS[],
-    isError: boolean,
+    branches: PARTNER[];
+    courses: COURSE[];
+    social: HOSTS | any;
+    lessons: LESSONS[];
+    lessonsArmenian: LESSONS[];
+    isError: boolean;
 }
 
 const localeStrings: {

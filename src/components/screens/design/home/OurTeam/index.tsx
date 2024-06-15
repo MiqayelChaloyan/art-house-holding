@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -34,35 +34,11 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: WORKER[]
+    data: WORKER[];
 };
 
 const OurTeam = ({ data }: Readonly<Props>) => {
     const t = useTranslations('sections');
-    // const [isSwiperInView, setIsSwiperInView] = useState(false);
-    // const swiperRef = useRef<HTMLDivElement>(null);
-
-    // useEffect(() => {
-    //     const observer = new IntersectionObserver(
-    //         ([entry]) => {
-    //             if (entry.isIntersecting) {
-    //                 setIsSwiperInView(true);
-    //                 observer.disconnect();
-    //             }
-    //         },
-    //         { threshold: 0.1 }
-    //     );
-
-    //     if (swiperRef.current) {
-    //         observer.observe(swiperRef.current);
-    //     }
-
-    //     return () => {
-    //         if (swiperRef.current) {
-    //             observer.unobserve(swiperRef.current);
-    //         }
-    //     };
-    // }, []);
 
     const workers = data?.map((worker: WORKER) => {
         const path: UrlType | any = urlForImage(worker.worker_image);
@@ -93,54 +69,50 @@ const OurTeam = ({ data }: Readonly<Props>) => {
     });
 
     return (
-        <div className={styles.container}> 
-        {/* //ref={swiperRef} */}
+        <div className={styles.container}>
             <div className={styles.titles}>
                 <h2 className={cn(styles['title-back'], Arial.className)}>OUR TEAM</h2>
                 <h1 className={cn(styles.title, Arial.className)}>{t('our-team')}</h1>
             </div>
-
-            {/* {isSwiperInView && ( */}
-                <Container className='container'>
-                    <Swiper
-                        effect='coverflow'
-                        grabCursor={true}
-                        centeredSlides={true}
-                        speed={800}
-                        slidesPerView='auto'
-                        modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-                        autoplay={{
-                            delay: 3000,
-                            disableOnInteraction: false,
-                        }}
-                        coverflowEffect={{
-                            rotate: 0,
-                            stretch: 0,
-                            depth: 100,
-                            modifier: 2,
-                            slideShadows: true,
-                        }}
-                        spaceBetween={60}
-                        loop={true}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        navigation={{
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        }}
-                    >
-                        {workers}
-                        <div className='swiper-pagination'></div>
-                        <div className='swiper-button-prev'>
-                            <RiArrowLeftSLine size={70} color='#362906' />
-                        </div>
-                        <div className='swiper-button-next'>
-                            <RiArrowRightSLine size={70} color='#362906' />
-                        </div>
-                    </Swiper>
-                </Container>
-            {/* )} */}
+            <Container className='container'>
+                <Swiper
+                    effect='coverflow'
+                    grabCursor={true}
+                    centeredSlides={true}
+                    speed={800}
+                    slidesPerView='auto'
+                    modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
+                    coverflowEffect={{
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 2,
+                        slideShadows: true,
+                    }}
+                    spaceBetween={60}
+                    loop={true}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }}
+                >
+                    {workers}
+                    <div className='swiper-pagination'></div>
+                    <div className='swiper-button-prev'>
+                        <RiArrowLeftSLine size={70} color='#362906' />
+                    </div>
+                    <div className='swiper-button-next'>
+                        <RiArrowRightSLine size={70} color='#362906' />
+                    </div>
+                </Swiper>
+            </Container>
         </div>
     );
 };

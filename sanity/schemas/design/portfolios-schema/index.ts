@@ -1,7 +1,6 @@
-import { SparklesIcon, BulbOutlineIcon, CheckmarkIcon, ImagesIcon } from '@sanity/icons';
+import { SparklesIcon, CheckmarkIcon } from '@sanity/icons';
 
 import { RuleType } from '../../../ruleType';
-import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
 
 export const portfolioSchemaDesign = {
     name: 'portfolio-design',
@@ -58,7 +57,7 @@ export const portfolioSchemaDesign = {
                     ]
                 }
             ],
-        }
+        },
     ],
 };
 

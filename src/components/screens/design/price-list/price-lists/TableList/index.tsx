@@ -15,7 +15,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: PRICES[],
+    data: PRICES[];
 };
 
 const TableList = ({ data }: Readonly<Props>) => {

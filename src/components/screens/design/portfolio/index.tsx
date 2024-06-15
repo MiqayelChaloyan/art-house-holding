@@ -1,19 +1,55 @@
 'use client'
 
-// import Header from './Header';
-// import Portfolios from './Portfolios';
+import { useSearchParams } from 'next/navigation';
 
-// import { COURSE } from '../../../../../sanity/sanity-queries/design';
+import WorksGallery from '@/components/components/worksGallery';
 
-// interface Props {
-//     courses: COURSE[],
-//     data: any
-// };
+import HoneyCombLoader from '@/lib/ui/honeyCombLoader';
+import { Arial } from '@/lib/constants/font';
 
-const Home = () => (
-    <div>
-        <h1 style={{backgroundColor: 'red', fontSize: 100, color: 'white', margin: '100px auto'}}>PORTFOLIO</h1>
-    </div>
-);
+import { UrlType } from '@/types/design';
+
+import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { COURSE } from '../../../../../sanity/sanity-queries/design';
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
+
+
+interface Props {
+    data: COURSE[] | any
+};
+
+const Home = ({ data }: Readonly<Props>) => {
+    const searchParams = useSearchParams();
+    const name: string | null = searchParams.get('name');
+    const portfolio = data.portfolios?.filter((item: any) => item._key === name);
+    const path: UrlType | any = urlForImage(portfolio[0]?.background_image);
+
+    const { author } = portfolio[0];
+    const worksGallery = portfolio[0]?.title_images_array.map((works: any) => <WorksGallery key={works._key} works={works} />)
+
+    console.log(portfolio[0])
+    return (
+        <div>
+            {portfolio[0] ? (
+                <>
+                    <div className={styles.image} style={{ backgroundImage: `url(${path?.src})` }} >
+                        <div className={styles.titles}>
+                            <h1 className={cn(styles.course_name, Arial.className)}>{data.course_name}</h1>
+                            <h2 className={cn(styles.author, Arial.className)}>{author}</h2>
+                        </div>
+                    </div>
+                    {worksGallery}
+                </>
+            ) : (
+                <div className={styles.loader}>
+                    <HoneyCombLoader />
+                </div>
+            )}
+        </div>
+    )
+};
 
 export default Home;

@@ -15,7 +15,7 @@ const ProgressItem = ({ value = 0, quantity }) => {
     }, [percent]);
 
 
-    return <p className={`${styles.percent} ${ArianAMU.className}`}>{percent}</p>;
+    return <p className={`${styles.percent} ${ArianAMU.className}`}>{percent}+</p>;
 };
 
 

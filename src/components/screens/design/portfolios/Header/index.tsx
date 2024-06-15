@@ -7,7 +7,7 @@ import { Arial } from '@/lib/constants/font';
 import { UrlType } from '@/types/design';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { PORTFOLIO } from '../../../../../../sanity/sanity-queries/design';
+import { PORTFOLIOS } from '../../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
@@ -15,12 +15,12 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: PORTFOLIO,
+    data: PORTFOLIOS;
 };
 
 const Header = ({ data }: Readonly<Props>) => {
     const path: UrlType | any = urlForImage(data.image);
-    const list = data?.advantages.map((elem, index) => <li key={index}>{elem}</li>);
+    const list = data?.advantages.map((elem: string, index: number) => <li key={index}>{elem}</li>);
 
     return (
         <div>

@@ -11,7 +11,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-  data: PRICE_LIST,
+  data: PRICE_LIST;
 };
 
 const Home = ({ data }: Readonly<Props>) => (

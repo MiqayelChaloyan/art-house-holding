@@ -17,22 +17,22 @@ import { querySiteMeta } from '../../../../../sanity/services/art-house-service'
 
 interface Props {
     params: {
-        locale: string
+        locale: string;
     }
-}
+};
 
 interface Site {
-    site_name: string,
-    ogTitle: string,
+    site_name: string;
+    ogTitle: string;
     ogImage: {
-        _type: string,
+        _type: string;
         asset: {
-            _ref: string,
-            _type: string
+            _ref: string;
+            _type: string;
         }
     },
-    ogDescription: string
-}
+    ogDescription: string;
+};
 
 const getResources = async (locale: string) => {
     try {
@@ -68,7 +68,7 @@ async function getSiteMeta(
 ): Promise<Site> {
     const site: Site = await client[mutation](query)
     return site
-}
+};
 
 
 export async function generateMetadata({
@@ -91,7 +91,7 @@ export async function generateMetadata({
             description: ogDescription,
             siteName: '',
             locale,
-            type: "website",
+            type: 'website',
         },
     };
 }

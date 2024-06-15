@@ -42,6 +42,7 @@ export const querySiteMeta = `
 export const querySocial = `
 *[_type == "design-contact-us"] {
     name,
-    phone_number,
+    email,
+    phone_numbers,
     social_links
 }`;
