@@ -51,9 +51,8 @@ export default async function Page({
         notFound()
     }
 
-    return (<Home data={data} />)
+    return (<Home data={data} />);
 };
-
 
 export async function generateMetadata({
     params: { locale, courseName },

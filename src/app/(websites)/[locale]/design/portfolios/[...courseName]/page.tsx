@@ -45,16 +45,14 @@ export default async function Page({
     params: { locale, courseName }
 }: Readonly<Props>) {
     const decodedQuery = decodeURIComponent(courseName[0]);
-
     const { data, isError }: TYPES = await getResources(locale, decodedQuery);
 
     if (!data || isError) {
         notFound()
     }
 
-    return (<Home data={data}/>)
+    return (<Home data={data}/>);
 };
-
 
 export async function generateMetadata({
     params: { locale, courseName },
