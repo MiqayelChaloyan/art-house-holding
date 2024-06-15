@@ -65,8 +65,8 @@ export async function generateMetadata({
     const { data } = await getResources(locale, decodedQuery);
 
     const ogTitle = `${data.course_name} | ${data.portfolios[0].author}`;
-    const ogImage = data.portfolios[0].background_image;
-    const alt = data.portfolios[0].background_image.alt;
+    const ogImage = data.portfolios[0].image;
+    const alt = data.portfolios[0].image.alt;
     const ogDescription = data.guides[0];
     const path: ImagePath = urlForImage(ogImage);
 

@@ -35,7 +35,7 @@ async function getResources(locale: string, courseName: string | number) {
             return { data: [], isError: true };
         }
 
-        return { data, isError: false };
+        return { data: data[0], isError: false };
     } catch (error) {
         return { data: [], isError: true };
     }
@@ -51,7 +51,7 @@ export default async function Page({
         notFound()
     }
 
-    return (<Home data={data[0]} />)
+    return (<Home data={data} />)
 };
 
 
@@ -64,8 +64,8 @@ export async function generateMetadata({
     const { data } = await getResources(locale, decodedQuery);
 
     const ogTitle = `${data.course_name} | ${data.orders[0].author}`;
-    const ogImage = data.orders[0].background_image;
-    const alt = data.orders[0].background_image.alt;
+    const ogImage = data.orders[0].image;
+    const alt = data.orders[0].image.alt;
     const ogDescription = data.guides[0];
     const path: ImagePath = urlForImage(ogImage);
 
