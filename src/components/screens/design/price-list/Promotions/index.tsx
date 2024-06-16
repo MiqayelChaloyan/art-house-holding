@@ -35,7 +35,8 @@ const Promotions = ({ informatie, our_advantages }: Readonly<Props>) => {
     const t = useTranslations('sections');
     const windoSize = useWindowSize();
 
-    const advantages = our_advantages.map((elem: string, index: number) => <Box key={index} advantages={elem} iconSize={windoSize.width}/>);
+    const advantages = our_advantages?.map((elem: string, index: number) =>
+        <Box key={index} advantages={elem} iconSize={windoSize.width} />);
 
     return (
         <section id='promotions' className={styles.container}>

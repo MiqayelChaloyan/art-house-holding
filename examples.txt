@@ -1394,3 +1394,26 @@ Readonly<RootProps>
         right: 55px
         line-height: 50px
         top: 32px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        href={`/${localActive}${Pages.DESIGN_CONTACT}`}
+                        aria-label={Pages.DESIGN_CONTACT}
+                        className={cn(styles.link, Arial.className)}
+                        prefetch={true}
+                        passHref

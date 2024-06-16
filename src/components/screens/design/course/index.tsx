@@ -17,7 +17,7 @@ import PortfolioImageCard from '@/lib/ui/portfolio-card';
 import { Pages } from '@/lib/constants/pages';
 import { Arial } from '@/lib/constants/font';
 
-import { UrlType } from '@/types/design';
+import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { COURSE } from '../../../../../sanity/sanity-queries/design';
@@ -60,7 +60,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
   }, [index]);
 
   const gallery = gallery_of_course?.map((image, imageIndex) => {
-    const path: UrlType | any = urlForImage(image);
+    const path: ImagePath = urlForImage(image);
 
     return (
       <Image
@@ -111,6 +111,23 @@ const Course = ({ locale, course }: Readonly<Props>) => {
     return acc;
   }, { desktopCards: [] as JSX.Element[], mobileCards: [] as JSX.Element[] });
 
+
+  // const cards = latestProjects.reduce((acc: JSX.Element[], project) => {
+  //   const cardElement = (
+  //     <PortfolioImageCard
+  //       key={project._key}
+  //       course_name={course_name}
+  //       project={project}
+  //       slug={course.slug}
+  //       type='portfolios'
+  //     />
+  //   );
+  
+  //   acc.push(cardElement);
+  //   return acc;
+  // }, []);
+  
+  
   return (
     <section id='course' className={styles.container}>
       <div className={styles.line} />

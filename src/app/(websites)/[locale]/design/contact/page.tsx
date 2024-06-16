@@ -1,23 +1,25 @@
 'use server'
 
+import { notFound } from 'next/navigation';
+
 import Home from '@/components/screens/design/contact';
 
 import { client } from '../../../../../../sanity/client';
 import { LESSONS } from '../../../../../../sanity/sanity-queries/design';
 import { query as lessonsQuery } from '../../../../../../sanity/services/design-service/lessons';
-import { notFound } from 'next/navigation';
+
 
 interface Props {
     params: {
-        locale: string,
+        locale: string;
     }
-}
+};
 
 type TYPES = {
-    lessons: LESSONS[],
-    lessonsArmenian: LESSONS[],
-    isError: boolean,
-}
+    lessons: LESSONS[];
+    lessonsArmenian: LESSONS[];
+    isError: boolean;
+};
 
 async function getResources(locale: string) {
     const lessonsPromise = await client.fetch(lessonsQuery, { language: locale }, { next: { revalidate: 100 } });
@@ -46,7 +48,5 @@ export default async function Page({
         notFound()
     }
 
-    return (
-        <Home lessons={lessons} lessonsArmenian={lessonsArmenian}/>
-    )
-}
+    return (<Home lessons={lessons} lessonsArmenian={lessonsArmenian}/>);
+};

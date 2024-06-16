@@ -34,9 +34,9 @@ const options = {
     },
 };
 
-
 const WorksGallery = ({ works }: Readonly<Props>) => {
-    const gallery = works?.images.map((image: any) => <WorkImage key={image._key} image={image} />);
+    const gallery = works?.images.map((image: any) =>
+        <WorkImage key={image._key} image={image} />);
 
     return (
         <div className={styles.works}>

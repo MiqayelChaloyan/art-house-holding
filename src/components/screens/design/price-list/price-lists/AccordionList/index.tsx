@@ -1,10 +1,9 @@
 'use client'
 
 import { useRef, useState } from 'react';
+import { RiArrowDownSLine } from 'react-icons/ri';
 
 import { useTranslations } from 'next-intl';
-
-import { RiArrowDownSLine } from 'react-icons/ri';
 
 import { COURSE, PRICES } from '../../../../../../../sanity/sanity-queries/design';
 
@@ -25,7 +24,11 @@ interface AccordionItemProps {
     course: COURSE | any;
 };
 
-const AccordionItem = ({ handleToggle, active, course }: Readonly<AccordionItemProps>) => {
+const AccordionItem = ({
+    handleToggle,
+    active,
+    course
+}: Readonly<AccordionItemProps>) => {
     const contentEl = useRef<HTMLDivElement>(null);
     const t = useTranslations('tables-titles');
 

@@ -30,7 +30,6 @@ const Home = ({ data }: Readonly<Props>) => {
     const { author } = portfolio[0];
     const worksGallery = portfolio[0]?.title_images_array.map((works: any) => <WorksGallery key={works._key} works={works} />)
 
-    console.log(portfolio[0])
     return (
         <div>
             {portfolio[0] ? (

@@ -1,8 +1,8 @@
 'use server'
 
-import Home from '@/components/screens/design/orders';
-
 import { notFound } from 'next/navigation';
+
+import Home from '@/components/screens/design/orders';
 
 import { client } from '../../../../../../sanity/client';
 import { COURSE, LESSONS } from '../../../../../../sanity/sanity-queries/design';

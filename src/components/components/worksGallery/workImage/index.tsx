@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { UrlType } from '@/types/design';
+import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 
@@ -15,7 +15,7 @@ interface Props {
 };
 
 const WorkImage = ({ image }: Readonly<Props>) => {
-    const path: UrlType | any = urlForImage(image);
+    const path: ImagePath = urlForImage(image);
 
     return (
         <Link data-fancybox="gallery" href={path?.src}>

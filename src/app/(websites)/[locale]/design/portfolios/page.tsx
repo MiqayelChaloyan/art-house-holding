@@ -46,7 +46,5 @@ export default async function Page({
         notFound()
     }
 
-    return (
-        <Home courses={courses} data={data}/>
-    )
+    return (<Home courses={courses} data={data}/>);
 };

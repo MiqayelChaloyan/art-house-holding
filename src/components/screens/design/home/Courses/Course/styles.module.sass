@@ -1,10 +1,10 @@
 .active
 	display: block
+	opacity: 1
 
 .next
 	display: none
-	transition: opacity 2s linear
-	opacity: 0.2
+	opacity: 0
 
 .stapler
 	width: 300px
@@ -262,6 +262,9 @@
 	font-weight: 700
 	color: #FFFFFF
 	margin-right: 20px
+	transition: color 1s ease
+	&:hover
+		color: #8E685C
 	/* @xl */
 	@media screen and (max-width: 1440px)
 		font-size: 17px
@@ -1074,10 +1077,8 @@
 	background-position: center
 	height: 600px
 	position: relative
-	transition: all .2s
-	opacity: 1
 	z-index: 2
-	position: relative
+	transition: 7s
 	/* @4xl */
 	@media screen and (max-width: 2560px)
 		width: 400px

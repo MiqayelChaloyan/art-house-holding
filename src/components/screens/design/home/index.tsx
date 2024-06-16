@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react';
+
 import Main from './Main';
 import Courses from './Courses';
 import OurDay from './OurDay';
@@ -11,6 +13,7 @@ import { DESIGN } from '../../../../../sanity/sanity-queries/design';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 import styles from './styles.module.sass';
+
 
 interface Props {
     data: DESIGN[];
@@ -35,4 +38,4 @@ const Home = ({
     )
 };
 
-export default Home;
+export default React.memo(Home);

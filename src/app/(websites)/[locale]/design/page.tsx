@@ -8,12 +8,20 @@ import { client } from '../../../../../sanity/client';
 
 import { partnersQuery } from '../../../../../sanity/services/generic-service';
 import { query } from '../../../../../sanity/services/design-service/about-us';
+import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
+import { DESIGN } from '../../../../../sanity/sanity-queries/design';
 
 
 interface RootProps {
     params: {
         locale: string;
     }
+};
+
+type TYPES = {
+    data: DESIGN[];
+    partners: PARTNER[];
+    isError: boolean;
 };
 
 async function getResources(locale: string) {
@@ -37,9 +45,9 @@ export default async function Page({
     params: { locale }
 }:
     Readonly<RootProps>) {
-    const { data, partners } = await getResources(locale);
+    const { data, partners, isError }: TYPES = await getResources(locale);
 
-    if (!data || !partners) {
+    if (!data || !partners || isError) {
         notFound()
     }
 
@@ -49,6 +57,6 @@ export default async function Page({
             partners={partners}
             locale={locale}
         />
-    )
+    );
 };
 

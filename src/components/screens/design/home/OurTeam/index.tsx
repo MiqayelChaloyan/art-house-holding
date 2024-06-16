@@ -118,3 +118,24 @@ const OurTeam = ({ data }: Readonly<Props>) => {
 };
 
 export default React.memo(OurTeam);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

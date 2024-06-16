@@ -78,7 +78,6 @@ const FormAppointment = ({
 		};
 
 		try {
-
 			if (formData.course_name !== t('contact-us-form.select-course')) {
 				setState((prev: FormProps) => ({
 					...prev,

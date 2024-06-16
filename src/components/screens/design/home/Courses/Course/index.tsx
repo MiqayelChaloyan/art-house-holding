@@ -2,20 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 
-import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 import Container from '@/components/components/container';
 
 import { Arial } from '@/lib/constants/font';
 import { ImagePaths } from '@/lib/constants';
-
-import { UrlType } from '@/types/design';
+import { ImagePath } from '@/types/general';
 
 import { client } from '../../../../../../../sanity/client';
 import { queryId } from '../../../../../../../sanity/services/design-service/courses';
-
 import { HOME_COURSES } from '../../../../../../../sanity/sanity-queries/design';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
@@ -30,22 +28,20 @@ interface CourseProps {
 };
 
 const Course = ({ course, position }: Readonly<CourseProps>) => {
-    const [index, setIndex] = useState<number>(0);
-    const router = useRouter();
+    const [activeIndex, setActiveIndex] = useState<number>(0);
     const t = useTranslations('buttons');
-
     const localActive = useLocale();
+    const router = useRouter();
 
     const { name, course_name, about_course, categories, gallery_of_course } = course;
     let modifiedName = name.replace(" ", "\n");
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % gallery_of_course.length);
-        }, 5000);
+    const onNextClick = () => setActiveIndex((prevIndex) => (prevIndex + 1) % gallery_of_course?.length);
 
+    useEffect(() => {
+        const timer = setTimeout(() => onNextClick(), 5000);
         return () => clearTimeout(timer);
-    }, [index]);
+    }, [activeIndex]);
 
     const boxClass = position === 'left' ? 'box-left' : 'box-right';
     const cornerClass = position === 'left' ? 'corner-left' : 'corner-right';
@@ -55,13 +51,13 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
     const titleClass = position === 'left' ? 'title-left' : 'title-right';
     const titleDesignClass = position === 'left' ? 'design-title-left' : 'design-title-right';
 
-    const gallery = gallery_of_course.map((image, imageIndex) => {
-        const path: UrlType | any = urlForImage(image);
+    const gallery = gallery_of_course?.map((image, imageIndex) => {
+        const path: ImagePath = urlForImage(image);
 
         return (
             <div
                 key={image._key}
-                className={cn(styles['design-image'], index === imageIndex ? styles.active : styles.next)}
+                className={cn(styles['design-image'], activeIndex === imageIndex ? styles.active : styles.next)}
                 style={{ backgroundImage: `url(${path?.src})` }} />
         )
     });
@@ -76,7 +72,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
             notFound();
         }
     };
-
+   
     return (
         <div className={styles.section}>
             <div className={styles[viewClass]}>
@@ -95,7 +91,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                 </p>
             </div>
             <div className={styles.card}>
-                <Container className='container'>
+                <Container className='box'>
                     <div className={cn(styles.box, styles[boxClass])}>
                         <div className={styles.right}>
                             <h2 className={cn(styles.title, styles[titleClass], Arial.className)}>
@@ -123,7 +119,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                                 height={500}
                                 priority
                             />
-                            <figure className={styles.imagesContainer}>
+                            <figure>
                                 {gallery}
                             </figure>
                         </div>

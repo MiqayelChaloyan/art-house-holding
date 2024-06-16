@@ -9,7 +9,7 @@ interface AssetRef {
     _ref: string
 };
 
-export interface MAIN {
+export interface MAIN_SLIDE {
     _key: string,
     company_name: string,
     title: string,
@@ -111,7 +111,7 @@ export interface WORKER {
 
 export interface DESIGN {
     _id: string,
-    main_section: MAIN[],
+    main_section: MAIN_SLIDE[],
     courses: HOME_COURSES[],
     progress_section: PROGRESS[],
     our_day: OUR_DAY,

@@ -58,10 +58,10 @@ type TYPES = {
 }
 
 const localeStrings: {
-    am: string
-    ru: string
-    en: string
-    [key: string]: string
+    am: string;
+    ru: string;
+    en: string;
+    [key: string]: string;
 } = {
     am: 'դիզայն ստուդիա',
     ru: 'студия дизайна',
@@ -133,7 +133,6 @@ export default async function Layout({
         </>
     );
 };
-
 
 async function getSiteMeta(
     query: string = querySiteMeta,
