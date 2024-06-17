@@ -129,13 +129,13 @@ export const aboutUsSchemaDesign = {
                             title: 'Name',
                             name: 'name',
                             type: 'string',
-                            description: 'Դասընթացի անվանումը` անգլերեն'
+                            description: 'Դասընթացի անվանումը` անգլերեն (Նախընտրելի է, որ վերնագրի երկարությունը չգերազանցի 30-ը)'
                         },
                         {
                             title: 'Course Name',
                             name: 'course_name',
                             type: 'object',
-                            description: 'Դասընթացի անվանումը',
+                            description: 'Դասընթացի անվանումը (Նախընտրելի է, որ վերնագրի երկարությունը չգերազանցի 30-ը)',
                             validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
@@ -159,7 +159,7 @@ export const aboutUsSchemaDesign = {
                             title: 'About Course',
                             name: 'about_course',
                             type: 'object',
-                            description: 'Դասընթացի մասին',
+                            description: 'Դասընթացի մասին (Նախընտրելի է, որ երկարությունը չգերազանցի 65-ը)',
                             validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {

@@ -254,17 +254,73 @@
 	font-weight: 700
 	color: #FFFFFF
 	margin-right: 20px
-	transition: color 1s ease
+	transition: color 0.25s
 	&:hover
-		color: #8E685C
+		color: #D7D3CE
 	/* @xl */
 	@media screen and (max-width: 1440px)
 		font-size: 17px
 	@media screen and (max-width: 980px)
-		font-size: 16px
+		font-size: 15px
 	/* @sm */
 	@media screen and (max-width: 768px)
 		font-size: 15px
+
+.title-large
+	font-size: 50px
+	font-weight: 700
+	line-height: 65px
+	color: #D7D3CE
+	margin-bottom: 150px
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 50px
+		line-height: 65px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 50px
+		line-height: 65px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 40px
+		line-height: 65px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 40px
+		line-height: 65px
+		margin-bottom: 20px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 40px
+		line-height: 70px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 40px
+		line-height: 70px
+	@media screen and (max-width: 980px)
+		font-size: 30px
+		line-height: 50px
+		margin-bottom: 0
+	/* @sm */
+	@media screen and (max-width: 768px)
+		font-size: 30px
+		line-height: 30px
+		margin-bottom: 20px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		font-size: 30px
+		line-height: 30px
+		margin-bottom: 20px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		font-size: 20px
+		line-height: 20px
+		margin-bottom: 20px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		font-size: 15px
+		line-height: 15px
+		margin-bottom: 15px
 
 .title
 	white-space: pre-line
@@ -272,7 +328,7 @@
 	font-weight: 700
 	line-height: 103.57px
 	color: #D7D3CE
-	margin-bottom: 150px
+	margin-bottom: 100px
 	/* @4xl */
 	@media screen and (max-width: 2560px)
 		font-size: 90px
@@ -289,6 +345,7 @@
 	@media screen and (max-width: 1440px)
 		font-size: 60px
 		line-height: 70px
+		margin-bottom: 70px
 	/* @lg */
 	@media screen and (max-width: 1280px)
 		font-size: 60px
@@ -299,7 +356,8 @@
 		line-height: 70px
 	@media screen and (max-width: 980px)
 		font-size: 45px
-		line-height: 70px
+		line-height: 50px
+		margin-bottom: 0
 	/* @sm */
 	@media screen and (max-width: 768px)
 		font-size: 30px
@@ -339,11 +397,53 @@
 	@media screen and (max-width: 768px)
 		display: none
 
+.design-title-large
+	font-size: 20px
+	font-weight: 700
+	color: #FFFFFF
+	position: relative
+	bottom: 0
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		font-size: 20px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		font-size: 20px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		font-size: 20px
+		bottom: 5px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		font-size: 20px
+		bottom: 0
+		top: 32px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		font-size: 15px
+		bottom: 0
+		top: 30px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		font-size: 15px
+	@media screen and (max-width: 980px)
+		font-size: 14px
+		top: 50px
+		bottom: 0
+	@media screen and (max-width: 850px)
+		font-size: 14px
+		top: 90px
+		bottom: 0
+	/* @sm */
+	@media screen and (max-width: 768px)
+		display: none
+
 .design-title
 	font-size: 30px
 	font-weight: 700
 	color: #FFFFFF
-	margin-right: 0
+	position: relative
+	bottom: 35px
 	/* @4xl */
 	@media screen and (max-width: 2560px)
 		font-size: 30px
@@ -353,9 +453,11 @@
 	/* @2xl */
 	@media screen and (max-width: 1600px)
 		font-size: 30px
+		bottom: 15px
 	/* @xl */
 	@media screen and (max-width: 1440px)
 		font-size: 20px
+		bottom: 20px
 	/* @lg */
 	@media screen and (max-width: 1280px)
 		font-size: 17px
@@ -364,10 +466,15 @@
 		font-size: 17px
 	@media screen and (max-width: 980px)
 		font-size: 14px
+		top: 25px
+		bottom: 0	
+	@media screen and (max-width: 800px)
+		font-size: 14px
+		top: 25px
+		bottom: 0	
 	/* @sm */
 	@media screen and (max-width: 768px)
 		display: none
-
 
 .design-title-mobile
 	font-size: 30px
@@ -404,7 +511,7 @@
 		font-size: 25px
 	/* @2xl */
 	@media screen and (max-width: 1600px)
-		font-size: 22px
+		font-size: 20px
 	/* @xl */
 	@media screen and (max-width: 1440px)
 		font-size: 17px
@@ -752,9 +859,9 @@
 		position: absolute
 		background: #8E685C
 		left: 0
-		bottom: 33%
-		width: 57%
-		height: 50px
+		bottom: 27%
+		width: 47%
+		height: 45px
 		justify-content: center
 		&:before 
 			top: 0px 
@@ -1046,9 +1153,9 @@
 		position: absolute
 		background: #8E685C
 		right: 0
-		bottom: 33%
-		width: 57%
-		height: 50px
+		bottom: 27%
+		width: 47%
+		height: 45px
 		justify-content: center
 		&:before 
 			top: 0px 

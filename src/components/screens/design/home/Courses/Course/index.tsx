@@ -36,6 +36,10 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
     const { name, course_name, about_course, categories, gallery_of_course } = course;
     let modifiedName = name.replace(" ", "\n");
 
+    let nameStyles = name.length >= 30  ? styles['title-large'] : styles.title;
+    let courseNameStyles = course_name.length >= 30 ? styles['design-title-large'] : styles['design-title'];
+    let aboutCourse = about_course.slice(0, 65) + '..'
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) =>
@@ -88,23 +92,22 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                     </button>
                 </div>
             </div>
-            <div className={styles[cornerLargeClass]}>
-                <p className={cn(styles['design-title'], styles[titleDesignClass], Arial.className)}>
-                    {course_name}
-                </p>
-            </div>
+            <div className={styles[cornerLargeClass]} />
             <div className={styles.card}>
                 <Container className='container'>
                     <div className={cn(styles.box, styles[boxClass])}>
                         <div className={styles.right}>
-                            <h2 className={cn(styles.title, styles[titleClass], Arial.className)}>
+                            <h2 className={cn(nameStyles, styles[titleClass], Arial.className)}>
                                 {modifiedName}
                             </h2>
+                            <p className={cn(courseNameStyles, styles[titleDesignClass], Arial.className)}>
+                                {course_name}
+                            </p>
                             <p className={cn(styles['design-title-mobile'], styles[titleDesignClass], Arial.className)}>
                                 {course_name}
                             </p>
                             <p className={cn(styles.content, Arial.className)}>
-                                {about_course}
+                                {aboutCourse}
                             </p>
                             <button
                                 onClick={getResources}
