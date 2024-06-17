@@ -18,8 +18,8 @@ import styles from './styles.module.sass';
 
 interface Props {
   courses: COURSE[];
-  orders: ORDER[];
-  ordersArmenian: ORDER[];
+  orders: any;
+  ordersArmenian:any;
 };
 
 const Home = ({ courses, orders, ordersArmenian }: Readonly<Props>) => {
