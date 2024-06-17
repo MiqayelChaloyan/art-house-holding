@@ -28,7 +28,7 @@ interface CourseProps {
 };
 
 const Course = ({ course, position }: Readonly<CourseProps>) => {
-    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
     const t = useTranslations('buttons');
     const localActive = useLocale();
     const router = useRouter();
@@ -36,12 +36,15 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
     const { name, course_name, about_course, categories, gallery_of_course } = course;
     let modifiedName = name.replace(" ", "\n");
 
-    const onNextClick = () => setActiveIndex((prevIndex) => (prevIndex + 1) % gallery_of_course?.length);
-
     useEffect(() => {
-        const timer = setTimeout(() => onNextClick(), 5000);
-        return () => clearTimeout(timer);
-    }, [activeIndex]);
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) =>
+                prevIndex === gallery_of_course.length - 1 ? 0 : prevIndex + 1
+            );
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [gallery_of_course.length]);
 
     const boxClass = position === 'left' ? 'box-left' : 'box-right';
     const cornerClass = position === 'left' ? 'corner-left' : 'corner-right';
@@ -57,7 +60,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
         return (
             <div
                 key={image._key}
-                className={cn(styles['design-image'], activeIndex === imageIndex ? styles.active : styles.next)}
+                className={cn(styles['design-image'], currentIndex === imageIndex ? styles.active : styles.next)}
                 style={{ backgroundImage: `url(${path?.src})` }} />
         )
     });
@@ -72,7 +75,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
             notFound();
         }
     };
-   
+
     return (
         <div className={styles.section}>
             <div className={styles[viewClass]}>
@@ -91,7 +94,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                 </p>
             </div>
             <div className={styles.card}>
-                <Container className='box'>
+                <Container className='container'>
                     <div className={cn(styles.box, styles[boxClass])}>
                         <div className={styles.right}>
                             <h2 className={cn(styles.title, styles[titleClass], Arial.className)}>

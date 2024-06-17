@@ -9,11 +9,11 @@ import Snackbar from '@/components/components/snackbar';
 import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
-
 import { Arial } from '@/lib/constants/font';
 
 import { sendContactUsDesign } from '@/api';
 import { FormContactUs } from '@/types/design';
+import { ContactUsResponse } from '@/types/general';
 
 import { LESSON, LESSONS } from '../../../../sanity/sanity-queries/design';
 
@@ -72,52 +72,41 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
         };
 
         try {
-            if (formData.course_name !== t('contact-us-form.select-course')) {
-                setState((prev: FormProps) => ({
-                    ...prev,
-                    isLoading: true,
-                }))
-            };
-
-            const res: { status: number } | any = await sendContactUsDesign(formData);
-
-            if (res?.status !== 200) {
-                setOpen(true);
-                setInfo({
-                    status: 'info',
-                    content: t('texts.send-message-failure')
-                });
-                setState((prev: FormProps) => ({
-                    ...prev,
-                    isLoading: false,
-                }))
-                return;
-            };
-
+            if (formData.course_name === '') {
+                return
+            }
+    
+            const res: ContactUsResponse = await sendContactUsDesign(formData);
+    
+            if (res.status !== 200) {
+                throw new Error('Failed to send message');
+            }
+    
+            // Success case
             setOpen(true);
-
             setInfo({
                 status: 'success',
-                content: t('texts.send-message-success')
+                content: t('texts.send-message-success'),
             });
-
+    
+            setCourse('');
             setState(() => ({
                 ...initState,
                 isLoading: false,
                 error: false,
             }));
-        } catch (error: any) {
+        } catch (error) {    
+            setOpen(true);
+            setInfo({
+                status: 'info',
+                content: t('texts.send-message-failure'),
+            });
+    
             setState((prev: FormProps) => ({
                 ...prev,
                 isLoading: false,
                 error: true,
             }));
-
-            setOpen(true);
-            setInfo({
-                status: 'info',
-                content: t('texts.send-message-failure')
-            });
         }
     };
 

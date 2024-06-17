@@ -14,6 +14,7 @@ import { Arial, Calibri } from '@/lib/constants/font';
 
 import { sendOrderDesign } from '@/api';
 import { FormOrder } from '@/types/design';
+import { ContactUsResponse } from '@/types/general';
 
 import { ORDERS } from '../../../../../../sanity/sanity-queries/design';
 
@@ -23,8 +24,8 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    orders:  any, //ORDERS[]
-    ordersArmenian: any //ORDERS[]
+    orders: ORDERS[]
+    ordersArmenian: ORDERS[]
 };
 
 type FormProps = {
@@ -71,53 +72,41 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
         };
 
         try {
-            if (orderValue) {
-                setState((prev: FormProps) => ({
-                    ...prev,
-                    isLoading: true,
-                }));
+            if (!orderValue?.order_name) {
+                return
+            }
+    
+            const res: ContactUsResponse = await sendOrderDesign(formData);
+    
+            if (res.status !== 200) {
+                throw new Error('Failed to send message');
+            }
 
-                const res: { status: number } | any = await sendOrderDesign(formData);
+            // Success case
+            setOpen(true);
+            setInfo({
+                status: 'success',
+                content: t('texts.send-message-success'),
+            });
 
-                if (res?.status !== 200) {
-                    setOpen(true);
-                    setInfo({
-                        status: 'info',
-                        content: t('texts.send-message-failure')
-                    });
-                    setState((prev: FormProps) => ({
-                        ...prev,
-                        isLoading: false,
-                    }))
-                    return;
-                };
+            setOrderValue([]);
+            setState(() => ({
+                ...initState,
+                isLoading: false,
+                error: false,
+            }));
+        } catch (error) {
+            setOpen(true);
+            setInfo({
+                status: 'info',
+                content: t('texts.send-message-failure'),
+            });
 
-                setOrderValue([]);
-                setOpen(true);
-
-                setInfo({
-                    status: 'success',
-                    content: t('texts.send-message-success')
-                });
-
-                setState(() => ({
-                    ...initState,
-                    isLoading: false,
-                    error: false,
-                }));
-            };
-        } catch (error: any) {
             setState((prev: FormProps) => ({
                 ...prev,
                 isLoading: false,
                 error: true,
             }));
-
-            setOpen(true);
-            setInfo({
-                status: 'info',
-                content: t('texts.send-message-failure')
-            });
         }
     };
 
@@ -151,8 +140,8 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
         <div className={styles.container}>
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
-                <div className={cn(styles.contact_us)}>  
-                {/* styles.line */}
+                <div className={cn(styles.contact_us)}>
+                    {/* styles.line */}
                     <h2 className={cn(styles.form_title, Arial.className)}>
                         {t('contact-us-form.form-title-order')}
                     </h2>
