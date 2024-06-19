@@ -29,7 +29,7 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
   const property: string | null = searchParams.get('name');
   const [allCourses, setAllCourses] = useState<COURSE[]>(courses);
   const [category, setCategory] = useState<COURSE[]>([]);
-  
+
   useEffect(() => {
     const filteredCourses = property && property !== defaultSearchParam
       ? allCourses?.filter((elem: COURSE) => elem.name === property)
@@ -77,7 +77,9 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
       </div>
       <div className={styles.gallery}>
         {category.length === 0 ? (
-          <div className={styles['loader-card']} />
+          <div className={styles.loader}>
+            <div className={styles['loader-card']} />
+          </div>
         ) : (
           <Gallery projects={category} type='portfolios' />
         )}

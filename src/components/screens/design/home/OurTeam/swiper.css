@@ -4,9 +4,6 @@
     padding-bottom: 50px;
 }
 
-
-
-/*fffffffffffffffffffffffffffffffff*/
 .swiper .swiper-slide-active {
     filter: none;
     cursor: pointer
@@ -85,7 +82,6 @@
     position: relative;
     width: 290px;
     height: 400px;
-    /* box-shadow: 0 15px 50px #00000033; */
     filter: opacity(0.8);
     transition: all 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4);
     border-radius: 15px;
@@ -159,5 +155,4 @@
     cursor: auto;
     pointer-events: none;
 }
-
 

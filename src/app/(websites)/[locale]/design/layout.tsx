@@ -108,9 +108,9 @@ export default async function Layout({
 
     return (
         <>
+            <Header typePosition="fixed" locale={locale} />
             <div className='design-container'>
-                <Header typePosition="fixed" locale={locale} />
-                <GoBack locale={locale} theme='#8E685C'/>
+                <GoBack locale={locale} theme='#8E685C' />
                 <ScrollToTopButton theme='#8E685C' />
                 <FloatingMenu
                     website={localeStrings[locale]}

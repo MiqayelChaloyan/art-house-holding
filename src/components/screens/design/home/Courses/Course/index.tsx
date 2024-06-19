@@ -36,7 +36,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
     const { name, course_name, about_course, categories, gallery_of_course } = course;
     let modifiedName = name.replace(" ", "\n");
 
-    let nameStyles = name.length >= 30  ? styles['title-large'] : styles.title;
+    let nameStyles = name.length >= 30 ? styles['title-large'] : styles.title;
     let courseNameStyles = course_name.length >= 30 ? styles['design-title-large'] : styles['design-title'];
     let aboutCourse = about_course.slice(0, 65) + '..'
 
@@ -111,7 +111,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                             </p>
                             <button
                                 onClick={getResources}
-                                className={styles['view-btn']}
+                                className={cn(styles['view-btn'], Arial.className)}
                             >
                                 {t('read-more')}
                             </button>
@@ -127,7 +127,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                             />
                             <figure>
                                 {gallery}
-                            </figure>
+                            </figure>    
                         </div>
                     </div>
                 </Container>

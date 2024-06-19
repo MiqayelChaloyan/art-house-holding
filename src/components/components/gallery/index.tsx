@@ -7,6 +7,7 @@ import Portfolio from '@/lib/ui/portfolio-card';
 import { COURSE, PORTFOLIO } from '../../../../sanity/sanity-queries/design';
 
 import styles from './styles.module.sass';
+import Container from '../container';
 
 
 interface Props {
@@ -42,7 +43,7 @@ const Gallery = ({ projects, type }: Readonly<Props>) => {
     const desktopCards = generateGalleryItems(projects, type);
 
     return (
-        <div className={styles.portfolios}>
+        <div className={styles.cards}>
             {desktopCards}
         </div>
     );

@@ -44,7 +44,7 @@ const Home = ({ data }: Readonly<Props>) => {
     // console.log(order)
 
     return (
-        <div>
+        <>
             {order.length ? (
                 <>
                     <div className={styles.image} style={{ backgroundImage: `url(${path})` }} >
@@ -60,7 +60,7 @@ const Home = ({ data }: Readonly<Props>) => {
                     <HoneyCombLoader />
                 </div>
             )}
-        </div>
+        </>
     )
 };
 

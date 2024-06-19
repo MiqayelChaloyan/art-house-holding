@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react';
+
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -11,7 +13,7 @@ import Container from '@/components/components/container';
 
 import { Arial } from '@/lib/constants/font';
 import { Pages } from '@/lib/constants/pages';
-import { UrlType } from '@/types/design';
+import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
 
 import { OUR_DAY } from '../../../../../../sanity/sanity-queries/design';
@@ -27,7 +29,7 @@ interface Props {
 };
 
 const OurDay = ({ our_day }: Readonly<Props>) => {
-    const path: UrlType | any = urlForImage(our_day?.video_light)
+    const path: ImagePath = urlForImage(our_day?.video_light)
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
     const t = useTranslations();
@@ -68,4 +70,4 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
     )
 };
 
-export default OurDay;
+export default React.memo(OurDay);

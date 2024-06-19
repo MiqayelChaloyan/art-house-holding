@@ -127,6 +127,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
   //   return acc;
   // }, []);
   
+
   
   return (
     <section id='course' className={styles.container}>
