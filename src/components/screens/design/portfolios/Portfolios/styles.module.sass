@@ -505,14 +505,25 @@
     100%
         transform: translateX(100%)
 
-
-
-
-
-
-
-
-
 .gallery
+    width: 75%
     margin: 100px auto
-    width: 73%
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 80%
+    @media screen and (max-width: 1150px)
+        width: 70%
+    @media screen and (max-width: 950px)
+        width: 100%
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 100%
+        margin: 50px auto
+    @media screen and (max-width: 670px)
+        width: 100%
+    @media screen and (max-width: 600px)
+        width: 100%
+        margin: 50px auto
+    @media screen and (max-width: 550px)
+        width: 100%
+        margin: 50px auto

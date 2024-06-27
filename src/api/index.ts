@@ -79,7 +79,6 @@ export const sendContactUsDesign = async (contactUs: FormSmall) => {
 // SEND ORDER
 export const sendOrderDesign = async (designFormData: any) => {
     try {
-        // console.log(designFormData)
         const response = await axios.post(BASE_URL, null, {
             params: { designFormData },
             timeout: 10000

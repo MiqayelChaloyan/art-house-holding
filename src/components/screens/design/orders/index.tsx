@@ -32,7 +32,13 @@ const Home = ({ courses, orders, ordersArmenian }: Readonly<Props>) => {
         <h1 className={cn(styles.title, Arial.className)}>{t('orders')}</h1>
       </div>
       <OrdersGallery courses={courses}/>
-      <OrderForm orders={orders} ordersArmenian={ordersArmenian}/>
+
+
+      <div className={styles['form-container']}>
+        <div className={styles.line} />
+        <OrderForm orders={orders} ordersArmenian={ordersArmenian}/>
+        <div className={styles.line} />
+      </div>
     </section>
   );
 };

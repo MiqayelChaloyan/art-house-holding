@@ -8,6 +8,8 @@ import ContactUsForm from '@/components/components/form-design'
 
 import { LESSONS } from '../../../../../sanity/sanity-queries/design';
 
+import styles from './styles.module.sass';
+
 
 interface Props {
     locale: string,
@@ -38,11 +40,15 @@ const ContactUs = ({
     };
 
     return isOpen && (
-        <ContactUsForm
-            lessons={lessons}
-            lessonsArmenian={lessonsArmenian}
-            classNameProperty='small'
-        />
+        <div className={styles['form-container']}>
+            <div className={styles.line} />
+            <ContactUsForm
+                lessons={lessons}
+                lessonsArmenian={lessonsArmenian}
+                classNameProperty='small'
+            />
+            <div className={styles.line} />
+        </div>
     )
 };
 

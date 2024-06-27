@@ -25,6 +25,7 @@ import { COURSE } from '../../../../../sanity/sanity-queries/design';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import AnimationCarousel from './AnimationCarousel';
 
 
 interface Props {
@@ -134,9 +135,10 @@ const Course = ({ locale, course }: Readonly<Props>) => {
       <div className={styles.line} />
       <div className={styles.course}>
         <div className={styles.left}>
-          <figure>
+          {/* <figure>
             {gallery}
-          </figure>
+          </figure> */}
+          <AnimationCarousel gallery={gallery_of_course}/>
         </div>
         <div className={styles.right}>
           <div className={styles.titles}>
