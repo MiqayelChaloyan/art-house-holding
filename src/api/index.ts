@@ -63,18 +63,13 @@ export const sendContactUsEducational = async (contactUs: Form) => {
 // SEND CONTACT US
 export const sendContactUsDesign = async (contactUs: FormSmall) => {
     try {
-        console.log(contactUs)
-        // const response = await axios.post(BASE_URL, null, {
-        //     params: { contactUs },
-        //     timeout: 10000
-        // });
-
-        // return {
-        //     status: response.status
-        // };
+        const response = await axios.post(BASE_URL, null, {
+            params: { contactUs },
+            timeout: 10000
+        });
 
         return {
-            status: 200
+            status: response.status
         };
     } catch (error) {
         return error
@@ -82,20 +77,16 @@ export const sendContactUsDesign = async (contactUs: FormSmall) => {
 };
 
 // SEND ORDER
-export const sendOrderDesign = async (order: any) => {
+export const sendOrderDesign = async (designFormData: any) => {
     try {
-        console.log(order)
-        // const response = await axios.post(BASE_URL, null, {
-        //     params: { contactUs },
-        //     timeout: 10000
-        // });
-
-        // return {
-        //     status: response.status
-        // };
+        // console.log(designFormData)
+        const response = await axios.post(BASE_URL, null, {
+            params: { designFormData },
+            timeout: 10000
+        });
 
         return {
-            status: 200
+            status: response.status
         };
     } catch (error) {
         return error

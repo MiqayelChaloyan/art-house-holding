@@ -68,7 +68,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
             phone: state.values.phone,
             order: orderValue?.order_name,
             message: state.values.message,
-            training_center: 44,
+            training_center: 48,
         };
 
         try {

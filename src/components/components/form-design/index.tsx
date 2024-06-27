@@ -68,7 +68,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
             email: state.values.email,
             phone: state.values.phone,
             course_name: course,
-            training_center: 44,
+            training_center: 48,
         };
 
         try {

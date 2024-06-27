@@ -35,6 +35,18 @@ export interface FormOrder {
     training_center: number;
 };
 
+export interface AssetRef {
+    _ref: string,
+    _type: string,
+}
+
+export interface Gallery {
+    _type: string,
+    alt: string,
+    _key: string,
+    asset: AssetRef
+}
+
 export interface socialNetwork {
     facebook: (props: { size: string | number; fill: string | number } | any) => JSX.Element,
     x: ({ size, fill }: { size: string | number; fill: string | number } | any) => JSX.Element,

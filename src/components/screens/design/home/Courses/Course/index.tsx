@@ -1,21 +1,20 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { notFound, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import Container from '@/components/components/container';
+import AnimationCarousel from '../AnimationCarousel';
 
 import { Arial } from '@/lib/constants/font';
 import { ImagePaths } from '@/lib/constants';
-import { ImagePath } from '@/types/general';
 
 import { client } from '../../../../../../../sanity/client';
 import { queryId } from '../../../../../../../sanity/services/design-service/courses';
 import { HOME_COURSES } from '../../../../../../../sanity/sanity-queries/design';
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 
@@ -28,7 +27,6 @@ interface CourseProps {
 };
 
 const Course = ({ course, position }: Readonly<CourseProps>) => {
-    const [currentIndex, setCurrentIndex] = useState<number>(0);
     const t = useTranslations('buttons');
     const localActive = useLocale();
     const router = useRouter();
@@ -40,16 +38,6 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
     let courseNameStyles = course_name.length >= 30 ? styles['design-title-large'] : styles['design-title'];
     let aboutCourse = about_course.slice(0, 65) + '..'
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) =>
-                prevIndex === gallery_of_course.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, [gallery_of_course.length]);
-
     const boxClass = position === 'left' ? 'box-left' : 'box-right';
     const cornerClass = position === 'left' ? 'corner-left' : 'corner-right';
     const cornerLargeClass = position === 'left' ? 'corner-large-left' : 'corner-large-right';
@@ -57,17 +45,6 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
     const slideClass = position === 'left' ? 'slide-left' : 'slide-right';
     const titleClass = position === 'left' ? 'title-left' : 'title-right';
     const titleDesignClass = position === 'left' ? 'design-title-left' : 'design-title-right';
-
-    const gallery = gallery_of_course?.map((image, imageIndex) => {
-        const path: ImagePath = urlForImage(image);
-
-        return (
-            <div
-                key={image._key}
-                className={cn(styles['design-image'], currentIndex === imageIndex ? styles.active : styles.next)}
-                style={{ backgroundImage: `url(${path?.src})` }} />
-        )
-    });
 
     const getResources = async () => {
         const _id = categories._ref;
@@ -125,9 +102,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
                                 height={500}
                                 priority
                             />
-                            <figure>
-                                {gallery}
-                            </figure>    
+                            <AnimationCarousel gallery={gallery_of_course} />
                         </div>
                     </div>
                 </Container>
