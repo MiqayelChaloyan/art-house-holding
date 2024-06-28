@@ -17,7 +17,7 @@ import Card from './Card';
 import HoneyCombLoader from '@/lib/ui/honeyCombLoader';
 import { Arial } from '@/lib/constants/font';
 
-import { WORKER } from "../../../../../../sanity/sanity-queries/design";
+import { WORKER } from '../../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
