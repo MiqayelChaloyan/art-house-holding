@@ -163,3 +163,32 @@
     justify-content: center
     position: relative
     top: 35%
+
+.our-team-container 
+    width: 80% 
+    position: relative 
+    margin: 50px auto 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 100% 
+
+.arrow-button-prev,
+.arrow-button-next 
+    top: 50% 
+    width: 40px 
+    height: 40px 
+    background: white 
+    border: 3px solid #362906 
+    border-radius: 50% 
+    color: #362906 
+    outline: 0 
+    transition: background-color 0.2s ease, color 0.2s ease 
+    cursor: pointer 
+    position: absolute 
+    top: 40% 
+    z-index: 10 
+
+.arrow-button-prev:hover,
+.arrow-button-next:hover 
+    background-color: #362906 
+    color: white !important 

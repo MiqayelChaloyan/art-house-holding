@@ -1,31 +1,27 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 
-import Container from '@/components/components/container';
-import { SwiperNavButtons, swiperSettings } from './swiperSettings';
+import {
+    StackedCarousel,
+    ResponsiveContainer,
+} from 'react-stacked-center-carousel';
+
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+
+import Pagination from './Pagination';
+import Card from './Card';
+
 import HoneyCombLoader from '@/lib/ui/honeyCombLoader';
 import { Arial } from '@/lib/constants/font';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { WORKER } from '../../../../../../sanity/sanity-queries/design';
-
-import { ImagePath } from '@/types/general';
-
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/autoplay';
-import './swiper.css';
+import { WORKER } from "../../../../../../sanity/sanity-queries/design";
 
 import cn from 'classnames';
 
-import styles from './styles.module.sass';
+import styles from './styles.module.sass'
 
 
 interface Props {
@@ -35,38 +31,20 @@ interface Props {
 const OurTeam = ({ data }: Readonly<Props>) => {
     const [initSlides, setInitSlides] = useState<boolean>(false);
     const t = useTranslations('sections');
+    const ref = useRef<any>(null);
 
     useEffect(() => {
         setInitSlides(true);
     }, []);
 
-    const workers = data?.map((worker: WORKER) => {
-        const path: ImagePath = urlForImage(worker.worker_image);
+    const [centerSlideDataIndex, setCenterSlideDataIndex] = useState(0);
+    const onCenterSlideDataIndexChange = (newIndex: number) => {
+        setCenterSlideDataIndex(newIndex);
+    };
 
-        return (
-            <SwiperSlide key={worker._key} className='card'>
-                <div className='swiper-slide-content'>
-                    <Image
-                        priority
-                        src={path?.src}
-                        height={500}
-                        width={500}
-                        alt={worker.worker_image.alt}
-                    />
-                    <div className='overlay'>
-                        <div className='items' />
-                        <div className='worker items'>
-                            <p className={Arial.className}>{worker.worker}</p>
-                            <hr />
-                        </div>
-                        <div className='profession items'>
-                            <p className={Arial.className}>{worker.profession}</p>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-        );
-    });
+    const updatePosition = (index: number) => {
+        ref?.current?.swipeTo(index - centerSlideDataIndex);
+    };
 
     return (
         <div className={styles.container}>
@@ -75,20 +53,65 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                 <h1 className={cn(styles.title, Arial.className)}>{t('our-team')}</h1>
             </div>
             {initSlides ? (
-                <Container className='container'>
-                    <Swiper {...swiperSettings}>
-                        {workers}
-                        <div className='swiper-pagination'></div>
-                        <SwiperNavButtons />
-                    </Swiper>
-                </Container>
+                <div className={styles['our-team-container']}>
+                    <ResponsiveContainer
+                        carouselRef={ref}
+                        render={(parentWidth, carouselRef) => {
+                            let currentVisibleSlide = 5;
+                            if (parentWidth <= 1440) currentVisibleSlide = 5;
+                            if (parentWidth <= 1280) currentVisibleSlide = 3;
+                            if (parentWidth <= 480) currentVisibleSlide = 1;
+
+                            return (
+                                <StackedCarousel
+                                    ref={carouselRef}
+                                    slideComponent={Card}
+                                    slideWidth={parentWidth < 480 ? parentWidth - 40 : parentWidth > 1500 ? 740 : 300}
+                                    carouselWidth={parentWidth}
+                                    data={data}
+                                    currentVisibleSlide={currentVisibleSlide}
+                                    maxVisibleSlide={5}
+                                    onActiveSlideChange={onCenterSlideDataIndexChange}
+                                    useGrabCursor
+                                    fadeDistance={0.3}
+                                    swipeSpeed={0.1}
+                                />
+                            );
+                        }}
+                    />
+                    <>
+                        <div
+                            style={{ left: 10 }}
+                            className={styles['arrow-button-prev']}
+                            onClick={() => {
+                                ref.current?.goBack();
+                            }}
+                        >
+                            <RiArrowLeftSLine size={34} />
+                        </div>
+                        <div
+                            style={{ right: 10 }}
+                            className={styles['arrow-button-next']}
+                            onClick={() => {
+                                ref.current?.goNext(6);
+                            }}
+                        >
+                            <RiArrowRightSLine size={34} />
+                        </div>
+                    </>
+                    <Pagination
+                        updatePosition={updatePosition}
+                        centerSlideDataIndex={centerSlideDataIndex}
+                        data={data}
+                    />
+                </div>
             ) : (
                 <div className={styles.loader}>
-                    <HoneyCombLoader/>
+                    <HoneyCombLoader />
                 </div>
             )}
         </div>
-    );
+    )
 };
 
 export default React.memo(OurTeam);
