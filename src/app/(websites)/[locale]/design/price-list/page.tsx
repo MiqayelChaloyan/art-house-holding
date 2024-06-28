@@ -15,7 +15,6 @@ interface Props {
     }
 };
 
-
 type TYPES = {
     data: PRICE_LIST;
     isError: boolean;
