@@ -1,8 +1,10 @@
 'use server'
 
-import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
-import Home from '@/components/screens/design/home';
+import dynamic from 'next/dynamic';
+
+import { notFound } from 'next/navigation';
 
 import { client } from '../../../../../sanity/client';
 
@@ -11,6 +13,11 @@ import { query } from '../../../../../sanity/services/design-service/about-us';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 import { DESIGN } from '../../../../../sanity/sanity-queries/design';
 
+
+const DynamicHome = dynamic(() => import('@/components/screens/design/home'), {
+    ssr: true,
+    suspense: true
+});
 
 interface RootProps {
     params: {
@@ -52,11 +59,14 @@ export default async function Page({
     }
 
     return (
-        <Home
-            data={data}
-            partners={partners}
-            locale={locale}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+            <DynamicHome
+                data={data}
+                partners={partners}
+                locale={locale}
+            />
+        </Suspense>
+
     );
 };
 

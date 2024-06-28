@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 
 import WorksGallery from '@/components/components/worksGallery';
 
-import HoneyCombLoader from '@/lib/ui/honeyCombLoader';
+import HoneyCombLoader from '@/lib/ui/rotatingLines';
 import { Arial } from '@/lib/constants/font';
 
 import { UrlType } from '@/types/design';

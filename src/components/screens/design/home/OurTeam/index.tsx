@@ -14,7 +14,7 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import Pagination from './Pagination';
 import Card from './Card';
 
-import HoneyCombLoader from '@/lib/ui/honeyCombLoader';
+import RotatingLines from '@/lib/ui/rotatingLines';
 import { Arial } from '@/lib/constants/font';
 
 import { WORKER } from '../../../../../../sanity/sanity-queries/design';
@@ -107,7 +107,7 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                 </div>
             ) : (
                 <div className={styles.loader}>
-                    <HoneyCombLoader />
+                    <RotatingLines />
                 </div>
             )}
         </div>
