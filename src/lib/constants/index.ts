@@ -14,3 +14,9 @@ export const ImagePaths = {
         staplerURL: require('../../../public/assets/images/design/stapler.png'),
     },
 };
+
+export const TRAINING_CENTERS = {
+    design_school: 48,
+    educational_school: 46,
+    language_school: 44
+};

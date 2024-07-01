@@ -10,6 +10,7 @@ import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import { Arial } from '@/lib/constants/font';
+import { TRAINING_CENTERS } from '@/lib/constants';
 
 import { sendContactUsDesign } from '@/api';
 import { FormContactUs } from '@/types/design';
@@ -44,7 +45,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
         content: t('texts.send-message-success')
     });
 
-    const initValues = { full_name: '', email: '', phone: '', course_name: t('contact-us-form.select-course'), training_center: 44, };
+    const initValues = { full_name: '', email: '', phone: '', course_name: t('contact-us-form.select-course'), training_center: TRAINING_CENTERS.design_school, };
     const initState = { isLoading: false, error: false, values: initValues };
 
     const [state, setState] = useState<FormProps>(initState);
@@ -68,7 +69,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
             email: state.values.email,
             phone: state.values.phone,
             course_name: course,
-            training_center: 48,
+            training_center: TRAINING_CENTERS.design_school,
         };
 
         try {

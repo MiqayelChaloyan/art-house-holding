@@ -55,8 +55,8 @@ const SamplePrevArrow = ({ onClick }: SamplePrevArrowProps | any) => (
 
 const Partners = ({ partners }: Readonly<Props>) => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
-    const t = useTranslations('navigation');
     const windowSize = useWindowSize();
+    const t = useTranslations('navigation');
 
     const params = {
         slidesPerView: windowSize.width <= 1280 ? 5 : 9,
@@ -107,9 +107,7 @@ const Partners = ({ partners }: Readonly<Props>) => {
                     {partners?.map((partner: PARTNER, index: number) => (
                         <div
                             key={index}
-                            className={index === slideIndex ?
-                                cn(styles.slide, styles.slide_active) : styles.slide
-                            }
+                            className={index === slideIndex ? styles.slide_active  : styles.slide}
                         >
                             <Partner partner={partner} />
                         </div>

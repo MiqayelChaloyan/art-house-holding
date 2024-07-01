@@ -10,12 +10,13 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import Select from '@/lib/ui/select';
 import { Arial } from '@/lib/constants/font';
+import { TRAINING_CENTERS } from '@/lib/constants';
 
 import { sendContactUsEducational } from '@/api';
 
 import { Form } from '@/types/educational-center';
 
-import { LESSON, LESSONS } from '../../../../sanity/sanity-queries/educational-center';
+import { LESSON } from '../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
@@ -51,7 +52,7 @@ const FormAppointment = ({
 		content: t('texts.send-message-success')
 	});
 
-	const initValues = { full_name: '', email: '', phone: '', training_center: 46, course_name: t('contact-us-form.select-course'), };
+	const initValues = { full_name: '', email: '', phone: '', training_center: TRAINING_CENTERS.educational_school, course_name: t('contact-us-form.select-course'), };
 	const initState = { isLoading: false, error: false, values: initValues };
 
 	const [state, setState] = useState<FormProps>(initState);
@@ -74,7 +75,7 @@ const FormAppointment = ({
 			email: state.values.email,
 			phone: state.values.phone,
 			course_name: course,
-			training_center: 46
+			training_center: TRAINING_CENTERS.educational_school
 		};
 
 		try {

@@ -11,6 +11,7 @@ import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import { Arial } from '@/lib/constants/font';
+import { TRAINING_CENTERS } from '@/lib/constants';
 
 import { COURSE_NAME, COURSE_TYPE, FORM, WEEK_NUMBER_LESSONS, COURSES } from '../../../../../sanity/sanity-queries/language';
 
@@ -47,7 +48,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
         last_name: '',
         phone: '',
         email: '',
-        training_center: 44,
+        training_center: TRAINING_CENTERS.language_school,
         course_name: t('contact-us-form.select-course'),
         week_number_of_lessons: t('contact-us-form.select-quantity'),
         course_type: t('contact-us-form.select-course-type'),
@@ -81,7 +82,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
             last_name: state.values.last_name,
             phone: state.values.phone,
             email: state.values.email,
-            training_center: 44,
+            training_center: TRAINING_CENTERS.language_school,
             course_name: course,
             week_number_of_lessons: week_number_of_lessons[0].slug,
             course_type: course_type[0].slug,

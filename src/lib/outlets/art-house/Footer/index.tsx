@@ -26,7 +26,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    socialData: HOSTS
+    socialData: HOSTS;
 };
 
 const socialNetworkComponents: socialNetwork = {
@@ -67,7 +67,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                 href={link}
                 aria-label={host?.social_name}
                 className={styles.social_network}
-                target="_blank"
+                target='_blank'
             >
                 <SocialIcon
                     width={windowSize.width <= 1024 ? 20 : 40}
