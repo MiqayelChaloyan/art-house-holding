@@ -15,8 +15,8 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    item: BRANCH
-    locale: string
+    item: BRANCH;
+    locale: string;
 };
 
 const Branch = ({

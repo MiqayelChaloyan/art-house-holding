@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 
@@ -14,12 +14,11 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: PROGRESS[]
+interface Props {
+    data: PROGRESS[];
 };
 
 const Progress = ({ data }: Readonly<Props>) => {
-
     const items: JSX.Element[] = data?.map((item: PROGRESS) => (
         <div key={item._key} className={styles.column}>
             <ProgressItem value={0} quantity={item.quantity} />
@@ -30,7 +29,7 @@ const Progress = ({ data }: Readonly<Props>) => {
     ));
 
     return (
-        <section id='circle-progress' className={styles.container}>
+        <section id='circle-progress' className={styles.progress}>
             <Container className='container'>
                 <div className={styles.row}>
                     {items}

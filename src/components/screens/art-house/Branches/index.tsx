@@ -1,46 +1,25 @@
-'use client'
+'use client';
 
 import React from 'react';
 
-import Branch from '@/lib/ui/branch';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { options } from './options';
 
 import Container from '@/components/components/container';
 
-import { SwiperTypes } from '@/types/art-house';
+import Branch from '@/lib/ui/branch';
 
-// Swiper
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { BRANCH } from '../../../../../sanity/sanity-queries/art-house';
 
-// Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import { BRANCH } from '../../../../../sanity/sanity-queries/art-house';
-
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: BRANCH[]
-};
-
-const params: SwiperTypes = {
-    effect: 'coverflow',
-    grabCursor: false,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    pagination: true,
-    modules: [EffectCoverflow, Pagination],
-    className: styles.mySwiper,
-    coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: false,
-    }
+interface Props  {
+    data: BRANCH[];
 };
 
 const Branches = ({ data }: Readonly<Props>) => {
@@ -54,13 +33,13 @@ const Branches = ({ data }: Readonly<Props>) => {
     ));
 
     return (
-        <section id='branches' className={styles.container}>
+        <section id='branches' className={styles.branches}>
             <Container className='container'>
                 <div className={styles.cards}>
                     {cards}
                 </div>
                 <div className={styles.slider}>
-                    <Swiper {...params}>
+                    <Swiper {...options}>
                         {result}
                     </Swiper>
                 </div>

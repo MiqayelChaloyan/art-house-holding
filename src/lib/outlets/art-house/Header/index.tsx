@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from 'react';
 
@@ -28,7 +28,6 @@ const Header = ({ typePosition }: IHeaderProps) => {
     const [linkActive, setLinkActive] = useState<string>('about');
     const t = useTranslations('navigation');
 
-
     useEffect(() => {
         const handleScroll = () => {
             setIsSticky(window.scrollY > 0);
@@ -47,7 +46,6 @@ const Header = ({ typePosition }: IHeaderProps) => {
         setLinkActive(activeLink);
         setIsOpenMenu(false);
     };
-
 
     return (
         <header className={cn(

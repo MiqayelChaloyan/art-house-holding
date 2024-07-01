@@ -5,10 +5,14 @@ import Link from 'next/link';
 import Container from '@/components/components/container';
 
 import { ArianAMU } from '@/lib/constants/font';
+import { Pages } from '@/lib/constants/pages';
+
+import cn from 'classnames';
 
 import '@/styles/globals.sass';
 
 import styles from './styles.module.sass';
+
 
 export default function NotFound() {
     return (
@@ -16,7 +20,7 @@ export default function NotFound() {
             <head>
                 <title>Page Not found</title>
             </head>
-            <body className={`${styles.link} ${ArianAMU.className}`}>
+            <body className={cn(styles.link, ArianAMU.className)}>
                 <Container className='container'>
                     <div className={styles.not_found}>
                         <div className={styles.left}>
@@ -25,10 +29,17 @@ export default function NotFound() {
                                 <span> Lost </span>in Space
                             </h2>
                             <p className={styles.warning}>
-                                You have reached the edge of the universe. the page you requested could not be found. Don`&apos;`t worry and return to the previous page.
+                                You have reached the edge of the universe. the page you 
+                                requested could not be found. Don`&apos;`t worry and return to the previous page.
                             </p>
                             <div>
-                                <Link href='/' className={styles.button}>GO HOME</Link>
+                                <Link
+                                    href={Pages.HOME}
+                                    prefetch={false}
+                                    className={styles.button}
+                                >
+                                    GO HOME
+                                </Link>
                             </div>
                         </div>
                         <div className={styles.right}>
