@@ -1,13 +1,13 @@
-'use server'
+'use server';
 
+import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 
 import { type Metadata } from 'next';
 
-import Home from '@/components/screens/art-house';
 import { Locale } from '@/locales';
 
-import { UrlType } from '@/types/art-house';
+import { ImagePath } from '@/types/general';
 
 import { SanityClient } from 'sanity';
 
@@ -19,11 +19,13 @@ import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 import { Site } from '../../../../sanity/sanity-queries/art-house';
 
 
-interface RootLayoutProps {
+interface RootProps {
   params: {
-    locale: string,
+    locale: string;
   }
 };
+
+const Component = dynamic(() => import('@/components/screens/art-house'));
 
 async function getResources(locale: string) {
   const dataPromise = client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
@@ -37,15 +39,14 @@ async function getResources(locale: string) {
 
       return { data: data[1], partners, isError: false };
     })
-    .catch(error => {
+    .catch(_ => {
       return { data: [], partners: [], isError: true };
     });
-}
-
+};
 
 export default async function Page({
   params: { locale }
-}: Readonly<RootLayoutProps>) {
+}: Readonly<RootProps>) {
   const { data, partners, isError } = await getResources(locale);
 
   if (!data || !partners || isError) {
@@ -53,31 +54,30 @@ export default async function Page({
   }
 
   return (
-    <Home
+    <Component
       data={data}
       partners={partners}
     />
   );
-}
-
+};
 
 async function getSiteMeta(
   query: string = querySiteMeta,
   client: SanityClient | any,
   mutation = 'fetch'
 ): Promise<Site> {
-  const site: Site = await client[mutation](query)
-  return site
-}
+  const site: Site = await client[mutation](query);
+  return site;
+};
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
-  const meta: Site | any = await getSiteMeta(querySiteMeta, client)
+  const meta: Site | any = await getSiteMeta(querySiteMeta, client);
   const { ogDescription, ogTitle, ogImage } = meta[1];
-  const path: UrlType | any = urlForImage(ogImage);
+  const path: ImagePath = urlForImage(ogImage);
 
   return {
     metadataBase: process.env.NEXT_PUBLIC_DOMAIN
@@ -94,23 +94,23 @@ export async function generateMetadata({
           url: path?.src,
           width: 500,
           height: 500,
-          alt: "seo-image",
+          alt: 'seo-image',
         },
       ],
       locale,
-      type: "website",
+      type: 'website',
     },
     twitter: {
       card: path?.src,
       title: ogTitle,
       description: ogDescription,
-      creator: "@arthouse",
+      creator: '@arthouse',
       images: [
         {
           url: path?.src,
           width: path?.width,
           height: path?.height,
-          alt: "twitter",
+          alt: 'twitter',
         },
       ],
     },

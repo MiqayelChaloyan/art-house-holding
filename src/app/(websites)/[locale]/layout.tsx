@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
@@ -33,6 +33,6 @@ function RootLayout({
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

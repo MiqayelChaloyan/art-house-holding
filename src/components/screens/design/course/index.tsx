@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import { SwiperSlide } from 'swiper/react';
 
 import FlatList from '@/components/components/flat-list';
+import AnimationCarousel from './AnimationCarousel';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
@@ -25,7 +26,6 @@ import { COURSE } from '../../../../../sanity/sanity-queries/design';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import AnimationCarousel from './AnimationCarousel';
 
 
 interface Props {

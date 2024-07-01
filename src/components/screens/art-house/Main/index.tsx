@@ -1,4 +1,6 @@
-'use client'
+'use client';
+
+import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -11,7 +13,7 @@ import styles from './styles.module.sass';
 
 
 const Main = () => {
-    const t = useTranslations('texts');  
+    const t = useTranslations('texts'); 
 
     return (
         <section id='about' className={styles.header}>
@@ -35,4 +37,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default React.memo(Main);

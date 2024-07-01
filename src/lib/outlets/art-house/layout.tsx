@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from 'react';
 
@@ -13,15 +13,14 @@ import { HOSTS } from '../../../../sanity/sanity-queries/art-house';
 
 
 interface Props {
-    children: React.ReactNode
-    headerPosition?: 'fixed' | 'sticky'
+    children: React.ReactNode;
+    headerPosition?: 'fixed' | 'sticky';
 };
-
 
 const Layout = ({
     children,
     headerPosition
-}: Props) => {
+}: Readonly<Props>) => {
     const [socialData, setSocialData] = useState<HOSTS | any>(null);
 
     useEffect(() => {
@@ -39,9 +38,7 @@ const Layout = ({
 
     return (
         <div>
-            <Header
-                typePosition={`${headerPosition === 'fixed' ? 'fixed' : 'sticky'}`}
-            />
+            <Header typePosition={`${headerPosition === 'fixed' ? 'fixed' : 'sticky'}`} />
             <main>
                 {children}
             </main>
