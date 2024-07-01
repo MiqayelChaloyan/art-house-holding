@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Arial } from '@/lib/constants/font';
 
-import { UrlType } from '@/types/design';
+import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { PORTFOLIOS } from '../../../../../../sanity/sanity-queries/design';
@@ -19,7 +19,7 @@ interface Props {
 };
 
 const Header = ({ data }: Readonly<Props>) => {
-    const path: UrlType | any = urlForImage(data.image);
+    const path: ImagePath = urlForImage(data.image);
     const list = data?.advantages.map((elem: string, index: number) => <li key={index}>{elem}</li>);
 
     return (

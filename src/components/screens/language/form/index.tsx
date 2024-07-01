@@ -177,6 +177,17 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                                     value={values.first_name}
                                     onChange={handleChange}
                                 />
+                                <InputField
+                                    className={cn(styles.input, Arial.className)}
+                                    name='last_name'
+                                    type='name'
+                                    placeholder={t('contact-us-form.last-name')}
+                                    requiredField={true}
+                                    value={values.last_name}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className={styles.row}>
                                 <InputNumber
                                     className={cn(styles.input, Arial.className)}
                                     name='phone'
@@ -185,17 +196,6 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                                     maskNumber='+374 99 99 99 99'
                                     requiredField={true}
                                     value={values.phone}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className={styles.row}>
-                                <InputField
-                                    className={cn(styles.input, Arial.className)}
-                                    name='last_name'
-                                    type='name'
-                                    placeholder={t('contact-us-form.last-name')}
-                                    requiredField={true}
-                                    value={values.last_name}
                                     onChange={handleChange}
                                 />
                                 <InputField

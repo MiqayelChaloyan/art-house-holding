@@ -51,7 +51,7 @@ const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly
                     <tr>
                         <td>{item.course_title}</td>
                         <td>{item.amount} AMD</td>
-                        <td>{`${result} ${t('days')}`}</td>
+                        <td>{`${result} ${t('month')}`}</td>
                         <td>{`${item.duration} ${t('hour')}`}</td>
                     </tr>
                 </thead>
