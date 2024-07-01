@@ -1,5 +1,8 @@
 .container
     height: auto
+    /* @xs */
+    @media screen and (max-width: 600px)
+        width: 100%
 
 .titles
     margin-top: 50px
@@ -171,8 +174,10 @@
     margin: 50px auto 
     /* @xs */
     @media screen and (max-width: 600px)
-        width: 90% 
-        margin: 0 auto
+        width: 100% 
+        margin: 20px auto
+        display: grid
+        justify-content: center
 
 .arrow-button-prev,
 .arrow-button-next 
