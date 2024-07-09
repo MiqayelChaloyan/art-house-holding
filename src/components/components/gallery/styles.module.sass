@@ -1,17 +1,29 @@
-.cards
-    display: flex
+.projects
+    display: grid
     flex-wrap: wrap
-    justify-content: flex-start
+    justify-content: center
     align-items: flex-start 
     align-self: center
-    margin: 0 auto
+    margin: 10px auto
+    grid-template-columns: auto auto auto auto
+    width: 100%
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        margin: 20px auto
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        margin: 50px auto
+    /* @md */
+    @media screen and (max-width: 1024px)
+        grid-template-columns: auto auto auto
     @media screen and (max-width: 950px)
-        justify-content: center
+        margin: 50px auto
     /* @sm */
     @media screen and (max-width: 768px)
-        justify-content: center
+        margin: 50px auto
+        grid-template-columns: auto auto
     @media screen and (max-width: 600px)
-        justify-content: center
+        margin: 50px auto
     @media screen and (max-width: 550px)
-        justify-content: center
+        margin: 50px auto
 

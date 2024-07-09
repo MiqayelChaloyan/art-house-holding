@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 
 import Gallery from '@/components/components/gallery';
 import { Arial } from '@/lib/constants/font';
+import { Titles } from '@/lib/constants';
 
 import { COURSE } from '../../../../../../sanity/sanity-queries/design';
 
@@ -70,10 +71,14 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
         {navbar}
       </div>
       <div className={styles.titles}>
-        <h2 className={cn(styles['title-back'], Arial.className)}>PORTFOLIO</h2>
-        <h1 className={cn(styles.title, Arial.className)}>
-          {t('navigation.portfolios')}
-        </h1>
+        <div>
+          <div className={cn(styles['title-line'], styles['back-line'])} />
+          <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.portfolio}</h2>
+        </div>
+        <div className={styles['bottom-title']}>
+          <h1 className={cn(styles.title, Arial.className)}>{t('navigation.portfolios')}</h1>
+          <div className={cn(styles['title-line'], styles['bottom-line'])} />
+        </div>
       </div>
       <div className={styles.gallery}>
         {category.length === 0 ? (
@@ -81,7 +86,9 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
             <div className={styles['loader-card']} />
           </div>
         ) : (
-          <Gallery projects={category} type='portfolios' />
+          <div className='projects'>
+            <Gallery projects={category} type='portfolios' />
+          </div>
         )}
       </div>
     </section>

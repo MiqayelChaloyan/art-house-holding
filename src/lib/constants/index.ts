@@ -1,4 +1,4 @@
-export const ImagePaths = {
+const ImagePaths = {
     ART_HOUSE_HOLDING: {
         watchURL: require('../../../public/assets/images/art-house/watch.png'),
         logoURL: require('../../../public/assets/images/art-house/artHouseLogo.png'),
@@ -18,8 +18,27 @@ export const ImagePaths = {
     },
 };
 
-export const TRAINING_CENTERS = {
+const TRAINING_CENTERS = {
     design_school: 48,
     educational_school: 46,
     language_school: 44
+};
+
+const Titles = {
+    ourDay: 'OUR DAY',
+    ourTeam: 'OUR TEAM',
+    ourPartners: 'OUR PARTNERS',
+    courses: 'COURSES',
+    portfolios: 'PORTFOLIOS',
+    portfolio: 'PORTFOLIO',
+    orders: 'ORDERS',
+    priceList: 'PRICE LIST',
+    promotions: 'PROMOTIONS',
+    contactUs: 'CONTACT US',
+};
+
+export {
+    ImagePaths,
+    TRAINING_CENTERS,
+    Titles,
 };

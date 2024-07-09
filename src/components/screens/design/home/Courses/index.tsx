@@ -7,6 +7,8 @@ import { useTranslations } from 'next-intl';
 import Course from './Course';
 
 import { Arial } from '@/lib/constants/font';
+import { Titles } from '@/lib/constants';
+
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { HOME_COURSES } from '../../../../../../sanity/sanity-queries/design';
@@ -31,8 +33,14 @@ const Courses = ({ courses }: Readonly<Props>) => {
     return (
         <section id='design-courses' className={styles['design-courses']}>
             <div className={styles.titles}>
-                <h2 className={cn(styles['title-back'], Arial.className)}>COURSES</h2>
-                <h1 className={cn(styles.title, Arial.className)}>{t('courses')}</h1>
+                <div>
+                    <div className={cn(styles['title-line'], styles['back-line'])} />
+                    <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.courses}</h2>
+                </div>
+                <div className={styles['bottom-title']}>
+                    <h1 className={cn(styles.title, Arial.className)}>{t('courses')}</h1>
+                    <div className={cn(styles['title-line'], styles['bottom-line'])} />
+                </div>
             </div>
             {courses?.map((course, index) => (
                 <Course

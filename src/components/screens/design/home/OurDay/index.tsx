@@ -13,6 +13,7 @@ import Container from '@/components/components/container';
 
 import { Arial } from '@/lib/constants/font';
 import { Pages } from '@/lib/constants/pages';
+import { Titles } from '@/lib/constants';
 import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
 
@@ -43,8 +44,18 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
     return (
         <div className={styles.container}>
             <div className={styles.titles}>
-                <h2 className={cn(styles['title-back'], Arial.className)}>OUR DAY</h2>
-                <h1 className={cn(styles.title, Arial.className)}>{t('sections.our-day')}</h1>
+                <div>
+                    <div className={cn(styles['title-line'], styles['back-line'])} />
+                    <h2 className={cn(styles['title-back'], Arial.className)}>
+                        {Titles.ourDay}
+                    </h2>
+                </div>
+                <div className={styles['bottom-title']}>
+                    <h1 className={cn(styles.title, Arial.className)}>
+                        {t('sections.our-day')}
+                    </h1>
+                    <div className={cn(styles['title-line'], styles['bottom-line'])} />
+                </div>
             </div>
             <Container className='container'>
                 <div className={styles.player}>
@@ -59,7 +70,7 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
                 <Link
                     href={`/${localActive}${Pages.DESIGN_CONTACT}`}
                     aria-label={Pages.DESIGN_CONTACT}
-                    className={cn(styles.link, Arial.className)}                    
+                    className={cn(styles.link, Arial.className)}
                     prefetch={true}
                     passHref
                 >

@@ -42,7 +42,7 @@ const Gallery = ({ projects, type }: Readonly<Props>) => {
     const desktopCards = generateGalleryItems(projects, type);
 
     return (
-        <div className={styles.cards}>
+        <div className={styles.projects}>
             {desktopCards}
         </div>
     );

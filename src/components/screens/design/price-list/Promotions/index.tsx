@@ -11,6 +11,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import components from '@/lib/utils/PortableTextComponents';
 import Vector from '@/lib/icons/design/Vector';
 import { Arial } from '@/lib/constants/font';
+import { Titles } from '@/lib/constants';
 
 import { PROMOTIONS as Props } from '@/types/design';
 
@@ -41,8 +42,14 @@ const Promotions = ({ informatie, our_advantages }: Readonly<Props>) => {
     return (
         <section id='promotions' className={styles.container}>
             <div className={styles.titles}>
-                <h2 className={cn(styles['title-back'], Arial.className)}>PROMOTIONS</h2>
-                <h1 className={cn(styles.title, Arial.className)}>{t('promotions')}</h1>
+                <div>
+                    <div className={cn(styles['title-line'], styles['back-line'])} />
+                    <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.promotions}</h2>
+                </div>
+                <div className={styles['bottom-title']}>
+                    <h1 className={cn(styles.title, Arial.className)}>{t('promotions')}</h1>
+                    <div className={cn(styles['title-line'], styles['bottom-line'])} />
+                </div>
             </div>
             <div className={cn(styles.informatie, Arial.className)}>
                 <PortableText

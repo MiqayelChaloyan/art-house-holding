@@ -16,6 +16,7 @@ import Checkmark from '@/lib/icons/design/Checkmark';
 import PortfolioImageCard from '@/lib/ui/portfolio-card';
 import { Pages } from '@/lib/constants/pages';
 import { Arial } from '@/lib/constants/font';
+import { Titles } from '@/lib/constants';
 
 import { COURSE } from '../../../../../sanity/sanity-queries/design';
 
@@ -99,7 +100,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
       <div className={styles.line} />
       <div className={styles.course}>
         <div className={styles.left}>
-          <AnimatedComponent gallery={gallery_of_course}/>
+          <AnimatedComponent gallery={gallery_of_course} />
         </div>
         <div className={styles.right}>
           <div className={styles.titles}>
@@ -124,9 +125,15 @@ const Course = ({ locale, course }: Readonly<Props>) => {
         {roadbook}
       </div>
       <div className={styles.porfolio}>
-        <div className={styles['section-titles']}>
-          <h2 className={cn(styles['title-back'], Arial.className)}>PORTFOLIOS</h2>
-          <h2 className={cn(styles['title-portfolio'], Arial.className)}>{t('sections.portfolios')}</h2>
+        <div className={styles.titles}>
+          <div>
+            <div className={cn(styles['title-line'], styles['back-line'])} />
+            <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.portfolios}</h2>
+          </div>
+          <div className={styles['bottom-title']}>
+            <h1 className={cn(styles['title-portfolio'], Arial.className)}>{t('sections.portfolios')}</h1>
+            <div className={cn(styles['title-line'], styles['bottom-line'])} />
+          </div>
         </div>
         {windoSize.width <= 768 ? (
           <div className={styles.projects}>

@@ -13,12 +13,13 @@ import Card from './Card';
 
 import RotatingLines from '@/lib/ui/rotatingLines';
 import { Arial } from '@/lib/constants/font';
+import { Titles } from '@/lib/constants';
 
 import { WORKER } from '../../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
-import styles from './styles.module.sass'
+import styles from './styles.module.sass';
 
 
 interface Props {
@@ -46,8 +47,14 @@ const OurTeam = ({ data }: Readonly<Props>) => {
     return (
         <div className={styles.container}>
             <div className={styles.titles}>
-                <h2 className={cn(styles['title-back'], Arial.className)}>OUR TEAM</h2>
-                <h1 className={cn(styles.title, Arial.className)}>{t('our-team')}</h1>
+                <div>
+                    <div className={cn(styles['title-line'], styles['back-line'])} />
+                    <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.ourTeam}</h2>
+                </div>
+                <div className={styles['bottom-title']}>
+                    <h1 className={cn(styles.title, Arial.className)}>{t('our-team')}</h1>
+                    <div className={cn(styles['title-line'], styles['bottom-line'])} />
+                </div>
             </div>
             {initSlides ? (
                 <div className={styles['our-team-container']}>

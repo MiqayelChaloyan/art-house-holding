@@ -5,6 +5,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 
 import { Arial, Calibri } from '@/lib/constants/font';
+import { Titles } from '@/lib/constants';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
@@ -48,8 +49,14 @@ const Partners = ({ data }: Readonly<Props>) => {
     return (
         <section id='partners' className={styles.container}>
             <div className={styles.titles}>
-                <h2 className={cn(styles['title-back'], Arial.className)}>OUR PARTNERS</h2>
-                <h1 className={cn(styles.title, Arial.className)}>{t('our-partners')}</h1>
+                <div>
+                    <div className={cn(styles['title-line'], styles['back-line'])} />
+                    <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.ourPartners}</h2>
+                </div>
+                <div className={styles['bottom-title']}>
+                    <h1 className={cn(styles.title, Arial.className)}>{t('our-partners')}</h1>
+                    <div className={cn(styles['title-line'], styles['bottom-line'])} />
+                </div>
             </div>
             <div className={styles.partners}>
                 <Slider {...settings}>

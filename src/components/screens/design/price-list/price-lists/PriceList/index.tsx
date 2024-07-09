@@ -10,6 +10,7 @@ import TableList from '../TableList';
 import AccordionList from '../AccordionList';
 
 import { Arial } from '@/lib/constants/font';
+import { Titles } from '@/lib/constants';
 
 import { PRICES } from '../../../../../../../sanity/sanity-queries/design';
 
@@ -29,13 +30,19 @@ const PriceList = ({ data }: Readonly<Props>) => {
     return (
         <section id='price-list' className={styles.container}>
             <div className={styles.titles}>
-                <h2 className={cn(styles['title-back'], Arial.className)}>PRICE LIST</h2>
-                <h1 className={cn(styles.title, Arial.className)}>{t('price-list')}</h1>
+                <div>
+                    <div className={cn(styles['title-line'], styles['back-line'])} />
+                    <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.priceList}</h2>
+                </div>
+                <div className={styles['bottom-title']}>
+                    <h1 className={cn(styles.title, Arial.className)}>{t('price-list')}</h1>
+                    <div className={cn(styles['title-line'], styles['bottom-line'])} />
+                </div>
             </div>
             <div>
                 {windowSize.width < 600 ?
                     <AccordionList data={data} /> :
-                    <TableList data={data} /> 
+                    <TableList data={data} />
                 }
             </div>
         </section>
