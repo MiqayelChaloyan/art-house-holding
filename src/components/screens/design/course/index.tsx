@@ -6,10 +6,6 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 
-import { SwiperSlide } from 'swiper/react';
-
-import FlatList from '@/components/components/flat-list';
-
 import useWindowSize from '@/hooks/useWindowSize';
 
 import Checkmark from '@/lib/icons/design/Checkmark';
@@ -67,33 +63,15 @@ const Course = ({ locale, course }: Readonly<Props>) => {
   const roadbook = guides?.map((guide: string, guideIndex: number) =>
     <Box key={guideIndex} guide={guide} iconSize={windoSize.width} />);
 
-  const { desktopCards, mobileCards } = latestProjects.reduce((acc, project) => {
-    const desktopCard = (
-      <PortfolioImageCard
-        key={project._key}
-        course_name={course_name}
-        project={project}
-        slug={course.slug}
-        type='portfolios'
-      />
-    );
-
-    const mobileCard = (
-      <SwiperSlide key={project._key}>
-        <PortfolioImageCard
-          course_name={course_name}
-          project={project}
-          slug={course.slug}
-          type='portfolios'
-        />
-      </SwiperSlide>
-    );
-
-    acc.desktopCards.push(desktopCard);
-    acc.mobileCards.push(mobileCard);
-
-    return acc;
-  }, { desktopCards: [] as JSX.Element[], mobileCards: [] as JSX.Element[] });
+  const projects = latestProjects?.map(project => (
+    <PortfolioImageCard
+      key={project._key}
+      course_name={course_name}
+      project={project}
+      slug={course.slug}
+      type='portfolios'
+    />
+  ));
 
   return (
     <section id='course' className={styles.container}>
@@ -135,15 +113,9 @@ const Course = ({ locale, course }: Readonly<Props>) => {
             <div className={cn(styles['title-line'], styles['bottom-line'])} />
           </div>
         </div>
-        {windoSize.width <= 768 ? (
-          <div className={styles.projects}>
-            <FlatList list={mobileCards} />
-          </div>
-        ) : (
-          <div className={styles.projects}>
-            {desktopCards}
-          </div>
-        )}
+        <div className={styles.projects}>
+          {projects}
+        </div>
         <div className={styles.button}>
           <Link
             href={{

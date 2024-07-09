@@ -689,3 +689,24 @@
     @media screen and (max-width: 360px)
         font-size: 25px
         line-height: 50px
+
+.projects
+    display: grid
+    flex-wrap: wrap
+    justify-content: center
+    align-items: flex-start 
+    align-self: center
+    margin: 0 auto
+    grid-template-columns: auto auto auto auto
+    width: 100%
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        margin: 0 auto
+    /* @xl */
+    @media screen and (max-width: 950px)
+        grid-template-columns: auto auto
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin: 0 auto
+        grid-template-columns: auto auto
+

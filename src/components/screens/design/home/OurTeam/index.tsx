@@ -64,13 +64,14 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                             let currentVisibleSlide = 5;
                             if (parentWidth <= 1440) currentVisibleSlide = 5;
                             if (parentWidth <= 1280) currentVisibleSlide = 3;
-                            if (parentWidth <= 480) currentVisibleSlide = 1;
+                            // if (parentWidth <= 480) currentVisibleSlide = 1 ;
 
                             return (
                                 <StackedCarousel
                                     ref={carouselRef}
                                     slideComponent={Card}
-                                    slideWidth={parentWidth < 480 ? parentWidth - 40 : parentWidth > 1500 ? 740 : 300}
+                                    // slideWidth={parentWidth < 480 ? parentWidth - 40 : parentWidth > 1500 ? 740 : 300}
+                                    slideWidth={ parentWidth > 1500 ? 740 : 300}
                                     carouselWidth={parentWidth}
                                     data={data}
                                     currentVisibleSlide={currentVisibleSlide}
