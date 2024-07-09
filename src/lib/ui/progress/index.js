@@ -9,7 +9,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-const ProgressItem = ({ value = 1, quantity = 100 }) => {
+const ProgressItem = ({ value = 1, quantity = '100' }) => {
   const count = useMotionValue(value)
   const rounded = useTransform(count, latest => Math.round(latest))
 
