@@ -2,81 +2,61 @@
 
 import React from 'react';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import Slider from 'react-slick';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import Partner from './Partner';
+
 import Container from '@/components/components/container';
 
-import { Arial, Vrdznagir } from '@/lib/constants/font';
-import { UrlType } from '@/types/language';
+import { Vrdznagir } from '@/lib/constants/font';
 import ArrowLeft from '@/lib/icons/language/ArrowLeft';
 import ArrowRight from '@/lib/icons/language/ArrowRight';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';
-
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     partners: PARTNER[]
 };
 
 const SampleNextArrow = ({ onClick, fill }: any) => (
     <div className={cn(styles.arrow, styles.arrow_right)} onClick={onClick}>
-        <ArrowRight width='21' height='50' fill={fill} />
+        <ArrowRight width={21} height={50} fill={fill} />
     </div>
 );
 
 const SamplePrevArrow = ({ onClick, fill }: any) => (
     <div className={cn(styles.arrow, styles.arrow_left)} onClick={onClick}>
-        <ArrowLeft width='21' height='50' fill={fill} />
+        <ArrowLeft width={21} height={50} fill={fill} />
     </div>
 );
 
-const Partner = ({ partner }: PARTNER | any) => {
-    const path: UrlType | any = urlForImage(partner?.logo);
-
-    return (
-        <div key={partner._id} className={styles.card}>
-            <Image
-                src={path?.src}
-                alt={partner.logo.alt}
-                className={styles.img}
-                width={500}
-                height={500}
-                priority
-            />
-            <div className={styles.overlay}>
-                <h1 className={cn(styles['text-h1'], Arial.className)}>
-                    {partner.company_name}
-                </h1>
-                <p className={cn(styles['text-p'], Arial.className)}>
-                    {partner.cooperation}
-                </p>
-                <p className={cn(styles['text-p'], Arial.className)}>
-                    {partner.implemented_projects}
-                </p>
-            </div>
-        </div>
-    )
-};
 
 const Partners = ({ partners }: Readonly<Props>) => {
     const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 
     const slidesItems: JSX.Element[] = partners?.map((partner: PARTNER) =>
-        <Partner partner={partner} key={partner._id} />);
+        <Partner
+            key={partner._id}
+            _id={partner._id}
+            company_name={partner.company_name}
+            cooperation={partner.cooperation}
+            implemented_projects={partner.implemented_projects}
+            logo={partner.logo}
+        />
+    );
 
     const settings = {
         slidesToShow: 6,
