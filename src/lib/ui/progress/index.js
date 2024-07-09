@@ -1,22 +1,34 @@
-import { memo, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 import { ArianAMU } from '@/lib/constants/font';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-const ProgressItem = ({ value = 0, quantity }) => {
-    const [percent, setPercent] = useState(value);
+const ProgressItem = ({ value = 1, quantity = 100 }) => {
+  const count = useMotionValue(value)
+  const rounded = useTransform(count, latest => Math.round(latest))
 
-    useEffect(() => {
-        if (percent < quantity) {
-            setTimeout(() => setPercent(newval => newval + 1), 20);
-        }
-    }, [percent]);
+  useEffect(() => {
+    const animation = animate(count, quantity, { duration: 10 });
 
+    return animation.stop;
+  }, []);
 
-    return <p className={`${styles.percent} ${ArianAMU.className}`}>{percent}+</p>;
+  return <motion.div className={cn(styles.percent, ArianAMU.className)}>{rounded}</motion.div>
 };
 
 
-export default memo(ProgressItem);
+export default React.memo(ProgressItem);
+
+
+
+
+
+
+
+
