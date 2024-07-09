@@ -1,6 +1,4 @@
-import { SparklesIcon, CheckmarkIcon } from '@sanity/icons';
-
-import { RuleType } from '../../../ruleType';
+import { SparklesIcon } from '@sanity/icons';
 
 export const portfolioSchemaDesign = {
     name: 'portfolio-design',
@@ -26,37 +24,6 @@ export const portfolioSchemaDesign = {
                     type: 'string'
                 }
             ]
-        },
-        {
-            name: 'advantages',
-            type: 'array',
-            title: 'Advantages',
-            // description: 'Դուք կարող եք ավելացնել ցանկացած քանակի',
-            validation: (Rule: RuleType) => Rule.required(),
-            of: [
-                {
-                    name: 'Object',
-                    type: 'object',
-                    icon: CheckmarkIcon,
-                    fields: [
-                        {
-                            title: 'Armenian',
-                            name: 'am',
-                            type: 'string',
-                        },
-                        {
-                            title: 'English',
-                            name: 'en',
-                            type: 'string'
-                        },
-                        {
-                            title: 'Russian',
-                            name: 'ru',
-                            type: 'string'
-                        }
-                    ]
-                }
-            ],
         },
     ],
 };

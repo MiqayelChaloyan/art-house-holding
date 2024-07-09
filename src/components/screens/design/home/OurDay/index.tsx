@@ -46,14 +46,10 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
             <div className={styles.titles}>
                 <div>
                     <div className={cn(styles['title-line'], styles['back-line'])} />
-                    <h2 className={cn(styles['title-back'], Arial.className)}>
-                        {Titles.ourDay}
-                    </h2>
+                    <h2 className={cn(styles['title-back'], Arial.className)}>{Titles.ourDay}</h2>
                 </div>
                 <div className={styles['bottom-title']}>
-                    <h1 className={cn(styles.title, Arial.className)}>
-                        {t('sections.our-day')}
-                    </h1>
+                    <h1 className={cn(styles.title, Arial.className)}>{t('sections.our-day')}</h1>
                     <div className={cn(styles['title-line'], styles['bottom-line'])} />
                 </div>
             </div>

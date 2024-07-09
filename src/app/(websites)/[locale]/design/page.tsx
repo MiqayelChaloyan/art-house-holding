@@ -1,7 +1,5 @@
 'use server'
 
-import { Suspense } from 'react';
-
 import Home from '@/components/screens/design/home';
 
 import { notFound } from 'next/navigation';
@@ -54,13 +52,11 @@ export default async function Page({
     }
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <Home
-                data={data}
-                partners={partners}
-                locale={locale}
-            />
-        </Suspense>
+        <Home
+            data={data}
+            partners={partners}
+            locale={locale}
+        />
     );
 };
 

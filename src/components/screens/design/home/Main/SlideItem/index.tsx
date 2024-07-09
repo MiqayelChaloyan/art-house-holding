@@ -24,7 +24,7 @@ const SlideItem = ({
     const localActive = useLocale();
 
     return (
-        <div className={styles.emplay_slide} style={{ backgroundImage: `url(${url})` }}>
+        <div className={styles.article} style={{ backgroundImage: `url(${url})` }}>
             <div className={styles.container}>
                 <div className={styles.contact}>
                     <h2 className={cn(styles.company_name, Belleza.className)}>

@@ -1,25 +1,13 @@
-.image
-    flex: 0 0 100%
+.article
+    width: 100%
+    min-height: 95vh
+    display: grid
     min-width: 100%
     background-size: cover
     background-repeat: no-repeat
-    background-position: center
+    background-position: center center
     background-color: #00000094
     background-blend-mode: multiply
-    height: 90vh
-    position: relative
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-        height: 80vh
-    /* @xl */
-    @media screen and (max-width: 1440px)
-        height: 60vh
-    /* @lg */
-    @media screen and (max-width: 1280px)
-        height: 70vh
-    /* @md */
-    @media screen and (max-width: 1024px)
-        height: 50vh
     /* @sm */
     @media screen and (max-width: 768px)
         height: 70vh
@@ -32,83 +20,3 @@
     /* @3xs */
     @media screen and (max-width: 360px)
         height: 70vh
-
-.list 
-    position: absolute 
-    top: 120px 
-    right: 320px 
-    color: #fff 
-    text-transform: uppercase 
-    text-align: right 
-    ul 
-        li 
-            display: block 
-            list-style: none 
-            font-size: 22px 
-            font-weight: 700 
-            &:after 
-                content: "  ●  " 
-                color: #fff 
-                padding-left: 20px 
-                position: relative 
-                bottom: 2px 
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-        top: 120px 
-        right: 100px 
-        text-align: right 
-    /* @xl */
-    @media screen and (max-width: 1440px)
-        top: 120px 
-        right: 100px 
-        text-align: right 
-    /* @lg */
-    @media screen and (max-width: 1280px)
-        top: 120px 
-        right: 100px 
-        text-align: right 
-    /* @md */
-    @media screen and (max-width: 1024px)
-        top: 120px 
-        right: 100px 
-        text-align: right 
-    /* @sm */
-    @media screen and (max-width: 768px)
-        top: 120px 
-        right: 100px 
-        text-align: right 
-        ul 
-            li 
-                display: block 
-                list-style: none 
-                font-size: 20px  
-    /* @xs */
-    @media screen and (max-width: 600px)
-        top: 120px 
-        right: 40px
-        text-align: right 
-        ul 
-            li 
-                display: block 
-                list-style: none 
-                font-size: 20px 
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        top: 150px 
-        right: 50px 
-        text-align: right    
-        ul 
-            li 
-                display: block 
-                list-style: none 
-                font-size: 18px  
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        top: 150px 
-        right: 40px
-        text-align: right 
-        ul 
-            li 
-                display: block 
-                list-style: none 
-                font-size: 15px 

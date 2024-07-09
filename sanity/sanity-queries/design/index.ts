@@ -72,7 +72,6 @@ export interface PRICE_LIST {
 export interface PORTFOLIOS {
     _id: string,
     image: Asset,
-    advantages: string[],
 };
 
 export interface COURSE {
