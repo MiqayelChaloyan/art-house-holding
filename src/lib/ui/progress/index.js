@@ -14,10 +14,10 @@ const ProgressItem = ({ value = 1, quantity = '100' }) => {
   const rounded = useTransform(count, latest => Math.round(latest))
 
   useEffect(() => {
-    const animation = animate(count, quantity, { duration: 10 });
+    const animation = animate(count, parseInt(quantity, 10), { duration: 10 });
 
     return animation.stop;
-  }, []);
+  }, [count, quantity]);
 
   return <motion.div className={cn(styles.percent, ArianAMU.className)}>{rounded}</motion.div>
 };
