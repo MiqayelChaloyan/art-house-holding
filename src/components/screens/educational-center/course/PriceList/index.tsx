@@ -39,7 +39,7 @@ const PriceList= ({ price_list }: Readonly<Props>) => {
                     <tr className={styles.list}>
                         <td>{item.course_title}</td>
                         <td>{item.amount} AMD</td>
-                        <td>{`${result} ${t('price-list.days')}`}</td>
+                        <td>{`${result} ${t('price-list.month')}`}</td>
                         <td>{`${item.duration} ${t('price-list.hour')}`}</td>
                     </tr>
                 </thead>
