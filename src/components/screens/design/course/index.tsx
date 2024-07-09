@@ -103,7 +103,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
           <AnimatedComponent gallery={gallery_of_course} />
         </div>
         <div className={styles.right}>
-          <div className={styles.titles}>
+          <div>
             <h2 className={cn(styles['design-title-top'], Arial.className)}>{name}</h2>
             <div className={styles['design-corner-large-right']}>
               <h1 className={cn(styles['design-title'], Arial.className)}>
