@@ -2,9 +2,10 @@
 
 import React from 'react';
 
+import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
+
 
 import Container from '@/components/components/container';
 import AnimationCarousel from '../AnimationCarousel';

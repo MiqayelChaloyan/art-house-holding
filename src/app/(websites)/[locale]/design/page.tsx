@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 
-import dynamic from 'next/dynamic';
+import Home from '@/components/screens/design/home';
 
 import { notFound } from 'next/navigation';
 
@@ -13,11 +13,6 @@ import { query } from '../../../../../sanity/services/design-service/about-us';
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 import { DESIGN } from '../../../../../sanity/sanity-queries/design';
 
-
-const DynamicHome = dynamic(() => import('@/components/screens/design/home'), {
-    ssr: true,
-    suspense: true
-});
 
 interface RootProps {
     params: {
@@ -60,7 +55,7 @@ export default async function Page({
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <DynamicHome
+            <Home
                 data={data}
                 partners={partners}
                 locale={locale}

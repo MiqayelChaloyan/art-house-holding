@@ -3,13 +3,12 @@
 import React, { useEffect, useState } from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 
 import { SwiperSlide } from 'swiper/react';
 
 import FlatList from '@/components/components/flat-list';
-import AnimationCarousel from './AnimationCarousel';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
@@ -18,15 +17,14 @@ import PortfolioImageCard from '@/lib/ui/portfolio-card';
 import { Pages } from '@/lib/constants/pages';
 import { Arial } from '@/lib/constants/font';
 
-import { ImagePath } from '@/types/general';
-
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { COURSE } from '../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
+
+const AnimatedComponent = dynamic(() => import('./AnimationCarousel'), { ssr: false });
 
 interface Props {
   locale: string;
@@ -59,22 +57,6 @@ const Course = ({ locale, course }: Readonly<Props>) => {
 
     return () => clearTimeout(timer);
   }, [index]);
-
-  const gallery = gallery_of_course?.map((image, imageIndex) => {
-    const path: ImagePath = urlForImage(image);
-
-    return (
-      <Image
-        key={image._key}
-        priority
-        src={path?.src}
-        height={500}
-        width={500}
-        alt={image.alt}
-        className={cn(styles['design-image'], index === imageIndex ? styles.active : styles.next)}
-      />
-    )
-  });
 
   const terms = conditions?.map((condition: string, conditionIndex: number) =>
     <div key={conditionIndex} className={styles.term}>
@@ -112,33 +94,12 @@ const Course = ({ locale, course }: Readonly<Props>) => {
     return acc;
   }, { desktopCards: [] as JSX.Element[], mobileCards: [] as JSX.Element[] });
 
-
-  // const cards = latestProjects.reduce((acc: JSX.Element[], project) => {
-  //   const cardElement = (
-  //     <PortfolioImageCard
-  //       key={project._key}
-  //       course_name={course_name}
-  //       project={project}
-  //       slug={course.slug}
-  //       type='portfolios'
-  //     />
-  //   );
-  
-  //   acc.push(cardElement);
-  //   return acc;
-  // }, []);
-  
-
-  
   return (
     <section id='course' className={styles.container}>
       <div className={styles.line} />
       <div className={styles.course}>
         <div className={styles.left}>
-          {/* <figure>
-            {gallery}
-          </figure> */}
-          <AnimationCarousel gallery={gallery_of_course}/>
+          <AnimatedComponent gallery={gallery_of_course}/>
         </div>
         <div className={styles.right}>
           <div className={styles.titles}>

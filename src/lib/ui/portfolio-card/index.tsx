@@ -3,6 +3,8 @@
 import React from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 import { Arial } from '@/lib/constants/font';
 
@@ -14,18 +16,21 @@ import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import Link from 'next/link';
-import { useLocale } from 'next-intl';
 
 
 interface Props {
-    project: PORTFOLIO,
-    course_name: string,
-    slug: string,
-    type: string
+    project: PORTFOLIO;
+    course_name: string;
+    slug: string;
+    type: string;
 };
 
-const PortfolioImageCard = ({ project, course_name, slug, type }: Readonly<Props>) => {
+const PortfolioImageCard = ({
+    project,
+    course_name,
+    slug,
+    type
+}: Readonly<Props>) => {
     const cardImagePath: UrlType | any = urlForImage(project.image);
     const activeLocale = useLocale();
     const { _key, author, image: { alt } } = project;

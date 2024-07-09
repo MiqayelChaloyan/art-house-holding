@@ -4,10 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import {
-    StackedCarousel,
-    ResponsiveContainer,
-} from 'react-stacked-center-carousel';
+import { StackedCarousel, ResponsiveContainer } from 'react-stacked-center-carousel';
 
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 

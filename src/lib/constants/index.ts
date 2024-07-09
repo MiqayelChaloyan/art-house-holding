@@ -12,6 +12,9 @@ export const ImagePaths = {
         logoURL: require('../../../public/assets/images/design/logo.png'),
         headerLogoURL: require('../../../public/assets/images/design/header-logo.png'),
         staplerURL: require('../../../public/assets/images/design/stapler.png'),
+        enURL: require('../../../public/assets/images/design/en.png'),
+        amURL: require('../../../public/assets/images/design/am.png'),
+        ruURL: require('../../../public/assets/images/design/ru.png'),
     },
 };
 
