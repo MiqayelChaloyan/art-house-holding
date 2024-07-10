@@ -7,10 +7,14 @@ import Image from 'next/image';
 import components from '@/lib/utils/PortableTextComponents';
 import { PortableText } from '@portabletext/react';
 
+import { Arial } from '@/lib/constants/font';
+
 import { ABOUT } from '@/types/language';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
@@ -33,7 +37,7 @@ const About = ({
                     priority
                 />
             </div>
-            <div className={styles.right_side}>
+            <div className={cn(styles.right_side, Arial.className)}>
                 <PortableText
                     value={text}
                     components={components}
