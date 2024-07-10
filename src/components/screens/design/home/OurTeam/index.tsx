@@ -2,9 +2,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
+import dynamic from 'next/dynamic';
+
 import { useTranslations } from 'next-intl';
 
-import { StackedCarousel, ResponsiveContainer } from 'react-stacked-center-carousel';
+import {  StackedCarousel } from 'react-stacked-center-carousel';
 
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
@@ -21,6 +23,10 @@ import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
+
+const ResponsiveContainer = dynamic(() =>
+    import('react-stacked-center-carousel').then((mod) => mod.ResponsiveContainer)
+);
 
 interface Props {
     data: WORKER[];
@@ -64,14 +70,12 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                             let currentVisibleSlide = 5;
                             if (parentWidth <= 1440) currentVisibleSlide = 5;
                             if (parentWidth <= 1280) currentVisibleSlide = 3;
-                            // if (parentWidth <= 480) currentVisibleSlide = 1 ;
 
                             return (
                                 <StackedCarousel
                                     ref={carouselRef}
                                     slideComponent={Card}
-                                    // slideWidth={parentWidth < 480 ? parentWidth - 40 : parentWidth > 1500 ? 740 : 300}
-                                    slideWidth={ parentWidth > 1500 ? 740 : 300}
+                                    slideWidth={parentWidth > 1500 ? 740 : 300}
                                     carouselWidth={parentWidth}
                                     data={data}
                                     currentVisibleSlide={currentVisibleSlide}
