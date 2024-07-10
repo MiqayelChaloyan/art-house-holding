@@ -8,7 +8,7 @@ import { notFound, useRouter } from 'next/navigation';
 import Button from '@/lib/ui/Button';
 import { Arial, Inter } from '@/lib/constants/font';
 
-import { Content as Props, UrlType } from '@/types/educational-center';
+import { ContentCourse as Props, UrlType } from '@/types/educational-center';
 
 import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
@@ -24,9 +24,9 @@ const Content = ({ content, isReadMore, minimumHeight }: Props) => (
     <p className={cn(styles.content, Inter.className)}>{isReadMore ? content.slice(0, minimumHeight) + '...' : content}</p>
 );
 
-type Lesson = { 
-    key?: string,
-    course: LESSON
+interface Lesson { 
+    key?: string;
+    course: LESSON;
 };
 
 const Course = ({ course }: Readonly<Lesson>) => {

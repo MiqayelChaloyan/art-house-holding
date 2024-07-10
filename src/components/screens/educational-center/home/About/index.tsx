@@ -10,6 +10,10 @@ import Container from '@/components/components/container';
 import Button from '@/lib/ui/Button';
 import { Arial, Inter } from '@/lib/constants/font';
 
+import { PortableText } from '@portabletext/react';
+import components from '@/lib/utils/PortableTextComponents';
+import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
+
 import { Content as ContentType, UrlType } from '@/types/educational-center';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
@@ -20,20 +24,32 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: ABOUT
-}
+interface Props {
+    data: ABOUT;
+};
 
-const Content = ({ content, isReadMore, minimumHeight }: ContentType) => (
-    <p className={cn(styles.content, Inter.className)}>{isReadMore ? content.slice(0, minimumHeight) + '...' : content}</p>
-);
+const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
+    const flatText = flattenText(content);
+    const text = isReadMore && flatText.length > minimumHeight
+        ? truncateText(content, minimumHeight)
+        : content;
+
+    return (
+        <div className={cn(styles.content, Inter.className)}>
+            <PortableText
+                value={text}
+                components={components}
+            />
+        </div>
+    );
+};
 
 const About = ({
     data: { about_us_content, about_us_image }
 }: Readonly<Props>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
     const path: UrlType | any = urlForImage(about_us_image);
-    const minimumHeight = 1000;
+    const minimumHeight = 900;
     const t = useTranslations();
 
     const toggleReadMore = () => setIsReadMore(!isReadMore);
@@ -47,9 +63,13 @@ const About = ({
                 </h1>
                 <div className={styles.about}>
                     <div className={styles.box}>
-                        {about_us_content.length > minimumHeight ?
+                        {getTotalTextLength(about_us_content) > minimumHeight ?
                             <>
-                                <Content content={about_us_content} isReadMore={isReadMore} minimumHeight={minimumHeight} />
+                                <Content
+                                    content={about_us_content}
+                                    isReadMore={isReadMore}
+                                    minimumHeight={minimumHeight}
+                                />
                                 <Button
                                     text={isReadMore ? t('buttons.view-more') : t('buttons.show-less')}
                                     className={cn(styles.button, styles['view-more-btn'], Arial.className)}
@@ -57,7 +77,12 @@ const About = ({
                                 />
                             </>
                             :
-                            <p className={cn(styles.content, Inter.className)}>{about_us_content}</p>
+                            <div className={cn(styles.content, Inter.className)}>
+                                <PortableText
+                                    value={about_us_content}
+                                    components={components}
+                                />
+                            </div>
                         }
                     </div>
                     <div className={styles.box}>

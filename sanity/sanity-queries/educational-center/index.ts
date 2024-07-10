@@ -16,8 +16,16 @@ export interface MAIN {
     title: string
 }
 
+export interface TEXT {
+    children: PortableChildren[];
+    markDefs: any;
+    style: string;
+    _key: string;
+    _type: string;
+};
+
 export interface ABOUT {
-    about_us_content: string,
+    about_us_content: TEXT,
     about_us_image: Asset,
 }
 
@@ -98,11 +106,18 @@ export interface PRICE_LIST {
     _key: string,
 };
 
+interface PortableChildren {
+    marks: any;
+    text: string;
+    _key: string;
+    _type: string;
+};
+
 export interface COURSES {
     _id: string,
     slug: { current: string },
     course_main: COURSE_MAIN[],
-    about_us_content: string,
+    about_us_content: TEXT,
     course_process: VIDEO,
     student_works: STUDENT_WORK[],
     price_list: PRICE_LIST[],
@@ -120,7 +135,7 @@ export interface HOSTS {
     name: string,
     phone_number: string,
     email: string,
-    social_links: Social_Links,
+    social_links: Social_Links[],
 };
 
 export interface LESSON {

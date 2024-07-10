@@ -1,3 +1,5 @@
+import { TEXT } from '../../../sanity/sanity-queries/educational-center';
+
 export interface UrlType {
     src: string;
     width: number;
@@ -10,10 +12,16 @@ interface Asset {
 };
 
 export interface Content {
-    content: string;
+    content: TEXT;
     isReadMore: boolean;
     minimumHeight: number;
 };
+
+export interface ContentCourse {
+    content: string;
+    isReadMore: boolean;
+    minimumHeight: number;
+}
 
 /* Form types */
 export interface Form {

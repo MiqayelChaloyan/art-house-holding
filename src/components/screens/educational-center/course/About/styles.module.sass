@@ -1,37 +1,61 @@
 .container
-    background: var(--color-bg-gray)
-    height: max-content
     position: relative
-    /* @4xl */
-    @media screen and (max-width: 2560px)
-      height: max-content
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-      height: max-content
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-      height: max-content
-    /* @xl */
-    @media screen and (max-width: 1440px)
-      height: max-content
-    /* @lg */
-    @media screen and (max-width: 1280px)
-      height: max-content
-    /* @md */
-    @media screen and (max-width: 1024px)
-      height: max-content
-    /* @sm */
-    @media screen and (max-width: 768px)
-      height: max-content
-    /* @xs */
-    @media screen and (max-width: 600px)
-      height: max-content
-    /* @2xs */
-    @media screen and (max-width: 480px)
-      height: max-content
-    /* @3xs */
-    @media screen and (max-width: 360px)
-      height: max-content
+    background: #E3E1E1
+    height: max-content
+    @media screen and ( max-width: 991px )
+       bottom: 0
+       height: 450px
+    @media screen and ( max-width: 767px )
+       bottom: 0
+       height: max-content
+
+.about_us
+    display: flex
+    justify-content: space-around
+    align-items: baseline
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+        height: max-content
+    /* xl */
+    @media screen and ( max-width: 1280px )
+        width: 92%
+    /* lg */
+    @media screen and ( max-width: 1024px )
+        width: 100%
+        height: max-content
+    /* md */
+    @media screen and ( max-width: 768px )
+        width: 100%
+        display: grid
+        justify-content: center
+        align-items: center
+        height: max-content
+        margin-bottom: 40px
+
+.about_box
+    width: 100%
+    @media screen and (max-device-width: 1200px) 
+      width: 100%
+    @media screen and (max-device-width: 1600px) 
+      width: 100%
+    @media screen and ( max-width: 991px )
+      width: 70%
+    @media screen and ( max-width: 767px )
+      width: 100%
+
+
+.form_box
+    width: 90%
+    @media screen and (max-device-width: 1200px) 
+      width: 70%
+    @media screen and (max-device-width: 1600px) 
+      width: 70%
+    @media screen and ( max-width: 991px )
+      width: 75%
+    @media screen and ( max-width: 767px )
+      width: 100%
+      padding-bottom: 12px
+
 
 .triangle
     display: block
@@ -87,6 +111,7 @@
     @media screen and (max-width: 600px)
       display: none
 
+
 .title
     position: absolute
     margin: 0 auto
@@ -125,6 +150,7 @@
       position: relative
       margin-bottom: 20px
 
+
 .view-more-btn
     color: #313131
     padding-right: var(--container-gap)
@@ -156,115 +182,6 @@
     @media screen and (max-width: 600px)
         font-size: 11px
         padding-left: 0
-
-.about
-    display: flex
-    justify-content: space-around
-    align-items: flex-start
-    /* 2xl */
-    @media screen and ( max-width: 1536px )
-        height: max-content
-    /* xl */
-    @media screen and ( max-width: 1280px )
-        width: 92%
-    /* lg */
-    @media screen and ( max-width: 1024px )
-        width: 100%
-        height: max-content
-    /* md */
-    @media screen and ( max-width: 768px )
-        width: 100%
-        display: grid
-        justify-content: center
-        align-items: center
-        height: max-content
-        margin-bottom: 40px
-
-.box
-    width: 100%
-    margin-bottom: 40px
-    /* @4xl */
-    @media screen and (max-width: 2560px)
-      width: 100%
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-      width: 100%
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-      width: 100%
-    /* @xl */
-    @media screen and (max-width: 1440px)
-      width: 100%
-    /* @lg */
-    @media screen and (max-width: 1280px)
-      width: 100%
-    /* @md */
-    @media screen and (max-width: 1024px)
-      width: 100%
-    /* @sm */
-    @media screen and (max-width: 768px)
-      width: 100%
-      margin-bottom: 20px
-    /* @xs */
-    @media screen and (max-width: 600px)
-      width: 100%
-      height: max-content
-      margin-bottom: 20px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-      width: 100%
-      height: max-content
-    /* @3xs */
-    @media screen and (max-width: 360px)
-      width: 100%
-      height: max-content
-
-.image_courses
-    width: 380px
-    height: 380px
-    margin: 0 auto
-    /* @4xl */
-    @media screen and (max-width: 2560px)
-      width: 380px
-      height: 380px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-      width: 380px
-      height: 380px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-      width: 380px
-      height: 380px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-      width: 320px
-      height: 320px
-    /* @lg */
-    @media screen and (max-width: 1280px)
-      width: 290px
-      height: 290px
-    /* @md */
-    @media screen and (max-width: 1024px)
-      width: 290px
-      height: 290px
-    /* @sm */
-    @media screen and (max-width: 768px)
-      width: 250px
-      height: 250px
-    /* @xs */
-    @media screen and (max-width: 600px)
-      width: 200px
-      height: 200px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-      width: 200px
-      height: 200px
-      margin-bottom: 15px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-      width: 200px
-      height: 200px
-      margin-bottom: 15px
 
 .content
     width: 100%

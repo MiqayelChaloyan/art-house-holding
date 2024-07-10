@@ -128,18 +128,21 @@ export const coursesSchemaEducationalCenter = {
                 {
                     title: 'Armenian',
                     name: 'am',
-                    type: 'string'
+                    type: 'array',
+                    of: [{ type: 'block' }],
                 },
                 {
                     title: 'English',
                     name: 'en',
-                    type: 'string'
+                    type: 'array',
+                    of: [{ type: 'block' }],
                 },
                 {
                     title: 'Russian',
                     name: 'ru',
-                    type: 'string'
-                }
+                    type: 'array',
+                    of: [{ type: 'block' }],
+                },
             ]
         },
         {

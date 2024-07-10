@@ -9,11 +9,6 @@ export const aboutUsSchemaEducationalCenter = {
     title: 'About Us',
     id: 'about-us-educational-center',
     groups: [
-        // {
-        //     name: "meta",
-        //     title: "Site Info",
-        //     default: true
-        // },
         {
             name: "og",
             title: "Social Share Info",
@@ -30,13 +25,6 @@ export const aboutUsSchemaEducationalCenter = {
         },
     ],
     fields: [
-        /* Site Metadata Schema */
-        // {
-        //     type: 'string',
-        //     name: 'site_name',
-        //     title: 'Site Name',
-        //     group: ['og', 'meta'],
-        // },
         {
             type: 'string',
             title: 'Page Title',
@@ -156,18 +144,21 @@ export const aboutUsSchemaEducationalCenter = {
                         {
                             title: 'Armenian',
                             name: 'am',
-                            type: 'string'
+                            type: 'array',
+                            of: [{ type: 'block' }],
                         },
                         {
                             title: 'English',
                             name: 'en',
-                            type: 'string'
+                            type: 'array',
+                            of: [{ type: 'block' }],
                         },
                         {
                             title: 'Russian',
                             name: 'ru',
-                            type: 'string'
-                        }
+                            type: 'array',
+                            of: [{ type: 'block' }],
+                        },
                     ]
                 },
                 {
