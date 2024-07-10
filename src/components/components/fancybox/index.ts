@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { Fancybox as NativeFancybox } from "@fancyapps/ui";
-import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { Fancybox as NativeFancybox } from '@fancyapps/ui';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 interface Props {
     children: React.ReactNode
     options: any
 };
 
-function Fancybox({ children, options }: Props) {
-    const delegate = "[data-fancybox]";
+function Fancybox({ children, options }: Readonly<Props>) {
+    const delegate = '[data-fancybox]';
 
     useEffect(() => {
         const opts = options || {};
@@ -19,7 +19,7 @@ function Fancybox({ children, options }: Props) {
         return () => {
             NativeFancybox.destroy();
         };
-    }, []);
+    }, [options]);
 
     return children;
 }
