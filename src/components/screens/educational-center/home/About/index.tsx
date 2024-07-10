@@ -12,7 +12,7 @@ import { Arial, Inter } from '@/lib/constants/font';
 
 import { PortableText } from '@portabletext/react';
 import components from '@/lib/utils/PortableTextComponents';
-import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
+// import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
 
 import { Content as ContentType, UrlType } from '@/types/educational-center';
 
@@ -28,21 +28,21 @@ interface Props {
     data: ABOUT;
 };
 
-const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
-    const flatText = flattenText(content);
-    const text = isReadMore && flatText.length > minimumHeight
-        ? truncateText(content, minimumHeight)
-        : content;
+// const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
+//     const flatText = flattenText(content);
+//     const text = isReadMore && flatText.length > minimumHeight
+//         ? truncateText(content, minimumHeight)
+//         : content;
 
-    return (
-        <div className={cn(styles.content, Inter.className)}>
-            <PortableText
-                value={text}
-                components={components}
-            />
-        </div>
-    );
-};
+//     return (
+//         <div className={cn(styles.content, Inter.className)}>
+//             <PortableText
+//                 value={text}
+//                 components={components}
+//             />
+//         </div>
+//     );
+// };
 
 const About = ({
     data: { about_us_content, about_us_image }
@@ -63,7 +63,7 @@ const About = ({
                 </h1>
                 <div className={styles.about}>
                     <div className={styles.box}>
-                        {getTotalTextLength(about_us_content) > minimumHeight ?
+                        {/* {getTotalTextLength(about_us_content) > minimumHeight ?
                             <>
                                 <Content
                                     content={about_us_content}
@@ -83,7 +83,7 @@ const About = ({
                                     components={components}
                                 />
                             </div>
-                        }
+                        } */}
                     </div>
                     <div className={styles.box}>
                         <Image
