@@ -13,10 +13,10 @@ import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 
 interface Props {
-    data: ABOUT_US_LANGUAGE[],
-    discounts: DISCOUNT[],
-    partners: PARTNER[],
-    locale: string,
+    data: ABOUT_US_LANGUAGE[];
+    discounts: DISCOUNT[];
+    partners: PARTNER[];
+    locale: string;
 };
 
 const Home = ({

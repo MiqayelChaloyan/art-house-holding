@@ -9,9 +9,10 @@ import { useTranslations } from 'next-intl';
 import Container from '@/components/components/container';
 
 import { Pages } from '@/lib/constants/pages';
-import { Arial, Calibri } from '@/lib/constants/font';
-import { ImageType, UrlType } from '@/types/language';
 import blocksToText from '@/lib/utils/BlocksToText';
+import { Arial, Calibri } from '@/lib/constants/font';
+import { ImageType } from '@/types/language';
+import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
@@ -21,10 +22,10 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: ABOUT_US_LANGUAGE[],
-    locale: string
-}
+interface Props {
+    data: ABOUT_US_LANGUAGE[];
+    locale: string;
+};
 
 const navigationLinks = [
     { path: Pages.LANGUAGE_SEND_REQUEST, label: 'send-request', className: 'send-btn' },
@@ -36,7 +37,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
     const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
 
     const gallery: JSX.Element[] = data[0].about_us.about_us_images?.map((image: ImageType, index: number) => {
-        const path: UrlType | any = urlForImage(image);
+        const path: ImagePath = urlForImage(image);
 
         return (
             <Image
@@ -52,7 +53,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
     });
 
     return (
-        <section id='about' className={styles.container}>
+        <section id='about'>
             <Container className='container'>
                 <div className={styles.about}>
                     <div className={styles.column}>
