@@ -4,6 +4,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
+import { Arial } from '@/lib/constants/font';
 import { ImagePath } from '@/types/general';
 
 import { TEACHER } from '../../../../../../../sanity/sanity-queries/language';
@@ -33,7 +34,7 @@ const Teachers = ({
                         priority
                     />
                     <div className={styles.fullName}>
-                        <h3>{item.fullName}</h3>
+                        <h3 className={Arial.className}>{item.fullName}</h3>
                     </div>
                 </div>
             );
