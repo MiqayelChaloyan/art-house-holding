@@ -1,55 +1,37 @@
 'use client'
 
+import React from 'react';
+
 import Image from 'next/image';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCreative, Pagination } from 'swiper/modules';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import settings from './settings';
 
-import { ImageType as Type, UrlType } from '@/types/language';
+import { ImagePath } from '@/types/general';
+import { ImageType as Type } from '@/types/language';
 
 import { COURSE_IMAGES } from '../../../../../../../sanity/sanity-queries/language';
-
-import 'swiper/css';
-import 'swiper/css/effect-creative';
-import 'swiper/css/pagination';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    during_courses: COURSE_IMAGES[],
-}
-
-interface Style {
-    [key: string]: string,
-};
-
-const style: Style = {
-    "--swiper-pagination-color": "#F9CC48",
-    "--swiper-pagination-bullet-inactive-color": "#006ED2",
-    "--swiper-pagination-bullet-inactive-opacity": "1",
-    "--swiper-pagination-bullet-size": "10px",
-    "--swiper-pagination-bullet-horizontal-gap": "5px"
+interface Props {
+    during_courses: COURSE_IMAGES[];
 };
 
 const renderImages = (images: Type[], type: string) =>
     images?.map((image: Type, index: number) => {
-        const path: UrlType | any = urlForImage(image);
+        const path: ImagePath = urlForImage(image);
 
-        let className;
-
-        if (type === 'odd') {
-            className = index % 2 !== 0 ? styles['high-altitude-image'] : styles['low-altitude-image'];
-
-        } else {
-            className = index % 2 === 0 ? styles['high-altitude-image'] : styles['low-altitude-image'];
-        }
+        let className = (type === 'odd')
+            ? (index % 2 !== 0 ? styles['high-altitude-image'] : styles['low-altitude-image'])
+            : (index % 2 === 0 ? styles['high-altitude-image'] : styles['low-altitude-image']);
 
         return (
             <Image
@@ -64,24 +46,6 @@ const renderImages = (images: Type[], type: string) =>
         );
     });
 
-const settings = {
-    grabCursor: true,
-    effect: 'creative',
-    style: style,
-    creativeEffect: {
-        prev: {
-            shadow: true,
-            translate: [0, 0, -400],
-        },
-        next: {
-            translate: ['100%', 0, 0],
-        },
-    },
-    pagination: {
-        clickable: true,
-    },
-    modules: [EffectCreative, Pagination]
-};
 
 const Gallery = ({ during_courses }: Readonly<Props>) => {
     const windowSize = useWindowSize();
@@ -90,7 +54,7 @@ const Gallery = ({ during_courses }: Readonly<Props>) => {
     const two = during_courses.slice(3, 6);
 
     const swiperItems = during_courses?.map((image: COURSE_IMAGES) => {
-        const path: UrlType | any = urlForImage(image);
+        const path: ImagePath = urlForImage(image);
 
         return (
             <SwiperSlide key={image._key}>
@@ -126,4 +90,4 @@ const Gallery = ({ during_courses }: Readonly<Props>) => {
     )
 };
 
-export default Gallery;
+export default React.memo(Gallery);

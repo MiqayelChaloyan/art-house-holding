@@ -1,16 +1,19 @@
 'use server'
 
-import Home from '@/components/screens/language/languages';
+import dynamic from 'next/dynamic';
+import { notFound } from 'next/navigation';
+
 import { client } from '../../../../../../sanity/client';
 import { query } from '../../../../../../sanity/services/language-service/languages';
-import { notFound } from 'next/navigation';
+
+const DHome = dynamic(() => import('@/components/screens/language/languages'));
 
 
 interface Props {
     params: {
-        locale: string,
+        locale: string;
     }
-}
+};
 
 async function getResources(locale: string) {
     try {
@@ -35,8 +38,6 @@ export default async function Page({
         notFound()
     }
 
-    console.log(data)
-
-    return <Home data={data} />
-}
+    return (<DHome locale={locale} data={data} />);
+};
 

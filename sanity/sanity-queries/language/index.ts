@@ -95,6 +95,7 @@ export interface ABOUT_US_LANGUAGE {
 };
 
 export interface ABOUT_LANGUAGE {
+    _id: string;
     image: ImageType;
     slug: Slug;
 };

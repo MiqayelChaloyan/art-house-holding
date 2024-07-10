@@ -7,15 +7,19 @@ import Image from 'next/image';
 import components from '@/lib/utils/PortableTextComponents';
 import { PortableText } from '@portabletext/react';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { ABOUT } from '@/types/language';
+import { ImagePath } from '@/types/general';
 
-import { UrlType, ABOUT } from '@/types/language';
+import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
 
-const About = ({ image, text }: Readonly<ABOUT>) => {
-    const language: UrlType | any = urlForImage(image);
+const About = ({
+    image,
+    text
+}: Readonly<ABOUT>) => {
+    const language: ImagePath = urlForImage(image);
 
     return (
         <div className={styles.row_one}>

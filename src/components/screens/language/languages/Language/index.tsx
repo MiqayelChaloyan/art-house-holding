@@ -9,7 +9,8 @@ import Gallery from './Gallery';
 import Container from '@/components/components/container';
 import Player from '@/components/components/player';
 
-import { ReduxType, UrlType } from '@/types/language';
+import { ReduxType } from '@/types/language';
+import { ImagePath } from '@/types/general';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
@@ -20,17 +21,13 @@ import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import styles from './styles.module.sass';
 
 
-type Props = {
+interface Props {
     data: LANGUAGE
-    locale: string
 };
 
-const Language = ({ 
-    locale, 
-    data 
-}: Readonly<Props>) => {
+const Language = ({ data }: Readonly<Props>) => {
     const { during_courses_images, course_process, teachers } = data;
-    const path: UrlType | any = urlForImage(course_process.video_light);
+    const path: ImagePath = urlForImage(course_process.video_light);
 
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
@@ -42,11 +39,8 @@ const Language = ({
 
     return (
         <Container className='container'>
-            <section id='language' className={styles.container}>
-                <About
-                    image={data.image}
-                    text={data.text}
-                />
+            <section id='language'>
+                <About image={data.image} text={data.text} />
                 <Gallery during_courses={during_courses_images} />
                 <div className={styles.row_three}>
                     <div className={styles.video_player}>

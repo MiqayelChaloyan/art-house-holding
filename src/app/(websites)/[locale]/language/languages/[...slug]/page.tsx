@@ -1,24 +1,29 @@
-import { notFound } from 'next/navigation';
+'use server'
 
+import dynamic from 'next/dynamic';
+
+import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-// import { getTranslations } from 'next-intl/server';
-
 import { Locale } from '@/locales';
-
-import Language from '@/components/screens/language/languages/Language';
 
 import { querySlug } from '../../../../../../../sanity/services/language-service/languages';
 import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
+const DLanguage = dynamic(() => import('@/components/screens/language/languages/Language'));
+
+import 'swiper/css';
+import 'swiper/css/effect-creative';
+import 'swiper/css/pagination';
+
 
 interface Props {
     params: {
-        locale: string,
-        slug: string
+        locale: string;
+        slug: string;
     }
-}
+};
 
 async function getResources(slug: string, locale: string) {
     try {
@@ -32,7 +37,7 @@ async function getResources(slug: string, locale: string) {
     } catch (error) {
         return { data: [], isError: true };
     }
-}
+};
 
 export default async function Page({ 
     params: { locale, slug } 
@@ -43,14 +48,8 @@ export default async function Page({
         notFound()
     }
 
-    return (
-        <Language
-            locale={locale}
-            data={data[0]}
-        />
-    )
-}
-
+    return (<DLanguage data={data[0]} />)
+};
 
 export async function generateMetadata({
     params: { locale, slug },
@@ -58,11 +57,8 @@ export async function generateMetadata({
     params: { locale: Locale, slug: any };
 }): Promise<Metadata> {
     const result = await getResources(slug[0], locale);
-    // const t = await getTranslations({ locale, namespace: 'metadata' });
-
     const { name, during_courses_images, text } = result?.data[0] || {};
 
-    // const ogTitle = `${name} ${t('introduction')}`;
     const ogTitle = name;
 
     const ogDescription = `${text[0].children[0].text.slice(0, 100)}...`;
@@ -104,4 +100,4 @@ export async function generateMetadata({
             ],
         },
     };
-}
+};
