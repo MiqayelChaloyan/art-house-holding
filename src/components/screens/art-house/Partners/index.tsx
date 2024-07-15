@@ -5,6 +5,11 @@ import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 import { useTranslations } from 'next-intl';
 
+import Slider from 'react-slick';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
+
 import Partner from '@/lib/ui/parnter';
 import { ArianAMU } from '@/lib/constants/font';
 
@@ -12,30 +17,21 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
-// Swiper 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
-
-// slick-carousel 
-import Slider from 'react-slick';
-
 import cn from 'classnames';
 
-// Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-// slick-carousel styles
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    partners: PARTNER[]
+interface Props {
+    partners: PARTNER[];
 };
 
 interface SampleNextArrowProps { onClick: () => void };
@@ -87,6 +83,8 @@ const Partners = ({ partners }: Readonly<Props>) => {
         prevArrow: <SamplePrevArrow />,
         cssEase: 'ease-out',
     };
+
+    if(!partners.length) return null
 
     return (
         <section id='partners' className={styles.container}>

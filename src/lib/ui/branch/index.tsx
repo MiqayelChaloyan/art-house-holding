@@ -4,7 +4,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { ArianAMU, Inter } from '@/lib/constants/font';
+import { ArianAMU } from '@/lib/constants/font';
 
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 import { BRANCH } from '../../../../sanity/sanity-queries/art-house';
@@ -12,6 +12,7 @@ import { BRANCH } from '../../../../sanity/sanity-queries/art-house';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import Image from 'next/image';
 
 
 interface Props {
@@ -30,28 +31,49 @@ const Branch = ({
 
     const wordsArray = words.split(' ');
 
-    const titlesFront = wordsArray.map((word: string, index: number) => <p key={index} className={cn(styles.title_front, Inter.className)} >{word}</p>);
-    const titlesBack = wordsArray.map((word: string, index: number) => <p key={index} className={cn(styles.title_back, Inter.className)} >{word}</p>);
+    const titlesFront =
+        wordsArray?.map((word: string, index: number) =>
+            <p key={index} className={cn(styles.title_front, ArianAMU.className)}>
+                {word}
+            </p>);
+
+    const titlesBack =
+        wordsArray?.map((word: string, index: number) =>
+            <p key={index} className={cn(styles.title_back, ArianAMU.className)}>
+                {word}
+            </p>);
 
     return (
-        <Link href={`/${locale}/${web_site_url}`} aria-label={`${web_site_url}`} id='card'>
+        <Link href={`/${locale}/${web_site_url}`} aria-label={web_site_url} id='card'>
             <div className={styles.card_container}>
                 <div className={styles.card}>
                     <div className={styles.front}>
                         <div className={styles.logo_front}>
-                            <img src={urlForImageFront?.src} alt={company_name} className={styles.logo} />
+                            <img
+                                src={urlForImageFront?.src}
+                                alt={company_name}
+                                className={styles.logo}
+                            />
                         </div>
                         <div className={styles.words}>
-                            <p className={cn(styles.title_front, ArianAMU.className)}>{company_name}</p>
+                            <p className={cn(styles.title_front, ArianAMU.className)}>
+                                {company_name}
+                            </p>
                             {titlesFront}
                         </div>
                     </div>
                     <div className={styles.back}>
                         <div className={styles.logo_back}>
-                            <img src={urlForImageBack?.src} alt={company_name} className={styles.logo} />
+                            <img
+                                src={urlForImageBack?.src}
+                                alt={company_name}
+                                className={styles.logo}
+                            />
                         </div>
                         <div className={styles.words}>
-                            <p className={cn(styles.title_back, ArianAMU.className)}>{company_name}</p>
+                            <p className={cn(styles.title_back, ArianAMU.className)}>
+                                {company_name}
+                            </p>
                             {titlesBack}
                         </div>
                     </div>

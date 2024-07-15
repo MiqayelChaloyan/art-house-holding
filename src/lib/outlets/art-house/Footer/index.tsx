@@ -10,8 +10,16 @@ import Container from '@/components/components/container';
 import LogoFooter from '@/lib/icons/art-house/LogoFooter';
 import Facebook from '@/lib/icons/art-house/Facebook';
 import Instagram from '@/lib/icons/art-house/Instagram';
+import X from '@/lib/icons/art-house/X';
+import Tiktok from '@/lib/icons/art-house/Tiktok';
+import Telegram from '@/lib/icons/art-house/Telegram';
+import YouTube from '@/lib/icons/art-house/YouTube';
+import Pinterest from '@/lib/icons/art-house/Pinterest';
+import WhatsApp from '@/lib/icons/art-house/WhatsApp';
+import Viber from '@/lib/icons/art-house/Viber';
 import Gmail from '@/lib/icons/art-house/Gmail';
 import Linkedin from '@/lib/icons/art-house/Linkedin';
+
 import { ArianAMU } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
@@ -26,14 +34,21 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    socialData: HOSTS;
+    socialData?: HOSTS;
 };
 
 const socialNetworkComponents: socialNetwork = {
     facebook: Facebook,
     instagram: Instagram,
     gmail: Gmail,
-    linkedin: Linkedin
+    linkedin: Linkedin,
+    x: X,
+    tiktok: Tiktok,
+    telegram: Telegram,
+    youtube: YouTube,
+    pinterest: Pinterest,
+    whatsapp: WhatsApp,
+    viber: Viber
 };
 
 const Footer = ({ socialData }: Readonly<Props>) => {
@@ -41,8 +56,8 @@ const Footer = ({ socialData }: Readonly<Props>) => {
     const currentYear = new Date().getFullYear();
     const t = useTranslations();
 
-    const phoneNumbers = socialData?.phone_numbers.map((number: string, index: number) => {
-        const phoneNumber = index < socialData.phone_numbers.length - 1 ? `${number}, ` : `${number}`;
+    const phoneNumbers = socialData?.phone_numbers?.map((number: string, index: number) => {
+        const phoneNumber = index < socialData.phone_numbers.length - 1 ? `${number}, ` : number;
         const tel = 'tel:' + number.replace(/\s/g, '');
         const className = index !== 0 && styles.phone;
 
@@ -55,7 +70,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
         )
     });
 
-    const hosts = socialData?.social_links.map((host: Social_Links) => {
+    const hosts = socialData?.social_links?.map((host: Social_Links) => {
         const socialName = host?.social_name.toLowerCase();
         const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
         const SocialIcon = (socialNetworkComponents as any)[socialName];

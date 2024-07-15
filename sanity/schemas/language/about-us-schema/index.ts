@@ -8,11 +8,6 @@ const aboutUsSchemaLanguage = {
     title: 'About Us',
     id: 'about-us-language',
     groups: [
-        // {
-        //     name: "meta",
-        //     title: "Site Info",
-        //     default: true
-        // },
         {
             name: "og",
             title: "Social Share Info",
@@ -29,13 +24,6 @@ const aboutUsSchemaLanguage = {
         },
     ],
     fields: [
-         /* Site Metadata Schema */
-        //  {
-        //     type: 'string',
-        //     name: 'site_name',
-        //     title: 'Site Name',
-        //     group: ['og', 'meta'],
-        // },
         {
             type: 'string',
             title: 'Page Title',
@@ -56,7 +44,7 @@ const aboutUsSchemaLanguage = {
             title: 'Image',
             name: 'ogImage',
             description:
-                'URL of the image that should be used in social media previews. If you define this, you must define two other OG basic properties as well: title and type.',
+                'URL of the image that should be used in social media previews.',
             validation: (Rule: RuleType) => Rule.required(),
             group: ['og'],
         },

@@ -34,16 +34,18 @@ const Layout = ({
         };
 
         fetchData();
-    }, []); 
+    }, []);
 
     return (
-        <div>
-            <Header typePosition={`${headerPosition === 'fixed' ? 'fixed' : 'sticky'}`} />
+        <>
+            <Header
+                typePosition={`${headerPosition === 'fixed' ? 'fixed' : 'sticky'}`}
+            />
             <main>
                 {children}
             </main>
             <Footer socialData={socialData} />
-        </div>
+        </>
     );
 }
 

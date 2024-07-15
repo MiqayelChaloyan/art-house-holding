@@ -20,16 +20,16 @@ const contactUsSchemaArtHouse = {
             name: 'phone_numbers',
             type: 'array',
             of: [{ type: 'string' }],
-            description: 'You can only add three phone number',
-            validation: (Rule: RuleType | any) => Rule.max(3).unique(),
+            description: 'You can only add six phone number.',
+            validation: (Rule: RuleType | any) => Rule.max(6).unique(),
             components: { input: ArrayMaxItems },
         },
         {
             name: 'social_links',
             type: 'array',
             title: 'Social Links',
-            description: 'You can only add these Facebook, Instagram, Gmail, Linkedin.',
-            validation: (Rule: RuleType) => Rule.max(4),
+            description: 'You can only add these Facebook, Instagram, Gmail, Linkedin, X, Tiktok, Telegram, YouTube, Pinterest, WhatsApp, Viber.',
+            validation: (Rule: RuleType | any) => Rule.max(11).unique(),
             components: { input: ArrayMaxItems },
             of: [
                 {

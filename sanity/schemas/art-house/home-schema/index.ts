@@ -9,11 +9,6 @@ const homeSchemaArtHouse = {
     title: 'Home',
     id: 'art-house',
     groups: [
-        // {
-        //     name: "meta",
-        //     title: "Site Info",
-        //     default: true
-        // },
         {
             name: "og",
             title: "Social Share Info",
@@ -30,13 +25,12 @@ const homeSchemaArtHouse = {
         },
     ],
     fields: [
-        /* Site Metadata Schema */
-        // {
-        //     type: 'string',
-        //     name: 'site_name',
-        //     title: 'Site Name',
-        //     group: ['og', 'meta'],
-        // },
+        {
+            name: 'name',
+            title: 'Name',
+            type: 'string',
+            description: 'Չփոփոխել անվանումը'
+        },
         {
             type: 'string',
             title: 'Page Title',
@@ -57,17 +51,11 @@ const homeSchemaArtHouse = {
             title: 'Image',
             name: 'ogImage',
             description:
-                'URL of the image that should be used in social media previews. If you define this, you must define two other OG basic properties as well: title and type.',
+                'URL of the image that should be used in social media previews.',
             validation: (Rule: RuleType) => Rule.required(),
             group: ['og'],
         },
         /* Schema */
-        {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-            description: 'Չփոփոխել անվանումը'
-        },
         {
             name: 'our_websites',
             type: 'array',

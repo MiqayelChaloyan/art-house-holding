@@ -1,5 +1,6 @@
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { SwiperTypes } from '@/types/art-house';
+
 import styles from './styles.module.sass';
 
 export const options: SwiperTypes = {

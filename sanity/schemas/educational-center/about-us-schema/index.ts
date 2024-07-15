@@ -26,6 +26,12 @@ export const aboutUsSchemaEducationalCenter = {
     ],
     fields: [
         {
+            title: 'Name',
+            name: 'name',
+            type: 'string',
+            description: 'Չփոփոխել անվանումը'
+        },
+        {
             type: 'string',
             title: 'Page Title',
             name: 'ogTitle',
@@ -45,17 +51,11 @@ export const aboutUsSchemaEducationalCenter = {
             title: 'Image',
             name: 'ogImage',
             description:
-                'URL of the image that should be used in social media previews. If you define this, you must define two other OG basic properties as well: title and type.',
+                'URL of the image that should be used in social media previews.',
             validation: (Rule: RuleType) => Rule.required(),
             group: ['og'],
         },
         /* Schema */
-        {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Չփոփոխել անվանումը'
-        },
         {
             name: 'main_section',
             type: 'array',

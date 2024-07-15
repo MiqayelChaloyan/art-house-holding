@@ -55,11 +55,14 @@ $assetPath: "../../../../../public/assets/images/art-house/footerBackground.png"
        padding: 0
 
 .phone_numbers
-    display: flex
+    display: grid
+    flex-wrap: wrap
+    grid-template-columns: auto auto auto
     border-bottom: 2px solid var(--color-white)
     /* md */
     @media screen and ( max-width: 768px )
        display: grid
+       grid-template-columns: auto
 
 .addres
     font-weight: var(--font-weight-normal)
@@ -132,6 +135,7 @@ $assetPath: "../../../../../public/assets/images/art-house/footerBackground.png"
     /* md */
     @media screen and ( max-width: 768px )
         text-align: center
+        font-size: 15px
 
 .hosts
     display: flex
@@ -229,7 +233,8 @@ $assetPath: "../../../../../public/assets/images/art-house/footerBackground.png"
    transition: var(--tr-time)
    svg 
       transition: var(--tr-time)
+      border-radius: 50px
       fill: #FFFFFF
    &:hover
       svg
-        fill: #B21B1B
+        fill: #B21B1B 

@@ -18,19 +18,25 @@ import 'swiper/css/pagination';
 import styles from './styles.module.sass';
 
 
-interface Props  {
+interface Props {
     data: BRANCH[];
 };
 
 const Branches = ({ data }: Readonly<Props>) => {
-    const cards: JSX.Element[] = data?.map((item: BRANCH) =>
-        <Branch key={item._key} item={item} locale={'en'} />);
+    const cards: JSX.Element[] =
+        data?.map((item: BRANCH) =>
+            <Branch
+                key={item._key}
+                item={item}
+                locale='en'
+            />);
 
-    const result: JSX.Element[] = cards?.map((card: JSX.Element) => (
-        <SwiperSlide key={card.key}>
-            {card}
-        </SwiperSlide>
-    ));
+    const result: JSX.Element[] =
+        cards?.map((card: JSX.Element) => (
+            <SwiperSlide key={card.key}>
+                {card}
+            </SwiperSlide>
+        ));
 
     return (
         <section id='branches' className={styles.branches}>

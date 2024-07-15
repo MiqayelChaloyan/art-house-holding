@@ -45,7 +45,7 @@ export const aboutUsSchemaDesign = {
             title: 'Image',
             name: 'ogImage',
             description:
-                'URL of the image that should be used in social media previews. If you define this, you must define two other OG basic properties as well: title and type.',
+                'URL of the image that should be used in social media previews.',
             validation: (Rule: RuleType) => Rule.required(),
             group: ['og'],
         },
