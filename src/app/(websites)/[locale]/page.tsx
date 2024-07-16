@@ -59,6 +59,7 @@ export default async function Page({
     <Component
       data={data}
       partners={partners}
+      locale={locale}
     />
   );
 };

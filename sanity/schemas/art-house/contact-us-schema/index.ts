@@ -13,15 +13,38 @@ const contactUsSchemaArtHouse = {
             name: 'name',
             title: 'Name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
+        // {
+        //     title: 'Address, Street',
+        //     name: 'address',
+        //     type: 'object',
+        //     validation: (Rule: RuleType) => Rule.required(),
+        //     fields: [
+        //         {
+        //             title: 'Armenian',
+        //             name: 'am',
+        //             type: 'string'
+        //         },
+        //         {
+        //             title: 'English',
+        //             name: 'en',
+        //             type: 'string'
+        //         },
+        //         {
+        //             title: 'Russian',
+        //             name: 'ru',
+        //             type: 'string'
+        //         }
+        //     ]
+        // },
         {
             title: 'Phone Numbers',
             name: 'phone_numbers',
             type: 'array',
             of: [{ type: 'string' }],
             description: 'You can only add six phone number.',
-            validation: (Rule: RuleType | any) => Rule.max(6).unique(),
+            validation: (Rule: RuleType) => Rule.max(6).unique(),
             components: { input: ArrayMaxItems },
         },
         {
@@ -29,7 +52,7 @@ const contactUsSchemaArtHouse = {
             type: 'array',
             title: 'Social Links',
             description: 'You can only add these Facebook, Instagram, Gmail, Linkedin, X, Tiktok, Telegram, YouTube, Pinterest, WhatsApp, Viber.',
-            validation: (Rule: RuleType | any) => Rule.max(11).unique(),
+            validation: (Rule: RuleType) => Rule.max(11).unique(),
             components: { input: ArrayMaxItems },
             of: [
                 {

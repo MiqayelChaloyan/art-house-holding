@@ -87,7 +87,7 @@ const Partners = ({ partners }: Readonly<Props>) => {
     if(!partners.length) return null
 
     return (
-        <section id='partners' className={styles.container}>
+        <section id='partners' className={styles.section}>
             <h2 className={cn(styles.title, ArianAMU.className)}>
                 {t('partners')}
             </h2>

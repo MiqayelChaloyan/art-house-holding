@@ -29,7 +29,7 @@ const Progress = ({ data }: Readonly<Props>) => {
     ));
 
     return (
-        <section id='circle-progress' className={styles.progress}>
+        <section id='circle-progress' className={styles.section}>
             <Container className='container'>
                 <div className={styles.row}>
                     {items}

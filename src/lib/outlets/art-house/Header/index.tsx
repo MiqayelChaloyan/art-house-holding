@@ -72,7 +72,7 @@ const Header = ({ typePosition }: Readonly<IHeaderProps>) => {
                     />
                 </ScrollLink>
                 <div className={cn(styles.content, isOpenMenu ? styles.contentShow : '')}>
-                    <div className={styles.nav}>
+                    <div className={styles.navbar}>
                         {navigationLinks?.map(link => (
                             <ScrollLink
                                 key={link.label}
@@ -106,3 +106,7 @@ const Header = ({ typePosition }: Readonly<IHeaderProps>) => {
 };
 
 export default Header;
+
+
+
+

@@ -19,7 +19,7 @@ export const aboutUsSchemaEducationalCenter = {
             title: "Web App Settings",
             hidden: ({ document }: {
                 document: {
-                    [key: string]: never;
+                    [key: string]: string;
                 }
             }): boolean => !(document.isPwa)
         },
@@ -173,7 +173,7 @@ export const aboutUsSchemaEducationalCenter = {
                             type: 'string'
                         }
                     ],
-                    validation: (Rule: any) => Rule.required(),
+                    validation: (Rule: RuleType) => Rule.required(),
                 },
             ]
         },
@@ -187,7 +187,7 @@ export const aboutUsSchemaEducationalCenter = {
                     title: 'Video Section Title',
                     name: 'video_section_title',
                     type: 'object',
-                    validation: (Rule: any) => Rule.required(),
+                    validation: (Rule: RuleType) => Rule.required(),
                     fields: [
                         {
                             title: 'Armenian',
@@ -210,7 +210,7 @@ export const aboutUsSchemaEducationalCenter = {
                     name: 'video_url',
                     title: 'Video Link',
                     type: 'string',
-                    validation: (Rule: any) => Rule.required(),
+                    validation: (Rule: RuleType) => Rule.required(),
                 },
                 {
                     name: 'video_light',
@@ -224,7 +224,7 @@ export const aboutUsSchemaEducationalCenter = {
                             type: 'string'
                         }
                     ],
-                    validation: (Rule: any) => Rule.required(),
+                    validation: (Rule: RuleType) => Rule.required(),
                 },
             ]
         },
@@ -238,7 +238,7 @@ export const aboutUsSchemaEducationalCenter = {
                     title: 'Section Title',
                     name: 'section_title',
                     type: 'object',
-                    validation: (Rule: any) => Rule.required(),
+                    validation: (Rule: RuleType) => Rule.required(),
                     fields: [
                         {
                             title: 'Armenian',
@@ -274,7 +274,7 @@ export const aboutUsSchemaEducationalCenter = {
                                     title: 'Lessons Title',
                                     name: 'subtitle',
                                     type: 'object',
-                                    validation: (Rule: any) => Rule.required(),
+                                    validation: (Rule: RuleType) => Rule.required(),
                                     fields: [
                                         {
                                             title: 'Armenian',
@@ -297,7 +297,7 @@ export const aboutUsSchemaEducationalCenter = {
                                     title: 'Content',
                                     name: 'content',
                                     type: 'object',
-                                    validation: (Rule: any) => Rule.required(),
+                                    validation: (Rule: RuleType) => Rule.required(),
                                     fields: [
                                         {
                                             title: 'Armenian',
@@ -349,7 +349,7 @@ export const aboutUsSchemaEducationalCenter = {
                                     type: 'reference',
                                     title: 'Course Category',
                                     to: [{ type: 'courses' }],
-                                    validation: (Rule: any) => Rule.required(),
+                                    validation: (Rule: RuleType) => Rule.required(),
                                 },
                             ]
                         }
@@ -374,7 +374,7 @@ export const aboutUsSchemaEducationalCenter = {
                             title: 'Title',
                             name: 'title',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -398,7 +398,7 @@ export const aboutUsSchemaEducationalCenter = {
                             name: 'quantity',
                             type: 'number',
                             initialValue: 0,
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                         },
                     ]
                 }
@@ -420,7 +420,7 @@ export const aboutUsSchemaEducationalCenter = {
                             title: 'Specialists Section Title',
                             name: 'title',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -443,7 +443,7 @@ export const aboutUsSchemaEducationalCenter = {
                             title: 'Course Name',
                             name: 'course_name',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -481,7 +481,7 @@ export const aboutUsSchemaEducationalCenter = {
                             type: 'reference',
                             title: 'Course Category',
                             to: [{ type: 'courses' }],
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                         },
                         {
                             name: 'specialists_section_images',
@@ -532,7 +532,7 @@ export const aboutUsSchemaEducationalCenter = {
                             title: 'User Name',
                             name: 'user_name',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -569,7 +569,7 @@ export const aboutUsSchemaEducationalCenter = {
                             title: 'User Feedback',
                             name: 'user_feedback',
                             type: 'object',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
                                     title: 'Armenian',
@@ -605,7 +605,7 @@ export const aboutUsSchemaEducationalCenter = {
                             title: 'Rating (1-5)*',
                             name: 'rating',
                             type: 'number',
-                            validation: (Rule: any) => Rule.required(),
+                            validation: (Rule: RuleType) => Rule.required(),
                             initialValue: 5,
                         },
                     ]

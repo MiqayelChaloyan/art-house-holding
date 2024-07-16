@@ -15,18 +15,20 @@ import { HOSTS } from '../../../../sanity/sanity-queries/art-house';
 interface Props {
     children: React.ReactNode;
     headerPosition?: 'fixed' | 'sticky';
+    locale: string
 };
 
 const Layout = ({
     children,
-    headerPosition
+    headerPosition,
+    locale
 }: Readonly<Props>) => {
     const [socialData, setSocialData] = useState<HOSTS | any>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await client.fetch(querySocial, { language: 'en' }, { next: { revalidate: 100 } });
+                const data = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
                 setSocialData(data[0]);
             } catch (error) {
                 notFound();

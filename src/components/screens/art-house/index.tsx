@@ -16,14 +16,16 @@ import { PARTNER } from '../../../../sanity/sanity-queries/generic';
 interface Props {
     data: ART_HOUSE_HOME;
     partners: PARTNER[];
+    locale: string
 };
 
 const Home = ({
     data,
-    partners
+    partners,
+    locale
 }: Readonly<Props>) => {
     return (
-        <Layout headerPosition='fixed'>
+        <Layout locale={locale} headerPosition='fixed'>
             <Main />
             <Branches data={data?.our_websites} />
             <Progress data={data?.progress_section} />

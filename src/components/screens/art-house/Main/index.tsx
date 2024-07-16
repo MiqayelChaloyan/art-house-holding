@@ -16,7 +16,7 @@ const Main = () => {
     const t = useTranslations('texts'); 
 
     return (
-        <section id='about' className={styles.header}>
+        <section id='about' className={styles.section}>
             <Container className='container'>
                 <div className={styles.row}>
                     <div className={styles.column}>

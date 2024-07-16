@@ -10,13 +10,13 @@ const homeSchemaArtHouse = {
     id: 'art-house',
     groups: [
         {
-            name: "og",
-            title: "Social Share Info",
+            name: 'og',
+            title: 'Social Share Info',
             default: true
         },
         {
-            name: "manifest",
-            title: "Web App Settings",
+            name: 'manifest',
+            title: 'Web App Settings',
             hidden: ({ document }: {
                 document: {
                     [key: string]: never;
@@ -29,7 +29,7 @@ const homeSchemaArtHouse = {
             name: 'name',
             title: 'Name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
         {
             type: 'string',
@@ -41,9 +41,9 @@ const homeSchemaArtHouse = {
             group: ['og']
         },
         {
-            type: "text",
-            name: "ogDescription",
-            title: "Social Share Description",
+            type: 'text',
+            name: 'ogDescription',
+            title: 'Social Share Description',
             group: ['og']
         },
         {
@@ -62,7 +62,7 @@ const homeSchemaArtHouse = {
             title: 'Websites',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(5),
-            description: 'Ոչ պակաս, քան հինգ և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            description: 'No less than five and no more, only you can modify them.',
             of: [
                 {
                     name: 'Object',
@@ -135,10 +135,10 @@ const homeSchemaArtHouse = {
         {
             name: 'progress_section',
             type: 'array',
-            title: 'Progress Section',
+            title: 'Progress bars',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(4),
-            description: 'Ոչ պակաս, քան չորս և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            description: 'No less than four and no more, only you can modify them.',
             of: [
                 {
                     type: 'object',
