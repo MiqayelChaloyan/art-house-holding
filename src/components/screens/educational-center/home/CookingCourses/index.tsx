@@ -13,7 +13,7 @@ import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-cente
 
 import { Inter } from '@/lib/constants/font';
 
-import { UrlType } from '@/types/educational-center';
+import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
 
 import cn from 'classnames';
@@ -21,13 +21,14 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: VIDEO
+interface Props {
+    data: VIDEO;
 };
 
 const CookingCourses = ({ data }: Readonly<Props>) => {
-    const path: UrlType | any = urlForImage(data?.video_light)
+    const path: ImagePath = urlForImage(data?.video_light)
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
+
     const dispatch = useDispatch();
 
     const handlePlayVideo = (path: string) => {
@@ -36,7 +37,7 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
     };
 
     return (
-        <section id='video-player' className={styles.container}>
+        <section id='video-player' className={styles.section}>
             <div className={styles.triangle} />
             <Container className='container'>
                 <h1 className={cn(styles.title, Inter.className)}>

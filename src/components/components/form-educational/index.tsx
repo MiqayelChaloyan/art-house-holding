@@ -189,7 +189,7 @@ const FormAppointment = ({
 					getValueToSlug={getValueToSlug}
 				/>
 			</div>
-			<button className={`${styles.submit}`} style={{ width }}>
+			<button className={cn(styles.submit, Arial.className)} style={{ width }}>
 				{isLoading ?
 					`${t('contact-us-form.loading')}...`
 					:

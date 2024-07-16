@@ -13,7 +13,7 @@ import { Arial, Inter } from '@/lib/constants/font';
 
 import { PortableText } from '@portabletext/react';
 import components from '@/lib/utils/PortableTextComponents';
-// import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
+import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
 
 import { Content as ContentType } from '@/types/educational-center';
 
@@ -36,21 +36,21 @@ const group = {
 };
 
 
-// const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
-//     const flatText = flattenText(content);
-//     const text = isReadMore && flatText.length > minimumHeight
-//         ? truncateText(content, minimumHeight)
-//         : content;
+const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
+    const flatText = flattenText(content);
+    const text = isReadMore && flatText.length > minimumHeight
+        ? truncateText(content, minimumHeight)
+        : content;
 
-//     return (
-//         <div className={cn(styles.content, Inter.className)}>
-//             <PortableText
-//                 value={text}
-//                 components={components}
-//             />
-//         </div>
-//     );
-// };
+    return (
+        <div className={cn(styles.content, Inter.className)}>
+            <PortableText
+                value={text}
+                components={components}
+            />
+        </div>
+    );
+};
 
 const About = ({
     course: { about_us_content },
@@ -68,9 +68,11 @@ const About = ({
         <section id='about-us' className={styles.container}>
             <div className={styles.triangle} />
             <Container className='container'>
-                <h1 className={styles.title}>{t('sections.about-courses')}</h1>
+                <h1 className={cn(styles.title, Arial.className)}>
+                    {t('sections.about-courses')}
+                </h1>
                 <div className={styles.about_us}>
-                    {/* <div className={styles.about_box}>
+                    <div className={styles.about_box}>
                         {getTotalTextLength(about_us_content) > minimumHeight ?
                             <>
                                 <Content
@@ -92,7 +94,7 @@ const About = ({
                                 />
                             </div>
                         }
-                    </div> */}
+                    </div>
                     <div className={styles.form_box}>
                         <FormAppointment width='30%' lessons={lessons} lessonsArmenian={lessonsArmenian}>
                             <FormHeader

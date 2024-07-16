@@ -13,20 +13,24 @@ import { onPlay, setPath } from '@/store/player_reducer';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-center';
 
-import { UrlType } from '@/types/educational-center';
+import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
+
+import { Arial } from '@/lib/constants/font';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    course: VIDEO
+interface Props {
+    course: VIDEO;
 };
 
 const CourseProcess = ({ course }: Readonly<Props>) => {
     const t = useTranslations('sections');
 
-    const path: UrlType | any = urlForImage(course?.video_light);
+    const path: ImagePath = urlForImage(course?.video_light);
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
 
@@ -36,9 +40,11 @@ const CourseProcess = ({ course }: Readonly<Props>) => {
     };
 
     return (
-        <section id='video-player' className={styles.container}>
+        <section id='video-player' className={styles.section}>
             <Container className='container'>
-                <h1 className={styles.title}>{t('courses-process')}</h1>
+                <h1 className={cn(styles.title, Arial.className)}>
+                    {t('courses-process')}
+                </h1>
                 <Player
                     path={path}
                     video_url={course?.video_url}

@@ -2,10 +2,11 @@
 
 import React from 'react';
 
+import { Link as ScrollLink } from 'react-scroll';
+
 import { useTranslations } from 'next-intl';
 
-import Button from '@/lib/ui/Button';
-import { Inter } from '@/lib/constants/font';
+import { Inter, Arial } from '@/lib/constants/font';
 
 import { SlideItem as Props } from '@/types/educational-center';
 
@@ -17,23 +18,30 @@ import styles from './styles.module.sass';
 const SlideItem = ({
     url,
     subtitle,
-    content,
-    scrollToElement
+    content
 }: Readonly<Props>) => {
     const description = content.length <= 312 ? content : content.slice(0, 313) + '...';
     const t = useTranslations('buttons');
 
     return (
-        <div className={styles.emplay_slide} style={{ backgroundImage: `url(${url})` }}>
+        <div className={styles.article} style={{ backgroundImage: `url(${url})` }}>
             <div className={styles.container}>
                 <div className={styles.contact}>
-                    <h1 className={cn(styles.title, Inter.className)}>{subtitle}</h1>
-                    <p className={Inter.className}>{description}</p>
-                    <Button
-                        className={cn(styles.contact_us_button, Inter.className)}
-                        text={t('contact-us')}
-                        onClick={scrollToElement}
-                    />
+                    <h1 className={cn(styles.title, Inter.className)}>
+                        {subtitle}
+                    </h1>
+                    <p className={Arial.className}>
+                        {description}
+                    </p>
+                    <ScrollLink
+                        to='footer'
+                        offset={-250}
+                        smooth={false}
+                        duration={500}
+                        className={cn(styles.contact_us_button, Arial.className)}
+                    >
+                        {t('contact-us')}
+                    </ScrollLink>
                 </div>
             </div>
         </div>

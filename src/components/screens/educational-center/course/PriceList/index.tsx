@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import { Inter } from '@/lib/constants/font';
+import { Arial } from '@/lib/constants/font';
 
 import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/educational-center';
 
@@ -15,8 +15,8 @@ import cn from 'classnames';
 import styles from './style.module.sass';
 
 
-type Props = {
-    price_list: PRICE_LIST[]
+interface Props {
+    price_list: PRICE_LIST[];
 };
 
 function daysBetweenDates(dateStr1: string, dateStr2: string) {
@@ -50,7 +50,7 @@ const PriceList= ({ price_list }: Readonly<Props>) => {
     return (
         <section id='price-list' className={styles.container}>
             <Container className='container'>
-                <h1 className={cn(styles.title, Inter.className)}>
+                <h1 className={cn(styles.title, Arial.className)}>
                     {t('sections.price-list')}
                 </h1>
             </Container>

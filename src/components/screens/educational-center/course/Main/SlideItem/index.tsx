@@ -3,7 +3,7 @@
 import React from 'react';
 
 import Container from '@/components/components/container';
-import { Inter } from '@/lib/constants/font';
+import { Inter, Arial } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
@@ -21,14 +21,14 @@ const SlideItem = ({
     title,
     content
 }: Readonly<Props>) => (
-    <div className={styles.emplay_slide} style={{ backgroundImage: `url(${url})` }}>
+    <div className={styles.article} style={{ backgroundImage: `url(${url})` }}>
         <div className={styles.container}>
             <Container className='container'>
                 <div className={styles.contact}>
                     <h1 className={cn(styles.title, Inter.className)}>
                         {title}
                     </h1>
-                    <p className={Inter.className}>{content}</p>
+                    <p className={Arial.className}>{content}</p>
                 </div>
             </Container>
         </div>

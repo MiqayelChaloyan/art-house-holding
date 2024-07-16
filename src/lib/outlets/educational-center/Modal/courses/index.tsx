@@ -19,9 +19,9 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    locale: string
-    courses: COURSES[]
+interface Props {
+    locale: string;
+    courses: COURSES[];
 };
 
 const CoursesModal = ({
@@ -31,15 +31,16 @@ const CoursesModal = ({
     const params = useParams();    
     const { slug } = params;
 
+    const t = useTranslations('navigation');
+
     const dispatch = useDispatch();
 
-    const t = useTranslations('navigation');
 
     if (!courses) {
         return notFound();
     };
 
-    const handlecloseModal = () => setTimeout(() => dispatch(closeModal(false)), 2000);
+    const handlecloseModal = () => setTimeout(() => dispatch(closeModal(false)), 1500);
 
     return (
         <div className={styles.courses_container}>

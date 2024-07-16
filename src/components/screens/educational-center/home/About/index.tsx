@@ -14,7 +14,8 @@ import { PortableText } from '@portabletext/react';
 import components from '@/lib/utils/PortableTextComponents';
 import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
 
-import { Content as ContentType, UrlType } from '@/types/educational-center';
+import { Content as ContentType } from '@/types/educational-center';
+import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { ABOUT } from '../../../../../../sanity/sanity-queries/educational-center';
@@ -48,14 +49,14 @@ const About = ({
     data: { about_us_content, about_us_image }
 }: Readonly<Props>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
-    const path: UrlType | any = urlForImage(about_us_image);
+    const path: ImagePath = urlForImage(about_us_image);
     const minimumHeight = 900;
     const t = useTranslations();
 
     const toggleReadMore = () => setIsReadMore(!isReadMore);
 
     return (
-        <section id='about-us' className={styles.container}>
+        <section id='about-us' className={styles.section}>
             <div className={styles.triangle} />
             <Container className='container'>
                 <h1 className={cn(styles.title, Inter.className)}>

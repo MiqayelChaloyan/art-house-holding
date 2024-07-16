@@ -58,6 +58,7 @@ const localeStrings: {
     en: 'educational center'
 };
 
+
 async function getResources(locale: string) {
     const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });

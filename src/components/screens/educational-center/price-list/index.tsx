@@ -21,8 +21,8 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-	data: PRICE_LIST[]
-}
+	data: PRICE_LIST[];
+};
 
 const PriceList = ({ data }: Readonly<Props>) => {
 	const t = useTranslations('sections');
@@ -33,7 +33,7 @@ const PriceList = ({ data }: Readonly<Props>) => {
     }, [data]);
 
 	return (
-		<section id='price-list' className={styles.container}>
+		<section id='price-list' className={styles.section}>
 			<Container className='container'>
 				<h1 className={cn(styles.title, Inter.className)}>
 					{t('price-list')}

@@ -10,9 +10,9 @@ import { query } from '../../../../../sanity/services/educational-center-service
 
 interface RootProps {
     params: {
-        locale: string,
+        locale: string;
     };
-}
+};
 
 async function getResources(locale: string) {
     try {
@@ -37,5 +37,5 @@ export default async function Page({
         notFound()
     }
 
-    return <Home data={data} />;
+    return (<Home data={data} />);
 }

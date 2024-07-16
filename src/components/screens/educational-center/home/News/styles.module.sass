@@ -97,6 +97,9 @@
     padding-right: var(--container-gap)
     padding-left: var(--container-gap)
     inline-size: min-content
+    text-transform: lowercase
+    &::first-letter
+      text-transform: capitalize
     /* 2xl */
     @media screen and ( max-width: 1536px )
       font-size: 33px

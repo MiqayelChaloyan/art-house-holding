@@ -22,8 +22,8 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    course: STUDENT_WORK[]
+interface Props {
+    course: STUDENT_WORK[];
 };
 
 const options = {
@@ -85,7 +85,9 @@ const StudentWork = ({ course }: Readonly<Props>) => {
         <section id='student-work' className={styles.container}>
             <div className={styles.triangle} />
             <Container className='container'>
-                <h1 className={`${styles.title} ${Inter.className}`}>{t('sections.student-work')}</h1>
+                <h1 className={cn(styles.title, Arial.className)}>
+                    {t('sections.student-work')}
+                </h1>
                 <div className={styles.student_work}>
                     <Fancybox options={options}>
                         {images}

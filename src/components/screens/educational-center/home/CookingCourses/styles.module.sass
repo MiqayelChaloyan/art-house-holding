@@ -1,4 +1,4 @@
-.container
+.section
     background: var(--color-black)
     position: relative
     /* @4xl */
@@ -85,16 +85,18 @@
     @media screen and (max-width: 600px)
       display: none
 
-
 .title
     position: absolute
     margin: 0 auto
     width: 100%
     color: white
     top: 10px
+    text-transform: lowercase
     font-size: 32px
     padding-right: var(--container-gap)
     padding-left: var(--container-gap)
+    &::first-letter
+      text-transform: capitalize
     /* 2xl */
     @media screen and ( max-width: 1536px )
       font-size: 33px

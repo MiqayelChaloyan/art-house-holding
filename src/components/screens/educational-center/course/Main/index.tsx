@@ -21,7 +21,7 @@ type Props = {
 };
 
 const Main = ({ course }: Readonly<Props>) => {
-	const options: EmblaOptionsType = { loop: true, align: 'center', };
+	const options: EmblaOptionsType = { loop: true, duration: 30, align: 'center',};
 	const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
 
 	const slidesItems = course?.map((item: COURSE_MAIN, index: number) => {

@@ -16,12 +16,14 @@ import { openModal } from '@/store/modal_reducer';
 
 import { HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
 
+import colors from '@/themes';
+
 import styles from './styles.module.sass';
 
 
 interface Props {
-	socialData: HOSTS
-	locale: string
+	socialData: HOSTS;
+	locale: string;
 };
 
 const RightMenu = ({ locale, socialData }: Props) => {
@@ -34,41 +36,41 @@ const RightMenu = ({ locale, socialData }: Props) => {
 				<Link
 					className={styles.btn_home}
 					href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
-					aria-label={`${Pages.EDUCATIONAL_HOME}`}
-				// title='Home'
+					aria-label={Pages.EDUCATIONAL_HOME}
+					title='Home'
 				>
-					<Home width={20} height={20} fill='white' />
+					<Home width={20} height={20} fill={colors.white} />
 				</Link>
 				<button
 					className={styles.btn_courses}
 					onClick={() => setTimeout(() => dispatch(openModal(true)), 500)}
-				// title='Courses'
+					title='Courses'
 				>
-					<Courses width={20} height={20} fill='white' />
+					<Courses width={20} height={20} fill={colors.white} />
 				</button>
 				<Link
 					className={styles.btn_price_list}
 					href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
-					aria-label={`${Pages.EDUCATIONAL_PRICE_LIST}`}
-				// title='Price List'
+					aria-label={Pages.EDUCATIONAL_PRICE_LIST}
+					title='Price List'
 				>
-					<PriceList width={20} height={20} fill='white' />
+					<PriceList width={20} height={20} fill={colors.white} />
 				</Link>
 				<Link
 					className={styles.btn_co_worker}
 					href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`}
-					aria-label={`${Pages.EDUCATIONAL_PARTNERS}`}
-				// title='Co Worker'
+					aria-label={Pages.EDUCATIONAL_PARTNERS}
+					title='Co Worker'
 				>
-					<CoWorkers width={25} height={20} fill='white' />
+					<CoWorkers width={25} height={20} fill={colors.white} />
 				</Link>
 				<Link
 					className={styles.btn_contact_us}
 					href={tel}
 					aria-label='Contact us'
-				// title='Contact us'
+					title='Contact us'
 				>
-					<Contact width={20} height={20} fill='white' />
+					<Contact width={20} height={20} fill={colors.white} />
 				</Link>
 			</div>
 		</div>

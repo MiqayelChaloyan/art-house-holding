@@ -15,12 +15,12 @@ import PriceList from './PriceList';
 import Main from './Main';
 
 
-type Props = {
-    course: COURSES[]
-    socialData: HOSTS
-    lessons: LESSONS[]
-    lessonsArmenian: LESSONS[]
-}
+interface Props {
+    course: COURSES[];
+    socialData: HOSTS;
+    lessons: LESSONS[];
+    lessonsArmenian: LESSONS[];
+};
 
 const Course = ({
     course,

@@ -1,13 +1,27 @@
-.emplay_slide
-	flex: 0 0 100%
-	min-width: 0
+.article
+	width: 100%
+	min-height: 75vh
+	display: grid
+	min-width: 100%
 	background-size: cover
 	background-repeat: no-repeat
-	background-position: center
+	background-position: center center
 	background-color: #00000094
 	background-blend-mode: multiply
-	height: auto
-	
+	/* @md */
+	@media screen and (max-width: 1024px)
+		height: 70vh
+		min-height: 70vh
+	/* @xs */
+	@media screen and (max-width: 600px)
+		height: 70vh
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		height: 70vh
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		height: 70vh
+		
 .container
 	display: flex
 	justify-content: center
@@ -189,8 +203,7 @@
 	color: var(--color-black)
 	font-weight: var(--font-weight-semi-bold)
 	text-align: var(--title-text-align-center) 
-	border-radius: 50px
-	padding: 12px 30px
+	border-radius: 40px
 	background-color: var(--button-color-primary)
 	margin: 10px auto
 	font-size: 18px

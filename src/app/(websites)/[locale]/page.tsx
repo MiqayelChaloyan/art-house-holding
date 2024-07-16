@@ -25,9 +25,10 @@ interface RootProps {
   }
 };
 
-const Component = dynamic(() => import('@/components/screens/art-house'), {
-  ssr: false,
-});
+const Component = dynamic(() =>
+  import('@/components/screens/art-house'),
+  { ssr: true }
+);
 
 async function getResources(locale: string) {
   const dataPromise = client.fetch(query, { language: locale }, { next: { revalidate: 100 } });

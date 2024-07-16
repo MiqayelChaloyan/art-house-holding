@@ -8,19 +8,21 @@ import { Questions } from '@/store/question_reducer';
 
 import { IoClose } from 'react-icons/io5';
 
+import colors from '@/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    children: React.ReactElement
-}
+interface Props {
+    children: React.ReactElement;
+};
 
-type RootState = {
-    questions: Questions
-    modal: stateModal
-}
+interface RootState {
+    questions: Questions;
+    modal: stateModal;
+};
 
 const SectionCareerServices = ({ children }: Props) => {
     const { isOpen } = useSelector((state: RootState) => state.modal);
@@ -39,13 +41,13 @@ const SectionCareerServices = ({ children }: Props) => {
     }, [isOpen]);
 
     return (
-        <div className={cn(styles.box, `${isOpen ? styles.boxOpen : ''}`)}>
+        <div className={cn(styles.box, isOpen && styles.boxOpen)}>
             <div className={styles.wrap}>
                 <div
                     className={cn(styles.overlay, { [styles.overlayShow]: showModal })}
                     onClick={() => {
                         setShowModal(false);
-                        setTimeout(() => dispatch(closeModal(false)), 500);
+                        setTimeout(() => dispatch(closeModal(false)), 300);
                     }}
                 ></div>
                 <div className={cn(styles.content, { [styles.contentShow]: showModal })}>
@@ -53,11 +55,11 @@ const SectionCareerServices = ({ children }: Props) => {
                         title='Close'
                         onClick={() => {
                             setShowModal(false);
-                            setTimeout(() => dispatch(closeModal(false)), 500);
+                            setTimeout(() => dispatch(closeModal(false)), 300);
                         }}>
                         <IoClose
                             size={100}
-                            fill='white'
+                            fill={colors.white}
                         />
                     </button>
                     {children}

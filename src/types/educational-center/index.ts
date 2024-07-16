@@ -36,7 +36,6 @@ export interface SlideItem {
     url: string;
     subtitle: string;
     content: string;
-    scrollToElement: (value: number) => void;
 };
 
 export interface Options {

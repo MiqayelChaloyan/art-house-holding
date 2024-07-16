@@ -16,26 +16,28 @@ import { ArianAMU } from '@/lib/constants/font';
 
 import LocalSwitcher from '@/components/components/local-switcher';
 
+import colors from '@/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type IHeaderProps = {
-    typePosition: string
-    locale: string
+interface IHeaderProps {
+    typePosition: string;
+    locale: string;
 };
 
 const Header = ({ typePosition, locale }: IHeaderProps) => {
     const [isSticky, setIsSticky] = useState<boolean>(false);
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
-    const pathname = usePathname();
     const t = useTranslations('navigation');
+    const pathname = usePathname();
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!isSticky) {
+        if (!isSticky) {
             setIsSticky(window.scrollY > 0);
         }
 
@@ -54,20 +56,20 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
     const handleSubmit = () => {
         setIsOpenMenu(false);
         setTimeout(() => dispatch(openModal(true)), 500);
-    }
+    };
 
     return (
         <header className={cn(
             styles.box,
-            typePosition === 'fixed' ? styles.boxFixed : '',
-            isSticky ? styles.boxScrolled : '',
-            isOpenMenu ? styles.boxOpenMenu : ''
+            typePosition === 'fixed' && styles.boxFixed,
+            isSticky && styles.boxScrolled,
+            isOpenMenu && styles.boxOpenMenu
         )}>
-            <div className={`container ${styles.wrap}`}>
+            <div className={cn('container', styles.wrap)}>
                 <Link
                     href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
                     aria-label={Pages.EDUCATIONAL_HOME}
-                    className={cn(styles.logo, isSticky ? styles.logoSticky : '')}
+                    className={cn(styles.logo, isSticky && styles.logoSticky)}
                 >
                     <Logo
                         width='162'
@@ -77,15 +79,15 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                 </Link>
                 <div className={cn(
                     styles.content,
-                    `${isOpenMenu ? styles.contentShow : ''}`,
-                    `${isSticky && isOpenMenu ? styles.contentSticky : ''}`,
+                    isOpenMenu && styles.contentShow,
+                    isSticky && isOpenMenu && styles.contentSticky,
                 )}>
                     <div className={styles.nav}>
                         <Link
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
                             aria-label={Pages.EDUCATIONAL_HOME}
-                            className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? styles.linkActive : ""} ${ArianAMU.className}`}
+                            className={cn(styles.link, pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` && styles.linkActive, ArianAMU.className)}
                         >
                             {t('about')}
                         </Link>
@@ -98,7 +100,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`}
                             aria-label={Pages.EDUCATIONAL_PARTNERS}
-                            className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? styles.linkActive : ""} ${ArianAMU.className}`}
+                            className={cn(styles.link, pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` && styles.linkActive, ArianAMU.className)}
                         >
                             {t('partners')}
                         </Link>
@@ -106,19 +108,22 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                             onClick={toggleMenuClick}
                             href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
                             aria-label={Pages.EDUCATIONAL_PRICE_LIST}
-                            className={`${styles.link} ${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? styles.linkActive : ""} ${ArianAMU.className}`}
+                            className={cn(styles.link, pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` && styles.linkActive, ArianAMU.className)}
                         >
                             {t('price-list')}
                         </Link>
                     </div>
                     <div>
-                        <LocalSwitcher activeColor='#B21B1B' color='#fff' />
+                        <LocalSwitcher
+                            activeColor={colors.darkRed}
+                            color={colors.white}
+                        />
                     </div>
                 </div>
                 <button
                     className={cn(
                         styles.menuBtn,
-                        isOpenMenu ? styles.menuBtnActive : '',
+                        isOpenMenu && styles.menuBtnActive,
                     )}
                     onClick={toggleMenuClick}
                     title='Art Training Center'

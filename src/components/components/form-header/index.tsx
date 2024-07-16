@@ -8,11 +8,15 @@ import Instagram from '@/lib/icons/educational-center/Instagram';
 import Google from '@/lib/icons/educational-center/Google';
 import Facebook from '@/lib/icons/educational-center/Facebook';
 
+import { Arial } from '@/lib/constants/font';
+
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { socialNetwork } from '@/types/educational-center';
 
 import { Social_Links } from '../../../../sanity/sanity-queries/educational-center';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
@@ -73,7 +77,7 @@ const FormHeader = ({
     return (
         <div className={styles.containerForm} style={{ display, justifyContent, alignItems }}>
             <div style={{ ...group }}>
-                <h1 className={styles.title} style={{ color }}>{title}</h1>
+                <h1 className={cn(styles.title, Arial.className)} style={{ color }}>{title}</h1>
             </div>
             <div style={{ ...group }}>
                {hosts}

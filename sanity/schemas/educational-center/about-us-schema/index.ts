@@ -10,13 +10,13 @@ export const aboutUsSchemaEducationalCenter = {
     id: 'about-us-educational-center',
     groups: [
         {
-            name: "og",
-            title: "Social Share Info",
+            name: 'og',
+            title: 'Social Share Info',
             default: true
         },
         {
-            name: "manifest",
-            title: "Web App Settings",
+            name: 'manifest',
+            title: 'Web App Settings',
             hidden: ({ document }: {
                 document: {
                     [key: string]: string;
@@ -29,7 +29,7 @@ export const aboutUsSchemaEducationalCenter = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
         {
             type: 'string',
@@ -41,9 +41,9 @@ export const aboutUsSchemaEducationalCenter = {
             group: ['og']
         },
         {
-            type: "text",
-            name: "ogDescription",
-            title: "Social Share Description",
+            type: 'text',
+            name: 'ogDescription',
+            title: 'Social Share Description',
             group: ['og']
         },
         {
@@ -60,7 +60,7 @@ export const aboutUsSchemaEducationalCenter = {
             name: 'main_section',
             type: 'array',
             title: 'Main Section',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            description: 'You can add any number of pictures, with a minimum of two.',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
@@ -263,7 +263,7 @@ export const aboutUsSchemaEducationalCenter = {
                     title: 'Lessons',
                     components: { input: ArrayMaxItems },
                     validation: (Rule: RuleType) => Rule.max(3),
-                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                    description: 'No less than three, and no more, only you can modify them.',
                     of: [
                         {
                             name: 'Object',
@@ -360,10 +360,10 @@ export const aboutUsSchemaEducationalCenter = {
         {
             name: 'progress_section',
             type: 'array',
-            title: 'Progress Section',
+            title: 'Progress bars',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(4),
-            description: 'Ոչ պակաս, քան չորս և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            description: 'No less than four and no more, only you can modify them.',
             of: [
                 {
                     type: 'object',
@@ -408,7 +408,7 @@ export const aboutUsSchemaEducationalCenter = {
             name: 'specialists_section',
             type: 'array',
             title: 'Specialists Sections',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            description: 'You can add any number of pictures, with a minimum of two.',
             validation: (Rule: RuleType) => Rule.min(2),
             of: [
                 {
@@ -487,7 +487,7 @@ export const aboutUsSchemaEducationalCenter = {
                             name: 'specialists_section_images',
                             type: 'array',
                             title: 'Specialists Sections Images',
-                            description: 'Ոչ պակաս, քան ութ, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                            description: 'No less than eight, and no more, only you can modify them.',
                             components: { input: ArrayMaxItems },
                             validation: (Rule: RuleType) => Rule.max(8),
                             of: [
@@ -521,7 +521,7 @@ export const aboutUsSchemaEducationalCenter = {
             title: 'Our Rating Section',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(3),
-            description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            description: 'No less than three, and no more, only you can modify them.',
             of: [
                 {
                     name: 'Object',

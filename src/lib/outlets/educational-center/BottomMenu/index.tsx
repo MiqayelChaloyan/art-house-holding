@@ -6,8 +6,6 @@ import Link from 'next/link';
 
 import { usePathname } from 'next/navigation'
 
-// import { useRouter } from 'next/router';
-
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/store/modal_reducer';
 
@@ -21,15 +19,22 @@ import { Pages } from '@/lib/constants/pages';
 
 import { HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
 
+import colors from '@/themes';
+
+import cn from 'classnames';
+
 import styles from './styles.module.sass';
 
 
 interface Props {
-	socialData: HOSTS
-	locale: string
+	socialData: HOSTS;
+	locale: string;
 };
 
-const BottomMenu = ({ locale, socialData }: Props) => {
+const BottomMenu = ({
+	locale,
+	socialData
+}: Props) => {
 	const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
 	const dispatch = useDispatch();
 	const pathname = usePathname();
@@ -38,30 +43,30 @@ const BottomMenu = ({ locale, socialData }: Props) => {
 		<div className={styles.nav_menu}>
 			<div className={styles.nav_list}>
 				<Link
-					className={`${pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` ? `${styles.linkActive}` : ''} ${styles.nav__link}`}
+					className={cn(pathname === `/${locale}${Pages.EDUCATIONAL_HOME}` && styles.linkActive, styles.nav__link)}
 					href={`/${locale}${Pages.EDUCATIONAL_HOME}`}
 					aria-label='Home'
 					title='Home'
 				>
-					<Home width={22} height={22} fill='white' />
+					<Home width={22} height={22} fill={colors.white} />
 				</Link>
 				<button
 					className={styles.nav__link}
 					onClick={() => setTimeout(() => dispatch(openModal(true)), 500)}
 					title='Courses'
 				>
-					<Courses width={22} height={22} fill='white' />
+					<Courses width={22} height={22} fill={colors.white} />
 				</button>
 				<Link
-					className={`${pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` ? `${styles.linkActive}` : ''} ${styles.nav__link}`}
+					className={cn(pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` && styles.linkActive, styles.nav__link)}
 					href={`/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`}
 					aria-label='Price List'
 					title='Price List'
 				>
-					<PriceList width={22} height={22} fill='white' />
+					<PriceList width={22} height={22} fill={colors.white} />
 				</Link>
 				<Link
-					className={`${pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` ? `${styles.linkActive}` : ''} ${styles.nav__link}`}
+					className={cn(pathname === `/${locale}${Pages.EDUCATIONAL_PARTNERS}` && styles.linkActive, styles.nav__link)}
 					href={`/${locale}${Pages.EDUCATIONAL_PARTNERS}`}
 					aria-label='Partners'
 					title='Partners'

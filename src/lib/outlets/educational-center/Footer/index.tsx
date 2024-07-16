@@ -12,23 +12,27 @@ import Logo from '@/lib/icons/educational-center/Logo';
 import Email from '@/lib/icons/educational-center/Email';
 import Phone from '@/lib/icons/educational-center/Phone';
 import { Pages } from '@/lib/constants/pages';
+import { Arial } from '@/lib/constants/font';
 
 import { COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
 
 // import { MapProvider } from '@/lib/providers';
+import colors from '@/themes';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    courses: COURSES[]
-    socialData: HOSTS | any
-    lessons: LESSONS[]
-    lessonsArmenian: LESSONS[]
+interface Props {
+    courses: COURSES[];
+    socialData: HOSTS;
+    lessons: LESSONS[];
+    lessonsArmenian: LESSONS[];
 };
 
 const group = {
-    ['margin']: '0 auto'
+    ['margin']: '0 auto',
 };
 
 const Footer = ({
@@ -41,7 +45,7 @@ const Footer = ({
     const t = useTranslations();
     const locale = useLocale();
 
-    const matrix = courses.reduce((acc: any, item: any, index: number) => {
+    const matrix = courses?.reduce((acc: any, item: COURSES, index: number) => {
         const rowIndex = Math.floor(index / 6);
         if (!acc[rowIndex]) {
             acc[rowIndex] = [];
@@ -50,12 +54,17 @@ const Footer = ({
         return acc;
     }, []);
 
-    const links = matrix.map((row: any, rowIndex: string) => (
+    const links = matrix?.map((row: any, rowIndex: string) => (
         <div key={rowIndex} className={styles.row}>
             {
                 row.map((course: any) => (
-                    <Link key={course.slug} href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`} aria-label={course.course_name} className={styles.link}>
-                        <p className={styles.copyright}>{course.course_name}</p>
+                    <Link
+                        key={course.slug}
+                        href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`}
+                        aria-label={course.course_name}
+                        className={styles.link}
+                    >
+                        <p className={cn(styles.copyright, Arial.className)}>{course.course_name}</p>
                     </Link>
                 ))
             }
@@ -67,14 +76,18 @@ const Footer = ({
             <div>
                 <div id='contact' className={styles.box}>
                     <div className={styles.contact}>
-                        <FormAppointment width='30%' lessons={lessons[0]?.course_name} lessonsArmenian={lessonsArmenian[0]?.course_name}>
+                        <FormAppointment
+                            width='30%'
+                            lessons={lessons[0]?.course_name}
+                            lessonsArmenian={lessonsArmenian[0]?.course_name}
+                        >
                             <FormHeader
                                 display='grid'
-                                color='white'
+                                color={colors.white}
                                 justifyContent='center'
                                 alignItems='center'
                                 title={t('contact-us-form.title')}
-                                fill='white'
+                                fill={colors.white}
                                 group={group}
                                 social_links={socialData?.social_links}
                             />
@@ -82,10 +95,8 @@ const Footer = ({
                     </div>
                 </div>
                 <div className={styles.google_map}>
-                    {/* <MapProvider> */}
                     <GoogleMaps width='100%' height='100%' />
-                    {/* </MapProvider> */}
-                    <p className={styles.address}>
+                    <p className={cn(styles.address, Arial.className)}>
                         {t('address.address')}
                     </p>
                 </div>
@@ -109,9 +120,9 @@ const Footer = ({
                             <Phone
                                 width='20'
                                 height='20'
-                                fill='white'
+                                fill={colors.white}
                             />
-                            <p className={styles.info_web}>
+                            <p className={cn(styles.info_web, Arial.className)}>
                                 {t('contact.tell')} {socialData?.phone_number}
                             </p>
                         </Link>
@@ -123,13 +134,13 @@ const Footer = ({
                             <Email
                                 width='20'
                                 height='20'
-                                fill='white'
+                                fill={colors.white}
                             />
-                            <p className={styles.info_web}>
+                            <p className={cn(styles.info_web, Arial.className)}>
                                 {t('contact.email')} {socialData?.email}
                             </p>
                         </Link>
-                        <p className={styles.info_web}>
+                        <p className={cn(styles.info_web, Arial.className)}>
                             {t('address.street')}
                         </p>
                     </div>
