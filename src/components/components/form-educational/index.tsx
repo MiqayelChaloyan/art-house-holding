@@ -17,13 +17,21 @@ import { Arial } from '@/lib/constants/font';
 import { TRAINING_CENTERS } from '@/lib/constants';
 
 import Instagram from '@/lib/icons/educational-center/Instagram';
-import Google from '@/lib/icons/educational-center/Google';
+import Gmail from '@/lib/icons/educational-center/Gmail';
 import Facebook from '@/lib/icons/educational-center/Facebook';
+import Linkedin from '@/lib/icons/educational-center/Linkedin';
+import X from '@/lib/icons/educational-center/X';
+import Tiktok from '@/lib/icons/educational-center/Tiktok';
+import Telegram from '@/lib/icons/educational-center/Telegram';
+import YouTube from '@/lib/icons/educational-center/YouTube';
+import Pinterest from '@/lib/icons/educational-center/Pinterest';
+import WhatsApp from '@/lib/icons/educational-center/WhatsApp';
+import Viber from '@/lib/icons/educational-center/Viber';
 
 import { sendContactUsEducational } from '@/api';
 
 import { Form } from '@/types/educational-center';
-import { socialNetwork } from '@/types/educational-center';
+import { socialNetwork } from '@/types/general';
 
 import { LESSON, Social_Links } from '../../../../sanity/sanity-queries/educational-center';
 
@@ -31,12 +39,6 @@ import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
-
-const socialNetworkComponents: socialNetwork = {
-	facebook: Facebook,
-	instagram: Instagram,
-	google: Google,
-};
 
 interface Props {
 	lessons: LESSON[];
@@ -49,6 +51,20 @@ interface FormProps {
 	isLoading: boolean;
 	error: boolean;
 	values: Form;
+};
+
+const socialNetworkComponents: socialNetwork = {
+	facebook: Facebook,
+	instagram: Instagram,
+	gmail: Gmail,
+	linkedin: Linkedin,
+	x: X,
+	tiktok: Tiktok,
+	telegram: Telegram,
+	youtube: YouTube,
+	pinterest: Pinterest,
+	whatsapp: WhatsApp,
+	viber: Viber
 };
 
 const FormAppointment = ({
@@ -70,20 +86,21 @@ const FormAppointment = ({
 
 	const hosts = social_links?.map((host: Social_Links) => {
 		const socialName = host?.social_name.toLowerCase();
+		const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
 		const SocialIcon = (socialNetworkComponents as any)[socialName];
 		if (!SocialIcon) return null;
 
 		return (
 			<Link
 				key={host._key}
-				href={host?.social_link}
+				href={link}
 				aria-label={host?.social_name}
-				className={styles.icon}
+				className={styles.social_network}
 				target='_blank'
 			>
 				<SocialIcon
-					width={windowSize.width < 1000 ? 12 : 23}
-					height={windowSize.width < 1000 ? 12 : 23}
+					width={windowSize.width <= 1024 ? 12 : 23}
+					height={windowSize.width <= 1024 ? 12 : 23}
 					fill={theme}
 				/>
 			</Link>
@@ -190,7 +207,7 @@ const FormAppointment = ({
 		<form onSubmit={handleSubmit} className={styles.fields}>
 			<div className={styles.hosts}>
 				<div>
-					<h2 className={cn(styles.title, Arial.className)} style={{color: theme}}>
+					<h2 className={cn(styles.title, Arial.className)} style={{ color: theme }}>
 						{t('contact-us-form.title')}
 					</h2>
 				</div>

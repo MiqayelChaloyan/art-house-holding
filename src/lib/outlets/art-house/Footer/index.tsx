@@ -24,7 +24,7 @@ import { ArianAMU } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { socialNetwork } from '@/types/art-house';
+import { socialNetwork } from '@/types/general';
 
 import { HOSTS, Social_Links } from '../../../../../sanity/sanity-queries/art-house';
 
