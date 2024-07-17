@@ -17,7 +17,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: SPECIALIST[]
+    data: SPECIALIST[];
 };
 
 const Specialists = ({ data }: Readonly<Props>) => {

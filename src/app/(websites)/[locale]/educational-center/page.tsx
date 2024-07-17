@@ -7,6 +7,11 @@ import Home from '@/components/screens/educational-center/home';
 import { client } from '../../../../../sanity/client';
 import { query } from '../../../../../sanity/services/educational-center-service/about-us';
 
+import 'swiper/css';
+import 'swiper/css/effect-flip';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 
 interface RootProps {
     params: {

@@ -76,6 +76,7 @@ export async function generateMetadata({
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
     const data = await getResources(slug[0], locale);
+
     const ogTitle = data.course[0]?.course_name;
     const ogImage = data.course[0].course_main[0]?.image;
     const ogDescription = BlocksToText(data.course[0]?.about_us_content).slice(0, 900);

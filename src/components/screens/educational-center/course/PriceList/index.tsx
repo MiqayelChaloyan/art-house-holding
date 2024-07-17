@@ -6,13 +6,13 @@ import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import { Arial } from '@/lib/constants/font';
+import { Inter } from '@/lib/constants/font';
 
 import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
-import styles from './style.module.sass';
+import styles from './styles.module.sass';
 
 
 interface Props {
@@ -28,10 +28,10 @@ function daysBetweenDates(dateStr1: string, dateStr2: string) {
     return daysDifference;
 };
 
-const PriceList= ({ price_list }: Readonly<Props>) => {
+const PriceList = ({ price_list }: Readonly<Props>) => {
     const t = useTranslations();
 
-    const table = price_list && price_list?.map((item: PRICE_LIST) => {
+    const table = price_list?.map((item: PRICE_LIST) => {
         const result = daysBetweenDates(item.startDate, item.endDate);
         return (
             <table key={item._key} className={styles.price_list_table}>
@@ -50,13 +50,13 @@ const PriceList= ({ price_list }: Readonly<Props>) => {
     return (
         <section id='price-list' className={styles.container}>
             <Container className='container'>
-                <h1 className={cn(styles.title, Arial.className)}>
+                <h1 className={cn(styles.title, Inter.className)}>
                     {t('sections.price-list')}
                 </h1>
+                <div className={styles.table}>
+                    {table}
+                </div>
             </Container>
-            <div className={styles.table}>
-                {table}
-            </div>
         </section>
     );
 };

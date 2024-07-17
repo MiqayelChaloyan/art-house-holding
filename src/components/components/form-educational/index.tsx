@@ -27,8 +27,6 @@ import { socialNetwork } from '@/types/educational-center';
 
 import { LESSON, Social_Links } from '../../../../sanity/sanity-queries/educational-center';
 
-import colors from '@/themes';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';

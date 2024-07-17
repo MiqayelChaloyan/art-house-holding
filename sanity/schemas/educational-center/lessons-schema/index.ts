@@ -12,7 +12,7 @@ const lessonsSchemaEducationCenter = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
         {
             name: 'course_name',
@@ -50,7 +50,7 @@ const lessonsSchemaEducationCenter = {
                         {
                             name: 'slug',
                             type: 'slug',
-                            description: "Պիտի եզակի լինի",
+                            description: "Must be unique.",
                             maxLength: 9,
                             options: {
                                 source: 'name',

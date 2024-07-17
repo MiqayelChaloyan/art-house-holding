@@ -16,7 +16,7 @@ import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-cente
 import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
 
-import { Arial } from '@/lib/constants/font';
+import { Inter } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
@@ -42,7 +42,7 @@ const CourseProcess = ({ course }: Readonly<Props>) => {
     return (
         <section id='video-player' className={styles.section}>
             <Container className='container'>
-                <h1 className={cn(styles.title, Arial.className)}>
+                <h1 className={cn(styles.title, Inter.className)}>
                     {t('courses-process')}
                 </h1>
                 <Player

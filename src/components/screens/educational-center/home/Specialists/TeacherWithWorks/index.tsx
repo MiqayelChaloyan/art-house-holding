@@ -13,11 +13,6 @@ import { swiperOptions } from './options';
 
 import { SPECIALIST } from '../../../../../../../sanity/sanity-queries/educational-center';
 
-import 'swiper/css';
-import 'swiper/css/effect-flip';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
 import './styles.css';
 
 

@@ -6,7 +6,7 @@ import Panel from '../AccordionItem';
 
 import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/educational-center';
 
-import styles from './style.module.sass';
+import styles from './styles.module.sass';
 
 
 interface Props {

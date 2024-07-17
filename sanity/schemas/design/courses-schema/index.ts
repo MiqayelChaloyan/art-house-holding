@@ -54,7 +54,7 @@ export const coursesSchemaDesign = {
         {
             name: 'slug',
             type: 'slug',
-            description: "slug-ը պիտի լինի դասընթացի անվանումը՝ փոքրատառերով և պիտի եզակի լինի",
+            description: 'Slug must be the name of the course in lowercase and must be unique. Write only between words with `-` or `_` symbols. Do not use these symbols `/`.',
             options: {
                 source: 'name',
             },
@@ -64,7 +64,7 @@ export const coursesSchemaDesign = {
             name: 'gallery_of_course',
             type: 'array',
             title: 'Gallery of Course',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            description: 'You can add any number of pictures, with a minimum of two.',
             of: [{
                 type: 'image', alt: 'alt',
                 fields: [
@@ -83,7 +83,7 @@ export const coursesSchemaDesign = {
             name: 'conditions',
             type: 'array',
             title: 'Conditions',
-            description: 'Դուք կարող եք ավելացնել ցանկացած քանակի պայմաններ',
+            description: 'You can add any number of conditions.',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
@@ -117,7 +117,7 @@ export const coursesSchemaDesign = {
             name: 'guides',
             type: 'array',
             title: 'Guides',
-            description: 'Դուք կարող եք ավելացնել ցանկացած քանակի ուղեցույցներ',
+            description: 'You can add any number of guidelines.',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
@@ -151,7 +151,7 @@ export const coursesSchemaDesign = {
             name: 'portfolios',
             type: 'array',
             title: 'Portfolios',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով աշխատանքներ, առնվազն չորս հատ',
+            description: 'You can add any number of jobs, with a minimum of four.',
             validation: (Rule: RuleType) => Rule.required(),
             group: 'portfolio',
             of: [
