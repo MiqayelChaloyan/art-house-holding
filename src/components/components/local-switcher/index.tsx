@@ -29,7 +29,7 @@ const localeImages: {
   en: ImagePaths.DESIGN.enURL
 };
 
-const keySwithcer = 'design';
+const keySwithcer = '/design';
 
 export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black' }) {
   const [isPending, startTransition] = useTransition();
@@ -48,6 +48,8 @@ export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black'
       router.replace(`/${locale}${pathParts}`, { scroll: false });
     });
   };
+
+  console.log(pathname)
 
   return (
     <div>
