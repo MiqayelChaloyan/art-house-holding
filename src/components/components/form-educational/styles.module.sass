@@ -2,14 +2,15 @@
    display: flex
    align-items: center
    justify-content: center
-   height: 50px
+   height: 40px
+   width: 40%
    color: #fff
    font-weight: 500
    text-align: center
    border-radius: 50px
-   padding: 12px 30px
    background: #C62020
-   margin: 50px auto
+   margin: 0 auto
+   margin-bottom: 20px
    box-shadow: 1px 13px 11px -4px #0000003d
    span 
          cursor: pointer 
@@ -25,7 +26,6 @@
             transition: 0.5s 
    @media screen and ( max-width: 776px )
       font-size: 16px
-      padding: 8px 108px
       position: relative
       z-index: 0
       transition: all 0.5s
@@ -58,7 +58,8 @@
    @media screen and ( max-width: 1024px )
       font-size: 14px
       height: 30px
-      margin-bottom: 16px
+      margin-bottom: 0
+      margin-top: 10px
    /* md */
    @media screen and ( max-width: 768px )
       font-size: 14px
@@ -108,7 +109,7 @@
    /* md */
    @media screen and ( max-width: 768px )
       font-size: 14px
-      width: 72%
+      width: 100%
    /* sm */
    @media screen and ( max-width: 640px )
       font-size: 14px
@@ -123,33 +124,20 @@
    justify-content: flex-start
    width: 65%
    margin: 0 auto
-   margin-bottom: 60px
+   margin-bottom: 10px
+   @media screen and ( max-width: 991px )
+      width: 100%
+      margin: 0 auto
    @media screen and ( max-width: 767px )
-     width: 87%
+     width: 50%
      display: flex
      flex-direction: column
-     align-items: center
+     align-items: normal
      margin: 0 auto
      margin-bottom: 10px  
-   @media screen and ( max-width: 991px )
-      width: 80%
-      margin: 0 auto
-   &:last-child
-      margin-bottom: 0
-   /* 2xl */
-   @media screen and ( max-width: 1536px )
-   /* xl */
-   @media screen and ( max-width: 1280px )
-   /* lg */
-   @media screen and ( max-width: 1024px )
-   /* md */
-   @media screen and ( max-width: 768px )
    /* sm */
    @media screen and ( max-width: 640px )
-      width: 100%
-   /* xs */
-   @media screen and ( max-width: 475px )
-      width: 100%
+      width: 75%
 
 .contact_us_header
    margin-top: 20px
@@ -157,3 +145,49 @@
       margin-top: 0
 
 
+.title
+     font-size: 22px
+     /* 2xl */
+     @media screen and ( max-width: 1536px )
+        font-size: 22px !important
+     /* xl */
+     @media screen and ( max-width: 1280px )
+        font-size: 17px !important
+     /* lg */
+     @media screen and ( max-width: 1024px )
+        font-size: 15px !important
+     /* md */
+     @media screen and ( max-width: 768px )
+        font-size: 15px !important
+     /* sm */
+     @media screen and ( max-width: 640px )
+        font-size: 15px !important
+     /* xs */
+     @media screen and ( max-width: 475px )
+        font-size: 14px !important
+
+.hosts
+   justify-content: space-between
+   display: flex
+   align-items: center
+
+.icon
+     margin: 0 5px
+     /* 2xl */
+     @media screen and ( max-width: 1536px )
+        margin: 0 5px
+     /* xl */
+     @media screen and ( max-width: 1280px )
+        margin: 0 5px
+     /* lg */
+     @media screen and ( max-width: 1024px )
+        margin: 0 5px
+     /* md */
+     @media screen and ( max-width: 768px )
+        margin: 0 5px
+     /* sm */
+     @media screen and ( max-width: 640px )
+        margin: 0 5px
+     /* xs */
+     @media screen and ( max-width: 475px )
+        margin: 0 5px

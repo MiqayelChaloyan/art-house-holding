@@ -4,7 +4,11 @@ import React, { useState, FormEvent } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import Link from 'next/link';
+
 import Snackbar from '@/components/components/snackbar';
+
+import useWindowSize from '@/hooks/useWindowSize';
 
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
@@ -12,47 +16,90 @@ import Select from '@/lib/ui/select';
 import { Arial } from '@/lib/constants/font';
 import { TRAINING_CENTERS } from '@/lib/constants';
 
+import Instagram from '@/lib/icons/educational-center/Instagram';
+import Google from '@/lib/icons/educational-center/Google';
+import Facebook from '@/lib/icons/educational-center/Facebook';
+
 import { sendContactUsEducational } from '@/api';
 
 import { Form } from '@/types/educational-center';
+import { socialNetwork } from '@/types/educational-center';
 
-import { LESSON } from '../../../../sanity/sanity-queries/educational-center';
+import { LESSON, Social_Links } from '../../../../sanity/sanity-queries/educational-center';
+
+import colors from '@/themes';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-	className?: string,
-	width?: string,
-	children: React.ReactNode,
-	lessons: LESSON[] | any,
-	lessonsArmenian: LESSON[] | any
+const socialNetworkComponents: socialNetwork = {
+	facebook: Facebook,
+	instagram: Instagram,
+	google: Google,
 };
 
-type FormProps = {
-	isLoading: boolean,
-	error: boolean,
-	values: Form
+interface Props {
+	lessons: LESSON[];
+	lessonsArmenian: LESSON[];
+	social_links: Social_Links[];
+	theme: string;
+};
+
+interface FormProps {
+	isLoading: boolean;
+	error: boolean;
+	values: Form;
 };
 
 const FormAppointment = ({
-	className,
-	width,
-	children,
+	social_links,
 	lessons,
-	lessonsArmenian
+	lessonsArmenian,
+	theme
 }: Readonly<Props>) => {
 	const [course, setCourse] = useState<string>('');
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState<boolean>(false);
+	const windowSize = useWindowSize();
 	const t = useTranslations();
+
 	const [info, setInfo] = useState({
 		status: 'success',
 		content: t('texts.send-message-success')
 	});
 
-	const initValues = { full_name: '', email: '', phone: '', training_center: TRAINING_CENTERS.educational_school, course_name: t('contact-us-form.select-course'), };
+
+	const hosts = social_links?.map((host: Social_Links) => {
+		const socialName = host?.social_name.toLowerCase();
+		const SocialIcon = (socialNetworkComponents as any)[socialName];
+		if (!SocialIcon) return null;
+
+		return (
+			<Link
+				key={host._key}
+				href={host?.social_link}
+				aria-label={host?.social_name}
+				className={styles.icon}
+				target='_blank'
+			>
+				<SocialIcon
+					width={windowSize.width < 1000 ? 12 : 23}
+					height={windowSize.width < 1000 ? 12 : 23}
+					fill={theme}
+				/>
+			</Link>
+		)
+	});
+
+	const initValues = {
+		full_name: '',
+		email: '',
+		phone: '',
+		training_center: TRAINING_CENTERS.educational_school,
+		course_name: t('contact-us-form.select-course')
+	};
+
 	const initState = { isLoading: false, error: false, values: initValues };
 
 	const [state, setState] = useState<FormProps>(initState);
@@ -131,26 +178,34 @@ const FormAppointment = ({
 
 	const handleClose = () => setOpen(false);
 
-	const getValueToSlug = (valueName: string, slug: string | number | undefined) => {
+	const getValueToSlug = (valueName: string, slug: string | number) => {
 		const course = valueName === 'course_name' && lessonsArmenian?.find((lesson: LESSON) => {
 			return lesson?.slug == slug;
 		});
 
-		if (course.course_name) {
+		if (course && course?.course_name) {
 			return setCourse(course.course_name);
 		}
 	};
 
 	return (
-		<form
-			className={cn(className, styles.box)}
-			onSubmit={handleSubmit}
-		>
-			<Snackbar open={open} handleChange={handleClose} info={info} />
-			<div className={styles.contact_us_header}>
-				{children}
+		<form onSubmit={handleSubmit} className={styles.fields}>
+			<div className={styles.hosts}>
+				<div>
+					<h2 className={cn(styles.title, Arial.className)} style={{color: theme}}>
+						{t('contact-us-form.title')}
+					</h2>
+				</div>
+				<div>
+					{hosts}
+				</div>
 			</div>
-			<div className={styles.fields}>
+			<Snackbar
+				open={open}
+				handleChange={handleClose}
+				info={info}
+			/>
+			<div>
 				<InputField
 					className={cn(styles.input, Arial.className)}
 					name='full_name'
@@ -189,7 +244,7 @@ const FormAppointment = ({
 					getValueToSlug={getValueToSlug}
 				/>
 			</div>
-			<button className={cn(styles.submit, Arial.className)} style={{ width }}>
+			<button className={cn(styles.submit, Arial.className)}>
 				{isLoading ?
 					`${t('contact-us-form.loading')}...`
 					:

@@ -49,8 +49,6 @@ export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black'
     });
   };
 
-  console.log(pathname)
-
   return (
     <div>
       <div className={styles.switcher}>

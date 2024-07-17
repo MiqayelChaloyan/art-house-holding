@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import GoogleMaps from '@/components/components/google-map';
 import FormAppointment from '@/components/components/form-educational';
-import FormHeader from '@/components/components/form-header';
 
 import Logo from '@/lib/icons/educational-center/Logo';
 import Email from '@/lib/icons/educational-center/Email';
@@ -29,10 +28,6 @@ interface Props {
     socialData: HOSTS;
     lessons: LESSONS[];
     lessonsArmenian: LESSONS[];
-};
-
-const group = {
-    ['margin']: '0 auto',
 };
 
 const Footer = ({
@@ -77,21 +72,11 @@ const Footer = ({
                 <div id='contact' className={styles.box}>
                     <div className={styles.contact}>
                         <FormAppointment
-                            width='30%'
                             lessons={lessons[0]?.course_name}
                             lessonsArmenian={lessonsArmenian[0]?.course_name}
-                        >
-                            <FormHeader
-                                display='grid'
-                                color={colors.white}
-                                justifyContent='center'
-                                alignItems='center'
-                                title={t('contact-us-form.title')}
-                                fill={colors.white}
-                                group={group}
-                                social_links={socialData?.social_links}
-                            />
-                        </FormAppointment>
+                            social_links={socialData?.social_links}
+                            theme={colors.white}
+                        />
                     </div>
                 </div>
                 <div className={styles.google_map}>

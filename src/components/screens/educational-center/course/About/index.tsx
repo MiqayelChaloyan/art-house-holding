@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 import FormAppointment from '@/components/components/form-educational';
-import FormHeader from '@/components/components/form-header';
 
 import Button from '@/lib/ui/Button';
 import { Arial, Inter } from '@/lib/constants/font';
@@ -19,22 +18,19 @@ import { Content as ContentType } from '@/types/educational-center';
 
 import { COURSES, HOSTS, LESSON } from '../../../../../../sanity/sanity-queries/educational-center';
 
+import colors from '@/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    course: COURSES
-    socialData: HOSTS
-    lessons: LESSON[]
-    lessonsArmenian: LESSON[]
+    course: COURSES;
+    socialData: HOSTS;
+    lessons: LESSON[];
+    lessonsArmenian: LESSON[];
 };
-
-const group = {
-    ['margin']: '5px',
-};
-
 
 const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
     const flatText = flattenText(content);
@@ -60,7 +56,7 @@ const About = ({
 }: Readonly<Props>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
     const t = useTranslations();
-    const minimumHeight = 900;
+    const minimumHeight = 500;
 
     const toggleReadMore = () => setIsReadMore(!isReadMore);
 
@@ -96,18 +92,12 @@ const About = ({
                         }
                     </div>
                     <div className={styles.form_box}>
-                        <FormAppointment width='30%' lessons={lessons} lessonsArmenian={lessonsArmenian}>
-                            <FormHeader
-                                display='flex'
-                                color='black'
-                                justifyContent='center'
-                                alignItems='self-end'
-                                title={t('contact-us-form.title')}
-                                fill='#111111'
-                                group={group}
-                                social_links={socialData?.social_links}
-                            />
-                        </FormAppointment>
+                        <FormAppointment
+                            social_links={socialData?.social_links}
+                            lessons={lessons}
+                            lessonsArmenian={lessonsArmenian}
+                            theme={colors.black}
+                        />
                     </div>
                 </div>
             </Container>

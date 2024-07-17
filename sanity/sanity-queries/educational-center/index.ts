@@ -140,7 +140,7 @@ export interface HOSTS {
 
 export interface LESSON {
     slug: string,
-    course: string,
+    course_name: string,
 };
 
 export interface LESSONS {
