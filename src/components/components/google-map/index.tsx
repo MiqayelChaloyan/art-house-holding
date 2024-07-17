@@ -18,7 +18,7 @@ export default async function GoogleMaps({
             height={height}
             className={styles.iframe}
             loading='lazy'
-        >
-        </iframe>
+            referrerPolicy="no-referrer-when-downgrade"
+       />
     );
 };

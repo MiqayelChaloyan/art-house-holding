@@ -12,7 +12,6 @@ import { BRANCH } from '../../../../sanity/sanity-queries/art-house';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import Image from 'next/image';
 
 
 interface Props {
@@ -53,6 +52,7 @@ const Branch = ({
                                 src={urlForImageFront?.src}
                                 alt={company_name}
                                 className={styles.logo}
+                                loading='eager'
                             />
                         </div>
                         <div className={styles.words}>
@@ -68,6 +68,7 @@ const Branch = ({
                                 src={urlForImageBack?.src}
                                 alt={company_name}
                                 className={styles.logo}
+                                loading='eager'
                             />
                         </div>
                         <div className={styles.words}>

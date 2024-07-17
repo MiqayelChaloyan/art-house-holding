@@ -25,8 +25,9 @@ interface RootProps {
   }
 };
 
-const Component = dynamic(() =>
+const Home = dynamic(() =>
   import('@/components/screens/art-house'),
+  { ssr: false }
 );
 
 async function getResources(locale: string) {
@@ -56,7 +57,7 @@ export default async function Page({
   };
 
   return (
-    <Component
+    <Home
       data={data}
       partners={partners}
       locale={locale}
