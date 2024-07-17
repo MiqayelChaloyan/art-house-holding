@@ -17,6 +17,7 @@ import { partnersQuery } from '../../../../sanity/services/generic-service';
 import { query, querySiteMeta } from '../../../../sanity/services/art-house-service';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 import { Site } from '../../../../sanity/sanity-queries/art-house';
+import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
 
 
 interface RootProps {
@@ -27,7 +28,6 @@ interface RootProps {
 
 const Component = dynamic(() =>
   import('@/components/screens/art-house'),
-  { ssr: true }
 );
 
 async function getResources(locale: string) {
@@ -47,78 +47,62 @@ async function getResources(locale: string) {
     });
 };
 
-export default async function Page({
-  params: { locale }
-}: Readonly<RootProps>) {
-  const { data, partners, isError } = await getResources(locale);
-
-  if (!data || !partners || isError) {
-    notFound()
-  }
-
-  return (
-    <Component
-      data={data}
-      partners={partners}
-      locale={locale}
-    />
-  );
-};
-
 async function getSiteMeta(
   query: string = querySiteMeta,
   client: SanityClient | any,
   mutation = 'fetch'
 ): Promise<Site> {
-  const site: Site = await client[mutation](query);
-  return site;
+  const site: Site[] = await client[mutation](query);
+  return site[1];
 };
+
+export default async function Page({
+  params: { locale }
+}: Readonly<RootProps>) {
+  const { data, partners, isError } = await getResources(locale);
+  const meta: Site = await getSiteMeta(querySiteMeta, client);
+  const { ogDescription, ogTitle, ogImage } = meta;
+  const path: ImagePath = urlForImage(ogImage);
+
+  if (!data || !partners || isError) {
+    notFound()
+  }
+
+  const jsonLd = {
+    '@context': 'https://arthouse.am',
+    '@type': 'courses',
+    name: ogTitle,
+    image: path.src,
+    description: ogDescription,
+  };
+
+  return (
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Component
+        data={data}
+        partners={partners}
+        locale={locale}
+      />
+    </>
+  );
+};
+
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
-  const meta: Site | any = await getSiteMeta(querySiteMeta, client);
-  const { ogDescription, ogTitle, ogImage } = meta[1];
+  const meta: Site = await getSiteMeta(querySiteMeta, client);
+  const { ogDescription, ogTitle, ogImage } = meta;
   const path: ImagePath = urlForImage(ogImage);
 
-  return {
-    metadataBase: process.env.NEXT_PUBLIC_DOMAIN
-      ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
-      : new URL(`http://localhost:${process.env.PORT || 3000}`),
-    authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
-    title: ogTitle,
-    description: ogDescription,
-    openGraph: {
-      title: ogTitle,
-      description: ogDescription,
-      images: [
-        {
-          url: path?.src,
-          width: 500,
-          height: 500,
-          alt: 'seo-image',
-        },
-      ],
-      locale,
-      type: 'website',
-    },
-    twitter: {
-      card: path?.src,
-      title: ogTitle,
-      description: ogDescription,
-      creator: '@arthouse',
-      images: [
-        {
-          url: path?.src,
-          width: path?.width,
-          height: path?.height,
-          alt: 'twitter',
-        },
-      ],
-    },
-  };
+  const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, locale);
+  return metadata;
 };
 
 

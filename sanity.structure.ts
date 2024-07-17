@@ -1,6 +1,5 @@
 import { DocumentsIcon } from '@sanity/icons';
 
-
 export default (S: any) =>
     S.list()
         .title('Base')
