@@ -1,15 +1,20 @@
-.container
+.section
    display: grid
    justify-content: center
    align-items: center
-   background: black
+   background-color: black
    height: max-content
    padding-top: 50px
    margin-bottom: 20px
+   width: 65%
    @media screen and (max-device-width: 1600px) 
        padding: 0
+       width: 100%
        td
           width: 270px !important
+   /* 2xl */
+   @media screen and ( max-width: 1536px )
+       width: 100%
    @media screen and (max-device-width: 1200px) 
        padding: 0
        td
@@ -25,7 +30,6 @@
           font-size: 12px !important
    @media screen and ( max-width: 767px )
        display: block
-       text-align: center
        height: max-content
        td
           padding: 9px !important
@@ -40,7 +44,6 @@
       text-align: center
       font-weight: bold
       font-size: 20px
-
    h2
       font-size: 24px
       @media screen and ( max-width: 991px )
@@ -69,25 +72,34 @@
       width: 100%
 
 .title
-    margin: 0 auto
-    width: 100%
-    font-size: 33px
-    color: var(--color-white)
-    padding-right: var(--container-gap)
-    padding-left: var(--container-gap)
-    @media screen and (max-device-width: 1400px) 
-       font-size: 30px
-    @media screen and (max-device-width: 1200px) 
-       font-size: 25px
-    @media screen and ( max-width: 991px )
-       width: 100%
-       font-size: 25px
-    @media screen and ( max-width: 767px )
-       width: 85%
-       font-size: 27px
-       text-align: center
-       top: 8px
-       position: relative 
+    color: white
+    font-size: 32px
+    margin-bottom: 20px
+    margin-top: 20px
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+      font-size: 33px
+    /* xl */
+    @media screen and ( max-width: 1280px )
+      font-size: 30px
+    /* lg */
+    @media screen and ( max-width: 1024px )
+      font-size: 27px
+    /* md */
+    @media screen and ( max-width: 768px )
+      font-size: 24px
+    /* sm */
+    @media screen and ( max-width: 640px )
+      top: 0
+      text-align: center
+      width: 100%
+    /* xs */
+    @media screen and ( max-width: 475px )
+      text-align: center
+      width: 100%
+      margin-bottom: 0
+      padding-right: 0
+      padding-left: 0
 
 .table
     display: flex
