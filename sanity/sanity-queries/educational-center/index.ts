@@ -147,3 +147,11 @@ export interface LESSONS {
     _id: string,
     course_name: LESSON[]
 };
+
+// export interface CourseProps {
+//     courses: COURSES | any,
+//     social: HOSTS[] | any,
+//     lessons: LESSONS[] | any,
+//     lessonsArmenian: LESSONS[] | any,
+//     isError: boolean,
+// };

@@ -13,9 +13,9 @@ import { partnersQuery } from '../../../../../sanity/services/generic-service';
 
 interface RootProps {
     params: {
-        locale: string,
+        locale: string;
     }
-}
+};
 
 async function getResources(locale: string) {
     const dataPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
@@ -30,10 +30,10 @@ async function getResources(locale: string) {
 
             return { data, partners, discounts, isError: false };
         })
-        .catch(error => {
+        .catch(_ => {
             return { data: [], partners: [], discounts: [], isError: true };
         });
-}
+};
 
 export default async function Page({
     params: { locale }
@@ -53,5 +53,5 @@ export default async function Page({
             locale={locale}
         />
     )
-}
+};
 

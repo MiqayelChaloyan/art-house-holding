@@ -6,8 +6,10 @@ import { notFound } from 'next/navigation';
 import { client } from '../../../../../../sanity/client';
 import { query } from '../../../../../../sanity/services/language-service/languages';
 
-const DHome = dynamic(() => import('@/components/screens/language/languages'));
 
+const Component = dynamic(() =>
+    import('@/components/screens/language/languages'),
+);
 
 interface Props {
     params: {
@@ -24,10 +26,10 @@ async function getResources(locale: string) {
         }
 
         return { data, isError: false };
-    } catch (error) {
+    } catch (_) {
         return { data: [], isError: true };
     }
-}
+};
 
 export default async function Page({
     params: { locale }
@@ -38,6 +40,11 @@ export default async function Page({
         notFound()
     }
 
-    return (<DHome locale={locale} data={data} />);
+    return (
+        <Component
+            locale={locale}
+            data={data}
+        />
+    );
 };
 

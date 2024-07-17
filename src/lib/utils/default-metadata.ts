@@ -1,43 +1,21 @@
 import { ImagePath } from '@/types/general';
-
-// export const defaultMetadata = {
-//     metadataBase: new URL(site.url),
-//     title: site.title,
-//     description: site.description,
-//     category: site.category,
-//     robots: { index: true },
-//     authors: { name: site.authorName },
-//     keywords: site.keywords,
-//     creator: site.authorUsername,
-//     publisher: site.authorUsername,
-//     openGraph: {
-//         title: site.title,
-//         description: site.description,
-//         url: site.url,
-//         siteName: site.title,
-//         images: 'https://skaters-inifarhan.vercel.app/images/screenshoot.PNG',
-//         type: 'website',
-//         locale: site.locale
-//     },
-//     twitter: {
-//         card: 'summary_large_image',
-//         title: site.title,
-//         description: site.description,
-//         images: ['https://skaters-inifarhan.vercel.app/images/screenshoot.PNG'],
-//     },
-// };
+import DeafultIcon from '@/app/favicon.ico';
 
 export const generateMetadataDynamic = (
     ogDescription: string,
     ogTitle: string,
     path: ImagePath,
+    icon: ImagePath | null,
     locale: string
 ) => {
-        return {
+    const icons = icon ? { icon: icon?.src } : { icon: DeafultIcon.src };
+
+    return {
         metadataBase: process.env.NEXT_PUBLIC_DOMAIN
             ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
             : new URL(`http://localhost:${process.env.PORT || 3000}`),
         authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
+        icons,
         title: ogTitle,
         description: ogDescription,
         openGraph: {
@@ -69,4 +47,4 @@ export const generateMetadataDynamic = (
             ],
         },
     };
-}
+};

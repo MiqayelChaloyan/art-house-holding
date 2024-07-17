@@ -10,9 +10,9 @@ import { client } from '../../../../../../sanity/client';
 
 interface Props {
     params: {
-        locale: string
+        locale: string;
     }
-}
+};
 
 async function getResources(locale: string) {
     try {
@@ -26,7 +26,7 @@ async function getResources(locale: string) {
     } catch (error) {
         return { data: [], isError: true };
     }
-}
+};
 
 export default async function Page({ 
     params: { locale } 
@@ -35,7 +35,7 @@ export default async function Page({
 
     if (!data || isError) {
         notFound()
-    }
+    };
 
-    return <PriceList data={data} />;
-}
+    return (<PriceList data={data} />);
+};

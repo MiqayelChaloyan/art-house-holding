@@ -15,6 +15,9 @@ import GoBack from '@/lib/outlets/general/GoBack';
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
 
+import { ImagePath, Site } from '@/types/general';
+import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+
 import { client } from '../../../../../sanity/client';
 
 import { query, queryFilterCourses } from '../../../../../sanity/services/language-service/courses';
@@ -30,18 +33,6 @@ interface RootLayoutProps {
     params: {
         locale: string,
     };
-}
-
-interface Site {
-    ogTitle: string,
-    ogImage: {
-        _type: string,
-        asset: {
-            _ref: string,
-            _type: string
-        }
-    },
-    ogDescription: string
 }
 
 const localeStrings: {
@@ -69,11 +60,11 @@ async function getResources(locale: string) {
 
             return { courses: courses[0], branches: branches[1], languages: languages[0], social: social[0], isError: false };
         })
-        .catch(error => {
+        .catch(_ => {
             return { courses: [], branches: [], languages: [], social: [], isError: true };
         });
 
-}
+};
 
 export default async function Layout({
     children,
@@ -90,7 +81,7 @@ export default async function Layout({
 
     if (!courses || !branches || !languages || !social || isError) {
         notFound()
-    }
+    };
 
     return (
         <div className='languages-container'>
@@ -99,7 +90,7 @@ export default async function Layout({
                     <Header locale={locale} />
                 </div>
                 {/* <FBMessenger /> */}
-                <GoBack locale={locale} theme='#006ED2'/>
+                <GoBack locale={locale} theme='#006ED2' />
                 <ScrollToTopButton theme='#006ED2' />
                 <FloatingMenu
                     website={localeStrings[locale]}
@@ -116,7 +107,7 @@ export default async function Layout({
             <Footer socialData={social} />
         </div>
     );
-}
+};
 
 
 async function getSiteMeta(
@@ -124,55 +115,20 @@ async function getSiteMeta(
     client: SanityClient | any,
     mutation = 'fetch'
 ): Promise<Site> {
-    const site: Site = await client[mutation](query)
-    return site
-}
+    const site: Site[] = await client[mutation](query);
+    return site[0];
+};
 
 export async function generateMetadata({
     params: { locale },
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta: Site | any = await getSiteMeta(querySiteMeta, client)
-    const { ogDescription, ogTitle, ogImage } = meta[0];
+    const meta: Site = await getSiteMeta(querySiteMeta, client);
+    const { ogDescription, ogTitle, ogImage } = meta;
+    const path: ImagePath = urlForImage(ogImage);
+    const icon = null;
 
-    const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
-
-    return {
-        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
-            ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
-            : new URL(`http://localhost:${process.env.PORT || 3000}`),
-        authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
-        title: ogTitle,
-        description: ogDescription,
-        openGraph: {
-            title: ogTitle,
-            description: ogDescription,
-            images: [
-                {
-                    url: path?.src,
-                    width: 500,
-                    height: 500,
-                    alt: "seo-image",
-                },
-            ],
-            locale,
-            type: "website",
-        },
-        twitter: {
-            card: path?.src,
-            title: ogTitle,
-            description: ogDescription,
-            creator: "@arthouse",
-            images: [
-                {
-                    url: path?.src,
-                    width: path?.width,
-                    height: path?.height,
-                    alt: "twitter",
-                },
-            ],
-        },
-    };
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale);
+    return metadata;
 };
-

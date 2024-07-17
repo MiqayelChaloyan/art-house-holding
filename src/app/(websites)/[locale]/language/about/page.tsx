@@ -10,9 +10,9 @@ import { query } from '../../../../../../sanity/services/language-service/about-
 
 interface Props {
     params: {
-        locale: string,
+        locale: string;
     }
-}
+};
 
 async function getResources(locale: string) {
     try {
@@ -23,7 +23,7 @@ async function getResources(locale: string) {
         }
 
         return { data, isError: false };
-    } catch (error) {
+    } catch (_) {
         return { data: [], isError: true };
     }
 }

@@ -7,7 +7,7 @@ import { type Metadata } from 'next';
 
 import { Locale } from '@/locales';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath, Site } from '@/types/general';
 
 import { SanityClient } from 'sanity';
 
@@ -16,7 +16,6 @@ import { client } from '../../../../sanity/client';
 import { partnersQuery } from '../../../../sanity/services/generic-service';
 import { query, querySiteMeta } from '../../../../sanity/services/art-house-service';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
-import { Site } from '../../../../sanity/sanity-queries/art-house';
 import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
 
 
@@ -47,6 +46,25 @@ async function getResources(locale: string) {
     });
 };
 
+export default async function Page({
+  params: { locale }
+}: Readonly<RootProps>) {
+  const { data, partners, isError } = await getResources(locale);
+
+  if (!data || !partners || isError) {
+    notFound()
+  };
+
+  return (
+    <Component
+      data={data}
+      partners={partners}
+      locale={locale}
+    />
+  );
+};
+
+
 async function getSiteMeta(
   query: string = querySiteMeta,
   client: SanityClient | any,
@@ -56,42 +74,6 @@ async function getSiteMeta(
   return site[1];
 };
 
-export default async function Page({
-  params: { locale }
-}: Readonly<RootProps>) {
-  const { data, partners, isError } = await getResources(locale);
-  const meta: Site = await getSiteMeta(querySiteMeta, client);
-  const { ogDescription, ogTitle, ogImage } = meta;
-  const path: ImagePath = urlForImage(ogImage);
-
-  if (!data || !partners || isError) {
-    notFound()
-  }
-
-  const jsonLd = {
-    '@context': 'https://arthouse.am',
-    '@type': 'courses',
-    name: ogTitle,
-    image: path.src,
-    description: ogDescription,
-  };
-
-  return (
-    <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Component
-        data={data}
-        partners={partners}
-        locale={locale}
-      />
-    </>
-  );
-};
-
-
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -100,8 +82,9 @@ export async function generateMetadata({
   const meta: Site = await getSiteMeta(querySiteMeta, client);
   const { ogDescription, ogTitle, ogImage } = meta;
   const path: ImagePath = urlForImage(ogImage);
+  const icon = null;
 
-  const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, locale);
+  const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale);
   return metadata;
 };
 

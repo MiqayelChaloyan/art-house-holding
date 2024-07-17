@@ -18,7 +18,7 @@ interface RootProps {
     }
 };
 
-type TYPES = {
+interface TYPES {
     data: DESIGN[];
     partners: PARTNER[];
     isError: boolean;
@@ -36,7 +36,7 @@ async function getResources(locale: string) {
 
             return { data, partners, isError: false };
         })
-        .catch(error => {
+        .catch(_ => {
             return { data: [], partners: [], isError: true };
         });
 };

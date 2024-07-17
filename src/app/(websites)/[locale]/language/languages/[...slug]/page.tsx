@@ -11,11 +11,16 @@ import { querySlug } from '../../../../../../../sanity/services/language-service
 import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
-const DLanguage = dynamic(() => import('@/components/screens/language/languages/Language'));
-
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
+import { ImagePath } from '@/types/general';
+import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+import BlocksToText from '@/lib/utils/BlocksToText';
+
+const DLanguage = dynamic(() =>
+    import('@/components/screens/language/languages/Language'),
+);
 
 
 interface Props {
@@ -34,14 +39,14 @@ async function getResources(slug: string, locale: string) {
         }
 
         return { data, isError: false };
-    } catch (error) {
+    } catch (_) {
         return { data: [], isError: true };
     }
 };
 
-export default async function Page({ 
-    params: { locale, slug } 
-}:Readonly<Props>) {
+export default async function Page({
+    params: { locale, slug }
+}: Readonly<Props>) {
     const { data } = await getResources(slug[0], locale);
 
     if (!data.length) {
@@ -51,53 +56,20 @@ export default async function Page({
     return (<DLanguage data={data[0]} />)
 };
 
+
 export async function generateMetadata({
     params: { locale, slug },
 }: {
-    params: { locale: Locale, slug: any };
+    params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
-    const result = await getResources(slug[0], locale);
-    const { name, during_courses_images, text } = result?.data[0] || {};
+    const course = await getResources(slug[0], locale);
+    const ogTitle = course.data[0]?.name;
+    const ogImage = course.data[0]?.during_courses_images[0];
+    const ogDescription = BlocksToText(course.data[0]?.text).slice(0, 900);
 
-    const ogTitle = name;
+    const path: ImagePath = urlForImage(ogImage);
+    const icon = null;
 
-    const ogDescription = `${text[0].children[0].text.slice(0, 100)}...`;
-    const path: { src: string, width: string, height: string } | any = urlForImage(during_courses_images[0]);
-
-    return {
-        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
-            ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
-            : new URL(`http://localhost:${process.env.PORT || 3000}`),
-        authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
-        title: ogTitle,
-        description: ogDescription,
-        openGraph: {
-            title: ogTitle,
-            description: ogDescription,
-            images: [
-                {
-                    url: path?.src,
-                    width: 500,
-                    height: 500,
-                    alt: "seo-image",
-                },
-            ],
-            locale,
-            type: "website",
-        },
-        twitter: {
-            card: path?.src,
-            title: ogTitle,
-            description: ogDescription,
-            creator: "@arthouse",
-            images: [
-                {
-                    url: path?.src,
-                    width: path?.width,
-                    height: path?.height,
-                    alt: "twitter",
-                },
-            ],
-        },
-    };
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale);
+    return metadata;
 };

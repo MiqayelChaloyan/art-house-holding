@@ -198,3 +198,12 @@ export interface HOSTS {
     phone_number: string;
     social_links: Social_Links[];
 };
+
+export interface RootProps {
+    courses: any,
+    branches: any,
+    social: any,
+    lessons: any,
+    lessonsArmenian: any,
+    isError: any
+}

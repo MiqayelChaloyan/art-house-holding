@@ -10,9 +10,9 @@ import { partnersQuery } from '../../../../../../sanity/services/generic-service
 
 interface Props {
     params: {
-        locale: string
+        locale: string;
     }
-}
+};
 
 async function getResources(locale: string) {
     try {
@@ -23,7 +23,7 @@ async function getResources(locale: string) {
         }
 
         return { partners, isError: false };
-    } catch (error) {
+    } catch (_) {
         return { partners: [], isError: true };
     }
 }
@@ -37,6 +37,6 @@ export default async function Page(
         notFound()
     }
 
-    return <Partners partners={partners} />;
+    return (<Partners partners={partners} />);
 }
 

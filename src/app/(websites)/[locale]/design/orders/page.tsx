@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import Home from '@/components/screens/design/orders';
 
 import { client } from '../../../../../../sanity/client';
-import { COURSE, LESSONS } from '../../../../../../sanity/sanity-queries/design';
 import { allCoursesQuery } from '../../../../../../sanity/services/design-service/courses';
 import { query as lessonsQuery } from '../../../../../../sanity/services/design-service/lessons';
 
@@ -14,13 +13,6 @@ interface Props {
     params: {
         locale: string;
     }
-};
-
-type TYPES = {
-    orders: LESSONS[];
-    ordersArmenian: LESSONS[];
-    courses: COURSE[];
-    isError: boolean;
 };
 
 async function getResources(locale: string) {
@@ -36,7 +28,7 @@ async function getResources(locale: string) {
 
             return { orders, ordersArmenian, courses, isError: false };
         })
-        .catch(error => {
+        .catch(_ => {
             return { orders: [], ordersArmenian: [], courses: [], isError: true };
         });
 };
@@ -50,7 +42,7 @@ export default async function Page({
         ordersArmenian, 
         courses, 
         isError 
-    }: TYPES = await getResources(locale);
+    } = await getResources(locale);
 
     if (!orders || !ordersArmenian || !courses || isError) {
         notFound()

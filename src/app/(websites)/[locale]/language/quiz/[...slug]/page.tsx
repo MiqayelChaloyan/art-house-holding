@@ -10,10 +10,10 @@ import { quizBySlugQuery } from '../../../../../../../sanity/services/language-s
 
 interface Props {
     params: {
-        locale: string,
-        slug: string
+        locale: string;
+        slug: string;
     };
-}
+};
 
 async function getResources(slug: string, locale: string) {
     try {
@@ -24,10 +24,10 @@ async function getResources(slug: string, locale: string) {
         }
 
         return { data, isError: false };
-    } catch (error) {
+    } catch (_) {
         return { data: [], isError: true };
     }
-}
+};
 
 export default async function Page({
     params: { locale, slug }
@@ -38,5 +38,5 @@ export default async function Page({
         notFound()
     }
 
-    return <QuizPage data={data[0]} />;
-}
+    return (<QuizPage data={data[0]} />);
+};

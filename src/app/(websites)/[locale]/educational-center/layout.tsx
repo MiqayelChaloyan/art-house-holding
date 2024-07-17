@@ -15,6 +15,9 @@ import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 import PlayerModal from '@/lib/outlets/general/PlayerModal';
 import GoBack from '@/lib/outlets/general/GoBack';
 
+import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+import { ImagePath, Site } from '@/types/general';
+
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
 
@@ -24,28 +27,16 @@ import { querySiteMeta } from '../../../../../sanity/services/educational-center
 import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { query as lessonsQuery } from '../../../../../sanity/services/educational-center-service/lessons';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { LANGUAGE, RootProps } from '../../../../../sanity/sanity-queries/language';
 import { querySocial } from '../../../../../sanity/services/educational-center-service/contact-us';
 
 
 interface RootLayoutProps {
-    children: React.ReactNode,
+    children: React.ReactNode;
     params: {
-        locale: string,
+        locale: string;
     }
-}
-
-interface Site {
-    ogTitle: string,
-    ogImage: {
-        _type: string,
-        asset: {
-            _ref: string,
-            _type: string
-        }
-    },
-    ogDescription: string
-}
+};
 
 const localeStrings: {
     am: string
@@ -90,17 +81,16 @@ export default async function Layout({
         lessons,
         lessonsArmenian,
         isError
-    }: LANGUAGE[] | any = await getResources(locale);
+    }: RootProps = await getResources(locale);
 
     if (!courses || !branches || !social || !lessons || !lessonsArmenian || isError) {
         notFound()
     };
 
-
     return (
         <div>
             <div className='wrapper'>
-                <GoBack locale={locale} theme='#821616'/>
+                <GoBack locale={locale} theme='#821616' />
                 <RightMenu locale={locale} socialData={social} />
                 <BottomMenu locale={locale} socialData={social} />
                 <ScrollToTopButton theme='#821616' />
@@ -116,7 +106,7 @@ export default async function Layout({
                         {children}
                     </main>
                 </div>
-                <Footer courses={courses} socialData={social} lessons={lessons} lessonsArmenian={lessonsArmenian}/>
+                <Footer courses={courses} socialData={social} lessons={lessons} lessonsArmenian={lessonsArmenian} />
             </div>
             <Modal>
                 <CoursesModal locale={locale} courses={courses} />
@@ -124,7 +114,7 @@ export default async function Layout({
             <PlayerModal />
         </div>
     );
-}
+};
 
 
 async function getSiteMeta(
@@ -132,55 +122,20 @@ async function getSiteMeta(
     client: SanityClient | any,
     mutation = 'fetch'
 ): Promise<Site> {
-    const site: Site = await client[mutation](query)
-    return site
-}
+    const site: Site[] = await client[mutation](query);
+    return site[0];
+};
 
 export async function generateMetadata({
     params: { locale },
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta: Site | any = await getSiteMeta(querySiteMeta, client)
-    const { ogDescription, ogTitle, ogImage } = meta[0];
+    const meta: Site = await getSiteMeta(querySiteMeta, client);
+    const { ogDescription, ogTitle, ogImage } = meta;
+    const path: ImagePath = urlForImage(ogImage);
+    const icon = null;
 
-    const path: { src: string, width: string, height: string } | any = urlForImage(ogImage);
-
-    return {
-        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
-            ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
-            : new URL(`http://localhost:${process.env.PORT || 3000}`),
-        authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
-        title: ogTitle,
-        description: ogDescription,
-        openGraph: {
-            title: ogTitle,
-            description: ogDescription,
-            images: [
-                {
-                    url: path?.src,
-                    width: 500,
-                    height: 500,
-                    alt: "seo-image",
-                },
-            ],
-            locale,
-            type: "website",
-        },
-        twitter: {
-            card: path?.src,
-            title: ogTitle,
-            description: ogDescription,
-            creator: "@arthouse",
-            images: [
-                {
-                    url: path?.src,
-                    width: path?.width,
-                    height: path?.height,
-                    alt: "twitter",
-                },
-            ],
-        },
-    };
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale);
+    return metadata;
 };
-

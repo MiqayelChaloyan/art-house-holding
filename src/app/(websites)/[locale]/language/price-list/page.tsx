@@ -10,9 +10,9 @@ import { query } from '../../../../../../sanity/services/language-service/price-
 
 interface Props {
     params: {
-        locale: string,
+        locale: string;
     }
-}
+};
 
 async function getResources(locale: string) {
     try {
@@ -23,10 +23,10 @@ async function getResources(locale: string) {
         }
 
         return { data, isError: false };
-    } catch (error) {
+    } catch (_) {
         return { data: [], isError: true };
     }
-}
+};
 
 export default async function Page({
     params: { locale }
@@ -37,5 +37,5 @@ export default async function Page({
         notFound()
     }
 
-    return <Home data={data} />;
-}
+    return (<Home data={data} />);
+};

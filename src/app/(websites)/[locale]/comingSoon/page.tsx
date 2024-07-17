@@ -10,6 +10,8 @@ import { type Metadata } from 'next';
 
 import { SanityClient } from 'sanity';
 
+import { Site } from '@/types/general';
+
 import { client } from '../../../../../sanity/client';
 import { querySocial } from '../../../../../sanity/services/art-house-service';
 import { querySiteMeta } from '../../../../../sanity/services/art-house-service';
@@ -19,19 +21,6 @@ interface Props {
     params: {
         locale: string;
     }
-};
-
-interface Site {
-    site_name: string;
-    ogTitle: string;
-    ogImage: {
-        _type: string;
-        asset: {
-            _ref: string;
-            _type: string;
-        }
-    },
-    ogDescription: string;
 };
 
 const getResources = async (locale: string) => {

@@ -44,13 +44,3 @@ export interface HOSTS {
     phone_numbers: string[],
     social_links: Social_Links[],
 };
-
-export interface Site {
-    site_name: string,
-    ogTitle: string,
-    ogImage: {
-        _type: string,
-        asset: Asset
-    },
-    ogDescription: string
-};

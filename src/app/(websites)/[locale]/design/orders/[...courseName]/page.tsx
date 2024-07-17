@@ -12,7 +12,7 @@ import { ImagePath } from '@/types/general';
 import { client } from '../../../../../../../sanity/client';
 import { courseBySlugQuery } from '../../../../../../../sanity/services/design-service/courses';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-import { COURSE } from '../../../../../../../sanity/sanity-queries/design';
+import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
 
 
 interface Props {
@@ -20,11 +20,6 @@ interface Props {
         locale: string;
         courseName: string;
     }
-};
-
-type TYPES = {
-    data: COURSE[];
-    isError: boolean;
 };
 
 async function getResources(locale: string, courseName: string | number) {
@@ -36,7 +31,7 @@ async function getResources(locale: string, courseName: string | number) {
         }
 
         return { data: data[0], isError: false };
-    } catch (error) {
+    } catch (_) {
         return { data: [], isError: true };
     }
 };
@@ -45,7 +40,7 @@ export default async function Page({
     params: { locale, courseName }
 }: Readonly<Props>) {
     const decodedQuery = decodeURIComponent(courseName[0]);
-    const { data, isError }: TYPES = await getResources(locale, decodedQuery);
+    const { data, isError } = await getResources(locale, decodedQuery);
 
     if (!data || isError) {
         notFound()
@@ -53,6 +48,7 @@ export default async function Page({
 
     return (<Home data={data} />);
 };
+
 
 export async function generateMetadata({
     params: { locale, courseName },
@@ -62,47 +58,13 @@ export async function generateMetadata({
     const decodedQuery = decodeURIComponent(courseName[0]);
     const { data } = await getResources(locale, decodedQuery);
 
-    const ogTitle = `${data.course_name} | ${data.orders[0].author}`;
-    const ogImage = data.orders[0].image;
-    const alt = data.orders[0].image.alt;
-    const ogDescription = data.guides[0];
-    const path: ImagePath = urlForImage(ogImage);
+    const ogTitle =  `${data?.course_name} | ${data.orders[0]?.author}`;
+    const ogImage = data.orders[0]?.image;
+    const ogDescription = data?.guides[0];
 
-    return {
-        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
-            ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
-            : new URL(`http://localhost:${process.env.PORT || 3000}`),
-        title: ogTitle,
-        description: ogDescription,
-        authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
-        openGraph: {
-            title: ogTitle,
-            description: ogDescription,
-            url: path?.src,
-            images: [
-                {
-                    url: path?.src,
-                    width: 500,
-                    height: 500,
-                    alt,
-                },
-            ],
-            locale,
-            type: "website",
-        },
-        twitter: {
-            card: path?.src,
-            title: ogTitle,
-            description: ogDescription,
-            creator: "@arthouse",
-            images: [
-                {
-                    url: path?.src,
-                    width: path?.width,
-                    height: path?.height,
-                    alt,
-                },
-            ],
-        },
-    };
+    const path: ImagePath = urlForImage(ogImage);
+    const icon = null;
+
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale);
+    return metadata;
 };

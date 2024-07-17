@@ -7,19 +7,12 @@ import Home from '@/components/screens/design/portfolios';
 import { client } from '../../../../../../sanity/client';
 import { allCoursesQuery } from '../../../../../../sanity/services/design-service/courses';
 import { query } from '../../../../../../sanity/services/design-service/portfolio';
-import { COURSE, PORTFOLIO } from '../../../../../../sanity/sanity-queries/design';
 
 
 interface Props {
     params: {
         locale: string;
     }
-};
-
-type TYPES = {
-    data: PORTFOLIO[];
-    courses: COURSE[];
-    isError: boolean;
 };
 
 async function getResources(locale: string) {
@@ -32,7 +25,7 @@ async function getResources(locale: string) {
         }
 
         return { courses, data: data[0], isError: false };
-    } catch (error) {
+    } catch (_) {
         return { courses: [], data: [], isError: true };
     }
 };
@@ -40,11 +33,16 @@ async function getResources(locale: string) {
 export default async function Page({
     params: { locale }
 }: Readonly<Props>) {
-    const { courses, data, isError }: TYPES = await getResources(locale);
+    const { courses, data, isError } = await getResources(locale);
 
     if (!courses || !data || isError) {
         notFound()
     }
 
-    return (<Home courses={courses} data={data}/>);
+    return (
+        <Home
+            courses={courses}
+            data={data}
+        />
+    );
 };
