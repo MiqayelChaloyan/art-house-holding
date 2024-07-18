@@ -14,7 +14,6 @@ const quizSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
         },
         {
             title: 'Question Language image',
@@ -60,7 +59,7 @@ const quizSchemaLanguage = {
                         {
                             name: 'slug',
                             type: 'slug',
-                            description: "Պիտի եզակի լինի",
+                            description: "Must be unique",
                             maxLength: 9,
                             options: {
                                 source: 'name',

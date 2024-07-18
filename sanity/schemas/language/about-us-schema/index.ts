@@ -1,5 +1,5 @@
-import { RuleType } from "../../../ruleType";
-import ArrayMaxItems from "@/lib/utils/ArrayMaxItems";
+import { RuleType } from '../../../ruleType';
+import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
 
 
 const aboutUsSchemaLanguage = {
@@ -9,13 +9,13 @@ const aboutUsSchemaLanguage = {
     id: 'about-us-language',
     groups: [
         {
-            name: "og",
-            title: "Social Share Info",
+            name: 'og',
+            title: 'Social Share Info',
             default: true
         },
         {
-            name: "manifest",
-            title: "Web App Settings",
+            name: 'manifest',
+            title: 'Web App Settings',
             hidden: ({ document }: {
                 document: {
                     [key: string]: never;
@@ -34,9 +34,9 @@ const aboutUsSchemaLanguage = {
             group: ['og']
         },
         {
-            type: "text",
-            name: "ogDescription",
-            title: "Social Share Description",
+            type: 'text',
+            name: 'ogDescription',
+            title: 'Social Share Description',
             group: ['og']
         },
         {
@@ -53,7 +53,7 @@ const aboutUsSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
         {
             title: 'About us',
@@ -89,7 +89,7 @@ const aboutUsSchemaLanguage = {
                     name: 'about_us_images',
                     type: 'array',
                     title: 'About Us Images',
-                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                    description: 'No less than three, and no more, only you can modify them',
                     components: { input: ArrayMaxItems },
                     validation: (Rule: RuleType) => Rule.max(3),
                     of: [{
@@ -110,7 +110,7 @@ const aboutUsSchemaLanguage = {
                     name: 'about_our_daily',
                     type: 'array',
                     title: 'Videos about our daily life',
-                    description: 'Ոչ պակաս, քան երկու, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                    description: 'No less than two, and no more, only you can modify them',
                     components: { input: ArrayMaxItems },
                     validation: (Rule: RuleType) => Rule.max(2),
                     of: [
@@ -153,7 +153,7 @@ const aboutUsSchemaLanguage = {
                     name: 'our_daily_life_images',
                     type: 'array',
                     title: 'Our Daily Life Images',
-                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                    description: 'No less than three, and no more, only you can modify them',
                     components: { input: ArrayMaxItems },
                     validation: (Rule: RuleType) => Rule.max(3),
                     of: [{
@@ -182,7 +182,7 @@ const aboutUsSchemaLanguage = {
                     name: 'about_our_daily',
                     type: 'array',
                     title: 'Videos about our daily life',
-                    description: 'Ոչ պակաս, քան երեք, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+                    description: 'No less than three, and no more, only you can modify them',
                     components: { input: ArrayMaxItems },
                     validation: (Rule: RuleType) => Rule.max(3),
                     of: [
@@ -220,14 +220,6 @@ const aboutUsSchemaLanguage = {
                                     to: [{ type: 'about-language' }],
                                     validation: (Rule: any) => Rule.required(),
                                 },
-                                // {
-                                //     name: 'slug',
-                                //     type: 'slug',
-                                //     options: {
-                                //         source: 'name',
-                                //     },
-                                //     validation: (Rule: any) => Rule.required(),
-                                // },
                                 {
                                     name: 'video_url',
                                     title: 'Video Link',

@@ -26,6 +26,12 @@ export const aboutUsSchemaDesign = {
     ],
     fields: [
         {
+            title: 'Name',
+            name: 'name',
+            type: 'string',
+            description: 'Do not change the name.'
+        },
+        {
             type: 'string',
             title: 'Page Title',
             name: 'ogTitle',
@@ -50,12 +56,6 @@ export const aboutUsSchemaDesign = {
             group: ['og'],
         },
         /* Schema */
-        {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Չփոփոխել անվանումը'
-        },
         {
             name: 'main_section',
             type: 'array',

@@ -12,7 +12,7 @@ const lessonsSchemaDesign = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
         {
             name: 'course_name',

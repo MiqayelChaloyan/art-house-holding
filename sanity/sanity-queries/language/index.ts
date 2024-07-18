@@ -53,7 +53,7 @@ export interface LANGUAGE {
     during_courses_images: COURSE_IMAGES[];
     image: ImageType;
     name: string;
-    slug: string;
+    slug: Slug;
     teachers: TEACHER[];
     text: TEXT[];
 };

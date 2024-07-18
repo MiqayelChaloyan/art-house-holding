@@ -13,6 +13,7 @@ const contactUsSchemaDesign = {
             name: 'name',
             title: 'Name',
             type: 'string',
+            description: 'Do not change the name.'
         },
         {
             name: 'email',

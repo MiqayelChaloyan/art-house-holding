@@ -12,7 +12,7 @@ const coursesSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
 
         {
@@ -51,7 +51,7 @@ const coursesSchemaLanguage = {
                         {
                             name: 'slug',
                             type: 'slug',
-                            description: "Պիտի եզակի լինի",
+                            description: "Must be unique",
                             maxLength: 9,
                             options: {
                                 source: 'name',

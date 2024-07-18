@@ -11,6 +11,7 @@ export const portfolioSchemaDesign = {
             title: 'Name',
             name: 'name',
             type: 'string',
+            description: 'Do not change the name.'
         },
         {
             title: 'Image',

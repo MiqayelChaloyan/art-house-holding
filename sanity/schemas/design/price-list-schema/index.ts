@@ -17,7 +17,7 @@ const priceListSchemaDesign = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
         {
             title: 'Informatie',

@@ -14,7 +14,7 @@ const languagesSchemaLanguage = {
             title: 'Name',
             name: 'name',
             type: 'string',
-            description: 'Չփոփոխել անվանումը'
+            description: 'Do not change the name.'
         },
         {
             name: 'slug',
@@ -109,7 +109,7 @@ const languagesSchemaLanguage = {
             name: 'during_courses_images',
             type: 'array',
             title: 'During Courses Images',
-            description: 'Ոչ պակաս, քան վեց, և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            description: 'No less than six, and no more, only you can modify them',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(6),
             of: [
@@ -163,7 +163,6 @@ const languagesSchemaLanguage = {
         {
             name: 'teachers',
             type: 'array',
-            // components: { input: ArrayMaxItems },
             title: 'Teachers',
             of: [
                 {
