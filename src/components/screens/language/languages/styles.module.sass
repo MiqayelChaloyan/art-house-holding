@@ -1,9 +1,7 @@
 .languages
     display: grid
-    flex-wrap: wrap
     justify-content: center
     align-items: flex-start 
-    align-self: center
     grid-template-columns: auto auto auto auto
     width: 100%
     /* @2xl */
@@ -20,6 +18,7 @@
     /* @sm */
     @media screen and (max-width: 768px)
         grid-template-columns: auto auto
+        width: 90%
     @media screen and (max-width: 600px)
         grid-template-columns: auto auto
     @media screen and (max-width: 550px)

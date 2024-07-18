@@ -9,14 +9,24 @@ import Logo from '@/lib/icons/language/Logo';
 import Gmail from '@/lib/icons/language/Gmail';
 import Instagram from '@/lib/icons/language/Instagram';
 import Facebook from '@/lib/icons/language/Facebook';
+import Linkedin from '@/lib/icons/language/Linkedin';
+import X from '@/lib/icons/language/X';
+import Tiktok from '@/lib/icons/language/Tiktok';
+import Telegram from '@/lib/icons/language/Telegram';
+import YouTube from '@/lib/icons/language/YouTube';
+import Pinterest from '@/lib/icons/language/Pinterest';
+import WhatsApp from '@/lib/icons/language/WhatsApp';
+import Viber from '@/lib/icons/language/Viber';
 
 import { Arial } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { socialNetwork } from '@/types/language';
+import { socialNetwork } from '@/types/general';
 
 import { HOSTS, Social_Links } from '../../../../../sanity/sanity-queries/language';
+
+import colors from '@/themes';
 
 import cn from 'classnames';
 
@@ -24,13 +34,21 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    socialData: HOSTS
+    socialData: HOSTS;
 };
 
 const socialNetworkComponents: socialNetwork = {
-    facebook: Facebook,
-    instagram: Instagram,
-    gmail: Gmail,
+	facebook: Facebook,
+	instagram: Instagram,
+	gmail: Gmail,
+	linkedin: Linkedin,
+	x: X,
+	tiktok: Tiktok,
+	telegram: Telegram,
+	youtube: YouTube,
+	pinterest: Pinterest,
+	whatsapp: WhatsApp,
+	viber: Viber
 };
 
 const Footer = ({ socialData }: Readonly<Props>) => {
@@ -40,10 +58,10 @@ const Footer = ({ socialData }: Readonly<Props>) => {
     const t = useTranslations('address');
 
     const hosts = socialData?.social_links.map((host: Social_Links) => {
-        const socialName = host?.social_name.toLowerCase();
-        const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
-        const SocialIcon = (socialNetworkComponents as any)[socialName];
-        if (!SocialIcon) return null;
+		const socialName = host?.social_name.toLowerCase();
+		const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
+		const SocialIcon = (socialNetworkComponents as any)[socialName];
+		if (!SocialIcon) return null;
 
         return (
             <Link
@@ -51,12 +69,12 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                 href={link}
                 aria-label={host?.social_name}
                 className={styles.social_network}
-                target="_blank"
+                target='_blank'
             >
                 <SocialIcon
                     width={windowSize.width <= 1024 ? 20 : 30}
                     height={windowSize.width <= 1024 ? 20 : 30}
-                    fill='#F9CC48'
+                    fill={colors.yellow}
                 />
             </Link>
         )
@@ -69,7 +87,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                     <Logo
                         width={windowSize.width > 1280 ? 255.53 : windowSize.width > 1024 ? 200 : 150}
                         height={80}
-                        fill='#F9CC48'
+                        fill={colors.yellow}
                     />
                 </div>
                 <div>

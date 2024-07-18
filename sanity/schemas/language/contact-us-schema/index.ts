@@ -25,8 +25,11 @@ const contactUsSchemaLanguage = {
             name: 'social_links',
             type: 'array',
             title: 'Social Links',
-            description: 'You can only add these Gmail, Instagram, Facebook.',
-            validation: (Rule: RuleType) => Rule.max(3),
+            description: `
+                        You can only add these Facebook, Instagram, Gmail, Linkedin, X, Tiktok, Telegram, YouTube, Pinterest, WhatsApp, Viber.
+                        It would be advisable to choose any three of the above, no more.
+                        `,            
+            validation: (Rule: RuleType) => Rule.max(11),
             components: { input: ArrayMaxItems },
             of: [
                 {

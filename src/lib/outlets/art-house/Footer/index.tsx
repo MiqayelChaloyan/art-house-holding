@@ -108,11 +108,6 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                                 {t('footer.branches')}
                             </p>
                         </Link>
-                        <Link href='#' aria-label='Programs' className={styles.icon}>
-                            <p className={cn(styles.info_web, ArianAMU.className)}>
-                                {t('footer.programs')}
-                            </p>
-                        </Link>
                         <Link href='#partners' aria-label='Partners' className={styles.icon}>
                             <p className={cn(styles.info_web, ArianAMU.className)}>
                                 {t('footer.partners')}
