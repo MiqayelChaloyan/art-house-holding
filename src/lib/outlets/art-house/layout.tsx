@@ -41,6 +41,7 @@ const Layout = ({
     return (
         <>
             <Header
+                locale={locale}
                 typePosition={`${headerPosition === 'fixed' ? 'fixed' : 'sticky'}`}
             />
             <main>

@@ -2,15 +2,15 @@
 
 import React from 'react';
 
-import Main from '@/components/screens/art-house/Main';
-import Branches from '@/components/screens/art-house/Branches';
-import Progress from '@/components/screens/art-house/Progress';
-import Partners from '@/components/screens/art-house/Partners';
+import Main from '@/components/screens/art-house/home/Main';
+import Branches from '@/components/screens/art-house/home/Branches';
+import Progress from '@/components/screens/art-house/home/Progress';
+import Partners from '@/components/screens/art-house/home/Partners';
 
 import Layout from '@/lib/outlets/art-house/layout';
 
-import { ART_HOUSE_HOME } from '../../../../sanity/sanity-queries/art-house';
-import { PARTNER } from '../../../../sanity/sanity-queries/generic';
+import { ART_HOUSE_HOME } from '../../../../../sanity/sanity-queries/art-house';
+import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 
 interface Props {

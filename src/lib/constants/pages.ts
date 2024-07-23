@@ -1,5 +1,6 @@
 const Pages = {
     HOME: '/',
+    HOME_ABOUT: 'about',
     EDUCATIONAL_HOME: '/educational-center',
     EDUCATIONAL_PARTNERS: '/educational-center/partners',
     EDUCATIONAL_PRICE_LIST: '/educational-center/price-list',

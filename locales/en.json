@@ -1,7 +1,7 @@
 {
     "navigation": {
         "about": "About us",
-        "branches": "Branches",
+        "branches": "WE ARE HERE",
         "courses": "Courses",
         "partners": "Partners",
         "price-list": "Price List",
@@ -25,6 +25,7 @@
         "street": "Armenia, Yerevan, Abovyan 33"
     },
     "texts": {
+        "welcome": "Welcome To",
         "main-title": "IT'S NEVER TOO LATE TO LEARN",
         "follow-us": "FOLLOW US",
         "rights": "All rights reserved",

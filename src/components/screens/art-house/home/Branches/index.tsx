@@ -9,7 +9,7 @@ import Container from '@/components/components/container';
 
 import Branch from '@/lib/ui/branch';
 
-import { BRANCH } from '../../../../../sanity/sanity-queries/art-house';
+import { BRANCH } from '../../../../../../sanity/sanity-queries/art-house';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';

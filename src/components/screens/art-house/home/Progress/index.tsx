@@ -7,7 +7,7 @@ import Container from '@/components/components/container';
 import ProgressItem from '@/lib/ui/progress';
 import { ArianAMU } from '@/lib/constants/font';
 
-import { PROGRESS } from '../../../../../sanity/sanity-queries/art-house';
+import { PROGRESS } from '../../../../../../sanity/sanity-queries/art-house';
 
 import cn from 'classnames';
 

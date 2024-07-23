@@ -15,7 +15,7 @@ import { ArianAMU } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
+import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
 
 import cn from 'classnames';
 
