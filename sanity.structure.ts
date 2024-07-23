@@ -7,6 +7,7 @@ export default (S: any) =>
             ...S.documentTypeListItems().filter(
                 (listItem: any) => ![
                     'art-house-home',
+                    'art-house-about-us',
                     'art-house-contact-us',
                     'about-us',
                     'courses',
@@ -41,6 +42,10 @@ export default (S: any) =>
                                 .title('Home')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('art-house-home').documentId('art-house')),
+                            S.listItem()
+                                .title('About Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('art-house-about-us').documentId('art-house-about-us')),
                             S.listItem()
                                 .title('Contact Us')
                                 .icon(DocumentsIcon)

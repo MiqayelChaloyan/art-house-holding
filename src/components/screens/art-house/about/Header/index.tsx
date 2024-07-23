@@ -1,27 +1,48 @@
 'use client'
 
-import './styles.css'
+import { Link as ScrollLink } from 'react-scroll';
+
+import { IoIosArrowDown } from 'react-icons/io';
+
+import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+
+import { ImagePath } from '@/types/general';
+
+import colors from '@/themes';
+
 import cn from 'classnames';
 
-import styles from './styles.module.sass'
-import { IoIosArrowDown } from "react-icons/io";
+import styles from './styles.module.sass';
 
 
-
-const Header = () => {
-
+const Header = ({ primaryTitle, secondaryTitle, bgImage }: any) => {
+  const path: ImagePath = urlForImage(bgImage);
 
   return (
     <section className={styles.box}>
-      <header className="header">
-        <div className="text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary-main">Heading Primary Main</span>
-            <span className="heading-primary-sub">The secondary heading</span>
+      <header className={styles.header}
+        style={{
+          backgroundImage: `linear-gradient(to left bottom, rgba(183, 222, 233, 0.7), #B21B1B), url(${path?.src})`
+        }}
+      >
+        <div className={styles['text-box']}>
+          <h1 className={styles['heading-primary']}>
+            <span className={styles['heading-primary-main']}>
+              {primaryTitle}
+            </span>
+            <span className={styles['heading-primary-sub']}>
+              {secondaryTitle}
+            </span>
           </h1>
-          <button className="btn-animated">
-          <IoIosArrowDown size={40} color='white'/>
-          </button>
+          <ScrollLink
+            to='about'
+            offset={0}
+            smooth={false}
+            duration={500}
+            className={styles['btn-animated']}
+          >
+            <IoIosArrowDown size={40} color={colors.white} />
+          </ScrollLink>
         </div>
       </header>
     </section>

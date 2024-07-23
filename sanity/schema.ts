@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
 import homeSchemaArtHouse from './schemas/art-house/home-schema';
+import aboutUsSchemaArtHouse from './schemas/art-house/about-us-schema';
 import contactUsSchemaArtHouse from './schemas/art-house/contact-us-schema';
 import aboutUsSchemaEducationalCenter from './schemas/educational-center/about-us-schema';
 import coursesSchemaEducationalCenter from './schemas/educational-center/courses-schema';
@@ -14,7 +15,6 @@ import promotionsSchemaLanguage from './schemas/language/promotions-schema';
 import quizSchemaLanguage from './schemas/language/quiz-schema';
 import partnersSchema from './schemas/generic';
 import contactUsSchemaLanguage from './schemas/language/contact-us-schema';
-
 import aboutUsSchemaDesign from './schemas/design/about-us-schema';
 import contactUsSchemaDesign from './schemas/design/contact-us-schema';
 import coursesSchemaDesign from './schemas/design/courses-schema';
@@ -24,6 +24,7 @@ import portfolioSchemaDesign from './schemas/design/portfolios-schema';
 
 export const schemaTypes = [
   homeSchemaArtHouse,
+  aboutUsSchemaArtHouse,
   contactUsSchemaArtHouse,
   aboutUsSchemaEducationalCenter,
   coursesSchemaEducationalCenter,

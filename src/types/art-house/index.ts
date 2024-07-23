@@ -1,4 +1,5 @@
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { TEXT } from '../../../sanity/sanity-queries/art-house';
 
 export interface UrlType {
     src: string,
@@ -21,4 +22,10 @@ export type SwiperTypes = {
         modifier: number,
         slideShadows: boolean
     };
+};
+
+export interface Content {
+    content: TEXT;
+    isReadMore: boolean;
+    minimumHeight: number;
 };

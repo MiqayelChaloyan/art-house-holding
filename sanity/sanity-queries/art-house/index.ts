@@ -44,3 +44,18 @@ export interface HOSTS {
     phone_numbers: string[],
     social_links: Social_Links[],
 };
+
+interface PortableChildren {
+    marks: any;
+    text: string;
+    _key: string;
+    _type: string;
+};
+
+export interface TEXT {
+    children: PortableChildren[];
+    markDefs: any;
+    style: string;
+    _key: string;
+    _type: string;
+};

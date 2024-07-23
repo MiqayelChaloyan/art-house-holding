@@ -2,6 +2,8 @@
 
 import AboutUs from "@/components/screens/art-house/about";
 import { querySiteMeta } from "../../../../../sanity/services/art-house-service";
+import { query } from "../../../../../sanity/services/art-house-service/about-us";
+
 import { SanityClient } from "sanity";
 import { ImagePath, Site } from "@/types/general";
 import { Metadata } from "next";
@@ -9,6 +11,7 @@ import { Locale } from "@/locales";
 import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
 import { generateMetadataDynamic } from "@/lib/utils/default-metadata";
 import { client } from "../../../../../sanity/client";
+import { notFound } from "next/navigation";
 
 
 interface Props {
@@ -17,17 +20,30 @@ interface Props {
     }
 };
 
+async function getResources(locale: string) {
+  try {
+      const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
+
+      if (!data?.length) {
+          return { data: [], isError: true };
+      }
+
+  return { data: data[0], isError: false };
+  } catch (error) {
+      return { data: [], isError: true };
+  }
+};
 
 export default async function Page({
     params: { locale }
 }: Readonly<Props>) {
-    // const { data, partners, isError } = await getResources(locale);
+    const { data, isError } = await getResources(locale);
 
-    // if (!data || !partners || isError) {
-    //   notFound()
-    // };
+    if (!data || isError) {
+      notFound()
+    };
 
-    return (<AboutUs locale={locale}/>);
+    return (<AboutUs data={data} locale={locale}/>);
 };
 
 
