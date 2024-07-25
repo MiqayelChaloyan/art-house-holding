@@ -3,6 +3,8 @@
 import Layout from "@/lib/outlets/art-house/layout";
 import About from "./About";
 import Header from "./Header";
+import Test from "./Test";
+import Works from "./Works";
 
 
 const AboutUs = ({ data, locale }: any) => {
@@ -19,6 +21,8 @@ const AboutUs = ({ data, locale }: any) => {
                 content={about_us_section.about_us_content}
                 image={about_us_section.image}
             />
+            <Works />
+            <Test />
         </Layout>
     )
 };

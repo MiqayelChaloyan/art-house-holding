@@ -36,7 +36,7 @@ const Header = ({ primaryTitle, secondaryTitle, bgImage }: any) => {
           </h1>
           <ScrollLink
             to='about'
-            offset={0}
+            offset={-40}
             smooth={false}
             duration={500}
             className={styles['btn-animated']}

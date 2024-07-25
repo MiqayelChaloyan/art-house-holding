@@ -4,11 +4,13 @@ import styles from './styles.module.sass';
 interface Props {
     width: string;
     height: string;
-}
+    borderRadius: number;
+};
 
 export default async function GoogleMaps({
     width,
-    height
+    height,
+    borderRadius
 }: Readonly<Props>) {
     return (
         <iframe
@@ -17,8 +19,9 @@ export default async function GoogleMaps({
             width={width}
             height={height}
             className={styles.iframe}
+            style={{ borderRadius }}
             loading='lazy'
             referrerPolicy="no-referrer-when-downgrade"
-       />
+        />
     );
 };

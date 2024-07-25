@@ -192,7 +192,6 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                     </div>
                 </div>
             </div>
-            {/* <div className={styles.line} /> */}
         </div>
     )
 };

@@ -80,7 +80,7 @@ const Footer = ({
                     </div>
                 </div>
                 <div className={styles.google_map}>
-                    <GoogleMaps width='100%' height='100%' />
+                    <GoogleMaps width='100%' height='100%' borderRadius={30}/>
                     <p className={cn(styles.address, Arial.className)}>
                         {t('address.address')}
                     </p>
