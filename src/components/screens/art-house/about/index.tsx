@@ -3,7 +3,7 @@
 import Layout from "@/lib/outlets/art-house/layout";
 import About from "./About";
 import Header from "./Header";
-import Test from "./Test";
+import ReviewsSlider from "./Test";
 import Works from "./Works";
 
 
@@ -22,7 +22,7 @@ const AboutUs = ({ data, locale }: any) => {
                 image={about_us_section.image}
             />
             <Works />
-            <Test />
+            <ReviewsSlider />
         </Layout>
     )
 };

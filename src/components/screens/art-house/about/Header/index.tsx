@@ -39,7 +39,7 @@ const Header = ({ primaryTitle, secondaryTitle, bgImage }: any) => {
             offset={-40}
             smooth={false}
             duration={500}
-            className={styles['btn-animated']}
+            className={cn(styles['scroll-down'])}
           >
             <IoIosArrowDown size={40} color={colors.white} />
           </ScrollLink>
