@@ -1,12 +1,11 @@
 'use client'
 
-import { ImagePath } from '@/types/general';
-// import styles from './styles.module.sass';
 import './styles.css'
 
-
+const A = (i: any) => <h3>{i}</h3>
 
 const Test = ({ content, image }: any) => {
+  
 
   return (
     <section className='sections'>
