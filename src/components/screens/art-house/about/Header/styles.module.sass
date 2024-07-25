@@ -20,7 +20,6 @@
     position: relative
     background-repeat: no-repeat
  
-
 .text-box
     position: absolute
     top: 50%
@@ -28,23 +27,44 @@
     transform: translate(-50%, -50%)
     text-align: center
 
-
 .heading-primary 
     color: #fff
     text-transform: uppercase
     backface-visibility: hidden
     margin-bottom: 30px
 
-
 .heading-primary-main
     display: block
     font-size: 26px
     font-weight: 400
     letter-spacing: 5px
-
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 26px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 25px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 22px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 22px
 
 .heading-primary-sub
     display: block
     font-size: 18px
     font-weight: 700
     letter-spacing: 7.4px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 18px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 18px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 18px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 18px

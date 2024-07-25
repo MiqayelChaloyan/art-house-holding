@@ -7,6 +7,7 @@
     /* @xs */
     @media screen and (max-width: 600px)
         height: auto
+        padding: 10px 0
     /* @2xs */
     @media screen and (max-width: 480px)
         height: auto
@@ -40,10 +41,14 @@
     align-items: flex-start 
     gap: 15px 
     margin-top: 80px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-top: 0
     h2   
         font-size: 40px 
         color: #1e272e 
-        @media(max-width: 768px)
+        /* @sm */
+        @media screen and (max-width: 768px)
             font-size: 30px
 
 .button
@@ -56,6 +61,10 @@
     background: #B21B1B 
     border-radius: 8px 
     user-select: none 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 14px 
+        padding: 10px 20px
 
 .image
     width: 500px
@@ -83,24 +92,24 @@
         height: 600px
     /* @md */
     @media screen and (max-width: 1024px)
-        width: 400px
-        height: 600px
+        width: 350px
+        height: 500px
     /* @sm */
     @media screen and (max-width: 768px)
-        width: 400px
-        height: 600px
+        width: 300px
+        height: 400px
     /* @xs */
     @media screen and (max-width: 600px)
-        width: 350px
-        height: 500px
+        width: 300px
+        height: 400px
     /* @2xs */
     @media screen and (max-width: 480px)
-        width: 350px
-        height: 500px
+        width: 300px
+        height: 400px
     /* @3xs */
     @media screen and (max-width: 360px)
-        width: 350px
-        height: 500px
+        width: 300px
+        height: 400px
 
 .content
     width: 100%

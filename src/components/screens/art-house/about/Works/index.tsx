@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
+import { ArianAMU } from '@/lib/constants/font';
+
 import colors from '@/themes';
 
 import cn from 'classnames';
@@ -93,9 +95,9 @@ const Works = () => {
                             style={{ backgroundImage: `url(${item.imageUrl})` }}
                         >
                             <div className={styles.content}>
-                                <h3 className={styles.name}>{item.name}</h3>
-                                <p className={styles.des}>{item.description}</p>
-                                <button>See More</button>
+                                <h3 className={cn(styles.name, ArianAMU.className)}>{item.name}</h3>
+                                <p className={cn(styles.des, ArianAMU.className)}>{item.description}</p>
+                                <button className={ArianAMU.className}>See More</button>
                             </div>
                         </div>
                     ))}
