@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect } from 'react';
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import React, { useEffect } from 'react';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
-import './styles.css';
+import colors from '@/themes';
+
+import cn from 'classnames';
 
 import styles from './styles.module.sass';
-
 
 const data = [
     {
@@ -31,30 +31,44 @@ const data = [
         imageUrl: 'https://t4.ftcdn.net/jpg/06/89/80/39/360_F_689803910_Ml7A9Xlx49dlA1zPPAFzRlf5EGWaYTzi.jpg'
     },
     {
-        name: 'Regoinal Program',
+        name: 'Regional Program',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!',
         imageUrl: 'https://a-static.besthdwallpaper.com/artistic-landscape-green-mountain-wallpaper-2160x1440-55129_40.jpg'
     }
 ];
 
+
 const Works = () => {
     useEffect(() => {
-        const next = document.querySelector('.next') as HTMLButtonElement | null;
-        const prev = document.querySelector('.prev') as HTMLButtonElement | null;
+        const next = document.getElementById('next') as HTMLButtonElement | null;
+        const prev = document.getElementById('prev') as HTMLButtonElement | null;
+
+        const disableButtonsTemporarily = () => {
+            if (next && prev) {
+                next.disabled = true;
+                prev.disabled = true;
+                setTimeout(() => {
+                    next.disabled = false;
+                    prev.disabled = false;
+                }, 500);
+            }
+        };
 
         const handleNextClick = () => {
             const items = document.querySelectorAll('.item') as NodeListOf<HTMLElement>;
-            const slide = document.querySelector('.slide') as HTMLElement;
+            const slide = document.getElementById('slide') as HTMLElement;
             if (items.length > 0 && slide) {
                 slide.appendChild(items[0]);
+                disableButtonsTemporarily();
             }
         };
 
         const handlePrevClick = () => {
             const items = document.querySelectorAll('.item') as NodeListOf<HTMLElement>;
-            const slide = document.querySelector('.slide') as HTMLElement;
+            const slide = document.getElementById('slide') as HTMLElement;
             if (items.length > 0 && slide) {
                 slide.prepend(items[items.length - 1]);
+                disableButtonsTemporarily();
             }
         };
 
@@ -67,28 +81,36 @@ const Works = () => {
         };
     }, []);
 
+
     return (
-        <section className='section'>
-            <div className='test'>
-                <div className="slide">
+        <section className={styles.slides}>
+            <div className={styles.test}>
+                <div id='slide' className={styles.slide}>
                     {data.map((item, index) => (
-                        <div key={index} className="item" style={{ backgroundImage: `url(${item.imageUrl})` }}>
-                            <div className="content">
-                                <h3 className="name">{item.name}</h3>
-                                <p className="des">{item.description}</p>
+                        <div
+                            key={index}
+                            className={`${styles.item} item`}
+                            style={{ backgroundImage: `url(${item.imageUrl})` }}
+                        >
+                            <div className={styles.content}>
+                                <h3 className={styles.name}>{item.name}</h3>
+                                <p className={styles.des}>{item.description}</p>
                                 <button>See More</button>
                             </div>
                         </div>
                     ))}
                 </div>
-
-                <div className="button">
-                    <button className="prev"><MdKeyboardArrowLeft  size={30} color='white'/></button>
-                    <button className="next"><MdKeyboardArrowRight size={30} color='white'/></button>
+                <div className={styles.button}>
+                    <button id='prev' className={styles.prev}>
+                        <MdKeyboardArrowLeft size={30} color={colors.white} />
+                    </button>
+                    <button id='next' className={styles.next}>
+                        <MdKeyboardArrowRight size={30} color={colors.white} />
+                    </button>
                 </div>
             </div>
         </section>
     );
 };
 
-export default Works;
+export default React.memo(Works);
