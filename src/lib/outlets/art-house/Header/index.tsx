@@ -41,6 +41,13 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
     useEffect(() => {
         const handleScroll = () => {
             setIsSticky(window.scrollY > 0);
+
+            if(window.scrollY === 1655) {
+                setLinkActive('partners')
+            } else {
+                setLinkActive('')
+            }
+
         };
         window.addEventListener('scroll', handleScroll);
         return () => {
@@ -136,6 +143,5 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
 };
 
 export default Header;
-
 
 
