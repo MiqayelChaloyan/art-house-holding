@@ -1,4 +1,4 @@
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import { TEXT } from '../../../sanity/sanity-queries/art-house';
 
 export interface UrlType {
@@ -22,6 +22,24 @@ export type SwiperTypes = {
         modifier: number,
         slideShadows: boolean
     };
+};
+
+export interface SwiperType {
+    effect: 'coverflow';
+    grabCursor: boolean;
+    centeredSlides: boolean;
+    slidesPerView: number;
+    loop: boolean,
+    pagination: {
+        clickable: boolean,
+        el: string,
+    };
+    navigation: {
+        nextEl: string,
+        prevEl: string,
+    },
+    modules: (typeof Navigation | typeof Pagination)[],
+    className: string;
 };
 
 export interface Content {

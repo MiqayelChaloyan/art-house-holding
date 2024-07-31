@@ -46,7 +46,7 @@ const About = ({ content, image }: any) => {
     const toggleReadMore = () => setIsReadMore(!isReadMore);
 
     return (
-        <section className={styles.section} id='about'>
+        <section className={styles.section}>
             <div className={styles.box}>
                 <div className={styles.contentLeft}>
                     <div className={styles.row}>

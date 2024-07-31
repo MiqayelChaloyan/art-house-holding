@@ -1,4 +1,6 @@
+import { ProjectsIcon, UserIcon } from '@sanity/icons';
 import { RuleType } from '../../../ruleType';
+import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
 
 export const aboutUsSchemaArtHouse = {
     name: 'art-house-about-us',
@@ -14,68 +16,84 @@ export const aboutUsSchemaArtHouse = {
         },
         /* Schema */
         {
-            title: 'Main',
-            name: 'main_section',
-            type: 'object',
-            fields: [
+            name: 'our_websites',
+            type: 'array',
+            title: 'Websites',
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(5),
+            description: 'No less than five and no more, only you can modify them.',
+            of: [
                 {
-                    title: 'Heading primary Title',
-                    name: 'primary_title',
+                    name: 'Object',
                     type: 'object',
+                    icon: ProjectsIcon,
+                    validation: (Rule: RuleType) => Rule.required(),
                     fields: [
                         {
-                            title: 'Armenian',
-                            name: 'am',
-                            type: 'string'
+                            title: 'Website Title',
+                            name: 'website_title',
+                            type: 'object',
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
                         },
                         {
-                            title: 'English',
-                            name: 'en',
-                            type: 'string'
+                            title: 'About the website',
+                            name: 'about_website',
+                            type: 'object',
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
                         },
                         {
-                            title: 'Russian',
-                            name: 'ru',
-                            type: 'string'
-                        }
+                            title: 'Website Image',
+                            name: 'website_image',
+                            type: 'image',
+                            options: { hotspot: true },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    title: 'Alternative text',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Website url',
+                            name: 'web_site_url',
+                            type: 'string',
+                        },
                     ]
-                },
-                {
-                    title: 'Secondary primary Title',
-                    name: 'secondary_title',
-                    type: 'object',
-                    fields: [
-                        {
-                            title: 'Armenian',
-                            name: 'am',
-                            type: 'string'
-                        },
-                        {
-                            title: 'English',
-                            name: 'en',
-                            type: 'string'
-                        },
-                        {
-                            title: 'Russian',
-                            name: 'ru',
-                            type: 'string'
-                        }
-                    ]
-                },
-                {
-                    title: 'Background Image',
-                    name: 'background_image',
-                    type: 'image',
-                    options: { hotspot: true },
-                    fields: [
-                        {
-                            name: 'alt',
-                            title: 'Alternative text',
-                            type: 'string'
-                        }
-                    ]
-                },
-            ]
+                }
+            ],
         },
         {
             title: 'AboutUs',
@@ -121,6 +139,83 @@ export const aboutUsSchemaArtHouse = {
                         }
                     ]
                 },
+            ]
+        },
+        {
+            name: 'our_rating',
+            type: 'array',
+            title: 'Our Rating Section',
+            components: { input: ArrayMaxItems },
+            validation: (Rule: RuleType) => Rule.max(10),
+            description: 'No less than two, and no more ten.',
+            of: [
+                {
+                    name: 'Object',
+                    type: 'object',
+                    icon: UserIcon,
+                    fields: [
+                        {
+                            title: 'User Name',
+                            name: 'user_name',
+                            type: 'object',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            name: 'user_image',
+                            title: 'User Image',
+                            type: 'image',
+                            options: { hotspot: true },
+                            fields: [
+
+                                {
+                                    name: 'alt',
+                                    title: 'Alternative text',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'User Feedback',
+                            name: 'user_feedback',
+                            type: 'object',
+                            validation: (Rule: RuleType) => Rule.required(),
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                    ]
+                }
             ]
         }
     ],

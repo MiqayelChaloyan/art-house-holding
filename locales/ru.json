@@ -1,7 +1,6 @@
 {
     "navigation": {
         "about": "О нас",
-        "branches": "МЫ ЗДЕСЬ",
         "courses": "Курсы",
         "partners": "Коллеги",
         "price-list": "Прайс-лист",
@@ -53,7 +52,8 @@
         "view-all": "Посмотреть все",
         "read-more": "Читать далее",
         "register": "Регистрироваться",
-        "register-now": "Зарегистрироваться"
+        "register-now": "Зарегистрироваться",
+        "see-more": "Узнать больше"
     },
     "sections": {
         "partners": "Сотрудники",

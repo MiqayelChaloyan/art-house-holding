@@ -1,0 +1,355 @@
+.item
+    width: 200px
+    height: 300px
+    position: absolute
+    top: 60%
+    transform: translate(0, -50%)
+    border-radius: 20px
+    background-position: center center
+    background-size: cover
+    display: inline-block
+    transition: 0.5s ease, opacity 0.5s ease
+    background-color: #00000094
+    background-blend-mode: multiply
+    will-change: transform, opacity
+    &:nth-child(1)
+        top: 0 
+        left: 0 
+        transform: translate(0, 0) 
+        border-radius: 0 
+        width: 100% 
+        height: 85vh
+    &:nth-child(2)
+        top: 0 
+        left: 0 
+        transform: translate(0, 0) 
+        border-radius: 0 
+        width: 100% 
+        height: 85vh
+    &:nth-child(3) 
+        left: 50% 
+        background-color: transparent 
+    &:nth-child(4) 
+        left: calc(50% + 220px) 
+        background-color: transparent 
+    &:nth-child(5) 
+        left: calc(50% + 440px) 
+        background-color: transparent 
+    &:nth-child(n + 6) 
+        left: calc(50% + 660px) 
+        opacity: 0 
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        &:nth-child(3) 
+            left: 50% 
+        &:nth-child(4) 
+            left: calc(50% + 220px) 
+        &:nth-child(5) 
+            left: calc(50% + 440px) 
+        &:nth-child(n + 6) 
+            left: calc(50% + 660px) 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        &:nth-child(3) 
+            left: 50% 
+        &:nth-child(4) 
+            left: calc(50% + 220px) 
+        &:nth-child(5) 
+            left: calc(50% + 440px) 
+        &:nth-child(n + 6) 
+            left: calc(50% + 660px) 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        &:nth-child(3) 
+            left: 50% 
+        &:nth-child(4) 
+            left: calc(50% + 220px) 
+        &:nth-child(5) 
+            left: calc(50% + 440px) 
+        &:nth-child(n + 6) 
+            left: calc(50% + 660px) 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        &:nth-child(3) 
+            left: 45%
+        &:nth-child(4) 
+            left: calc(45% + 220px) 
+        &:nth-child(5) 
+            left: calc(45% + 440px) 
+        &:nth-child(n + 6) 
+            left: calc(45% + 660px) 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        &:nth-child(3) 
+            left: 50% 
+        &:nth-child(4) 
+            left: calc(50% + 220px) 
+        &:nth-child(5) 
+            display: none
+        &:nth-child(n + 6) 
+            left: calc(50% + 660px) 
+    /* @md */
+    @media screen and (max-width: 1024px)
+        &:nth-child(3) 
+            left: 45% 
+            width: 170px
+            height: 230px
+        &:nth-child(4) 
+            left: calc(45% + 220px) 
+            width: 180px
+            height: 280px
+        &:nth-child(5) 
+            display: none 
+        &:nth-child(n + 6) 
+            left: calc(45% + 660px) 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        &:nth-child(3) 
+            left: 40%
+            width: 170px
+            height: 230px
+        &:nth-child(4) 
+            left: calc(38% + 220px) 
+            width: 180px
+            height: 280px
+        &:nth-child(5) 
+            display: none 
+        &:nth-child(n + 6) 
+            left: calc(40% + 660px) 
+    @media screen and (max-width: 680px)
+        &:nth-child(3) 
+            left: 55% 
+            width: 180px
+            height: 250px
+        &:nth-child(4) 
+            display: none
+        &:nth-child(5) 
+            display: none 
+        &:nth-child(n + 6) 
+            left: calc(40% + 660px) 
+    /* @xs */
+    @media screen and (max-width: 600px)
+        &:nth-child(3) 
+            left: 57%
+            width: 170px
+            height: 230px
+        &:nth-child(4) 
+            left: calc(50% + 220px) 
+            width: 180px
+            height: 280px
+        &:nth-child(5) 
+            display: none 
+        &:nth-child(n + 6) 
+            left: calc(50% + 660px) 
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        &:nth-child(3) 
+            left: 52% 
+            top: 80%
+            width: 170px
+            height: 230px
+        &:nth-child(4) 
+            left: calc(50% + 220px) 
+            width: 180px
+            height: 280px
+        &:nth-child(5) 
+            display: none 
+        &:nth-child(n + 6) 
+            left: calc(50% + 660px) 
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        &:nth-child(3) 
+            left: 48%
+            top: 70%                
+            width: 150px
+            height: 200px
+        &:nth-child(4) 
+            left: calc(50% + 220px) 
+            width: 180px
+            height: 280px
+        &:nth-child(5) 
+            display: none 
+        &:nth-child(n + 6) 
+            left: calc(50% + 660px) 
+                
+.item
+    &:nth-child(2) 
+        .content
+            display: block
+
+
+.content
+    position: absolute
+    top: 50%
+    right: calc(40% + 660px) 
+    width: 300px
+    text-align: left
+    color: #eee
+    transform: translate(0, -50%)
+    display: none
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        right: calc(40% + 355px) 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        right: calc(40% + 355px) 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        right: calc(50% + 355px) 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        right: calc(50% + 280px) 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        right: calc(50% + 200px) 
+    /* @md */
+    @media screen and (max-width: 1024px)
+        right: calc(50% + 140px) 
+        width: 233px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        right: 0
+        left: 40px
+        width: 233px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        right: 0
+        left: 40px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        right: 0
+        left: 40px
+        top: 25%
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        right: 0
+        left: 40px  
+        top: 25%
+
+
+.name 
+    font-size: 40px
+    text-transform: uppercase
+    font-weight: bold
+    opacity: 0
+    animation: animate 1s ease-in-out 1 forwards
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 40px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 40px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 40px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 40px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 40px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 27px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 30px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 30px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 30px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 25px
+
+.des 
+    margin-top: 10px
+    margin-bottom: 20px
+    opacity: 0
+    font-size: 20px
+    animation: animate 1s ease-in-out 0.3s 1 forwards
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 20px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 20px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 20px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 20px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 20px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 14px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 14px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 14px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 14px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 12px
+
+.navgate_button
+    padding: 10px 20px
+    border: none
+    cursor: pointer
+    background-color: #B21B1B 
+    color: #fff
+    opacity: 0
+    font-size: 20px
+    border-radius: 8px 
+    animation: animate 1s ease-in-out 0.4s 1 forwards
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        font-size: 20px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        font-size: 20px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        font-size: 20px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        font-size: 20px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 20px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 14px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 14px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 14px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        font-size: 14px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        font-size: 12px
+
+
+
+@keyframes animate
+    from 
+        opacity: 0
+        transform: translate(0, 100px)
+        filter: blur(33px)
+    to 
+        opacity: 1
+        transform: translate(0)
+        filter: blur(0)

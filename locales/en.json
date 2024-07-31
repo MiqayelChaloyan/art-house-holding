@@ -1,7 +1,6 @@
 {
     "navigation": {
         "about": "About us",
-        "branches": "WE ARE HERE",
         "courses": "Courses",
         "partners": "Partners",
         "price-list": "Price List",
@@ -53,7 +52,8 @@
         "view-all": "View all",
         "read-more": "Read more",
         "register": "Register",
-        "register-now": "Register Now"
+        "register-now": "Register Now",
+        "see-more": "See More"
     },
     "sections": {
         "partners": "Co-workers",

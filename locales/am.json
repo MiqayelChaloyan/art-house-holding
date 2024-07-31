@@ -1,7 +1,6 @@
 {
     "navigation": {
         "about": "Մեր մասին",
-        "branches": "ՄԵՆՔ ԱՅՍՏԵՂ ԵՆՔ",
         "partners": "Գործընկերներ",
         "price-list": "Գնացուցակ",
         "courses": "Դասընթացներ",
@@ -53,7 +52,8 @@
         "view-all": "Դիտել բոլորը",
         "read-more": "Կարդալ ավելին",
         "register": "Գրանցվել",
-        "register-now": "Գրանցվիր հիմա"
+        "register-now": "Գրանցվիր հիմա",
+        "see-more": "Տեսնել ավելին"
     },
     "sections": {
         "partners": "Գործընկերներ",

@@ -13,6 +13,10 @@ import { generateMetadataDynamic } from "@/lib/utils/default-metadata";
 import { client } from "../../../../../sanity/client";
 import { notFound } from "next/navigation";
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 interface Props {
     params: {
