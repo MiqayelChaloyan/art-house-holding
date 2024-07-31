@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Link as ScrollLink, scroller } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
 import LocalSwitcher from '@/components/components/local-switcher';
+
 import Logo from '@/lib/icons/art-house/Logo';
 import { Pages } from '@/lib/constants/pages';
 import { ArianAMU } from '@/lib/constants/font';
@@ -32,7 +34,6 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
     const [isSticky, setIsSticky] = useState<boolean>(false);
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
     const [linkActive, setLinkActive] = useState<string>('');
-    // const [scrollToSection, setScrollToSection] = useState<string | null>(null);
     const t = useTranslations('navigation');
     const pathname = usePathname();
     const router = useRouter();
@@ -47,24 +48,9 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
         };
     }, []);
 
-    // useEffect(() => {
-    //     if (scrollToSection) {
-    // scroller.scrollTo(scrollToSection, {
-    //     duration: 800,
-    //     delay: 0,
-    //     smooth: 'easeInOutQuart'
-    // });
-    //         setScrollToSection(null);
-    //     }
-    // }, [pathname, scrollToSection]);
+    const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
-
-
-    const toggleMenuClick = () => {
-        setIsOpenMenu(!isOpenMenu);
-    };
-
-    const handleRouteChangeComplete = (scrollTo: string) => {    
+    const handleRouteChangeComplete = (scrollTo: string) => {
         const observer = new MutationObserver((_, obs) => {
             const element = document.getElementById(scrollTo);
             if (element) {
@@ -73,23 +59,24 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
                 obs.disconnect();
             }
         });
-    
+
         observer.observe(document, { childList: true, subtree: true });
     };
-    
-    const handleActiveLink = (newUrl: string) => {
-        setLinkActive(newUrl);
+
+    const handleActiveLink = (newPath: string) => {
+        setLinkActive(newPath);
         setIsOpenMenu(false);
-    
+
         if (pathname.includes('/about')) {
             router.push('/');
-    
+
             setTimeout(() => {
-                handleRouteChangeComplete(newUrl);
+                handleRouteChangeComplete(newPath);
             }, 500);
         }
     };
-    
+
+
     return (
         <header className={cn(
             styles.box,
@@ -114,8 +101,8 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
                     <div className={styles.navbar}>
                         <Link
                             href={`/${locale}/${Pages.HOME_ABOUT}`}
-                            className={cn(styles.link, linkActive === Pages.HOME_ABOUT && styles.linkActive, ArianAMU.className)}
-                            onClick={() => handleActiveLink('about')}
+                            className={cn(styles.link, pathname.includes(Pages.HOME_ABOUT) && styles.linkActive, ArianAMU.className)}
+                            onClick={() => handleActiveLink(Pages.HOME_ABOUT)}
                         >
                             {t('about')}
                         </Link>

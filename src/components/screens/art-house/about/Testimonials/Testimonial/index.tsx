@@ -17,7 +17,7 @@ const Testimonial = ({ review }: any) => {
     const path: ImagePath = urlForImage(review.user_image);
 
     return (
-        <div className={cn(styles.slide, 'swiper-slide')}>
+        <div className={cn(styles.slide)}>
             <Image
                 priority
                 src={path?.src}
