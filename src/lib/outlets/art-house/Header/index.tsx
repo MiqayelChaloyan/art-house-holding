@@ -64,31 +64,32 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
         setIsOpenMenu(!isOpenMenu);
     };
 
-
-
-    const handleRouteChangeComplete = (scrollTo: any) => {
-        const element = document.getElementById(scrollTo);
-        if (element) {
-            const topPosition = element.offsetTop;
-            window.scrollTo({ top: topPosition, behavior: 'smooth' });
-        }
+    const handleRouteChangeComplete = (scrollTo: string) => {    
+        const observer = new MutationObserver((_, obs) => {
+            const element = document.getElementById(scrollTo);
+            if (element) {
+                const topPosition = element.offsetTop;
+                window.scrollTo({ top: topPosition, behavior: 'smooth' });
+                obs.disconnect();
+            }
+        });
+    
+        observer.observe(document, { childList: true, subtree: true });
     };
-
-    const handleActiveLink = (activeLink: string) => {
-        setLinkActive(activeLink);
+    
+    const handleActiveLink = (newUrl: string) => {
+        setLinkActive(newUrl);
         setIsOpenMenu(false);
-
+    
         if (pathname.includes('/about')) {
             router.push('/');
-
+    
             setTimeout(() => {
-                handleRouteChangeComplete(activeLink)
-            }, 500)
+                handleRouteChangeComplete(newUrl);
+            }, 500);
         }
     };
-
-
-
+    
     return (
         <header className={cn(
             styles.box,
