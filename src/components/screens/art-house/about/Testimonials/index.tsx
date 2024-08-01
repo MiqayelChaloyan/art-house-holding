@@ -14,8 +14,9 @@ import { ArianAMU } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
-import styles from './styles.module.sass';
+import './styles.css';
 
+import styles from './styles.module.sass';
 
 
 const Testimonials = ({ our_rating }: any) => {

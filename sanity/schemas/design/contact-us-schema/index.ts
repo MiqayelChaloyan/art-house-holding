@@ -34,8 +34,8 @@ const contactUsSchemaDesign = {
             name: 'social_links',
             type: 'array',
             title: 'Social Links',
-            description: 'You can only add these Facebook, X(Twitter), Instagram, Gmail, LinkedIn.',
-            validation: (Rule: RuleType) => Rule.max(5),
+            description: 'You can only add these Facebook, Instagram, Gmail, Linkedin, X, Tiktok, Telegram, YouTube, Pinterest, WhatsApp, Viber.',
+            validation: (Rule: RuleType) => Rule.max(11).unique(),
             components: { input: ArrayMaxItems },
             of: [
                 {

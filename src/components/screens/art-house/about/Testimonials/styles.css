@@ -1,7 +1,9 @@
 
 .swiper-pagination-bullet {
-    background-color: rgba(0, 0, 0, 0.8)
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 0 !important;
 }
 .swiper-pagination-bullet-active {
     background-color: #B21B1B;
+    z-index: 0 !important;
 }

@@ -4,10 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { FaFacebookF, FaTwitter } from 'react-icons/fa';
-import { FaInstagram } from 'react-icons/fa6';
+import { FaFacebookF, FaTwitter, FaPinterestP, FaTiktok } from 'react-icons/fa';
+import { FaInstagram, FaViber } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { GrLinkedinOption } from 'react-icons/gr';
+import { PiTelegramLogoLight, PiWhatsappLogo } from "react-icons/pi";
+import { AiOutlineYoutube } from "react-icons/ai";
 
 import Container from '@/components/components/container';
 import { Arial, ArianAMU } from '@/lib/constants/font';
@@ -34,6 +36,12 @@ const socialNetworkComponents: socialNetwork = {
     instagram: FaInstagram,
     gmail: IoMailSharp,
     linkedin: GrLinkedinOption,
+    pinterest: FaPinterestP,
+    telegram: PiTelegramLogoLight,
+    tiktok: FaTiktok,
+    viber: FaViber,
+    whatsapp: PiWhatsappLogo,
+    youtube: AiOutlineYoutube,
 };
 
 const Footer = ({ socialData }: Readonly<Props>) => {
