@@ -7,9 +7,6 @@ import { StoreProvider } from '@/store/StoreProvider';
 import { Inter } from '@/lib/constants/font';
 
 import '@/styles/globals.sass';
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
-import { SanityClient } from 'sanity';
-
 
 
 interface RootLayoutProps {

@@ -43,6 +43,7 @@ export const querySocial = `
 *[_type == "design-contact-us"] {
     name,
     email,
+    "address": address[$language],
     phone_numbers,
     social_links
 }`;

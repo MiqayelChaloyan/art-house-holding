@@ -1,9 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Link as ScrollLink } from 'react-scroll';
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 
 import Container from '@/components/components/container';
 
@@ -20,6 +22,7 @@ import Viber from '@/lib/icons/art-house/Viber';
 import Gmail from '@/lib/icons/art-house/Gmail';
 import Linkedin from '@/lib/icons/art-house/Linkedin';
 
+import { Pages } from '@/lib/constants/pages';
 import { ArianAMU } from '@/lib/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
@@ -34,7 +37,10 @@ import styles from './styles.module.sass';
 
 
 interface Props {
+    locale: string;
     socialData?: HOSTS;
+    linkActive: string,
+    handleChangeActiveLink: (link: string) => void;
 };
 
 const socialNetworkComponents: socialNetwork = {
@@ -51,10 +57,12 @@ const socialNetworkComponents: socialNetwork = {
     viber: Viber
 };
 
-const Footer = ({ socialData }: Readonly<Props>) => {
+const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Readonly<Props>) => {
     const windowSize = useWindowSize();
     const currentYear = new Date().getFullYear();
     const t = useTranslations();
+    const pathname = usePathname();
+    const router = useRouter();
 
     const phoneNumbers = socialData?.phone_numbers?.map((number: string, index: number) => {
         const phoneNumber = index < socialData.phone_numbers.length - 1 ? `${number}, ` : number;
@@ -85,38 +93,70 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                 target='_blank'
             >
                 <SocialIcon
-                    width={windowSize.width <= 1024 ? 20 : 40}
-                    height={windowSize.width <= 1024 ? 20 : 40}
+                    width={windowSize.width <= 1280 ? 20 : 40}
+                    height={windowSize.width <= 1280 ? 20 : 40}
                     fill=''
                 />
             </Link>
         )
     });
 
+    const handleRouteChangeComplete = (scrollTo: string) => {
+        const observer = new MutationObserver((_, obs) => {
+            const element = document.getElementById(scrollTo);
+            if (element) {
+                const topPosition = element.offsetTop;
+                window.scrollTo({ top: topPosition, behavior: 'smooth' });
+                obs.disconnect();
+            }
+        });
+
+        observer.observe(document, { childList: true, subtree: true });
+    };
+
+    const handleActiveLink = (newPath: string) => {
+        handleChangeActiveLink(newPath);
+
+        if (pathname.includes('/about')) {
+            router.push('/');
+
+            setTimeout(() => {
+                handleRouteChangeComplete(newPath);
+            }, 500);
+        }
+    };
+
+
     return (
         <footer id='footer' className={styles.footer}>
             <Container className='container'>
                 <div className={styles.section}>
                     <div className={styles.box}>
-                        <Link href='#about-us' aria-label='About us' className={styles.icon}>
-                            <p className={cn(styles.info_web, ArianAMU.className)}>
+                        <Link
+                            href={`/${locale}/${Pages.HOME_ABOUT}`}
+                            aria-label='About us'
+                            className={styles.icon}
+                            onClick={() => handleActiveLink(Pages.HOME_ABOUT)}
+                        >
+                            <p className={cn(styles.info_web,  pathname.includes(Pages.HOME_ABOUT) && styles.linkActive, ArianAMU.className)}>
                                 {t('footer.about-us')}
                             </p>
                         </Link>
-                        <Link href='#branches' aria-label='Branches' className={styles.icon}>
-                            <p className={cn(styles.info_web, ArianAMU.className)}>
-                                {t('footer.branches')}
-                            </p>
-                        </Link>
-                        <Link href='#partners' aria-label='Partners' className={styles.icon}>
-                            <p className={cn(styles.info_web, ArianAMU.className)}>
+                        <ScrollLink
+                            to='partners'
+                            smooth={false}
+                            duration={500}
+                            className={styles.icon}
+                            onClick={() => handleActiveLink('partners')}
+                        >
+                            <p className={cn(styles.info_web,  linkActive === 'partners' && styles.linkActive, ArianAMU.className)}>
                                 {t('footer.partners')}
                             </p>
-                        </Link>
+                        </ScrollLink>
                     </div>
                     <div className={styles.box}>
                         <h2 className={cn(styles.addres, ArianAMU.className)}>
-                            {t('address.street')}
+                            {socialData?.address || t('address.address')}
                         </h2>
                         <div className={styles.phone_numbers}>
                             {phoneNumbers}

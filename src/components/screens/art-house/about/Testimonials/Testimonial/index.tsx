@@ -18,14 +18,16 @@ const Testimonial = ({ review }: any) => {
 
     return (
         <div className={cn(styles.slide)}>
-            <Image
-                priority
-                src={path?.src}
-                height={500}
-                width={500}
-                alt={review.user_image.alt}
-                className={styles.image}
-            />
+            <div className={styles.box}>
+                <Image
+                    priority
+                    src={path?.src}
+                    height={500}
+                    width={500}
+                    alt={review.user_image.alt}
+                    className={styles.image}
+                />
+            </div>
             <p className={ArianAMU.className}>{review.user_feedback}</p>
             <div className={styles.details}>
                 <span className={cn(styles.name, ArianAMU.className)}>

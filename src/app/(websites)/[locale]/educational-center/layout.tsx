@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 
 import { type Metadata } from 'next';
 
+// import {MapProvider} from "@/providers/map-provider";
+
 import Header from '@/lib/outlets/educational-center/Header';
 import BottomMenu from '@/lib/outlets/educational-center/BottomMenu';
 import RightMenu from '@/lib/outlets/educational-center/RightMenu';
@@ -53,7 +55,7 @@ const localeStrings: {
 async function getResources(locale: string) {
     const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
-    const socialPromise = await client.fetch(querySocial, { language: 'en' }, { next: { revalidate: 100 } });
+    const socialPromise = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
     const lessonsPromise = await client.fetch(lessonsQuery, { language: locale }, { next: { revalidate: 100 } });
     const lessonsAmPromise = await client.fetch(lessonsQuery, { language: 'am' }, { next: { revalidate: 100 } });
 

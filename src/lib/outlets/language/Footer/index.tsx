@@ -93,7 +93,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                 <div>
                     <div className={styles.address}>
                         <span className={Arial.className}>
-                            {t('street')}
+                            {socialData?.address || t('address')}
                         </span>
                         <Link href={tel} aria-label={socialData?.phone_number} className={styles.icon}>
                             <p className={cn(styles.phone, Arial.className)}>{socialData?.phone_number}</p>

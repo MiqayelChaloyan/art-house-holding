@@ -133,6 +133,7 @@ export interface Social_Links {
 
 export interface HOSTS {
     name: string,
+    address: string,
     phone_number: string,
     email: string,
     social_links: Social_Links[],

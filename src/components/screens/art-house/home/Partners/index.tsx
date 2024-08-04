@@ -1,31 +1,26 @@
 'use client'
 
-import React, { useState } from 'react';
-import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
+import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
 import Slider from 'react-slick';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import Partner from '@/lib/ui/parnter';
+import Partner from './Partner';
+
 import { ArianAMU } from '@/lib/constants/font';
+
+import ArrowLeft from '@/lib/icons/language/ArrowLeft';
+import ArrowRight from '@/lib/icons/language/ArrowRight';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
 
 import cn from 'classnames';
-
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import styles from './styles.module.sass';
 
@@ -34,82 +29,91 @@ interface Props {
     partners: PARTNER[];
 };
 
-interface SampleNextArrowProps { onClick: () => void };
-interface SamplePrevArrowProps { onClick: () => void };
-
-const SampleNextArrow = ({ onClick }: SampleNextArrowProps | any) => (
+const SampleNextArrow = ({ onClick, fill }: any) => (
     <div className={cn(styles.arrow, styles.arrow_right)} onClick={onClick}>
-        <SlArrowRight />
+        <ArrowRight width='18' height='50' fill={fill} />
     </div>
 );
 
-const SamplePrevArrow = ({ onClick }: SamplePrevArrowProps | any) => (
+const SamplePrevArrow = ({ onClick, fill }: any) => (
     <div className={cn(styles.arrow, styles.arrow_left)} onClick={onClick}>
-        <SlArrowLeft />
+        <ArrowLeft width='18' height='50' fill={fill} />
     </div>
 );
 
 const Partners = ({ partners }: Readonly<Props>) => {
-    const [slideIndex, setSlideIndex] = useState<number>(0);
-    const windowSize = useWindowSize();
     const t = useTranslations('navigation');
+    const windowSize = useWindowSize();
 
-    const params = {
-        slidesPerView: windowSize.width <= 1280 ? 5 : 9,
-        spaceBetween: 90,
-        freeMode: true,
-        pagination: {
-            clickable: true,
-        },
-        modules: [FreeMode, Pagination, Autoplay],
-        className: styles.swiper,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false
-        },
-    };
+    const slidesItems: JSX.Element[] = partners?.map((partner: PARTNER) => (
+        <Partner
+            key={partner._id}
+            _id={partner._id}
+            company_name={partner.company_name}
+            cooperation={partner.cooperation}
+            implemented_projects={partner.implemented_projects}
+            logo={partner.logo}
+        />
+    ));
 
     const settings = {
-        slidesToShow: 3,
+        slidesToShow: 7,
         slidesToScroll: 1,
         infinite: true,
         speed: 500,
-        autoplay: true,
-        autoplaySpeed: 2000,
+        autoplay: false,
         dots: false,
-        beforeChange: (_: unknown, next: number) => setSlideIndex(next),
-        centerMode: true,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#B21B1B' : '#fff'} />,
+        prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#B21B1B' : '#fff'} />,
         cssEase: 'ease-out',
+        centerMode: true,
+        centerPadding: "0",
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    dots: false,
+                    centerPadding: "5px",
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    dots: false,
+                    centerPadding: "5px",
+                }
+            }
+        ]
     };
-
-    if(!partners.length) return null
 
     return (
         <section id='partners' className={styles.section}>
             <h2 className={cn(styles.title, ArianAMU.className)}>
                 {t('partners')}
             </h2>
-            <div className={styles.desktop}>
-                <Swiper {...params}>
-                    {partners?.map((partner: PARTNER) =>
-                        <SwiperSlide key={partner._id}>
-                            <Partner partner={partner} />
-                        </SwiperSlide>
-                    )}
-                </Swiper>
-            </div>
-            <div className={styles.mobile}>
+            <div className={styles.slider}>
                 <Slider {...settings}>
-                    {partners?.map((partner: PARTNER, index: number) => (
-                        <div
-                            key={index}
-                            className={index === slideIndex ? styles.slide_active  : styles.slide}
-                        >
-                            <Partner partner={partner} />
-                        </div>
-                    ))}
+                    {slidesItems}
                 </Slider>
             </div>
         </section>
@@ -117,3 +121,5 @@ const Partners = ({ partners }: Readonly<Props>) => {
 };
 
 export default React.memo(Partners);
+
+

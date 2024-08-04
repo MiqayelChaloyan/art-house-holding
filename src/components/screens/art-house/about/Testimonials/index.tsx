@@ -14,8 +14,6 @@ import { ArianAMU } from '@/lib/constants/font';
 
 import cn from 'classnames';
 
-import './styles.css';
-
 import styles from './styles.module.sass';
 
 

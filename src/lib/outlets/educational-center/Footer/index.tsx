@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { useLocale, useTranslations } from 'next-intl';
 
-import GoogleMaps from '@/components/components/google-map';
+import GoogleMap from '@/components/components/map';
 import FormAppointment from '@/components/components/form-educational';
 
 import Logo from '@/lib/icons/educational-center/Logo';
@@ -15,7 +15,6 @@ import { Arial } from '@/lib/constants/font';
 
 import { COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
 
-// import { MapProvider } from '@/lib/providers';
 import colors from '@/themes';
 
 import cn from 'classnames';
@@ -51,18 +50,16 @@ const Footer = ({
 
     const links = matrix?.map((row: any, rowIndex: string) => (
         <div key={rowIndex} className={styles.row}>
-            {
-                row.map((course: any) => (
-                    <Link
-                        key={course.slug}
-                        href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`}
-                        aria-label={course.course_name}
-                        className={styles.link}
-                    >
-                        <p className={cn(styles.copyright, Arial.className)}>{course.course_name}</p>
-                    </Link>
-                ))
-            }
+            {row.map((course: any) => (
+                <Link
+                    key={course.slug}
+                    href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`}
+                    aria-label={course.course_name}
+                    className={styles.link}
+                >
+                    <p className={cn(styles.copyright, Arial.className)}>{course.course_name}</p>
+                </Link>
+            ))}
         </div>
     ));
 
@@ -80,9 +77,13 @@ const Footer = ({
                     </div>
                 </div>
                 <div className={styles.google_map}>
-                    <GoogleMaps width='100%' height='100%' borderRadius={30}/>
+                    <GoogleMap
+                        width='100%'
+                        height='100%'
+                        borderRadius={30}
+                    />
                     <p className={cn(styles.address, Arial.className)}>
-                        {t('address.address')}
+                        {t('texts.address')}: {socialData?.address || t('address.address')}
                     </p>
                 </div>
                 <div className={styles.links}>
@@ -126,7 +127,7 @@ const Footer = ({
                             </p>
                         </Link>
                         <p className={cn(styles.info_web, Arial.className)}>
-                            {t('address.street')}
+                            {t('texts.address')}: {socialData?.address || t('address.address')}
                         </p>
                     </div>
                 </div>

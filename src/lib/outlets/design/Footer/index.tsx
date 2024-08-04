@@ -62,7 +62,6 @@ const Footer = ({ socialData }: Readonly<Props>) => {
         )
     });
 
-
     const hosts = socialData?.social_links.map((host: Social_Links) => {
         const socialName = host?.social_name.toLowerCase();
         const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
@@ -78,7 +77,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                 target='_blank'
             >
                 <SocialIcon
-                    size={windowSize.width <= 1024 ? 20 : 30}
+                    size={windowSize.width <= 1024 ? 15 : 30}
                     fill='#F9CC48'
                 />
             </Link>
@@ -101,7 +100,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                     </div>
                     <div>
                         <div className={styles.address}>
-                            <span className={Arial.className}>{t('street')}</span>
+                            <span className={Arial.className}>{socialData?.address || t('address')}</span>
                             <div className={styles.phone_numbers}>
                                 {phoneNumbers}
                             </div>

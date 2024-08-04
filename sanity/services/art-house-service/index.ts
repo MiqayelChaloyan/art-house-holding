@@ -1,5 +1,5 @@
-export const query = 
-`*[_type == "art-house-home"] {
+export const query = `
+*[_type == "art-house-home"] {
     "our_websites": our_websites[] {
         "_key": _key,
         "company_name": company_name,
@@ -25,6 +25,7 @@ export const querySiteMeta = `
 export const querySocial = `
 *[_type == "art-house-contact-us"] {
     name,
+    "address": address[$language],
     phone_numbers,
     social_links
 }`;

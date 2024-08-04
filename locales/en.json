@@ -15,13 +15,11 @@
     },
     "footer": {
         "about-us": "About us",
-        "branches": "Branches",
         "programs": "Programs",
         "partners": "Partners"
     },
     "address": {
-        "address": "Address: Yerevan, Abovyan 33",
-        "street": "Armenia, Yerevan, Abovyan 33"
+        "address": "Armenia, Yerevan, Abovyan 33"
     },
     "texts": {
         "welcome": "Welcome To",
@@ -38,7 +36,8 @@
         "quiz-result": "Quiz result",
         "select-language": "Select Language",
         "send-message-success": "Your email was sent successfully",
-        "send-message-failure": "Something went wrong, please try again"
+        "send-message-failure": "Something went wrong, please try again",
+        "address": "Address"
     },
     "buttons": {
         "contact-us": "Contact Us",

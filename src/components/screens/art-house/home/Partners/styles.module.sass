@@ -1,6 +1,10 @@
 .section
     margin-bottom: 50px
     width: 100%
+    height: auto
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-bottom: 70px
 
 .title
     text-align: center
@@ -13,69 +17,153 @@
     @media screen and ( max-width: 767px )
         font-size: 35px
         margin-bottom: 0
-
-.desktop
-    display: block
-    transition: .2s
-    @media screen and ( max-width: 768px )
-        display: none
-
-.mobile
-    display: none
-    @media screen and ( max-width: 768px )
-        display: block
-        width: 100%
-        margin: 0 auto
-        height: 213px
-
-.swiper
-    --swiper-pagination-color: #C62020
-    --swiper-pagination-bullet-inactive-color: #D9D9D9
-    --swiper-pagination-bullet-inactive-opacity: 1
-    --swiper-pagination-bullet-size: 10px
-
-.mySwiper
-    --swiper-pagination-color: #C62020
-    --swiper-pagination-bullet-inactive-color: #D9D9D9
-    --swiper-pagination-bullet-inactive-opacity: 1
-    --swiper-pagination-bullet-size: 10px
-
+    
+/* Slider Styles*/
 .slider
-    width: 100%
-    height: 450px
-
-.slide
-    transform: scale(.4)
-    transition: .5s
-    filter: blur(5px)
-    z-index: 1
-    position: relative
-
-.slide_active
-    filter: blur(0)
-    opacity: 1
-    transition: .5s
-    transform: scale(1)
-    z-index: 10
-    position: relative
+    width: 90%
+    margin: 0 auto
 
 .arrow
     display: flex
     position: absolute
-    top: 100px
+    top: 60px
     font-size: 20px
-    padding: 5px 10px
-    z-index: 5
+    padding: 5px 15px
+    z-index: 10
     cursor: pointer
-    background-color: #B21B1B
-    color: white
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+        top: 60px
+    /* xl */
+    @media screen and ( max-width: 1280px )
+        top: 60px
+    /* lg */
+    @media screen and ( max-width: 1024px )
+        top: 140px
+    /* md */
+    @media screen and ( max-width: 768px )
+        top: 140px
+    /* sm */
+    @media screen and ( max-width: 640px )
+        top: 140px
+    /* xs */
+    @media screen and ( max-width: 475px )
+        top: 140px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        top: 140px
+    svg
+        /* xl */
+        @media screen and ( max-width: 1280px )
+            width: 25px
+            height: 25px
+        /* sm */
+        @media screen and ( max-width: 640px )
+            width: 17px
+            height: 17px
 
 .arrow_right
-    right: 10px
+    right: -90px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        right: -90px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        right: -90px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        right: -80px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        right: -30px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        right: -30px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        right: 0
+        background-color: #B21B1B
+        width: 50px
+        height: 38px
+        border-radius: 10px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        right: 0
+        width: 50px
+        height: 38px
+        border-radius: 10px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        right: 0
+        width: 50px
+        height: 30px
+        border-radius: 10px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        right: 0
+        width: 40px
+        height: 30px
+        border-radius: 10px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        right: 0
+        width: 40px
+        height: 30px
+        border-radius: 10px
 
 .arrow_left
-    left: 10px
-
+    left: -100px
+    /* @4xl */
+    @media screen and (max-width: 2560px)
+        left: -100px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        left: -100px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        left: -100px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        left: -50px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        left: -60px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        left: auto
+        right: 80px
+        background-color: #B21B1B
+        width: 50px
+        height: 38px
+        border-radius: 10px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        left: auto
+        right: 80px
+        width: 50px
+        height: 38px
+        border-radius: 10px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        left: auto
+        right: 70px
+        width: 50px
+        height: 30px
+        border-radius: 10px
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        left: auto
+        right: 70px
+        width: 40px
+        height: 30px
+        border-radius: 10px
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        left: auto
+        right: 70px
+        width: 40px
+        height: 30px
+        border-radius: 10px
 
 
 

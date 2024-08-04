@@ -1,13 +1,12 @@
 import styles from './styles.module.sass';
 
-
 interface Props {
     width: string;
     height: string;
     borderRadius: number;
 };
 
-export default async function GoogleMaps({
+export default async function GoogleMap({
     width,
     height,
     borderRadius

@@ -194,9 +194,10 @@ export interface Social_Links {
 };
 
 export interface HOSTS {
-    name: string;
-    phone_number: string;
-    social_links: Social_Links[];
+    name: string,
+    address: string,
+    phone_number: string,
+    social_links: Social_Links[],
 };
 
 export interface RootProps {

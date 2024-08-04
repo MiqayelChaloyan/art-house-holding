@@ -23,14 +23,16 @@ const Layout = ({
     headerPosition,
     locale
 }: Readonly<Props>) => {
+    const [linkActive, setLinkActive] = useState<string>('');
     const [socialData, setSocialData] = useState<HOSTS | any>(null);
+    const typePosition = headerPosition === 'fixed' ? 'fixed' : 'sticky';
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
                 setSocialData(data[0]);
-            } catch (error) {
+            } catch (_) {
                 notFound();
             }
         };
@@ -38,16 +40,25 @@ const Layout = ({
         fetchData();
     }, []);
 
+    const handleChangeActiveLink = (link: string) => setLinkActive(link);
+
     return (
         <>
             <Header
                 locale={locale}
-                typePosition={`${headerPosition === 'fixed' ? 'fixed' : 'sticky'}`}
+                typePosition={typePosition}
+                linkActive={linkActive}
+                handleChangeActiveLink={handleChangeActiveLink}
             />
             <main>
                 {children}
             </main>
-            <Footer socialData={socialData} />
+            <Footer
+                locale={locale}
+                socialData={socialData}
+                linkActive={linkActive}
+                handleChangeActiveLink={handleChangeActiveLink}
+            />
         </>
     );
 }

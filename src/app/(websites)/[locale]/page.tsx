@@ -18,6 +18,8 @@ import { query, querySiteMeta } from '../../../../sanity/services/art-house-serv
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
 
+const Home = dynamic(() => import('@/components/screens/art-house/home'));
+
 
 interface RootProps {
   params: {
@@ -25,12 +27,6 @@ interface RootProps {
   }
 };
 
-
-import Home from '@/components/screens/art-house/home'
-// const Home = dynamic(() =>
-//   import('@/components/screens/art-house/home'),
-//   { ssr: false }
-// );
 
 async function getResources(locale: string) {
   const dataPromise = client.fetch(query, { language: locale }, { next: { revalidate: 100 } });

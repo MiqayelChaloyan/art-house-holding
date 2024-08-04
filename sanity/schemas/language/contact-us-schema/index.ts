@@ -16,6 +16,29 @@ const contactUsSchemaLanguage = {
             description: 'Do not change the name.'
         },
         {
+            title: 'Country, Region/City, Street',
+            name: 'address',
+            type: 'object',
+            validation: (Rule: RuleType) => Rule.required(),
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string'
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string'
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string'
+                }
+            ]
+        },
+        {
             name: 'phone_number',
             title: 'Phone Number',
             type: 'string',

@@ -50,7 +50,7 @@ async function getResources(locale: string) {
     const coursesPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
     const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
     const languagesPromise = await client.fetch(queryFilterCourses, { language: 'am' }, { next: { revalidate: 100 } });
-    const socialPromise = await client.fetch(querySocial, { language: 'en' }, { next: { revalidate: 100 } });
+    const socialPromise = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
 
     return Promise.all([coursesPromise, branchesPromise, languagesPromise, socialPromise])
         .then(([courses, branches, languages, social]) => {

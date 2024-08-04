@@ -126,6 +126,7 @@ export interface Social_Links {
 
 export interface HOSTS {
     name: string,
+    address: string,
     email: string,
     phone_numbers: string[],
     social_links: Social_Links[],

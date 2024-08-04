@@ -23,6 +23,8 @@ import styles from './styles.module.sass';
 interface IHeaderProps {
     locale: string;
     typePosition: string;
+    linkActive: string;
+    handleChangeActiveLink: (link: string) => void;
 };
 
 const scrollLinks = [
@@ -30,10 +32,9 @@ const scrollLinks = [
     { to: 'partners', label: 'partners' }
 ];
 
-const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
+const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Readonly<IHeaderProps>) => {
     const [isSticky, setIsSticky] = useState<boolean>(false);
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
-    const [linkActive, setLinkActive] = useState<string>('');
     const t = useTranslations('navigation');
     const pathname = usePathname();
     const router = useRouter();
@@ -43,9 +44,9 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
             setIsSticky(window.scrollY > 0);
 
             if(window.scrollY === 1655) {
-                setLinkActive('partners')
+                handleChangeActiveLink('partners')
             } else {
-                setLinkActive('')
+                handleChangeActiveLink('')
             }
 
         };
@@ -71,7 +72,7 @@ const Header = ({ locale, typePosition }: Readonly<IHeaderProps>) => {
     };
 
     const handleActiveLink = (newPath: string) => {
-        setLinkActive(newPath);
+        handleChangeActiveLink(newPath);
         setIsOpenMenu(false);
 
         if (pathname.includes('/about')) {
