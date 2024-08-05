@@ -5,6 +5,7 @@ import { locales } from './locales'
 export default createMiddleware({
   locales,
   defaultLocale: 'am',
+  localeDetection: false,
 });
 
 export const config = {
