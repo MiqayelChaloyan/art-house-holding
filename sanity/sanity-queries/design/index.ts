@@ -19,7 +19,8 @@ export interface MAIN_SLIDE {
 export interface PROGRESS {
     _key: string,
     title: string,
-    quantity: number
+    quantity: number,
+    isPlusSign: boolean,
 };
 
 export interface GALLERY {

@@ -400,7 +400,19 @@ export const aboutUsSchemaEducationalCenter = {
                             initialValue: 0,
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                        {
+                            name: 'isPlusSign',
+                            title: 'Plus sign',
+                            type: 'boolean',
+                            description: 'Add a plus sign (+) to the quantity.',
+                            options: {
+                                layout: 'checkbox',
+                            },
+                        }
+                    ],
+                    initialValue: {
+                        isPlusSign: true,
+                    },
                 }
             ]
         },

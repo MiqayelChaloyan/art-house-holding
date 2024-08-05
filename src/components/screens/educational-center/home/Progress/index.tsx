@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import Container from '@/components/components/container';
 
@@ -14,20 +14,19 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: PROGRESS[]
+interface Props {
+    data: PROGRESS[];
 };
 
 const Progress = ({ data }: Readonly<Props>) => {
-
-    const items = data?.map((item: PROGRESS) => (
+    const items = useMemo(() => data.map((item: PROGRESS) => (
         <div key={item._key} className={styles.column}>
-            <ProgressItem value={0} quantity={item.quantity} />
+            <ProgressItem value={0} quantity={item.quantity} isPlusSign={item.isPlusSign} />
             <p className={cn(styles.title, Inter.className)}>
                 {item.title}
             </p>
         </div>
-    ));
+    )), [data]);
 
     return (
         <section id='circle-progress' className={styles.container}>

@@ -173,7 +173,19 @@ const homeSchemaArtHouse = {
                             type: 'number',
                             initialValue: 0,
                         },
-                    ]
+                        {
+                            name: 'isPlusSign',
+                            title: 'Plus sign',
+                            type: 'boolean',
+                            description: 'Add a plus sign (+) to the quantity.',
+                            options: {
+                                layout: 'checkbox',
+                            },
+                        }
+                    ],
+                    initialValue: {
+                        isPlusSign: true,
+                    },
                 }
             ]
         },

@@ -52,7 +52,8 @@ export interface SECTON {
 export interface PROGRESS {
     _key: string,
     title: string,
-    quantity: string | number
+    quantity: number,
+    isPlusSign: boolean
 };
 
 export interface SPECIALIST {

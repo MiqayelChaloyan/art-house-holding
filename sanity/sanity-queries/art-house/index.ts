@@ -24,7 +24,8 @@ export interface BRANCH {
 export interface PROGRESS {
     _key: string,
     title: string,
-    quantity: number
+    quantity: number,
+    isPlusSign: boolean
 };
 
 export interface ART_HOUSE_HOME {

@@ -22,7 +22,8 @@ export const query = `
     "progress_section": progress_section[] {
         "_key": _key,
         "title": title[$language],
-        "quantity": quantity
+        "quantity": quantity,
+        "isPlusSign": isPlusSign
     },
     "workers": workers[] {
         "_key": _key,

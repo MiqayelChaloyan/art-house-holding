@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import Container from '@/components/components/container';
 
@@ -19,14 +19,14 @@ interface Props {
 };
 
 const Progress = ({ data }: Readonly<Props>) => {
-    const items: JSX.Element[] = data?.map((item: PROGRESS) => (
+   const items = useMemo(() => data.map((item: PROGRESS) => (
         <div key={item._key} className={styles.column}>
-            <ProgressItem value={0} quantity={item.quantity} />
+            <ProgressItem value={0} quantity={item.quantity} isPlusSign={item.isPlusSign} />
             <p className={cn(styles.title, ArianAMU.className)}>
                 {item.title}
             </p>
         </div>
-    ));
+    )), [data]);
 
     return (
         <section id='circle-progress' className={styles.section}>
