@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import Container from '@/components/components/container';
 
 import Promotion from '@/lib/ui/promotion';
-import { Vrdznagir } from '@/lib/constants/font';
+import { Vrdznagir } from '@/constants/font';
 
 import { DISCOUNT } from '../../../../../../sanity/sanity-queries/language';
 

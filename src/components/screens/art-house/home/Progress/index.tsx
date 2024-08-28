@@ -5,7 +5,7 @@ import React, { useMemo } from 'react';
 import Container from '@/components/components/container';
 
 import ProgressItem from '@/lib/ui/progress';
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import { PROGRESS } from '../../../../../../sanity/sanity-queries/art-house';
 

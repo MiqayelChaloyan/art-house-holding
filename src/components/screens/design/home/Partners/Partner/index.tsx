@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Calibri } from '@/lib/constants/font';
+import { Calibri } from '@/constants/font';
 
 import { ImagePath } from '@/types/general';
 

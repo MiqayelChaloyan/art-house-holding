@@ -1,6 +1,6 @@
 import { ClipboardIcon, TrendUpwardIcon, UserIcon } from '@sanity/icons';
 
-import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
+import ArrayMaxItems from '@/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
 
 export const aboutUsSchemaDesign = {

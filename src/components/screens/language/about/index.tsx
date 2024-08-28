@@ -11,9 +11,9 @@ import Container from '@/components/components/container';
 
 import VideoPlayer from './player';
 
-import { Arial, Calibri } from '@/lib/constants/font';
-import { Pages } from '@/lib/constants/pages';
-import components from '@/lib/utils/PortableTextComponents';
+import { Arial, Calibri } from '@/constants/font';
+import { Pages } from '@/constants/pages';
+import components from '@/utils/PortableTextComponents';
 
 import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
 import { ABOUT_US_LANGUAGE } from '../../../../../sanity/sanity-queries/language';

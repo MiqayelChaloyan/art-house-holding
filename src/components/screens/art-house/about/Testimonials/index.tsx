@@ -10,7 +10,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Testimonial from './Testimonial';
 import { options } from './options';
 
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import cn from 'classnames';
 

@@ -6,7 +6,7 @@ import { Link as ScrollLink } from 'react-scroll';
 
 import { useTranslations } from 'next-intl';
 
-import { Inter, Arial } from '@/lib/constants/font';
+import { Inter, Arial } from '@/constants/font';
 
 import { SlideItem as Props } from '@/types/educational-center';
 

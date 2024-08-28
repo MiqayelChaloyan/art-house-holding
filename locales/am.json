@@ -11,6 +11,7 @@
         "departments": "Բաժիններ",
         "orders": "Պատվերներ",
         "portfolios": "Պորտֆոլիո",
+        "our-team": "Մեր թիմը",
         "contact": "Կապ"
     },
     "footer": {
@@ -101,7 +102,7 @@
     "titles": {
         "price-list": "Գնացուցակ",
         "private-lessons": "Անհատական դասեր \n օտարերկրացիների համար",
-        "english-language-lessons": "Անգլերեն լեզվի \n խորացված դասեր",
+        "english-language-lessons": "Օտար լեզուների \n մասնագիտական դասեր",
         "quiz-result": "Վիկտորինայի արդյունք"
     },
     "tables-titles": {

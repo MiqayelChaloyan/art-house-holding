@@ -10,7 +10,7 @@ import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import TextareaField from '@/lib/ui/TextareaField';
 
-import { Arial, Calibri } from '@/lib/constants/font';
+import { Arial, Calibri } from '@/constants/font';
 
 import { sendOrderDesign } from '@/api';
 import { FormOrder } from '@/types/design';

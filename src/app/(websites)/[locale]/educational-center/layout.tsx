@@ -17,7 +17,7 @@ import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 import PlayerModal from '@/lib/outlets/general/PlayerModal';
 import GoBack from '@/lib/outlets/general/GoBack';
 
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 import { ImagePath, Site } from '@/types/general';
 
 import { Locale } from '@/locales';

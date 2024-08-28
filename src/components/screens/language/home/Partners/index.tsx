@@ -13,7 +13,7 @@ import Partner from './Partner';
 
 import Container from '@/components/components/container';
 
-import { Vrdznagir } from '@/lib/constants/font';
+import { Vrdznagir } from '@/constants/font';
 import ArrowLeft from '@/lib/icons/language/ArrowLeft';
 import ArrowRight from '@/lib/icons/language/ArrowRight';
 

@@ -22,6 +22,6 @@
     },
     "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/constants/nodemailer.js", "src/lib/utils/ArrayMaxItems.ts", "src/lib/utils/ArrayMaxItems.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/constants/nodemailer.js", "src/utils/ArrayMaxItems.ts", "src/utils/ArrayMaxItems.js"],
   "exclude": ["node_modules"]
 }

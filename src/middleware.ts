@@ -2,6 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 
 import { locales } from './locales'
 
+
 export default createMiddleware({
   locales,
   defaultLocale: 'am',
@@ -9,5 +10,10 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ['/', '/(am|ru|en)/:path*']
+  matcher: ['/', '/(am|en|ru)/:path*']
 };
+
+
+
+
+

@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import { PRIVATE_LESSONS } from '../../../../../../sanity/sanity-queries/language';
 

@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 import Search from '@/lib/icons/educational-center/Search';
 import Star from '@/lib/icons/educational-center/Star';
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import { Options } from '@/types/educational-center';
 

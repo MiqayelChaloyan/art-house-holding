@@ -12,8 +12,8 @@ import { FaLinkedinIn } from 'react-icons/fa6';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import Logo from '@/lib/icons/art-house/LogoFooter';
-import { Pages } from '@/lib/constants/pages';
-import { ArianAMU } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { ArianAMU } from '@/constants/font';
 
 import { Social_Links } from '../../../../sanity/sanity-queries/art-house';
 

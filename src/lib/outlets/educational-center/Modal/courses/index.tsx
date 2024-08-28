@@ -9,8 +9,8 @@ import { notFound, useParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '@/store/modal_reducer';
 
-import { Pages } from '@/lib/constants/pages';
-import { Arial } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { Arial } from '@/constants/font';
 
 import { COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
 

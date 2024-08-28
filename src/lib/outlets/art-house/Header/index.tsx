@@ -10,8 +10,8 @@ import { useRouter, usePathname } from 'next/navigation';
 import LocalSwitcher from '@/components/components/local-switcher';
 
 import Logo from '@/lib/icons/art-house/Logo';
-import { Pages } from '@/lib/constants/pages';
-import { ArianAMU } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { ArianAMU } from '@/constants/font';
 
 import colors from '@/themes';
 

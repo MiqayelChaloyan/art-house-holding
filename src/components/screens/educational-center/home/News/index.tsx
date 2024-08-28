@@ -6,7 +6,7 @@ import Container from '@/components/components/container';
 
 import Courses from './Courses';
 
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import { SECTON } from '../../../../../../sanity/sanity-queries/educational-center';
 

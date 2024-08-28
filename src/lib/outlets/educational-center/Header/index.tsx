@@ -11,8 +11,8 @@ import { openModal } from '@/store/modal_reducer';
 
 import Logo from '@/lib/icons/educational-center/Logo';
 import Button from '@/lib/ui/Button';
-import { Pages } from '@/lib/constants/pages';
-import { ArianAMU } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { ArianAMU } from '@/constants/font';
 
 import LocalSwitcher from '@/components/components/local-switcher';
 

@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import { COURSE, PRICES } from '../../../../../../../sanity/sanity-queries/design';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import cn from 'classnames';
 

@@ -5,8 +5,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Pages } from '@/lib/constants/pages';
-import { Arial, ArianAMU } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { Arial, ArianAMU } from '@/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 

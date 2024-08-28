@@ -22,8 +22,8 @@ import Viber from '@/lib/icons/art-house/Viber';
 import Gmail from '@/lib/icons/art-house/Gmail';
 import Linkedin from '@/lib/icons/art-house/Linkedin';
 
-import { Pages } from '@/lib/constants/pages';
-import { ArianAMU } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { ArianAMU } from '@/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 

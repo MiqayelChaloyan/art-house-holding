@@ -9,7 +9,7 @@ import { closeModal } from '@/store/modal_reducer';
 
 import Container from '@/components/components/container';
 
-import { Arial, Inter } from '@/lib/constants/font';
+import { Arial, Inter } from '@/constants/font';
 
 import { ImagePath } from '@/types/general';
 

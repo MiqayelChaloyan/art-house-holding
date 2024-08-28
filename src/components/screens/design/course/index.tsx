@@ -10,9 +10,9 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import Checkmark from '@/lib/icons/design/Checkmark';
 import PortfolioImageCard from '@/lib/ui/portfolio-card';
-import { Pages } from '@/lib/constants/pages';
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Pages } from '@/constants/pages';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import { COURSE } from '../../../../../sanity/sanity-queries/design';
 

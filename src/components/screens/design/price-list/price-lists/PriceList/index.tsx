@@ -9,8 +9,8 @@ import useWindowSize from '@/hooks/useWindowSize';
 import TableList from '../TableList';
 import AccordionList from '../AccordionList';
 
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import { PRICES } from '../../../../../../../sanity/sanity-queries/design';
 

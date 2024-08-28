@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 
-import { Pages } from '@/lib/constants/pages';
-import { Arial } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { Arial } from '@/constants/font';
 import { HiHome } from 'react-icons/hi2';
 
 import cn from 'classnames';

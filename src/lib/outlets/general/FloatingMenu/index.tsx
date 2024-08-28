@@ -8,7 +8,7 @@ import { useLocale } from 'next-intl';
 
 import { GoProjectSymlink } from 'react-icons/go';
 
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { BRANCH } from '../../../../../sanity/sanity-queries/art-house';

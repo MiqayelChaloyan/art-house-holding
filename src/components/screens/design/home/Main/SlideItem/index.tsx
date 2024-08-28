@@ -5,8 +5,8 @@ import React from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 
-import { Arial, Belleza } from '@/lib/constants/font';
-import { Pages } from '@/lib/constants/pages';
+import { Arial, Belleza } from '@/constants/font';
+import { Pages } from '@/constants/pages';
 
 import { SlideItem as Props } from '@/types/design';
 

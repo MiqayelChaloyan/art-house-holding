@@ -4,10 +4,10 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import components from '@/lib/utils/PortableTextComponents';
+import components from '@/utils/PortableTextComponents';
 import { PortableText } from '@portabletext/react';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 import { ABOUT } from '@/types/language';
 import { ImagePath } from '@/types/general';
 

@@ -8,11 +8,11 @@ import { useTranslations } from 'next-intl';
 import Container from '@/components/components/container';
 
 import Button from '@/lib/ui/Button';
-import { Arial, Inter } from '@/lib/constants/font';
+import { Arial, Inter } from '@/constants/font';
 
 import { PortableText } from '@portabletext/react';
-import components from '@/lib/utils/PortableTextComponents';
-import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
+import components from '@/utils/PortableTextComponents';
+import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
 
 import { Content as ContentType } from '@/types/educational-center';
 import { ImagePath } from '@/types/general';

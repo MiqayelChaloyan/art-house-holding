@@ -6,8 +6,8 @@ import { useTranslations } from 'next-intl';
 
 import Course from './Course';
 
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import useWindowSize from '@/hooks/useWindowSize';
 

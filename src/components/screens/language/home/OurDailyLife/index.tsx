@@ -10,7 +10,7 @@ import Container from '@/components/components/container';
 
 import Play from '@/lib/icons/educational-center/Play';
 import { DAILY_LIFE_IMAGE, DAILY_LIFE_VIDEO, ReduxType, UrlType } from '@/types/language';
-import { Arial, Vrdznagir } from '@/lib/constants/font';
+import { Arial, Vrdznagir } from '@/constants/font';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';

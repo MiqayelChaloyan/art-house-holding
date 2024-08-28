@@ -13,7 +13,7 @@ export const projectId = assertValue(
 
 export const useCdn = false;
 
-export const title = 'art-house-educational-center';
+export const title = 'ART HOUSE';
 
 export const basePath = '/admin';
 

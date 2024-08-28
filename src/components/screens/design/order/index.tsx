@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import WorksGallery from '@/components/components/worksGallery';
 
 import RotatingLines from '@/lib/ui/rotatingLines';
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import { UrlType } from '@/types/design';
 

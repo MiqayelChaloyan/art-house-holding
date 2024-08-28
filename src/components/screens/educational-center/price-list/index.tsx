@@ -11,7 +11,7 @@ import Container from '@/components/components/container';
 
 import Accordion from './Accordion';
 
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import { PRICE_LIST } from '../../../../../sanity/sanity-queries/educational-center';
 

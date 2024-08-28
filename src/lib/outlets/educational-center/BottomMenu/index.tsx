@@ -15,7 +15,7 @@ import PriceList from '@/lib/icons/educational-center/PriceList';
 import CoWorkers from '@/lib/icons/educational-center/CoWorkers';
 import Contact from '@/lib/icons/educational-center/Contact';
 
-import { Pages } from '@/lib/constants/pages';
+import { Pages } from '@/constants/pages';
 
 import { HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
 

@@ -1,5 +1,5 @@
 import { RuleType } from '../../../ruleType';
-import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
+import ArrayMaxItems from '@/utils/ArrayMaxItems';
 
 
 const aboutUsSchemaLanguage = {

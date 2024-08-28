@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { notFound, useRouter } from 'next/navigation';
 
 import Button from '@/lib/ui/Button';
-import { Arial, Inter } from '@/lib/constants/font';
+import { Arial, Inter } from '@/constants/font';
 
 import { ContentCourse as Props, UrlType } from '@/types/educational-center';
 

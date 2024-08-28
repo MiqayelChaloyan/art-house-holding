@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import TeacherWithWorks from './TeacherWithWorks';
 import Container from '@/components/components/container';
 
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import { SPECIALIST } from '../../../../../../sanity/sanity-queries/educational-center';
 

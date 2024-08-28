@@ -13,8 +13,8 @@ import useWindowSize from '@/hooks/useWindowSize';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 import Select from '@/lib/ui/select';
-import { Arial } from '@/lib/constants/font';
-import { TRAINING_CENTERS } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { TRAINING_CENTERS } from '@/constants';
 
 import Instagram from '@/lib/icons/educational-center/Instagram';
 import Gmail from '@/lib/icons/educational-center/Gmail';

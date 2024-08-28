@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import cn from 'classnames';
 

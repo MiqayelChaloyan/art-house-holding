@@ -12,8 +12,8 @@ import { PiTelegramLogoLight, PiWhatsappLogo } from "react-icons/pi";
 import { AiOutlineYoutube } from "react-icons/ai";
 
 import Container from '@/components/components/container';
-import { Arial, ArianAMU } from '@/lib/constants/font';
-import { ImagePaths } from '@/lib/constants';
+import { Arial, ArianAMU } from '@/constants/font';
+import { ImagePaths } from '@/constants';
 
 import useWindowSize from '@/hooks/useWindowSize';
 

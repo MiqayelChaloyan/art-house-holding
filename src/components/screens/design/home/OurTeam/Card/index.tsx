@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 import { ImagePath } from '@/types/general';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 

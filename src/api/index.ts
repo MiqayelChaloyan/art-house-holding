@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-import { BASE_URL } from '@/lib/constants/api';
+import { BASE_URL } from '@/constants/api';
 
 import { Form } from '@/types/educational-center';
 import { FormLarge, FormSmall } from '@/types/language';

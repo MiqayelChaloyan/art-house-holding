@@ -8,8 +8,8 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import AnimationCarousel from '../AnimationCarousel';
 
-import { Arial } from '@/lib/constants/font';
-import { ImagePaths } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { ImagePaths } from '@/constants';
 
 import { client } from '../../../../../../../sanity/client';
 import { queryId } from '../../../../../../../sanity/services/design-service/courses';

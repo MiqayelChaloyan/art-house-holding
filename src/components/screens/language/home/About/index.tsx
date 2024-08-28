@@ -8,9 +8,9 @@ import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import { Pages } from '@/lib/constants/pages';
-import blocksToText from '@/lib/utils/BlocksToText';
-import { Arial, Calibri } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import blocksToText from '@/utils/BlocksToText';
+import { Arial, Calibri } from '@/constants/font';
 import { ImageType } from '@/types/language';
 import { ImagePath } from '@/types/general';
 

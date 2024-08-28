@@ -6,8 +6,8 @@ import { useTranslations } from 'next-intl';
 
 import ContactUsForm from '@/components/components/form-design';
 
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import { LESSONS } from '../../../../../sanity/sanity-queries/design';
 

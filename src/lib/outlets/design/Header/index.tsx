@@ -11,9 +11,9 @@ import { useDispatch } from 'react-redux';
 import { openModal } from '@/store/modal_reducer';
 
 import Button from '@/lib/ui/Button';
-import { Pages } from '@/lib/constants/pages';
-import { Arial, ArianAMU } from '@/lib/constants/font';
-import { ImagePaths } from '@/lib/constants';
+import { Pages } from '@/constants/pages';
+import { Arial, ArianAMU } from '@/constants/font';
+import { ImagePaths } from '@/constants';
 
 import LocalSwitcher from '@/components/components/local-switcher';
 

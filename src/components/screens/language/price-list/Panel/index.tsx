@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 // import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/language';
 

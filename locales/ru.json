@@ -11,6 +11,7 @@
         "departments": "Разделы",
         "orders": "Заказы",
         "portfolios": "Портфолио",
+        "our-team": "Наша команда",
         "contact": "Контакт"
     },
     "footer": {
@@ -101,7 +102,7 @@
     "titles": {
         "price-list": "Прайс-лист",
         "private-lessons": "Частные уроки \n для иностранцев",
-        "english-language-lessons": "Продвинутые курсы \n английского языка",
+        "english-language-lessons": "Профессиональные занятия \n иностранным языком",
         "quiz-result": "Результат викторины"
     },
     "tables-titles": {

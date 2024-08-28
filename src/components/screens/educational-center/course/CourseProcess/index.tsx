@@ -16,7 +16,7 @@ import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-cente
 import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
 
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import cn from 'classnames';
 

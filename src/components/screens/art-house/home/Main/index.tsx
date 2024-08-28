@@ -5,7 +5,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import cn from 'classnames';
 

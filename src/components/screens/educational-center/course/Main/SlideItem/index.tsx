@@ -3,7 +3,7 @@
 import React from 'react';
 
 import Container from '@/components/components/container';
-import { Inter, Arial } from '@/lib/constants/font';
+import { Inter, Arial } from '@/constants/font';
 
 import cn from 'classnames';
 

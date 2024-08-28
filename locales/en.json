@@ -11,6 +11,7 @@
         "departments": "Sections",
         "orders": "Orders",
         "portfolios": "Portfolio",
+        "our-team": "Our Team",
         "contact": "Contact"
     },
     "footer": {
@@ -101,7 +102,7 @@
     "titles": {
         "price-list": "Price list",
         "private-lessons": "Private lessons \n for foreigners",
-        "english-language-lessons": "Advanced English \n language classes",
+        "english-language-lessons": "Professional foreign \n language classes",
         "quiz-result": "Quiz result"
     },
     "tables-titles": {

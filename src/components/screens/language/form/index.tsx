@@ -10,8 +10,8 @@ import Snackbar from '@/components/components/snackbar';
 import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
-import { Arial } from '@/lib/constants/font';
-import { TRAINING_CENTERS } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { TRAINING_CENTERS } from '@/constants';
 
 import { COURSE_NAME, COURSE_TYPE, FORM, WEEK_NUMBER_LESSONS, COURSES } from '../../../../../sanity/sanity-queries/language';
 

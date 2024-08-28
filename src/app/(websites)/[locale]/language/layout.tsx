@@ -16,7 +16,7 @@ import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
 
 import { ImagePath, Site } from '@/types/general';
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 import { client } from '../../../../../sanity/client';
 
@@ -63,7 +63,6 @@ async function getResources(locale: string) {
         .catch(_ => {
             return { courses: [], branches: [], languages: [], social: [], isError: true };
         });
-
 };
 
 export default async function Layout({

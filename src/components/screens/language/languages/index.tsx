@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 import Container from '@/components/components/container';
 
-import { Pages } from '@/lib/constants/pages';
+import { Pages } from '@/constants/pages';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';

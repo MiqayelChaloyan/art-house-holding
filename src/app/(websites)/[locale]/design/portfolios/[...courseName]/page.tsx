@@ -8,7 +8,7 @@ import Home from '@/components/screens/design/portfolio';
 import { Locale } from '@/locales';
 
 import { ImagePath } from '@/types/general';
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 import { client } from '../../../../../../../sanity/client';
 import { courseBySlugQuery } from '../../../../../../../sanity/services/design-service/courses';

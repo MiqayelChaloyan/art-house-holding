@@ -4,7 +4,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 import { ImagePath } from '@/types/general';
 
 import { TEACHER } from '../../../../../../../sanity/sanity-queries/language';

@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 import Container from '@/components/components/container';
 
-import { ArianAMU } from '@/lib/constants/font';
-import { Pages } from '@/lib/constants/pages';
+import { ArianAMU } from '@/constants/font';
+import { Pages } from '@/constants/pages';
 
 import cn from 'classnames';
 

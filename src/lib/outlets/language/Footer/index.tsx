@@ -18,7 +18,7 @@ import Pinterest from '@/lib/icons/language/Pinterest';
 import WhatsApp from '@/lib/icons/language/WhatsApp';
 import Viber from '@/lib/icons/language/Viber';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 

@@ -8,10 +8,10 @@ import { PortableText } from '@portabletext/react';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import components from '@/lib/utils/PortableTextComponents';
+import components from '@/utils/PortableTextComponents';
 import Vector from '@/lib/icons/design/Vector';
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import { PROMOTIONS as Props } from '@/types/design';
 

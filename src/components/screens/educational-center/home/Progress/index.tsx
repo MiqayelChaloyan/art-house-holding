@@ -5,7 +5,7 @@ import React, { useMemo } from 'react';
 import Container from '@/components/components/container';
 
 import ProgressItem from '@/lib/ui/progress';
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import { PROGRESS } from '../../../../../../sanity/sanity-queries/educational-center';
 

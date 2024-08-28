@@ -14,6 +14,7 @@ const config = defineConfig(
     title,
     apiVersion,
     basePath,
+    schema,
     plugins: [
       deskTool({
         structure: myStructure,
@@ -29,7 +30,6 @@ const config = defineConfig(
         defaultDataset: dataset,
       }),
     ],
-    schema,
   }
 );
 

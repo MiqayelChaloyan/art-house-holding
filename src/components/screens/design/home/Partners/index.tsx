@@ -11,8 +11,8 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import Partner from './Partner';
 
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import ArrowLeft from '@/lib/icons/language/ArrowLeft';
 import ArrowRight from '@/lib/icons/language/ArrowRight';

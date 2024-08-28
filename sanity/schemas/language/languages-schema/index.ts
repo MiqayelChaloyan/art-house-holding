@@ -1,4 +1,4 @@
-import ArrayMaxItems from '@/lib/utils/ArrayMaxItems';
+import ArrayMaxItems from '@/utils/ArrayMaxItems';
 import { EarthGlobeIcon, UserIcon } from '@sanity/icons'
 
 import { RuleType } from '../../../ruleType';

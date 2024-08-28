@@ -8,11 +8,11 @@ import Container from '@/components/components/container';
 import FormAppointment from '@/components/components/form-educational';
 
 import Button from '@/lib/ui/Button';
-import { Arial, Inter } from '@/lib/constants/font';
+import { Arial, Inter } from '@/constants/font';
 
 import { PortableText } from '@portabletext/react';
-import components from '@/lib/utils/PortableTextComponents';
-import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
+import components from '@/utils/PortableTextComponents';
+import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
 
 import { Content as ContentType } from '@/types/educational-center';
 

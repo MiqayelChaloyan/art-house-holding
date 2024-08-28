@@ -4,7 +4,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 import { BRANCH } from '../../../../sanity/sanity-queries/art-house';

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import cn from 'classnames';
 

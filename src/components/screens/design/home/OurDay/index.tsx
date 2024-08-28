@@ -11,9 +11,9 @@ import { onPlay, setPath } from '@/store/player_reducer';
 import Player from '@/components/components/player';
 import Container from '@/components/components/container';
 
-import { Arial } from '@/lib/constants/font';
-import { Pages } from '@/lib/constants/pages';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Pages } from '@/constants/pages';
+import { Titles } from '@/constants';
 import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
 

@@ -9,7 +9,7 @@ import Container from '@/components/components/container';
 import Rating from './Ratings';
 import MobileCards from './MobileCards';
 
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import { OUR_RATING } from '../../../../../../sanity/sanity-queries/educational-center';
 

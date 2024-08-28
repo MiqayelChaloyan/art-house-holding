@@ -14,8 +14,8 @@ import Pagination from './Pagination';
 import Card from './Card';
 
 import RotatingLines from '@/lib/ui/rotatingLines';
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import { WORKER } from '../../../../../../sanity/sanity-queries/design';
 

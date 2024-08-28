@@ -32,9 +32,12 @@ $imagePath: '../../public/assets/images/language/back.avif'
 	--container-width-min: 430px
 	--container-gap: 30px
 	--box-gap: 240px
+	--block-gap: 30px
+	--block-width: 1200px
 	--container-gap-mobile: 30px
 	--container: calc(#{var(--container-width)} + (#{var(--container-gap)} * 2))
 	--box: calc(#{var(--container-width)} + (#{var(--box-gap)} * 400))
+	--block: calc(#{var(--block-width)} + (#{var(--block-gap)} * 400))
 
 	--tr-time: .4s
 	--tr-time-card-rotate: .7s
@@ -183,6 +186,20 @@ iframe
 	@media screen and ( max-width: 767px )
 		max-width: 100%
 
+.block
+	width: 100%
+	max-width: var(--block)
+	margin-left: auto
+	margin-right: auto
+	padding-right: var(--block-gap)
+	padding-left: var(--block-gap)
+	@media screen and ( max-width: 1280px )
+		max-width: 991px
+	@media screen and ( max-width: 991px )
+		max-width: 100%
+	@media screen and ( max-width: 767px )
+		max-width: 100%
+
 .languages-container
 	background-image: url($imagePath) 
 	background-repeat: no-repeat
@@ -195,6 +212,46 @@ iframe
 		background-color: #fff
 
 .design-container
+	margin-top: 84px
+	/* @4xl */
+	@media screen and (max-width: 2560px)
+		margin-top: 84px
+	/* @3xl */
+	@media screen and (max-width: 1920px)
+		margin-top: 84px
+	/* @2xl */
+	@media screen and (max-width: 1600px)
+		margin-top: 84px
+	/* @xl */
+	@media screen and (max-width: 1440px)
+		margin-top: 84px
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		margin-top: 70px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		margin-top: 60px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		margin-top: 80px
+	/* @xs */
+	@media screen and (max-width: 600px)
+		margin-top: 70px
+	/* @2xs */
+	@media screen and (max-width: 480px)
+		margin-top: 70px
+	/* @3xs */
+	@media screen and (max-width: 360px)
+		margin-top: 70px
+
+
+
+
+
+
+
+
+.itm-container
 	margin-top: 84px
 	/* @4xl */
 	@media screen and (max-width: 2560px)

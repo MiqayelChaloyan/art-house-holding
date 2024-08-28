@@ -10,8 +10,8 @@ import FormAppointment from '@/components/components/form-educational';
 import Logo from '@/lib/icons/educational-center/Logo';
 import Email from '@/lib/icons/educational-center/Email';
 import Phone from '@/lib/icons/educational-center/Phone';
-import { Pages } from '@/lib/constants/pages';
-import { Arial } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { Arial } from '@/constants/font';
 
 import { COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
 

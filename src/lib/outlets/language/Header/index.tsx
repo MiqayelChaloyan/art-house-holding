@@ -13,8 +13,8 @@ import LocalSwitcher from '@/components/components/local-switcher';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { Pages } from '@/lib/constants/pages';
-import { Arial } from '@/lib/constants/font';
+import { Pages } from '@/constants/pages';
+import { Arial } from '@/constants/font';
 import Logo from '@/lib/icons/language/Logo';
 
 import cn from 'classnames';

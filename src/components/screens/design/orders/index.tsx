@@ -7,8 +7,8 @@ import { useTranslations } from 'next-intl';
 import OrderForm from './Form';
 import OrdersGallery from './OrdersGallery';
 
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import { COURSE, ORDER } from '../../../../../sanity/sanity-queries/design';
 

@@ -21,6 +21,7 @@ import coursesSchemaDesign from './schemas/design/courses-schema';
 import priceListSchemaDesign from './schemas/design/price-list-schema';
 import lessonsSchemaDesign from './schemas/design/lessons-schema';
 import portfolioSchemaDesign from './schemas/design/portfolios-schema';
+import priceListSchemaIt_M from './schemas/it-m/price-list-schema';
 
 export const schemaTypes = [
   homeSchemaArtHouse,
@@ -44,6 +45,7 @@ export const schemaTypes = [
   lessonsSchemaDesign,
   partnersSchema,
   portfolioSchemaDesign,
+  priceListSchemaIt_M,
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {

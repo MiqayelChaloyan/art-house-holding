@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/educational-center';
 

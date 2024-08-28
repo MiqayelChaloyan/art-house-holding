@@ -12,7 +12,7 @@ import { ImagePath } from '@/types/general';
 import { client } from '../../../../../../../sanity/client';
 import { courseBySlugQuery } from '../../../../../../../sanity/services/design-service/courses';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 
 interface Props {

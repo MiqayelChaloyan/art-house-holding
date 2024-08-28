@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { LANGUAGE } from '../../../../sanity/sanity-queries/language';
 import { LESSON } from '../../../../sanity/sanity-queries/design';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import cn from 'classnames';
 

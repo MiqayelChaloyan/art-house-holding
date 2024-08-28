@@ -10,8 +10,8 @@ import { FaCheck } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 
 import Container from '../../container';
-import { ArianAMU } from "@/lib/constants/font";
-import { Pages } from '@/lib/constants/pages';
+import { ArianAMU } from "@/constants/font";
+import { Pages } from '@/constants/pages';
 
 import cn from 'classnames';
 

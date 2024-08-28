@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import AccordionArrow from '@/lib/icons/educational-center/AccordionArrow';
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import { ImagePath } from '@/types/general';
 

@@ -18,7 +18,7 @@ import Select from '@/lib/ui/select';
 import InputField from '@/lib/ui/InputField';
 import InputNumber from '@/lib/ui/InputNumber';
 
-import { Arial, Vrdznagir } from '@/lib/constants/font';
+import { Arial, Vrdznagir } from '@/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 

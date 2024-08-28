@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
 import { DISCOUNTS_LANGUAGE } from '../../../../sanity/sanity-queries/language';

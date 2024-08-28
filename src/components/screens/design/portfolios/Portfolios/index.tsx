@@ -7,8 +7,8 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import Gallery from '@/components/components/gallery';
-import { Arial } from '@/lib/constants/font';
-import { Titles } from '@/lib/constants';
+import { Arial } from '@/constants/font';
+import { Titles } from '@/constants';
 
 import { COURSE } from '../../../../../../sanity/sanity-queries/design';
 

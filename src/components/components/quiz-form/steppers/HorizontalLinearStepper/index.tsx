@@ -10,7 +10,7 @@ import * as Action from '@/store/question_reducer';
 
 import ProgressLine from '@/lib/ui/progress-line';
 import { Loader } from '@/lib/ui/loading';
-import { ArianAMU, Calibri } from '@/lib/constants/font';
+import { ArianAMU, Calibri } from '@/constants/font';
 
 import cn from 'classnames';
 

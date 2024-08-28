@@ -1,23 +1,26 @@
 'use server';
 
-import dynamic from 'next/dynamic';
-import { querySiteMeta } from "../../../../../sanity/services/art-house-service";
-import { query } from "../../../../../sanity/services/art-house-service/about-us";
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-import { SanityClient } from "sanity";
-import { ImagePath, Site } from "@/types/general";
-import { Metadata } from "next";
-import { Locale } from "@/locales";
-import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
-import { generateMetadataDynamic } from "@/lib/utils/default-metadata";
-import { client } from "../../../../../sanity/client";
-import { notFound } from "next/navigation";
+import { querySiteMeta } from '../../../../../sanity/services/art-house-service';
+import { query } from '../../../../../sanity/services/art-house-service/about-us';
+
+import AboutUs from '@/components/screens/art-house/about';
+
+import { SanityClient } from 'sanity';
+
+import { ImagePath, Site } from '@/types/general';
+
+import { Locale } from '@/locales';
+
+import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { client } from '../../../../../sanity/client';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-const AboutUs = dynamic(() => import('@/components/screens/art-house/about'));
 
 
 interface Props {

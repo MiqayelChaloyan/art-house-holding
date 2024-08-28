@@ -15,8 +15,8 @@ import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
 import { ImagePath } from '@/types/general';
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
-import BlocksToText from '@/lib/utils/BlocksToText';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
+import BlocksToText from '@/utils/BlocksToText';
 
 const DLanguage = dynamic(() =>
     import('@/components/screens/language/languages/Language'),

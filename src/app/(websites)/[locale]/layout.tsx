@@ -4,7 +4,7 @@ import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 import { StoreProvider } from '@/store/StoreProvider';
 
-import { Inter } from '@/lib/constants/font';
+import { Inter } from '@/constants/font';
 
 import '@/styles/globals.sass';
 

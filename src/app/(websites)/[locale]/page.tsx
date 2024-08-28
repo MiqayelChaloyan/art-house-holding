@@ -1,9 +1,10 @@
 'use server';
 
-import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 
 import { type Metadata } from 'next';
+
+import Home from '@/components/screens/art-house/home';
 
 import { Locale } from '@/locales';
 
@@ -16,9 +17,7 @@ import { client } from '../../../../sanity/client';
 import { partnersQuery } from '../../../../sanity/services/generic-service';
 import { query, querySiteMeta } from '../../../../sanity/services/art-house-service';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
-
-const Home = dynamic(() => import('@/components/screens/art-house/home'));
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 
 interface RootProps {

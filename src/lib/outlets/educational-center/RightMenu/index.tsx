@@ -10,7 +10,7 @@ import PriceList from '@/lib/icons/educational-center//PriceList';
 import CoWorkers from '@/lib/icons/educational-center//CoWorkers';
 import Contact from '@/lib/icons/educational-center//Contact';
 
-import { Pages } from '@/lib/constants/pages';
+import { Pages } from '@/constants/pages';
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/store/modal_reducer';
 

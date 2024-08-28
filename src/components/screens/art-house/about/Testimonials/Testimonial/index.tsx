@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { ImagePath } from '@/types/general';
 
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 

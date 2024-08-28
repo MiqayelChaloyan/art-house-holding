@@ -1,0 +1,252 @@
+$assetPath: "../../../../../public/assets/images/it-m/section.png"
+
+
+.footer
+    background-color: #B2D01B
+    height: 556px
+    padding-top: 150px
+    @media screen and (max-width: 991px)
+        height: auto
+        padding-top: 100px
+
+.request
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    width: 100%
+    max-width: 1200px
+    margin: 0 auto
+    @media screen and (max-width: 991px)
+        display: grid
+        grid-template-columns: 1fr
+        gap: 20px
+
+.request-text
+    white-space: pre-line
+    color: white
+    span
+        font-weight: 600
+    @media screen and (max-width: 991px)
+        font-size: 14px
+        text-align: center
+
+.newsletter 
+    margin: 0 30px 
+    font-weight: 500 
+    @media screen and (max-width: 991px)
+        display: flex
+        width: 90%
+        justify-content: center
+
+.input 
+    width: 100%
+    height: 50px 
+    line-height: 24.38px
+    padding-left: 35px 
+    color: black
+    font-size: 18px
+    font-weight: 400 
+    border: 1px solid #d6d6d6 
+    -webkit-box-sizing: border-box 
+    -moz-box-sizing: border-box 
+    box-sizing: border-box 
+    outline: 0 
+    background-color: #FFFFFF
+    &::placeholder
+        color: #A5A4AA 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        height: 50px
+        font-size: 18px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        height: 50px
+        font-size: 18px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        height: 50px
+        font-size: 18px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        height: 45px
+        font-size: 16px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        height: 45px
+        font-size: 16px
+    @media screen and (max-width: 991px)
+        height: 45px
+        padding-left: 20px
+        font-size: 16px
+
+.btnEnviar 
+    background: #1A2738 
+    color: #fff 
+    line-height: 18.94px 
+    font-size: 18px
+    display: inline-block 
+    padding: 15px 20px 
+    margin-bottom: 0 
+    font-weight: 400 
+    text-align: center 
+    white-space: nowrap 
+    vertical-align: middle 
+    border: 1px solid #333 
+    width: 135px
+    height: 50px 
+    cursor: pointer 
+    &:hover 
+        background: #222 
+        transition: all 0.4s ease-out 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 135px
+        height: 50px
+        font-size: 18px
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        height: 50px
+        font-size: 18px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        height: 50px
+        font-size: 18px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        height: 45px
+        font-size: 16px
+        width: 120px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        height: 45px
+        font-size: 16px
+    @media screen and (max-width: 991px)
+        height: 45px
+        font-size: 16px
+        width: 120px
+
+.form-input,
+.form-button 
+    display: inline-block 
+    float: left 
+    margin-bottom: 10px
+
+.form-input 
+    width: 85% 
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        width: 85% 
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        width: 85% 
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        width: 85% 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 70% 
+    /* @md */
+    @media screen and (max-width: 1024px)
+        width: 75%
+    @media screen and (max-width: 991px)
+        width: 70%
+
+.form-button 
+    width: 15% 
+    @media screen and (max-width: 991px)
+        width: 20%
+
+.error
+    color: #ec3237
+    font-size: 14px
+    font-weight: 400
+    line-height: 18.94px 
+
+
+
+
+.links
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    width: 100%
+    max-width: 1380px
+    margin: 0 auto
+    padding: 1rem
+
+
+.nav,
+.contact,
+.courses
+    display: grid
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    margin-bottom: 1rem
+    width: 20%
+    @media screen and (max-width: 991px)
+        width: 100%
+        margin-bottom: 1.5rem
+
+.contact,
+.courses
+    margin-left: 8px
+    @media screen and (max-width: 991px)
+        margin-left: 0
+
+.link
+    color: white
+    font-weight: 400
+    font-size: 18px
+    line-height: 17.88px
+    margin: 0.8rem
+    text-align: left
+    @media screen and (max-width: 991px)
+        font-size: 16px
+        line-height: 16px
+
+
+.article
+    background-image: url($assetPath)
+    width: 100%
+    padding: 50px
+    min-height: 60vh
+    display: grid
+    min-width: 100%
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+    /* @md */
+    @media screen and (max-width: 1024px)
+        height: 70vh
+        min-height: 70vh
+    /* @xs */
+    @media screen and (max-width: 600px)
+        height: 70vh
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        height: 70vh
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        height: 70vh
+
+.bulb
+    display: flex
+    justify-content: center
+    align-items: center
+
+
+.advertisement-title
+    font-weight: 700
+    font-size: 48px
+    line-height: 50.83px
+    color: #B2D01B
+    text-align: center
+
+
+.advertisement-text
+    font-weight: 400
+    font-size: 40px
+    line-height: 42.08px
+    color: #FFFFFF
+    text-align: center

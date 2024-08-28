@@ -8,8 +8,8 @@ import Course from '@/components/screens/educational-center/course';
 import { Locale } from '@/locales';
 
 import { ImagePath } from '@/types/general';
-import BlocksToText from '@/lib/utils/BlocksToText';
-import { generateMetadataDynamic } from '@/lib/utils/default-metadata';
+import BlocksToText from '@/utils/BlocksToText';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 import { courseBySlugQuery } from '../../../../../../sanity/services/educational-center-service/courses';
 import { querySocial } from '../../../../../../sanity/services/educational-center-service/contact-us';

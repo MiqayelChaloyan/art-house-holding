@@ -5,7 +5,7 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 
-import { Arial } from '@/lib/constants/font';
+import { Arial } from '@/constants/font';
 
 import { PRICES } from '../../../../../../../sanity/sanity-queries/design';
 

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import Button from '@/lib/ui/Button';
-import { Arial, Inter } from '@/lib/constants/font';
+import { Arial, Inter } from '@/constants/font';
 
 import Container from '@/components/components/container';
 import Fancybox from '@/components/components/fancybox';

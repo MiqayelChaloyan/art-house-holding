@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
-import { ArianAMU } from '@/lib/constants/font';
+import { ArianAMU } from '@/constants/font';
 import Button from '@/lib/ui/Button';
 
 import { client } from '../../../../../../../../sanity/client';

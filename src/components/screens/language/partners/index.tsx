@@ -5,7 +5,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import { Arial, Vrdznagir } from '@/lib/constants/font';
+import { Arial, Vrdznagir } from '@/constants/font';
 
 import Container from '@/components/components/container';
 

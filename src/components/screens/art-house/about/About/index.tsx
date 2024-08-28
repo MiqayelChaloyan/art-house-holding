@@ -6,9 +6,9 @@ import { useTranslations } from 'next-intl';
 
 import { PortableText } from '@portabletext/react';
 
-import { flattenText, getTotalTextLength, truncateText } from '@/lib/utils/ArrayMaxItems';
-import components from '@/lib/utils/PortableTextComponents';
-import { ArianAMU } from '@/lib/constants/font';
+import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
+import components from '@/utils/PortableTextComponents';
+import { ArianAMU } from '@/constants/font';
 import Button from '@/lib/ui/Button';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
