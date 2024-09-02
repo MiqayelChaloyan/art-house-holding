@@ -1,13 +1,10 @@
 import { BookIcon } from '@sanity/icons';
-
 import { RuleType } from '../../../ruleType';
-
 
 export const coursesSchemaIt_M = {
     name: 'courses-it-m',
     type: 'document',
     title: 'Courses',
-    id: 'courses-it-m',
     icon: BookIcon,
     groups: [
         {
@@ -21,7 +18,7 @@ export const coursesSchemaIt_M = {
             type: "object",
             name: "ogDescription",
             title: "Social Share Description",
-            group: ['og'],
+            group: 'og',
             fields: [
                 {
                     title: 'Armenian',
@@ -79,16 +76,18 @@ export const coursesSchemaIt_M = {
         {
             name: 'slug',
             type: 'slug',
-            description: 'Slug must be the name of the course in lowercase and must be unique. Write only between words with `-` or `_` symbols. Do not use these symbols `/`.',
+            title: 'Slug',
+            description: 'Slug must be the name of the course in lowercase and must be unique. Use `-` or `_` between words. Do not use `/`.',
             options: {
-                source: 'name',
+                source: 'course_name.en',
+                maxLength: 200,
             },
             validation: (Rule: RuleType) => Rule.required(),
         },
         {
             name: 'about_course',
             type: 'object',
-            title: 'About the course',
+            title: 'About the Course',
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
@@ -151,7 +150,7 @@ export const coursesSchemaIt_M = {
                 {
                     name: 'video_url',
                     title: 'Video Link',
-                    type: 'string',
+                    type: 'url',
                 },
                 {
                     name: 'video_light',
@@ -171,7 +170,7 @@ export const coursesSchemaIt_M = {
         {
             name: 'our_day',
             type: 'array',
-            title: 'Our day',
+            title: 'Our Day',
             description: 'You can add any number of pictures.',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
@@ -200,10 +199,9 @@ export const coursesSchemaIt_M = {
         select: {
             course: 'course_name.en',
         },
-        prepare(selection: { course: string }) {
-            const { course } = selection;
+        prepare(selection: { course?: string }) {
             return {
-                title: `Դասընթաց / ${course}`,
+                title: `Դասընթաց / ${selection.course}`,
             };
         },
     }
