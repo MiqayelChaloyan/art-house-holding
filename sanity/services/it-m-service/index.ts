@@ -1,12 +1,52 @@
 export const PRICE_LIST_QUERY = `
 *[_type == "price-list-it-m"] {
-    "_id": _id,
     "price_list": price_list[] {
         "_key": _key,
         "course": course[$language],
-        "group_lessons": group_lessons,
-        "personal_lessons": personal_lessons,
         "duration": duration[$language],
         "hours_lessons": hours_lessons[$language],
+        group_lessons,
+        personal_lessons,
     }
+}`;
+
+export const OUR_TEAM_QUERY = `
+*[_type == "our-team-it-m"] {
+    "our_team": our_team[] {
+        "_key": _key,
+        "worker": worker[$language],
+        "profession": profession[$language],
+        "additional_detalis": additional_detalis[] {
+            "detalis": detalis[$language]
+        },
+        worker_image,
+    },
+}`;
+
+export const COURSES_QUERY = `
+*[_type == "courses-it-m"] {
+    "ogDescription": ogDescription[$language],
+    "course_name": course_name[$language],
+    "course_image": course_image,
+    "slug": slug.current,
+    "about_course": about_course {
+        "title": title[$language],
+        "about_content": about_content[$language]
+    },
+    course_process,
+    our_day,
+}`;
+
+export const COURSE_SLUG_QUERY = `
+*[_type == "courses-it-m" && slug.current == $slug] {
+    "ogDescription": ogDescription[$language],
+    "course_name": course_name[$language],
+    "course_image": course_image,
+    "slug": slug.current,
+    "about_course": about_course {
+        "title": title[$language],
+        "about_content": about_content[$language]
+    },
+    course_process,
+    our_day,
 }`;

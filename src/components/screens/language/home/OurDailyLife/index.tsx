@@ -8,7 +8,8 @@ import { useTranslations } from 'next-intl';
 
 import Container from '@/components/components/container';
 
-import Play from '@/lib/icons/educational-center/Play';
+import { MdPlayCircle } from 'react-icons/md';
+
 import { DAILY_LIFE_IMAGE, DAILY_LIFE_VIDEO, ReduxType, UrlType } from '@/types/language';
 import { Arial, Vrdznagir } from '@/constants/font';
 
@@ -26,19 +27,19 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: ABOUT_US_LANGUAGE[],
-    locale: string
-}
+interface Props {
+    data: ABOUT_US_LANGUAGE[];
+    locale: string;
+};
 
-type Video = {
-    item: DAILY_LIFE_VIDEO,
-    locale: string
-}
+interface Video {
+    item: DAILY_LIFE_VIDEO;
+    locale: string;
+};
 
-type Image = {
-    item: DAILY_LIFE_IMAGE
-}
+interface Image {
+    item: DAILY_LIFE_IMAGE;
+};
 
 const DailyLifeImage = ({ item }: Image) => {
     const path: UrlType | any = urlForImage(item);
@@ -97,10 +98,9 @@ const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
                     className={styles.icon}
                     onClick={() => handlePlayVideo(item.video_url)}
                 >
-                    <Play
-                        width={75}
-                        height={75}
-                        fill='#fff'
+                    <MdPlayCircle
+                        size={75}
+                        color='#fff'
                     />
                 </button>
             </div>

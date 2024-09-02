@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, useTransition } from 'react';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 
+import useWindowSize from '@/hooks/useWindowSize';
+
 import Planet from '@/lib/icons/it-m/Planet';
 import { ImagePaths } from '@/constants';
 import { ArianAMU, MMArmenU } from '@/constants/font';
@@ -12,7 +14,6 @@ import { ArianAMU, MMArmenU } from '@/constants/font';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import useWindowSize from '@/hooks/useWindowSize';
 
 
 const localeStrings: {

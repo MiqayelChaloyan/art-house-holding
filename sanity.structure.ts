@@ -29,7 +29,9 @@ export default (S: any) =>
                     'design-lessons-select-option',
                     'partners',
                     'portfolio-design',
-                    'price-list-it-m'
+                    'price-list-it-m',
+                    'our-team-it-m',
+                    'courses-it-m'
                 ].includes(listItem.getId())
             ),
 
@@ -124,6 +126,16 @@ export default (S: any) =>
                                 .title('Price List')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('price-list-it-m').documentId('price-list-it-m')),
+                            S.listItem()
+                                .title('Our team')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('our-team-it-m').documentId('our-team-it-m')),
+                            S.listItem()
+                                .title('Courses')
+                                .child(
+                                    S.documentList()
+                                        .title('Courses')
+                                        .filter('_type == "courses-it-m"')),
                         ])
                 ),
             S.listItem()

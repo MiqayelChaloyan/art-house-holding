@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react';
+
 import { useSearchParams } from 'next/navigation';
 
 import WorksGallery from '@/components/components/worksGallery';
@@ -7,15 +9,12 @@ import WorksGallery from '@/components/components/worksGallery';
 import RotatingLines from '@/lib/ui/rotatingLines';
 import { Arial } from '@/constants/font';
 
-import { UrlType } from '@/types/design';
-
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 import { COURSE } from '../../../../../sanity/sanity-queries/design';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import { useEffect, useState } from 'react';
 
 
 interface Props {

@@ -1,0 +1,58 @@
+.gallery
+    display: grid
+    flex-wrap: wrap
+    justify-content: flex-start
+    align-items: flex-start 
+    align-self: center
+    margin: 50px auto
+    grid-template-columns: auto auto auto
+    gap: 100px
+    /* @3xl */
+    @media screen and (max-width: 1920px)
+        margin: 50px auto
+        grid-template-columns: auto auto auto
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        margin: 10px auto
+        grid-template-columns: auto auto  auto
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        margin: 10px auto
+        grid-template-columns: auto auto auto
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        margin: 10px auto
+        grid-template-columns: auto auto auto
+    /* @md */
+    @media screen and (max-width: 1024px)
+        margin: 10px auto
+        grid-template-columns: auto auto
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin: 10px auto
+        grid-template-columns: auto auto
+        gap: 20px
+    /* @xs */
+    @media screen and (max-width: 600px)
+        margin: 10px auto
+        grid-template-columns: auto auto
+    /* @2xs */
+    @media screen and (max-width: 480px)
+        margin: 10px auto
+        grid-template-columns: auto auto
+    /* @3xs */
+    @media screen and (max-width: 360px)
+        margin: 10px auto
+        grid-template-columns: auto auto
+
+.line
+    margin-top: 10px
+    height: 2px
+    width: 100%
+    background-color: #A7CF48
+    /* @2xl */
+    @media screen and (max-width: 1600px)
+        margin-top: 40px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-top: 20px

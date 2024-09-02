@@ -1,7 +1,13 @@
+interface AssetRef {
+    _type: string;
+    _ref: string;
+};
 
-
-
-
+interface Asset {
+    _type: string;
+    alt: string;
+    asset: AssetRef;
+};
 
 interface PRICES {
     _key: string;
@@ -13,7 +19,35 @@ interface PRICES {
 };
 
 interface PRICE_LIST_QUERYResult {
-    _id: string;
     price_list: PRICES[];
 };
 
+interface ADDITIONAL_DETALIS {
+    detalis: string;
+};
+
+interface OUR_TEAM {
+    _key: string;
+    worker: string;
+    profession: string;
+    worker_image: Asset;
+    additional_detalis: ADDITIONAL_DETALIS[];
+};
+
+interface OUR_TEAM_QUERYResult {
+    our_team: OUR_TEAM[];
+};
+
+interface COURSES_QUERYResult {
+    [x: string]: any;
+    ogDescription: string;
+    course_name: string;
+    course_image: Asset;
+    slug: string;
+    about_course: {
+        title: string;
+        about_content: string;
+    },
+    course_process: any;
+    our_day: any
+};

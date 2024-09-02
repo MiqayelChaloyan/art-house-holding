@@ -4,10 +4,10 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import Play from '@/lib/icons/educational-center/Play';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
+
+import { MdPlayCircle } from 'react-icons/md';
 
 import { UrlType } from '@/types/educational-center';
 import { ReduxType } from '@/types/language';
@@ -15,10 +15,10 @@ import { ReduxType } from '@/types/language';
 import styles from './styles.module.sass'
 
 
-type Props = {
-    light: UrlType,
-    link: string,
-    alt: string
+interface Props {
+    light: UrlType;
+    link: string;
+    alt: string;
 };
 
 const VideoPlayer = ({ light, link, alt }: Readonly<Props>) => {
@@ -44,10 +44,9 @@ const VideoPlayer = ({ light, link, alt }: Readonly<Props>) => {
                     className={styles.icon}
                     onClick={() => handlePlayVideo(link)}
                 >
-                    <Play
-                        width={75}
-                        height={75}
-                        fill='#fff'
+                    <MdPlayCircle
+                        size={75}
+                        color='#fff'
                     />
                 </button>
             </div>

@@ -1,4 +1,40 @@
-export type ImagePath = { src: string, width: number, height: number } | any;
+interface PortableChildren {
+    marks: any;
+    text: string;
+    _key: string;
+    _type: string;
+};
+
+export interface TEXT {
+    children: PortableChildren[];
+    markDefs: any;
+    style: string;
+    _key: string;
+    _type: string;
+};
+
+export interface Asset {
+    _ref: string;
+    _type: string;
+};
+
+export interface Image {
+    asset: Asset;
+    _type: string;
+    alt: string;
+};
+
+export interface Ref {
+    _type: string;
+    _ref: string;
+};
+
+export type ImagePath = {
+    src: string,
+    width: number,
+    height: number
+
+} | any;
 
 export type ContactUsResponse = { status: number } | { error: string } | any;
 

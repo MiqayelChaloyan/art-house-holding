@@ -8,6 +8,7 @@ import { client } from "../../../../../sanity/client";
 import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { notFound } from "next/navigation";
 import Footer from "@/lib/outlets/it-m/Footer";
+import PlayerModal from "@/lib/outlets/general/PlayerModal";
 
 
 interface RootLayoutProps {
@@ -16,8 +17,6 @@ interface RootLayoutProps {
         locale: string;
     }
 };
-
-
 
 const localeStrings: {
     am: string
@@ -88,6 +87,7 @@ export default async function Layout({
             <CoursesModal locale={locale} courses={courses} />
         </Modal>
         <PlayerModal /> */}
+        <PlayerModal />
     </>
     )
 };
