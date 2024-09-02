@@ -24,19 +24,19 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    orders: ORDERS[]
-    ordersArmenian: ORDERS[]
+    orders: ORDERS[];
+    ordersArmenian: ORDERS[];
 };
 
-type FormProps = {
-    isLoading: boolean,
-    error: boolean,
-    values: FormOrder
+interface FormProps {
+    isLoading: boolean;
+    error: boolean;
+    values: FormOrder;
 };
 
 const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
-    const t = useTranslations();
     const [orderValue, setOrderValue] = useState<ORDERS | any>([]);
+    const t = useTranslations();
 
     const [open, setOpen] = useState(false);
     const [info, setInfo] = useState({
@@ -113,11 +113,11 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
     const handleClose = () => setOpen(false);
 
     const getValueToSlug = (slug: number | string) => {
-        const order: ORDERS | any = ordersArmenian?.find((item: ORDERS) => {
+        const order = ordersArmenian?.find((item: ORDERS) => {
             return item.slug === slug;
         });
 
-        if (order.order_name) {
+        if (order?.order_name) {
             return setOrderValue(order);
         }
     };

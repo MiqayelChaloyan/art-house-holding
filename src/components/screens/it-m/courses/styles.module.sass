@@ -60,24 +60,34 @@
     /* @sm */
     @media screen and (max-width: 768px)
         margin: 10px auto
-        grid-template-columns: auto auto
+        display: flex
+        justify-content: center
     /* @xs */
     @media screen and (max-width: 600px)
         margin: 10px auto
-        grid-template-columns: auto auto
+        display: flex
+        justify-content: center
     /* @2xs */
     @media screen and (max-width: 480px)
         margin: 10px auto
-        grid-template-columns: auto auto
+        display: flex
+        justify-content: center
     /* @3xs */
     @media screen and (max-width: 360px)
         margin: 10px auto
-        grid-template-columns: auto auto
+        display: flex
+        justify-content: center
+
 
 .course 
     width: 414.04px 
     height: 484.35px    
     display: block
+    margin: 10px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 330.99px
+        height: 393.88px
 
 .image
     background-color: #F8F8F8
@@ -88,6 +98,10 @@
     transition: transform .7s
     &:hover
         transform: scale(0.9)
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 330.99px
+        height: 275.29px
 
 .course-title
     font-size: 33.2px
@@ -95,3 +109,16 @@
     font-weight: 400
     color: #4D4D4D
     text-align: center
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 26.54px
+        line-height: 27.92px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        &:after
+            content:" "
+            display: block
+            margin: 10px auto
+            height: 2px
+            width: 35%
+            background-color: #A7CF48

@@ -51,3 +51,18 @@ interface COURSES_QUERYResult {
     course_process: any;
     our_day: any
 };
+
+interface LESSON {
+    course_name: string;
+    slug: string | number;
+};
+
+interface ORDER {
+    order_name: string;
+    slug: string | number;
+};
+
+interface SELECT_OPTIONS_QUERYResult {
+    courses_names: LESSON[];
+    orders_names: ORDER[];
+};

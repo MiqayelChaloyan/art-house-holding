@@ -22,7 +22,25 @@ const address = 'Ք․ Երևան, Կենտրոն, \n Աբովյան 33/6, 0019'
 
 const phoneNum = ['+374 (77) 520 604', '+374 (96) 200 408']
 
-const Contacts = () => {
+
+
+
+
+
+
+
+
+
+
+interface Props {
+    lessons: LESSON[];
+    lessonsArmenianKeyword: LESSON[];
+};
+
+const Contacts = ({
+    lessons,
+    lessonsArmenianKeyword
+}: Readonly<Props>) => {
     return (
         <section id='contacts' className={MMArmenU.className}>
             <Container className='container'>
@@ -76,7 +94,11 @@ const Contacts = () => {
                     </div>
                     <div className={styles.right}>
                         <h2 className={styles.title}>Ուղարկել հայտ</h2>
-                        <Form />
+                        <Form
+                            lessons={lessons}
+                            lessonsArmenianKeyword={lessonsArmenianKeyword}
+                            classNameProperty='small'
+                        />
                     </div>
                 </div>
             </Container>

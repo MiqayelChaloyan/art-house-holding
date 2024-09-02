@@ -18,7 +18,7 @@ type FormProps = {
 };
 
 interface SelectProps {
-    data: LANGUAGE[] | LESSON[]
+    data: LANGUAGE[] | LESSON[] | ORDER[]
     state: FormProps
     valueName: string
     handleChange: (value: any) => void

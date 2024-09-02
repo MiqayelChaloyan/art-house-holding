@@ -86,6 +86,7 @@
         "name": "Имя",
         "last-name": "Фамилия",
         "full-name": "Имя, Фамилия",
+        "surname": "Отчество",
         "email": "Электронная почта",
         "phone-number": "Номер телефона",
         "message": "Сообщение",
@@ -93,7 +94,8 @@
         "select-quantity": "Продолжительность урока",
         "select-course-type": "Тип курса",
         "send": "Отправить",
-        "loading": "Загрузка"
+        "loading": "Загрузка",
+        "select-field": "Выберите поле"
     },
     "price-list": {
         "month": "месяц",

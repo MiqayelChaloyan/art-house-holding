@@ -86,6 +86,7 @@
         "name": "Name",
         "last-name": "Last Name",
         "full-name": "Name, Surname",
+        "surname": "Surname",
         "email": "Email",
         "phone-number": "Phone Number",
         "message": "Message",
@@ -93,7 +94,8 @@
         "select-quantity": "Quantity of classes",
         "select-course-type": "Course type",
         "send": "Send",
-        "loading": "Loading"
+        "loading": "Loading",
+        "select-field": "Select a field"
     },
     "price-list": {
         "month": "month",

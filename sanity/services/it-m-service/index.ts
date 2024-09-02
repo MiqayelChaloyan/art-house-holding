@@ -50,3 +50,15 @@ export const COURSE_SLUG_QUERY = `
     course_process,
     our_day,
 }`;
+
+export const LESSONS_ORDERS_QUERY = `
+*[_type == "it-m-select-option"] {
+    "courses_names": courses_names[] {
+        "course_name": course_name[$language],
+        "slug": slug.current,
+    },
+    "orders_names": orders_names[] {
+        "order_name": order_name[$language],
+        "slug": slug.current,
+    },
+}`;

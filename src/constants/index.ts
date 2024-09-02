@@ -29,7 +29,9 @@ const ImagePaths = {
 const TRAINING_CENTERS = {
     design_school: 48,
     educational_school: 46,
-    language_school: 44
+    language_school: 44,
+    
+    itm_school: 0
 };
 
 const Titles = {

@@ -85,6 +85,7 @@
         "form-title-order": "Պատվիրել",
         "name": "Անուն",
         "last-name": "Ազգանուն",
+        "surname": "Հայրանուն",
         "full-name": "Անուն, Ազգանուն",
         "email": "Փոստի հասցե",
         "phone-number": "Հեռախոսահամար",
@@ -93,7 +94,8 @@
         "select-quantity": "Դասի տևողությունը",
         "select-course-type": "Դասընթացի տեսակը",
         "send": "Ուղարկել",
-        "loading": "Բեռնվում է"
+        "loading": "Բեռնվում է",
+        "select-field": "Ընտրել ոլորտը"
     },
     "price-list": {
         "month": "ամիս",

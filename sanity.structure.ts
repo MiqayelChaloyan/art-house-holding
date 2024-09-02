@@ -31,7 +31,8 @@ export default (S: any) =>
                     'portfolio-design',
                     'price-list-it-m',
                     'our-team-it-m',
-                    'courses-it-m'
+                    'courses-it-m',
+                    'it-m-select-option'
                 ].includes(listItem.getId())
             ),
 
@@ -136,6 +137,10 @@ export default (S: any) =>
                                     S.documentList()
                                         .title('Courses')
                                         .filter('_type == "courses-it-m"')),
+                            S.listItem()
+                                .title('Lessons & Fields')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('it-m-select-option').documentId('it-m-select-option')),
                         ])
                 ),
             S.listItem()

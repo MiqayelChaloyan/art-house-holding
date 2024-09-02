@@ -1,12 +1,18 @@
+'use client'
+
 import * as React from 'react';
+
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-export default function Snackbars({open, handleChange, info}: any) {
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+import { MMArmenU } from '@/constants/font';
+
+
+export default function Snackbars({ open, handleChange, info }: any) {
+  const handleClose = (_?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
-    }
+    };
 
     handleChange();
   };
@@ -20,7 +26,7 @@ export default function Snackbars({open, handleChange, info}: any) {
           variant='filled'
           sx={{ width: '100%' }}
         >
-          {info.content}
+          <span className={MMArmenU.className}>{info.content}</span>
         </Alert>
       </Snackbar>
     </div>

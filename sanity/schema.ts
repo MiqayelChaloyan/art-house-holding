@@ -24,6 +24,7 @@ import portfolioSchemaDesign from './schemas/design/portfolios-schema';
 import priceListSchemaIt_M from './schemas/it-m/price-list-schema';
 import ourTeamSchemaIt_M from './schemas/it-m/our-team-schema';
 import coursesSchemaIt_M from './schemas/it-m/courses-schema';
+import lessonsSchemaIT_M from './schemas/it-m/lessons-schema';
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   homeSchemaArtHouse,
@@ -49,7 +50,8 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   portfolioSchemaDesign,
   priceListSchemaIt_M,
   ourTeamSchemaIt_M,
-  coursesSchemaIt_M
+  coursesSchemaIt_M,
+  lessonsSchemaIT_M
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {
