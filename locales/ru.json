@@ -38,6 +38,7 @@
         "select-language": "Выберите язык",
         "send-message-success": "Ваше письмо было успешно отправлено",
         "send-message-failure": "Что-то пошло не так. Пожалуйста, попробуйте еще раз",
+        "other-platforms": "Другие платформы",
         "address": "Адрес"
     },
     "buttons": {

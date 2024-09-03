@@ -22,7 +22,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-interface Form {
+interface FormT {
     isLoading: boolean;
     error: boolean;
     values: FormContact;
@@ -51,12 +51,12 @@ const Form = ({
     const initValues = { email: '', phone: '', course_name: t('contact-us-form.select-course'), message: '', training_center: TRAINING_CENTERS.itm_school, };
     const initState = { isLoading: false, error: false, values: initValues };
 
-    const [state, setState] = useState<Form>(initState);
+    const [state, setState] = useState<FormT>(initState);
     const { values, isLoading, error } = state;
 
 
     const handleChange = ({ target }: any) =>
-        setState((prev: Form) => ({
+        setState((prev: FormT) => ({
             ...prev,
             values: {
                 ...prev.values,
@@ -105,7 +105,7 @@ const Form = ({
                 content: t('texts.send-message-failure'),
             });
 
-            setState((prev: Form) => ({
+            setState((prev: FormT) => ({
                 ...prev,
                 isLoading: false,
                 error: true,

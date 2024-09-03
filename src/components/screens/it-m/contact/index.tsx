@@ -1,20 +1,27 @@
 'use client'
 
-import Container from '@/components/components/container';
-import styles from './styles.module.sass';
-import cn from 'classnames';
-import { Calibri, MMArmenU } from "@/constants/font";
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
+import Container from '@/components/components/container';
 import Form from './Form';
+
+import useWindowSize from '@/hooks/useWindowSize';
+
 import { FaFacebookF, FaTwitter, FaPinterestP, FaTiktok } from 'react-icons/fa';
 import { FaInstagram, FaViber } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { GrLinkedinOption } from 'react-icons/gr';
-import { PiTelegramLogoLight, PiWhatsappLogo } from "react-icons/pi";
-import { AiOutlineYoutube } from "react-icons/ai";
+import { PiTelegramLogoLight, PiWhatsappLogo } from 'react-icons/pi';
+import { AiOutlineYoutube } from 'react-icons/ai';
+
+import { Calibri, MMArmenU } from '@/constants/font';
+
 import { socialNetwork } from '@/types/it-m';
-import useWindowSize from '@/hooks/useWindowSize';
-import { generateSocialLinks } from '@/utils/generateSocialLinks'
+
+import cn from 'classnames';
+
+import styles from './styles.module.sass';
 
 
 const socialNetworkComponents: socialNetwork = {
@@ -42,12 +49,15 @@ const Contacts = ({
     lessonsArmenianKeyword,
     contacts
 }: Readonly<Props>) => {
+    const t = useTranslations();
     const windowSize = useWindowSize();
 
 
     const phoneNumbers = contacts.phone_numbers?.map((number, index) => (
         <div key={index} className={styles.social}>
-            <span className={styles.contactName}>Հեռախոս  {index + 1}:</span>
+            <span className={styles.contactName}>
+                {t('contact-us-form.phone-number')} {index + 1}:
+            </span>
             <Link
                 href={`tel:${number}`}
                 aria-label={number}
@@ -84,18 +94,18 @@ const Contacts = ({
 
     const messengers = contacts.messengers?.map(messenger => (
         <div key={messenger._key} className={styles.social}>
-             <span className={styles.contactName}>
+            <span className={styles.contactName}>
                 {messenger?.messenger_name}:
             </span>
             <Link
-                href={generateSocialLinks(messenger)}
-                aria-label={generateSocialLinks(messenger)}
+                href={`tel:${messenger?.messenger}`}
+                aria-label={messenger?.messenger}
                 className={cn(styles.contact, Calibri.className)}
                 prefetch={true}
                 passHref
             >
                 <span className={styles.number}>{messenger?.messenger}</span>
-            </Link> 
+            </Link>
         </div>
     ));
 
@@ -105,15 +115,17 @@ const Contacts = ({
             <Container className='container'>
                 <div className={styles.block}>
                     <div className={styles.left}>
-                        <h2 className={styles.title}>Կապ մեզ հետ</h2>
+                        <h2 className={styles.title}>
+                            {t('texts.contact-us')}
+                        </h2>
                         <div className={styles.contacts}>
                             <div className={styles.box}>
                                 {messengers}
                                 <div className={styles.social}>
                                     <span className={styles.contactName}>
-                                        Հասցե:
+                                        {t('texts.address')}:
                                     </span>
-                                    <p className={cn(styles.address, Calibri.className)}>
+                                    <p className={styles.address}>
                                         {contacts?.address}
                                     </p>
                                 </div>
@@ -121,7 +133,9 @@ const Contacts = ({
                             <div className={styles.box}>
                                 {phoneNumbers}
                                 <div className={styles.social}>
-                                    <span className={styles.contactName}>Այլ հարթակներ</span>
+                                    <span className={styles.contactName}>
+                                        {t('texts.other-platforms')}
+                                    </span>
                                     <div className={styles.hosts}>
                                         {hosts}
                                     </div>
@@ -130,7 +144,9 @@ const Contacts = ({
                         </div>
                     </div>
                     <div className={styles.right}>
-                        <h2 className={styles.title}>Ուղարկել հայտ</h2>
+                        <h2 className={styles.title}>
+                            {t('texts.send-request')}
+                        </h2>
                         <Form
                             lessons={lessons}
                             lessonsArmenianKeyword={lessonsArmenianKeyword}

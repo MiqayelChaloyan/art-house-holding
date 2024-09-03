@@ -3,21 +3,41 @@
    border-radius: 10px
    padding: 10px
    margin-top: 50px
-   margin: 20px auto
+   margin-bottom: 170px
+   /* @md */
+   @media screen and (max-width: 1024px)
+      margin-bottom: 100px
 
 .fields
    display: flex
-   display: flex
    justify-content: center
    width: 100%
+   /* @sm */
+   @media screen and (max-width: 768px)
+      display: grid
+      justify-content: stretch
 
 .block
    width: 50%
-   margin: 0 30px
+   margin: 0 20px
+   /* @sm */
+   @media screen and (max-width: 768px)
+      width: 100%
+      margin: 0
+
 
 .field
-   margin: 0 30px
+   width: 96%
+   margin: 0 auto
+   /* @md */
+   @media screen and (max-width: 1024px)
+      width: 94%
+   /* @sm */
+   @media screen and (max-width: 768px)
+      margin: 0
+      width: 100%
 
+      
 .input
    width: 100%
    max-width: 100%
@@ -60,11 +80,11 @@
    @media screen and (max-width: 768px)
       font-size: 14px
       width: 100%
+      border-radius: 24.62px
    /* @xs */
    @media screen and (max-width: 600px)
       font-size: 14px
       width: 100%
-      border-radius: 10px
    /* @2xs */
    @media screen and (max-width: 480px)
       font-size: 14px
@@ -117,6 +137,7 @@
    @media screen and (max-width: 768px)
       font-size: 14px
       width: 100%
+      border-radius: 16.42px
    /* @xs */
    @media screen and (max-width: 600px)
       font-size: 14px

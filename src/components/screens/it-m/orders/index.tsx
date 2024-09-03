@@ -15,8 +15,6 @@ const Orders = ({
     ordersArmenianKeyword
 }: Readonly<Props>) => {
 
-    console.log(orders)
-
     return (
         <section id='orders' className={MMArmenU.className}>
 

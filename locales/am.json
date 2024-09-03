@@ -38,6 +38,7 @@
         "select-language": "Ընտրել Լեզուն",
         "send-message-success": "Ձեր նամակը հաջողությամբ ուղարկվեց",
         "send-message-failure": "Ինչ որ բան այնպես չգնաց, խնդրում ենք փորձել նորից",
+        "other-platforms": "Այլ հարթակներ",
         "address": "Հասցե"
     },
     "buttons": {

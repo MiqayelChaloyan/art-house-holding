@@ -38,6 +38,7 @@
         "select-language": "Select Language",
         "send-message-success": "Your email was sent successfully",
         "send-message-failure": "Something went wrong, please try again",
+        "other-platforms": "Other platforms",
         "address": "Address"
     },
     "buttons": {
