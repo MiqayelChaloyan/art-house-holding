@@ -1,0 +1,82 @@
+.container
+    height: max-content
+    margin-bottom: 50px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-bottom: 25px
+
+.player
+    margin: 50px auto
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin: 25px auto
+        
+.link
+    font-weight: 700
+    font-size: 14px
+    line-height: 16.52px
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #FFFFFF
+    border: 2px solid #B2D01B
+    background-color: #B2D01B
+    width: 180px
+    height: 50px
+    padding: 20px
+    cursor: pointer
+    transition: color 400ms
+    position: relative
+    z-index: 1
+    box-shadow: 0 4px 4px 0 #00000024
+    text-transform: uppercase
+    &:before 
+        content: '' 
+        position: absolute 
+        top: 0 
+        left: 0 
+        right: 0 
+        bottom: 0 
+        background: #1A2738
+        z-index: -1 
+        transition: transform 400ms ease-out 
+        transform: scaleX(0) 
+        transform-origin: left 
+    &:hover 
+        color: #fff 
+        border: 2px solid #1A2738 
+        &:before 
+            transform: scaleX(1) 
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 14px
+        width: 170px
+    /* @md */
+    @media screen and (max-width: 1024px)
+        font-size: 14px
+        height: 30px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        font-size: 14px
+        padding: 7px 0
+        width: 25%
+    /* @xs */
+    @media screen and (max-width: 600px)
+        font-size: 14px
+        padding: 7px 0
+        width: 30%
+    /* @2xs */
+    @media screen and (max-width: 480px)  
+        font-size: 12px
+        padding: 7px 0
+        width: 35%
+    /* @3xs */  
+    @media screen and (max-width: 360px)
+        font-size: 12px
+        padding: 7px 0
+        width: 45%
+
+.button_group
+    margin: 0 auto
+    display: flex
+    justify-content: center

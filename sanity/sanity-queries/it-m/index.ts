@@ -85,4 +85,31 @@ interface CONTACT_US_QUERYResult {
     messengers: MESSENGER[];
     social_links: SOCIAL[];
     email: string;
-}
+};
+
+interface ABOUT {
+    title: string;
+    content: any;
+};
+
+interface STRENGTHS {
+    _key: string;
+    title: string;
+    content: any;
+    showImage?: boolean;
+    images?: Asset[];
+};
+
+interface VIDEO {
+    video_url: string;
+    video_light: {
+        asset: Asset;
+        alt: string;
+    } | null;
+};
+
+interface ABOUT_US_DETAILS_QUERYResult {
+    about_us: ABOUT;
+    strengths: STRENGTHS[];
+    video: VIDEO;
+};

@@ -79,3 +79,35 @@ export const CONTACT_US_QUERY = `
     },
     email,
 }`;
+
+// export const ABOUT_US_DETALIS_QUERY = `
+// *[_type == "it-m-about-us"] {
+//     "about_us": about_us {
+//         "title": title[$language],
+//         "content" content[$language],
+//     },
+//     "strengths": strengths[] {
+//         "_key": _key,
+//         "title": title[$language],
+//         "content" content[$language],
+//         showImage,
+//         images,
+//     },
+//     video,
+// }`;
+
+export const ABOUT_US_DETAILS_QUERY = `
+*[_type == "it-m-about-us"] {
+    "about_us": about_us {
+        "title": title[$language],
+        "content": content[$language],
+    },
+    "strengths": strengths[] {
+        "_key": _key,
+        "title": title[$language],
+        "content": content[$language],
+        showImage,
+        images,
+    },
+    video,
+}`;

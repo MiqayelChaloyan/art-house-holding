@@ -33,7 +33,8 @@ export default (S: any) =>
                     'our-team-it-m',
                     'courses-it-m',
                     'it-m-select-option',
-                    'it-m-contact-us'
+                    'it-m-contact-us',
+                    'it-m-about-us'
                 ].includes(listItem.getId())
             ),
 
@@ -124,6 +125,10 @@ export default (S: any) =>
                     S.list()
                         .title('Pages')
                         .items([
+                            S.listItem()
+                                .title('About Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('it-m-about-us').documentId('it-m-about-us')),
                             S.listItem()
                                 .title('Price List')
                                 .icon(DocumentsIcon)
