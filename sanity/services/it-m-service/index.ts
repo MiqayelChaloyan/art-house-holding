@@ -62,3 +62,20 @@ export const LESSONS_ORDERS_QUERY = `
         "slug": slug.current,
     },
 }`;
+
+export const CONTACT_US_QUERY = `
+*[_type == "it-m-contact-us"] {
+    "address": address[$language],
+    "phone_numbers": phone_numbers[],
+    "messengers": messengers[] {
+        "_key": _key,
+        "messenger_name": messenger_name,
+        "messenger": messenger,
+    },
+    "social_links": social_links[] {
+        "_key": _key,
+        "social_name": social_name,
+        "social_link": social_link,
+    },
+    email,
+}`;

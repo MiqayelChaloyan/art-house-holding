@@ -66,3 +66,23 @@ interface SELECT_OPTIONS_QUERYResult {
     courses_names: LESSON[];
     orders_names: ORDER[];
 };
+
+interface MESSENGER {
+    _key: string;
+    messenger_name: string;
+    messenger: string;
+};
+
+interface SOCIAL {
+    _key: string;
+    social_name: string;
+    social_link: string;
+};
+
+interface CONTACT_US_QUERYResult {
+    address: string;
+    phone_numbers: string[];
+    messengers: MESSENGER[];
+    social_links: SOCIAL[];
+    email: string;
+}

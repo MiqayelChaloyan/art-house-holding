@@ -32,7 +32,8 @@ export default (S: any) =>
                     'price-list-it-m',
                     'our-team-it-m',
                     'courses-it-m',
-                    'it-m-select-option'
+                    'it-m-select-option',
+                    'it-m-contact-us'
                 ].includes(listItem.getId())
             ),
 
@@ -138,7 +139,11 @@ export default (S: any) =>
                                         .title('Courses')
                                         .filter('_type == "courses-it-m"')),
                             S.listItem()
-                                .title('Lessons & Fields')
+                                .title('Contact Us')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('it-m-contact-us').documentId('it-m-contact-us')),
+                            S.listItem()
+                                .title('Lessons & Orders')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('it-m-select-option').documentId('it-m-select-option')),
                         ])

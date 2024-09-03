@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import Contacts from '@/components/screens/it-m/contact';
 
-import { getSelectOptions } from '@/utils/data/it-m/data';
+import { getContacts, getSelectOptions } from '@/utils/data/it-m/data';
 
 
 interface Props {
@@ -18,8 +18,9 @@ export default async function Page({
 }: Readonly<Props>) {
     const lessons = await getSelectOptions(locale);
     const lessonsArmenianKeyword = await getSelectOptions('am');
+    const contacts = await getContacts(locale);
 
-    if (!lessons || !lessonsArmenianKeyword) {
+    if (!lessons || !lessonsArmenianKeyword || !contacts) {
         notFound();
     };
 
@@ -27,6 +28,7 @@ export default async function Page({
         <Contacts
             lessons={lessons?.courses_names}
             lessonsArmenianKeyword={lessonsArmenianKeyword?.courses_names}
+            contacts={contacts}
         />
     );
 };

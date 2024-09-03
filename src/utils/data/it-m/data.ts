@@ -1,4 +1,4 @@
-import { COURSE_SLUG_QUERY, COURSES_QUERY, LESSONS_ORDERS_QUERY, OUR_TEAM_QUERY, PRICE_LIST_QUERY } from '../../../../sanity/services/it-m-service';
+import { CONTACT_US_QUERY, COURSE_SLUG_QUERY, COURSES_QUERY, LESSONS_ORDERS_QUERY, OUR_TEAM_QUERY, PRICE_LIST_QUERY } from '../../../../sanity/services/it-m-service';
 
 import { sanityFetch } from '@/api/sanity-fetch';
 
@@ -64,6 +64,20 @@ export async function getSelectOptions(locale: string): Promise<SELECT_OPTIONS_Q
         "use server";
         const result = await sanityFetch<SELECT_OPTIONS_QUERYResult[]>({
             query: LESSONS_ORDERS_QUERY,
+            params: { language: locale },
+        });
+
+        return result[0];
+    } catch (error) {
+        throw error;
+    }
+};
+
+export async function getContacts(locale: string): Promise<CONTACT_US_QUERYResult> {
+    try {
+        "use server";
+        const result = await sanityFetch<CONTACT_US_QUERYResult[]>({
+            query: CONTACT_US_QUERY,
             params: { language: locale },
         });
 
