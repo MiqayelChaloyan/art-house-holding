@@ -55,7 +55,8 @@
         "register": "Register",
         "register-now": "Register Now",
         "see-more": "See More",
-        "more": "More"
+        "more": "More",
+        "courses": "Courses"
     },
     "sections": {
         "partners": "Co-workers",
@@ -107,7 +108,9 @@
         "price-list": "Price list",
         "private-lessons": "Private lessons \n for foreigners",
         "english-language-lessons": "Professional foreign \n language classes",
-        "quiz-result": "Quiz result"
+        "quiz-result": "Quiz result",
+        "what-to-learn": "What to study at ITM?",
+        "our-advantages": "Our advantages"
     },
     "tables-titles": {
         "languages-taught": "Languages \n taught",

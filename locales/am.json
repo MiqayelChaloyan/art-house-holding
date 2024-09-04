@@ -55,7 +55,8 @@
         "register": "Գրանցվել",
         "register-now": "Գրանցվիր հիմա",
         "see-more": "Տեսնել ավելին",
-        "more": "Ավելին"
+        "more": "Ավելին",
+        "courses": "Դասընթացներ"
     },
     "sections": {
         "partners": "Գործընկերներ",
@@ -107,7 +108,9 @@
         "price-list": "Գնացուցակ",
         "private-lessons": "Անհատական դասեր \n օտարերկրացիների համար",
         "english-language-lessons": "Օտար լեզուների \n մասնագիտական դասեր",
-        "quiz-result": "Վիկտորինայի արդյունք"
+        "quiz-result": "Վիկտորինայի արդյունք",
+        "what-to-learn": "Ի՞նչ սովորել ITM-ում",
+        "our-advantages": "Մեր առավելությունները"
     },
     "tables-titles": {
         "languages-taught": "Դասավանդվող \n լեզուներ",

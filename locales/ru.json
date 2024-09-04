@@ -55,7 +55,8 @@
         "register": "Регистрироваться",
         "register-now": "Зарегистрироваться",
         "see-more": "Узнать больше",
-        "more": "Более"
+        "more": "Более",
+        "courses": "Курсы"
     },
     "sections": {
         "partners": "Сотрудники",
@@ -107,7 +108,9 @@
         "price-list": "Прайс-лист",
         "private-lessons": "Частные уроки \n для иностранцев",
         "english-language-lessons": "Профессиональные занятия \n иностранным языком",
-        "quiz-result": "Результат викторины"
+        "quiz-result": "Результат викторины",
+        "what-to-learn": "Что изучать в ИТМ?",
+        "our-advantages": "Наши преимущества"
     },
     "tables-titles": {
         "languages-taught": "Преподаваемые \n языки",

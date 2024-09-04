@@ -6,39 +6,110 @@
     display: flex
     align-items: center
     justify-content: space-between
-
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: grid
+        justify-content: center
 
 .right
     width: 50%
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 100%
 
 .left
     width: 50%
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 100%
 
-.title
+.title-large
+    font-size: 34px
+    line-height: 35.77px
     font-weight: 400
-    font-size: 40px
-    line-height: 42.08px
     color: #4D4D4D
+    margin-bottom: 50px
     text-align: left
-    margin-bottom: 30px
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        font-size: 27px
+        line-height: 27px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: none
 
-.text
+.title-small
+    display: none
+    font-size: 29.51px
+    line-height: 31.05px
     font-weight: 400
-    font-size: 15px
-    line-height: 18.18px
     color: #4D4D4D
-    text-align: left
+    margin-bottom: 50px
+    text-align: center
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: block
 
+.content
+    margin-bottom: 20px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-bottom: 0
 
 .possibilities
     margin-bottom: 40px
     
-.course-btn
+.courses-btn
     font-weight: 400
     font-size: 16px
     line-height: 25.68px
     width: 176px
     height: 43px
+    display: flex
+    justify-content: center
+    align-items: center
     background-color: #B2D01B
-    border: 1px solid #B2D01B
+    border: 2px solid #B2D01B
     color: white
+    cursor: pointer
+    transition: color 400ms
+    position: relative
+    z-index: 1
+    &:before 
+        content: '' 
+        position: absolute 
+        top: 0 
+        left: 0 
+        right: 0 
+        bottom: 0 
+        background: white
+        z-index: -1 
+        transition: transform 400ms ease-out 
+        transform: scaleX(0) 
+        transform-origin: left 
+    &:hover 
+        color: #B2D01B 
+        border: 2px solid #B2D01B 
+        &:before 
+            transform: scaleX(1) 
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 164px
+        height: 42.47px
+        font-size: 15.67px
+        line-height: 16.6px
+        margin: 0 auto
+
+.image
+    width: 496.39px
+    height: 459.83px
+    object-fit: contain
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 80%
+        height: 100%
+    /* @sm */
+    @media screen and (max-width: 768px)
+        width: 200.99px
+        height: 200.99px
+        margin: 0 auto 20px

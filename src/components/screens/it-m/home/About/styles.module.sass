@@ -2,7 +2,6 @@
     height: auto
     margin-bottom: 100px
 
-
 .box
     display: flex
     justify-content: space-between
@@ -22,16 +21,16 @@
     font-weight: 400
     color: #4D4D4D
     margin-bottom: 50px
+    text-align: left
     /* @lg */
     @media screen and (max-width: 1280px)
         font-size: 18px
         line-height: 33px
     /* @sm */
     @media screen and (max-width: 768px)
-        font-size: 15.46px
-        line-height: 25.46px
+        font-size: 20.88px
+        line-height: 21.97px
         margin-bottom: 5px
-
 
 .content
     font-weight: 400
@@ -47,7 +46,6 @@
     /* @sm */
     @media screen and (max-width: 768px)
         width: 48%
-        margin-bottom: 0
 
 .right
     width: 48%
@@ -56,13 +54,22 @@
     @media screen and (max-width: 768px)
         width: 48%
         margin-top: 20px
-        margin-bottom: 0
 
-
-.buttons
+.buttons-large
     display: flex
     align-items: center
     justify-content: flex-start
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: none
+
+.buttons-small
+    display: none
+    align-items: center
+    justify-content: flex-start
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: flex
 
 .texts
     margin-bottom: 40px
@@ -110,7 +117,6 @@
         &:before 
             transform: scaleX(1) 
 
-
 .register
     background-color: white
     border: 2px solid #B2D01B
@@ -137,7 +143,6 @@
         border: 2px solid #B2D01B 
         &:before 
             transform: scaleX(1) 
-
 
 .image
     width: 496.39px

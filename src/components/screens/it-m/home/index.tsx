@@ -12,16 +12,12 @@ interface Props {
 };
 
 const Home = ({ about, data }: Readonly<Props>) => {
-    console.log(data)
     return (
         <>
-            <About data={about.about_us}/>
-            <Programming />
-            <OurAdvantages/>
-            <Learn/>
-            <div style={{ backgroundColor: 'green', height: '500px' }}>
-                partners
-            </div>
+            <About data={about.about_us} />
+            {/* <Programming /> */}
+            <OurAdvantages advantages={data?.our_advantages} />
+            <Learn content={data?.content}/>
         </>
     )
 };
