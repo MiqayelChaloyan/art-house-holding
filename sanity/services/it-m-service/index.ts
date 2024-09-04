@@ -107,7 +107,7 @@ export const ABOUT_US_DETAILS_QUERY = `
         "title": title[$language],
         "content": content[$language],
         showImage,
-        images,
+        image,
     },
     video,
 }`;

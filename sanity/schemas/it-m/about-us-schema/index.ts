@@ -135,33 +135,20 @@ export const aboutUsSchemaIT_M = {
                             initialValue: false,
                         },
                         {
-                            name: 'images',
-                            type: 'array',
-                            title: 'Images',
-                            description: 'You can add up to three pictures.',
-                            components: { input: ArrayMaxItems },
-                            validation: (Rule: RuleType) => Rule.max(3),
+                            name: 'image',
+                            type: 'image',
+                            title: 'Image',
                             hidden: ({ parent }: { parent: { showImage?: boolean } }) => !parent?.showImage,
-                            of: [
+                            options: {
+                                hotspot: true,
+                            },
+                            fields: [
                                 {
-                                    name: 'image',
-                                    type: 'image',
-                                    title: 'Image',
-                                    options: {
-                                        hotspot: true,
-                                    },
-                                    fields: [
-                                        {
-                                            name: 'alt',
-                                            type: 'string',
-                                            title: 'Alternative text',
-                                        },
-                                    ],
+                                    name: 'alt',
+                                    type: 'string',
+                                    title: 'Alternative text',
                                 },
                             ],
-                            options: {
-                                layout: 'grid',
-                            },
                         },
                     ],
                     preview: {

@@ -97,7 +97,7 @@ interface STRENGTHS {
     title: string;
     content: any;
     showImage?: boolean;
-    images?: Asset[];
+    image?: Asset;
 };
 
 interface VIDEO {
