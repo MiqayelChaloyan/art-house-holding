@@ -9,6 +9,12 @@ import { query as queryBranches } from '../../../../../sanity/services/art-house
 import { notFound } from "next/navigation";
 import Footer from "@/lib/outlets/it-m/Footer";
 import PlayerModal from "@/lib/outlets/general/PlayerModal";
+import { getHomeDetails } from "@/utils/data/it-m/data";
+import { Locale } from "@/locales";
+import { Metadata } from "next";
+import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
+import { ImagePath } from "@/types/general";
+import { generateMetadataDynamic } from "@/utils/default-metadata";
 
 
 interface RootLayoutProps {
@@ -75,19 +81,28 @@ export default async function Layout({
                 hover='#B2D01B'
             />
             {children}
-            {/* <ContactUs
-                locale={locale}
-                lessons={lessons}
-                lessonsArmenian={lessonsArmenian}
-            /> */}
-            {/* <Footer socialData={social} /> */}
-            {/* <Footer locale={locale}/> */}
+            <Footer locale={locale}/>
         </div>
-        {/* <Modal>
-            <CoursesModal locale={locale} courses={courses} />
-        </Modal>
-        <PlayerModal /> */}
         <PlayerModal />
     </>
     )
+};
+
+
+export async function generateMetadata({
+    params: { locale },
+}: {
+    params: { locale: Locale };
+}): Promise<Metadata> {
+    const data = await getHomeDetails(locale);
+
+    const ogTitle = data.ogTitle;
+    const ogImage = data.ogImage;
+    const ogDescription = data?.ogDescription;
+
+    const path: ImagePath = urlForImage(ogImage);
+    const icon = null;
+
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale);
+    return metadata;
 };

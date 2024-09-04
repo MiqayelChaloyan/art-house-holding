@@ -80,22 +80,6 @@ export const CONTACT_US_QUERY = `
     email,
 }`;
 
-// export const ABOUT_US_DETALIS_QUERY = `
-// *[_type == "it-m-about-us"] {
-//     "about_us": about_us {
-//         "title": title[$language],
-//         "content" content[$language],
-//     },
-//     "strengths": strengths[] {
-//         "_key": _key,
-//         "title": title[$language],
-//         "content" content[$language],
-//         showImage,
-//         images,
-//     },
-//     video,
-// }`;
-
 export const ABOUT_US_DETAILS_QUERY = `
 *[_type == "it-m-about-us"] {
     "about_us": about_us {
@@ -110,4 +94,13 @@ export const ABOUT_US_DETAILS_QUERY = `
         image,
     },
     video,
+}`;
+
+export const HOME_DETALIS_QUERY = `
+*[_type == "it-m-home"] {
+    ogTitle,
+    ogDescription,
+    ogImage,
+    "our_advantages": our_advantages[][$language],
+    "content": content[$language],
 }`;

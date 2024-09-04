@@ -34,7 +34,8 @@ export default (S: any) =>
                     'courses-it-m',
                     'it-m-select-option',
                     'it-m-contact-us',
-                    'it-m-about-us'
+                    'it-m-about-us',
+                    'it-m-home'
                 ].includes(listItem.getId())
             ),
 
@@ -126,9 +127,19 @@ export default (S: any) =>
                         .title('Pages')
                         .items([
                             S.listItem()
+                                .title('Home')
+                                .icon(DocumentsIcon)
+                                .child(S.document().schemaType('it-m-home').documentId('it-m-home')),
+                            S.listItem()
                                 .title('About Us')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('it-m-about-us').documentId('it-m-about-us')),
+                            S.listItem()
+                                .title('Courses')
+                                .child(
+                                    S.documentList()
+                                        .title('Courses')
+                                        .filter('_type == "courses-it-m"')),
                             S.listItem()
                                 .title('Price List')
                                 .icon(DocumentsIcon)
@@ -137,12 +148,6 @@ export default (S: any) =>
                                 .title('Our team')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('our-team-it-m').documentId('our-team-it-m')),
-                            S.listItem()
-                                .title('Courses')
-                                .child(
-                                    S.documentList()
-                                        .title('Courses')
-                                        .filter('_type == "courses-it-m"')),
                             S.listItem()
                                 .title('Contact Us')
                                 .icon(DocumentsIcon)

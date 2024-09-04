@@ -113,3 +113,11 @@ interface ABOUT_US_DETAILS_QUERYResult {
     strengths: STRENGTHS[];
     video: VIDEO;
 };
+
+interface HOME_DETALIS_QUERYResult {
+    ogTitle: string;
+    ogDescription: string;
+    ogImage: Asset;
+    our_advantages: string[];
+    content: string;
+};

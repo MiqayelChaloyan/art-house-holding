@@ -6,10 +6,16 @@ import OurAdvantages from './OurAdvantages';
 import Learn from './Learn';
 
 
-const Home = () => {
+interface Props {
+    about: ABOUT_US_DETAILS_QUERYResult;
+    data: HOME_DETALIS_QUERYResult;
+};
+
+const Home = ({ about, data }: Readonly<Props>) => {
+    console.log(data)
     return (
         <>
-            <About />
+            <About data={about.about_us}/>
             <Programming />
             <OurAdvantages/>
             <Learn/>

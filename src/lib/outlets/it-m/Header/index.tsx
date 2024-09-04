@@ -84,14 +84,6 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
                         aria-label={Pages.ITM}
                         className={styles.logo}
                     >
-                        {/* <Image
-                            src={ImagePaths.ITM.logoURL}
-                            alt='logo'
-                            width={500}
-                            height={500}
-                            className={styles.image}
-                            priority
-                        /> */}
                         <Logo width={204} height={84} />
                     </Link>
                 )}
