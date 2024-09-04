@@ -81,7 +81,7 @@ export default async function Layout({
                 lessonsArmenian={lessonsArmenian}
             /> */}
             {/* <Footer socialData={social} /> */}
-            <Footer locale={locale}/>
+            {/* <Footer locale={locale}/> */}
         </div>
         {/* <Modal>
             <CoursesModal locale={locale} courses={courses} />

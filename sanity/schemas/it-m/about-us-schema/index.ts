@@ -138,9 +138,9 @@ export const aboutUsSchemaIT_M = {
                             name: 'images',
                             type: 'array',
                             title: 'Images',
-                            description: 'You can add up to six pictures.',
+                            description: 'You can add up to three pictures.',
                             components: { input: ArrayMaxItems },
-                            validation: (Rule: RuleType) => Rule.max(6),
+                            validation: (Rule: RuleType) => Rule.max(3),
                             hidden: ({ parent }: { parent: { showImage?: boolean } }) => !parent?.showImage,
                             of: [
                                 {

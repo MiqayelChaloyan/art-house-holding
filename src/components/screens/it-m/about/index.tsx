@@ -12,11 +12,11 @@ interface Props {
 
 const About = ({ data }: Readonly<Props>) => {
     return (
-        <Container className='container'>
+        <>
             <AboutUs data={data?.about_us} />
             <Strengths data={data?.strengths}/>
             <VideoPlayer video={data?.video}/>
-        </Container>
+        </>
     )
 };
 
