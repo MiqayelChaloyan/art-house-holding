@@ -1,4 +1,8 @@
 import { DocumentsIcon } from '@sanity/icons';
+import { IoFolderOpen } from "react-icons/io5";
+import { MdFolder } from "react-icons/md";
+import { MdContactSupport } from "react-icons/md";
+
 
 export default (S: any) =>
     S.list()
@@ -29,37 +33,30 @@ export default (S: any) =>
                     'design-lessons-select-option',
                     'partners',
                     'portfolio-design',
-                    'price-list-it-m',
-                    'our-team-it-m',
-                    'courses-it-m',
-                    'it-m-select-option',
-                    'it-m-contact-us',
-                    'it-m-about-us',
-                    'it-m-home'
                 ].includes(listItem.getId())
             ),
 
             S.listItem()
                 .title('ART-HOUSE-HOME')
+                .icon(MdFolder)
                 .child(
                     S.list()
                         .title('Pages')
                         .items([
                             S.listItem()
                                 .title('Home')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('art-house-home').documentId('art-house')),
                             S.listItem()
                                 .title('About Us')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('art-house-about-us').documentId('art-house-about-us')),
                             S.listItem()
                                 .title('Contact Us')
-                                .icon(DocumentsIcon)
+                                .icon(MdContactSupport)
                                 .child(S.document().schemaType('art-house-contact-us').documentId('art-house-contact-us')),
                         ])
                 ),
-
             S.listItem()
                 .title('ART-HOUSE-EDUCATIONAL-CENTER')
                 .child(
@@ -86,7 +83,6 @@ export default (S: any) =>
                                 .child(S.document().schemaType('educational-center-contact-us').documentId('contact-us-educational-center')),
                         ])
                 ),
-
             S.listItem().title('ART-HOUSE-DESIGN')
                 .child(
                     S.list()
@@ -118,44 +114,6 @@ export default (S: any) =>
                                 .title('Portfolios')
                                 .icon(DocumentsIcon)
                                 .child(S.document().schemaType('portfolio-design').documentId('portfolio-design')),
-                        ])
-                ),
-
-            S.listItem().title('ART-HOUSE-IT-M')
-                .child(
-                    S.list()
-                        .title('Pages')
-                        .items([
-                            S.listItem()
-                                .title('Home')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('it-m-home').documentId('it-m-home')),
-                            S.listItem()
-                                .title('About Us')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('it-m-about-us').documentId('it-m-about-us')),
-                            S.listItem()
-                                .title('Courses')
-                                .child(
-                                    S.documentList()
-                                        .title('Courses')
-                                        .filter('_type == "courses-it-m"')),
-                            S.listItem()
-                                .title('Price List')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('price-list-it-m').documentId('price-list-it-m')),
-                            S.listItem()
-                                .title('Our team')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('our-team-it-m').documentId('our-team-it-m')),
-                            S.listItem()
-                                .title('Contact Us')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('it-m-contact-us').documentId('it-m-contact-us')),
-                            S.listItem()
-                                .title('Lessons & Orders')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('it-m-select-option').documentId('it-m-select-option')),
                         ])
                 ),
             S.listItem()
@@ -198,7 +156,6 @@ export default (S: any) =>
                                 .child(S.document().schemaType('language-contact-us').documentId('contact-us-language')),
                         ])
                 ),
-
             S.listItem().title('GENERIC')
                 .child(
                     S.list()

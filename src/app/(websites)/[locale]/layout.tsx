@@ -14,7 +14,7 @@ interface RootLayoutProps {
   params: {
     locale: string
   };
-}
+};
 
 function RootLayout({
   children,

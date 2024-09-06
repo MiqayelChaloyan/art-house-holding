@@ -3,7 +3,6 @@
 import Image from 'next/image';
 
 import { ImagePath } from '@/types/general';
-
 import { ArianAMU } from '@/constants/font';
 
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
@@ -13,8 +12,12 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-const Testimonial = ({ review }: any) => {
-    const path: ImagePath = urlForImage(review.user_image);
+interface Props {
+    review: OUR_RATING;
+};
+
+const Testimonial = ({ review }: Readonly<Props>) => {
+    const path: ImagePath = urlForImage(review?.user_image);
 
     return (
         <div className={cn(styles.slide)}>
@@ -24,14 +27,16 @@ const Testimonial = ({ review }: any) => {
                     src={path?.src}
                     height={500}
                     width={500}
-                    alt={review.user_image.alt}
+                    alt={review?.user_image.alt}
                     className={styles.image}
                 />
             </div>
-            <p className={ArianAMU.className}>{review.user_feedback}</p>
+            <p className={ArianAMU.className}>
+                {review?.user_feedback}
+            </p>
             <div className={styles.details}>
                 <span className={cn(styles.name, ArianAMU.className)}>
-                    {review.user_name}
+                    {review?.user_name}
                 </span>
             </div>
         </div>

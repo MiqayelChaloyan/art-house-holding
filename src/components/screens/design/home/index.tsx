@@ -10,12 +10,11 @@ import Partners from './Partners';
 import Progress from './Progress';
 
 import { DESIGN } from '../../../../../sanity/sanity-queries/design';
-import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 
 interface Props {
     data: DESIGN[];
-    partners: PARTNER[];
+    partners: PARTNER_Result[];
     locale: string;
 };
 

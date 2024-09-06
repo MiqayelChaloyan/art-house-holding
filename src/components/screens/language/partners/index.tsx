@@ -10,7 +10,6 @@ import { Arial, Vrdznagir } from '@/constants/font';
 import Container from '@/components/components/container';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 import { UrlType } from '@/types/language';
 
@@ -20,13 +19,13 @@ import styles from './styles.module.sass';
 
 
 type Props = {
-    partners: PARTNER[],
+    partners: PARTNER_Result[],
 };
 
 const Partners = ({ partners }: Readonly<Props>) => {
     const t = useTranslations('navigation');
 
-    const result: JSX.Element[] = partners?.map((partner: PARTNER) => {
+    const result: JSX.Element[] = partners?.map((partner: PARTNER_Result) => {
         const path: UrlType | any = urlForImage(partner.logo);
 
         return (

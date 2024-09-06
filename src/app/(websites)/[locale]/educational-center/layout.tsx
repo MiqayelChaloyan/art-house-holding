@@ -26,11 +26,11 @@ import { SanityClient } from 'sanity';
 import { client } from '../../../../../sanity/client';
 import { allCoursesQuery } from '../../../../../sanity/services/educational-center-service/courses';
 import { querySiteMeta } from '../../../../../sanity/services/educational-center-service/about-us';
-import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { query as lessonsQuery } from '../../../../../sanity/services/educational-center-service/lessons';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { LANGUAGE, RootProps } from '../../../../../sanity/sanity-queries/language';
+import { RootProps } from '../../../../../sanity/sanity-queries/language';
 import { querySocial } from '../../../../../sanity/services/educational-center-service/contact-us';
+import { getHomeDetails } from '@/utils/data/art-house';
 
 
 interface RootLayoutProps {
@@ -54,21 +54,21 @@ const localeStrings: {
 
 async function getResources(locale: string) {
     const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
-    const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
+    // const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
     const socialPromise = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
     const lessonsPromise = await client.fetch(lessonsQuery, { language: locale }, { next: { revalidate: 100 } });
     const lessonsAmPromise = await client.fetch(lessonsQuery, { language: 'am' }, { next: { revalidate: 100 } });
 
-    return Promise.all([coursesPromise, branchesPromise, socialPromise, lessonsPromise, lessonsAmPromise])
-        .then(([courses, branches, social, lessons, lessonsArmenian]) => {
-            if (!courses?.length || !branches?.length || !social?.length || !lessons?.length || !lessonsArmenian?.length) {
-                return { courses: [], branches: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
+    return Promise.all([coursesPromise, socialPromise, lessonsPromise, lessonsAmPromise])
+        .then(([courses, social, lessons, lessonsArmenian]) => {
+            if (!courses?.length  || !social?.length || !lessons?.length || !lessonsArmenian?.length) {
+                return { courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
             }
 
-            return { courses, branches: branches[1], social: social[0], lessons, lessonsArmenian, isError: false };
+            return { courses, social: social[0], lessons, lessonsArmenian, isError: false };
         })
         .catch(error => {
-            return { courses: [], branches: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
+            return { courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
         });
 }
 
@@ -78,12 +78,13 @@ export default async function Layout({
 }: Readonly<RootLayoutProps>) {
     const {
         courses,
-        branches,
         social,
         lessons,
         lessonsArmenian,
         isError
-    }: RootProps = await getResources(locale);
+    } = await getResources(locale);
+
+    const branches = await getHomeDetails(locale);
 
     if (!courses || !branches || !social || !lessons || !lessonsArmenian || isError) {
         notFound()

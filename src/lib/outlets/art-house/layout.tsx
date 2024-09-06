@@ -3,35 +3,35 @@
 import { useEffect, useState } from 'react';
 
 import { notFound } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 import Header from '@/lib/outlets/art-house/Header';
 import Footer from '@/lib/outlets/art-house/Footer';
 
 import { client } from '../../../../sanity/client';
-import { querySocial } from '../../../../sanity/services/art-house-service';
-import { HOSTS } from '../../../../sanity/sanity-queries/art-house';
+import { SOCIAL_QUERY } from '../../../../sanity/services/art-house-service';
 
 
 interface Props {
     children: React.ReactNode;
     headerPosition?: 'fixed' | 'sticky';
-    locale: string
 };
 
 const Layout = ({
     children,
     headerPosition,
-    locale
 }: Readonly<Props>) => {
     const [linkActive, setLinkActive] = useState<string>('');
-    const [socialData, setSocialData] = useState<HOSTS | any>(null);
+    const [socialData, setSocialData] = useState<SOCIAL_QUERYResult[]>([]);
+    const activeLocale = useLocale();
+
     const typePosition = headerPosition === 'fixed' ? 'fixed' : 'sticky';
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
-                setSocialData(data[0]);
+                const data = await client.fetch(SOCIAL_QUERY, { language: activeLocale }, { next: { revalidate: 100 } });
+                setSocialData(data);
             } catch (_) {
                 notFound();
             }
@@ -45,17 +45,15 @@ const Layout = ({
     return (
         <>
             <Header
-                locale={locale}
+                locale={activeLocale}
                 typePosition={typePosition}
                 linkActive={linkActive}
                 handleChangeActiveLink={handleChangeActiveLink}
             />
-            <main>
-                {children}
-            </main>
+            {children}
             <Footer
-                locale={locale}
-                socialData={socialData}
+                locale={activeLocale}
+                socialData={socialData[0]}
                 linkActive={linkActive}
                 handleChangeActiveLink={handleChangeActiveLink}
             />

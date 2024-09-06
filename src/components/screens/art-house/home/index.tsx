@@ -1,31 +1,24 @@
 'use client';
 
 import React from 'react';
+import { useLocale } from 'next-intl';
+
+import Layout from '@/lib/outlets/art-house/layout';
 
 import Main from '@/components/screens/art-house/home/Main';
 import Branches from '@/components/screens/art-house/home/Branches';
 import Progress from '@/components/screens/art-house/home/Progress';
 import Partners from '@/components/screens/art-house/home/Partners';
 
-import Layout from '@/lib/outlets/art-house/layout';
-
-import { ART_HOUSE_HOME } from '../../../../../sanity/sanity-queries/art-house';
-import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
-
 
 interface Props {
-    data: ART_HOUSE_HOME;
-    partners: PARTNER[];
-    locale: string
+    data: HOME_DETALIS_QUERYResult;
+    partners: PARTNER_Result[];
 };
 
-const Home = ({
-    data,
-    partners,
-    locale
-}: Readonly<Props>) => {
+const Home = ({ data, partners }: Readonly<Props>) => {
     return (
-        <Layout locale={locale} headerPosition='fixed'>
+        <Layout headerPosition='fixed'>
             <Main />
             <Branches data={data?.our_websites} />
             <Progress data={data?.progress_section} />

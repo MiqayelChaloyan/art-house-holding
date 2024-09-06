@@ -1,6 +1,6 @@
-import { ProjectsIcon, UserIcon } from '@sanity/icons';
-import { RuleType } from '../../../ruleType';
+import { UserIcon } from '@sanity/icons';
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
+import { RuleType } from '../../../ruleType';
 
 export const aboutUsSchemaArtHouse = {
     name: 'art-house-about-us',
@@ -9,99 +9,12 @@ export const aboutUsSchemaArtHouse = {
     id: 'art-house-about-us',
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        /* Schema */
-        {
-            name: 'our_websites',
-            type: 'array',
-            title: 'Websites',
-            components: { input: ArrayMaxItems },
-            validation: (Rule: RuleType) => Rule.max(5),
-            description: 'No less than five and no more, only you can modify them.',
-            of: [
-                {
-                    name: 'Object',
-                    type: 'object',
-                    icon: ProjectsIcon,
-                    validation: (Rule: RuleType) => Rule.required(),
-                    fields: [
-                        {
-                            title: 'Website Title',
-                            name: 'website_title',
-                            type: 'object',
-                            fields: [
-                                {
-                                    title: 'Armenian',
-                                    name: 'am',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'English',
-                                    name: 'en',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'Russian',
-                                    name: 'ru',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            title: 'About the website',
-                            name: 'about_website',
-                            type: 'object',
-                            fields: [
-                                {
-                                    title: 'Armenian',
-                                    name: 'am',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'English',
-                                    name: 'en',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'Russian',
-                                    name: 'ru',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            title: 'Website Image',
-                            name: 'website_image',
-                            type: 'image',
-                            options: { hotspot: true },
-                            fields: [
-                                {
-                                    name: 'alt',
-                                    title: 'Alternative text',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
-                            title: 'Website url',
-                            name: 'web_site_url',
-                            type: 'string',
-                        },
-                    ]
-                }
-            ],
-        },
-        {
-            title: 'AboutUs',
+            title: 'About Us',
             name: 'about_us_section',
             type: 'object',
             fields: [
                 {
-                    title: 'About Us Content',
+                    title: 'Content',
                     name: 'about_us_content',
                     type: 'object',
                     validation: (Rule: RuleType) => Rule.required(),
@@ -214,11 +127,31 @@ export const aboutUsSchemaArtHouse = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            user_name: 'user_name.en',
+                        },
+                        prepare(selection: { user_name?: string }) {
+                            return {
+                                title: selection.user_name,
+                            };
+                        },
+                    }
                 }
             ]
         }
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Մեր մասին',
+            };
+        },
+    }
 };
 
 export default aboutUsSchemaArtHouse;

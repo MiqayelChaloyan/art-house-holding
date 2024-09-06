@@ -6,12 +6,6 @@ const partnersSchema = {
     title: 'Partners',
     id: 'partners',
     fields: [
-        {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
        {
             title: 'Company Name (Ընկերության Անվանումը)',
             name: 'company_name',
@@ -97,6 +91,16 @@ const partnersSchema = {
             validation: (Rule: RuleType) => Rule.required(),
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Գործընկերներ',
+            };
+        },
+    }
 };
 
 export default partnersSchema;

@@ -5,17 +5,16 @@ import React from 'react';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
-import { PARTNER } from '../../../../sanity/sanity-queries/generic';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    partner: PARTNER;
+    partner: PARTNER_Result;
 };
 
 const Partner = ({ partner }: Readonly<Props>) => {
-    const path: ImagePath = urlForImage(partner.logo);
+    const path: ImagePath = urlForImage(partner?.logo);
 
     return (
         <div className={styles.partner}>
@@ -24,7 +23,6 @@ const Partner = ({ partner }: Readonly<Props>) => {
                     src={path?.src}
                     alt={partner.logo.alt}
                     className={styles.svg_icon}
-                    loading='eager'
                 />
             </div>
         </div>

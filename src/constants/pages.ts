@@ -18,15 +18,8 @@ const Pages = {
     DESIGN_CONTACT: '/design/contact',
     DESIGN_PORTFOLIOS: '/design/portfolios',
     DESIGN_ORDERS: '/design/orders',
-    ITM: '/it-m',
-    ITM_ABOUT: '/it-m/about',
-    ITM_OUR_TEAM: '/it-m/our-team',
-    ITM_PRICE_LIST: '/it-m/price-list',
-    ITM_ORDERS: '/it-m/orders',
-    ITM_CONTACT: '/it-m/contact',
-    ITM_COURSES: '/it-m/courses',
-}
+};
 
 export {
     Pages
-}
+};

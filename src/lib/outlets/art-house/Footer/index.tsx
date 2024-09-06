@@ -29,8 +29,6 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import { socialNetwork } from '@/types/general';
 
-import { HOSTS, Social_Links } from '../../../../../sanity/sanity-queries/art-house';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -38,7 +36,7 @@ import styles from './styles.module.sass';
 
 interface Props {
     locale: string;
-    socialData?: HOSTS;
+    socialData?: SOCIAL_QUERYResult;
     linkActive: string,
     handleChangeActiveLink: (link: string) => void;
 };
@@ -78,7 +76,7 @@ const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Read
         )
     });
 
-    const hosts = socialData?.social_links?.map((host: Social_Links) => {
+    const hosts = socialData?.social_links?.map((host: SOCIAL_LINK) => {
         const socialName = host?.social_name.toLowerCase();
         const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
         const SocialIcon = (socialNetworkComponents as any)[socialName];

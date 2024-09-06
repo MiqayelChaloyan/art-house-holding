@@ -18,7 +18,7 @@ import ArrowRight from '@/lib/icons/language/ArrowRight';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
+// import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
 
 import cn from 'classnames';
 
@@ -26,7 +26,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    partners: PARTNER[];
+    partners: PARTNER_Result[];
 };
 
 const SampleNextArrow = ({ onClick, fill }: any) => (
@@ -45,7 +45,7 @@ const Partners = ({ partners }: Readonly<Props>) => {
     const t = useTranslations('navigation');
     const windowSize = useWindowSize();
 
-    const slidesItems: JSX.Element[] = partners?.map((partner: PARTNER) => (
+    const slidesItems: JSX.Element[] = partners?.map((partner: PARTNER_Result) => (
         <Partner
             key={partner._id}
             _id={partner._id}

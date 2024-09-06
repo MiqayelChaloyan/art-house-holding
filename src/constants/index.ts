@@ -16,22 +16,12 @@ const ImagePaths = {
         amURL: require('../../public/assets/images/design/am.png'),
         ruURL: require('../../public/assets/images/design/ru.png'),
     },
-    ITM: {
-        logoURL: require('../../public/assets/images/it-m/logo.png'),
-        illustrationURL: require('../../public/assets/images/it-m/Illustration.png'),
-        programmingURL: require('../../public/assets/images/it-m/programming.png'),
-        advantagesURL: require('../../public/assets/images/it-m/advantages.png'),
-        learnURL: require('../../public/assets/images/it-m/learn.png'),
-        sectionURL: require('../../public/assets/images/it-m/section.png'),
-    },
 };
 
 const TRAINING_CENTERS = {
     design_school: 48,
     educational_school: 46,
     language_school: 44,
-    
-    itm_school: 0
 };
 
 const Titles = {

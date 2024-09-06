@@ -14,7 +14,6 @@ import { Arial, Inter } from '@/constants/font';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { PARTNER } from '../../../../../sanity/sanity-queries/generic';
 
 import cn from 'classnames';
 
@@ -22,7 +21,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-	data: PARTNER[];
+	data: PARTNER_Result[];
 };
 
 const Partners = ({ data }: Props) => {
@@ -33,21 +32,21 @@ const Partners = ({ data }: Props) => {
 		setTimeout(() => dispatch(closeModal(false)), 1);
 	}, [data]);
 
-	const partners = data?.map((item: PARTNER) => {
-		const path: ImagePath = urlForImage(item.logo);
+	const partners = data?.map((item: PARTNER_Result) => {
+		const path: ImagePath = urlForImage(item?.logo);
 
 		return (
 			<div key={item._id} className={styles.partner}>
 				<div className={styles.image_container}>
 					<img
 						src={path?.src}
-						alt={item.logo.alt}
+						alt={item?.logo.alt}
 						className={styles.image}
 					/>
 				</div>
-				<p className={cn(styles.text, Arial.className)}>{item.company_name}</p>
-				<p className={cn(styles.text, Arial.className)}>{item.cooperation}</p>
-				<p className={cn(styles.text, Arial.className)}>{item.implemented_projects}</p>
+				<p className={cn(styles.text, Arial.className)}>{item?.company_name}</p>
+				<p className={cn(styles.text, Arial.className)}>{item?.cooperation}</p>
+				<p className={cn(styles.text, Arial.className)}>{item?.implemented_projects}</p>
 			</div>
 		);
 	});

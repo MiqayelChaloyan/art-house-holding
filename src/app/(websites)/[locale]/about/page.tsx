@@ -1,22 +1,22 @@
 'use server';
 
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-
-import { querySiteMeta } from '../../../../../sanity/services/art-house-service';
-import { query } from '../../../../../sanity/services/art-house-service/about-us';
+import { type Metadata } from 'next';
 
 import AboutUs from '@/components/screens/art-house/about';
 
-import { SanityClient } from 'sanity';
+import { Locale } from '@/locales';
 
 import { ImagePath, Site } from '@/types/general';
 
-import { Locale } from '@/locales';
+import { SanityClient } from 'sanity';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
 import { client } from '../../../../../sanity/client';
+import { SITE_META_QUERY } from '../../../../../sanity/services/art-house-service';
+import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+
+import { getAboutDetails } from '@/utils/data/art-house';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -29,37 +29,23 @@ interface Props {
   }
 };
 
-async function getResources(locale: string) {
-  try {
-    const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-
-    if (!data?.length) {
-      return { data: [], isError: true };
-    }
-
-    return { data: data[0], isError: false };
-  } catch (error) {
-    return { data: [], isError: true };
-  }
-};
-
 export default async function Page({
   params: { locale }
 }: Readonly<Props>) {
-  const { data, isError } = await getResources(locale);
+  const data = await getAboutDetails(locale);
 
-  if (!data || isError) {
+  if (!data) {
     notFound()
   };
 
-  return (<AboutUs data={data} locale={locale} />);
+  return (<AboutUs data={data} />);
 };
 
 
 async function getSiteMeta(
-  query: string = querySiteMeta,
-  client: SanityClient | any,
-  mutation = 'fetch'
+  query: string = SITE_META_QUERY,
+  client: SanityClient,
+  mutation: 'fetch' = 'fetch'
 ): Promise<Site> {
   const site: Site[] = await client[mutation](query);
   return site[1];
@@ -70,7 +56,7 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
-  const meta: Site = await getSiteMeta(querySiteMeta, client);
+  const meta: Site = await getSiteMeta(SITE_META_QUERY, client);
   const { ogDescription, ogTitle, ogImage } = meta;
   const path: ImagePath = urlForImage(ogImage);
   const icon = null;

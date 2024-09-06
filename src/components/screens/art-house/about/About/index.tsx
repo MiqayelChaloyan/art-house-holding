@@ -5,11 +5,11 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { PortableText } from '@portabletext/react';
-
-import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
 import components from '@/utils/PortableTextComponents';
-import { ArianAMU } from '@/constants/font';
+
 import Button from '@/lib/ui/Button';
+import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
+import { ArianAMU } from '@/constants/font';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
@@ -19,7 +19,13 @@ import { ImagePath } from '@/types/general';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
+import Image from 'next/image';
 
+
+interface Props {
+    content: TEXT;
+    image: Asset;
+};
 
 const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
     const flatText = flattenText(content);
@@ -37,7 +43,8 @@ const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
     );
 };
 
-const About = ({ content, image }: any) => {
+
+const About = ({ content, image }: Readonly<Props>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
     const path: ImagePath = urlForImage(image);
     const t = useTranslations('');
@@ -46,11 +53,18 @@ const About = ({ content, image }: any) => {
     const toggleReadMore = () => setIsReadMore(!isReadMore);
 
     return (
-        <section className={styles.section}>
+        <section id='about-us' className={styles.section}>
             <div className={styles.box}>
                 <div className={styles.contentLeft}>
                     <div className={styles.row}>
-                        <img className={styles.image} src={path?.src} alt='' />
+                        <Image
+                            src={path?.src}
+                            alt={image?.alt}
+                            className={styles.image}
+                            width={500}
+                            height={500}
+                            priority
+                        />
                     </div>
                 </div>
                 <div className={styles.contentRight}>

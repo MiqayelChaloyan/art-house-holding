@@ -1,5 +1,4 @@
 import { LinkIcon } from '@sanity/icons';
-
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
 
@@ -9,12 +8,6 @@ const contactUsSchemaArtHouse = {
     title: 'Contact Us',
     id: 'art-house-contact-us',
     fields: [
-        {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
         {
             title: 'Country, Region/City, Street',
             name: 'address',
@@ -75,7 +68,17 @@ const contactUsSchemaArtHouse = {
                 }
             ],
         },
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Կապ մեզ հետ',
+            };
+        },
+    }
 };
 
 export default contactUsSchemaArtHouse;

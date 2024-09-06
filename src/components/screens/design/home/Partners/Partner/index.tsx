@@ -6,7 +6,6 @@ import { Calibri } from '@/constants/font';
 
 import { ImagePath } from '@/types/general';
 
-import { PARTNER } from '../../../../../../../sanity/sanity-queries/generic';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';
@@ -20,7 +19,7 @@ const Partner = ({
     cooperation, 
     implemented_projects,
     logo
- }: Readonly<PARTNER>) => {
+ }: Readonly<PARTNER_Result>) => {
     const path: ImagePath = urlForImage(logo);
 
     return (

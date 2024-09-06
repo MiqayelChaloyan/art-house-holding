@@ -2,10 +2,10 @@ import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { schema } from './sanity/schema';
 import { visionTool } from '@sanity/vision';
-import { apiVersion, dataset, projectId, title, basePath } from './sanity/env'
+import { apiVersion, dataset, projectId, title, basePath } from './sanity/env';
 import { dashboardTool, projectUsersWidget, projectInfoWidget } from '@sanity/dashboard';
 
-import myStructure from './sanity.structure';
+import Structure from './sanity.structure';
 
 const config = defineConfig(
   {
@@ -17,7 +17,7 @@ const config = defineConfig(
     schema,
     plugins: [
       deskTool({
-        structure: myStructure,
+        structure: Structure,
       }),
       dashboardTool({
         widgets: [

@@ -1,5 +1,5 @@
-import { ProjectsIcon, TrendUpwardIcon } from '@sanity/icons';
-
+import { ProjectsIcon } from '@sanity/icons';
+import { GiProgression } from 'react-icons/gi';
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
 
@@ -25,12 +25,6 @@ const homeSchemaArtHouse = {
         },
     ],
     fields: [
-        {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
         {
             type: 'string',
             title: 'Page Title',
@@ -128,7 +122,18 @@ const homeSchemaArtHouse = {
                             title: 'Website url',
                             type: 'string',
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            company_name: 'company_name',
+                            words: 'words.en'
+                        },
+                        prepare(selection: { company_name?: string, words?: string }) {
+                            return {
+                                title: `${selection.company_name} ${selection.words}`,
+                            };
+                        },
+                    }
                 }
             ],
         },
@@ -143,7 +148,7 @@ const homeSchemaArtHouse = {
                 {
                     type: 'object',
                     name: 'tag',
-                    icon: TrendUpwardIcon,
+                    icon: GiProgression,
                     fields: [
                         {
                             title: 'Title',
@@ -183,13 +188,33 @@ const homeSchemaArtHouse = {
                             },
                         }
                     ],
+                    preview: {
+                        select: {
+                            title: 'title.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                     initialValue: {
                         isPlusSign: true,
                     },
                 }
-            ]
+            ],
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Գլխավոր',
+            };
+        },
+    }
 };
 
 export default homeSchemaArtHouse;

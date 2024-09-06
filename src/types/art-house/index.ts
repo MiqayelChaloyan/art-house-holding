@@ -1,5 +1,4 @@
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
-import { TEXT } from '../../../sanity/sanity-queries/art-house';
 
 export interface UrlType {
     src: string,

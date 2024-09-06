@@ -12,29 +12,33 @@ import { FaLinkedinIn } from 'react-icons/fa6';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import Logo from '@/lib/icons/art-house/LogoFooter';
+
 import { Pages } from '@/constants/pages';
 import { ArianAMU } from '@/constants/font';
 
-import { Social_Links } from '../../../../sanity/sanity-queries/art-house';
+import { socialNetwork } from '@/types/coming-soon';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-const ComingSoon = ({ data }: any) => {
+interface Props {
+    data: SOCIAL_QUERYResult;
+};
+
+const ComingSoon = ({ data }: Readonly<Props>) => {
     const currentYear = new Date().getFullYear();
     const windowSize = useWindowSize();
 
-
-    const socialNetworkComponents: any = {
+    const socialNetworkComponents: socialNetwork = {
         facebook: TiSocialFacebook,
         instagram: BsInstagram,
         gmail: SiGmail,
         linkedin: FaLinkedinIn
     };
 
-    const hosts = data?.social_links.map((host: Social_Links) => {
+    const hosts = data?.social_links.map((host: SOCIAL_LINK) => {
         const socialName = host?.social_name.toLowerCase();
         const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
         const SocialIcon = (socialNetworkComponents as any)[socialName];

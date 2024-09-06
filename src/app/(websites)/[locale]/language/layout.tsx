@@ -21,11 +21,11 @@ import { generateMetadataDynamic } from '@/utils/default-metadata';
 import { client } from '../../../../../sanity/client';
 
 import { query, queryFilterCourses } from '../../../../../sanity/services/language-service/courses';
-import { query as queryBranches } from '../../../../../sanity/services/art-house-service';
 import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 import { querySiteMeta } from '../../../../../sanity/services/language-service/about-us';
 import { querySocial } from '../../../../../sanity/services/language-service/contact-us';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { getHomeDetails } from '@/utils/data/art-house';
 
 
 interface RootLayoutProps {
@@ -48,17 +48,16 @@ const localeStrings: {
 
 async function getResources(locale: string) {
     const coursesPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-    const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
     const languagesPromise = await client.fetch(queryFilterCourses, { language: 'am' }, { next: { revalidate: 100 } });
     const socialPromise = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
 
-    return Promise.all([coursesPromise, branchesPromise, languagesPromise, socialPromise])
-        .then(([courses, branches, languages, social]) => {
-            if (!courses?.length || !branches?.length || !languages?.length || !social?.length) {
+    return Promise.all([coursesPromise, languagesPromise, socialPromise])
+        .then(([courses, languages, social]) => {
+            if (!courses?.length || !languages?.length || !social?.length) {
                 return { courses: [], branches: [], languages: [], social: [], isError: true };
             }
 
-            return { courses: courses[0], branches: branches[1], languages: languages[0], social: social[0], isError: false };
+            return { courses: courses[0], languages: languages[0], social: social[0], isError: false };
         })
         .catch(_ => {
             return { courses: [], branches: [], languages: [], social: [], isError: true };
@@ -72,11 +71,12 @@ export default async function Layout({
 
     const {
         courses,
-        branches,
         languages,
         social,
         isError
-    }: LANGUAGE[] | any = await getResources(locale);
+    } = await getResources(locale);
+
+    const branches = await getHomeDetails(locale);
 
     if (!courses || !branches || !languages || !social || isError) {
         notFound()

@@ -17,7 +17,11 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-const Testimonials = ({ our_rating }: any) => {
+interface Props {
+  our_rating: OUR_RATING[];
+};
+
+const Testimonials = ({ our_rating }: Readonly<Props>) => {
   const t = useTranslations('sections');
 
   return (
@@ -27,8 +31,8 @@ const Testimonials = ({ our_rating }: any) => {
       </h1>
       <div className={styles.testimonial}>
         <Swiper {...options}>
-          {our_rating?.map((review: any) => (
-            <SwiperSlide key={review._key}>
+          {our_rating?.map((review: OUR_RATING) => (
+            <SwiperSlide key={review?._key}>
               <Testimonial review={review} />
             </SwiperSlide>
           ))}

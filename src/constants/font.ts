@@ -1,6 +1,5 @@
 import localFont from 'next/font/local';
 
-
 const ArianAMU = localFont({ src: '../../public/font/arnamu.ttf' });
 const Vrdznagir = localFont({ src: '../../public/font/Vrdznagir.otf' });
 const Inter = localFont({ src: '../../public/font/Inter.ttf' });
