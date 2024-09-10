@@ -1,4 +1,4 @@
-import { RocketIcon } from '@sanity/icons'
+import { RocketIcon } from '@sanity/icons';
 
 import { RuleType } from '../../../ruleType';
 
@@ -54,11 +54,11 @@ const lessonsSchemaEducationCenter = {
                     ],
                     preview: {
                         select: {
-                            course_name: 'course_name.en',
+                            title: 'course_name.en',
                         },
-                        prepare(selection: { course_name?: string }) {
+                        prepare(selection: { title?: string }) {
                             return {
-                                title: selection.course_name,
+                                title: selection.title,
                             };
                         },
                     },

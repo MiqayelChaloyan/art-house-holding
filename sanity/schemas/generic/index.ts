@@ -1,3 +1,4 @@
+import { ImagePath } from '@/types/general';
 import { RuleType } from '../../ruleType';
 
 const partnersSchema = {
@@ -93,14 +94,16 @@ const partnersSchema = {
     ],
     preview: {
         select: {
-            title: 'title',
+            title: 'company_name.en',
+            media: 'logo'
         },
-        prepare() {
+        prepare(selection: { title?: string, media?: ImagePath }) {
             return {
-                title: 'Գործընկերներ',
+                title: selection.title,
+                media: selection.media,
             };
         },
-    }
+    },
 };
 
 export default partnersSchema;

@@ -1,6 +1,7 @@
 import { ClipboardIcon, LaunchIcon, UserIcon } from '@sanity/icons';
 import { GiProgression } from 'react-icons/gi';
 import { TfiLayoutSliderAlt } from 'react-icons/tfi';
+
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
 
@@ -359,11 +360,11 @@ export const aboutUsSchemaEducationalCenter = {
                             ],
                             preview: {
                                 select: {
-                                    subtitle: 'subtitle.en',
+                                    title: 'subtitle.en',
                                 },
-                                prepare(selection: { subtitle?: string }) {
+                                prepare(selection: { title?: string }) {
                                     return {
-                                        title: selection.subtitle,
+                                        title: selection.title,
                                     };
                                 },
                             },
@@ -659,11 +660,11 @@ export const aboutUsSchemaEducationalCenter = {
                     ],
                     preview: {
                         select: {
-                            user_name: 'user_name.en',
+                            title: 'user_name.en',
                         },
-                        prepare(selection: { user_name?: string }) {
+                        prepare(selection: { title?: string }) {
                             return {
-                                title: selection.user_name,
+                                title: selection.title,
                             };
                         },
                     },

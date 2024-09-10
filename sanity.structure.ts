@@ -1,15 +1,17 @@
-import { DocumentsIcon } from '@sanity/icons';
-import { IoFolderOpen } from "react-icons/io5";
-import { MdFolder } from "react-icons/md";
-import { MdContactSupport } from "react-icons/md";
+import { IoFolderOpen } from 'react-icons/io5';
+import { MdFolder } from 'react-icons/md';
+import { MdContactSupport } from 'react-icons/md';
+import { RiAiGenerate } from 'react-icons/ri';
+
+import { type StructureBuilder } from 'sanity/structure';
 
 
-export default (S: any) =>
+export default (S: StructureBuilder) =>
     S.list()
         .title('Base')
         .items([
             ...S.documentTypeListItems().filter(
-                (listItem: any) => ![
+                (listItem) => ![
                     'art-house-home',
                     'art-house-about-us',
                     'art-house-contact-us',
@@ -33,7 +35,7 @@ export default (S: any) =>
                     'design-lessons-select-option',
                     'partners',
                     'portfolio-design',
-                ].includes(listItem.getId())
+                ].includes(listItem.getId() as string)
             ),
 
             S.listItem()
@@ -86,85 +88,92 @@ export default (S: any) =>
                         ])
                 ),
             S.listItem().title('ART-HOUSE-DESIGN')
+                .icon(MdFolder)
                 .child(
                     S.list()
                         .title('Pages')
                         .items([
                             S.listItem()
                                 .title('Home')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('about-us-design').documentId('about-us-design')),
                             S.listItem()
                                 .title('Courses')
+                                .icon(IoFolderOpen)
                                 .child(
                                     S.documentList()
                                         .title('Courses')
                                         .filter('_type == "courses-design"')),
                             S.listItem()
                                 .title('Price List')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('price-list-design').documentId('price-list-design')),
                             S.listItem()
-                                .title('Contact Us')
-                                .icon(DocumentsIcon)
-                                .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
-                            S.listItem()
                                 .title('Lessons & Orders')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('design-lessons-select-option').documentId('design-lessons-select-option')),
                             S.listItem()
                                 .title('Portfolios')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('portfolio-design').documentId('portfolio-design')),
+                            S.listItem()
+                                .title('Contact Us')
+                                .icon(MdContactSupport)
+                                .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
                         ])
                 ),
             S.listItem()
                 .title('ART-HOUSE-LANGUAGE')
+                .icon(MdFolder)
                 .child(
                     S.list()
                         .title('Pages')
                         .items([
                             S.listItem()
                                 .title('Home')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('about-us-language').documentId('about-us-language')),
                             S.listItem()
                                 .title('Lessons')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('languages-select-option').documentId('languages-select-option')),
                             S.listItem()
                                 .title('Languages')
+                                .icon(IoFolderOpen)
                                 .child(
                                     S.documentList()
                                         .title('Languages')
                                         .filter('_type == "about-language"')),
                             S.listItem()
                                 .title('Price List')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('price-list-language').documentId('price-list-languages')),
                             S.listItem()
                                 .title('Promotions')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('promotions-languages').documentId('promotions-languages')),
                             S.listItem()
                                 .title('Quiz')
+                                .icon(IoFolderOpen)
                                 .child(
                                     S.documentList()
                                         .title('Quiz')
                                         .filter('_type == "languages-quiz"')),
                             S.listItem()
                                 .title('Contact Us')
-                                .icon(DocumentsIcon)
+                                .icon(MdContactSupport)
                                 .child(S.document().schemaType('language-contact-us').documentId('contact-us-language')),
                         ])
                 ),
             S.listItem().title('GENERIC')
+                .icon(RiAiGenerate)
                 .child(
                     S.list()
                         .title('Pages')
                         .items([
                             S.listItem()
                                 .title('Partners')
+                                .icon(IoFolderOpen)
                                 .child(
                                     S.documentList()
                                         .title('Partners')

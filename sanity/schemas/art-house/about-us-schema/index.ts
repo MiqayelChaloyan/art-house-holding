@@ -130,11 +130,11 @@ export const aboutUsSchemaArtHouse = {
                     ],
                     preview: {
                         select: {
-                            user_name: 'user_name.en',
+                            title: 'user_name.en',
                         },
-                        prepare(selection: { user_name?: string }) {
+                        prepare(selection: { title?: string }) {
                             return {
-                                title: selection.user_name,
+                                title: selection.title,
                             };
                         },
                     }

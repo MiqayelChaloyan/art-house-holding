@@ -125,12 +125,12 @@ const homeSchemaArtHouse = {
                     ],
                     preview: {
                         select: {
-                            company_name: 'company_name',
+                            title: 'company_name',
                             words: 'words.en'
                         },
-                        prepare(selection: { company_name?: string, words?: string }) {
+                        prepare(selection: { title?: string, words?: string }) {
                             return {
-                                title: `${selection.company_name} ${selection.words}`,
+                                title: `${selection.title} ${selection.words}`,
                             };
                         },
                     }

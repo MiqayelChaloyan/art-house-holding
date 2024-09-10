@@ -286,11 +286,11 @@ export const coursesSchemaEducationalCenter = {
                     ],
                     preview: {
                         select: {
-                            course_title: 'course_title.en',
+                            title: 'course_title.en',
                         },
-                        prepare(selection: { course_title?: string }) {
+                        prepare(selection: { title?: string }) {
                             return {
-                                title: selection.course_title,
+                                title: selection.title,
                             };
                         },
                     },
@@ -300,11 +300,11 @@ export const coursesSchemaEducationalCenter = {
     ],
     preview: {
         select: {
-            course_name: 'course_name.en',
+            title: 'course_name.en',
         },
-        prepare(selection: { course_name?: string }) {
+        prepare(selection: { title?: string }) {
             return {
-                title: selection.course_name,
+                title: selection.title,
             };
         },
     },
