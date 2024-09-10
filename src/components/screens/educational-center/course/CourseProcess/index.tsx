@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';

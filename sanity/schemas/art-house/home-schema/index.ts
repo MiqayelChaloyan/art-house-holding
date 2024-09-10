@@ -27,7 +27,7 @@ const homeSchemaArtHouse = {
     fields: [
         {
             type: 'string',
-            title: 'Page Title',
+            title: 'Open Graph Title',
             name: 'ogTitle',
             description:
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',

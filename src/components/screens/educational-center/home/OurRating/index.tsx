@@ -11,12 +11,7 @@ import MobileCards from './MobileCards';
 
 import { Inter } from '@/constants/font';
 
-import { OUR_RATING } from '../../../../../../sanity/sanity-queries/educational-center';
-
-// slick-carousel 
 import Slider from 'react-slick';
-
-// slick-carousel styles
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

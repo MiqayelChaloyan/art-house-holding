@@ -17,8 +17,6 @@ import Contact from '@/lib/icons/educational-center/Contact';
 
 import { Pages } from '@/constants/pages';
 
-import { HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
-
 import colors from '@/themes';
 
 import cn from 'classnames';
@@ -27,7 +25,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-	socialData: HOSTS;
+	socialData: CONTACT_US_QUERYResult;
 	locale: string;
 };
 

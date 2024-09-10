@@ -1,110 +1,17 @@
-export interface Asset {
-    _type: string,
-    alt: string,
-    _ref: string
+interface AssetRef {
+    _type: string;
+    _ref: string;
+};
+
+interface Asset {
+    _type: string;
+    alt: string;
+    asset: AssetRef;
 };
 
 interface Ref {
-    _ref: string,
-    _type: string
-}
-
-export interface MAIN {
-    _key: string,
-    content: string,
-    image: Asset,
-    title: string
-}
-
-export interface TEXT {
-    children: PortableChildren[];
-    markDefs: any;
-    style: string;
-    _key: string;
+    _ref: string;
     _type: string;
-};
-
-export interface ABOUT {
-    about_us_content: TEXT,
-    about_us_image: Asset,
-}
-
-export interface VIDEO {
-    video_section_title: string,
-    video_light: Asset,
-    video_url: string,
-};
-
-export interface LESSON {
-    _key: string,
-    subtitle: string,
-    content: string,
-    image_one: Asset,
-    image_two: Asset,
-    categories: Ref,
-}
-
-export interface SECTON {
-    section_title: string,
-    lessons: LESSON[],
-};
-
-export interface PROGRESS {
-    _key: string,
-    title: string,
-    quantity: number,
-    isPlusSign: boolean
-};
-
-export interface SPECIALIST {
-    _key: string,
-    title: string,
-    course_name: string,
-    specialists_section_image: Asset,
-    categories: string,
-    specialists_section_images: Asset[],
-};
-
-export interface OUR_RATING {
-    _key: string,
-    user_name: string,
-    user_image: Asset,
-    user_feedback: string,
-    our_rating_section_image: Asset,
-    rating: string,
-};
-
-export interface EDUCATIONAL_CENTER_DEFAULT {
-    main_section: MAIN[],
-    about_us: ABOUT,
-    cooking_courses: VIDEO,
-    section: SECTON,
-    progress_section: PROGRESS[],
-    specialists_section: SPECIALIST[],
-    our_rating_section: OUR_RATING[]
-};
-
-export interface COURSE_MAIN {
-    content: string,
-    image: Asset,
-    title: string,
-    _key: string,
-};
-
-export interface STUDENT_WORK {
-    _key: string,
-    asset: Asset,
-    alt: string,
-    _type: string,
-};
-
-export interface PRICE_LIST {
-    amount: number,
-    course_title: string,
-    duration: number,
-    endDate: string,
-    startDate: string,
-    _key: string,
 };
 
 interface PortableChildren {
@@ -114,46 +21,137 @@ interface PortableChildren {
     _type: string;
 };
 
-export interface COURSES {
-    _id: string,
-    slug: { current: string },
-    course_main: COURSE_MAIN[],
-    about_us_content: TEXT,
-    course_process: VIDEO,
-    student_works: STUDENT_WORK[],
-    price_list: PRICE_LIST[],
-    svg: Asset,
+interface TEXT {
+    children: PortableChildren[];
+    markDefs: any;
+    style: string;
+    _key: string;
+    _type: string;
 };
 
-export interface Social_Links {
-    _key: string,
-    _type: string,
-    social_link: string,
-    social_name: string,
+interface MAIN {
+    _key: string;
+    content: string;
+    image: Asset;
+    title: string;
 };
 
-export interface HOSTS {
-    name: string,
-    address: string,
-    phone_number: string,
-    email: string,
-    social_links: Social_Links[],
+interface ABOUT {
+    about_us_content: TEXT;
+    about_us_image: Asset;
 };
 
-export interface LESSON {
-    slug: string,
-    course_name: string,
+interface VIDEO {
+    video_section_title: string;
+    video_light: Asset;
+    video_url: string;
 };
 
-export interface LESSONS {
-    _id: string,
-    course_name: LESSON[]
+interface LESSON {
+    _key: string;
+    subtitle: string;
+    content: string;
+    image_one: Asset;
+    image_two: Asset;
+    categories: Ref;
 };
 
-// export interface CourseProps {
-//     courses: COURSES | any,
-//     social: HOSTS[] | any,
-//     lessons: LESSONS[] | any,
-//     lessonsArmenian: LESSONS[] | any,
-//     isError: boolean,
-// };
+interface SECTON {
+    section_title: string;
+    lessons: LESSON[];
+};
+
+interface PROGRESS {
+    _key: string;
+    title: string;
+    quantity: number;
+    isPlusSign: boolean;
+};
+
+interface SPECIALIST {
+    _key: string;
+    title: string;
+    course_name: string;
+    specialists_section_image: Asset;
+    categories: { _ref: string, _type: 'reference' },   
+    specialists_section_images: Asset[];
+};
+
+interface OUR_RATING {
+    _key: string;
+    user_name: string;
+    user_image: Asset;
+    user_feedback: string;
+    our_rating_section_image: Asset;
+    rating: string;
+};
+
+interface SOCIAL_LINK {
+    _key: string;
+    _type: string;
+    social_link: string;
+    social_name: string;
+};
+
+interface LESSON {
+    slug: string;
+    course_name: string;
+};
+
+interface COURSE_MAIN {
+    _key: string;
+    content: string;
+    image: Asset;
+    title: string;
+};
+
+interface STUDENT_WORK {
+    alt: string;
+    _key: string;
+    asset: Asset;
+    _type: string;
+};
+
+interface PRICE_LIST {
+    _key: string;
+    amount: number;
+    course_title: string;
+    duration: number;
+    endDate: string;
+    startDate: string;
+};
+
+interface HOME_DETALIS_QUERYResult {
+    main_section: MAIN[];
+    about_us: ABOUT;
+    cooking_courses: VIDEO;
+    section: SECTON;
+    progress_section: PROGRESS[];
+    specialists_section: SPECIALIST[];
+    our_rating_section: OUR_RATING[];
+};
+
+interface COURSES_QUERYResult {
+    _id: string;
+    course_name: string;
+    student_works: STUDENT_WORK[];
+    slug: { current: string } | string | string[];
+    course_main: COURSE_MAIN[];
+    about_us_content: TEXT;
+    course_process: VIDEO;
+    price_list: PRICE_LIST[];
+    svg: Asset;
+};
+
+interface CONTACT_US_QUERYResult {
+    name: string;
+    address: string;
+    phone_number: string;
+    email: string;
+    social_links: SOCIAL_LINK[];
+};
+
+interface SELECT_OPTIONS_QUERYResult {
+    _id: string;
+    course_name: LESSON[];
+};

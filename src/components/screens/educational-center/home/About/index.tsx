@@ -18,7 +18,6 @@ import { Content as ContentType } from '@/types/educational-center';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { ABOUT } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import cn from 'classnames';
 
@@ -54,6 +53,7 @@ const About = ({
     const t = useTranslations();
 
     const toggleReadMore = () => setIsReadMore(!isReadMore);
+
 
     return (
         <section id='about-us' className={styles.section}>

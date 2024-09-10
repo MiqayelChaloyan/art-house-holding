@@ -9,11 +9,10 @@ import { ArianAMU } from '@/constants/font';
 import Button from '@/lib/ui/Button';
 
 import { client } from '../../../../../../../../sanity/client';
-import { queryId } from '../../../../../../../../sanity/services/educational-center-service/courses';
 import { urlForImage } from '../../../../../../../../sanity/imageUrlBuilder';
+import { COURSE_ID_QUERY } from '../../../../../../../../sanity/services/educational-center-service';
 
 import { ImagePath } from '@/types/general';
-import { Course } from '@/types/educational-center';
 
 import cn from 'classnames';
 
@@ -21,15 +20,15 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: Course;
+    specialist: SPECIALIST;
 };
 
-const TeacherWithWorksImages = ({ item }: Readonly<Props & any>) => {
+const TeacherWithWorksImages = ({ specialist }: Readonly<Props>) => {
     const router = useRouter();
     const localActive = useLocale();
-    const path: ImagePath = urlForImage(item.specialists_section_image);
+    const path: ImagePath = urlForImage(specialist.specialists_section_image);
 
-    const imageGallery = item?.specialists_section_images.map((image: any, index: number) => {
+    const imageGallery = specialist?.specialists_section_images.map((image: any, index: number) => {
         const path: ImagePath = urlForImage(image);
 
         return (
@@ -48,11 +47,11 @@ const TeacherWithWorksImages = ({ item }: Readonly<Props & any>) => {
     });
 
     const getResources = async () => {
-        const _id = item.categories._ref;
+        const _id = specialist.categories._ref;
 
         try {
-            const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
-            router.push(`educational-center/${data.slug}`);
+            const data = await client.fetch(COURSE_ID_QUERY, { language: localActive, _id }, { cache: 'no-store' });
+            router.push(`educational-center/${data?.slug}`);
         } catch (error) {
             notFound()
         }
@@ -62,9 +61,9 @@ const TeacherWithWorksImages = ({ item }: Readonly<Props & any>) => {
         <div className={styles['teacher-with-works-images']}>
             <div className={styles.column}>
                 <Image
-                    key={item._key}
+                    key={specialist?._key}
                     src={path?.src}
-                    alt={item.specialists_section_image.alt}
+                    alt={specialist.specialists_section_image?.alt}
                     priority
                     className={styles.image}
                     width={0}
@@ -77,12 +76,12 @@ const TeacherWithWorksImages = ({ item }: Readonly<Props & any>) => {
                 <div className={styles.header}>
                     <div className={styles.point} />
                     <h2 className={cn(styles.teacher, ArianAMU.className)}>
-                        {item.title}
+                        {specialist?.title}
                     </h2>
                 </div>
                 <Button
                     className={cn(styles.button, ArianAMU.className)}
-                    text={item.course_name}
+                    text={specialist?.course_name}
                     onClick={getResources}
                 />
                 <div className={styles.gallery}>

@@ -59,27 +59,29 @@ export default (S: any) =>
                 ),
             S.listItem()
                 .title('ART-HOUSE-EDUCATIONAL-CENTER')
+                .icon(MdFolder)
                 .child(
                     S.list()
                         .title('Pages')
                         .items([
                             S.listItem()
                                 .title('Home')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('about-us').documentId('about-us-educational-center')),
                             S.listItem()
                                 .title('Courses')
+                                .icon(IoFolderOpen)
                                 .child(
                                     S.documentList()
                                         .title('Courses')
                                         .filter('_type == "courses"')),
                             S.listItem()
                                 .title('Lessons')
-                                .icon(DocumentsIcon)
+                                .icon(IoFolderOpen)
                                 .child(S.document().schemaType('educational-lessons-select-option').documentId('educational-lessons-select-option')),
                             S.listItem()
                                 .title('Contact Us')
-                                .icon(DocumentsIcon)
+                                .icon(MdContactSupport)
                                 .child(S.document().schemaType('educational-center-contact-us').documentId('contact-us-educational-center')),
                         ])
                 ),

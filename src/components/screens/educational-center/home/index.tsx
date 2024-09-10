@@ -13,12 +13,10 @@ import Progress from './Progress';
 import Specialists from './Specialists';
 import OurRating from './OurRating';
 
-import { EDUCATIONAL_CENTER_DEFAULT } from '../../../../../sanity/sanity-queries/educational-center';
 
-
-type Props = {
-    data: EDUCATIONAL_CENTER_DEFAULT[]
-}
+interface Props {
+    data: HOME_DETALIS_QUERYResult;
+};
 
 const EducationalCenterHome = ({ data }: Readonly<Props>) => {
     const dispatch = useDispatch();
@@ -29,13 +27,13 @@ const EducationalCenterHome = ({ data }: Readonly<Props>) => {
 
     return (
         <>
-            <Main data={data[0]?.main_section} />
-            <About data={data[0]?.about_us} />
-            <CookingCourses data={data[0]?.cooking_courses} />
-            <News data={data[0]?.section} />
-            <Progress data={data[0]?.progress_section} />
-            <Specialists data={data[0]?.specialists_section} />
-            <OurRating data={data[0]?.our_rating_section} /> 
+            <Main data={data?.main_section} />
+            <About data={data?.about_us} />
+            <CookingCourses data={data?.cooking_courses} />
+            <News data={data?.section} />
+            <Progress data={data?.progress_section} />
+            <Specialists data={data?.specialists_section} />
+            <OurRating data={data?.our_rating_section} /> 
         </>
     )
 }

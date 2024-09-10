@@ -13,8 +13,6 @@ import Phone from '@/lib/icons/educational-center/Phone';
 import { Pages } from '@/constants/pages';
 import { Arial } from '@/constants/font';
 
-import { COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
-
 import colors from '@/themes';
 
 import cn from 'classnames';
@@ -23,10 +21,10 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    courses: COURSES[];
-    socialData: HOSTS;
-    lessons: LESSONS[];
-    lessonsArmenian: LESSONS[];
+    courses: COURSES_QUERYResult[];
+    socialData: CONTACT_US_QUERYResult;
+    lessons: SELECT_OPTIONS_QUERYResult;
+    lessonsArmenian: SELECT_OPTIONS_QUERYResult;
 };
 
 const Footer = ({
@@ -39,7 +37,7 @@ const Footer = ({
     const t = useTranslations();
     const locale = useLocale();
 
-    const matrix = courses?.reduce((acc: any, item: COURSES, index: number) => {
+    const matrix = courses?.reduce<COURSES_QUERYResult[][]>((acc, item: COURSES_QUERYResult, index: number) => {
         const rowIndex = Math.floor(index / 6);
         if (!acc[rowIndex]) {
             acc[rowIndex] = [];
@@ -48,20 +46,23 @@ const Footer = ({
         return acc;
     }, []);
 
-    const links = matrix?.map((row: any, rowIndex: string) => (
+    const links = matrix?.map((row, rowIndex) => (
         <div key={rowIndex} className={styles.row}>
-            {row.map((course: any) => (
+            {row.map((course) => (
                 <Link
-                    key={course.slug}
+                    key={course._id}
                     href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`}
-                    aria-label={course.course_name}
+                    aria-label={course?.course_name}
                     className={styles.link}
                 >
-                    <p className={cn(styles.copyright, Arial.className)}>{course.course_name}</p>
+                    <p className={cn(styles.copyright, Arial.className)}>
+                        {course.course_name}
+                    </p>
                 </Link>
             ))}
         </div>
     ));
+
 
     return (
         <footer id='footer' className={styles.footer}>
@@ -69,8 +70,8 @@ const Footer = ({
                 <div id='contact' className={styles.box}>
                     <div className={styles.contact}>
                         <FormAppointment
-                            lessons={lessons[0]?.course_name}
-                            lessonsArmenian={lessonsArmenian[0]?.course_name}
+                            lessons={lessons.course_name}
+                            lessonsArmenian={lessonsArmenian.course_name}
                             social_links={socialData?.social_links}
                             theme={colors.white}
                         />

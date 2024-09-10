@@ -4,13 +4,11 @@ import React, { useState } from 'react';
 
 import Panel from '../AccordionItem';
 
-import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/educational-center';
-
 import styles from './styles.module.sass';
 
 
 interface Props {
-    courses: PRICE_LIST[];
+    courses: COURSES_QUERYResult[];
 };
 
 const Accordion = ({ courses }: Props) => {

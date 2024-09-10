@@ -10,12 +10,6 @@ const contactUsSchemaEducationalCenter = {
     id: 'contact-us-educational-center',
     fields: [
         {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-            description: 'Do not change the name.'
-        }, 
-        {
             title: 'Country, Region/City, Street',
             name: 'address',
             type: 'object',
@@ -81,7 +75,17 @@ const contactUsSchemaEducationalCenter = {
                 }
             ],
         },
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Կապ մեզ հետ',
+            };
+        },
+    }
 };
 
 export default contactUsSchemaEducationalCenter;

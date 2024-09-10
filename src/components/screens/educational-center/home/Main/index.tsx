@@ -8,7 +8,6 @@ import { EmblaOptionsType } from 'embla-carousel';
 
 import SlideItem from './SlideItem';
 
-import { MAIN } from '../../../../../../sanity/sanity-queries/educational-center';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import { ImagePath } from '@/types/general';

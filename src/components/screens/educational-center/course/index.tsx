@@ -6,8 +6,6 @@ import About from './About';
 import CourseProcess from './CourseProcess';
 import StudentWork from './StudentWork';
 
-import { COURSES, HOSTS, LESSONS } from '../../../../../sanity/sanity-queries/educational-center';
-
 import { useDispatch } from 'react-redux';
 import { closeModal } from '@/store/modal_reducer';
 
@@ -16,10 +14,10 @@ import Main from './Main';
 
 
 interface Props {
-    course: COURSES[];
-    socialData: HOSTS;
-    lessons: LESSONS[];
-    lessonsArmenian: LESSONS[];
+    course: COURSES_QUERYResult;
+    socialData: CONTACT_US_QUERYResult;
+    lessons: SELECT_OPTIONS_QUERYResult[] | LESSON | any;
+    lessonsArmenian: SELECT_OPTIONS_QUERYResult[] | LESSON | any;
 };
 
 const Course = ({
@@ -36,16 +34,16 @@ const Course = ({
 
     return (
         <>
-            <Main course={course[0]?.course_main} />
+            <Main course={course?.course_main} />
             <About
-                course={course[0]}
+                course={course}
                 socialData={socialData}
-                lessons={lessons[0]?.course_name}
-                lessonsArmenian={lessonsArmenian[0]?.course_name}
+                lessons={lessons?.course_name}
+                lessonsArmenian={lessonsArmenian?.course_name}
             />
-            <CourseProcess course={course[0]?.course_process} />
-            <StudentWork course={course[0]?.student_works} />
-            <PriceList price_list={course[0]?.price_list} />
+            <CourseProcess course={course?.course_process} />
+            <StudentWork course={course?.student_works} />
+            <PriceList price_list={course?.price_list} />
         </>
     );
 };

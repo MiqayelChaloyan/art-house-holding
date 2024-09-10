@@ -12,10 +12,8 @@ import { Arial, Inter } from '@/constants/font';
 import Container from '@/components/components/container';
 import Fancybox from '@/components/components/fancybox';
 
-import { UrlType } from '@/types/educational-center';
-
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { STUDENT_WORK } from '../../../../../../sanity/sanity-queries/educational-center';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -60,7 +58,7 @@ const StudentWork = ({ course }: Readonly<Props>) => {
     };
 
     const images = course?.slice(0, initialLoadCourses).map((item: STUDENT_WORK) => {
-        const path: UrlType | any = urlForImage(item);
+        const path: ImagePath = urlForImage(item);
 
         return (
             <Link key={item._key} data-fancybox="gallery" href={path?.src}>

@@ -1,10 +1,7 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
 import { type Metadata } from 'next';
-
-// import {MapProvider} from "@/providers/map-provider";
 
 import Header from '@/lib/outlets/educational-center/Header';
 import BottomMenu from '@/lib/outlets/educational-center/BottomMenu';
@@ -17,20 +14,18 @@ import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 import PlayerModal from '@/lib/outlets/general/PlayerModal';
 import GoBack from '@/lib/outlets/general/GoBack';
 
-import { generateMetadataDynamic } from '@/utils/default-metadata';
-import { ImagePath, Site } from '@/types/general';
-
 import { Locale } from '@/locales';
-import { SanityClient } from 'sanity';
 
 import { client } from '../../../../../sanity/client';
-import { allCoursesQuery } from '../../../../../sanity/services/educational-center-service/courses';
-import { querySiteMeta } from '../../../../../sanity/services/educational-center-service/about-us';
-import { query as lessonsQuery } from '../../../../../sanity/services/educational-center-service/lessons';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { RootProps } from '../../../../../sanity/sanity-queries/language';
-import { querySocial } from '../../../../../sanity/services/educational-center-service/contact-us';
+import { HOME_DETALIS_QUERY, SITE_META_QUERY } from '../../../../../sanity/services/educational-center-service';
+
+import { SanityClient } from 'sanity';
+
+import { getContacts, getCourses, getSelectOptions } from '@/utils/data/educational-center';
 import { getHomeDetails } from '@/utils/data/art-house';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { ImagePath, Site } from '@/types/general';
 
 
 interface RootLayoutProps {
@@ -41,52 +36,27 @@ interface RootLayoutProps {
 };
 
 const localeStrings: {
-    am: string
-    ru: string
-    en: string
-    [key: string]: string
+    am: string;
+    ru: string;
+    en: string;
+    [key: string]: string;
 } = {
     am: 'ուսումնական կենտրոն',
     ru: 'образовательный центр',
     en: 'educational center'
 };
 
-
-async function getResources(locale: string) {
-    const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
-    // const branchesPromise = await client.fetch(queryBranches, { language: locale }, { next: { revalidate: 100 } });
-    const socialPromise = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
-    const lessonsPromise = await client.fetch(lessonsQuery, { language: locale }, { next: { revalidate: 100 } });
-    const lessonsAmPromise = await client.fetch(lessonsQuery, { language: 'am' }, { next: { revalidate: 100 } });
-
-    return Promise.all([coursesPromise, socialPromise, lessonsPromise, lessonsAmPromise])
-        .then(([courses, social, lessons, lessonsArmenian]) => {
-            if (!courses?.length  || !social?.length || !lessons?.length || !lessonsArmenian?.length) {
-                return { courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
-            }
-
-            return { courses, social: social[0], lessons, lessonsArmenian, isError: false };
-        })
-        .catch(error => {
-            return { courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
-        });
-}
-
 export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
-    const {
-        courses,
-        social,
-        lessons,
-        lessonsArmenian,
-        isError
-    } = await getResources(locale);
-
     const branches = await getHomeDetails(locale);
+    const courses = await getCourses(locale);
+    const contacts = await getContacts(locale);
+    const lessons = await getSelectOptions(locale);
+    const lessonsArmenianKeyword = await getSelectOptions('am');
 
-    if (!courses || !branches || !social || !lessons || !lessonsArmenian || isError) {
+    if (!courses || !branches || !contacts || !lessons || !lessonsArmenianKeyword) {
         notFound()
     };
 
@@ -94,8 +64,8 @@ export default async function Layout({
         <div>
             <div className='wrapper'>
                 <GoBack locale={locale} theme='#821616' />
-                <RightMenu locale={locale} socialData={social} />
-                <BottomMenu locale={locale} socialData={social} />
+                <RightMenu locale={locale} socialData={contacts} />
+                <BottomMenu locale={locale} socialData={contacts} />
                 <ScrollToTopButton theme='#821616' />
                 <FloatingMenu
                     website={localeStrings[locale]}
@@ -109,10 +79,18 @@ export default async function Layout({
                         {children}
                     </main>
                 </div>
-                <Footer courses={courses} socialData={social} lessons={lessons} lessonsArmenian={lessonsArmenian} />
+                <Footer
+                    courses={courses}
+                    socialData={contacts}
+                    lessons={lessons}
+                    lessonsArmenian={lessonsArmenianKeyword}
+                />
             </div>
             <Modal>
-                <CoursesModal locale={locale} courses={courses} />
+                <CoursesModal
+                    locale={locale}
+                    courses={courses}
+                />
             </Modal>
             <PlayerModal />
         </div>
@@ -121,9 +99,9 @@ export default async function Layout({
 
 
 async function getSiteMeta(
-    query: string = querySiteMeta,
-    client: SanityClient | any,
-    mutation = 'fetch'
+    query: string = SITE_META_QUERY,
+    client: SanityClient,
+    mutation: 'fetch' = 'fetch'
 ): Promise<Site> {
     const site: Site[] = await client[mutation](query);
     return site[0];
@@ -134,7 +112,7 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta: Site = await getSiteMeta(querySiteMeta, client);
+    const meta: Site = await getSiteMeta(SITE_META_QUERY, client);
     const { ogDescription, ogTitle, ogImage } = meta;
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;

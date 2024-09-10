@@ -1,5 +1,6 @@
-import { ClipboardIcon, TrendUpwardIcon, LaunchIcon, UserIcon } from '@sanity/icons';
-
+import { ClipboardIcon, LaunchIcon, UserIcon } from '@sanity/icons';
+import { GiProgression } from 'react-icons/gi';
+import { TfiLayoutSliderAlt } from 'react-icons/tfi';
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
 
@@ -26,14 +27,8 @@ export const aboutUsSchemaEducationalCenter = {
     ],
     fields: [
         {
-            title: 'Name',
-            name: 'name',
             type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
-            type: 'string',
-            title: 'Page Title',
+            title: 'Open Graph Title',
             name: 'ogTitle',
             description:
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
@@ -66,7 +61,7 @@ export const aboutUsSchemaEducationalCenter = {
                 {
                     name: 'Object',
                     type: 'object',
-                    icon: ClipboardIcon,
+                    icon: TfiLayoutSliderAlt,
                     fields: [
                         {
                             title: 'Title',
@@ -125,7 +120,17 @@ export const aboutUsSchemaEducationalCenter = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'title.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    }
                 }
             ],
         },
@@ -136,7 +141,7 @@ export const aboutUsSchemaEducationalCenter = {
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
-                    title: 'About Us Content',
+                    title: 'Content',
                     name: 'about_us_content',
                     type: 'object',
                     validation: (Rule: RuleType) => Rule.required(),
@@ -180,11 +185,11 @@ export const aboutUsSchemaEducationalCenter = {
         {
             name: 'cooking_courses',
             type: 'object',
-            title: 'Cooking Courses Section',
+            title: 'Cooking Courses',
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
-                    title: 'Video Section Title',
+                    title: 'Video Title',
                     name: 'video_section_title',
                     type: 'object',
                     validation: (Rule: RuleType) => Rule.required(),
@@ -351,11 +356,21 @@ export const aboutUsSchemaEducationalCenter = {
                                     to: [{ type: 'courses' }],
                                     validation: (Rule: RuleType) => Rule.required(),
                                 },
-                            ]
+                            ],
+                            preview: {
+                                select: {
+                                    subtitle: 'subtitle.en',
+                                },
+                                prepare(selection: { subtitle?: string }) {
+                                    return {
+                                        title: selection.subtitle,
+                                    };
+                                },
+                            },
                         }
-                    ]
+                    ],
                 },
-            ]
+            ],
         },
         {
             name: 'progress_section',
@@ -368,7 +383,7 @@ export const aboutUsSchemaEducationalCenter = {
                 {
                     type: 'object',
                     name: 'tag',
-                    icon: TrendUpwardIcon,
+                    icon: GiProgression,
                     fields: [
                         {
                             title: 'Title',
@@ -410,6 +425,16 @@ export const aboutUsSchemaEducationalCenter = {
                             },
                         }
                     ],
+                    preview: {
+                        select: {
+                            title: 'title.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                     initialValue: {
                         isPlusSign: true,
                     },
@@ -419,7 +444,7 @@ export const aboutUsSchemaEducationalCenter = {
         {
             name: 'specialists_section',
             type: 'array',
-            title: 'Specialists Sections',
+            title: 'Specialists',
             description: 'You can add any number of pictures, with a minimum of two.',
             validation: (Rule: RuleType) => Rule.min(2),
             of: [
@@ -429,7 +454,7 @@ export const aboutUsSchemaEducationalCenter = {
                     icon: LaunchIcon,
                     fields: [
                         {
-                            title: 'Specialists Section Title',
+                            title: 'Specialists Title',
                             name: 'title',
                             type: 'object',
                             validation: (Rule: RuleType) => Rule.required(),
@@ -476,7 +501,7 @@ export const aboutUsSchemaEducationalCenter = {
                         },
                         {
                             name: 'specialists_section_image',
-                            title: 'Specialists Section Image',
+                            title: 'Specialists Image',
                             type: 'image',
                             options: { hotspot: true },
                             fields: [
@@ -498,7 +523,7 @@ export const aboutUsSchemaEducationalCenter = {
                         {
                             name: 'specialists_section_images',
                             type: 'array',
-                            title: 'Specialists Sections Images',
+                            title: 'Specialists Images',
                             description: 'No less than eight, and no more, only you can modify them.',
                             components: { input: ArrayMaxItems },
                             validation: (Rule: RuleType) => Rule.max(8),
@@ -523,14 +548,25 @@ export const aboutUsSchemaEducationalCenter = {
                                 layout: 'grid',
                             },
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'title.en',
+                            course_name: 'course_name.en'
+                        },
+                        prepare(selection: { title?: string, course_name?: string }) {
+                            return {
+                                title: `${selection.title} / ${selection.course_name}`,
+                            };
+                        },
+                    },
                 }
             ],
         },
         {
             name: 'our_rating_section',
             type: 'array',
-            title: 'Our Rating Section',
+            title: 'Our Rating',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(3),
             description: 'No less than three, and no more, only you can modify them.',
@@ -602,7 +638,7 @@ export const aboutUsSchemaEducationalCenter = {
                         },
                         {
                             name: 'our_rating_section_image',
-                            title: 'Our Rating Section Background Image',
+                            title: 'Our Rating Background Image',
                             type: 'image',
                             options: { hotspot: true },
                             fields: [
@@ -620,11 +656,31 @@ export const aboutUsSchemaEducationalCenter = {
                             validation: (Rule: RuleType) => Rule.required(),
                             initialValue: 5,
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            user_name: 'user_name.en',
+                        },
+                        prepare(selection: { user_name?: string }) {
+                            return {
+                                title: selection.user_name,
+                            };
+                        },
+                    },
                 }
-            ]
+            ],
         }
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Մեր մասին',
+            };
+        },
+    }
 };
 
 export default aboutUsSchemaEducationalCenter;

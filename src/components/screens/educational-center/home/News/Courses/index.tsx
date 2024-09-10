@@ -6,14 +6,13 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import { Course, CourseMobileCard, Gallery } from '../Course';
 
-import { LESSON } from '../../../../../../../sanity/sanity-queries/educational-center';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: LESSON[]
-}
+interface Props {
+    data: LESSON[];
+};
 
 const Courses = ({ data }: Readonly<Props>) => {
     const windowSize = useWindowSize();

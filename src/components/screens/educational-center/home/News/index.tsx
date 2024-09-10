@@ -8,8 +8,6 @@ import Courses from './Courses';
 
 import { Inter } from '@/constants/font';
 
-import { SECTON } from '../../../../../../sanity/sanity-queries/educational-center';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';

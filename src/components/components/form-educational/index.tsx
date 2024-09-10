@@ -33,8 +33,6 @@ import { sendContactUsEducational } from '@/api';
 import { Form } from '@/types/educational-center';
 import { socialNetwork } from '@/types/general';
 
-import { LESSON, Social_Links } from '../../../../sanity/sanity-queries/educational-center';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -43,7 +41,7 @@ import styles from './styles.module.sass';
 interface Props {
 	lessons: LESSON[];
 	lessonsArmenian: LESSON[];
-	social_links: Social_Links[];
+	social_links: SOCIAL_LINK[];
 	theme: string;
 };
 
@@ -84,7 +82,7 @@ const FormAppointment = ({
 	});
 
 
-	const hosts = social_links?.map((host: Social_Links) => {
+	const hosts = social_links?.map((host: SOCIAL_LINK) => {
 		const socialName = host?.social_name.toLowerCase();
 		const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
 		const SocialIcon = (socialNetworkComponents as any)[socialName];

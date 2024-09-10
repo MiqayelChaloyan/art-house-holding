@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { VIDEO } from '../../../../../../sanity/sanity-queries/educational-center';
 
 import { Inter } from '@/constants/font';
 
@@ -26,7 +25,7 @@ interface Props {
 };
 
 const CookingCourses = ({ data }: Readonly<Props>) => {
-    const path: ImagePath = urlForImage(data?.video_light)
+    const path: ImagePath = urlForImage(data?.video_light);
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
 
     const dispatch = useDispatch();

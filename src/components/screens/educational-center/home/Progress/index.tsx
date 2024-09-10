@@ -7,8 +7,6 @@ import Container from '@/components/components/container';
 import ProgressItem from '@/lib/ui/progress';
 import { Inter } from '@/constants/font';
 
-import { PROGRESS } from '../../../../../../sanity/sanity-queries/educational-center';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';

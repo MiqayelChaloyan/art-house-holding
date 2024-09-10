@@ -8,16 +8,15 @@ import { EmblaOptionsType } from 'embla-carousel';
 
 import SlideItem from './SlideItem';
 
-import { UrlType } from '@/types/educational-center';
+import { ImagePath } from '@/types/general';
 
-import { COURSE_MAIN } from '../../../../../../sanity/sanity-queries/educational-center';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-	course: COURSE_MAIN[]
+interface Props {
+	course: COURSE_MAIN[];
 };
 
 const Main = ({ course }: Readonly<Props>) => {
@@ -25,7 +24,7 @@ const Main = ({ course }: Readonly<Props>) => {
 	const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
 
 	const slidesItems = course?.map((item: COURSE_MAIN, index: number) => {
-		const path: UrlType | any = urlForImage(item.image);
+		const path: ImagePath = urlForImage(item.image);
 		const content = item.content.length > 272 ? item.content.slice(0, 272) + '...' : item.content;
 
 		return (

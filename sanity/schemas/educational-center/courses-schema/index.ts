@@ -1,4 +1,5 @@
-import { ClipboardIcon, BookIcon } from '@sanity/icons';
+import { BookIcon } from '@sanity/icons';
+import { TfiLayoutSliderAlt } from 'react-icons/tfi';
 
 import { RuleType } from '../../../ruleType';
 
@@ -7,13 +8,8 @@ export const coursesSchemaEducationalCenter = {
     type: 'document',
     title: 'Courses',
     id: 'courses-educational-center',
+    icon: BookIcon,
     fields: [
-        {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Դասընթացի անվանումը'
-        },
         {
             title: 'Course Name',
             name: 'course_name',
@@ -56,7 +52,7 @@ export const coursesSchemaEducationalCenter = {
                 {
                     name: 'Object',
                     type: 'object',
-                    icon: ClipboardIcon,
+                    icon: TfiLayoutSliderAlt,
                     fields: [
                         {
                             title: 'Title',
@@ -115,7 +111,17 @@ export const coursesSchemaEducationalCenter = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'title.en',
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ],
         },
@@ -148,7 +154,7 @@ export const coursesSchemaEducationalCenter = {
         {
             name: 'course_process',
             type: 'object',
-            title: 'Course Process Section',
+            title: 'Course Process',
             validation: (Rule: RuleType) => Rule.required(),
             fields: [
                 {
@@ -175,7 +181,7 @@ export const coursesSchemaEducationalCenter = {
 
             name: 'student_works',
             type: 'array',
-            title: 'Student work Section',
+            title: 'Student works',
             description: 'You can add any number of pictures.',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
@@ -277,11 +283,31 @@ export const coursesSchemaEducationalCenter = {
                             title: 'Duration of the course',
                             initialValue: 0,
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            course_title: 'course_title.en',
+                        },
+                        prepare(selection: { course_title?: string }) {
+                            return {
+                                title: selection.course_title,
+                            };
+                        },
+                    },
                 }
             ]
         },
     ],
+    preview: {
+        select: {
+            course_name: 'course_name.en',
+        },
+        prepare(selection: { course_name?: string }) {
+            return {
+                title: selection.course_name,
+            };
+        },
+    },
 };
 
 export default coursesSchemaEducationalCenter;

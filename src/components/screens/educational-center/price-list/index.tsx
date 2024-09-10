@@ -13,15 +13,13 @@ import Accordion from './Accordion';
 
 import { Inter } from '@/constants/font';
 
-import { PRICE_LIST } from '../../../../../sanity/sanity-queries/educational-center';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-	data: PRICE_LIST[];
+	data: COURSES_QUERYResult[];
 };
 
 const PriceList = ({ data }: Readonly<Props>) => {

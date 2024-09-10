@@ -12,8 +12,6 @@ import { closeModal } from '@/store/modal_reducer';
 import { Pages } from '@/constants/pages';
 import { Arial } from '@/constants/font';
 
-import { COURSES } from '../../../../../../sanity/sanity-queries/educational-center';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -21,24 +19,18 @@ import styles from './styles.module.sass';
 
 interface Props {
     locale: string;
-    courses: COURSES[];
+    courses: COURSES_QUERYResult[];
 };
 
-const CoursesModal = ({
-    locale, 
-    courses
-}: Props) => {
-    const params = useParams();    
+const CoursesModal = ({ locale, courses }: Readonly<Props>) => {
+    const params = useParams();
     const { slug } = params;
 
     const t = useTranslations('navigation');
 
     const dispatch = useDispatch();
 
-
-    if (!courses) {
-        return notFound();
-    };
+    if (!courses) return notFound();
 
     const handlecloseModal = () => setTimeout(() => dispatch(closeModal(false)), 1500);
 
@@ -48,18 +40,19 @@ const CoursesModal = ({
                 {t('courses')}
             </p>
             <div className={styles.list}>
-                {courses.map((course: any) => (
+                {courses?.map((course) => (
                     <Link
                         key={course._id}
                         href={`/${locale}${Pages.EDUCATIONAL_HOME}/${course.slug}`}
                         className={styles.link}
                         onClick={handlecloseModal}
                     >
-                        <p className={cn(styles.course, slug && slug[0] === course.slug ? styles['active-lessons'] : styles.lessons, Arial.className)}>
+                        <p className={cn(styles.course, slug && slug[0] == course?.slug ? styles['active-lessons'] : styles.lessons, Arial.className)}>
                             {course.course_name}
                         </p>
                     </Link>
-                ))}
+                )
+                )}
             </div>
         </div>
     );

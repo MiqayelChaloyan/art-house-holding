@@ -9,14 +9,14 @@ import { onPlay, setPath } from '@/store/player_reducer';
 
 import { MdPlayCircle } from 'react-icons/md';
 
-import { UrlType } from '@/types/educational-center';
 import { ReduxType } from '@/types/language';
+import { ImagePath } from '@/types/general';
 
 import styles from './styles.module.sass'
 
 
 interface Props {
-    light: UrlType;
+    light: ImagePath;
     link: string;
     alt: string;
 };

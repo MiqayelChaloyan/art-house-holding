@@ -2,9 +2,9 @@
 
 import RatingCard from '../RatingCard';
 
-import { Options, UrlType } from '@/types/educational-center';
-
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { Options } from '@/types/educational-center';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -14,8 +14,8 @@ import styles from './styles.module.sass';
 const MobileCards = (data: Options | any, slideIndex: string | number) => {
     const feedbacks = data?.map((card: Options | any, index: string): JSX.Element => {
 
-        const urlForImageBackground: UrlType | any = urlForImage(card.our_rating_section_image);
-        const path: UrlType | any = urlForImage(card.user_image);
+        const urlForImageBackground: ImagePath = urlForImage(card.our_rating_section_image);
+        const path: ImagePath = urlForImage(card.user_image);
 
         const urlImageBackgroundAlt = card.our_rating_section_image.alt;
         const urlImageAlt = card.user_image.alt;

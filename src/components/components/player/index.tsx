@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation';
 import { PiPlayCircleBold } from 'react-icons/pi';
 import { MdPlayCircle } from 'react-icons/md';
 
-import { UrlType } from '@/types/educational-center';
-
 import colors from '@/themes';
+
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -19,7 +19,7 @@ import styles from './styles.module.sass';
 const key = '/it-m';
 
 interface Props {
-    path: UrlType;
+    path: ImagePath;
     video_url: string;
     handlePlayVideo: (argument: string) => void;
 };

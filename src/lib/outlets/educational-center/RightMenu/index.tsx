@@ -14,15 +14,13 @@ import { Pages } from '@/constants/pages';
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/store/modal_reducer';
 
-import { HOSTS } from '../../../../../sanity/sanity-queries/educational-center';
-
 import colors from '@/themes';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-	socialData: HOSTS;
+	socialData: CONTACT_US_QUERYResult;
 	locale: string;
 };
 

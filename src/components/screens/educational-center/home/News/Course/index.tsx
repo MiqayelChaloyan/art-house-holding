@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { useLocale, useTranslations } from 'next-intl';
 import { notFound, useRouter } from 'next/navigation';
@@ -8,16 +8,16 @@ import { notFound, useRouter } from 'next/navigation';
 import Button from '@/lib/ui/Button';
 import { Arial, Inter } from '@/constants/font';
 
-import { ContentCourse as Props, UrlType } from '@/types/educational-center';
+import { ContentCourse as Props } from '@/types/educational-center';
 
 import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-import { queryId } from '../../../../../../../sanity/services/educational-center-service/courses';
+import { COURSE_ID_QUERY } from '../../../../../../../sanity/services/educational-center-service';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import { LESSON } from '../../../../../../../sanity/sanity-queries/educational-center';
 
 
 const Content = ({ content, isReadMore, minimumHeight }: Props) => (
@@ -51,10 +51,10 @@ const Course = ({ course }: Readonly<Lesson>) => {
         const _id = course.categories._ref;
 
         try {
-            const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
+            const data = await client.fetch(COURSE_ID_QUERY, { _id, language: localActive }, { cache: 'no-store' });
             router.push(`educational-center/${data.slug}`);
         } catch (error) {
-            notFound()
+            notFound();
         }
     };
 
@@ -80,7 +80,6 @@ const Course = ({ course }: Readonly<Lesson>) => {
                     className={cn(styles['more-btn-mobile'], Arial.className)}
                     onClick={getResources}
                 />
-
                 <li className={styles.arrow}>
                     <a className={styles['animated-arrow']} onClick={getResources}>
                         <span className={cn(styles['the-arrow'], styles['-left'])}>
@@ -96,15 +95,14 @@ const Course = ({ course }: Readonly<Lesson>) => {
                         </span>
                     </a>
                 </li>
-
             </div>
         </div>
     )
 };
 
 const Gallery = ({ course }: Lesson) => {
-    const leftPath: UrlType | any = urlForImage(course.image_one);
-    const rightPath: UrlType | any = urlForImage(course.image_two);
+    const leftPath: ImagePath = urlForImage(course.image_one);
+    const rightPath: ImagePath = urlForImage(course.image_two);
 
     return (
         <div className={styles.right}>
@@ -115,8 +113,8 @@ const Gallery = ({ course }: Lesson) => {
 };
 
 const CourseMobileCard = ({ course }: Lesson) => {
-    const leftPath: UrlType | any = urlForImage(course.image_one);
-    const rightPath: UrlType | any = urlForImage(course.image_two);
+    const leftPath: ImagePath = urlForImage(course.image_one);
+    const rightPath: ImagePath = urlForImage(course.image_two);
 
     return (
         <div className={styles.card}>
@@ -127,7 +125,7 @@ const CourseMobileCard = ({ course }: Lesson) => {
             <Course course={course} />
         </div>
     )
-}
+};
 
 export {
     Course,

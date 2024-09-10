@@ -11,18 +11,16 @@ import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { swiperOptions } from './options';
 
-import { SPECIALIST } from '../../../../../../../sanity/sanity-queries/educational-center';
-
 import './styles.css';
 
 
 interface Props {
-    data?: SPECIALIST[];
+    data: SPECIALIST[];
 };
 
 const TeacherWithWorks = ({ data }: Readonly<Props>) => {
-    const items = data?.map((item: SPECIALIST, index: number) => (
-        <SwiperSlide key={item._key}>
+    const items = data?.map((specialist: SPECIALIST) => (
+        <SwiperSlide key={specialist._key}>
             {({ isActive }) => (
                 <motion.div initial={{ opacity: 0, scale: 0.5 }}
                     animate={{
@@ -30,7 +28,7 @@ const TeacherWithWorks = ({ data }: Readonly<Props>) => {
                         scale: isActive ? 1 : 0.5,
                     }}
                 >
-                    <TeacherWithWorksImages item={item} />
+                    <TeacherWithWorksImages specialist={specialist} />
                 </motion.div>
             )}
         </SwiperSlide>

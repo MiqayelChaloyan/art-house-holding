@@ -16,8 +16,6 @@ import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxI
 
 import { Content as ContentType } from '@/types/educational-center';
 
-import { COURSES, HOSTS, LESSON } from '../../../../../../sanity/sanity-queries/educational-center';
-
 import colors from '@/themes';
 
 import cn from 'classnames';
@@ -26,8 +24,8 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    course: COURSES;
-    socialData: HOSTS;
+    course: COURSES_QUERYResult;
+    socialData: CONTACT_US_QUERYResult;
     lessons: LESSON[];
     lessonsArmenian: LESSON[];
 };

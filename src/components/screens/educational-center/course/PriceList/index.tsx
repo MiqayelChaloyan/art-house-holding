@@ -8,15 +8,13 @@ import Container from '@/components/components/container';
 
 import { Inter } from '@/constants/font';
 
-import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/educational-center';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    price_list: PRICE_LIST[];
+    price_list: any[];
 };
 
 function daysBetweenDates(dateStr1: string, dateStr2: string) {

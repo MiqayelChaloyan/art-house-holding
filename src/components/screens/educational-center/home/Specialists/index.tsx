@@ -9,8 +9,6 @@ import Container from '@/components/components/container';
 
 import { Inter } from '@/constants/font';
 
-import { SPECIALIST } from '../../../../../../sanity/sanity-queries/educational-center';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';

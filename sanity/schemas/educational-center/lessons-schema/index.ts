@@ -9,12 +9,6 @@ const lessonsSchemaEducationCenter = {
     id: 'educational-lessons-select-option',
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             name: 'course_name',
             type: 'array',
             title: 'Lessons Names (Դասընթացների անվանումները)',
@@ -57,11 +51,31 @@ const lessonsSchemaEducationCenter = {
                             },
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            course_name: 'course_name.en',
+                        },
+                        prepare(selection: { course_name?: string }) {
+                            return {
+                                title: selection.course_name,
+                            };
+                        },
+                    },
                 }
             ]
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Դասընթացներ',
+            };
+        },
+    }
 };
 
 export default lessonsSchemaEducationCenter;

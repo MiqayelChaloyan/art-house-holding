@@ -3,9 +3,7 @@
 import { notFound } from 'next/navigation';
 
 import Home from '@/components/screens/educational-center/home';
-
-import { client } from '../../../../../sanity/client';
-import { query } from '../../../../../sanity/services/educational-center-service/about-us';
+import { getHomeDetails } from '@/utils/data/educational-center';
 
 import 'swiper/css';
 import 'swiper/css/effect-flip';
@@ -19,28 +17,14 @@ interface RootProps {
     };
 };
 
-async function getResources(locale: string) {
-    try {
-        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-
-        if (!data) {
-            return { data: [], isError: true };
-        }
-
-        return { data, isError: false };
-    } catch (error) {
-        return { data: [], isError: true };
-    }
-};
-
 export default async function Page({
     params: { locale }
 }: Readonly<RootProps>) {
-    const { data, isError } = await getResources(locale);
+    const data = await getHomeDetails(locale);
 
-    if (!data || isError) {
+    if (!data) {
         notFound()
     };
 
     return (<Home data={data} />);
-}
+};
