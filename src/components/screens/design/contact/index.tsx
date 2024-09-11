@@ -9,16 +9,14 @@ import ContactUsForm from '@/components/components/form-design';
 import { Arial } from '@/constants/font';
 import { Titles } from '@/constants';
 
-import { LESSONS } from '../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-  lessons: LESSONS[];
-  lessonsArmenian: LESSONS[];
+  lessons: SELECT_OPTIONS_DESIGN_QUERYResult;
+  lessonsArmenian: SELECT_OPTIONS_DESIGN_QUERYResult;
 };
 
 const Home = ({ lessons, lessonsArmenian }: Readonly<Props>) => {

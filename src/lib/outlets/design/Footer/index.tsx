@@ -19,15 +19,13 @@ import useWindowSize from '@/hooks/useWindowSize';
 
 import { socialNetwork } from '@/types/design';
 
-import { HOSTS, Social_Links } from '../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    socialData: HOSTS
+    socialData: CONTACT_US_DESIGN_QUERYResult;
 };
 
 const socialNetworkComponents: socialNetwork = {
@@ -62,7 +60,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
         )
     });
 
-    const hosts = socialData?.social_links.map((host: Social_Links) => {
+    const hosts = socialData?.social_links.map((host: SOCIAL_LINK) => {
         const socialName = host?.social_name.toLowerCase();
         const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
         const SocialIcon = (socialNetworkComponents as any)[socialName];

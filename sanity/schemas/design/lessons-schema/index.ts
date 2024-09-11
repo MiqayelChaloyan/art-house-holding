@@ -9,12 +9,6 @@ const lessonsSchemaDesign = {
     id: 'design-lessons-select-option',
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             name: 'course_name',
             type: 'array',
             title: 'Lessons Names (Դասընթացների անվանումները)',
@@ -57,7 +51,17 @@ const lessonsSchemaDesign = {
                             },
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'course_name.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         },
@@ -104,11 +108,31 @@ const lessonsSchemaDesign = {
                             },
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'order_name.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Դասընթացներ և պատվերներ',
+            };
+        },
+    }
 };
 
 export default lessonsSchemaDesign;

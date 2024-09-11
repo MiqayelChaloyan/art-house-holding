@@ -2,11 +2,11 @@ import { ImagePath } from '@/types/general';
 import DeafultIcon from '@/app/favicon.ico';
 
 export const generateMetadataDynamic = (
-    ogDescription: string,
-    ogTitle: string,
-    path: ImagePath,
-    icon: ImagePath | null,
-    locale: string
+    ogDescription?: string,
+    ogTitle?: string,
+    path?: ImagePath,
+    icon?: ImagePath | null,
+    locale?: string
 ) => {
     const icons = icon ? { icon: icon?.src } : { icon: DeafultIcon.src };
 

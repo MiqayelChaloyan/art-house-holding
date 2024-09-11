@@ -8,10 +8,9 @@ import { useLocale } from 'next-intl';
 
 import { Arial } from '@/constants/font';
 
-import { UrlType } from '@/types/design';
-
-import { PORTFOLIO } from '../../../../sanity/sanity-queries/design';
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -20,9 +19,9 @@ import styles from './styles.module.sass';
 
 interface Props {
     project: PORTFOLIO;
-    course_name: string;
-    slug: string;
-    type: string;
+    course_name: string | any;
+    slug: string | any;
+    type?: string;
 };
 
 const PortfolioImageCard = ({
@@ -31,7 +30,7 @@ const PortfolioImageCard = ({
     slug,
     type
 }: Readonly<Props>) => {
-    const cardImagePath: UrlType | any = urlForImage(project.image);
+    const cardImagePath: ImagePath = urlForImage(project.image);
     const activeLocale = useLocale();
     const { _key, author, image: { alt } } = project;
 

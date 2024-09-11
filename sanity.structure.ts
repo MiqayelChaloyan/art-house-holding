@@ -3,15 +3,14 @@ import { MdFolder } from 'react-icons/md';
 import { MdContactSupport } from 'react-icons/md';
 import { RiAiGenerate } from 'react-icons/ri';
 
-import { type StructureBuilder } from 'sanity/structure';
+import { StructureBuilder } from 'sanity/structure';
 
-
-export default (S: StructureBuilder) =>
+export default (S: any) =>
     S.list()
         .title('Base')
         .items([
             ...S.documentTypeListItems().filter(
-                (listItem) => ![
+                (listItem: any) => ![
                     'art-house-home',
                     'art-house-about-us',
                     'art-house-contact-us',

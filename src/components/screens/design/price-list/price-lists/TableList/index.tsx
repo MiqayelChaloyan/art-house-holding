@@ -7,8 +7,6 @@ import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/constants/font';
 
-import { PRICES } from '../../../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';

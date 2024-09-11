@@ -4,9 +4,7 @@ import { notFound } from 'next/navigation';
 
 import Home from '@/components/screens/design/orders';
 
-import { client } from '../../../../../../sanity/client';
-import { allCoursesQuery } from '../../../../../../sanity/services/design-service/courses';
-import { query as lessonsQuery } from '../../../../../../sanity/services/design-service/lessons';
+import { getCourses, getSelectOptions } from '@/utils/data/design';
 
 
 interface Props {
@@ -15,43 +13,21 @@ interface Props {
     }
 };
 
-async function getResources(locale: string) {
-    const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
-    const ordersPromise = await client.fetch(lessonsQuery, { language: locale }, { next: { revalidate: 100 } });
-    const ordersAmPromise = await client.fetch(lessonsQuery, { language: 'am' }, { next: { revalidate: 100 } });
-
-    return Promise.all([ordersPromise, ordersAmPromise, coursesPromise])
-        .then(([orders, ordersArmenian, courses]) => {
-            if (!orders?.length || !ordersArmenian?.length  || !courses?.length) {
-                return { orders: [], ordersArmenian: [], courses: [], isError: true };
-            }
-
-            return { orders, ordersArmenian, courses, isError: false };
-        })
-        .catch(_ => {
-            return { orders: [], ordersArmenian: [], courses: [], isError: true };
-        });
-};
-
 export default async function Page({
     params: { locale }
 }: Readonly<Props>) {
+    const courses = await getCourses(locale);
+    const lessons = await getSelectOptions(locale);
+    const lessonsArmenianKeyword = await getSelectOptions('am');
 
-    const { 
-        orders, 
-        ordersArmenian, 
-        courses, 
-        isError 
-    } = await getResources(locale);
-
-    if (!orders || !ordersArmenian || !courses || isError) {
+    if (!lessons || !lessonsArmenianKeyword || !courses) {
         notFound()
     }
 
     return (
         <Home
-            orders={orders[0].order_name}
-            ordersArmenian={ordersArmenian[0].order_name}
+            orders={lessons.order_name}
+            ordersArmenian={lessonsArmenianKeyword.order_name}
             courses={courses}
         />
     )

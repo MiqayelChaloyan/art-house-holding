@@ -1,6 +1,6 @@
-import { RuleType } from '../../../ruleType';
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
 
+import { RuleType } from '../../../ruleType';
 
 const aboutUsSchemaLanguage = {
     name: 'about-us-language',
@@ -26,7 +26,7 @@ const aboutUsSchemaLanguage = {
     fields: [
         {
             type: 'string',
-            title: 'Page Title',
+            title: 'Open Graph Title',
             name: 'ogTitle',
             description:
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
@@ -49,12 +49,6 @@ const aboutUsSchemaLanguage = {
             group: ['og'],
         },
         /* Schema */
-        {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
         {
             title: 'About us',
             name: 'about_us',
@@ -247,6 +241,16 @@ const aboutUsSchemaLanguage = {
             ],
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Գլխավոր',
+            };
+        },
+    }
 };
 
 export default aboutUsSchemaLanguage;

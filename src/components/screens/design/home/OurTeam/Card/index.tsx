@@ -15,7 +15,7 @@ interface CardProps {
     data: any;
     dataIndex: number;
     isCenterSlide: boolean;
-}
+};
 
 const Card = ({ data, dataIndex, isCenterSlide }: Readonly<CardProps>) => {
     const { _key, worker, profession, worker_image } = data[dataIndex];

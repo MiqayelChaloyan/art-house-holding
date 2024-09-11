@@ -207,7 +207,17 @@ const languagesSchemaLanguage = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'fullName.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         }

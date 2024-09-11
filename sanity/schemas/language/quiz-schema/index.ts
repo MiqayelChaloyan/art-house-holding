@@ -1,8 +1,9 @@
-import { ClipboardIcon } from '@sanity/icons'
+import { ClipboardIcon } from '@sanity/icons';
 
-import { RuleType } from '../../../ruleType';
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
 
+import { RuleType } from '../../../ruleType';
+import { ImagePath } from '@/types/general';
 
 const quizSchemaLanguage = {
     name: 'languages-quiz',
@@ -80,11 +81,33 @@ const quizSchemaLanguage = {
                             type: 'string',
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'question'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         },
     ],
+    preview: {
+        select: {
+            title: 'name',
+            media: 'question_logo'
+        },
+        prepare(selection: { title?: string, media?: ImagePath }) {
+            return {
+                title: selection.title,
+                media: selection.media,
+            };
+        },
+    },
 };
 
 export default quizSchemaLanguage;

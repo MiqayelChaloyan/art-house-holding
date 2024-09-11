@@ -11,12 +11,6 @@ const promotionsSchemaLanguage = {
     }),
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             name: 'discounts_list',
             type: 'array',
             title: 'Discounts',
@@ -71,11 +65,31 @@ const promotionsSchemaLanguage = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'about_discount.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         }
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Զեղչեր',
+            };
+        },
+    }
 };
 
 export default promotionsSchemaLanguage;

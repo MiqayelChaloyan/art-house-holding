@@ -7,6 +7,7 @@ import { dashboardTool, projectUsersWidget, projectInfoWidget } from '@sanity/da
 
 import Structure from './sanity.structure';
 
+
 const config = defineConfig(
   {
     projectId,

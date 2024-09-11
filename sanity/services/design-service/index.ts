@@ -3,16 +3,16 @@ export const ABOUT_US_DETAILS_QUERY = `
    "main_section": main_section[] {
         _key,
         company_name,
-        "title": title[$language],
         image,
+        "title": title[$language],
     },
     "courses": courses[] {
         _key,
         name,
+        gallery_of_course,
+        categories,
         "course_name": course_name[$language],
         "about_course": about_course[$language],
-        gallery_of_course,
-        categories
     },
     "our_day": our_day {
         video_url,
@@ -20,15 +20,15 @@ export const ABOUT_US_DETAILS_QUERY = `
     },
     "progress_section": progress_section[] {
         _key,
-        "title": title[$language],
         quantity,
-        isPlusSign
+        isPlusSign,
+        "title": title[$language],
     },
     "workers": workers[] {
         _key,
+        worker_image,
         "worker": worker[$language],
         "profession": profession[$language],
-        worker_image,
     },
 }`;
 
@@ -36,17 +36,17 @@ export const COURSES_QUERY = `
 *[_type == "courses-design"] {
     _id,
     name,
-    "course_name": course_name[$language],
     "slug": slug.current,
     gallery_of_course,
     "conditions": conditions[][$language],
+    "course_name": course_name[$language],
     "guides": guides[][$language],
     "portfolios": portfolios[] {
         _key,
-        "author": author[$language],
         image,
         background_image,
         "slug": slug.current,
+        "author": author[$language],
         "title_images_array": title_images_array[] {
             _key,
             "title": title[$language],
@@ -55,10 +55,10 @@ export const COURSES_QUERY = `
     },
     "orders": orders[] {
         _key,
-        "author": author[$language],
         image,
         background_image,
         "slug": slug.current,
+        "author": author[$language],
         "title_images_array": title_images_array[] {
             _key,
             "title": title[$language],
@@ -71,17 +71,17 @@ export const COURSE_ID_QUERY = `
 *[_type == "courses-design" && _id == $_id][0] {
     _id,
     name,
-    "course_name": course_name[$language],
     "slug": slug.current,
     gallery_of_course,
     "conditions": conditions[][$language],
+    "course_name": course_name[$language],
     "guides": guides[][$language],
     "portfolios": portfolios[] {
         _key,
-        "author": author[$language],
         image,
         background_image,
         "slug": slug.current,
+        "author": author[$language],
         "title_images_array": title_images_array[] {
             _key,
             "title": title[$language],
@@ -90,10 +90,10 @@ export const COURSE_ID_QUERY = `
     },
     "orders": orders[] {
         _key,
-        "author": author[$language],
         image,
         background_image,
         "slug": slug.current,
+        "author": author[$language],
         "title_images_array": title_images_array[] {
             _key,
             "title": title[$language],
@@ -137,7 +137,7 @@ export const COURSE_SLUG_QUERY = `
     },
 }`;
 
-export const META_QUERY = `
+export const SITE_META_QUERY = `
 *[_type == "about-us-design"] {
     ogDescription,
     ogTitle,
@@ -148,9 +148,9 @@ export const SOCIAL_QUERY = `
 *[_type == "design-contact-us"] {
     name,
     email,
-    "address": address[$language],
     phone_numbers,
-    social_links
+    social_links,
+    "address": address[$language],
 }`;
 
 export const LESSONS_QUERY = `
@@ -179,9 +179,9 @@ export const PRICE_LIST_QUERY = `
     "our_advantages": our_advantages[][$language],
     "price_list": price_list[] {
         _key,
-        "course": course[$language],
         group_lessons,
         personal_lessons,
+        "course": course[$language],
         "duration": duration[$language],
         "hours_lessons": hours_lessons[$language],
     }

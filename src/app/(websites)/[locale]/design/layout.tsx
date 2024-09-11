@@ -1,12 +1,10 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
 import { type Metadata } from 'next';
 
 import Footer from '@/lib/outlets/design/Footer';
 import Header from '@/lib/outlets/design/Header';
-
 import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
 import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
 import Modal from '@/lib/outlets/design/Modal';
@@ -15,19 +13,17 @@ import ContactUs from '@/lib/outlets/design/ContactUs';
 import PlayerModal from '@/lib/outlets/general/PlayerModal';
 import GoBack from '@/lib/outlets/general/GoBack';
 
-import { ImagePath, Site } from '@/types/general';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
-
 import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
 
 import { client } from '../../../../../sanity/client';
-
-import { querySiteMeta, querySocial } from '../../../../../sanity/services/design-service/about-us';
-import { query as lessonsQuery } from '../../../../../sanity/services/design-service/lessons';
+import { SITE_META_QUERY } from '../../../../../sanity/services/design-service';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { allCoursesQuery } from '../../../../../sanity/services/design-service/courses';
+
 import { getHomeDetails } from '@/utils/data/art-house';
+import { getContacts, getCourses, getSelectOptions } from '@/utils/data/design';
+import { ImagePath, Site } from '@/types/general';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 
 interface RootLayoutProps {
@@ -35,7 +31,7 @@ interface RootLayoutProps {
     params: {
         locale: string;
     };
-}
+};
 
 const localeStrings: {
     am: string;
@@ -48,42 +44,17 @@ const localeStrings: {
     en: 'design studio'
 };
 
-async function getResources(locale: string) {
-    const coursesPromise = await client.fetch(allCoursesQuery, { language: locale }, { next: { revalidate: 100 } });
-    const socialPromise = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
-    const lessonsPromise = await client.fetch(lessonsQuery, { language: locale }, { next: { revalidate: 100 } });
-    const lessonsAmPromise = await client.fetch(lessonsQuery, { language: 'am' }, { next: { revalidate: 100 } });
-
-    return Promise.all([coursesPromise, socialPromise, lessonsPromise, lessonsAmPromise])
-        .then(([courses, social, lessons, lessonsArmenian]) => {
-            if ( !courses?.length || !social?.length || !lessons?.length || !lessonsArmenian?.length) {
-                return { branches: [], courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
-            }
-
-            return {  courses, social: social[0], lessons, lessonsArmenian, isError: false };
-        })
-        .catch(_ => {
-            return { courses: [], social: [], lessons: [], lessonsArmenian: [], isError: true };
-        });
-};
-
 export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
-
-    const {
-        courses,
-        social,
-        lessons,
-        lessonsArmenian,
-        isError
-    } = await getResources(locale);
-
+    const courses = await getCourses(locale);
+    const contacts = await getContacts(locale);
+    const lessons = await getSelectOptions(locale);
+    const lessonsArmenianKeyword = await getSelectOptions('am');
     const branches = await getHomeDetails(locale);
 
-
-    if (!branches || !courses || !social || !lessons || !lessonsArmenian || isError) {
+    if (!branches || !courses || !contacts || !lessons || !lessonsArmenianKeyword) {
         notFound()
     };
 
@@ -100,15 +71,11 @@ export default async function Layout({
                     hover='#4B352B'
                 />
                 {children}
-                <ContactUs
-                    locale={locale}
-                    lessons={lessons}
-                    lessonsArmenian={lessonsArmenian}
-                />
-                <Footer socialData={social} />
+                <ContactUs lessons={lessons} lessonsArmenian={lessonsArmenianKeyword} />
+                <Footer socialData={contacts} />
             </div>
             <Modal>
-                <CoursesModal locale={locale} courses={courses} />
+                <CoursesModal courses={courses} />
             </Modal>
             <PlayerModal />
         </>
@@ -117,9 +84,9 @@ export default async function Layout({
 
 
 async function getSiteMeta(
-    query: string = querySiteMeta,
-    client: SanityClient | any,
-    mutation = 'fetch'
+    query: string = SITE_META_QUERY,
+    client: SanityClient,
+    mutation: 'fetch' = 'fetch'
 ): Promise<Site> {
     const site: Site[] = await client[mutation](query);
     return site[0];
@@ -130,7 +97,7 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta: Site = await getSiteMeta(querySiteMeta, client);
+    const meta: Site = await getSiteMeta(SITE_META_QUERY, client);
     const { ogDescription, ogTitle, ogImage } = meta;
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;

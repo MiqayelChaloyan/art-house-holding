@@ -21,12 +21,6 @@ export interface ImageType {
     asset: Asset;
 };
 
-export interface UrlType {
-    src: string;
-    width: number;
-    height: number;
-};
-
 export interface PARTNER {
     cooperation: string;
     implemented_projects: string;

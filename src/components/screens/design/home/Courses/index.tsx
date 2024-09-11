@@ -11,8 +11,6 @@ import { Titles } from '@/constants';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { HOME_COURSES } from '../../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';

@@ -10,15 +10,13 @@ import Gallery from '@/components/components/gallery';
 import { Arial } from '@/constants/font';
 import { Titles } from '@/constants';
 
-import { COURSE } from '../../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-  courses: COURSE[];
+  courses: COURSES_DESIGN_QUERYResult[];
 };
 
 const defaultSearchParam = 'All';
@@ -28,7 +26,7 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const property: string | null = searchParams.get('name');
-  const [allCourses, setAllCourses] = useState<COURSE[]>(courses);
+  const [allCourses, setAllCourses] = useState<COURSES_DESIGN_QUERYResult | any>(courses);
   const [category, setCategory] = useState<COURSE[]>([]);
 
   useEffect(() => {

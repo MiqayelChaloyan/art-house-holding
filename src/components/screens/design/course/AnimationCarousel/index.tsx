@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from '@popmotion/popcorn';
 
 import { ImagePath } from '@/types/general';
-import { Gallery } from '@/types/design';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
@@ -14,7 +13,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    gallery: Gallery[];
+    gallery: GALLERY[];
 };
 
 const sliderVariants = {

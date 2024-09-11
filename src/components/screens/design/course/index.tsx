@@ -14,8 +14,6 @@ import { Pages } from '@/constants/pages';
 import { Arial } from '@/constants/font';
 import { Titles } from '@/constants';
 
-import { COURSE } from '../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -25,7 +23,7 @@ const AnimatedComponent = dynamic(() => import('./AnimationCarousel'), { ssr: fa
 
 interface Props {
   locale: string;
-  course: COURSE;
+  course: COURSES_DESIGN_QUERYResult;
 };
 
 interface BoxProps {

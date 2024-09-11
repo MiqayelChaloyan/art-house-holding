@@ -8,13 +8,14 @@ import styles from './styles.module.sass';
 
 
 interface PaginationProps {
-    data: any;
+    data: WORKER[];
     centerSlideDataIndex: number;
     updatePosition: (index: number) => void;
-}
+};
 
 const Pagination = (props: PaginationProps) => {
     const { data, centerSlideDataIndex, updatePosition } = props;
+
     return (
         <div className={styles.pagination}>
             {data.map((_: any, index: number) => {

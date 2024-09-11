@@ -1,4 +1,5 @@
-import { ClipboardIcon, TrendUpwardIcon, UserIcon } from '@sanity/icons';
+import { ClipboardIcon, UserIcon } from '@sanity/icons';
+import { GiProgression } from 'react-icons/gi';
 
 import ArrayMaxItems from '@/utils/ArrayMaxItems';
 import { RuleType } from '../../../ruleType';
@@ -10,13 +11,13 @@ export const aboutUsSchemaDesign = {
     id: 'about-us-design',
     groups: [
         {
-            name: "og",
-            title: "Social Share Info",
+            name: 'og',
+            title: 'Social Share Info',
             default: true
         },
         {
-            name: "manifest",
-            title: "Web App Settings",
+            name: 'manifest',
+            title: 'Web App Settings',
             hidden: ({ document }: {
                 document: {
                     [key: string]: never;
@@ -26,14 +27,8 @@ export const aboutUsSchemaDesign = {
     ],
     fields: [
         {
-            title: 'Name',
-            name: 'name',
             type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
-            type: 'string',
-            title: 'Page Title',
+            title: 'Open Graph Title',
             name: 'ogTitle',
             description:
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
@@ -60,7 +55,7 @@ export const aboutUsSchemaDesign = {
             name: 'main_section',
             type: 'array',
             title: 'Main Section',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+            description: 'You can add any number of pictures, with a minimum of two.',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
@@ -108,7 +103,18 @@ export const aboutUsSchemaDesign = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'title.en',
+                            company_name: 'company_name'
+                        },
+                        prepare(selection: { title?: string, company_name?: string }) {
+                            return {
+                                title: `${selection.company_name} ${selection.title}`,
+                            };
+                        },
+                    }
                 }
             ],
         },
@@ -116,7 +122,7 @@ export const aboutUsSchemaDesign = {
             name: 'courses',
             type: 'array',
             title: 'Courses',
-            description: 'Դուք կարող եք ավելացնել հինգ դասընթաց',
+            description: 'You can add to five courses',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(5),
             of: [
@@ -129,13 +135,13 @@ export const aboutUsSchemaDesign = {
                             title: 'Name',
                             name: 'name',
                             type: 'string',
-                            description: 'Դասընթացի անվանումը` անգլերեն (Նախընտրելի է, որ վերնագրի երկարությունը չգերազանցի 30-ը)'
+                            description: 'Title of the course: English (It is preferable that the length of the title does not exceed 30).'
                         },
                         {
                             title: 'Course Name',
                             name: 'course_name',
                             type: 'object',
-                            description: 'Դասընթացի անվանումը (Նախընտրելի է, որ վերնագրի երկարությունը չգերազանցի 30-ը)',
+                            description: 'Title of the course (It is preferable that the length of the title does not exceed 30).',
                             validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
@@ -159,7 +165,7 @@ export const aboutUsSchemaDesign = {
                             title: 'About Course',
                             name: 'about_course',
                             type: 'object',
-                            description: 'Դասընթացի մասին (Նախընտրելի է, որ երկարությունը չգերազանցի 65-ը)',
+                            description: 'About the course (It is preferable that the length does not exceed 65).',
                             validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
@@ -183,7 +189,7 @@ export const aboutUsSchemaDesign = {
                             name: 'gallery_of_course',
                             type: 'array',
                             title: 'Gallery of Course',
-                            description: 'Դուք կարող եք ավելացնել ցանկացած թվով նկարներ, առնվազն երկու հատ',
+                            description: 'You can add any number of pictures, with a minimum of two.',
                             of: [{
                                 type: 'image', alt: 'alt',
                                 fields: [
@@ -243,12 +249,12 @@ export const aboutUsSchemaDesign = {
             title: 'Progress Section',
             components: { input: ArrayMaxItems },
             validation: (Rule: RuleType) => Rule.max(4),
-            description: 'Ոչ պակաս, քան չորս և ոչ ավելի, միայն դուք կարող եք դրանք փոփոխել',
+            description: 'No less than four and no more, only you can modify them.',
             of: [
                 {
                     type: 'object',
                     name: 'tag',
-                    icon: TrendUpwardIcon,
+                    icon: GiProgression,
                     fields: [
                         {
                             title: 'Title',
@@ -290,6 +296,16 @@ export const aboutUsSchemaDesign = {
                             },
                         }
                     ],
+                    preview: {
+                        select: {
+                            title: 'title.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                     initialValue: {
                         isPlusSign: true,
                     },
@@ -300,7 +316,7 @@ export const aboutUsSchemaDesign = {
             name: 'workers',
             type: 'array',
             title: 'Workers',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով աշխատողների',
+            description: 'You can add any number of employees.',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
@@ -369,11 +385,31 @@ export const aboutUsSchemaDesign = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'worker.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ],
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Գլխավոր',
+            };
+        },
+    }
 };
 
 export default aboutUsSchemaDesign;

@@ -11,7 +11,7 @@ export async function getHomeDetails(locale: string): Promise<HOME_DETALIS_QUERY
             params: { language: locale },
         });
 
-        return result[0];
+        return result[1];
     } catch (error) {
         throw error;
     }

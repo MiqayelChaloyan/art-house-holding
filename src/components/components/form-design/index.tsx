@@ -16,23 +16,21 @@ import { sendContactUsDesign } from '@/api';
 import { FormContactUs } from '@/types/design';
 import { ContactUsResponse } from '@/types/general';
 
-import { LESSON, LESSONS } from '../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    lessons: LESSONS[],
-    lessonsArmenian: LESSONS[],
-    classNameProperty: 'small' | 'large',
+interface Props {
+    lessons: SELECT_OPTIONS_DESIGN_QUERYResult;
+    lessonsArmenian: SELECT_OPTIONS_DESIGN_QUERYResult;
+    classNameProperty: 'small' | 'large';
 };
 
-type FormProps = {
-    isLoading: boolean,
-    error: boolean,
-    values: FormContactUs
+interface FormProps {
+    isLoading: boolean;
+    error: boolean;
+    values: FormContactUs;
 };
 
 const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) => {
@@ -114,7 +112,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
     const handleClose = () => setOpen(false);
 
     const getValueToSlug = (valueName: string, slug: number | string) => {
-        const course: LESSON | any = valueName === 'course_name' && lessonsArmenian[0]?.course_name.find((item: LESSON) => {
+        const course: LESSON | any = valueName === 'course_name' && lessonsArmenian?.course_name.find((item: LESSON) => {
             return item.slug === slug;
         });
 
@@ -125,11 +123,9 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
 
     return (
         <div className={styles.container}>
-            {/* <div className={styles.line} /> */}
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
                 <div className={cn(styles.contact_us)}>
-                    {/* classNameProperty === 'small' && styles.line */}
                     {classNameProperty === 'small' && <h2 className={cn(styles.form_title, Arial.className)}>
                         {t('contact-us-form.form-title-language')}
                     </h2>}
@@ -168,7 +164,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                                     onChange={handleChange}
                                 />
                                 <Select
-                                    data={lessons[0].course_name}
+                                    data={lessons.course_name}
                                     valueName='course_name'
                                     handleChange={setState}
                                     state={state}

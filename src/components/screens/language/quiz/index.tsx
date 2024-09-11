@@ -11,29 +11,26 @@ import { Arial, ArianAMU } from '@/constants/font';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { QUIZ } from '../../../../../sanity/sanity-queries/language';
-import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
+import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 
-import { UrlType } from '@/types/language';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: QUIZ[],
-    locale: string
-}
+interface Props {
+    data: QUIZ[];
+    locale: string;
+};
 
-const Home = ({ 
-    data, 
-    locale 
-}: Readonly<Props>) => {
+const Home = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations('texts');
     const windowSize = useWindowSize();
 
     const links: JSX.Element[] = data?.map((lang: QUIZ) => {
-        const path: UrlType | any = urlForImage(lang.question_logo);
+        const path: ImagePath = urlForImage(lang.question_logo);
 
         return locale && windowSize.width < 600 ? (
             <Link

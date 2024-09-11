@@ -10,17 +10,15 @@ import OrdersGallery from './OrdersGallery';
 import { Arial } from '@/constants/font';
 import { Titles } from '@/constants';
 
-import { COURSE, ORDER } from '../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-  courses: COURSE[];
-  orders: any;
-  ordersArmenian: any;
+  courses: COURSES_DESIGN_QUERYResult[];
+  orders: ORDER_Result[] | any[];
+  ordersArmenian: ORDER_Result[] | any[];
 };
 
 const Home = ({ courses, orders, ordersArmenian }: Readonly<Props>) => {

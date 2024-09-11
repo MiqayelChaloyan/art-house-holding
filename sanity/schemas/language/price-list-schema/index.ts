@@ -13,16 +13,9 @@ const priceListSchemaLanguage = {
     }),
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             name: 'price_list',
             type: 'array',
             title: 'Price list',
-            description: 'Գնացուցակ',
             of: [
                 {
                     name: 'Object',
@@ -80,7 +73,17 @@ const priceListSchemaLanguage = {
                                 },
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'teaching_language.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: `Teaching language - ${selection.title}`,
+                            };
+                        },
+                    },
                 }
             ]
         },
@@ -140,7 +143,17 @@ const priceListSchemaLanguage = {
                                 },
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'teaching_language.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: `Teaching language - ${selection.title}`,
+                            };
+                        },
+                    },
                 },
             ]
         },
@@ -210,10 +223,30 @@ const priceListSchemaLanguage = {
                             ]
                         },
                     ],
+                    preview: {
+                        select: {
+                            title: 'language_type.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: `Teaching language - ${selection.title}`,
+                            };
+                        },
+                    },
                 },
             ],
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Գնացուցակ',
+            };
+        },
+    }
 };
 
 export default priceListSchemaLanguage;

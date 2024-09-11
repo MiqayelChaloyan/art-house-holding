@@ -10,12 +10,6 @@ const contactUsSchemaDesign = {
     id: 'contact-us-design',
     fields: [
         {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             title: 'Country, Region/City, Street',
             name: 'address',
             type: 'object',
@@ -81,7 +75,17 @@ const contactUsSchemaDesign = {
                 }
             ],
         },
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Կապ մեզ հետ',
+            };
+        },
+    }
 };
 
 export default contactUsSchemaDesign;

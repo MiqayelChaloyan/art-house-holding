@@ -18,7 +18,8 @@ import components from '@/utils/PortableTextComponents';
 import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
 import { ABOUT_US_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
-import { ImageType, UrlType, Video } from '@/types/language';
+import { ImageType, Video } from '@/types/language';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -34,7 +35,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations();
 
     const gallery: JSX.Element[] = data[0].about_us?.about_us_images?.map((item: ImageType, index: number) => {
-        const path: UrlType | any = urlForImage(item);
+        const path: ImagePath = urlForImage(item);
 
         return (
             <Image
@@ -50,7 +51,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
     });
 
     const videos = data[0]?.about_us?.about_our_daily.map((video: Video) => {
-        const path: UrlType | any = urlForImage(video.video_light);
+        const path: ImagePath = urlForImage(video.video_light);
 
         return (
             <VideoPlayer

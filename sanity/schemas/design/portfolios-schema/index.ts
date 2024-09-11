@@ -8,12 +8,6 @@ export const portfolioSchemaDesign = {
     icon: SparklesIcon,
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             title: 'Image',
             name: 'image',
             type: 'image',
@@ -27,6 +21,16 @@ export const portfolioSchemaDesign = {
             ]
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Պորտֆոլիո',
+            };
+        },
+    }
 };
 
 export default portfolioSchemaDesign;

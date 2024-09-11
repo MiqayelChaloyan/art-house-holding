@@ -9,13 +9,6 @@ const coursesSchemaLanguage = {
     id: 'languages-select-option',
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-
-        {
             name: 'course_name',
             type: 'array',
             title: 'Lessons Names (Դասընթացների անվանումները)',
@@ -58,7 +51,17 @@ const coursesSchemaLanguage = {
                             },
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'course_name.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         },
@@ -105,7 +108,17 @@ const coursesSchemaLanguage = {
                             },
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'week_number_of_lessons.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         },
@@ -152,11 +165,31 @@ const coursesSchemaLanguage = {
                             },
                             validation: (Rule: RuleType) => Rule.required(),
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'course_type.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Դասընթացներ',
+            };
+        },
+    }
 };
 
 export default coursesSchemaLanguage;

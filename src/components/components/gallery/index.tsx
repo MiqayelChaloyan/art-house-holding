@@ -4,18 +4,16 @@ import React from 'react';
 
 import Portfolio from '@/lib/ui/portfolio-card';
 
-import { COURSE, PORTFOLIO } from '../../../../sanity/sanity-queries/design';
-
 import styles from './styles.module.sass';
 
 
 interface Props {
-    projects: COURSE[];
-    type: keyof COURSE;
+    projects: any;
+    type: string;
 };
 
-const generateGalleryItems = (projects: COURSE[], type: keyof COURSE) => {
-    return projects.reduce((acc: JSX.Element[], project: COURSE) => {
+const generateGalleryItems = (projects: COURSES_DESIGN_QUERYResult[], type: string) => {
+    return projects.reduce((acc: JSX.Element[], project: any) => {
         const elements = project[type] as PORTFOLIO[];
 
         elements.forEach((elem: PORTFOLIO) => {

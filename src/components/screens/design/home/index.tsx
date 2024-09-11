@@ -9,26 +9,19 @@ import OurTeam from './OurTeam';
 import Partners from './Partners';
 import Progress from './Progress';
 
-import { DESIGN } from '../../../../../sanity/sanity-queries/design';
-
 
 interface Props {
-    data: DESIGN[];
+    data: HOME_DETALIS_DESIGN_QUERYResult;
     partners: PARTNER_Result[];
-    locale: string;
 };
 
-const Home = ({
-    data,
-    partners,
-    locale,
-}: Readonly<Props>) => (
+const Home = ({ data, partners }: Readonly<Props>) => (
     <>
-        <Main data={data[0].main_section} />
-        <Courses courses={data[0].courses} />
-        <OurDay our_day={data[0].our_day} />
-        <Progress data={data[0].progress_section} />
-        <OurTeam data={data[0].workers}/>
+        <Main data={data.main_section} />
+        <Courses courses={data.courses} />
+        <OurDay our_day={data.our_day} />
+        <Progress data={data.progress_section} />
+        <OurTeam data={data.workers}/>
         <Partners data={partners}/>
     </>
 );

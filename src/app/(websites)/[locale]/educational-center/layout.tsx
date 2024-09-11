@@ -18,7 +18,7 @@ import { Locale } from '@/locales';
 
 import { client } from '../../../../../sanity/client';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { HOME_DETALIS_QUERY, SITE_META_QUERY } from '../../../../../sanity/services/educational-center-service';
+import { SITE_META_QUERY } from '../../../../../sanity/services/educational-center-service';
 
 import { SanityClient } from 'sanity';
 

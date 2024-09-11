@@ -7,10 +7,8 @@ import WorksGallery from '@/components/components/worksGallery';
 import HoneyCombLoader from '@/lib/ui/rotatingLines';
 import { Arial } from '@/constants/font';
 
-import { UrlType } from '@/types/design';
-
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { COURSE } from '../../../../../sanity/sanity-queries/design';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -18,17 +16,17 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: COURSE[] | any
+    data: COURSES_DESIGN_QUERYResult | any;
 };
 
 const Home = ({ data }: Readonly<Props>) => {
     const searchParams = useSearchParams();
     const name: string | null = searchParams.get('name');
     const portfolio = data.portfolios?.filter((item: any) => item._key === name);
-    const path: UrlType | any = urlForImage(portfolio[0]?.background_image);
+    const path: ImagePath = urlForImage(portfolio[0]?.background_image);
 
     const { author } = portfolio[0];
-    const worksGallery = portfolio[0]?.title_images_array.map((works: any) => <WorksGallery key={works._key} works={works} />)
+    const worksGallery = portfolio[0]?.title_images_array.map((works: WORK) => <WorksGallery key={works._key} works={works} />)
 
     return (
         <div>

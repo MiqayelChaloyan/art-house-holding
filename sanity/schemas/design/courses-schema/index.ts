@@ -289,7 +289,17 @@ export const coursesSchemaDesign = {
                                 },
                             ],
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'author.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ],
         },
@@ -297,7 +307,7 @@ export const coursesSchemaDesign = {
             name: 'orders',
             type: 'array',
             title: 'Orders',
-            description: 'Դուք կարող եք ավելացնել ցանկացած թվով աշխատանքներ, առնվազն չորս հատ',
+            description: 'You can add any number of jobs, with a minimum of four.',
             validation: (Rule: RuleType) => Rule.required(),
             group: 'orders',
             of: [
@@ -435,7 +445,17 @@ export const coursesSchemaDesign = {
                                 },
                             ],
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'author.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ],
         },

@@ -16,16 +16,14 @@ import { sendOrderDesign } from '@/api';
 import { FormOrder } from '@/types/design';
 import { ContactUsResponse } from '@/types/general';
 
-import { ORDERS } from '../../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    orders: ORDERS[];
-    ordersArmenian: ORDERS[];
+    orders: ORDER_Result[];
+    ordersArmenian: ORDER_Result[];
 };
 
 interface FormProps {
@@ -35,7 +33,7 @@ interface FormProps {
 };
 
 const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
-    const [orderValue, setOrderValue] = useState<ORDERS | any>([]);
+    const [orderValue, setOrderValue] = useState<ORDER_Result | null>(null);
     const t = useTranslations();
 
     const [open, setOpen] = useState(false);
@@ -89,7 +87,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
                 content: t('texts.send-message-success'),
             });
 
-            setOrderValue([]);
+            setOrderValue(null);
             setState(() => ({
                 ...initState,
                 isLoading: false,
@@ -113,7 +111,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
     const handleClose = () => setOpen(false);
 
     const getValueToSlug = (slug: number | string) => {
-        const order = ordersArmenian?.find((item: ORDERS) => {
+        const order = ordersArmenian?.find((item: ORDER_Result) => {
             return item.slug === slug;
         });
 
@@ -122,7 +120,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
         }
     };
 
-    const ordersButtons = orders.map((order: ORDERS) => (
+    const ordersButtons = orders.map((order: ORDER_Result) => (
         <button
             key={order.slug}
             className={cn(styles['order-button'], Calibri.className, orderValue?.slug === order.slug && styles.disabled)}
@@ -141,7 +139,6 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <div className={styles.contact}>
                 <div className={cn(styles.contact_us)}>
-                    {/* styles.line */}
                     <h2 className={cn(styles.form_title, Arial.className)}>
                         {t('contact-us-form.form-title-order')}
                     </h2>

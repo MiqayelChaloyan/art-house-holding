@@ -10,7 +10,7 @@ import Container from '@/components/components/container';
 
 import { MdPlayCircle } from 'react-icons/md';
 
-import { DAILY_LIFE_IMAGE, DAILY_LIFE_VIDEO, ReduxType, UrlType } from '@/types/language';
+import { DAILY_LIFE_IMAGE, DAILY_LIFE_VIDEO, ReduxType } from '@/types/language';
 import { Arial, Vrdznagir } from '@/constants/font';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +21,8 @@ import { queryId } from '../../../../../../sanity/services/language-service/lang
 
 import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -42,7 +44,7 @@ interface Image {
 };
 
 const DailyLifeImage = ({ item }: Image) => {
-    const path: UrlType | any = urlForImage(item);
+    const path: ImagePath = urlForImage(item);
 
     return (
         <div className={styles.image}>
@@ -65,7 +67,7 @@ const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
     const dispatch = useDispatch();
 
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
-    const light: UrlType | any = urlForImage(item.video_light);
+    const light: ImagePath = urlForImage(item.video_light);
 
     const getResources = async () => {
         const _id = item.languages._ref;

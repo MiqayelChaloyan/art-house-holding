@@ -11,22 +11,22 @@ import Container from '@/components/components/container';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 
-import { UrlType } from '@/types/language';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    partners: PARTNER_Result[],
+interface Props {
+    partners: PARTNER_Result[];
 };
 
 const Partners = ({ partners }: Readonly<Props>) => {
     const t = useTranslations('navigation');
 
     const result: JSX.Element[] = partners?.map((partner: PARTNER_Result) => {
-        const path: UrlType | any = urlForImage(partner.logo);
+        const path: ImagePath = urlForImage(partner.logo);
 
         return (
             <div key={partner._id} className={styles.card}>

@@ -5,13 +5,11 @@ import React from 'react';
 import Promotions from './Promotions';
 import PriceList from './price-lists/PriceList';
 
-import { PRICE_LIST } from '../../../../../sanity/sanity-queries/design';
-
 import styles from './styles.module.sass';
 
 
 interface Props {
-  data: PRICE_LIST;
+  data: PRICE_LIST_DESIGN_QUERYResult;
 };
 
 const Home = ({ data }: Readonly<Props>) => (

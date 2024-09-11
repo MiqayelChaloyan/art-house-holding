@@ -10,12 +10,6 @@ const contactUsSchemaLanguage = {
     id: 'contact-us-language',
     fields: [
         {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             title: 'Country, Region/City, Street',
             name: 'address',
             type: 'object',
@@ -75,7 +69,17 @@ const contactUsSchemaLanguage = {
                 }
             ],
         },
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Կապ մեզ հետ',
+            };
+        },
+    }
 };
 
 export default contactUsSchemaLanguage;

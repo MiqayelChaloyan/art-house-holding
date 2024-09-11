@@ -5,8 +5,6 @@ import { RiArrowDownSLine } from 'react-icons/ri';
 
 import { useTranslations } from 'next-intl';
 
-import { COURSE, PRICES } from '../../../../../../../sanity/sanity-queries/design';
-
 import { Arial } from '@/constants/font';
 
 import cn from 'classnames';
@@ -21,7 +19,7 @@ interface Props {
 interface AccordionItemProps {
     handleToggle: (id: number) => void;
     active: number | null;
-    course: COURSE | any;
+    course: COURSE;
 };
 
 const AccordionItem = ({
@@ -102,7 +100,7 @@ const AccordionList = ({ data }: Readonly<Props>) => {
 
     return (
         <div className={styles.cards}>
-            {data?.map((course: PRICES) => (
+            {data?.map((course: any) => (
                 <AccordionItem
                     key={course._key}
                     active={active}

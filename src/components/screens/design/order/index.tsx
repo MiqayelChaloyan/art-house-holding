@@ -10,7 +10,7 @@ import RotatingLines from '@/lib/ui/rotatingLines';
 import { Arial } from '@/constants/font';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { COURSE } from '../../../../../sanity/sanity-queries/design';
+import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -18,26 +18,26 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: COURSE[] | any
+    data: COURSES_DESIGN_QUERYResult;
 };
 
 const Home = ({ data }: Readonly<Props>) => {
     const searchParams = useSearchParams();
     const name: string | null = searchParams.get('name');
-    const [order, setOrder] = useState<any[]>([]);
+    const [order, setOrder] = useState<ORDER[]>([]);
 
     useEffect(() => {
         if (name) {
-            const filteredOrders = data.orders?.filter((item: any) => item._key === name);
+            const filteredOrders = data.orders?.filter((item: ORDER) => item._key === name);
             setOrder(filteredOrders || []);
         } else {
             setOrder([]);
         }
     }, [name, data.orders]);
 
-    const path: string | undefined = urlForImage(order[0]?.background_image)?.src;
+    const path: ImagePath = urlForImage(order[0]?.background_image)?.src;
 
-    const worksGallery = order[0]?.title_images_array.map((works: any) => <WorksGallery key={works._key} works={works} />)
+    const worksGallery = order[0]?.title_images_array.map((works: WORK) => <WorksGallery key={works._key} works={works} />)
 
     return (
         <>

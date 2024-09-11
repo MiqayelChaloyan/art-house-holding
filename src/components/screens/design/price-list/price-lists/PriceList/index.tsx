@@ -12,8 +12,6 @@ import AccordionList from '../AccordionList';
 import { Arial } from '@/constants/font';
 import { Titles } from '@/constants';
 
-import { PRICES } from '../../../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';

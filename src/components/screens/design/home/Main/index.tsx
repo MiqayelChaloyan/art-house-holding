@@ -9,7 +9,6 @@ import { EmblaOptionsType } from 'embla-carousel';
 import SlideItem from './SlideItem';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { MAIN_SLIDE } from '../../../../../../sanity/sanity-queries/design';
 
 import { ImagePath } from '@/types/general';
 

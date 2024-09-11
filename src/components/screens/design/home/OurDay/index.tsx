@@ -17,7 +17,6 @@ import { Titles } from '@/constants';
 import { ImagePath } from '@/types/general';
 import { ReduxType } from '@/types/language';
 
-import { OUR_DAY } from '../../../../../../sanity/sanity-queries/design';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';

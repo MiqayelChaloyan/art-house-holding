@@ -9,10 +9,10 @@ import { Locale } from '@/locales';
 
 import { ImagePath } from '@/types/general';
 
-import { client } from '../../../../../../sanity/client';
-import { courseBySlugQuery } from '../../../../../../sanity/services/design-service/courses';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+
 import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { getCourseBySlug } from '@/utils/data/design';
 
 
 interface Props {
@@ -22,35 +22,17 @@ interface Props {
     }
 };
 
-async function getResources(slug: string, locale: string) {
-    try {
-        const course = await client.fetch(courseBySlugQuery, { language: locale, slug }, { next: { revalidate: 100 } });
-
-        if (!course?.length) {
-            return { course: [], isError: true };
-        }
-
-        return { course, isError: false };
-    } catch (_) {
-        return { course: [], isError: true };
-    }
-};
-
 export default async function Page({
     params: { locale, slug }
 }: Readonly<Props>) {
     const decodedQuery = decodeURIComponent(slug[0]);
-    const { course, isError } = await getResources(decodedQuery, locale);
+    const course = await getCourseBySlug(locale, decodedQuery);
 
-    if (!course || isError) {
+    if (!course) {
         notFound()
     }
 
-    return (
-        <Course
-            locale={locale}
-            course={course[0]}
-        />
+    return (<Course locale={locale} course={course} />
     );
 };
 
@@ -61,11 +43,11 @@ export async function generateMetadata({
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
     const decodedQuery = decodeURIComponent(slug[0]);
-    const data = await getResources(decodedQuery, locale);
+    const data = await getCourseBySlug(locale, decodedQuery);
 
-    const ogTitle = data.course[0]?.name;
-    const ogImage = data.course[0]?.gallery_of_course[0];
-    const ogDescription = data.course[0].guides[0];
+    const ogTitle = data?.name;
+    const ogImage = data?.gallery_of_course[0];
+    const ogDescription = data?.guides[0];
 
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;

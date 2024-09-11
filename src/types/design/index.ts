@@ -1,11 +1,5 @@
 import { TypedObject } from 'sanity';
 
-export interface UrlType {
-    src: string,
-    width: number,
-    height: number,
-};
-
 export interface SlideItem {
     url: string;
     company_name: string;
@@ -13,8 +7,8 @@ export interface SlideItem {
 };
 
 export interface PROMOTIONS {
-    informatie: TypedObject | TypedObject[] | any,
-    our_advantages: string[],
+    informatie: TypedObject | TypedObject[] | any;
+    our_advantages: string[];
 };
 
 /* Form types */

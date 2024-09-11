@@ -14,12 +14,6 @@ const priceListSchemaDesign = {
     }),
     fields: [
         {
-            title: 'Name',
-            name: 'name',
-            type: 'string',
-            description: 'Do not change the name.'
-        },
-        {
             title: 'Informatie',
             name: 'informatie',
             type: 'object',
@@ -49,7 +43,7 @@ const priceListSchemaDesign = {
             name: 'our_advantages',
             type: 'array',
             title: 'Our advantages',
-            description: 'Դուք կարող եք ավելացնել ցանկացած քանակի (Տեքստը չպետք է լինի 250 նիշից ավելի)',
+            description: 'You can add any amount (Text should not be more than 250 characters).',
             validation: (Rule: RuleType) => Rule.required(),
             of: [
                 {
@@ -73,14 +67,13 @@ const priceListSchemaDesign = {
                             type: 'string'
                         }
                     ]
-                }
+                },
             ],
         },
         {
             name: 'price_list',
             type: 'array',
             title: 'Price List',
-            description: 'Գնացուցակ',
             of: [
                 {
                     name: 'Object',
@@ -171,11 +164,31 @@ const priceListSchemaDesign = {
                                 }
                             ]
                         },
-                    ]
+                    ],
+                    preview: {
+                        select: {
+                            title: 'course.en'
+                        },
+                        prepare(selection: { title?: string }) {
+                            return {
+                                title: selection.title,
+                            };
+                        },
+                    },
                 }
             ]
         },
     ],
+    preview: {
+        select: {
+            title: 'title',
+        },
+        prepare() {
+            return {
+                title: 'Գնացուցակ',
+            };
+        },
+    }
 };
 
 export default priceListSchemaDesign;

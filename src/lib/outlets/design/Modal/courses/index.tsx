@@ -3,7 +3,7 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { notFound, useParams } from 'next/navigation';
 
 import { useDispatch } from 'react-redux';
@@ -12,22 +12,17 @@ import { closeModal } from '@/store/modal_reducer';
 import { Pages } from '@/constants/pages';
 import { Arial } from '@/constants/font';
 
-import { COURSE } from '../../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    locale: string;
-    courses: COURSE[];
+interface Props  {
+    courses: COURSES_DESIGN_QUERYResult[];
 };
 
-const CoursesModal = ({
-    locale, 
-    courses
-}: Props) => {
+const CoursesModal = ({ courses }: Props) => {
+    const activeLocale = useLocale();
     const params = useParams();    
     const { slug } = params;
 
@@ -46,10 +41,10 @@ const CoursesModal = ({
                 {t('departments')}
             </p>
             <div className={styles.list}>
-                {courses?.map((course: COURSE) => (
+                {courses?.map((course: COURSES_DESIGN_QUERYResult) => (
                     <Link
                         key={course._id}
-                        href={`/${locale}${Pages.DESIGN_HOME}/${encodeURIComponent(course.slug)}`}
+                        href={`/${activeLocale}${Pages.DESIGN_HOME}/${encodeURIComponent(course.slug)}`}
                         className={styles.link}
                         onClick={handlecloseModal}
                     >

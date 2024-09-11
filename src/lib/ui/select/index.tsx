@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { LANGUAGE } from '../../../../sanity/sanity-queries/language';
-import { LESSON } from '../../../../sanity/sanity-queries/design';
 
 import { Arial } from '@/constants/font';
 
@@ -13,19 +12,19 @@ import styles from './styles.module.sass';
 
 
 type FormProps = {
-    isLoading: boolean,
-    values: any
+    isLoading: boolean;
+    values: any;
 };
 
 interface SelectProps {
-    data: LANGUAGE[] | LESSON[]
-    state: FormProps
-    valueName: string
-    handleChange: (value: any) => void
-    classNameProperty: string
-    isClear: boolean
-    getValueToSlug: (key: string, slug: number) => void
-}
+    data: LANGUAGE[] | LESSON[];
+    state: FormProps;
+    valueName: string;
+    handleChange: (value: any) => void;
+    classNameProperty: string;
+    isClear: boolean;
+    getValueToSlug: (key: string, slug: number) => void;
+};
 
 const Select = ({
     data,

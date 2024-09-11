@@ -36,6 +36,7 @@ const Branch = ({ item, locale }: Readonly<Props>) => {
             {word}
         </p>);
 
+
     return (
         <Link href={`/${locale}/${web_site_url}`} aria-label={web_site_url} id='card'>
             <div className={styles.card_container}>

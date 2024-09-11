@@ -12,8 +12,7 @@ import { Arial } from '@/constants/font';
 import { ImagePaths } from '@/constants';
 
 import { client } from '../../../../../../../sanity/client';
-import { queryId } from '../../../../../../../sanity/services/design-service/courses';
-import { HOME_COURSES } from '../../../../../../../sanity/sanity-queries/design';
+import { COURSE_ID_QUERY } from '../../../../../../../sanity/services/design-service';
 
 import cn from 'classnames';
 
@@ -52,7 +51,7 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
         const _id = categories._ref;
 
         try {
-            const data = await client.fetch(queryId, { _id, language: localActive }, { cache: 'no-store' });
+            const data = await client.fetch(COURSE_ID_QUERY, { _id, language: localActive }, { cache: 'no-store' });
             router.push(`design/${data.slug}`);
         } catch (error) {
             notFound();

@@ -17,8 +17,6 @@ import RotatingLines from '@/lib/ui/rotatingLines';
 import { Arial } from '@/constants/font';
 import { Titles } from '@/constants';
 
-import { WORKER } from '../../../../../../sanity/sanity-queries/design';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -32,10 +30,16 @@ interface Props {
     data: WORKER[];
 };
 
+interface CarouselRefType {
+    swipeTo: (index: number) => void;
+    goBack: () => void;
+    goNext: (steps?: number) => void;
+};
+
 const OurTeam = ({ data }: Readonly<Props>) => {
     const [initSlides, setInitSlides] = useState<boolean>(false);
     const t = useTranslations('sections');
-    const ref = useRef<any>(null);
+    const ref = useRef<CarouselRefType | any | null>(null);
 
     useEffect(() => {
         setInitSlides(true);

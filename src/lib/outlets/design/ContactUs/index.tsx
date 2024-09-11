@@ -3,36 +3,31 @@
 import React from 'react';
 
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 import ContactUsForm from '@/components/components/form-design'
-
-import { LESSONS } from '../../../../../sanity/sanity-queries/design';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    locale: string,
-    lessons: LESSONS[],
-    lessonsArmenian: LESSONS[]
+    lessons: SELECT_OPTIONS_DESIGN_QUERYResult;
+    lessonsArmenian: SELECT_OPTIONS_DESIGN_QUERYResult;
 };
 
-const ContactUs = ({
-    locale,
-    lessons,
-    lessonsArmenian
-}: Readonly<Props>) => {
+const ContactUs = ({ lessons, lessonsArmenian }: Readonly<Props>) => {
+    const activeLocale = useLocale();
     const pathname = usePathname();
     let isOpen = true;
 
     switch (pathname) {
-        case `/${locale}/design/contact`:
+        case `/${activeLocale}/design/contact`:
             isOpen = false
             break;
-        case `/${locale}/design/orders`:
+        case `/${activeLocale}/design/orders`:
             isOpen = false
             break;
-        case `/${locale}/design`:
+        case `/${activeLocale}/design`:
             isOpen = false
             break;
         default:

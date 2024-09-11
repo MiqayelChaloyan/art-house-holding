@@ -1,11 +1,5 @@
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 
-export interface UrlType {
-    src: string,
-    width: number,
-    height: number,
-};
-
 export type SwiperTypes = {
     effect: 'coverflow',
     grabCursor: boolean,
