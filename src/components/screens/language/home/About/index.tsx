@@ -15,7 +15,6 @@ import { ImageType } from '@/types/language';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 
 import cn from 'classnames';
 
@@ -23,7 +22,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: ABOUT_US_LANGUAGE[];
+    data: HOME_DETALIS_LANGUAGE_QUERYResult;
     locale: string;
 };
 
@@ -34,9 +33,9 @@ const navigationLinks = [
 
 const About = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations();
-    const content: string = blocksToText(data[0].about_us.content).slice(0, 900);
+    const content: string = blocksToText(data.about_us.content).slice(0, 900);
 
-    const gallery: JSX.Element[] = data[0].about_us.about_us_images?.map((image: ImageType, index: number) => {
+    const gallery: JSX.Element[] = data.about_us.about_us_images?.map((image: ImagePath, index: number) => {
         const path: ImagePath = urlForImage(image);
 
         return (

@@ -10,7 +10,6 @@ import { Arial, ArianAMU } from '@/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { QUIZ } from '../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 
 import { ImagePath } from '@/types/general';
@@ -21,7 +20,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: QUIZ[];
+    data: QUIZ_QUERYResult[];
     locale: string;
 };
 
@@ -29,7 +28,7 @@ const Home = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations('texts');
     const windowSize = useWindowSize();
 
-    const links: JSX.Element[] = data?.map((lang: QUIZ) => {
+    const links: JSX.Element[] = data?.map((lang: QUIZ_QUERYResult) => {
         const path: ImagePath = urlForImage(lang.question_logo);
 
         return locale && windowSize.width < 600 ? (

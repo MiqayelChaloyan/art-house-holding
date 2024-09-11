@@ -18,10 +18,7 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-const About = ({
-    image,
-    text
-}: Readonly<ABOUT>) => {
+const About = ({ image, text }: Readonly<ABOUT>) => {
     const language: ImagePath = urlForImage(image);
 
     return (

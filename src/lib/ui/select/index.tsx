@@ -2,8 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import { LANGUAGE } from '../../../../sanity/sanity-queries/language';
-
 import { Arial } from '@/constants/font';
 
 import cn from 'classnames';
@@ -11,13 +9,13 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type FormProps = {
+interface FormProps {
     isLoading: boolean;
     values: any;
 };
 
 interface SelectProps {
-    data: LANGUAGE[] | LESSON[];
+    data: SELECT_OPTIONS_LANGUAGE_QUERYResult[] | LESSON[];
     state: FormProps;
     valueName: string;
     handleChange: (value: any) => void;

@@ -7,7 +7,6 @@ import Image from 'next/image';
 import { Arial } from '@/constants/font';
 import { ImagePath } from '@/types/general';
 
-import { TEACHER } from '../../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
@@ -17,9 +16,7 @@ interface Props {
     teachers: TEACHER[];
 };
 
-const Teachers = ({
-    teachers
-}: Readonly<Props>) => (
+const Teachers = ({ teachers }: Readonly<Props>) => (
     <div className={styles.teachers}>
         {teachers?.map((item: TEACHER) => {
             const path: ImagePath = urlForImage(item.teacher_image);

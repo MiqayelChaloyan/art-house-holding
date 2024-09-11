@@ -8,12 +8,10 @@ import Promotions from './Promotions';
 import OurDailyLife from './OurDailyLife';
 import Partners from './Partners';
 
-import { ABOUT_US_LANGUAGE, DISCOUNT } from '../../../../../sanity/sanity-queries/language';
-
 
 interface Props {
-    data: ABOUT_US_LANGUAGE[];
-    discounts: DISCOUNT[];
+    data: HOME_DETALIS_LANGUAGE_QUERYResult;
+    discounts: DISCOUNTS_QUERYResult;
     partners: PARTNER_Result[];
     locale: string;
 };
@@ -24,13 +22,13 @@ const Home = ({
     partners,
     locale
 }: Readonly<Props>) => (
-    <div>
+    <>
         <Main />
         <About data={data} locale={locale} />
         <Promotions discounts={discounts} />
         <OurDailyLife locale={locale} data={data} />
         <Partners partners={partners} />
-    </div>
+    </>
 );
 
 export default React.memo(Home);

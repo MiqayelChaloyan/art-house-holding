@@ -15,10 +15,9 @@ import { Arial, Calibri } from '@/constants/font';
 import { Pages } from '@/constants/pages';
 import components from '@/utils/PortableTextComponents';
 
-import { urlForImage } from "../../../../../sanity/imageUrlBuilder";
-import { ABOUT_US_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
+import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
 
-import { ImageType, Video } from '@/types/language';
+import { Video } from '@/types/language';
 import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
@@ -26,15 +25,15 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: ABOUT_US_LANGUAGE[],
-    locale: string
+interface Props {
+    data: HOME_DETALIS_LANGUAGE_QUERYResult;
+    locale: string;
 };
 
 const About = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations();
 
-    const gallery: JSX.Element[] = data[0].about_us?.about_us_images?.map((item: ImageType, index: number) => {
+    const gallery: JSX.Element[] = data.about_us?.about_us_images?.map((item: ImagePath, index: number) => {
         const path: ImagePath = urlForImage(item);
 
         return (
@@ -50,7 +49,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
         );
     });
 
-    const videos = data[0]?.about_us?.about_our_daily.map((video: Video) => {
+    const videos = data?.about_us?.about_our_daily.map((video: Video) => {
         const path: ImagePath = urlForImage(video.video_light);
 
         return (
@@ -73,7 +72,7 @@ const About = ({ data, locale }: Readonly<Props>) => {
                         </h1>
                         <div className={cn(styles.text, Calibri.className)}>
                             <PortableText
-                                value={data[0]?.about_us?.content}
+                                value={data?.about_us?.content}
                                 components={components}
                             />
                         </div>

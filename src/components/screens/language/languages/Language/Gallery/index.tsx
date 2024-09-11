@@ -13,7 +13,6 @@ import settings from './settings';
 import { ImagePath } from '@/types/general';
 import { ImageType as Type } from '@/types/language';
 
-import { COURSE_IMAGES } from '../../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
 
 import cn from 'classnames';
@@ -25,7 +24,7 @@ interface Props {
     during_courses: COURSE_IMAGES[];
 };
 
-const renderImages = (images: Type[], type: string) =>
+const renderImages = (images: ImagePath, type: string) =>
     images?.map((image: Type, index: number) => {
         const path: ImagePath = urlForImage(image);
 

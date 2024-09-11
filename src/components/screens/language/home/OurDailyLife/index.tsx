@@ -17,10 +17,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
 
 import { client } from '../../../../../../sanity/client';
-import { queryId } from '../../../../../../sanity/services/language-service/languages';
-
-import { ABOUT_US_LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { LANGUAGE_ID_QUERY } from '../../../../../../sanity/services/language-service';
 
 import { ImagePath } from '@/types/general';
 
@@ -30,7 +28,7 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: ABOUT_US_LANGUAGE[];
+    data: HOME_DETALIS_LANGUAGE_QUERYResult;
     locale: string;
 };
 
@@ -73,7 +71,7 @@ const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
         const _id = item.languages._ref;
 
         try {
-            const data = await client.fetch(queryId, { _id, language: locale }, { cache: 'no-store' });
+            const data = await client.fetch(LANGUAGE_ID_QUERY, { _id, language: locale }, { cache: 'no-store' });
             router.push(`language/languages/${data.slug.current}`);
         } catch (error) {
             notFound();
@@ -127,11 +125,11 @@ const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
 const OurDailyLife = ({ data, locale }: Readonly<Props>) => {
     const t = useTranslations('sections');
 
-    const images: JSX.Element[] = data[0].our_daily_life.our_daily_life_images.map((item: DAILY_LIFE_IMAGE | any) =>
+    const images: JSX.Element[] = data.our_daily_life.our_daily_life_images.map((item: DAILY_LIFE_IMAGE | any) =>
         <DailyLifeImage key={item.slug.current} item={item} />
     );
 
-    const videos: JSX.Element[] = data[0].our_daily_life.about_our_daily.map((item: DAILY_LIFE_VIDEO | any) =>
+    const videos: JSX.Element[] = data.our_daily_life.about_our_daily.map((item: DAILY_LIFE_VIDEO | any) =>
         <DailyLifeVideo key={item._key} item={item} locale={locale} />
     );
 

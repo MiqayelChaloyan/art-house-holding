@@ -4,29 +4,17 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-// import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-
 import { Arial } from '@/constants/font';
-
-import { PRICE_LIST } from '../../../../../../sanity/sanity-queries/language';
 
 import styles from './styles.module.sass';
 
 
-type PanelProps = {
-  data: PRICE_LIST[],
+interface PanelProps {
+  data: PRICE_LIST[];
 };
 
 const Panel = ({ data }: Readonly<PanelProps>) => {
   const t = useTranslations();
-  
-  // const [currentPage, setCurrentPage] = useState<number>(1);
-  // const recordPerPage = 5;
-  // const lastIndex = currentPage * recordPerPage;
-  // const firstIndex = lastIndex - recordPerPage;
-  // const records = data.slice(firstIndex, lastIndex);
-  // const npage = Math.ceil(data.length / recordPerPage);
-  // const numbers = [...Array(npage + 1).keys()].slice(1)
 
   const tableRows: JSX.Element[] = data?.map((item: PRICE_LIST) => {
     return (
@@ -38,23 +26,6 @@ const Panel = ({ data }: Readonly<PanelProps>) => {
       </tr>
     );
   });
-
-  // const prePage = () => {
-  //   if (currentPage !== firstIndex && firstIndex !== 0) {
-  //     setCurrentPage(currentPage - 1)
-  //   }
-  // }
-
-  // const nextPage = () => {
-  //   console.log(tableRows)
-  //   if (currentPage !== lastIndex && currentPage !== tableRows.length - 2) {
-  //     setCurrentPage(currentPage + 1)
-  //   }
-  // }
-
-  // const changePage = (id: number) => {
-  //   setCurrentPage(id)
-  // }
 
   return (
     <div className={Arial.className}>
@@ -84,28 +55,6 @@ const Panel = ({ data }: Readonly<PanelProps>) => {
           </tbody>
         </table>
       </div>
-
-      {/* <div>
-        <nav className={styles.pagination_nav}>
-          <ul className={styles.pagination}>
-            <button className={styles.page_btn} onClick={prePage}>
-              <IoIosArrowBack />
-            </button>
-            {
-              numbers.map((n, i) => (
-                <li className={`${styles.page_item} ${currentPage === n ? styles.active : ''}`} key={i}>
-                  <button className={styles.page_link} onClick={() => changePage(n)}>
-                    {n}
-                  </button>
-                </li>
-              ))
-            }
-            <button className={styles.page_btn} onClick={nextPage}>
-              <IoIosArrowForward />
-            </button>
-          </ul>
-        </nav>
-      </div> */}
     </div>
   );
 };

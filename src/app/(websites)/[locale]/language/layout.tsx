@@ -1,7 +1,6 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
 import { type Metadata } from 'next';
 
 import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
@@ -16,79 +15,51 @@ import { Locale } from '@/locales';
 import { SanityClient } from 'sanity';
 
 import { ImagePath, Site } from '@/types/general';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 import { client } from '../../../../../sanity/client';
-
-import { query, queryFilterCourses } from '../../../../../sanity/services/language-service/courses';
-import { LANGUAGE } from '../../../../../sanity/sanity-queries/language';
-import { querySiteMeta } from '../../../../../sanity/services/language-service/about-us';
-import { querySocial } from '../../../../../sanity/services/language-service/contact-us';
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { SITE_META_QUERY } from '../../../../../sanity/services/language-service';
+
 import { getHomeDetails } from '@/utils/data/art-house';
+import { getContacts, getSelectOptions, getSelectOptionsFiltered } from '@/utils/data/language';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
 
 
 interface RootLayoutProps {
-    children: React.ReactNode,
+    children: React.ReactNode;
     params: {
-        locale: string,
+        locale: string;
     };
-}
+};
 
 const localeStrings: {
-    am: string
-    ru: string
-    en: string
-    [key: string]: string
+    am: string;
+    ru: string;
+    en: string;
+    [key: string]: string;
 } = {
     am: 'լեզվի կենտրոն',
     ru: 'языковой центр',
     en: 'language center'
 };
 
-async function getResources(locale: string) {
-    const coursesPromise = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-    const languagesPromise = await client.fetch(queryFilterCourses, { language: 'am' }, { next: { revalidate: 100 } });
-    const socialPromise = await client.fetch(querySocial, { language: locale }, { next: { revalidate: 100 } });
-
-    return Promise.all([coursesPromise, languagesPromise, socialPromise])
-        .then(([courses, languages, social]) => {
-            if (!courses?.length || !languages?.length || !social?.length) {
-                return { courses: [], branches: [], languages: [], social: [], isError: true };
-            }
-
-            return { courses: courses[0], languages: languages[0], social: social[0], isError: false };
-        })
-        .catch(_ => {
-            return { courses: [], branches: [], languages: [], social: [], isError: true };
-        });
-};
-
 export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
-
-    const {
-        courses,
-        languages,
-        social,
-        isError
-    } = await getResources(locale);
-
+    const courses = await getSelectOptions(locale);
+    const languages = await getSelectOptionsFiltered(locale);
+    const contacts = await getContacts(locale);
     const branches = await getHomeDetails(locale);
 
-    if (!courses || !branches || !languages || !social || isError) {
+    if (!courses || !branches || !languages || !contacts) {
         notFound()
     };
 
     return (
         <div className='languages-container'>
             <div className='wrapper-content'>
-                <div>
-                    <Header locale={locale} />
-                </div>
-                {/* <FBMessenger /> */}
+                <Header locale={locale} />
                 <GoBack locale={locale} theme='#006ED2' />
                 <ScrollToTopButton theme='#006ED2' />
                 <FloatingMenu
@@ -102,17 +73,21 @@ export default async function Layout({
                 </main>
             </div>
             <PlayerModal />
-            <ContactUs courses={courses?.course_name} languages={languages} socialData={social} />
-            <Footer socialData={social} />
+            <ContactUs
+                courses={courses?.course_name}
+                languages={languages}
+                socialData={contacts}
+            />
+            <Footer socialData={contacts} />
         </div>
     );
 };
 
 
 async function getSiteMeta(
-    query: string = querySiteMeta,
-    client: SanityClient | any,
-    mutation = 'fetch'
+    query: string = SITE_META_QUERY,
+    client: SanityClient,
+    mutation: 'fetch' = 'fetch'
 ): Promise<Site> {
     const site: Site[] = await client[mutation](query);
     return site[0];
@@ -123,7 +98,7 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta: Site = await getSiteMeta(querySiteMeta, client);
+    const meta: Site = await getSiteMeta(SITE_META_QUERY, client);
     const { ogDescription, ogTitle, ogImage } = meta;
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;

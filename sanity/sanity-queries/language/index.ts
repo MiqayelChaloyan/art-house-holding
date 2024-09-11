@@ -1,11 +1,16 @@
-interface Asset {
-    _ref: string;
+interface AssetRef {
     _type: string;
+    _ref: string;
 };
 
-export interface ImageType {
+interface Asset {
+    _type: string;
     alt: string;
-    asset: Asset;
+    asset: AssetRef;
+};
+
+interface Ref {
+    _ref: string;
     _type: string;
 };
 
@@ -21,18 +26,18 @@ interface PortableChildren {
     _type: string;
 };
 
-export interface TEACHER {
+interface TEACHER {
     _key: string;
     fullName: string;
-    teacher_image: ImageType;
+    teacher_image: Asset;
 };
 
-export interface VIDEO {
-    video_light: ImageType;
+interface VIDEO {
+    video_light: Asset;
     video_url: string;
 };
 
-export interface TEXT {
+interface TEXT {
     children: PortableChildren[];
     markDefs: any;
     style: string;
@@ -40,18 +45,18 @@ export interface TEXT {
     _type: string;
 };
 
-export interface COURSE_IMAGES {
+interface COURSE_IMAGES {
     _key: string;
     alt: string;
     asset: Asset;
     _type: string;
 };
 
-export interface LANGUAGE {
+interface LANGUAGE {
     _id: string;
     course_process: VIDEO;
     during_courses_images: COURSE_IMAGES[];
-    image: ImageType;
+    image: Asset;
     name: string;
     slug: Slug;
     teachers: TEACHER[];
@@ -59,7 +64,7 @@ export interface LANGUAGE {
 };
 
 
-export interface ABOUT_US_LANGUAGE {
+interface HOME_DETALIS_LANGUAGE_QUERYResult {
     _id: string;
     about_us: {
         content: {
@@ -77,7 +82,7 @@ export interface ABOUT_US_LANGUAGE {
             asset: Asset;
         }],
         about_our_daily: {
-            video_light: ImageType;
+            video_light: Asset;
             _type: string;
             video_url: string;
             _key: string;
@@ -88,23 +93,26 @@ export interface ABOUT_US_LANGUAGE {
             news: string;
             languages: Asset;
             video_url: string;
-            video_light: ImageType;
+            video_light: Asset;
         }]
-        our_daily_life_images: ImageType[];
+        our_daily_life_images: Asset[];
     }
 };
 
-export interface ABOUT_LANGUAGE {
+interface ABOUT_LANGUAGE_QUERYResult {
+    name: string;
+    during_courses_images: Asset[];
+    text(text: string): string;
     _id: string;
-    image: ImageType;
+    image: Asset;
     slug: Slug;
 };
 
-export interface QUIZ {
+interface QUIZ_QUERYResult {
     _id: string;
     name: string;
     slug: string;
-    question_logo: ImageType;
+    question_logo: Asset;
     questions: {
         question: string;
         slug: string;
@@ -113,20 +121,21 @@ export interface QUIZ {
     }
 };
 
-export interface DISCOUNT {
+interface DISCOUNTS_LANGUAGE {
     discounts_list: any;
     _key: string;
+    slug: string;
     procent: number;
-    image: ImageType;
+    image: Asset;
     about_discount: string;
 };
 
-export interface DISCOUNTS_LANGUAGE {
+interface DISCOUNTS_QUERYResult {
     _id: string;
-    discounts_list: DISCOUNT[];
+    discounts_list: DISCOUNTS_LANGUAGE[];
 };
 
-export interface PRICE_LIST {
+interface PRICE_LIST {
     _key: string;
     teaching_language: string;
     group_lessons: string | number;
@@ -136,14 +145,14 @@ export interface PRICE_LIST {
     },
 };
 
-export interface ENGLISH_COURSE {
+interface ENGLISH_COURSE {
     _key: string;
     language_type: string;
     duration: string;
     private_lessons: string | number;
 };
 
-export interface PRIVATE_LESSONS {
+interface PRIVATE_LESSONS {
     _key: string;
     teaching_language: string
     private_lessons: {
@@ -152,59 +161,58 @@ export interface PRIVATE_LESSONS {
     };
 };
 
-export interface PRICE_LIST_LANGUAGE {
+interface PRICE_LIST_LANGUAGE_QUERYResult {
     _id: string;
-    name: string;
     price_list: PRICE_LIST[];
     private_lessons: PRIVATE_LESSONS[];
     english_courses: ENGLISH_COURSE[];
 };
 
-export interface COURSE_NAME {
+interface SELECT_OPTIONS_LANGUAGE_QUERYResult {
     course_name: string;
     slug: string | number;
 };
 
-export interface COURSE_TYPE {
+interface COURSE_TYPE {
     course_type: string;
     slug: string | number;
 };
 
-export interface WEEK_NUMBER_LESSONS {
+interface WEEK_NUMBER_LESSONS {
     week_number_of_lessons: string;
     slug: string | number;
 };
 
-export interface COURSES {
-    course_name: COURSE_NAME[];
+interface COURSES {
+    course_name: SELECT_OPTIONS_LANGUAGE_QUERYResult[];
 };
 
-export interface FORM {
+interface FORM {
     _id: string;
-    course_name: COURSE_NAME[];
+    course_name: SELECT_OPTIONS_LANGUAGE_QUERYResult[];
     course_type: COURSE_TYPE[];
     week_number_of_lessons: WEEK_NUMBER_LESSONS[];
 };
 
-export interface Social_Links {
-    _key: string,
-    _type: string,
-    social_link: string,
-    social_name: string,
+interface SOCIAL_LINK {
+    _key: string;
+    _type: string;
+    social_link: string;
+    social_name: string;
 };
 
-export interface HOSTS {
-    name: string,
-    address: string,
-    phone_number: string,
-    social_links: Social_Links[],
+interface CONTACT_US_LANGUAGE_QUERYResult {
+    name: string;
+    address: string;
+    phone_number: string;
+    social_links: SOCIAL_LINK[];
 };
 
-export interface RootProps {
-    courses: any,
-    branches: any,
-    social: any,
-    lessons: any,
-    lessonsArmenian: any,
-    isError: any
-}
+interface RootProps {
+    courses: any;
+    branches: any;
+    social: any;
+    lessons: any;
+    lessonsArmenian: any;
+    isError: any;
+};

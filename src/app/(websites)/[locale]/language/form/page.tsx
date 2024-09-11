@@ -1,10 +1,10 @@
 'use server'
 
-import Form from '@/components/screens/language/form';
-import { query, queryFilterCourses } from '../../../../../../sanity/services/language-service/courses';
-
-import { client } from '../../../../../../sanity/client';
 import { notFound } from 'next/navigation';
+
+import Form from '@/components/screens/language/form';
+
+import { getSelectOptions, getSelectOptionsFiltered } from '@/utils/data/language';
 
 
 interface Props {
@@ -13,33 +13,15 @@ interface Props {
     }
 };
 
-async function getResources(locale: string) {
-    try {
-        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-        const courses = await client.fetch(queryFilterCourses, { language: 'am' }, { next: { revalidate: 100 } });
-
-        if (!data[0] || !courses) {
-            return { data: [], courses: [], isError: true };
-        }
-
-        return { data, courses: courses[0], isError: false };
-    } catch (_) {
-        return { data: [], courses: [], isError: true };
-    }
-};
-
 export default async function Page({
     params: { locale },
 }: Readonly<Props>) {
-    const { data, courses, isError } = await getResources(locale);
+    const data = await getSelectOptions(locale);
+    const courses = await getSelectOptionsFiltered(locale);
 
-    if (!data || !courses || isError) {
+    if (!data || !courses) {
         notFound()
     }
 
-    return (
-        <Form
-            data={data[0]}
-            courses={courses} />
-    );
+    return (<Form data={data} courses={courses} />);
 };

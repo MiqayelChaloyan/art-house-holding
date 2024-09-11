@@ -6,21 +6,19 @@ import Panel from './Panel';
 import PrivateLessons from './PrivateLessons';
 import EnglishLanguageClasses from './EnglishLanguageClasses';
 
-import { PRICE_LIST_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
-
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data:  PRICE_LIST_LANGUAGE[],
+interface Props {
+    data: PRICE_LIST_LANGUAGE_QUERYResult;
 };
 
-const Home= ({ data }: Readonly<Props>) => {
+const Home = ({ data }: Readonly<Props>) => {
     return (
         <section id='price-list' className={styles.container}>
-            <Panel data={data[0].price_list}/>
-            <PrivateLessons data={data[0].private_lessons}/>
-            <EnglishLanguageClasses data={data[0].english_courses}/>
+            <Panel data={data.price_list} />
+            <PrivateLessons data={data.private_lessons} />
+            <EnglishLanguageClasses data={data.english_courses} />
         </section>
     );
 }

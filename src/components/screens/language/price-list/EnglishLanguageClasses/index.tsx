@@ -6,13 +6,11 @@ import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/constants/font';
 
-import { ENGLISH_COURSE } from '../../../../../../sanity/sanity-queries/language';
-
 import styles from './styles.module.sass';
 
 
-type EnglishLanguageClassesProps = {
-    data: ENGLISH_COURSE[],
+interface EnglishLanguageClassesProps {
+    data: ENGLISH_COURSE[];
 };
 
 const EnglishLanguageClasses= ({ data }: Readonly<EnglishLanguageClassesProps>) => {

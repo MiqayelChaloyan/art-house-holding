@@ -15,14 +15,13 @@ import { ImagePath } from '@/types/general';
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/store/player_reducer';
 
-import { LANGUAGE } from '../../../../../../sanity/sanity-queries/language';
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    data: LANGUAGE
+    data: LANGUAGE | any;
 };
 
 const Language = ({ data }: Readonly<Props>) => {

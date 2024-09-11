@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 
 import About from '@/components/screens/language/about';
 
-import { client } from '../../../../../../sanity/client';
-import { query } from '../../../../../../sanity/services/language-service/about-us';
+import { getHomeDetails } from '@/utils/data/language';
 
 
 interface Props {
@@ -14,34 +13,15 @@ interface Props {
     }
 };
 
-async function getResources(locale: string) {
-    try {
-        const data = await client.fetch(query, { language: locale }, { next: { revalidate: 100 } });
-
-        if (!data?.length) {
-            return { data: [], isError: true };
-        }
-
-        return { data, isError: false };
-    } catch (_) {
-        return { data: [], isError: true };
-    }
-}
-
 export default async function Page({
     params: { locale }
 }: Readonly<Props>) {
-    const result = await getResources(locale);
+    const data = await getHomeDetails(locale);
 
-    if (!result || !result.data) {
+    if (!data) {
         notFound()
     }
 
-    return (
-        <About
-            data={result?.data}
-            locale={locale}
-        />
-    );
+    return (<About data={data} locale={locale} />);
 };
 

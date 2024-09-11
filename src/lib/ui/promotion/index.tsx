@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Arial } from '@/constants/font';
 
 import { urlForImage } from '../../../../sanity/imageUrlBuilder';
-import { DISCOUNTS_LANGUAGE } from '../../../../sanity/sanity-queries/language';
 
 import cn from 'classnames';
 
@@ -13,9 +12,9 @@ import styles from './styles.module.sass';
 
 
 interface CardProps {
-    discount: DISCOUNTS_LANGUAGE | any,
-    index: number
-    classNameProperty: string
+    discount: DISCOUNTS_LANGUAGE;
+    index: number;
+    classNameProperty: string;
 }
 
 const Promotion = ({

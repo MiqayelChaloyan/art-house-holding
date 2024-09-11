@@ -13,8 +13,6 @@ import InputNumber from '@/lib/ui/InputNumber';
 import { Arial } from '@/constants/font';
 import { TRAINING_CENTERS } from '@/constants';
 
-import { COURSE_NAME, COURSE_TYPE, FORM, WEEK_NUMBER_LESSONS, COURSES } from '../../../../../sanity/sanity-queries/language';
-
 import { sendRequest } from '@/api';
 import { FormLarge } from '@/types/language';
 
@@ -23,15 +21,15 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: FORM | any,
-    courses: COURSES[] | any,
+interface Props {
+    data: FORM | any;
+    courses: COURSES[] | any;
 };
 
-type FormProps = {
-    isLoading: boolean,
-    error: boolean,
-    values: FormLarge
+interface FormProps {
+    isLoading: boolean;
+    error: boolean;
+    values: FormLarge;
 };
 
 const Form = ({ data, courses }: Readonly<Props>) => {
@@ -147,7 +145,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
     const handleClose = () => setOpen(false);
 
     const getValueToSlug = (valueName: string, slug: number) => {
-        const course = valueName === 'course_name' && courses.course_name.find((item: COURSE_NAME) => {
+        const course = valueName === 'course_name' && courses.course_name.find((item: SELECT_OPTIONS_LANGUAGE_QUERYResult) => {
             return item.slug === slug;
         });
 

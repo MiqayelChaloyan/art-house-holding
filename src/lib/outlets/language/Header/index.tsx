@@ -22,19 +22,18 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type IHeaderProps = {
-    locale: string
+interface IHeaderProps {
+    locale: string;
 };
 
-type StickyBoundaryProps = {
-    children: JSX.Element[]
-    sticky: boolean
+interface StickyBoundaryProps {
+    children: JSX.Element[];
+    sticky: boolean;
 };
 
-type HeaderProps = {
-    children: JSX.Element[]
+interface HeaderProps {
+    children: JSX.Element[];
 };
-
 
 const navigationLinks = [
     { path: Pages.LANGUAGE_HOME, label: 'about' },

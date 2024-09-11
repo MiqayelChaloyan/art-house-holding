@@ -6,13 +6,11 @@ import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/constants/font';
 
-import { PRIVATE_LESSONS } from '../../../../../../sanity/sanity-queries/language';
-
 import styles from './styles.module.sass';
 
 
-type PrivateLessonsProps = {
-    data: PRIVATE_LESSONS[],
+interface PrivateLessonsProps {
+    data: PRIVATE_LESSONS[];
 };
 
 const PrivateLessons = ({ data }: PrivateLessonsProps) => {

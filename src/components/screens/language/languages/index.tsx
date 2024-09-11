@@ -11,20 +11,16 @@ import { Pages } from '@/constants/pages';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { ABOUT_LANGUAGE } from '../../../../../sanity/sanity-queries/language';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
     locale: string;
-    data: ABOUT_LANGUAGE[];
+    data: LANGUAGE[];
 };
 
-const Home = ({
-    locale,
-    data
-}: Readonly<Props>) => {
+const Home = ({ locale, data }: Readonly<Props>) => {
     return (
         <section id='languages'>
             <Container className='container'>

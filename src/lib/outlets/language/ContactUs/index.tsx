@@ -7,7 +7,6 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
 import Container from '@/components/components/container';
-// import Section from '@/components/components/section';
 import Snackbar from '@/components/components/snackbar';
 
 import Gmail from '@/lib/icons/language/Gmail';
@@ -22,28 +21,24 @@ import { Arial, Vrdznagir } from '@/constants/font';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import { HOSTS, LANGUAGE } from '../../../../../sanity/sanity-queries/language';
-
 import { sendContactUsLanguage } from '@/api';
 import { FormSmall, socialNetwork } from '@/types/language';
-
-import { Social_Links } from '../../../../../sanity/sanity-queries/language';
 
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
-type Props = {
-    courses: LANGUAGE[]
-    languages: LANGUAGE[] | any
-    socialData: HOSTS
+interface Props {
+    courses: SELECT_OPTIONS_LANGUAGE_QUERYResult[];
+    languages: COURSES[] | any;
+    socialData: CONTACT_US_LANGUAGE_QUERYResult;
 };
 
-type FormProps = {
-    isLoading: boolean,
-    error: boolean,
-    values: FormSmall
+interface FormProps {
+    isLoading: boolean;
+    error: boolean;
+    values: FormSmall;
 };
 
 const socialNetworkComponents: socialNetwork = {
@@ -64,7 +59,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
         content: t('texts.send-message-success')
     });
 
-    const hosts = socialData?.social_links.map((host: Social_Links) => {
+    const hosts = socialData?.social_links.map((host: SOCIAL_LINK) => {
         const socialName = host?.social_name.toLowerCase();
         const link = socialName === 'gmail' ? `mailto:${host?.social_link}` : host?.social_link;
         const SocialIcon = (socialNetworkComponents as any)[socialName];
@@ -181,15 +176,12 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
             <Snackbar open={open} handleChange={handleClose} info={info} />
             <Container className='container'>
                 <div className={styles.contact}>
-                    {/* <Section direction='right'> */}
                     <div className={styles.box}>
                         <h1 className={cn(styles.title, Vrdznagir.className)}>
                             {t('texts.contact-us')}
                         </h1>
                         <div className={styles.connection} />
                     </div>
-                    {/* </Section> */}
-                    {/* <Section direction='left'> */}
                     <div className={styles.contact_us}>
                         <div className={styles.hosts}>
                             {hosts}
@@ -255,7 +247,6 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
                             </form>
                         </div>
                     </div>
-                    {/* </Section> */}
                 </div>
             </Container>
         </div>

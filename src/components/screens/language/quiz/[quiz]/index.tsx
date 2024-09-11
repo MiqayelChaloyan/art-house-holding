@@ -8,13 +8,11 @@ import QuestionsViewer from '@/components/components/quiz-form/viewer';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Action from '@/store/question_reducer'
 
-import { QUIZ } from '../../../../../../sanity/sanity-queries/language';
-
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: QUIZ
+interface Props {
+    data: QUIZ_QUERYResult;
 };
 
 const QuizPage = ({ data }: Readonly<Props>) => {

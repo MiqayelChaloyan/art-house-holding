@@ -7,16 +7,17 @@ import { type Metadata } from 'next';
 
 import { Locale } from '@/locales';
 
-import { querySlug } from '../../../../../../../sanity/services/language-service/languages';
-import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+
+import { ImagePath } from '@/types/general';
 
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
-import { ImagePath } from '@/types/general';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
+
 import BlocksToText from '@/utils/BlocksToText';
+import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { getCourseBySlug } from '@/utils/data/language';
 
 const DLanguage = dynamic(() =>
     import('@/components/screens/language/languages/Language'),
@@ -30,30 +31,16 @@ interface Props {
     }
 };
 
-async function getResources(slug: string, locale: string) {
-    try {
-        const data = await client.fetch(querySlug, { slug, language: locale }, { next: { revalidate: 100 } });
-
-        if (!data?.length) {
-            return { data: [], isError: true };
-        }
-
-        return { data, isError: false };
-    } catch (_) {
-        return { data: [], isError: true };
-    }
-};
-
 export default async function Page({
     params: { locale, slug }
 }: Readonly<Props>) {
-    const { data } = await getResources(slug[0], locale);
+    const data = await getCourseBySlug(locale, slug[0]);
 
-    if (!data.length) {
+    if (!data) {
         notFound()
     }
 
-    return (<DLanguage data={data[0]} />)
+    return (<DLanguage data={data} />)
 };
 
 
@@ -62,10 +49,11 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
-    const course = await getResources(slug[0], locale);
-    const ogTitle = course.data[0]?.name;
-    const ogImage = course.data[0]?.during_courses_images[0];
-    const ogDescription = BlocksToText(course.data[0]?.text).slice(0, 900);
+    const course = await getCourseBySlug(locale, slug[0]);
+    console.log(course)
+    const ogTitle = course?.name;
+    const ogImage = course?.during_courses_images[0];
+    const ogDescription = BlocksToText(course?.text).slice(0, 900);
 
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;
