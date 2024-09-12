@@ -9,19 +9,21 @@ import styles from './styles.module.sass';
 
 interface Props {
     projects: any;
-    type: string;
+    type: 'portfolios' | 'orders';
 };
 
 const generateGalleryItems = (projects: COURSES_DESIGN_QUERYResult[], type: string) => {
-    return projects.reduce((acc: JSX.Element[], project: any) => {
+    return projects?.reduce((acc: JSX.Element[], project: any) => {
         const elements = project[type] as PORTFOLIO[];
 
-        elements.forEach((elem: PORTFOLIO) => {
-            const uniqueKey = `${elem._key}-${Math.random()}`;
+        elements?.forEach((elem: PORTFOLIO) => {
+
+            // TODO
+            // const uniqueKey = `${elem._key}-${Math.random()}`;
 
             const cardElement = (
                 <Portfolio
-                    key={uniqueKey}
+                    key={elem._key}
                     project={elem}
                     course_name={project.course_name}
                     slug={project.slug}

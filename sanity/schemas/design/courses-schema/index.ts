@@ -286,6 +286,16 @@ export const coursesSchemaDesign = {
                                             ],
                                         },
                                     ],
+                                    preview: {
+                                        select: {
+                                            title: 'title.en'
+                                        },
+                                        prepare(selection: { title?: string }) {
+                                            return {
+                                                title: selection.title,
+                                            };
+                                        },
+                                    },
                                 },
                             ],
                         },
@@ -442,8 +452,28 @@ export const coursesSchemaDesign = {
                                             ],
                                         },
                                     ],
+                                    preview: {
+                                        select: {
+                                            title: 'title.en'
+                                        },
+                                        prepare(selection: { title?: string }) {
+                                            return {
+                                                title: selection.title,
+                                            };
+                                        },
+                                    },
                                 },
                             ],
+                            preview: {
+                                select: {
+                                    title: 'author.en'
+                                },
+                                prepare(selection: { title?: string }) {
+                                    return {
+                                        title: selection.title,
+                                    };
+                                },
+                            },
                         },
                     ],
                     preview: {

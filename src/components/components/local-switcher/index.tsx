@@ -2,6 +2,7 @@
 
 import React, { useTransition } from 'react';
 
+import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -69,10 +70,13 @@ export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black'
               e.currentTarget.style.color = localActive === key ? activeColor : color
             }}
           >
-            <img
+            <Image
               className={styles.option}
-              src={localeImages[key].default.src}
+              src={localeImages[key]}
+              width={500}
+              height={500}
               alt={key}
+              priority
             />
           </div>
         ))}

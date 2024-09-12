@@ -5,6 +5,7 @@
 .navigation
     display: grid    
     grid-template-columns: repeat(9, 1fr)
+    align-items: center
     gap: 20px
     margin: 0 50px
     justify-content: center
@@ -60,7 +61,7 @@
         text-transform: uppercase 
         padding: 10px 
         width: 180px
-        font-size: 13px
+        font-size: 12px
         text-align: center 
         clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%) 
         background-color: #4B352B 
@@ -276,6 +277,13 @@
     @media screen and (max-width: 550px)
         &:before
             display: none !important
+
+.loader
+    display: grid
+    justify-content: center
+    align-items: center
+    margin: 50px auto
+    width: 80%
 
 .loader-card
     width: 313px
