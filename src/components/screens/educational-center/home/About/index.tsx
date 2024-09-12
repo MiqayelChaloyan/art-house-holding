@@ -70,7 +70,6 @@ const About = ({
                                     <Link
                                         href={`/${activeLocale}${Pages.EDUCATIONAL_ABOUT}`}
                                         aria-label={Pages.EDUCATIONAL_ABOUT}
-                                        scroll={false}
                                     >
                                         {t('buttons.view-more')}
                                     </Link>
