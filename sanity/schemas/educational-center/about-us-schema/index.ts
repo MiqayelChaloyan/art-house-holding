@@ -87,28 +87,6 @@ export const aboutUsSchemaEducationalCenter = {
                             ]
                         },
                         {
-                            title: 'Content',
-                            name: 'content',
-                            type: 'object',
-                            fields: [
-                                {
-                                    title: 'Armenian',
-                                    name: 'am',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'English',
-                                    name: 'en',
-                                    type: 'string'
-                                },
-                                {
-                                    title: 'Russian',
-                                    name: 'ru',
-                                    type: 'string'
-                                }
-                            ]
-                        },
-                        {
                             title: 'Course Image',
                             name: 'image',
                             type: 'image',
@@ -349,13 +327,6 @@ export const aboutUsSchemaEducationalCenter = {
                                             type: 'string'
                                         }
                                     ]
-                                },
-                                {
-                                    name: 'categories',
-                                    type: 'reference',
-                                    title: 'Course Category',
-                                    to: [{ type: 'courses' }],
-                                    validation: (Rule: RuleType) => Rule.required(),
                                 },
                             ],
                             preview: {

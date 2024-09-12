@@ -16,26 +16,22 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-	data?: MAIN[];
+	data?: MAIN_SLIDE[];
 };
 
 const Main = ({ data }: Readonly<Props>) => {
-	const options: EmblaOptionsType = { loop: true, duration: 30, align: 'center',};
+	const options: EmblaOptionsType = { loop: true, duration: 30, align: 'center', };
 	const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
 
 	const slidesItems = data?.map(item => {
 		const path: ImagePath = urlForImage(item.image);
 
 		return (
-			<SlideItem
-				key={item._key}
-				url={path?.src}
-				subtitle={item.title}
-				content={item.content}
-			/>
+			<SlideItem key={item._key} url={path?.src} subtitle={item.title} />
 		);
 	});
 
+	
 	return (
 		<section id='main' className={styles.section}>
 			<div className={styles.main}>

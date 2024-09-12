@@ -2,17 +2,14 @@
 
 import React, { useState } from 'react';
 
-import { useLocale, useTranslations } from 'next-intl';
-import { notFound, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 import Button from '@/lib/ui/Button';
 import { Arial, Inter } from '@/constants/font';
 
-import { ContentCourse as Props } from '@/types/educational-center';
-
-import { client } from '../../../../../../../sanity/client';
 import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-import { COURSE_ID_QUERY } from '../../../../../../../sanity/services/educational-center-service';
+
+import { ContentCourse as Props } from '@/types/educational-center';
 import { ImagePath } from '@/types/general';
 
 import cn from 'classnames';
@@ -31,32 +28,13 @@ interface Lesson {
 
 const Course = ({ course }: Readonly<Lesson>) => {
     const [isReadMore, setIsReadMore] = useState<boolean>(true);
-    const router = useRouter();
     const t = useTranslations();
-    const localActive = useLocale();
     const minimumHeight = 200;
-
-    const scrollToElement = () => {
-        const container: HTMLElement | null = document.getElementById('contact');
-        if (container) {
-            container.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
-        }
-    };
 
     const toggleReadMore = () => {
         setIsReadMore(!isReadMore);
     };
-
-    const getResources = async () => {
-        const _id = course.categories._ref;
-
-        try {
-            const data = await client.fetch(COURSE_ID_QUERY, { _id, language: localActive }, { cache: 'no-store' });
-            router.push(`educational-center/${data.slug}`);
-        } catch (error) {
-            notFound();
-        }
-    };
+    
 
     return (
         <div className={styles.left}>
@@ -69,32 +47,7 @@ const Course = ({ course }: Readonly<Lesson>) => {
                         className={cn(styles.button, styles['view-more-btn'], Arial.className)}
                         onClick={toggleReadMore}
                     />
-                    <Button
-                        text={t('buttons.contact-us')}
-                        className={cn(styles.button, styles['contact-us-btn'], Arial.className)}
-                        onClick={scrollToElement}
-                    />
                 </div>
-                <Button
-                    text={t('texts.more')}
-                    className={cn(styles['more-btn-mobile'], Arial.className)}
-                    onClick={getResources}
-                />
-                <li className={styles.arrow}>
-                    <a className={styles['animated-arrow']} onClick={getResources}>
-                        <span className={cn(styles['the-arrow'], styles['-left'])}>
-                            <span className={styles.shaft}></span>
-                        </span>
-                        <span className={styles.main}>
-                            <span className={cn(styles.text, Arial.className)}>
-                                {t('texts.more')}
-                            </span>
-                            <span className={cn(styles['the-arrow'], styles['-right'])}>
-                                <span className={styles.shaft}></span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
             </div>
         </div>
     )

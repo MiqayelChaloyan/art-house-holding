@@ -14,7 +14,7 @@ import { PortableText } from '@portabletext/react';
 import components from '@/utils/PortableTextComponents';
 import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
 
-import { Content as ContentType } from '@/types/educational-center';
+import { ContentCourseType } from '@/types/educational-center';
 
 import colors from '@/themes';
 
@@ -30,7 +30,7 @@ interface Props {
     lessonsArmenian: LESSON[];
 };
 
-const Content = ({ content, isReadMore, minimumHeight }: ContentType) => {
+const Content = ({ content, isReadMore, minimumHeight }: ContentCourseType) => {
     const flatText = flattenText(content);
     const text = isReadMore && flatText.length > minimumHeight
         ? truncateText(content, minimumHeight)

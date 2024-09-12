@@ -29,9 +29,9 @@ interface TEXT {
     _type: string;
 };
 
-interface MAIN {
+interface MAIN_SLIDE {
     _key: string;
-    content: string;
+    // content: string;
     image: Asset;
     title: string;
 };
@@ -53,7 +53,6 @@ interface LESSON {
     content: string;
     image_one: Asset;
     image_two: Asset;
-    categories: Ref;
 };
 
 interface SECTON {
@@ -122,7 +121,7 @@ interface PRICE_LIST {
 };
 
 interface HOME_DETALIS_QUERYResult {
-    main_section: MAIN[];
+    main_section: MAIN_SLIDE[];
     about_us: ABOUT;
     cooking_courses: VIDEO;
     section: SECTON;

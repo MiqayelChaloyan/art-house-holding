@@ -11,7 +11,6 @@ import Container from '@/components/components/container';
 import { Pages } from '@/constants/pages';
 import blocksToText from '@/utils/BlocksToText';
 import { Arial, Calibri } from '@/constants/font';
-import { ImageType } from '@/types/language';
 import { ImagePath } from '@/types/general';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';

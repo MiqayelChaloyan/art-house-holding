@@ -50,7 +50,9 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
             }
 
         };
+
         window.addEventListener('scroll', handleScroll);
+        
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };

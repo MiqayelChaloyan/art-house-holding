@@ -1,5 +1,10 @@
 export interface Content {
     content: TEXT;
+    minimumHeight: number;
+};
+
+export interface ContentCourseType {
+    content: TEXT;
     isReadMore: boolean;
     minimumHeight: number;
 };
@@ -22,7 +27,6 @@ export interface Form {
 export interface SlideItem {
     url: string;
     subtitle: string;
-    content: string;
 };
 
 export interface Options {

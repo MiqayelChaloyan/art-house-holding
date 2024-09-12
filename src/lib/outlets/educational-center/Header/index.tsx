@@ -72,9 +72,9 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                     className={cn(styles.logo, isSticky && styles.logoSticky)}
                 >
                     <Logo
-                        width='162'
-                        height='44'
-                        fill='#111111'
+                        width={212}
+                        height={60}
+                        fill={colors.black}
                     />
                 </Link>
                 <div className={cn(

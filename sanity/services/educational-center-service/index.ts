@@ -4,7 +4,6 @@ export const HOME_DETALIS_QUERY =
         _key,
         image,
         "title": title[$language],
-        "content": content[$language],
     },
     "about_us": about_us {
         about_us_image,
@@ -21,7 +20,6 @@ export const HOME_DETALIS_QUERY =
             _key,
             image_one,
             image_two,
-            categories,
             "subtitle": subtitle[$language],
             "content": content[$language],
         },

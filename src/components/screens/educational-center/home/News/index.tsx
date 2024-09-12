@@ -13,8 +13,8 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    data: SECTON
+interface Props {
+    data: SECTON;
 };
 
 const News = ({ data }: Readonly<Props>) => (
