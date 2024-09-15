@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -47,10 +47,11 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
     const initState = { isLoading: false, error: false, values: initValues };
 
     const [state, setState] = useState<FormProps>(initState);
-    const { values, isLoading, error } = state;
+    const { values, isLoading } = state;
 
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { target } = event;
 
-    const handleChange = ({ target }: any) =>
         setState((prev: FormProps) => ({
             ...prev,
             values: {
@@ -58,6 +59,8 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                 [target.name]: target.value,
             },
         }));
+    };
+
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -81,7 +84,6 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                 throw new Error('Failed to send message');
             }
     
-            // Success case
             setOpen(true);
             setInfo({
                 status: 'success',

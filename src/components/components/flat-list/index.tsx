@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 interface FlatListProps {
-    list: JSX.Element[],
+    list: JSX.Element[];
 };
 
 const FlatList = ({ list }: Readonly<FlatListProps>) => (

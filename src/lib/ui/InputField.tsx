@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 
 interface InputProps {
-	name?: string,
-	className?: string
-	type: string
-	placeholder?: string
-	requiredField?: boolean
-	value: string
-	onChange: (value: string) => void
-}
+	name?: string;
+	className?: string;
+	type: string;
+	placeholder?: string;
+	requiredField?: boolean;
+	value: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 const InputField: FC<InputProps> = ({ className, type, name, placeholder, requiredField, value, onChange }) => {
 
@@ -19,7 +19,7 @@ const InputField: FC<InputProps> = ({ className, type, name, placeholder, requir
 			type={type}
 			placeholder={placeholder}
 			value={value}
-			onChange={(e) => onChange(e as any)}
+			onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
 			required={requiredField}
 		/>
 	);

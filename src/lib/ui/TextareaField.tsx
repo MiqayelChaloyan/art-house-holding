@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
 interface InputProps {
-	name?: string
-	className?: string
-	placeholder?: string
-	requiredField?: boolean
-	value: string
-	onChange: (value: string) => void
-}
+	name?: string;
+	className?: string;
+	placeholder?: string;
+	requiredField?: boolean;
+	value: string;
+	onChange: (event: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 const TextareaField: FC<InputProps> = ({ className, name, placeholder, requiredField, value, onChange }) => {
 	return (
@@ -16,7 +16,7 @@ const TextareaField: FC<InputProps> = ({ className, name, placeholder, requiredF
 			className={className}
 			placeholder={placeholder}
 			value={value}
-			onChange={(e) => onChange(e as any)}
+			onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e)}
 			required={requiredField}
 		/>
 	);

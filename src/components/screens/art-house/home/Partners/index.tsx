@@ -18,8 +18,6 @@ import ArrowRight from '@/lib/icons/language/ArrowRight';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-// import { PARTNER } from '../../../../../../sanity/sanity-queries/generic';
-
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -29,17 +27,23 @@ interface Props {
     partners: PARTNER_Result[];
 };
 
-const SampleNextArrow = ({ onClick, fill }: any) => (
+interface ArrowProps {
+    onClick?: () => void;
+    fill: string;
+};
+
+const SampleNextArrow: React.FC<ArrowProps> = ({ onClick, fill, ...props }) => (
     <div className={cn(styles.arrow, styles.arrow_right)} onClick={onClick}>
-        <ArrowRight width='18' height='50' fill={fill} />
+        <ArrowRight width={18} height={50} fill={fill} />
     </div>
 );
 
-const SamplePrevArrow = ({ onClick, fill }: any) => (
+const SamplePrevArrow: React.FC<ArrowProps> = ({ onClick, fill, ...props }) => (
     <div className={cn(styles.arrow, styles.arrow_left)} onClick={onClick}>
-        <ArrowLeft width='18' height='50' fill={fill} />
+        <ArrowLeft width={18} height={50} fill={fill} />
     </div>
 );
+
 
 const Partners = ({ partners }: Readonly<Props>) => {
     const t = useTranslations('navigation');

@@ -5,12 +5,15 @@ function Button({ text, onClick, className }) {
             onClick();
         }
     };
+
     return (
         <button
             className={className}
             onClick={handleClick}
         >
-            <span>{text}</span>
+            <span>
+                {text}
+            </span>
         </button>
     );
 };

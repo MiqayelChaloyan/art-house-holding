@@ -23,7 +23,7 @@ const localeStrings: {
 };
 
 const localeImages: {
-  [key: string]: any;
+  [key: string]: string;
 } = {
   am: ImagePaths.DESIGN.amURL,
   ru: ImagePaths.DESIGN.ruURL,

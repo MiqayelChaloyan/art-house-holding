@@ -31,7 +31,6 @@ interface TEXT {
 
 interface MAIN_SLIDE {
     _key: string;
-    // content: string;
     image: Asset;
     title: string;
 };

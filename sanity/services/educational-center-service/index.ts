@@ -60,7 +60,6 @@ export const COURSES_QUERY =
         _key,
         image,
         "title": title[$language],
-        "content": content[$language],
     },
     "course_process": course_process {
         video_url,
@@ -88,7 +87,6 @@ export const COURSE_SLUG_QUERY =
         _key,
         image,
         "title": title[$language],
-        "content": content[$language],
     },
     "course_process": course_process {
         video_url,
@@ -116,7 +114,6 @@ export const COURSE_ID_QUERY =
         _key,
         image,
         "title": title[$language],
-        "content": content[$language],
     },
     "course_process": course_process {
         video_url,

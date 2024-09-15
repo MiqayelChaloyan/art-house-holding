@@ -3,6 +3,8 @@
 import Fancybox from '../fancybox';
 import WorkImage from './workImage';
 
+import { options } from '../fancybox/options';
+
 import { Arial } from '@/constants/font';
 
 import cn from 'classnames';
@@ -12,26 +14,6 @@ import styles from './styles.module.sass';
 
 interface Props {
     works: any
-};
-
-const options = {
-    compact: false,
-    hideScrollbar: false,
-    Toolbar: {
-        display: {
-            left: [
-                "infobar",
-            ],
-            middle: [],
-            right: [
-                "close",
-                "fullScreen"
-            ],
-        }
-    },
-    Images: {
-        zoom: false,
-    },
 };
 
 const WorksGallery = ({ works }: Readonly<Props>) => {

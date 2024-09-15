@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -23,7 +23,7 @@ import styles from './styles.module.sass';
 
 interface Props {
     data: FORM | any;
-    courses: COURSES[] | any;
+    courses: any;
 };
 
 interface FormProps {
@@ -59,7 +59,9 @@ const Form = ({ data, courses }: Readonly<Props>) => {
 
     const { values, isLoading } = state;
 
-    const handleChange = ({ target }: any) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { target } = event;
+
         setState((prev: FormProps) => ({
             ...prev,
             values: {
@@ -67,7 +69,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                 [target.name]: target.value,
             },
         }));
-    }
+    };
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

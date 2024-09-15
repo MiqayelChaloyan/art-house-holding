@@ -17,10 +17,6 @@ const generateGalleryItems = (projects: COURSES_DESIGN_QUERYResult[], type: stri
         const elements = project[type] as PORTFOLIO[];
 
         elements?.forEach((elem: PORTFOLIO) => {
-
-            // TODO
-            // const uniqueKey = `${elem._key}-${Math.random()}`;
-
             const cardElement = (
                 <Portfolio
                     key={elem._key}

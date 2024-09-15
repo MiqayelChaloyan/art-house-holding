@@ -25,14 +25,12 @@ const Main = ({ course }: Readonly<Props>) => {
 
 	const slidesItems = course?.map((item: COURSE_MAIN, index: number) => {
 		const path: ImagePath = urlForImage(item.image);
-		const content = item.content.length > 272 ? item.content.slice(0, 272) + '...' : item.content;
 
 		return (
 			<SlideItem
 				key={item._key || index}
 				url={path?.src}
 				title={item.title}
-				content={content}
 			/>
 		);
 	});

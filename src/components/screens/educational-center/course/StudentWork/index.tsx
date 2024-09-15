@@ -11,6 +11,7 @@ import { Arial, Inter } from '@/constants/font';
 
 import Container from '@/components/components/container';
 import Fancybox from '@/components/components/fancybox';
+import { options } from '@/components/components/fancybox/options';
 
 import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
 import { ImagePath } from '@/types/general';
@@ -22,26 +23,6 @@ import styles from './styles.module.sass';
 
 interface Props {
     course: STUDENT_WORK[];
-};
-
-const options = {
-    compact: false,
-    hideScrollbar: false,
-    Toolbar: {
-        display: {
-            left: [
-                "infobar",
-            ],
-            middle: [],
-            right: [
-                "close",
-                "fullScreen"
-            ],
-        }
-    },
-    Images: {
-        zoom: false,
-    },
 };
 
 const StudentWork = ({ course }: Readonly<Props>) => {

@@ -23,19 +23,19 @@ async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sit
   const designCourses = await getCoursesDesign(locale);
   const languageCourses = await getCoursesLanguages(locale);
 
-  const educationalCoursesEntries = educationalCourses.map(({ slug }) => ({
+  const educationalCoursesEntries = educationalCourses?.map(({ slug }) => ({
     url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_HOME}/${slug}`),
     lastModified: new Date().toISOString(),
     priority: 1,
   }));
 
-  const designCoursesEntries = designCourses.map(({ slug }) => ({
+  const designCoursesEntries = designCourses?.map(({ slug }) => ({
     url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_HOME}/${slug}`),
     lastModified: new Date().toISOString(),
     priority: 1,
   }));
 
-  const languageCoursesEntries = languageCourses.map(({ slug }) => ({
+  const languageCoursesEntries = languageCourses?.map(({ slug }) => ({
     url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_HOME}/${slug.current}`),
     lastModified: new Date().toISOString(),
     priority: 1,

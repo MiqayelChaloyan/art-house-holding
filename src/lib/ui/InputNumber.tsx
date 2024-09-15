@@ -3,15 +3,15 @@ import React, { FC } from 'react';
 import InputMask from 'react-input-mask';
 
 interface InputProps {
-	name?: string
-	className?: string
-	type: string
-	placeholder?: string
-	maskNumber: string | (string | RegExp)[]
-	requiredField?: boolean
-	value: string
-	onChange: (value: string) => void
-}
+	name?: string;
+	className?: string;
+	type: string;
+	placeholder?: string;
+	maskNumber: string | (string | RegExp)[];
+	requiredField?: boolean;
+	value: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 const InputNumber: FC<InputProps> = ({ className, type, name, placeholder, maskNumber, requiredField, value, onChange }) => {
 
@@ -23,7 +23,7 @@ const InputNumber: FC<InputProps> = ({ className, type, name, placeholder, maskN
 			placeholder={placeholder}
 			mask={maskNumber}
 			value={value}
-			onChange={(e: any) => onChange(e as any)}
+			onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
 			required={requiredField}
 		/>
 	);

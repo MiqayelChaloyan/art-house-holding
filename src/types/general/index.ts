@@ -63,3 +63,24 @@ export interface socialNetwork {
     whatsapp: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
     viber: ({ width, height, fill }: { width: string | number; height: string | number; fill: string | number }) => JSX.Element,
 };
+
+interface ToolbarDisplay {
+    left: string[];
+    middle: string[];
+    right: string[];
+};
+
+interface Toolbar {
+    display: ToolbarDisplay;
+};
+
+interface Images {
+    zoom: boolean;
+};
+
+export interface Options {
+    compact: boolean;
+    hideScrollbar: boolean;
+    Toolbar: Toolbar;
+    Images: Images;
+};

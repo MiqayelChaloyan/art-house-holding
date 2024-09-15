@@ -10,17 +10,12 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-type Props = {
-    url: string,
-    title: string,
-    content: string,
+interface Props {
+    url: string;
+    title: string;
 };
 
-const SlideItem = ({
-    url,
-    title,
-    content
-}: Readonly<Props>) => (
+const SlideItem = ({ url, title }: Readonly<Props>) => (
     <div className={styles.article} style={{ backgroundImage: `url(${url})` }}>
         <div className={styles.container}>
             <Container className='container'>
@@ -28,7 +23,6 @@ const SlideItem = ({
                     <h1 className={cn(styles.title, Inter.className)}>
                         {title}
                     </h1>
-                    <p className={Arial.className}>{content}</p>
                 </div>
             </Container>
         </div>

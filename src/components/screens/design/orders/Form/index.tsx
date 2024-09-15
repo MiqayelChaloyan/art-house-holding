@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -46,9 +46,11 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
     const initState = { isLoading: false, error: false, values: initValues };
 
     const [state, setState] = useState<FormProps>(initState);
-    const { values, isLoading, error } = state;
+    const { values, isLoading } = state;
 
-    const handleChange = ({ target }: any) =>
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { target } = event;
+
         setState((prev: FormProps) => ({
             ...prev,
             values: {
@@ -56,6 +58,7 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
                 [target.name]: target.value,
             },
         }));
+    };
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -80,7 +83,6 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
                 throw new Error('Failed to send message');
             }
 
-            // Success case
             setOpen(true);
             setInfo({
                 status: 'success',

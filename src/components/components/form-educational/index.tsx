@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -31,7 +31,7 @@ import Viber from '@/lib/icons/educational-center/Viber';
 import { sendContactUsEducational } from '@/api';
 
 import { Form } from '@/types/educational-center';
-import { socialNetwork } from '@/types/general';
+import { ContactUsResponse, socialNetwork } from '@/types/general';
 
 import cn from 'classnames';
 
@@ -116,16 +116,19 @@ const FormAppointment = ({
 	const initState = { isLoading: false, error: false, values: initValues };
 
 	const [state, setState] = useState<FormProps>(initState);
-	const { values, isLoading, error } = state;
+	const { values, isLoading } = state;
 
-	const handleChange = ({ target }: any) =>
-		setState((prev: FormProps) => ({
-			...prev,
-			values: {
-				...prev.values,
-				[target.name]: target.value,
-			},
-		}));
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { target } = event;
+
+        setState((prev: FormProps) => ({
+            ...prev,
+            values: {
+                ...prev.values,
+                [target.name]: target.value,
+            },
+        }));
+    };
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -146,7 +149,7 @@ const FormAppointment = ({
 				}))
 			};
 
-			const res: { status: number } | any = await sendContactUsEducational(formData);
+			const res: ContactUsResponse = await sendContactUsEducational(formData);
 
 			if (res?.status !== 200) {
 				setOpen(true);
@@ -223,7 +226,7 @@ const FormAppointment = ({
 					className={cn(styles.input, Arial.className)}
 					name='full_name'
 					type='full_name'
-					placeholder={t('contact-us-form.name')}
+					placeholder={t('contact-us-form.full-name')}
 					requiredField={true}
 					value={values.full_name}
 					onChange={handleChange}
