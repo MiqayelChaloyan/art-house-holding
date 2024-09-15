@@ -4,6 +4,7 @@ import React from 'react';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import { ArianAMU } from '@/constants/font';
 
@@ -16,13 +17,13 @@ import styles from './styles.module.sass';
 
 interface Props {
     item: BRANCH;
-    locale: string;
 };
 
-const Branch = ({ item, locale }: Readonly<Props>) => {
+const Branch = ({ item }: Readonly<Props>) => {
     const { company_name, words, web_site_url, website_logo_front, website_logo_back } = item;
     const urlForImageFront = urlForImage(website_logo_front);
     const urlForImageBack = urlForImage(website_logo_back);
+    const localeActive = useLocale();
 
     const wordsArray = words.split(' ');
 
@@ -38,7 +39,7 @@ const Branch = ({ item, locale }: Readonly<Props>) => {
 
 
     return (
-        <Link href={`/${locale}/${web_site_url}`} aria-label={web_site_url} id='card'>
+        <Link href={`/${localeActive}/${web_site_url}`} aria-label={web_site_url} id='card'>
             <div className={styles.card_container}>
                 <div className={styles.card}>
                     <div className={styles.front}>

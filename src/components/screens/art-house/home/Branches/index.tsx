@@ -23,11 +23,7 @@ interface Props {
 const Branches = ({ data }: Readonly<Props>) => {
     const cards: JSX.Element[] =
         data?.map((item: BRANCH) =>
-            <Branch
-                key={item._key}
-                item={item}
-                locale='en'
-            />);
+            <Branch key={item._key} item={item} />);
 
     const result: JSX.Element[] =
         cards?.map((card: JSX.Element) => (
