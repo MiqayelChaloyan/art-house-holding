@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fancyapps/ui": "^5.0.36",
+    "@googlemaps/js-api-loader": "^1.16.8",
     "@mui/material": "^5.15.15",
     "@popmotion/popcorn": "^0.4.4",
     "@portabletext/react": "^3.0.15",

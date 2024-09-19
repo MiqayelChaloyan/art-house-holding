@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { useLocale, useTranslations } from 'next-intl';
 
-import GoogleMap from '@/components/components/map';
+import GoogleMaps from '@/components/components/map';
 import FormAppointment from '@/components/components/form-educational';
 
 import Logo from '@/lib/icons/educational-center/Logo';
@@ -78,7 +78,7 @@ const Footer = ({
                     </div>
                 </div>
                 <div className={styles.google_map}>
-                    <GoogleMap
+                    <GoogleMaps
                         width='100%'
                         height='100%'
                         borderRadius={30}

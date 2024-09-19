@@ -31,13 +31,6 @@ const StudentWork = ({ course }: Readonly<Props>) => {
 
     useEffect(() => setInitialLoadCourses(8), [course]);
 
-    const scrollToElement = () => {
-        const container: HTMLElement | null = document.getElementById('contact');
-        if (container) {
-            container.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
-        }
-    };
-
     const images = course?.slice(0, initialLoadCourses).map((item: STUDENT_WORK) => {
         const path: ImagePath = urlForImage(item);
 
@@ -91,13 +84,6 @@ const StudentWork = ({ course }: Readonly<Props>) => {
                             />
                         </div>
                     }
-                    <div className={styles.btn_group}>
-                        <Button
-                            className={cn(styles.contact_button, Arial.className)}
-                            text={t('buttons.contact-us')}
-                            onClick={scrollToElement}
-                        />
-                    </div>
                 </div>
             </Container>
         </section>

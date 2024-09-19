@@ -62,9 +62,6 @@ const About = ({
         <section id='about-us' className={styles.container}>
             <div className={styles.triangle} />
             <Container className='container'>
-                <h1 className={cn(styles.title, Inter.className)}>
-                    {t('sections.about-courses')}
-                </h1>
                 <div className={styles.about_us}>
                     <div className={styles.about_box}>
                         {getTotalTextLength(about_us_content) > minimumHeight ?

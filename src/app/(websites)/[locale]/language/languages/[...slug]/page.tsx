@@ -50,7 +50,6 @@ export async function generateMetadata({
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
     const course = await getCourseBySlug(locale, slug[0]);
-    console.log(course)
     const ogTitle = course?.name;
     const ogImage = course?.during_courses_images[0];
     const ogDescription = BlocksToText(course?.text).slice(0, 900);

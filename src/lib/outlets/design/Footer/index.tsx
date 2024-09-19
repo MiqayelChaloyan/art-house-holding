@@ -108,7 +108,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                                 </p>
                             </Link>
                         </div>
-                        <p className={`${styles.reserved} ${Arial.className}`}>
+                        <p className={cn(styles.reserved, Arial.className)}>
                             {`©️ ${currentYear} ART HOUSE`}
                         </p>
                     </div>

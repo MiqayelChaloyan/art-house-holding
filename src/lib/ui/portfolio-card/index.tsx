@@ -34,8 +34,6 @@ const PortfolioImageCard = ({
     const activeLocale = useLocale();
     const { _key, author, image: { alt } } = project;
 
-    console.log(type)
-
     return (
         <Link href={{ pathname: `/${activeLocale}/design/${type}/${encodeURIComponent(slug)}`, query: { name: _key } }}>
             <figure className={styles.figure}>
