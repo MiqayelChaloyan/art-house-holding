@@ -22,21 +22,12 @@ import styles from './styles.module.sass';
 
 interface Props {
     name: string;
-    list: any;
+    list: PRICE_LIST[];
     svg: string;
     alt: string | undefined;
     activeTab: boolean;
     index: boolean;
     activateTab: () => void;
-};
-
-function daysBetweenDates(dateStr1: number, dateStr2: number) {
-    const startDate = new Date(dateStr1);
-    const endDate = new Date(dateStr2);
-    const timeDifference = endDate.getTime() - startDate.getTime();
-    const daysDifference = timeDifference / (1000 * 3600 * 24);
-
-    return daysDifference;
 };
 
 const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly<Props>) => {
@@ -46,22 +37,18 @@ const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly
 
     const innerStyle = { height: activeTab === index ? 'max-content' : '0px' };
 
-    const table = list?.map((item: any, index: string) => {
-        const result = daysBetweenDates(item.startDate, item.endDate);
-
-        return (
-            <table key={index} className={Arial.className}>
-                <thead>
-                    <tr>
-                        <td>{item.course_title}</td>
-                        <td>{item.amount} AMD</td>
-                        <td>{`${result} ${t('month')}`}</td>
-                        <td>{`${item.duration} ${t('hour')}`}</td>
-                    </tr>
-                </thead>
-            </table>
-        );
-    });
+    const table = list?.map((item: PRICE_LIST) => (
+        <table key={item?._key} className={Arial.className}>
+            <thead>
+                <tr>
+                    <td>{item?.course_title}</td>
+                    <td>{item?.amount} AMD</td>
+                    <td>{item?.duration}</td>
+                    <td>{`${item?.duration_of_class} ${t('hour')}`}</td>
+                </tr>
+            </thead>
+        </table>
+    ));
 
     return (
         <div
@@ -81,8 +68,8 @@ const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly
                         className={styles.button_tab}
                     >
                         <AccordionArrow
-                            width={size.width > 767 ? 50 : 25}
-                            height={size.width > 767 ? 50 : 25}
+                            width={size.width <= 767 ? 25 : 50}
+                            height={size.width  <= 767 ? 25 : 50}
                             fill={colors.white}
                         />
                     </button>

@@ -238,27 +238,33 @@ export const coursesSchemaEducationalCenter = {
                             initialValue: 0,
                         },
                         {
-                            title: 'Start date',
-                            name: 'startDate',
-                            type: 'date',
-                            options: {
-                                dateFormat: 'YYYY-MM-DD',
-                                calendarTodayLabel: 'Today'
-                            },
-                        },
-                        {
-                            title: 'End date',
-                            name: 'endDate',
-                            type: 'date',
-                            options: {
-                                dateFormat: 'YYYY-MM-DD',
-                                calendarTodayLabel: 'Today'
-                            },
-                        },
-                        {
+                            title: 'Duration',
                             name: 'duration',
+                            type: 'object',
+                            description: 'Տևողությունը',
+                            fields: [
+                                {
+                                    title: 'Armenian',
+                                    name: 'am',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'English',
+                                    name: 'en',
+                                    type: 'string'
+                                },
+                                {
+                                    title: 'Russian',
+                                    name: 'ru',
+                                    type: 'string'
+                                }
+                            ]
+                        },
+                        {
+                            name: 'duration_of_class',
                             type: 'number',
-                            title: 'Duration of the course',
+                            title: 'Duration of Class',
+                            description: 'Դասերի տևողությունը',
                             initialValue: 0,
                         },
                     ],

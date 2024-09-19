@@ -114,9 +114,8 @@ interface PRICE_LIST {
     _key: string;
     amount: number;
     course_title: string;
-    duration: number;
-    endDate: string;
-    startDate: string;
+    duration: string;
+    duration_of_class: number;
 };
 
 interface HOME_DETALIS_QUERYResult {

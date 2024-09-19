@@ -67,11 +67,10 @@ export const COURSES_QUERY =
     },
     "price_list": price_list[] {
         _key,
-        "course_title": course_title[$language],
         amount,
-        startDate,
-        endDate,
-        duration,
+        duration_of_class,
+        "course_title": course_title[$language],
+        "duration": duration[$language],
     },
 }`;
 
@@ -94,11 +93,10 @@ export const COURSE_SLUG_QUERY =
     },
     "price_list": price_list[] {
         _key,
-        "course_title": course_title[$language],
         amount,
-        startDate,
-        endDate,
-        duration,
+        duration_of_class,
+        "course_title": course_title[$language],
+        "duration": duration[$language],
     },
 }`;
 
@@ -121,11 +119,10 @@ export const COURSE_ID_QUERY =
     },
     "price_list": price_list[] {
         _key,
-        "course_title": course_title[$language],
         amount,
-        startDate,
-        endDate,
-        duration,
+        duration_of_class,
+        "course_title": course_title[$language],
+        "duration": duration[$language],
     },
 }`;
 
