@@ -127,10 +127,7 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
                         </ScrollLink>
                     </div>
                     <div>
-                        <LocalSwitcher
-                            activeColor={colors.darkRed}
-                            color={colors.black}
-                        />
+                        <LocalSwitcher activeColor={colors.darkRed} color={colors.black} />
                     </div>
                 </div>
                 <button

@@ -8,26 +8,27 @@ import { Questions } from '@/src/store/question_reducer';
 
 import { IoClose } from 'react-icons/io5';
 
+import colors from '@/src/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
 
 type Props = {
-    children: React.ReactElement
-}
+    children: React.ReactElement;
+};
 
 type RootState = {
-    questions: Questions
-    modal: stateModal
-}
+    questions: Questions;
+    modal: stateModal;
+};
 
 const SectionCareerServices = ({ children }: Props) => {
     const { isOpen } = useSelector((state: RootState) => state.modal);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     const dispatch = useDispatch();
-
-    const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -55,10 +56,7 @@ const SectionCareerServices = ({ children }: Props) => {
                             setShowModal(false);
                             setTimeout(() => dispatch(closeModal(false)), 500);
                         }}>
-                        <IoClose
-                            size={100}
-                            fill='white'
-                        />
+                        <IoClose size={100} fill={colors.white} />
                     </button>
                     {children}
                 </div>

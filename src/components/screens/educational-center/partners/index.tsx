@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { closeModal } from '@/src/store/modal_reducer';
 
 import Container from '@/src/components/components/container';
+import NextImage from '@/src/components/components/image';
 
 import { Arial, Inter } from '@/src/constants/font';
 
@@ -38,10 +39,13 @@ const Partners = ({ data }: Props) => {
 		return (
 			<div key={item._id} className={styles.partner}>
 				<div className={styles.image_container}>
-					<img
+					<NextImage
 						src={path?.src}
 						alt={item?.logo.alt}
 						className={styles.image}
+						width={500}
+						height={500}
+						style={{ objectFit: 'cover' }}
 					/>
 				</div>
 				<p className={cn(styles.text, Arial.className)}>{item?.company_name}</p>

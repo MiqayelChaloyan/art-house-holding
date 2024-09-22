@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import NextImage from '@/src/components/components/image';
+
 import Button from '@/src/lib/ui/Button';
 import { Arial, Inter } from '@/src/constants/font';
 
@@ -21,7 +23,7 @@ const Content = ({ content, isReadMore, minimumHeight }: Props) => (
     <p className={cn(styles.content, Inter.className)}>{isReadMore ? content.slice(0, minimumHeight) + '...' : content}</p>
 );
 
-interface Lesson { 
+interface Lesson {
     key?: string;
     course: LESSON;
 };
@@ -34,7 +36,6 @@ const Course = ({ course }: Readonly<Lesson>) => {
     const toggleReadMore = () => {
         setIsReadMore(!isReadMore);
     };
-    
 
     return (
         <div className={styles.left}>
@@ -59,8 +60,20 @@ const Gallery = ({ course }: Lesson) => {
 
     return (
         <div className={styles.right}>
-            <img src={leftPath.src} alt={course.image_one.alt} className={styles.image} />
-            <img src={rightPath.src} alt={course.image_two.alt} className={styles.image} />
+            <NextImage
+                src={leftPath.src}
+                alt={course.image_one.alt}
+                className={styles.image}
+                width={500}
+                height={500}
+            />
+            <NextImage
+                src={rightPath.src}
+                alt={course.image_two.alt}
+                className={styles.image}
+                width={500}
+                height={500}
+            />
         </div>
     )
 };
@@ -72,8 +85,20 @@ const CourseMobileCard = ({ course }: Lesson) => {
     return (
         <div className={styles.card}>
             <div className={styles.right}>
-                <img src={leftPath.src} alt={course.image_one.alt} className={styles.image} />
-                <img src={rightPath.src} alt={course.image_two.alt} className={styles.image} />
+                <NextImage
+                    src={leftPath.src}
+                    alt={course.image_one.alt}
+                    className={styles.image}
+                    width={500}
+                    height={500}
+                />
+                <NextImage
+                    src={rightPath.src}
+                    alt={course.image_two.alt}
+                    className={styles.image}
+                    width={500}
+                    height={500}
+                />
             </div>
             <Course course={course} />
         </div>

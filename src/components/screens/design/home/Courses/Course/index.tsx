@@ -2,9 +2,10 @@
 
 import React from 'react';
 
-import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+
+import NextImage from '@/src/components/components/image';
 
 import AnimationCarousel from '../AnimationCarousel';
 
@@ -62,13 +63,12 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
         <div className={cn(styles['course-card'], styles[boxClass])}>
             <div className={styles.left}>
                 <div>
-                    <Image
+                    <NextImage
                         src={ImagePaths.DESIGN.staplerURL.default.src}
                         alt='stapler'
                         className={styles.stapler}
                         width={500}
                         height={500}
-                        priority
                     />
                     <AnimationCarousel gallery={gallery_of_course} />
                 </div>

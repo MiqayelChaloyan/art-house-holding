@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import NextImage from '@/src/components/components/image';
+
 import { ImagePath } from '@/src/types/general';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
@@ -19,10 +21,12 @@ const Partner = ({ partner }: Readonly<Props>) => {
     return (
         <div className={styles.partner}>
             <div className={styles.logo}>
-                <img
+                <NextImage
                     src={path?.src}
                     alt={partner.logo.alt}
                     className={styles.svg_icon}
+                    width={500}
+                    height={500}
                 />
             </div>
         </div>

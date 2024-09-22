@@ -18,7 +18,7 @@ interface SelectProps {
     data: SELECT_OPTIONS_LANGUAGE_QUERYResult[] | LESSON[];
     state: FormProps;
     valueName: string;
-    handleChange: (value: any) => void;
+    handleChange: (value: number | any) => void;
     classNameProperty: string;
     isClear: boolean;
     getValueToSlug: (key: string, slug: number) => void;
@@ -41,7 +41,7 @@ const Select = ({
         setIsOpen(!isOpen);
     };
 
-    const handleOptionClick = (e: any) => {
+    const handleOptionClick = ( e: React.MouseEvent<MouseEvent | any>) => {
         const selectedText = e.currentTarget.querySelector('label').textContent;
         const selectedId = e.currentTarget.querySelector('label').id;
 

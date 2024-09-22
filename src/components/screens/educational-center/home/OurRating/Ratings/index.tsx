@@ -25,8 +25,8 @@ const sizes = [
     }
 ];
 
-type Props = {
-    data: OUR_RATING[]
+interface Props {
+    data: OUR_RATING[];
 };
 
 const Rating = ({ data }: Readonly<Props>) =>

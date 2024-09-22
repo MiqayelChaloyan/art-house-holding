@@ -3,11 +3,15 @@
 import React, { useState, useEffect, ReactNode, useRef } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/src/store/player_reducer';
+import { onPlay, setPath, statePlayer } from '@/src/store/player_reducer';
 
 import ReactPlayer from 'react-player';
 
 import { IoClose } from 'react-icons/io5';
+
+import { ImagePath } from '@/src/types/general';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -15,13 +19,13 @@ import styles from './styles.module.sass';
 
 
 const PlayerModal = () => {
-    const [video, setVideo] = useState<ReactNode | any>(null);
+    const [video, setVideo] = useState<ReactNode>(null);
     const [showModal, setShowModal] = useState<boolean>(false);
 
     const componentRef = useRef<HTMLDivElement>(null);
 
-    const isPlay: boolean = useSelector((state: any) => state.player.isPlay);
-    const path: string | null | any = useSelector((state: any) => state.player.path);
+    const isPlay: boolean = useSelector((state: { player: statePlayer }) => state.player.isPlay);
+    const path: ImagePath = useSelector((state: { player: statePlayer }) => state.player.path);
 
     const dispatch = useDispatch();
 
@@ -82,10 +86,7 @@ const PlayerModal = () => {
                                 dispatch(setPath(null));
                             });
                         }}>
-                        <IoClose
-                            size={100}
-                            fill='white'
-                        />
+                        <IoClose size={100} fill={colors.white} />
                     </button>
                     <div ref={componentRef} className={styles.video}>
                         {video}

@@ -5,8 +5,10 @@ import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
-import { ArianAMU } from '@/src/constants/font';
+import NextImage from '@/src/components/components/image';
+
 import Button from '@/src/lib/ui/Button';
+import { ArianAMU } from '@/src/constants/font';
 
 import { client } from '@/sanity/client';
 import { urlForImage } from '@/sanity/imageUrlBuilder';
@@ -32,15 +34,13 @@ const TeacherWithWorksImages = ({ specialist }: Readonly<Props>) => {
         const path: ImagePath = urlForImage(image);
 
         return (
-            <Image
+            <NextImage
                 key={image._key}
                 src={path?.src}
                 alt={image._key}
-                priority
                 className={styles.work}
-                width={0}
-                height={0}
-                sizes='100vw'
+                width={500}
+                height={500}
                 style={{ objectFit: 'cover' }}
             />
         );
@@ -60,15 +60,13 @@ const TeacherWithWorksImages = ({ specialist }: Readonly<Props>) => {
     return (
         <div className={styles['teacher-with-works-images']}>
             <div className={styles.column}>
-                <Image
+                <NextImage
                     key={specialist?._key}
                     src={path?.src}
                     alt={specialist.specialists_section_image?.alt}
-                    priority
                     className={styles.image}
-                    width={0}
-                    height={0}
-                    sizes='100vw'
+                    width={500}
+                    height={500}
                     style={{ objectFit: 'cover' }}
                 />
             </div>

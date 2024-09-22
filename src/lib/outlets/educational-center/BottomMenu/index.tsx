@@ -69,7 +69,7 @@ const BottomMenu = ({
 					aria-label='Partners'
 					title='Partners'
 				>
-					<CoWorkers width={25} height={22} fill='white' />
+					<CoWorkers width={25} height={22} fill={colors.white} />
 				</Link>
 				<Link
 					className={styles.nav__link}
@@ -77,7 +77,7 @@ const BottomMenu = ({
 					aria-label='Contact us'
 					title='Contact us'
 				>
-					<Contact width={22} height={22} fill='white' />
+					<Contact width={22} height={22} fill={colors.white} />
 				</Link>
 			</div>
 		</div>

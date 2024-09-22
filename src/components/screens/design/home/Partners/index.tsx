@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -18,6 +18,8 @@ import ArrowLeft from '@/src/lib/icons/language/ArrowLeft';
 import ArrowRight from '@/src/lib/icons/language/ArrowRight';
 
 import useWindowSize from '@/src/hooks/useWindowSize';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -44,8 +46,8 @@ const SamplePrevArrow = ({ onClick, fill }: SampleArrowProps) => (
         <ArrowLeft width='18' height='50' fill={fill} />
     </div>
 );
-
 const Partners = ({ data }: Readonly<Props>) => {
+    const [fill, setFill] = useState<string>(colors.brown);
     const t = useTranslations('sections');
     const windowSize = useWindowSize();
 
@@ -60,33 +62,47 @@ const Partners = ({ data }: Readonly<Props>) => {
         />
     );
 
+    useEffect(() => {
+        setFill(windowSize.width <= 1024 ? colors.white : colors.brown)
+    }, [windowSize.width]);
+
     const settings = {
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        infinite: true,
-        speed: 500,
-        autoplay: false,
         dots: false,
-        nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#4B352B' : '#fff'} />,
-        prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#4B352B' : '#fff'} />,
-        cssEase: 'ease-out',
+        infinite: true,
+        slidesToShow: 9,
+        slidesToScroll: 1,
         centerMode: true,
-        centerPadding: "0",
+        focusOnSelect: true,
+        cssEase: 'linear',
+        nextArrow: <SampleNextArrow fill={fill} />,
+        prevArrow: <SamplePrevArrow fill={fill} />,
         responsive: [
             {
-                breakpoint: 1280,
+                breakpoint: 1600,
                 settings: {
-                    slidesToShow: 5,
+                    slidesToShow: 7,
                     slidesToScroll: 1,
-                    dots: false
+                }
+            },
+            {
+                breakpoint: 1400,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 1,
                 }
             },
             {
                 breakpoint: 1024,
                 settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 780,
+                settings: {
                     slidesToShow: 4,
                     slidesToScroll: 1,
-                    dots: false
                 }
             },
             {
@@ -94,8 +110,6 @@ const Partners = ({ data }: Readonly<Props>) => {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    dots: false,
-                    centerPadding: "5px",
                 }
             },
             {
@@ -103,11 +117,9 @@ const Partners = ({ data }: Readonly<Props>) => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    dots: false,
-                    centerPadding: "5px",
                 }
             }
-        ]
+        ],
     };
 
     return (
@@ -132,5 +144,3 @@ const Partners = ({ data }: Readonly<Props>) => {
 };
 
 export default React.memo(Partners);
-
-

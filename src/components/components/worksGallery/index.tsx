@@ -1,9 +1,9 @@
 'use client'
 
-import Fancybox from '../fancybox';
+import Fancybox from '@/src/components/components/fancybox';
 import WorkImage from './workImage';
 
-import { options } from '../fancybox/options';
+import { options } from '@/src/components/components/fancybox/options';
 
 import { Arial } from '@/src/constants/font';
 

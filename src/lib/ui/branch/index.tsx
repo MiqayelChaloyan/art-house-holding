@@ -3,8 +3,9 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useLocale } from 'next-intl';
+
+import NextImage from '@/src/components/components/image';
 
 import { ArianAMU } from '@/src/constants/font';
 
@@ -45,13 +46,12 @@ const Branch = ({ item }: Readonly<Props>) => {
                     <div className={styles.front}>
                         <div className={styles.logo_front}>
                             {urlForImageFront?.src && (
-                                <Image
+                                <NextImage
                                     src={urlForImageFront.src}
                                     alt={company_name}
                                     className={styles.logo}
                                     width={500}
                                     height={500}
-                                    priority
                                 />
                             )}
                         </div>
@@ -65,13 +65,12 @@ const Branch = ({ item }: Readonly<Props>) => {
                     <div className={styles.back}>
                         <div className={styles.logo_back}>
                             {urlForImageBack?.src && (
-                                <Image
+                                <NextImage
                                     src={urlForImageBack.src}
                                     alt={company_name}
                                     className={styles.logo}
                                     width={500}
                                     height={500}
-                                    priority
                                 />
                             )}
                         </div>

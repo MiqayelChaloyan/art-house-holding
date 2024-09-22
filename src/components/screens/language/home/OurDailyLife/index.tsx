@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/src/components/components/container';
+import NextImage from '@/src/components/components/image';
 
 import { MdPlayCircle } from 'react-icons/md';
 
@@ -21,6 +21,8 @@ import { urlForImage } from '@/sanity/imageUrlBuilder';
 import { LANGUAGE_ID_QUERY } from '@/sanity/services/language-service';
 
 import { ImagePath } from '@/src/types/general';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -46,13 +48,12 @@ const DailyLifeImage = ({ item }: Image) => {
 
     return (
         <div className={styles.image}>
-            <Image
+            <NextImage
                 src={path?.src}
                 alt={item?.alt}
                 className={styles.images}
                 width={500}
                 height={500}
-                priority
             />
         </div>
     )
@@ -86,22 +87,18 @@ const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
     return (
         <div className={styles.video}>
             <div className={styles.playing}>
-                <Image
+                <NextImage
                     src={light?.src}
                     alt={item?.video_light.alt}
                     className={styles.video_play}
                     width={500}
                     height={500}
-                    priority
                 />
                 <button
                     className={styles.icon}
                     onClick={() => handlePlayVideo(item.video_url)}
                 >
-                    <MdPlayCircle
-                        size={75}
-                        color='#fff'
-                    />
+                    <MdPlayCircle size={75} color={colors.white} />
                 </button>
             </div>
             <div className={styles.navigate}>

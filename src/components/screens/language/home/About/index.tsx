@@ -3,10 +3,10 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/src/components/components/container';
+import NextImage from '@/src/components/components/image';
 
 import { Pages } from '@/src/constants/pages';
 import blocksToText from '@/src/helpers/BlocksToText';
@@ -38,14 +38,13 @@ const About = ({ data, locale }: Readonly<Props>) => {
         const path: ImagePath = urlForImage(image);
 
         return (
-            <Image
+            <NextImage
                 key={index}
                 src={path?.src}
                 alt={image?.alt}
                 className={styles.image}
                 width={500}
                 height={500}
-                priority
             />
         );
     });

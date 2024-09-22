@@ -45,7 +45,6 @@ const SamplePrevArrow: React.FC<ArrowProps> = ({ onClick, fill, ...props }) => (
         <ArrowLeft width={18} height={50} fill={fill} />
     </div>
 );
-
 const Partners = ({ partners }: Readonly<Props>) => {
     const [fill, setFill] = useState<string>(colors.darkRed);
     const t = useTranslations('navigation');
@@ -63,10 +62,10 @@ const Partners = ({ partners }: Readonly<Props>) => {
     ));
 
     useEffect(() => {
-        setFill(windowSize.width < 1024 ? colors.white : colors.darkRed)
+        setFill(windowSize.width < 1024 ? colors.white : colors.darkRed);
     }, [windowSize.width]);
 
-    const [settings] = useState({
+    const settings = {
         dots: false,
         infinite: true,
         slidesToShow: 9,
@@ -120,7 +119,7 @@ const Partners = ({ partners }: Readonly<Props>) => {
                 }
             }
         ],
-    });
+    };
 
     return (
         <section id='partners' className={styles.section}>
@@ -137,5 +136,3 @@ const Partners = ({ partners }: Readonly<Props>) => {
 };
 
 export default React.memo(Partners);
-
-

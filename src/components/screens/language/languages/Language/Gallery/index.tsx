@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Image from 'next/image';
+import NextImage from '@/src/components/components/image';
 
 import useWindowSize from '@/src/hooks/useWindowSize';
 
@@ -33,14 +33,13 @@ const renderImages = (images: ImagePath, type: string) =>
             : (index % 2 === 0 ? styles['high-altitude-image'] : styles['low-altitude-image']);
 
         return (
-            <Image
+            <NextImage
                 key={image._key}
                 src={path?.src}
                 alt={image?.alt}
                 className={className}
                 width={500}
                 height={500}
-                priority
             />
         );
     });
@@ -57,13 +56,12 @@ const Gallery = ({ during_courses }: Readonly<Props>) => {
 
         return (
             <SwiperSlide key={image._key}>
-                <Image
+                <NextImage
                     src={path?.src}
                     alt={image?.alt}
                     className={styles.swipe_image}
                     width={500}
                     height={500}
-                    priority
                 />
             </SwiperSlide>
         )

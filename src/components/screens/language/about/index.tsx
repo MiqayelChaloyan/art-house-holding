@@ -3,11 +3,11 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { PortableText } from '@portabletext/react';
 import Container from '@/src/components/components/container';
+import NextImage from '@/src/components/components/image';
 
 import VideoPlayer from './player';
 
@@ -37,14 +37,13 @@ const About = ({ data, locale }: Readonly<Props>) => {
         const path: ImagePath = urlForImage(item);
 
         return (
-            <Image
+            <NextImage
                 key={index}
                 src={path?.src}
                 alt={item?.alt}
                 className={styles.image}
                 width={500}
                 height={500}
-                priority
             />
         );
     });

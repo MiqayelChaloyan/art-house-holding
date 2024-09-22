@@ -18,12 +18,11 @@ const Accordion = ({ courses }: Props) => {
 
     return (
         <div className={styles.accordion} role='tablist'>
-            {courses?.map((panel: any, index: number) => (
+            {courses?.map((panel, index) => (
                 <Panel
                     key={panel._id}
                     activeTab={activeTab}
                     index={index}
-                    {...panel}
                     name={panel.course_name}
                     svg={panel.svg}
                     alt={panel.svg.alt}

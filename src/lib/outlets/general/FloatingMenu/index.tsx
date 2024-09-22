@@ -8,7 +8,10 @@ import { useLocale } from 'next-intl';
 
 import { GoProjectSymlink } from 'react-icons/go';
 
+import NextImage from '@/src/components/components/image';
+
 import { ArianAMU } from '@/src/constants/font';
+import { ImagePath } from '@/src/types/general';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 
@@ -25,18 +28,22 @@ interface Props {
 };
 
 const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
-    const [data, setData] = useState<BRANCH[] | any>([]);
+    const [data, setData] = useState<BRANCH[]>([]);
     const componentRef = useRef<HTMLDivElement>(null);
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
     const activeLocale = useLocale();
 
     useEffect(() => {
-        (async () => {
-            const websites = branches?.our_websites.filter((branch: BRANCH) => branch.words !== website);
-            setData(websites);
-        })()
-    }, []);
+        const fetchWebsites = async () => {
+            if (branches?.our_websites) {
+                const websites = branches.our_websites.filter((branch: BRANCH) => branch.words !== website);
+                setData(websites);
+            }
+        };
+
+        fetchWebsites();
+    }, [branches, website]);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -50,9 +57,9 @@ const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-    
+
     const links = data.map((link: any, index: number) => {
-        const path: { src: string, width: number, height: number } | any = urlForImage(link.website_logo_front);
+        const path: ImagePath = urlForImage(link.website_logo_front);
 
         return (
             <li
@@ -66,7 +73,13 @@ const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
                     aria-label={`/${activeLocale}/${link.web_site_url}`}
                 >
                     <div className={styles.link}>
-                        <img src={path?.src} className={styles.logo} />
+                        <NextImage
+                            src={path?.src}
+                            alt='logo'
+                            className={styles.logo}
+                            width={500}
+                            height={500}
+                        />
                         <div className={styles.column}>
                             <p className={cn(styles.word, ArianAMU.className)}>{link.company_name}</p>
                             <p className={cn(styles.word, ArianAMU.className)}>{link.words}</p>

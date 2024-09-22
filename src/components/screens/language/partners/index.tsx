@@ -3,11 +3,11 @@
 import React from 'react';
 
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+
+import NextImage from '@/src/components/components/image';
+import Container from '@/src/components/components/container';
 
 import { Arial, Vrdznagir } from '@/src/constants/font';
-
-import Container from '@/src/components/components/container';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 
@@ -30,13 +30,12 @@ const Partners = ({ partners }: Readonly<Props>) => {
 
         return (
             <div key={partner._id} className={styles.card}>
-                <Image
+                <NextImage
                     src={path?.src}
                     alt={partner?.logo.alt}
                     className={styles.img}
                     width={500}
                     height={500}
-                    priority
                 />
                 <div className={styles.overlay}>
                     <h1 className={cn(styles['text-h1'], Arial.className)}>

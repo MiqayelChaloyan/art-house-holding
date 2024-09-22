@@ -1,17 +1,20 @@
 'use client'
 
-import Image from 'next/image';
 import Link from 'next/link';
+
+import NextImage from '@/src/components/components/image';
 
 import { ImagePath } from '@/src/types/general';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 
+import { Gallery } from '@/src/types/design';
+
 import styles from './styles.module.sass';
 
 
 interface Props {
-    image: any
+    image: Gallery;
 };
 
 const WorkImage = ({ image }: Readonly<Props>) => {
@@ -19,14 +22,12 @@ const WorkImage = ({ image }: Readonly<Props>) => {
 
     return (
         <Link data-fancybox="gallery" href={path?.src}>
-            <Image
+            <NextImage
                 src={path?.src}
                 alt={image?.alt}
-                priority
                 className={styles.work_img}
-                width={0}
-                height={0}
-                sizes='100vw'
+                width={500}
+                height={500}
                 style={{ objectFit: 'cover' }}
             />
         </Link>

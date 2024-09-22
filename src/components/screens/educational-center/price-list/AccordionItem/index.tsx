@@ -9,7 +9,7 @@ import useWindowSize from '@/src/hooks/useWindowSize';
 import AccordionArrow from '@/src/lib/icons/educational-center/AccordionArrow';
 import { Arial } from '@/src/constants/font';
 
-import { ImagePath } from '@/src/types/general';
+import { Image, ImagePath } from '@/src/types/general';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 
@@ -20,17 +20,17 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-interface Props {
+interface PanelProps {
     name: string;
     list: PRICE_LIST[];
-    svg: string;
-    alt: string | undefined;
-    activeTab: boolean;
-    index: boolean;
+    svg: Image;
+    alt?: string;
+    activeTab?: any;
+    index: any;
     activateTab: () => void;
 };
 
-const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly<Props>) => {
+const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly<PanelProps>) => {
     const size = useWindowSize();
     const t = useTranslations('price-list');
     const pathSvg: ImagePath = urlForImage(svg);

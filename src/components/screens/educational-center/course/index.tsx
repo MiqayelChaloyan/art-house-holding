@@ -16,8 +16,8 @@ import Main from './Main';
 interface Props {
     course: COURSES_QUERYResult;
     socialData: CONTACT_US_QUERYResult;
-    lessons: SELECT_OPTIONS_QUERYResult[] | LESSON | any;
-    lessonsArmenian: SELECT_OPTIONS_QUERYResult[] | LESSON | any;
+    lessons: SELECT_OPTIONS_QUERYResult;
+    lessonsArmenian: SELECT_OPTIONS_QUERYResult;
 };
 
 const Course = ({

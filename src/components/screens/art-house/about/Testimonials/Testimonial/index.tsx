@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image';
+import NextImage from '@/src/components/components/image';
 
 import { ImagePath } from '@/src/types/general';
 import { ArianAMU } from '@/src/constants/font';
@@ -22,13 +22,12 @@ const Testimonial = ({ review }: Readonly<Props>) => {
     return (
         <div className={cn(styles.slide)}>
             <div className={styles.box}>
-                <Image
-                    priority
+                <NextImage
                     src={path?.src}
-                    height={500}
-                    width={500}
                     alt={review?.user_image.alt}
                     className={styles.image}
+                    width={500}
+                    height={500}
                 />
             </div>
             <p className={ArianAMU.className}>

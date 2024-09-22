@@ -3,8 +3,9 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+
+import NextImage from '@/src/components/components/image';
 
 import { Pages } from '@/src/constants/pages';
 import { Arial, ArianAMU } from '@/src/constants/font';
@@ -39,13 +40,12 @@ const Home = ({ data, locale }: Readonly<Props>) => {
                 className={styles.row}
                 key={lang.slug}
             >
-                <Image
+                <NextImage
                     src={path?.src}
                     alt={lang.question_logo.alt}
                     className={styles.language}
                     width={500}
                     height={500}
-                    priority
                 />
                 <h3 className={cn(styles.language_name, ArianAMU.className)}>
                     {lang.name}
@@ -58,13 +58,12 @@ const Home = ({ data, locale }: Readonly<Props>) => {
                 aria-label={`${Pages.LANGUAGE_QUIZ}/${lang.slug}`}
                 className={styles.link}
             >
-                <Image
+                <NextImage
                     src={path?.src}
                     alt={lang.question_logo.alt}
                     className={styles.language}
                     width={500}
                     height={500}
-                    priority
                 />
             </Link>
         )

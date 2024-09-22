@@ -3,10 +3,10 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 
 import Container from '@/src/components/components/container';
+import NextImage from '@/src/components/components/image';
 
 import { Arial, Inter } from '@/src/constants/font';
 import { Pages } from '@/src/constants/pages';
@@ -85,13 +85,13 @@ const About = ({
                         }
                     </div>
                     <div className={styles.box}>
-                        <Image
+                        <NextImage
                             src={path?.src}
                             alt={about_us_image?.alt}
                             className={styles.image_courses}
                             width={500}
                             height={500}
-                            priority
+                            style={{ objectFit: 'cover' }}
                         />
                     </div>
                 </div>

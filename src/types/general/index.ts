@@ -30,9 +30,9 @@ export interface Ref {
 };
 
 export type ImagePath = {
-    src: string,
-    width: number,
-    height: number
+    src: string;
+    width: number;
+    height: number;
 
 } | any;
 

@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
 
+import colors from '@/src/themes';
+
 import styles from './styles.module.sass';
 
 
+interface PERCENTAGE {
+    percentage: string;
+    color: string;
+};
+
 const ProgressLine = ({
-    backgroundColor = "#e5e5e5",
+    backgroundColor = colors.lightWhite,
     visualParts = [
         {
             percentage: "0%",
-            color: "white"
+            color: colors.white,
         }
     ]
 }: any) => {
@@ -21,7 +28,8 @@ const ProgressLine = ({
     useEffect(() => {
         requestAnimationFrame(() => {
             setWidths(
-                visualParts.map((item: any) => {
+                visualParts.map((item: PERCENTAGE) => {
+                    console.log(item)
                     return item.percentage;
                 })
             );
@@ -29,13 +37,8 @@ const ProgressLine = ({
     }, [visualParts]);
 
     return (
-        <div
-            className={styles.progress_visual_full}
-            style={{
-                backgroundColor
-            }}
-        >
-            {visualParts.map((item: any, index: number) => {
+        <div className={styles.progress_visual_full} style={{ backgroundColor }}>
+            {visualParts.map((item: PERCENTAGE, index: number) => {
                 return (
                     <div
                         key={index}

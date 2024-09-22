@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import NextImage from '@/src/components/components/image';
+
 import { PortableText } from '@portabletext/react';
 import components from '@/src/helpers/PortableTextComponents';
 
@@ -19,7 +21,6 @@ import { ImagePath } from '@/src/types/general';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-import Image from 'next/image';
 
 
 interface Props {
@@ -57,13 +58,12 @@ const About = ({ content, image }: Readonly<Props>) => {
             <div className={styles.box}>
                 <div className={styles.contentLeft}>
                     <div className={styles.row}>
-                        <Image
+                        <NextImage
                             src={path?.src}
                             alt={image?.alt}
                             className={styles.image}
                             width={500}
                             height={500}
-                            priority
                         />
                     </div>
                 </div>

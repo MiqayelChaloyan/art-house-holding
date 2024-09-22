@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/src/store/modal_reducer';
@@ -16,6 +15,9 @@ import { Arial, ArianAMU } from '@/src/constants/font';
 import { ImagePaths } from '@/src/constants';
 
 import LocalSwitcher from '@/src/components/components/local-switcher';
+import NextImage from '@/src/components/components/image';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -76,13 +78,12 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
                     aria-label={Pages.DESIGN_HOME}
                     className={styles.logo}
                 >
-                    <Image
+                    <NextImage
                         src={ImagePaths.DESIGN.headerLogoURL}
                         alt='logo'
                         className={styles.image}
                         width={500}
                         height={500}
-                        priority
                     />
                 </Link>
                 <div className={cn(
@@ -110,7 +111,7 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
                             </Link>
                         ))}
                     </div>
-                    <LocalSwitcher activeColor='#8E685C' color='#fff' />
+                    <LocalSwitcher activeColor={colors.lightBrown} color={colors.white} />
                 </div>
                 <button
                     className={cn(

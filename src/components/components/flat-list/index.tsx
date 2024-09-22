@@ -13,7 +13,7 @@ const FlatList = ({ list }: Readonly<FlatListProps>) => (
         slidesPerView={2.2}
         spaceBetween={5}
         effect={'cards'}
-        className="mySwiper"
+        className='mySwiper'
     >
         {list}
     </Swiper>

@@ -4,13 +4,15 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import Image from 'next/image';
+import NextImage from '@/src/components/components/image';
 
 import Search from '@/src/lib/icons/educational-center/Search';
 import Star from '@/src/lib/icons/educational-center/Star';
 import { Inter } from '@/src/constants/font';
 
 import { Options } from '@/src/types/educational-center';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -33,20 +35,18 @@ const RatingCard = ({ options }: Readonly<Options | any>) => {
                         <Search
                             width='25'
                             height='25'
-                            fill='white'
+                            fill={colors.white}
                         />
                     </div>
                 </div>
                 <div className={styles.card} style={{ marginLeft: `${options.left ? options.left : 10}px` }}>
                     <div className={styles.left}>
-                        <Image
+                        <NextImage
                             src={options.urlForImage}
                             alt={options.urlImageAlt}
-                            priority
                             className={styles.user_image}
-                            width={0}
-                            height={0}
-                            sizes='100vw'
+                            width={500}
+                            height={500}
                             style={{ objectFit: 'cover' }}
                         />
                     </div>
@@ -57,7 +57,7 @@ const RatingCard = ({ options }: Readonly<Options | any>) => {
                                 <Star
                                     width='20'
                                     height='20'
-                                    fill={star ? 'black' : 'white'}
+                                    fill={star ? colors.black : colors.white}
                                     key={index}
                                 />
                             ))}

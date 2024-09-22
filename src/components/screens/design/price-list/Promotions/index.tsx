@@ -13,6 +13,8 @@ import Vector from '@/src/lib/icons/design/Vector';
 import { Arial } from '@/src/constants/font';
 import { Titles } from '@/src/constants';
 
+import colors from '@/src/themes';
+
 import { PROMOTIONS as Props } from '@/src/types/design';
 
 import cn from 'classnames';
@@ -27,7 +29,7 @@ interface BoxProps {
 
 const Box = ({ advantages, iconSize }: BoxProps) => (
     <div className={cn(styles.hex, styles['gradient-bg'])}>
-        <Vector width={iconSize > 980 ? 68.42 : 30} height={38.07} fill='#FFFFFF' />
+        <Vector width={iconSize > 980 ? 68.42 : 30} height={38.07} fill={colors.white} />
         <p className={cn(styles['our-advantages'], Arial.className)}>{advantages}</p>
     </div>
 );

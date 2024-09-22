@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Image from 'next/image';
+import NextImage from '@/src/components/components/image';
 
 import components from '@/src/helpers/PortableTextComponents';
 import { PortableText } from '@portabletext/react';
@@ -24,13 +24,12 @@ const About = ({ image, text }: Readonly<ABOUT>) => {
     return (
         <div className={styles.row_one}>
             <div className={styles.left_side}>
-                <Image
+                <NextImage
                     src={language?.src}
                     alt={image?.alt}
                     className={styles.image}
                     width={500}
                     height={500}
-                    priority
                 />
             </div>
             <div className={cn(styles.right_side, Arial.className)}>

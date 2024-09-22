@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import NextImage from '@/src/components/components/image';
+
 import { ImagePath } from '@/src/types/general';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
@@ -15,7 +17,13 @@ const Partner = ({ _id, logo }: Readonly<PARTNER_Result>) => {
     return (
         <div key={_id} className={styles.partner}>
             <div className={styles.image_container}>
-                <img src={path?.src} className={styles.image} />
+                <NextImage
+                    src={path?.src}
+                    alt={logo?.alt}
+                    className={styles.image}
+                    width={500}
+                    height={500}
+                />
             </div>
         </div>
     );

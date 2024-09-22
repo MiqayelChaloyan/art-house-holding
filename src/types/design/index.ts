@@ -1,4 +1,5 @@
 import { TypedObject } from 'sanity';
+import { ImagePath } from '../general';
 
 export interface SlideItem {
     url: string;
@@ -18,6 +19,13 @@ export interface FormContactUs {
     phone: string;
     training_center: number;
     course_name: string;
+};
+
+export interface WORKER {
+    profession: string;
+    worker: string;
+    worker_image: { _type: 'image'; alt: string; asset: ImagePath };
+    _key: string;
 };
 
 export interface FormOrder {

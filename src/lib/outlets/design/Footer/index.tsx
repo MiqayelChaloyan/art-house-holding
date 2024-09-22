@@ -1,23 +1,26 @@
 'use client'
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { FaFacebookF, FaTwitter, FaPinterestP, FaTiktok } from 'react-icons/fa';
 import { FaInstagram, FaViber } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { GrLinkedinOption } from 'react-icons/gr';
-import { PiTelegramLogoLight, PiWhatsappLogo } from "react-icons/pi";
-import { AiOutlineYoutube } from "react-icons/ai";
+import { PiTelegramLogoLight, PiWhatsappLogo } from 'react-icons/pi';
+import { AiOutlineYoutube } from 'react-icons/ai';
 
+import NextImage from '@/src/components/components/image';
 import Container from '@/src/components/components/container';
+
 import { Arial, ArianAMU } from '@/src/constants/font';
 import { ImagePaths } from '@/src/constants';
 
 import useWindowSize from '@/src/hooks/useWindowSize';
 
 import { socialNetwork } from '@/src/types/design';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -76,7 +79,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
             >
                 <SocialIcon
                     size={windowSize.width <= 1024 ? 15 : 30}
-                    fill='#F9CC48'
+                    fill={colors.yellow}
                 />
             </Link>
         )
@@ -87,13 +90,12 @@ const Footer = ({ socialData }: Readonly<Props>) => {
             <Container className='container'>
                 <div className={styles.column}>
                     <div className={styles.logo}>
-                        <Image
+                        <NextImage
                             src={ImagePaths.DESIGN.logoURL}
                             alt='logo'
                             className={styles.image}
                             width={500}
                             height={500}
-                            priority
                         />
                     </div>
                     <div>

@@ -15,6 +15,7 @@ import { TRAINING_CENTERS } from '@/src/constants';
 
 import { sendRequest } from '@/src/api';
 import { FormLarge } from '@/src/types/language';
+import { ContactUsResponse } from '@/src/types/general';
 
 import cn from 'classnames';
 
@@ -23,7 +24,7 @@ import styles from './styles.module.sass';
 
 interface Props {
     data: FORM | any;
-    courses: any;
+    courses: SELECT_OPTIONS_LANGUAGE_QUERYResult | any;
 };
 
 interface FormProps {
@@ -99,7 +100,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                     isLoading: true,
                 }));
 
-                const res: { status: number } | any = await sendRequest(formData);
+                const res: ContactUsResponse = await sendRequest(formData);
 
                 if (res?.status !== 200) {
                     setOpen(true);
@@ -129,7 +130,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
 
                 setIsClear(true);
             }
-        } catch (error: any) {
+        } catch (error) {
             setState((prev: FormProps) => ({
                 ...prev,
                 isLoading: false,

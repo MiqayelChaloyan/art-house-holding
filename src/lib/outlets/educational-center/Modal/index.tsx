@@ -57,10 +57,7 @@ const SectionCareerServices = ({ children }: Props) => {
                             setShowModal(false);
                             setTimeout(() => dispatch(closeModal(false)), 300);
                         }}>
-                        <IoClose
-                            size={100}
-                            fill={colors.white}
-                        />
+                        <IoClose size={100} fill={colors.white} />
                     </button>
                     {children}
                 </div>

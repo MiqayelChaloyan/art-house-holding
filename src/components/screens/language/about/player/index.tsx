@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Image from 'next/image';
+import NextImage from '@/src/components/components/image';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/src/store/player_reducer';
@@ -11,6 +11,8 @@ import { MdPlayCircle } from 'react-icons/md';
 
 import { ReduxType } from '@/src/types/language';
 import { ImagePath } from '@/src/types/general';
+
+import colors from '@/src/themes';
 
 import styles from './styles.module.sass';
 
@@ -32,24 +34,20 @@ const VideoPlayer = ({ light, link, alt }: Readonly<Props>) => {
 
     return (
         <div className={styles.playing}>
-                <Image
-                    src={light?.src}
-                    alt={alt}
-                    className={styles.video_play}
-                    width={500}
-                    height={500}
-                    priority
-                />
-                <button
-                    className={styles.icon}
-                    onClick={() => handlePlayVideo(link)}
-                >
-                    <MdPlayCircle
-                        size={75}
-                        color='#fff'
-                    />
-                </button>
-            </div>
+            <NextImage
+                src={light?.src}
+                alt={alt}
+                className={styles.video_play}
+                width={500}
+                height={500}
+            />
+            <button
+                className={styles.icon}
+                onClick={() => handlePlayVideo(link)}
+            >
+                <MdPlayCircle size={75} color={colors.white} />
+            </button>
+        </div>
     )
 };
 

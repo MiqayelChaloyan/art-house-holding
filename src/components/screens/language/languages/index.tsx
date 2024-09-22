@@ -3,9 +3,9 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 import Container from '@/src/components/components/container';
+import NextImage from '@/src/components/components/image';
 
 import { Pages } from '@/src/constants/pages';
 import { ImagePath } from '@/src/types/general';
@@ -34,13 +34,12 @@ const Home = ({ locale, data }: Readonly<Props>) => {
                                 aria-label={language.slug.current}
                                 className={styles.link}
                             >
-                                <Image
+                                <NextImage
                                     src={path?.src}
                                     alt={language.image?.alt}
                                     className={styles.language}
                                     width={500}
                                     height={500}
-                                    priority
                                 />
                             </Link>
                         )

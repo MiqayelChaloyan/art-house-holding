@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 
 import Link from 'next/link';
@@ -28,6 +28,8 @@ import { ArianAMU } from '@/src/constants/font';
 import useWindowSize from '@/src/hooks/useWindowSize';
 
 import { socialNetwork } from '@/src/types/general';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -173,7 +175,7 @@ const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Read
                             <LogoFooter
                                 width={windowSize.width <= 1024 ? 170 : 274}
                                 height={windowSize.width <= 1024 ? 50 : 75}
-                                fill='#FFFFFF'
+                                fill={colors.white}
                             />
                         </div>
                         <p className={cn(styles.reserved, ArianAMU.className)}>

@@ -96,7 +96,7 @@ const Footer = ({
                             <Logo
                                 width='162'
                                 height='44'
-                                fill='#111111'
+                                fill={colors.black}
                             />
                         </div>
                         <Link

@@ -4,7 +4,10 @@ import Link from 'next/link';
 
 import { Pages } from '@/src/constants/pages';
 import { Arial } from '@/src/constants/font';
+
 import { HiHome } from 'react-icons/hi2';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -23,7 +26,7 @@ const GoBack = ({ theme, locale }: Readonly<Props>) => (
         className={cn(styles.btn, styles['book-now'], Arial.className)}
         style={{ background: theme }}
     >
-        <HiHome color='white' size={30}/>
+        <HiHome color={colors.white} size={30}/>
     </Link>
 );
 

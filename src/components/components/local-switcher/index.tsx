@@ -2,9 +2,10 @@
 
 import React, { useTransition } from 'react';
 
-import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
+
+import NextImage from '@/src/components/components/image';
 
 import { ImagePaths } from '@/src/constants';
 import { ArianAMU } from '@/src/constants/font';
@@ -70,13 +71,12 @@ export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black'
               e.currentTarget.style.color = localActive === key ? activeColor : color
             }}
           >
-            <Image
-              className={styles.option}
+            <NextImage
               src={localeImages[key]}
+              alt={key}
+              className={styles.option}
               width={500}
               height={500}
-              alt={key}
-              priority
             />
           </div>
         ))}

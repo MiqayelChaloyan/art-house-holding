@@ -2,9 +2,10 @@
 
 import React from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+
+import NextImage from '@/src/components/components/image';
 
 import { Arial } from '@/src/constants/font';
 
@@ -37,13 +38,12 @@ const PortfolioImageCard = ({
     return (
         <Link href={{ pathname: `/${activeLocale}/design/${type}/${encodeURIComponent(slug)}`, query: { name: _key } }}>
             <figure className={styles.figure}>
-                <Image
-                    priority
+                <NextImage
                     src={cardImagePath?.src}
-                    height={500}
-                    width={500}
                     alt={alt}
                     className={styles.image}
+                    width={500}
+                    height={500}
                 />
                 <div className={styles.overlay}>
                     <div className={styles.items} />

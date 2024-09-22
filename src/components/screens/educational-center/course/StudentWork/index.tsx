@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import Button from '@/src/lib/ui/Button';
 import { Arial, Inter } from '@/src/constants/font';
 
+import NextImage from '@/src/components/components/image';
 import Container from '@/src/components/components/container';
 import Fancybox from '@/src/components/components/fancybox';
 import { options } from '@/src/components/components/fancybox/options';
@@ -36,14 +37,12 @@ const StudentWork = ({ course }: Readonly<Props>) => {
 
         return (
             <Link key={item._key} data-fancybox="gallery" href={path?.src}>
-                <Image
+                <NextImage
                     src={path?.src}
                     alt={item?.alt}
-                    priority
                     className={styles.work_img}
-                    width={0}
-                    height={0}
-                    sizes='100vw'
+                    width={500}
+                    height={500}
                     style={{ objectFit: 'cover' }}
                 />
             </Link>

@@ -1,10 +1,11 @@
 'use client'
 
-import Image from 'next/image';
+import NextImage from '@/src/components/components/image';
 
 import { Arial } from '@/src/constants/font';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 
@@ -24,7 +25,7 @@ const Promotion = ({
 }: CardProps) => {
     const aboutText = discount.about_discount.length > 150 ?
         discount.about_discount.slice(0, 200) + '...' : discount.about_discount;
-    const path: { src: string, width: number, height: number } | any = urlForImage(discount.image);
+    const path: ImagePath = urlForImage(discount.image);
     const transformRotate = index % 2 === 0;
 
     return (
@@ -40,19 +41,16 @@ const Promotion = ({
                 )}>
                     {`${discount.procent}%`}
                 </h3>
-                <Image
-                    priority
+                <NextImage
+                    key={index}
                     src={path?.src}
-                    height={0}
-                    width={0}
                     alt={discount.image.alt}
                     className={styles[`${classNameProperty}-card-attribute-image`]}
+                    width={500}
+                    height={500}
                 />
             </div>
-
-            <div className={cn(
-                styles[`${classNameProperty}-boundary-end`]
-            )}>
+            <div className={styles[`${classNameProperty}-boundary-end`]}>
                 <p className={cn(
                     styles[`${classNameProperty}-about-discount`],
                     Arial.className

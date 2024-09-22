@@ -19,6 +19,8 @@ import ArrowRight from '@/src/lib/icons/language/ArrowRight';
 
 import useWindowSize from '@/src/hooks/useWindowSize';
 
+import colors from '@/src/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -68,8 +70,8 @@ const Partners = ({ partners }: Readonly<Props>) => {
         speed: 500,
         autoplay: false,
         dots: false,
-        nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'} />,
-        prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? '#006ED2' : '#fff'} />,
+        nextArrow: <SampleNextArrow fill={windowSize.width > 1024 ? colors.blue : colors.white} />,
+        prevArrow: <SamplePrevArrow fill={windowSize.width > 1024 ? colors.blue : colors.white} />,
         cssEase: 'ease-out',
         centerMode: true,
         centerPadding: "0",
