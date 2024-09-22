@@ -4,19 +4,19 @@ import React, { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
-import FormAppointment from '@/components/components/form-educational';
+import Container from '@/src/components/components/container';
+import FormAppointment from '@/src/components/components/form-educational';
 
-import Button from '@/lib/ui/Button';
-import { Arial, Inter } from '@/constants/font';
+import Button from '@/src/lib/ui/Button';
+import { Arial, Inter } from '@/src/constants/font';
 
 import { PortableText } from '@portabletext/react';
-import components from '@/utils/PortableTextComponents';
-import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
+import components from '@/src/helpers/PortableTextComponents';
+import { flattenText, getTotalTextLength, truncateText } from '@/src/helpers/ArrayMaxItems';
 
-import { ContentCourseType } from '@/types/educational-center';
+import { ContentCourseType } from '@/src/types/educational-center';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

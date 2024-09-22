@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import PriceList from '@/components/screens/educational-center/price-list';
-
-import { getCourses } from '@/utils/data/educational-center';
+import PriceList from '@/src/components/screens/educational-center/price-list';
+import { getCourses } from '@/src/utils/data/educational-center';
 
 
 interface Props {

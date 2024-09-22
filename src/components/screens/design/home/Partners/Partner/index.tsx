@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import { Calibri } from '@/constants/font';
+import { Calibri } from '@/src/constants/font';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

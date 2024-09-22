@@ -1,7 +1,7 @@
 import { BookIcon } from '@sanity/icons';
 import { TfiLayoutSliderAlt } from 'react-icons/tfi';
 
-import { RuleType } from '../../../ruleType';
+import { RuleType } from '@/sanity/ruleType';
 
 export const coursesSchemaEducationalCenter = {
     name: 'courses',

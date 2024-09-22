@@ -2,10 +2,10 @@
 
 import axios from 'axios';
 
-import { BASE_URL } from '@/constants/api';
+import { BASE_URL } from '@/src/constants/api';
 
-import { Form } from '@/types/educational-center';
-import { FormLarge, FormSmall } from '@/types/language';
+import { Form } from '@/src/types/educational-center';
+import { FormLarge, FormSmall } from '@/src/types/language';
 
 
 // Language

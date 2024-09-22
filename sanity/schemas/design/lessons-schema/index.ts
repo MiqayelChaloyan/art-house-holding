@@ -1,6 +1,5 @@
-import { RocketIcon, ComposeIcon } from '@sanity/icons'
-
-import { RuleType } from '../../../ruleType';
+import { RocketIcon, ComposeIcon } from '@sanity/icons';
+import { RuleType } from '@/sanity/ruleType';
 
 const lessonsSchemaDesign = {
     name: 'design-lessons-select-option',

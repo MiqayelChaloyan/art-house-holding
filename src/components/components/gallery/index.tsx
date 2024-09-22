@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-import Portfolio from '@/lib/ui/portfolio-card';
+import Portfolio from '@/src/lib/ui/portfolio-card';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    projects: any;
+    projects: COURSES_DESIGN_QUERYResult[];
     type: 'portfolios' | 'orders';
 };
 

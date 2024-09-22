@@ -8,11 +8,11 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import AnimationCarousel from '../AnimationCarousel';
 
-import { Arial } from '@/constants/font';
-import { ImagePaths } from '@/constants';
+import { Arial } from '@/src/constants/font';
+import { ImagePaths } from '@/src/constants';
 
-import { client } from '../../../../../../../sanity/client';
-import { COURSE_ID_QUERY } from '../../../../../../../sanity/services/design-service';
+import { client } from '@/sanity/client';
+import { COURSE_ID_QUERY } from '@/sanity/services/design-service';
 
 import cn from 'classnames';
 

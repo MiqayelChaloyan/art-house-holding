@@ -4,14 +4,14 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as Action from '@/store/question_reducer';
+import * as Action from '@/src/store/question_reducer';
 
 import { FaCheck } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 
-import Container from '../../container';
-import { ArianAMU } from "@/constants/font";
-import { Pages } from '@/constants/pages';
+import Container from '@/src/components/components/container';
+import { ArianAMU } from '@/src/constants/font';
+import { Pages } from '@/src/constants/pages';
 
 import cn from 'classnames';
 

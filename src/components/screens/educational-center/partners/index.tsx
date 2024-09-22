@@ -5,15 +5,15 @@ import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { useDispatch } from 'react-redux';
-import { closeModal } from '@/store/modal_reducer';
+import { closeModal } from '@/src/store/modal_reducer';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { Arial, Inter } from '@/constants/font';
+import { Arial, Inter } from '@/src/constants/font';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

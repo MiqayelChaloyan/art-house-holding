@@ -1,6 +1,6 @@
 'use client'
 
-import Layout from '@/lib/outlets/art-house/layout';
+import Layout from '@/src/lib/outlets/art-house/layout';
 import About from './About';
 import Testimonials from './Testimonials';
 

@@ -1,105 +1,16 @@
-// 'use client'
-
-// import { useEffect, useState } from 'react';
-
-// import { useSearchParams } from 'next/navigation';
-
-// import WorksGallery from '@/components/components/worksGallery';
-
-// import HoneyCombLoader from '@/lib/ui/rotatingLines';
-// import { Arial } from '@/constants/font';
-
-// import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-// import { ImagePath } from '@/types/general';
-
-// import cn from 'classnames';
-
-// import styles from './styles.module.sass';
-
-
-// interface Props {
-//     data: COURSES_DESIGN_QUERYResult;
-// };
-
-// const Home = ({ data }: Readonly<Props>) => {
-//     const searchParams = useSearchParams();
-//     const name: string | null = searchParams.get('name');
-//     const [order, setOrder] = useState<ORDER[]>([]);
-
-//     useEffect(() => {
-//         if (name) {
-//             const filteredOrders = data.orders?.filter((item: ORDER) => item._key === name);
-//             setOrder(filteredOrders || []);
-//         } else {
-//             setOrder([]);
-//         }
-//     }, [name, data.orders]);
-
-//     const path: ImagePath = urlForImage(order[0]?.background_image)?.src;
-
-//     const worksGallery = order[0]?.title_images_array.map((works: WORK) => <WorksGallery key={works._key} works={works} />)
-
-
-//     if (order.length === 0) {
-//         return (
-//             <div className={styles.loader}>
-//                 <HoneyCombLoader />
-//             </div>
-//         );
-//     }
-
-//     return (
-//         // <>
-//         //     {order.length ? (
-//         //         <>
-//         //              <div className={styles.article} style={{ backgroundImage: `url(${path})` }} >
-//         //                 <div className={styles.titles}>
-//         //                     <h1 className={cn(styles.course_name, Arial.className)}>{data.course_name}</h1>
-//         //                     <h2 className={cn(styles.author, Arial.className)}>{order[0].author}</h2>
-//         //                 </div>
-//         //             </div>
-//         //             {worksGallery}
-//         //         </>
-//         //     ) : (
-//         //         <div className={styles.loader}>
-//         //             <RotatingLines />
-//         //         </div>
-//         //     )}
-//         // </>
-//         <>
-//             <div className={styles.article} style={{ backgroundImage: `url(${path})` }} >
-//                 <div className={styles.titles}>
-//                     <h1 className={cn(styles.course_name, Arial.className)}>{data.course_name}</h1>
-//                     <h2 className={cn(styles.author, Arial.className)}>{order[0].author}</h2>
-//                 </div>
-//             </div>
-//             {worksGallery}
-//         </>
-//     )
-// };
-
-// export default Home;
-
-
-
-
-
-
-
-
 'use client'
 
 import { useEffect, useState } from 'react';
 
 import { useSearchParams } from 'next/navigation';
 
-import WorksGallery from '@/components/components/worksGallery';
+import WorksGallery from '@/src/components/components/worksGallery';
 
-import HoneyCombLoader from '@/lib/ui/rotatingLines';
-import { Arial } from '@/constants/font';
+import HoneyCombLoader from '@/src/lib/ui/rotatingLines';
+import { Arial } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { ImagePath } from '@/types/general';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

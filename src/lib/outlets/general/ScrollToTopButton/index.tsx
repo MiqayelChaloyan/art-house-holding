@@ -1,8 +1,10 @@
 'use client'
 
-import { motion, Variants, useAnimationControls, useScroll } from "framer-motion";
-import { useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa";
+import { useEffect } from 'react';
+
+import { motion, Variants, useAnimationControls, useScroll } from 'framer-motion';
+import { FaArrowUp } from 'react-icons/fa';
+
 import styles from './styles.module.sass';
 
 

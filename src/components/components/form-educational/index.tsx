@@ -6,32 +6,32 @@ import { useTranslations } from 'next-intl';
 
 import Link from 'next/link';
 
-import Snackbar from '@/components/components/snackbar';
+import Snackbar from '@/src/components/components/snackbar';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import InputField from '@/lib/ui/InputField';
-import InputNumber from '@/lib/ui/InputNumber';
-import Select from '@/lib/ui/select';
-import { Arial } from '@/constants/font';
-import { TRAINING_CENTERS } from '@/constants';
+import InputField from '@/src/lib/ui/InputField';
+import InputNumber from '@/src/lib/ui/InputNumber';
+import Select from '@/src/lib/ui/select';
+import { Arial } from '@/src/constants/font';
+import { TRAINING_CENTERS } from '@/src/constants';
 
-import Instagram from '@/lib/icons/educational-center/Instagram';
-import Gmail from '@/lib/icons/educational-center/Gmail';
-import Facebook from '@/lib/icons/educational-center/Facebook';
-import Linkedin from '@/lib/icons/educational-center/Linkedin';
-import X from '@/lib/icons/educational-center/X';
-import Tiktok from '@/lib/icons/educational-center/Tiktok';
-import Telegram from '@/lib/icons/educational-center/Telegram';
-import YouTube from '@/lib/icons/educational-center/YouTube';
-import Pinterest from '@/lib/icons/educational-center/Pinterest';
-import WhatsApp from '@/lib/icons/educational-center/WhatsApp';
-import Viber from '@/lib/icons/educational-center/Viber';
+import Instagram from '@/src/lib/icons/educational-center/Instagram';
+import Gmail from '@/src/lib/icons/educational-center/Gmail';
+import Facebook from '@/src/lib/icons/educational-center/Facebook';
+import Linkedin from '@/src/lib/icons/educational-center/Linkedin';
+import X from '@/src/lib/icons/educational-center/X';
+import Tiktok from '@/src/lib/icons/educational-center/Tiktok';
+import Telegram from '@/src/lib/icons/educational-center/Telegram';
+import YouTube from '@/src/lib/icons/educational-center/YouTube';
+import Pinterest from '@/src/lib/icons/educational-center/Pinterest';
+import WhatsApp from '@/src/lib/icons/educational-center/WhatsApp';
+import Viber from '@/src/lib/icons/educational-center/Viber';
 
-import { sendContactUsEducational } from '@/api';
+import { sendContactUsEducational } from '@/src/api';
 
-import { Form } from '@/types/educational-center';
-import { ContactUsResponse, socialNetwork } from '@/types/general';
+import { Form } from '@/src/types/educational-center';
+import { ContactUsResponse, socialNetwork } from '@/src/types/general';
 
 import cn from 'classnames';
 

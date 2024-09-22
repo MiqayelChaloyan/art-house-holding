@@ -1,7 +1,6 @@
-import { EarthGlobeIcon, CheckmarkIcon } from '@sanity/icons'
-
-import { RuleType } from '../../../ruleType';
+import { EarthGlobeIcon, CheckmarkIcon } from '@sanity/icons';
 import { BookIcon } from '@sanity/icons';
+import { RuleType } from '@/sanity/ruleType';
 
 const priceListSchemaDesign = {
     name: 'price-list-design',

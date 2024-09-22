@@ -1,6 +1,5 @@
 import { SparklesIcon, BulbOutlineIcon, CheckmarkIcon, ImagesIcon, ClipboardImageIcon } from '@sanity/icons';
-
-import { RuleType } from '../../../ruleType';
+import { RuleType } from '@/sanity/ruleType';
 
 export const coursesSchemaDesign = {
     name: 'courses-design',

@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal, stateModal } from '@/store/modal_reducer';
-import { Questions } from '@/store/question_reducer';
+import { closeModal, stateModal } from '@/src/store/modal_reducer';
+import { Questions } from '@/src/store/question_reducer';
 
 import { IoClose } from 'react-icons/io5';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

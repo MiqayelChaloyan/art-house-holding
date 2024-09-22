@@ -1,14 +1,12 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
 import dynamic from 'next/dynamic';
-
-import { getCourses } from '@/utils/data/language';
+import { getCourses } from '@/src/utils/data/language';
 
 
 const Component = dynamic(() =>
-    import('@/components/screens/language/languages'),
+    import('@/src/components/screens/language/languages'),
 );
 
 interface Props {

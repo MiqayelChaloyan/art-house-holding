@@ -11,13 +11,13 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import Partner from './Partner';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { Vrdznagir } from '@/constants/font';
-import ArrowLeft from '@/lib/icons/language/ArrowLeft';
-import ArrowRight from '@/lib/icons/language/ArrowRight';
+import { Vrdznagir } from '@/src/constants/font';
+import ArrowLeft from '@/src/lib/icons/language/ArrowLeft';
+import ArrowRight from '@/src/lib/icons/language/ArrowRight';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
 import cn from 'classnames';
 

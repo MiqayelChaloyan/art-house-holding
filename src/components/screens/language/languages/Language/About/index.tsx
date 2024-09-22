@@ -4,14 +4,14 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import components from '@/utils/PortableTextComponents';
+import components from '@/src/helpers/PortableTextComponents';
 import { PortableText } from '@portabletext/react';
 
-import { Arial } from '@/constants/font';
-import { ABOUT } from '@/types/language';
-import { ImagePath } from '@/types/general';
+import { Arial } from '@/src/constants/font';
+import { ABOUT } from '@/src/types/language';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

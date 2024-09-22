@@ -4,17 +4,17 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import Snackbar from '@/components/components/snackbar';
+import Snackbar from '@/src/components/components/snackbar';
 
-import InputField from '@/lib/ui/InputField';
-import InputNumber from '@/lib/ui/InputNumber';
-import TextareaField from '@/lib/ui/TextareaField';
+import InputField from '@/src/lib/ui/InputField';
+import InputNumber from '@/src/lib/ui/InputNumber';
+import TextareaField from '@/src/lib/ui/TextareaField';
 
-import { Arial, Calibri } from '@/constants/font';
+import { Arial, Calibri } from '@/src/constants/font';
 
-import { sendOrderDesign } from '@/api';
-import { FormOrder } from '@/types/design';
-import { ContactUsResponse } from '@/types/general';
+import { sendOrderDesign } from '@/src/api';
+import { FormOrder } from '@/src/types/design';
+import { ContactUsResponse } from '@/src/types/general';
 
 import cn from 'classnames';
 

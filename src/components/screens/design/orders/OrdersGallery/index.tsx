@@ -1,7 +1,6 @@
 'use client'
 
-import Gallery from '@/components/components/gallery';
-
+import Gallery from '@/src/components/components/gallery';
 
 interface Props {
     courses: COURSES_DESIGN_QUERYResult[];

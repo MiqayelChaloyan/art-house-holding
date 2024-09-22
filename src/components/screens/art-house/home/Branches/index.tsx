@@ -5,9 +5,9 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { options } from './options';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import Branch from '@/lib/ui/branch';
+import Branch from '@/src/lib/ui/branch';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';

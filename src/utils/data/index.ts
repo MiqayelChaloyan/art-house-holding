@@ -1,6 +1,6 @@
-import { PARTNERS_QUERY } from '../../../sanity/services/generic-service';
+import { PARTNERS_QUERY } from '@/sanity/services/generic-service';
 
-import { sanityFetch } from '@/api/sanity-fetch';
+import { sanityFetch } from '@/src/api/sanity-fetch';
 
 
 export async function getPartners(locale: string): Promise<PARTNER_Result[]> {

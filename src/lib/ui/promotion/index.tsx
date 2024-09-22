@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 
-import { Arial } from '@/constants/font';
+import { Arial } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

@@ -1,6 +1,6 @@
-import { ABOUT_US_DETAILS_QUERY, COURSES_QUERY, DISCOUNTS_QUERY, FILTER_COURSES_QUERY, LANGUAGE_ID_QUERY, LANGUAGE_SLUG_QUERY, LANGUAGES_QUERY, PRICE_LIST_QUERY, QUIZ_SLUG_QUERY, QUIZS_QUERY, SOCIAL_QUERY } from '../../../../sanity/services/language-service';
+import { ABOUT_US_DETAILS_QUERY, COURSES_QUERY, DISCOUNTS_QUERY, FILTER_COURSES_QUERY, LANGUAGE_ID_QUERY, LANGUAGE_SLUG_QUERY, LANGUAGES_QUERY, PRICE_LIST_QUERY, QUIZ_SLUG_QUERY, QUIZS_QUERY, SOCIAL_QUERY } from '@/sanity/services/language-service';
 
-import { sanityFetch } from '@/api/sanity-fetch';
+import { sanityFetch } from '@/src/api/sanity-fetch';
 
 export async function getHomeDetails(locale: string): Promise<HOME_DETALIS_LANGUAGE_QUERYResult> {
     try {

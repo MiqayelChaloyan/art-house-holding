@@ -4,10 +4,10 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import ContactUsForm from '@/components/components/form-design';
+import ContactUsForm from '@/src/components/components/form-design';
 
-import { Arial } from '@/constants/font';
-import { Titles } from '@/constants';
+import { Arial } from '@/src/constants/font';
+import { Titles } from '@/src/constants';
 
 import cn from 'classnames';
 

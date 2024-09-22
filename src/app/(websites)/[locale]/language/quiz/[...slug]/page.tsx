@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import QuizPage from '@/components/screens/language/quiz/[quiz]';
-
-import { getQuizBySlug } from '@/utils/data/language';
+import QuizPage from '@/src/components/screens/language/quiz/[quiz]';
+import { getQuizBySlug } from '@/src/utils/data/language';
 
 
 interface Props {

@@ -6,10 +6,10 @@ import { useTranslations } from 'next-intl';
 
 import Course from './Course';
 
-import { Arial } from '@/constants/font';
-import { Titles } from '@/constants';
+import { Arial } from '@/src/constants/font';
+import { Titles } from '@/src/constants';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
 import cn from 'classnames';
 

@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { Inter } from '@/constants/font';
+import { Inter } from '@/src/constants/font';
 
-import { SlideItem as Props } from '@/types/educational-center';
+import { SlideItem as Props } from '@/src/types/educational-center';
 
 import cn from 'classnames';
 

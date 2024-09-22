@@ -5,9 +5,9 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from '@popmotion/popcorn';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 

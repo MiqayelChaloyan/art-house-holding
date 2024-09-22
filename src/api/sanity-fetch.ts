@@ -1,8 +1,8 @@
-import "server-only";
+import 'server-only';
 
-import { draftMode } from "next/headers";
-import { type QueryOptions, type QueryParams } from "next-sanity";
-import { client } from "../../sanity/client";
+import { draftMode } from 'next/headers';
+import { type QueryOptions, type QueryParams } from 'next-sanity';
+import { client } from '@/sanity/client';
 
 
 export async function sanityFetch<QueryResponse>({
@@ -36,4 +36,4 @@ export async function sanityFetch<QueryResponse>({
       tags,
     },
   });
-}
+};

@@ -8,14 +8,14 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { useDispatch } from 'react-redux';
-import { openModal } from '@/store/modal_reducer';
+import { openModal } from '@/src/store/modal_reducer';
 
-import Button from '@/lib/ui/Button';
-import { Pages } from '@/constants/pages';
-import { Arial, ArianAMU } from '@/constants/font';
-import { ImagePaths } from '@/constants';
+import Button from '@/src/lib/ui/Button';
+import { Pages } from '@/src/constants/pages';
+import { Arial, ArianAMU } from '@/src/constants/font';
+import { ImagePaths } from '@/src/constants';
 
-import LocalSwitcher from '@/components/components/local-switcher';
+import LocalSwitcher from '@/src/components/components/local-switcher';
 
 import cn from 'classnames';
 

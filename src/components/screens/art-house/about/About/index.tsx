@@ -5,16 +5,16 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { PortableText } from '@portabletext/react';
-import components from '@/utils/PortableTextComponents';
+import components from '@/src/helpers/PortableTextComponents';
 
-import Button from '@/lib/ui/Button';
-import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
-import { ArianAMU } from '@/constants/font';
+import Button from '@/src/lib/ui/Button';
+import { flattenText, getTotalTextLength, truncateText } from '@/src/helpers/ArrayMaxItems';
+import { ArianAMU } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { Content as ContentType } from '@/types/art-house';
-import { ImagePath } from '@/types/general';
+import { Content as ContentType } from '@/src/types/art-house';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

@@ -7,16 +7,16 @@ import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl';
 
 import { useDispatch } from 'react-redux';
-import { openModal } from '@/store/modal_reducer';
+import { openModal } from '@/src/store/modal_reducer';
 
-import Logo from '@/lib/icons/educational-center/Logo';
-import Button from '@/lib/ui/Button';
-import { Pages } from '@/constants/pages';
-import { ArianAMU } from '@/constants/font';
+import Logo from '@/src/lib/icons/educational-center/Logo';
+import Button from '@/src/lib/ui/Button';
+import { Pages } from '@/src/constants/pages';
+import { ArianAMU } from '@/src/constants/font';
 
-import LocalSwitcher from '@/components/components/local-switcher';
+import LocalSwitcher from '@/src/components/components/local-switcher';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

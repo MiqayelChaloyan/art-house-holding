@@ -6,9 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
 
-import { ArianAMU } from '@/constants/font';
+import { ArianAMU } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { Arial } from '@/constants/font';
-import { ImagePath } from '@/types/general';
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { Arial } from '@/src/constants/font';
+import { ImagePath } from '@/src/types/general';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

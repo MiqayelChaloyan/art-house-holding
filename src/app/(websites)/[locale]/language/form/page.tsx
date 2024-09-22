@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import Form from '@/components/screens/language/form';
-
-import { getSelectOptions, getSelectOptionsFiltered } from '@/utils/data/language';
+import Form from '@/src/components/screens/language/form';
+import { getSelectOptions, getSelectOptionsFiltered } from '@/src/utils/data/language';
 
 
 interface Props {

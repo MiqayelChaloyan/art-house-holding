@@ -1,7 +1,8 @@
 import { ProjectsIcon } from '@sanity/icons';
 import { GiProgression } from 'react-icons/gi';
-import ArrayMaxItems from '@/utils/ArrayMaxItems';
-import { RuleType } from '../../../ruleType';
+
+import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
+import { RuleType } from '@/sanity/ruleType';
 
 const homeSchemaArtHouse = {
     name: 'art-house-home',

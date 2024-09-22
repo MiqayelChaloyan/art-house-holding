@@ -3,27 +3,27 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import Footer from '@/lib/outlets/design/Footer';
-import Header from '@/lib/outlets/design/Header';
-import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
-import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
-import Modal from '@/lib/outlets/design/Modal';
-import CoursesModal from '@/lib/outlets/design/Modal/courses';
-import ContactUs from '@/lib/outlets/design/ContactUs';
-import PlayerModal from '@/lib/outlets/general/PlayerModal';
-import GoBack from '@/lib/outlets/general/GoBack';
+import Footer from '@/src/lib/outlets/design/Footer';
+import Header from '@/src/lib/outlets/design/Header';
+import ScrollToTopButton from '@/src/lib/outlets/general/ScrollToTopButton';
+import FloatingMenu from '@/src/lib/outlets/general/FloatingMenu';
+import Modal from '@/src/lib/outlets/design/Modal';
+import CoursesModal from '@/src/lib/outlets/design/Modal/courses';
+import ContactUs from '@/src/lib/outlets/design/ContactUs';
+import PlayerModal from '@/src/lib/outlets/general/PlayerModal';
+import GoBack from '@/src/lib/outlets/general/GoBack';
 
-import { Locale } from '@/locales';
+import { Locale } from '@/src/locales';
 import { SanityClient } from 'sanity';
 
-import { client } from '../../../../../sanity/client';
-import { SITE_META_QUERY } from '../../../../../sanity/services/design-service';
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { client } from '@/sanity/client';
+import { SITE_META_QUERY } from '@/sanity/services/design-service';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { getHomeDetails } from '@/utils/data/art-house';
-import { getContacts, getCourses, getSelectOptions } from '@/utils/data/design';
-import { ImagePath, Site } from '@/types/general';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { getHomeDetails } from '@/src/utils/data/art-house';
+import { getContacts, getCourses, getSelectOptions } from '@/src/utils/data/design';
+import { ImagePath, Site } from '@/src/types/general';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
 
 
 interface RootLayoutProps {

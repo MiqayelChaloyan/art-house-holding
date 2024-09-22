@@ -1,9 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import AboutUs from '@/components/screens/educational-center/about';
-import { getHomeDetails } from '@/utils/data/educational-center';
+import AboutUs from '@/src/components/screens/educational-center/about';
+import { getHomeDetails } from '@/src/utils/data/educational-center';
 
 
 interface Props {

@@ -2,10 +2,9 @@
 
 import React from 'react';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
 import { Course, CourseMobileCard, Gallery } from '../Course';
-
 
 import styles from './styles.module.sass';
 

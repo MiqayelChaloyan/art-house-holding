@@ -5,10 +5,10 @@ import React from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 
-import { Arial, Belleza } from '@/constants/font';
-import { Pages } from '@/constants/pages';
+import { Arial, Belleza } from '@/src/constants/font';
+import { Pages } from '@/src/constants/pages';
 
-import { SlideItem as Props } from '@/types/design';
+import { SlideItem as Props } from '@/src/types/design';
 
 import cn from 'classnames';
 

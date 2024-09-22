@@ -6,13 +6,13 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import Checkmark from '@/lib/icons/design/Checkmark';
-import PortfolioImageCard from '@/lib/ui/portfolio-card';
-import { Pages } from '@/constants/pages';
-import { Arial } from '@/constants/font';
-import { Titles } from '@/constants';
+import Checkmark from '@/src/lib/icons/design/Checkmark';
+import PortfolioImageCard from '@/src/lib/ui/portfolio-card';
+import { Pages } from '@/src/constants/pages';
+import { Arial } from '@/src/constants/font';
+import { Titles } from '@/src/constants';
 
 import cn from 'classnames';
 

@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import { Arial } from '@/constants/font';
+import { Arial } from '@/src/constants/font';
 
 import styles from './styles.module.sass';
 

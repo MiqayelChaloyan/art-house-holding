@@ -5,13 +5,13 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import { Arial, Vrdznagir } from '@/constants/font';
+import { Arial, Vrdznagir } from '@/src/constants/font';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

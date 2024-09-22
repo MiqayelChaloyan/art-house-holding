@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 
-import { ImagePath } from '@/types/general';
-import { ArianAMU } from '@/constants/font';
+import { ImagePath } from '@/src/types/general';
+import { ArianAMU } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

@@ -7,7 +7,7 @@
     border-radius: 20px
     transition:  var(--tr-time-card-rotate)
     transform-style: preserve-3d
-    box-shadow: 5px 2px 23px 3px var(--color-box-shadow-primary)
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
     /* 2xl */
     @media screen and ( max-width: 1536px )
         width: 220px
@@ -65,32 +65,9 @@
 
 .logo
     margin: 0 auto
-    width: auto
-    max-width: 100%
+    width: 60%
     height: auto
-    /* 2xl */
-    @media screen and ( max-width: 1536px )
-        width: auto
-        max-width: 100%
-        height: auto
-    /* xl */
-    @media screen and ( max-width: 1280px )
-        width: 65px
-        height: 44px
-    /* lg */
-    @media screen and ( max-width: 1024px )
-        width: 55px
-        height: 34px
-    /* md */
-    @media screen and ( max-width: 768px )
-        width: auto
-        max-width: 100%
-        height: auto
-    /* sm */
-    @media screen and ( max-width: 640px )
-        width: auto
-        max-width: 100%
-        height: auto
+    object-fit: cover
 
 .title_front
     text-align: center

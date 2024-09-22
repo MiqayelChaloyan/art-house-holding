@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import Button from '@/lib/ui/Button';
-import { Arial, Inter } from '@/constants/font';
+import Button from '@/src/lib/ui/Button';
+import { Arial, Inter } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { ContentCourse as Props } from '@/types/educational-center';
-import { ImagePath } from '@/types/general';
+import { ContentCourse as Props } from '@/src/types/educational-center';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

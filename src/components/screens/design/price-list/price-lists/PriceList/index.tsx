@@ -4,13 +4,13 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
 import TableList from '../TableList';
 import AccordionList from '../AccordionList';
 
-import { Arial } from '@/constants/font';
-import { Titles } from '@/constants';
+import { Arial } from '@/src/constants/font';
+import { Titles } from '@/src/constants';
 
 import cn from 'classnames';
 

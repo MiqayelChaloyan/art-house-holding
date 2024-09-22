@@ -3,16 +3,16 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import Course from '@/components/screens/design/course';
+import Course from '@/src/components/screens/design/course';
 
-import { Locale } from '@/locales';
+import { Locale } from '@/src/locales';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { generateMetadataDynamic } from '@/utils/default-metadata';
-import { getCourseBySlug } from '@/utils/data/design';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
+import { getCourseBySlug } from '@/src/utils/data/design';
 
 
 interface Props {

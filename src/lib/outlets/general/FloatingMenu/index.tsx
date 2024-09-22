@@ -8,9 +8,9 @@ import { useLocale } from 'next-intl';
 
 import { GoProjectSymlink } from 'react-icons/go';
 
-import { ArianAMU } from '@/constants/font';
+import { ArianAMU } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 
@@ -18,11 +18,11 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    website?: string
+    website?: string;
     branches?: HOME_DETALIS_QUERYResult;
-    theme?: string
-    hover?: string
-}
+    theme?: string;
+    hover?: string;
+};
 
 const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
     const [data, setData] = useState<BRANCH[] | any>([]);

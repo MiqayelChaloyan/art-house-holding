@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import Home from '@/components/screens/design/price-list';
-
-import { getPriceList } from '@/utils/data/design';
+import Home from '@/src/components/screens/design/price-list';
+import { getPriceList } from '@/src/utils/data/design';
 
 
 interface Props {

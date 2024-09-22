@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
-import Gallery from '@/components/components/gallery';
-import { Arial } from '@/constants/font';
-import { Pages } from '@/constants/pages';
-import { Titles } from '@/constants';
+import Gallery from '@/src/components/components/gallery';
+import { Arial } from '@/src/constants/font';
+import { Pages } from '@/src/constants/pages';
+import { Titles } from '@/src/constants';
 
 import cn from 'classnames';
 

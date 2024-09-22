@@ -7,27 +7,27 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import LogoFooter from '@/lib/icons/art-house/LogoFooter';
-import Facebook from '@/lib/icons/art-house/Facebook';
-import Instagram from '@/lib/icons/art-house/Instagram';
-import X from '@/lib/icons/art-house/X';
-import Tiktok from '@/lib/icons/art-house/Tiktok';
-import Telegram from '@/lib/icons/art-house/Telegram';
-import YouTube from '@/lib/icons/art-house/YouTube';
-import Pinterest from '@/lib/icons/art-house/Pinterest';
-import WhatsApp from '@/lib/icons/art-house/WhatsApp';
-import Viber from '@/lib/icons/art-house/Viber';
-import Gmail from '@/lib/icons/art-house/Gmail';
-import Linkedin from '@/lib/icons/art-house/Linkedin';
+import LogoFooter from '@/src/lib/icons/art-house/LogoFooter';
+import Facebook from '@/src/lib/icons/art-house/Facebook';
+import Instagram from '@/src/lib/icons/art-house/Instagram';
+import X from '@/src/lib/icons/art-house/X';
+import Tiktok from '@/src/lib/icons/art-house/Tiktok';
+import Telegram from '@/src/lib/icons/art-house/Telegram';
+import YouTube from '@/src/lib/icons/art-house/YouTube';
+import Pinterest from '@/src/lib/icons/art-house/Pinterest';
+import WhatsApp from '@/src/lib/icons/art-house/WhatsApp';
+import Viber from '@/src/lib/icons/art-house/Viber';
+import Gmail from '@/src/lib/icons/art-house/Gmail';
+import Linkedin from '@/src/lib/icons/art-house/Linkedin';
 
-import { Pages } from '@/constants/pages';
-import { ArianAMU } from '@/constants/font';
+import { Pages } from '@/src/constants/pages';
+import { ArianAMU } from '@/src/constants/font';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import { socialNetwork } from '@/types/general';
+import { socialNetwork } from '@/src/types/general';
 
 import cn from 'classnames';
 

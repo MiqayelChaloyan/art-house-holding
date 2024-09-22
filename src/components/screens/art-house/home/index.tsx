@@ -1,14 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useLocale } from 'next-intl';
 
-import Layout from '@/lib/outlets/art-house/layout';
+import Layout from '@/src/lib/outlets/art-house/layout';
 
-import Main from '@/components/screens/art-house/home/Main';
-import Branches from '@/components/screens/art-house/home/Branches';
-import Progress from '@/components/screens/art-house/home/Progress';
-import Partners from '@/components/screens/art-house/home/Partners';
+import Main from '@/src/components/screens/art-house/home/Main';
+import Branches from '@/src/components/screens/art-house/home/Branches';
+import Progress from '@/src/components/screens/art-house/home/Progress';
+import Partners from '@/src/components/screens/art-house/home/Partners';
 
 
 interface Props {

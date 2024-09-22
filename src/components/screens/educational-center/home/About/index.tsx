@@ -6,19 +6,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { Arial, Inter } from '@/constants/font';
-import { Pages } from '@/constants/pages';
+import { Arial, Inter } from '@/src/constants/font';
+import { Pages } from '@/src/constants/pages';
 
 import { PortableText } from '@portabletext/react';
-import components from '@/utils/PortableTextComponents';
-import { flattenText, getTotalTextLength, truncateText } from '@/utils/ArrayMaxItems';
+import components from '@/src/helpers/PortableTextComponents';
+import { flattenText, getTotalTextLength, truncateText } from '@/src/helpers/ArrayMaxItems';
 
-import { Content as ContentType } from '@/types/educational-center';
-import { ImagePath } from '@/types/general';
+import { Content as ContentType } from '@/src/types/educational-center';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

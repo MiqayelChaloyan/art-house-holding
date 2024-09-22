@@ -1,6 +1,6 @@
-import { HOME_DETALIS_QUERY, COURSES_QUERY, COURSE_SLUG_QUERY, LESSONS_QUERY, SOCIAL_QUERY } from '../../../../sanity/services/educational-center-service';
+import { HOME_DETALIS_QUERY, COURSES_QUERY, COURSE_SLUG_QUERY, LESSONS_QUERY, SOCIAL_QUERY } from '@/sanity/services/educational-center-service';
 
-import { sanityFetch } from '@/api/sanity-fetch';
+import { sanityFetch } from '@/src/api/sanity-fetch';
 
 
 export async function getHomeDetails(locale: string): Promise<HOME_DETALIS_QUERYResult> {

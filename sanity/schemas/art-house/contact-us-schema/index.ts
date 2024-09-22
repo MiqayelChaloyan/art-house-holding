@@ -1,6 +1,6 @@
 import { LinkIcon } from '@sanity/icons';
-import ArrayMaxItems from '@/utils/ArrayMaxItems';
-import { RuleType } from '../../../ruleType';
+import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
+import { RuleType } from '@/sanity/ruleType';
 
 const contactUsSchemaArtHouse = {
     name: 'art-house-contact-us',

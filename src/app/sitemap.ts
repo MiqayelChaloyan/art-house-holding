@@ -1,9 +1,9 @@
-import { getCourses as getCoursesEducational } from '@/utils/data/educational-center';
-import { getCourses as getCoursesDesign } from '@/utils/data/design';
-import { getCourses as getCoursesLanguages } from '@/utils/data/language';
+import { getCourses as getCoursesEducational } from '@/src/utils/data/educational-center';
+import { getCourses as getCoursesDesign } from '@/src/utils/data/design';
+import { getCourses as getCoursesLanguages } from '@/src/utils/data/language';
 
 import { MetadataRoute } from 'next';
-import { Pages } from '@/constants/pages';
+import { Pages } from '@/src/constants/pages';
 
 type LocaleKeys = 'am' | 'en' | 'ru';
 type LocaleValues = string;

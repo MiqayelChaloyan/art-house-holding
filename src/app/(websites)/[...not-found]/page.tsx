@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { ArianAMU } from '@/constants/font';
-import { Pages } from '@/constants/pages';
+import { ArianAMU } from '@/src/constants/font';
+import { Pages } from '@/src/constants/pages';
 
 import cn from 'classnames';
 
-import '@/styles/globals.sass';
+import '@/src/styles/globals.sass';
 
 import styles from './styles.module.sass';
 

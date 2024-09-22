@@ -5,14 +5,15 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Pages } from '@/constants/pages';
-import { Arial, ArianAMU } from '@/constants/font';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import { Pages } from '@/src/constants/pages';
+import { Arial, ArianAMU } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import { ImagePath } from '@/types/general';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

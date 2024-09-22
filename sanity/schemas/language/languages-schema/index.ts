@@ -1,7 +1,6 @@
-import ArrayMaxItems from '@/utils/ArrayMaxItems';
-import { EarthGlobeIcon, UserIcon } from '@sanity/icons'
-
-import { RuleType } from '../../../ruleType';
+import { EarthGlobeIcon, UserIcon } from '@sanity/icons';
+import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
+import { RuleType } from '@/sanity/ruleType';
 
 const languagesSchemaLanguage = {
     name: 'about-language',

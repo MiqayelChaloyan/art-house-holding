@@ -4,10 +4,10 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import Promotion from '@/lib/ui/promotion';
-import { Vrdznagir } from '@/constants/font';
+import Promotion from '@/src/lib/ui/promotion';
+import { Vrdznagir } from '@/src/constants/font';
 
 import cn from 'classnames';
 

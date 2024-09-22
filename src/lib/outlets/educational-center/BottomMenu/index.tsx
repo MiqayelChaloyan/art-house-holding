@@ -7,17 +7,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 
 import { useDispatch } from 'react-redux';
-import { openModal } from '@/store/modal_reducer';
+import { openModal } from '@/src/store/modal_reducer';
 
-import Home from '@/lib/icons/educational-center/Home';
-import Courses from '@/lib/icons/educational-center/Courses';
-import PriceList from '@/lib/icons/educational-center/PriceList';
-import CoWorkers from '@/lib/icons/educational-center/CoWorkers';
-import Contact from '@/lib/icons/educational-center/Contact';
+import Home from '@/src/lib/icons/educational-center/Home';
+import Courses from '@/src/lib/icons/educational-center/Courses';
+import PriceList from '@/src/lib/icons/educational-center/PriceList';
+import CoWorkers from '@/src/lib/icons/educational-center/CoWorkers';
+import Contact from '@/src/lib/icons/educational-center/Contact';
 
-import { Pages } from '@/constants/pages';
+import { Pages } from '@/src/constants/pages';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

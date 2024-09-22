@@ -7,13 +7,13 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
-import LocalSwitcher from '@/components/components/local-switcher';
+import LocalSwitcher from '@/src/components/components/local-switcher';
 
-import Logo from '@/lib/icons/art-house/Logo';
-import { Pages } from '@/constants/pages';
-import { ArianAMU } from '@/constants/font';
+import Logo from '@/src/lib/icons/art-house/Logo';
+import { Pages } from '@/src/constants/pages';
+import { ArianAMU } from '@/src/constants/font';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

@@ -3,20 +3,20 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import ComingSoon from '@/components/screens/coming-soon';
+import ComingSoon from '@/src/components/screens/coming-soon';
 
-import { Locale } from '@/locales';
+import { Locale } from '@/src/locales';
 
-import { ImagePath, Site } from '@/types/general';
+import { ImagePath, Site } from '@/src/types/general';
 
 import { SanityClient } from 'sanity';
 
-import { client } from '../../../../../sanity/client';
-import { SITE_META_QUERY } from '../../../../../sanity/services/art-house-service';
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { client } from '@/sanity/client';
+import { SITE_META_QUERY } from '@/sanity/services/art-house-service';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { getContacts } from '@/utils/data/art-house';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { getContacts } from '@/src/utils/data/art-house';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
 
 
 interface Props {

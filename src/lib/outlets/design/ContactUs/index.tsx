@@ -5,7 +5,7 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
-import ContactUsForm from '@/components/components/form-design'
+import ContactUsForm from '@/src/components/components/form-design';
 
 import styles from './styles.module.sass';
 

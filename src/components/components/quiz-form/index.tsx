@@ -3,7 +3,7 @@
 import HorizontalLinearStepper from './steppers/HorizontalLinearStepper';
 import VerticalLinearStepper from './steppers/VerticalLinearStepper';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
 import styles from './styles.module.sass';
 

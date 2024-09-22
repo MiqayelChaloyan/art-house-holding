@@ -6,8 +6,8 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { ImagePaths } from '@/constants';
-import { ArianAMU } from '@/constants/font';
+import { ImagePaths } from '@/src/constants';
+import { ArianAMU } from '@/src/constants/font';
 
 import cn from 'classnames';
 

@@ -6,21 +6,21 @@ import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
 import { MdPlayCircle } from 'react-icons/md';
 
-import { DAILY_LIFE_IMAGE, DAILY_LIFE_VIDEO, ReduxType } from '@/types/language';
-import { Arial, Vrdznagir } from '@/constants/font';
+import { DAILY_LIFE_IMAGE, DAILY_LIFE_VIDEO, ReduxType } from '@/src/types/language';
+import { Arial, Vrdznagir } from '@/src/constants/font';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/store/player_reducer';
+import { onPlay, setPath } from '@/src/store/player_reducer';
 
-import { client } from '../../../../../../sanity/client';
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { LANGUAGE_ID_QUERY } from '../../../../../../sanity/services/language-service';
+import { client } from '@/sanity/client';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { LANGUAGE_ID_QUERY } from '@/sanity/services/language-service';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

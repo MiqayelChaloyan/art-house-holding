@@ -6,14 +6,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { Pages } from '@/constants/pages';
-import blocksToText from '@/utils/BlocksToText';
-import { Arial, Calibri } from '@/constants/font';
-import { ImagePath } from '@/types/general';
+import { Pages } from '@/src/constants/pages';
+import blocksToText from '@/src/helpers/BlocksToText';
+import { Arial, Calibri } from '@/src/constants/font';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

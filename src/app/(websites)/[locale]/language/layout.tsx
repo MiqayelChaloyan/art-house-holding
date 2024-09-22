@@ -3,26 +3,26 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
-import ContactUs from '@/lib/outlets/language/ContactUs';
-import Footer from '@/lib/outlets/language/Footer';
-import Header from '@/lib/outlets/language/Header';
-import PlayerModal from '@/lib/outlets/general/PlayerModal';
-import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
-import GoBack from '@/lib/outlets/general/GoBack';
+import ScrollToTopButton from '@/src/lib/outlets/general/ScrollToTopButton';
+import ContactUs from '@/src/lib/outlets/language/ContactUs';
+import Footer from '@/src/lib/outlets/language/Footer';
+import Header from '@/src/lib/outlets/language/Header';
+import PlayerModal from '@/src/lib/outlets/general/PlayerModal';
+import FloatingMenu from '@/src/lib/outlets/general/FloatingMenu';
+import GoBack from '@/src/lib/outlets/general/GoBack';
 
-import { Locale } from '@/locales';
+import { Locale } from '@/src/locales';
 import { SanityClient } from 'sanity';
 
-import { ImagePath, Site } from '@/types/general';
+import { ImagePath, Site } from '@/src/types/general';
 
-import { client } from '../../../../../sanity/client';
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { SITE_META_QUERY } from '../../../../../sanity/services/language-service';
+import { client } from '@/sanity/client';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { SITE_META_QUERY } from '@/sanity/services/language-service';
 
-import { getHomeDetails } from '@/utils/data/art-house';
-import { getContacts, getSelectOptions, getSelectOptionsFiltered } from '@/utils/data/language';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { getHomeDetails } from '@/src/utils/data/art-house';
+import { getContacts, getSelectOptions, getSelectOptionsFiltered } from '@/src/utils/data/language';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
 
 
 interface RootLayoutProps {

@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
 import Courses from './Courses';
 
-import { Inter } from '@/constants/font';
+import { Inter } from '@/src/constants/font';
 
 import cn from 'classnames';
 

@@ -2,8 +2,8 @@ import { ClipboardIcon, LaunchIcon, UserIcon } from '@sanity/icons';
 import { GiProgression } from 'react-icons/gi';
 import { TfiLayoutSliderAlt } from 'react-icons/tfi';
 
-import ArrayMaxItems from '@/utils/ArrayMaxItems';
-import { RuleType } from '../../../ruleType';
+import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
+import { RuleType } from '@/sanity/ruleType';
 
 export const aboutUsSchemaEducationalCenter = {
     name: 'about-us',

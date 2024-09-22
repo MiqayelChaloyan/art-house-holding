@@ -3,16 +3,16 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import Course from '@/components/screens/educational-center/course';
+import Course from '@/src/components/screens/educational-center/course';
 
-import { Locale } from '@/locales';
+import { Locale } from '@/src/locales';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import BlocksToText from '@/utils/BlocksToText';
-import { ImagePath } from '@/types/general';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
-import { getContacts, getCourse, getSelectOptions } from '@/utils/data/educational-center';
+import BlocksToText from '@/src/helpers/BlocksToText';
+import { ImagePath } from '@/src/types/general';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
+import { getContacts, getCourse, getSelectOptions } from '@/src/utils/data/educational-center';
 
 
 interface Props {

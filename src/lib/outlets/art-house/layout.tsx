@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
-import Header from '@/lib/outlets/art-house/Header';
-import Footer from '@/lib/outlets/art-house/Footer';
+import Header from '@/src/lib/outlets/art-house/Header';
+import Footer from '@/src/lib/outlets/art-house/Footer';
 
-import { client } from '../../../../sanity/client';
-import { SOCIAL_QUERY } from '../../../../sanity/services/art-house-service';
+import { client } from '@/sanity/client';
+import { SOCIAL_QUERY } from '@/sanity/services/art-house-service';
 
 
 interface Props {

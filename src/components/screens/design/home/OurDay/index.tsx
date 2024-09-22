@@ -6,18 +6,18 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/store/player_reducer';
+import { onPlay, setPath } from '@/src/store/player_reducer';
 
-import Player from '@/components/components/player';
-import Container from '@/components/components/container';
+import Player from '@/src/components/components/player';
+import Container from '@/src/components/components/container';
 
-import { Arial } from '@/constants/font';
-import { Pages } from '@/constants/pages';
-import { Titles } from '@/constants';
-import { ImagePath } from '@/types/general';
-import { ReduxType } from '@/types/language';
+import { Arial } from '@/src/constants/font';
+import { Pages } from '@/src/constants/pages';
+import { Titles } from '@/src/constants';
+import { ImagePath } from '@/src/types/general';
+import { ReduxType } from '@/src/types/language';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

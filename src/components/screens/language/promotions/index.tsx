@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Promotion from '@/lib/ui/promotion';
+import Promotion from '@/src/lib/ui/promotion';
 
 import styles from './styles.module.sass';
 

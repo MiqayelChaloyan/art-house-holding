@@ -2,12 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 
-import { Inter } from '@/constants/font';
+import { Inter } from '@/src/constants/font';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
 import { PortableText } from '@portabletext/react';
-import components from '@/utils/PortableTextComponents';
+import components from '@/src/helpers/PortableTextComponents';
 
 import cn from 'classnames';
 

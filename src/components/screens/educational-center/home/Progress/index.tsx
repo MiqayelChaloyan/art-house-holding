@@ -2,10 +2,10 @@
 
 import React, { useMemo } from 'react';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import ProgressItem from '@/lib/ui/progress';
-import { Inter } from '@/constants/font';
+import ProgressItem from '@/src/lib/ui/progress';
+import { Inter } from '@/src/constants/font';
 
 import cn from 'classnames';
 

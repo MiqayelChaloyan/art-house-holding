@@ -2,9 +2,9 @@
 
 import RatingCard from '../RatingCard';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-import { Options } from '@/types/educational-center';
-import { ImagePath } from '@/types/general';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { Options } from '@/src/types/educational-center';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

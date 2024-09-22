@@ -8,9 +8,9 @@ import { EmblaOptionsType } from 'embla-carousel';
 
 import SlideItem from './SlideItem';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
 import styles from './styles.module.sass';
 

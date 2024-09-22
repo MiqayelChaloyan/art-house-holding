@@ -1,11 +1,11 @@
 'use server'
 
-import Home from '@/components/screens/design/home';
+import Home from '@/src/components/screens/design/home';
 
 import { notFound } from 'next/navigation';
 
-import { getPartners } from '@/utils/data';
-import { getHomeDetails } from '@/utils/data/design';
+import { getPartners } from '@/src/utils/data';
+import { getHomeDetails } from '@/src/utils/data/design';
 
 
 interface RootProps {

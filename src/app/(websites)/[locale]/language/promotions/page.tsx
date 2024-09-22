@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import Promotions from '@/components/screens/language/promotions';
-
-import { getDiscounts } from '@/utils/data/language';
+import Promotions from '@/src/components/screens/language/promotions';
+import { getDiscounts } from '@/src/utils/data/language';
 
 
 interface Props {

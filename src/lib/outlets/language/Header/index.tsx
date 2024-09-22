@@ -7,15 +7,15 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
 import { useDispatch } from 'react-redux';
-import * as Action from '@/store/question_reducer'
+import * as Action from '@/src/store/question_reducer'
 
-import LocalSwitcher from '@/components/components/local-switcher';
+import LocalSwitcher from '@/src/components/components/local-switcher';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import { Pages } from '@/constants/pages';
-import { Arial } from '@/constants/font';
-import Logo from '@/lib/icons/language/Logo';
+import { Pages } from '@/src/constants/pages';
+import { Arial } from '@/src/constants/font';
+import Logo from '@/src/lib/icons/language/Logo';
 
 import cn from 'classnames';
 

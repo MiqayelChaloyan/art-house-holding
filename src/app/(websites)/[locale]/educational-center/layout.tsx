@@ -3,29 +3,29 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import Header from '@/lib/outlets/educational-center/Header';
-import BottomMenu from '@/lib/outlets/educational-center/BottomMenu';
-import RightMenu from '@/lib/outlets/educational-center/RightMenu';
-import Footer from '@/lib/outlets/educational-center/Footer';
-import Modal from '@/lib/outlets/educational-center/Modal';
-import CoursesModal from '@/lib/outlets/educational-center/Modal/courses';
-import ScrollToTopButton from '@/lib/outlets/general/ScrollToTopButton';
-import FloatingMenu from '@/lib/outlets/general/FloatingMenu';
-import PlayerModal from '@/lib/outlets/general/PlayerModal';
-import GoBack from '@/lib/outlets/general/GoBack';
+import Header from '@/src/lib/outlets/educational-center/Header';
+import BottomMenu from '@/src/lib/outlets/educational-center/BottomMenu';
+import RightMenu from '@/src/lib/outlets/educational-center/RightMenu';
+import Footer from '@/src/lib/outlets/educational-center/Footer';
+import Modal from '@/src/lib/outlets/educational-center/Modal';
+import CoursesModal from '@/src/lib/outlets/educational-center/Modal/courses';
+import ScrollToTopButton from '@/src/lib/outlets/general/ScrollToTopButton';
+import FloatingMenu from '@/src/lib/outlets/general/FloatingMenu';
+import PlayerModal from '@/src/lib/outlets/general/PlayerModal';
+import GoBack from '@/src/lib/outlets/general/GoBack';
 
-import { Locale } from '@/locales';
+import { Locale } from '@/src/locales';
 
-import { client } from '../../../../../sanity/client';
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
-import { SITE_META_QUERY } from '../../../../../sanity/services/educational-center-service';
+import { client } from '@/sanity/client';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { SITE_META_QUERY } from '@/sanity/services/educational-center-service';
 
 import { SanityClient } from 'sanity';
 
-import { getContacts, getCourses, getSelectOptions } from '@/utils/data/educational-center';
-import { getHomeDetails } from '@/utils/data/art-house';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
-import { ImagePath, Site } from '@/types/general';
+import { getContacts, getCourses, getSelectOptions } from '@/src/utils/data/educational-center';
+import { getHomeDetails } from '@/src/utils/data/art-house';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
+import { ImagePath, Site } from '@/src/types/general';
 
 
 interface RootLayoutProps {

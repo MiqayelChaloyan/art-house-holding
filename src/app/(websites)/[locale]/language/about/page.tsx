@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import About from '@/components/screens/language/about';
-
-import { getHomeDetails } from '@/utils/data/language';
+import About from '@/src/components/screens/language/about';
+import { getHomeDetails } from '@/src/utils/data/language';
 
 
 interface Props {

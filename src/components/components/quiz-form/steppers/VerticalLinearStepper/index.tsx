@@ -12,10 +12,10 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as Action from '@/store/question_reducer';
+import * as Action from '@/src/store/question_reducer';
 
-import { Loader } from '@/lib/ui/loading';
-import { ArianAMU } from '@/constants/font';
+import { Loader } from '@/src/lib/ui/loading';
+import { ArianAMU } from '@/src/constants/font';
 
 import cn from 'classnames';
 

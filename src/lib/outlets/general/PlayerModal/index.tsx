@@ -3,7 +3,7 @@
 import React, { useState, useEffect, ReactNode, useRef } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/store/player_reducer';
+import { onPlay, setPath } from '@/src/store/player_reducer';
 
 import ReactPlayer from 'react-player';
 

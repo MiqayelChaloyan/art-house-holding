@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import Home from '@/components/screens/design/orders';
-
-import { getCourses, getSelectOptions } from '@/utils/data/design';
+import Home from '@/src/components/screens/design/orders';
+import { getCourses, getSelectOptions } from '@/src/utils/data/design';
 
 
 interface Props {

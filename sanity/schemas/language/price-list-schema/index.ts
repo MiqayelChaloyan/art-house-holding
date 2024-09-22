@@ -1,6 +1,6 @@
-import { EarthGlobeIcon } from '@sanity/icons'
-import { RuleType } from '../../../ruleType';
+import { EarthGlobeIcon } from '@sanity/icons';
 import { BookIcon } from '@sanity/icons';
+import { RuleType } from '@/sanity/ruleType';
 
 const priceListSchemaLanguage = {
     name: 'price-list-language',

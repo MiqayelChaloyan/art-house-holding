@@ -4,9 +4,9 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { Inter } from '@/constants/font';
+import { Inter } from '@/src/constants/font';
 
 import cn from 'classnames';
 

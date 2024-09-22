@@ -6,11 +6,11 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as Action from '@/store/question_reducer';
+import * as Action from '@/src/store/question_reducer';
 
-import ProgressLine from '@/lib/ui/progress-line';
-import { Loader } from '@/lib/ui/loading';
-import { ArianAMU, Calibri } from '@/constants/font';
+import ProgressLine from '@/src/lib/ui/progress-line';
+import { Loader } from '@/src/lib/ui/loading';
+import { ArianAMU, Calibri } from '@/src/constants/font';
 
 import cn from 'classnames';
 

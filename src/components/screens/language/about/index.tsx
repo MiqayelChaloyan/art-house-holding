@@ -7,18 +7,18 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { PortableText } from '@portabletext/react';
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
 import VideoPlayer from './player';
 
-import { Arial, Calibri } from '@/constants/font';
-import { Pages } from '@/constants/pages';
-import components from '@/utils/PortableTextComponents';
+import { Arial, Calibri } from '@/src/constants/font';
+import { Pages } from '@/src/constants/pages';
+import components from '@/src/helpers/PortableTextComponents';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { Video } from '@/types/language';
-import { ImagePath } from '@/types/general';
+import { Video } from '@/src/types/language';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

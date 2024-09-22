@@ -1,5 +1,5 @@
-import { ReactElement } from 'react'
-import { ReactComponentLike } from 'prop-types'
+import { ReactElement } from 'react';
+import { ReactComponentLike } from 'prop-types';
 
 type Meta = {
   parent: { [key: string]: any }

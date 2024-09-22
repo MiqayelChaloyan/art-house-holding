@@ -6,15 +6,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import Button from '@/lib/ui/Button';
-import { Arial, Inter } from '@/constants/font';
+import Button from '@/src/lib/ui/Button';
+import { Arial, Inter } from '@/src/constants/font';
 
-import Container from '@/components/components/container';
-import Fancybox from '@/components/components/fancybox';
-import { options } from '@/components/components/fancybox/options';
+import Container from '@/src/components/components/container';
+import Fancybox from '@/src/components/components/fancybox';
+import { options } from '@/src/components/components/fancybox/options';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
-import { ImagePath } from '@/types/general';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

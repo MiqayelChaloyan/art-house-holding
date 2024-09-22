@@ -2,11 +2,11 @@
 
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import { StoreProvider } from '@/store/StoreProvider';
+import { StoreProvider } from '@/src/store/StoreProvider';
 
-import { Inter } from '@/constants/font';
+import { Inter } from '@/src/constants/font';
 
-import '@/styles/globals.sass';
+import '@/src/styles/globals.sass';
 
 
 interface RootLayoutProps {

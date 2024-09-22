@@ -2,18 +2,18 @@
 
 import React from 'react';
 
-import Container from '@/components/components/container';
-import Player from '@/components/components/player';
+import Container from '@/src/components/components/container';
+import Player from '@/src/components/components/player';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/store/player_reducer';
+import { onPlay, setPath } from '@/src/store/player_reducer';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { Inter } from '@/constants/font';
+import { Inter } from '@/src/constants/font';
 
-import { ImagePath } from '@/types/general';
-import { ReduxType } from '@/types/language';
+import { ImagePath } from '@/src/types/general';
+import { ReduxType } from '@/src/types/language';
 
 import cn from 'classnames';
 

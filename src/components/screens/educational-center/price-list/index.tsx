@@ -5,13 +5,13 @@ import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { useDispatch } from 'react-redux';
-import { closeModal } from '@/store/modal_reducer';
+import { closeModal } from '@/src/store/modal_reducer';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
 import Accordion from './Accordion';
 
-import { Inter } from '@/constants/font';
+import { Inter } from '@/src/constants/font';
 
 import cn from 'classnames';
 

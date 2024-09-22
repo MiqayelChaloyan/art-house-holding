@@ -7,8 +7,8 @@ import { useTranslations } from 'next-intl';
 import OrderForm from './Form';
 import OrdersGallery from './OrdersGallery';
 
-import { Arial } from '@/constants/font';
-import { Titles } from '@/constants';
+import { Arial } from '@/src/constants/font';
+import { Titles } from '@/src/constants';
 
 import cn from 'classnames';
 

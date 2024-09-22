@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { closeModal } from '@/store/modal_reducer';
+import { closeModal } from '@/src/store/modal_reducer';
 
 import Main from './Main';
 import About from './About';

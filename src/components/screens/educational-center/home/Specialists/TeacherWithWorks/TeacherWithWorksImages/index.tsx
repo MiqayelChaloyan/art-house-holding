@@ -5,14 +5,14 @@ import Image from 'next/image';
 import { notFound, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
-import { ArianAMU } from '@/constants/font';
-import Button from '@/lib/ui/Button';
+import { ArianAMU } from '@/src/constants/font';
+import Button from '@/src/lib/ui/Button';
 
-import { client } from '../../../../../../../../sanity/client';
-import { urlForImage } from '../../../../../../../../sanity/imageUrlBuilder';
-import { COURSE_ID_QUERY } from '../../../../../../../../sanity/services/educational-center-service';
+import { client } from '@/sanity/client';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { COURSE_ID_QUERY } from '@/sanity/services/educational-center-service';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

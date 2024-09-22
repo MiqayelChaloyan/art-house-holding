@@ -6,11 +6,11 @@ import { useTranslations } from 'next-intl';
 
 import Image from 'next/image';
 
-import Search from '@/lib/icons/educational-center/Search';
-import Star from '@/lib/icons/educational-center/Star';
-import { Inter } from '@/constants/font';
+import Search from '@/src/lib/icons/educational-center/Search';
+import Star from '@/src/lib/icons/educational-center/Star';
+import { Inter } from '@/src/constants/font';
 
-import { Options } from '@/types/educational-center';
+import { Options } from '@/src/types/educational-center';
 
 import cn from 'classnames';
 

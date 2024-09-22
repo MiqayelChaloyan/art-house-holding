@@ -1,5 +1,5 @@
 import { Navigation, Pagination } from 'swiper/modules';
-import { SwiperType } from '@/types/art-house';
+import { SwiperType } from '@/src/types/art-house';
 
 import './styles.css';
 

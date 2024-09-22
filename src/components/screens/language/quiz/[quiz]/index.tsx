@@ -2,11 +2,11 @@
 
 import React, { useEffect } from 'react';
 
-import QuizForm from '@/components/components/quiz-form';
-import QuestionsViewer from '@/components/components/quiz-form/viewer';
+import QuizForm from '@/src/components/components/quiz-form';
+import QuestionsViewer from '@/src/components/components/quiz-form/viewer';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as Action from '@/store/question_reducer'
+import * as Action from '@/src/store/question_reducer'
 
 import styles from './styles.module.sass';
 

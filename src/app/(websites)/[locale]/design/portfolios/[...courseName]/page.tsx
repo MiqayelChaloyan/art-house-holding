@@ -3,14 +3,14 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import Home from '@/components/screens/design/portfolio';
+import Home from '@/src/components/screens/design/portfolio';
 
-import { Locale } from '@/locales';
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { Locale } from '@/src/locales';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { ImagePath } from '@/types/general';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
-import { getCourseBySlug } from '@/utils/data/design';
+import { ImagePath } from '@/src/types/general';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
+import { getCourseBySlug } from '@/src/utils/data/design';
 
 
 interface Props {

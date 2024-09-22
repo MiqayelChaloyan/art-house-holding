@@ -5,7 +5,7 @@ import WorkImage from './workImage';
 
 import { options } from '../fancybox/options';
 
-import { Arial } from '@/constants/font';
+import { Arial } from '@/src/constants/font';
 
 import cn from 'classnames';
 

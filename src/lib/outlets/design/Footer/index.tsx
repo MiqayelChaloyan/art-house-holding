@@ -11,13 +11,13 @@ import { GrLinkedinOption } from 'react-icons/gr';
 import { PiTelegramLogoLight, PiWhatsappLogo } from "react-icons/pi";
 import { AiOutlineYoutube } from "react-icons/ai";
 
-import Container from '@/components/components/container';
-import { Arial, ArianAMU } from '@/constants/font';
-import { ImagePaths } from '@/constants';
+import Container from '@/src/components/components/container';
+import { Arial, ArianAMU } from '@/src/constants/font';
+import { ImagePaths } from '@/src/constants';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import { socialNetwork } from '@/types/design';
+import { socialNetwork } from '@/src/types/design';
 
 import cn from 'classnames';
 

@@ -4,16 +4,16 @@ import Link from 'next/link';
 
 import { useLocale, useTranslations } from 'next-intl';
 
-import GoogleMaps from '@/components/components/map';
-import FormAppointment from '@/components/components/form-educational';
+import GoogleMaps from '@/src/components/components/map';
+import FormAppointment from '@/src/components/components/form-educational';
 
-import Logo from '@/lib/icons/educational-center/Logo';
-import Email from '@/lib/icons/educational-center/Email';
-import Phone from '@/lib/icons/educational-center/Phone';
-import { Pages } from '@/constants/pages';
-import { Arial } from '@/constants/font';
+import Logo from '@/src/lib/icons/educational-center/Logo';
+import Email from '@/src/lib/icons/educational-center/Email';
+import Phone from '@/src/lib/icons/educational-center/Phone';
+import { Pages } from '@/src/constants/pages';
+import { Arial } from '@/src/constants/font';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

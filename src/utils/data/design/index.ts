@@ -1,6 +1,6 @@
-import { ABOUT_US_DETAILS_QUERY, COURSE_ID_QUERY, COURSE_SLUG_QUERY, COURSES_QUERY, LESSONS_QUERY, PORTFOLIO_QUERY, PRICE_LIST_QUERY, SOCIAL_QUERY } from '../../../../sanity/services/design-service';
+import { ABOUT_US_DETAILS_QUERY, COURSE_ID_QUERY, COURSE_SLUG_QUERY, COURSES_QUERY, LESSONS_QUERY, PORTFOLIO_QUERY, PRICE_LIST_QUERY, SOCIAL_QUERY } from '@/sanity/services/design-service';
 
-import { sanityFetch } from '@/api/sanity-fetch';
+import { sanityFetch } from '@/src/api/sanity-fetch';
 
 
 export async function getHomeDetails(locale: string): Promise<HOME_DETALIS_DESIGN_QUERYResult> {

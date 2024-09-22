@@ -4,8 +4,8 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import Container from '@/components/components/container';
-import { ArianAMU } from '@/constants/font';
+import Container from '@/src/components/components/container';
+import { ArianAMU } from '@/src/constants/font';
 
 import cn from 'classnames';
 

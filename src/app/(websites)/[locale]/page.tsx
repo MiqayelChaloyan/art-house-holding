@@ -3,21 +3,21 @@
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
-import Home from '@/components/screens/art-house/home';
+import Home from '@/src/components/screens/art-house/home';
 
-import { Locale } from '@/locales';
+import { Locale } from '@/src/locales';
 
-import { ImagePath, Site } from '@/types/general';
+import { ImagePath, Site } from '@/src/types/general';
 
 import { SanityClient } from 'sanity';
 
-import { client } from '../../../../sanity/client';
-import { SITE_META_QUERY } from '../../../../sanity/services/art-house-service';
-import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+import { client } from '@/sanity/client';
+import { SITE_META_QUERY } from '@/sanity/services/art-house-service';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { getPartners } from '@/utils/data';
-import { getHomeDetails } from '@/utils/data/art-house';
-import { generateMetadataDynamic } from '@/utils/default-metadata';
+import { getPartners } from '@/src/utils/data';
+import { getHomeDetails } from '@/src/utils/data/art-house';
+import { generateMetadataDynamic } from '@/src/utils/default-metadata';
 
 
 interface RootProps {

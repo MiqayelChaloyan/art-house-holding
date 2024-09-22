@@ -7,7 +7,7 @@ import CourseProcess from './CourseProcess';
 import StudentWork from './StudentWork';
 
 import { useDispatch } from 'react-redux';
-import { closeModal } from '@/store/modal_reducer';
+import { closeModal } from '@/src/store/modal_reducer';
 
 import PriceList from './PriceList';
 import Main from './Main';

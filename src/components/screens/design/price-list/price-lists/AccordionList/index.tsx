@@ -5,7 +5,7 @@ import { RiArrowDownSLine } from 'react-icons/ri';
 
 import { useTranslations } from 'next-intl';
 
-import { Arial } from '@/constants/font';
+import { Arial } from '@/src/constants/font';
 
 import cn from 'classnames';
 

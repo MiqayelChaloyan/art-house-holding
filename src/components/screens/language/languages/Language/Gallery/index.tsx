@@ -4,16 +4,16 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import settings from './settings';
 
-import { ImagePath } from '@/types/general';
-import { ImageType as Type } from '@/types/language';
+import { ImagePath } from '@/src/types/general';
+import { ImageType as Type } from '@/src/types/language';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import cn from 'classnames';
 

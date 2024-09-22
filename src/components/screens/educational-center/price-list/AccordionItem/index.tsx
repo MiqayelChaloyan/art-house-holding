@@ -4,16 +4,16 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import AccordionArrow from '@/lib/icons/educational-center/AccordionArrow';
-import { Arial } from '@/constants/font';
+import AccordionArrow from '@/src/lib/icons/educational-center/AccordionArrow';
+import { Arial } from '@/src/constants/font';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

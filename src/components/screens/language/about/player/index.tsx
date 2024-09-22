@@ -5,14 +5,14 @@ import React from 'react';
 import Image from 'next/image';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/store/player_reducer';
+import { onPlay, setPath } from '@/src/store/player_reducer';
 
 import { MdPlayCircle } from 'react-icons/md';
 
-import { ReduxType } from '@/types/language';
-import { ImagePath } from '@/types/general';
+import { ReduxType } from '@/src/types/language';
+import { ImagePath } from '@/src/types/general';
 
-import styles from './styles.module.sass'
+import styles from './styles.module.sass';
 
 
 interface Props {

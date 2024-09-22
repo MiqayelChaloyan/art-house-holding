@@ -6,14 +6,14 @@ import { useTranslations } from 'next-intl';
 
 import { PortableText } from '@portabletext/react';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import components from '@/utils/PortableTextComponents';
-import Vector from '@/lib/icons/design/Vector';
-import { Arial } from '@/constants/font';
-import { Titles } from '@/constants';
+import components from '@/src/helpers/PortableTextComponents';
+import Vector from '@/src/lib/icons/design/Vector';
+import { Arial } from '@/src/constants/font';
+import { Titles } from '@/src/constants';
 
-import { PROMOTIONS as Props } from '@/types/design';
+import { PROMOTIONS as Props } from '@/src/types/design';
 
 import cn from 'classnames';
 

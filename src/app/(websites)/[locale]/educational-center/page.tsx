@@ -2,8 +2,8 @@
 
 import { notFound } from 'next/navigation';
 
-import Home from '@/components/screens/educational-center/home';
-import { getHomeDetails } from '@/utils/data/educational-center';
+import Home from '@/src/components/screens/educational-center/home';
+import { getHomeDetails } from '@/src/utils/data/educational-center';
 
 import 'swiper/css';
 import 'swiper/css/effect-flip';

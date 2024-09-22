@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import Partners from '@/components/screens/language/partners';
-
-import { getPartners } from '@/utils/data';
+import Partners from '@/src/components/screens/language/partners';
+import { getPartners } from '@/src/utils/data';
 
 
 interface Props {

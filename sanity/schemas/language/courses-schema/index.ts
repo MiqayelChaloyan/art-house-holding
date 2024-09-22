@@ -1,6 +1,5 @@
 import { EarthGlobeIcon, CalendarIcon, ClockIcon } from '@sanity/icons';
-
-import { RuleType } from '../../../ruleType';
+import { RuleType } from '@/sanity/ruleType';
 
 const coursesSchemaLanguage = {
     name: 'languages-select-option',

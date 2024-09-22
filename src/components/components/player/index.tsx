@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation';
 import { PiPlayCircleBold } from 'react-icons/pi';
 import { MdPlayCircle } from 'react-icons/md';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 

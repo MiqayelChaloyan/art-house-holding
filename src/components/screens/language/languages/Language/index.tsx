@@ -6,22 +6,22 @@ import About from './About';
 import Teachers from './Teachers';
 import Gallery from './Gallery';
 
-import Container from '@/components/components/container';
-import Player from '@/components/components/player';
+import Container from '@/src/components/components/container';
+import Player from '@/src/components/components/player';
 
-import { ReduxType } from '@/types/language';
-import { ImagePath } from '@/types/general';
+import { ReduxType } from '@/src/types/language';
+import { ImagePath } from '@/src/types/general';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onPlay, setPath } from '@/store/player_reducer';
+import { onPlay, setPath } from '@/src/store/player_reducer';
 
-import { urlForImage } from '../../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 
 
 interface Props {
-    data: LANGUAGE | any;
+    data: LANGUAGE;
 };
 
 const Language = ({ data }: Readonly<Props>) => {

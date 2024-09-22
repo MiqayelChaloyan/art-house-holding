@@ -6,23 +6,23 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
-import Container from '@/components/components/container';
-import Snackbar from '@/components/components/snackbar';
+import Container from '@/src/components/components/container';
+import Snackbar from '@/src/components/components/snackbar';
 
-import Gmail from '@/lib/icons/language/Gmail';
-import Instagram from '@/lib/icons/language/Instagram';
-import Facebook from '@/lib/icons/language/Facebook';
+import Gmail from '@/src/lib/icons/language/Gmail';
+import Instagram from '@/src/lib/icons/language/Instagram';
+import Facebook from '@/src/lib/icons/language/Facebook';
 
-import Select from '@/lib/ui/select';
-import InputField from '@/lib/ui/InputField';
-import InputNumber from '@/lib/ui/InputNumber';
+import Select from '@/src/lib/ui/select';
+import InputField from '@/src/lib/ui/InputField';
+import InputNumber from '@/src/lib/ui/InputNumber';
 
-import { Arial, Vrdznagir } from '@/constants/font';
+import { Arial, Vrdznagir } from '@/src/constants/font';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import { sendContactUsLanguage } from '@/api';
-import { FormSmall, socialNetwork } from '@/types/language';
+import { sendContactUsLanguage } from '@/src/api';
+import { FormSmall, socialNetwork } from '@/src/types/language';
 
 import cn from 'classnames';
 

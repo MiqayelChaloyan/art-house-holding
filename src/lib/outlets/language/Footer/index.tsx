@@ -5,26 +5,26 @@ import React from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import Logo from '@/lib/icons/language/Logo';
-import Gmail from '@/lib/icons/language/Gmail';
-import Instagram from '@/lib/icons/language/Instagram';
-import Facebook from '@/lib/icons/language/Facebook';
-import Linkedin from '@/lib/icons/language/Linkedin';
-import X from '@/lib/icons/language/X';
-import Tiktok from '@/lib/icons/language/Tiktok';
-import Telegram from '@/lib/icons/language/Telegram';
-import YouTube from '@/lib/icons/language/YouTube';
-import Pinterest from '@/lib/icons/language/Pinterest';
-import WhatsApp from '@/lib/icons/language/WhatsApp';
-import Viber from '@/lib/icons/language/Viber';
+import Logo from '@/src/lib/icons/language/Logo';
+import Gmail from '@/src/lib/icons/language/Gmail';
+import Instagram from '@/src/lib/icons/language/Instagram';
+import Facebook from '@/src/lib/icons/language/Facebook';
+import Linkedin from '@/src/lib/icons/language/Linkedin';
+import X from '@/src/lib/icons/language/X';
+import Tiktok from '@/src/lib/icons/language/Tiktok';
+import Telegram from '@/src/lib/icons/language/Telegram';
+import YouTube from '@/src/lib/icons/language/YouTube';
+import Pinterest from '@/src/lib/icons/language/Pinterest';
+import WhatsApp from '@/src/lib/icons/language/WhatsApp';
+import Viber from '@/src/lib/icons/language/Viber';
 
-import { Arial } from '@/constants/font';
+import { Arial } from '@/src/constants/font';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import { socialNetwork } from '@/types/general';
+import { socialNetwork } from '@/src/types/general';
 
-import colors from '@/themes';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 

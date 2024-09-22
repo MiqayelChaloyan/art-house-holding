@@ -6,11 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 
-import { Arial } from '@/constants/font';
+import { Arial } from '@/src/constants/font';
 
-import { urlForImage } from '../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import { ImagePath } from '@/types/general';
+import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
 
@@ -19,8 +19,8 @@ import styles from './styles.module.sass';
 
 interface Props {
     project: PORTFOLIO;
-    course_name: string | any;
-    slug: string | any;
+    course_name?: string;
+    slug: string;
     type?: string;
 };
 

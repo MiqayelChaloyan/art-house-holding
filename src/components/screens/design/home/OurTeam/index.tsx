@@ -13,9 +13,9 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import Pagination from './Pagination';
 import Card from './Card';
 
-import RotatingLines from '@/lib/ui/rotatingLines';
-import { Arial } from '@/constants/font';
-import { Titles } from '@/constants';
+import RotatingLines from '@/src/lib/ui/rotatingLines';
+import { Arial } from '@/src/constants/font';
+import { Titles } from '@/src/constants';
 
 import cn from 'classnames';
 

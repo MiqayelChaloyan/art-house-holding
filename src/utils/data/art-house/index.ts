@@ -1,6 +1,6 @@
-import { ABOUT_US_DETAILS_QUERY, HOME_DETALIS_QUERY, SOCIAL_QUERY } from '../../../../sanity/services/art-house-service';
+import { ABOUT_US_DETAILS_QUERY, HOME_DETALIS_QUERY, SOCIAL_QUERY } from '@/sanity/services/art-house-service';
 
-import { sanityFetch } from '@/api/sanity-fetch';
+import { sanityFetch } from '@/src/api/sanity-fetch';
 
 
 export async function getHomeDetails(locale: string): Promise<HOME_DETALIS_QUERYResult> {

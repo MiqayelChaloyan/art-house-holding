@@ -16,12 +16,7 @@ interface Props {
     locale: string;
 };
 
-const Home = ({
-    data,
-    discounts,
-    partners,
-    locale
-}: Readonly<Props>) => (
+const Home = ({ data, discounts, partners, locale }: Readonly<Props>) => (
     <>
         <Main />
         <About data={data} locale={locale} />

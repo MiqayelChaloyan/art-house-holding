@@ -9,14 +9,14 @@ import { BsInstagram } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import { FaLinkedinIn } from 'react-icons/fa6';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/src/hooks/useWindowSize';
 
-import Logo from '@/lib/icons/art-house/LogoFooter';
+import Logo from '@/src/lib/icons/art-house/LogoFooter';
 
-import { Pages } from '@/constants/pages';
-import { ArianAMU } from '@/constants/font';
+import { Pages } from '@/src/constants/pages';
+import { ArianAMU } from '@/src/constants/font';
 
-import { socialNetwork } from '@/types/coming-soon';
+import { socialNetwork } from '@/src/types/coming-soon';
 
 import cn from 'classnames';
 

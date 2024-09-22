@@ -5,12 +5,12 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import Container from '@/components/components/container';
+import Container from '@/src/components/components/container';
 
-import { Pages } from '@/constants/pages';
-import { ImagePath } from '@/types/general';
+import { Pages } from '@/src/constants/pages';
+import { ImagePath } from '@/src/types/general';
 
-import { urlForImage } from '../../../../../sanity/imageUrlBuilder';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import styles from './styles.module.sass';
 

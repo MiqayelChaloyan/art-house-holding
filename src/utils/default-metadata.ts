@@ -1,5 +1,5 @@
-import { ImagePath } from '@/types/general';
-import DeafultIcon from '@/app/favicon.ico';
+import { ImagePath } from '@/src/types/general';
+import DeafultIcon from '@/src/app/favicon.ico';
 
 export const generateMetadataDynamic = (
     ogDescription?: string,

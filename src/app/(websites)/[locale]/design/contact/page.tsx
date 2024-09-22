@@ -1,10 +1,8 @@
 'use server'
 
 import { notFound } from 'next/navigation';
-
-import Home from '@/components/screens/design/contact';
-
-import { getSelectOptions } from '@/utils/data/design';
+import Home from '@/src/components/screens/design/contact';
+import { getSelectOptions } from '@/src/utils/data/design';
 
 
 interface Props {

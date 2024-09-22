@@ -7,10 +7,10 @@ import { useLocale, useTranslations } from 'next-intl';
 import { notFound, useParams } from 'next/navigation';
 
 import { useDispatch } from 'react-redux';
-import { closeModal } from '@/store/modal_reducer';
+import { closeModal } from '@/src/store/modal_reducer';
 
-import { Pages } from '@/constants/pages';
-import { Arial } from '@/constants/font';
+import { Pages } from '@/src/constants/pages';
+import { Arial } from '@/src/constants/font';
 
 import cn from 'classnames';
 

@@ -1,9 +1,7 @@
 import { ClipboardIcon } from '@sanity/icons';
-
-import ArrayMaxItems from '@/utils/ArrayMaxItems';
-
-import { RuleType } from '../../../ruleType';
-import { ImagePath } from '@/types/general';
+import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
+import { RuleType } from '@/sanity/ruleType';
+import { ImagePath } from '@/src/types/general';
 
 const quizSchemaLanguage = {
     name: 'languages-quiz',

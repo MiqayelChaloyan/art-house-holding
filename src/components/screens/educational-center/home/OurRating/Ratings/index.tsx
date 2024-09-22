@@ -4,8 +4,8 @@ import React from 'react';
 
 import RatingCard from '../RatingCard';
 
-import { urlForImage } from '../../../../../../../sanity/imageUrlBuilder';
-import { ImagePath } from '@/types/general';
+import { urlForImage } from '@/sanity/imageUrlBuilder';
+import { ImagePath } from '@/src/types/general';
 
 const sizes = [
     {

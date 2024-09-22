@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import Container from '@/components/components/container';
-import { Inter, Arial } from '@/constants/font';
+import Container from '@/src/components/components/container';
+import { Inter } from '@/src/constants/font';
 
 import cn from 'classnames';
 
