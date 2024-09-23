@@ -13,7 +13,7 @@ import styles from './styles.module.sass';
 
 
 const Main = () => {
-    const t = useTranslations('texts'); 
+    const t = useTranslations('texts');
 
     return (
         <section id='main' className={styles.section}>

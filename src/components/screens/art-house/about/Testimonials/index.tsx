@@ -11,6 +11,7 @@ import Testimonial from './Testimonial';
 import { options } from './options';
 
 import { ArianAMU } from '@/src/constants/font';
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -26,9 +27,9 @@ const Testimonials = ({ our_rating }: Readonly<Props>) => {
 
   return (
     <section className={styles.testimonials}>
-      <h1 className={cn(styles.title, ArianAMU.className)}>
+      <h2 className={cn(styles.title, ArianAMU.className)}>
         {t('rating')}
-      </h1>
+      </h2>
       <div className={styles.testimonial}>
         <Swiper {...options}>
           {our_rating?.map((review: OUR_RATING) => (
@@ -38,10 +39,10 @@ const Testimonials = ({ our_rating }: Readonly<Props>) => {
           ))}
         </Swiper>
         <div className={cn('swiper-button-next', styles['nav-btn'])}>
-          <MdKeyboardArrowRight color='white' size={20} />
+          <MdKeyboardArrowRight color={colors.white} size={20} />
         </div>
         <div className={cn('swiper-button-prev', styles['nav-btn'])}>
-          <MdKeyboardArrowLeft color='white' size={20} />
+          <MdKeyboardArrowLeft color={colors.white} size={20} />
         </div>
         <div className='swiper-pagination' />
       </div>
