@@ -14,7 +14,7 @@ export const generateMetadataDynamic = (
 
     return {
         metadataBase: url
-            ? new URL(url)
+            ? url
             : new URL(process.env.NEXT_PUBLIC_DOMAIN || `http://localhost:${process.env.PORT || 3000}`),
         authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
         icons,
