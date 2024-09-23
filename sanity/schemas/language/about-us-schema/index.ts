@@ -8,9 +8,13 @@ const aboutUsSchemaLanguage = {
     id: 'about-us-language',
     groups: [
         {
+            name: 'meta',
+            title: 'Site Info',
+            default: true
+        },
+        {
             name: 'og',
             title: 'Social Share Info',
-            default: true
         },
         {
             name: 'manifest',
@@ -31,6 +35,21 @@ const aboutUsSchemaLanguage = {
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
             validation: (Rule: RuleType) => Rule.required(),
             group: ['og']
+        },
+        {
+            type: 'url',
+            title: 'URL',
+            name: 'url',
+            description: 'Most likely either the url of the page or its canonical url',
+            validation: (Rule: RuleType) => Rule.required(),
+            group: ['meta'],
+        },
+        {
+            title: 'Meta keywords',
+            name: 'keywords',
+            type: 'array',
+            of: [{ type: 'string' }],
+            group: ['meta'],
         },
         {
             type: 'text',

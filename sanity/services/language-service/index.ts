@@ -22,7 +22,9 @@ export const SITE_META_QUERY = `
 *[_type == "about-us-language"] {
     ogDescription,
     ogTitle,
-    ogImage
+    ogImage,
+    url,
+    keywords
 }`;
 
 export const COURSES_QUERY =

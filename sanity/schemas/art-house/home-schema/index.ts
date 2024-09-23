@@ -11,9 +11,13 @@ const homeSchemaArtHouse = {
     id: 'art-house',
     groups: [
         {
+            name: 'meta',
+            title: 'Site Info',
+            default: true
+        },
+        {
             name: 'og',
             title: 'Social Share Info',
-            default: true
         },
         {
             name: 'manifest',
@@ -36,10 +40,25 @@ const homeSchemaArtHouse = {
             group: ['og']
         },
         {
+            type: 'url',
+            title: 'URL',
+            name: 'url',
+            description: 'Most likely either the url of the page or its canonical url',
+            validation: (Rule: RuleType) => Rule.required(),
+            group: ['meta'],
+        },
+        {
+            title: 'Meta keywords',
+            name: 'keywords',
+            type: 'array',
+            of: [{ type: 'string' }],
+            group: ['meta'],
+        },
+        {
             type: 'text',
             name: 'ogDescription',
             title: 'Social Share Description',
-            group: ['og']
+            group: ['og'],
         },
         {
             type: 'image',

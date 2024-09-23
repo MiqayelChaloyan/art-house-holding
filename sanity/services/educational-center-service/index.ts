@@ -151,5 +151,7 @@ export const SITE_META_QUERY = `
 *[_type == "about-us"] {
     ogDescription,
     ogTitle,
-    ogImage
+    ogImage,
+    url,
+    keywords
 }`;

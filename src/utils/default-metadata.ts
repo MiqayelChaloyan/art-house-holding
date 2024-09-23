@@ -1,22 +1,25 @@
 import { ImagePath } from '@/src/types/general';
-import DeafultIcon from '@/src/app/favicon.ico';
+import DefaultIcon from '@/src/app/favicon.ico';
 
 export const generateMetadataDynamic = (
     ogDescription?: string,
     ogTitle?: string,
     path?: ImagePath,
     icon?: ImagePath | null,
-    locale?: string
+    url?: string,
+    keywords?: string[],
+    locale?: string,
 ) => {
-    const icons = icon ? { icon: icon?.src } : { icon: DeafultIcon.src };
+    const icons = icon ? { icon: icon?.src } : { icon: DefaultIcon.src };
 
     return {
-        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
-            ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
-            : new URL(`http://localhost:${process.env.PORT || 3000}`),
+        metadataBase: url
+            ? new URL(url)
+            : new URL(process.env.NEXT_PUBLIC_DOMAIN || `http://localhost:${process.env.PORT || 3000}`),
         authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
         icons,
         title: ogTitle,
+        keywords: keywords ? keywords.join(', ') : undefined,
         description: ogDescription,
         openGraph: {
             title: ogTitle,

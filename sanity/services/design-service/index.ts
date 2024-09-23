@@ -141,7 +141,9 @@ export const SITE_META_QUERY = `
 *[_type == "about-us-design"] {
     ogDescription,
     ogTitle,
-    ogImage
+    ogImage,
+    url,
+    keywords
 }`;
 
 export const SOCIAL_QUERY = `

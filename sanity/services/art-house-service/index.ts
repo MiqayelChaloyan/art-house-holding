@@ -20,7 +20,9 @@ export const SITE_META_QUERY = `
 *[_type == "art-house-home"] {
     ogDescription,
     ogTitle,
-    ogImage
+    ogImage,
+    url,
+    keywords
 }`;
 
 export const SOCIAL_QUERY = `

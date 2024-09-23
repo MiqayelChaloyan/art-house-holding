@@ -12,9 +12,13 @@ export const aboutUsSchemaEducationalCenter = {
     id: 'about-us-educational-center',
     groups: [
         {
+            name: 'meta',
+            title: 'Site Info',
+            default: true
+        },
+        {
             name: 'og',
             title: 'Social Share Info',
-            default: true
         },
         {
             name: 'manifest',
@@ -37,10 +41,25 @@ export const aboutUsSchemaEducationalCenter = {
             group: ['og']
         },
         {
+            type: 'url',
+            title: 'URL',
+            name: 'url',
+            description: 'Most likely either the url of the page or its canonical url',
+            validation: (Rule: RuleType) => Rule.required(),
+            group: ['meta'],
+        },
+        {
+            title: 'Meta keywords',
+            name: 'keywords',
+            type: 'array',
+            of: [{ type: 'string' }],
+            group: ['meta'],
+        },
+        {
             type: 'text',
             name: 'ogDescription',
             title: 'Social Share Description',
-            group: ['og']
+            group: ['og'],
         },
         {
             type: 'image',

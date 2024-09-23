@@ -39,15 +39,17 @@ export type ImagePath = {
 export type ContactUsResponse = { status: number } | { error: string } | any;
 
 export interface Site {
-    ogTitle: string,
+    ogTitle: string;
     ogImage: {
-        _type: string,
+        _type: string;
         asset: {
-            _ref: string,
-            _type: string
+            _ref: string;
+            _type: string;
         }
     },
-    ogDescription: string
+    ogDescription: string;
+    url: string;
+    keywords: string[];
 };
 
 export interface socialNetwork {
