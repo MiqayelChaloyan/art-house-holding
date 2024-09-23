@@ -47,7 +47,7 @@ const Content = ({ content, isReadMore, minimumHeight }: ContentCourseType) => {
 };
 
 const About = ({
-    course: { about_us_content },
+    course: { about_us_content, about_us_title },
     socialData,
     lessons,
     lessonsArmenian
@@ -57,11 +57,14 @@ const About = ({
     const minimumHeight = 500;
 
     const toggleReadMore = () => setIsReadMore(!isReadMore);
-
+    
     return (
         <section id='about-us' className={styles.container}>
             <div className={styles.triangle} />
             <Container className='container'>
+            <h1 className={cn(styles.title, Inter.className)}>
+                    {about_us_title}
+                </h1>
                 <div className={styles.about_us}>
                     <div className={styles.about_box}>
                         {getTotalTextLength(about_us_content) > minimumHeight ?

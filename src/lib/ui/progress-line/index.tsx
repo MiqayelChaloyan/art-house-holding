@@ -29,7 +29,6 @@ const ProgressLine = ({
         requestAnimationFrame(() => {
             setWidths(
                 visualParts.map((item: PERCENTAGE) => {
-                    console.log(item)
                     return item.percentage;
                 })
             );

@@ -134,6 +134,7 @@ interface COURSES_QUERYResult {
     student_works: STUDENT_WORK[];
     slug:  { current: string } | string | string[] ;
     course_main: COURSE_MAIN[];
+    about_us_title: string;
     about_us_content: TEXT;
     course_process: VIDEO;
     price_list: PRICE_LIST[];

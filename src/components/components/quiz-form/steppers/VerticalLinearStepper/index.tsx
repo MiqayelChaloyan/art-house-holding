@@ -22,6 +22,30 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
+const calculateLevel = (score: number, totalQuestions: number) => {
+  const answerResult = Math.floor((score * 100) / totalQuestions);
+
+  let color = '';
+  let status = '';
+
+  if (answerResult <= 25) {
+      color = '#DF362D';
+      status = 'Novice';
+  } else if (answerResult > 25 && answerResult <= 50) {
+      color = '#F6A21E';
+      status = 'Intermediate';
+  } else if (answerResult > 50 && answerResult <= 75) {
+      color = '#006ED2';
+      status = 'Advanced';
+  } else if (answerResult > 75) {
+      color = '#5CD85A';
+      status = 'Expert';
+  }
+
+  return { answerResult, color, status };
+};
+
+
 const Progress = ({ strokeWidth, percentage, color }: any) => {
   const radius = (50 - strokeWidth / 2);
   const pathDescription = `
@@ -62,7 +86,6 @@ const Progress = ({ strokeWidth, percentage, color }: any) => {
         fillOpacity={0}
         style={progressStyle as any}
       />
-
       <text
         className="CircularProgressbar-text"
         x={50}
@@ -74,7 +97,7 @@ const Progress = ({ strokeWidth, percentage, color }: any) => {
           textAnchor: 'middle',
         }}
       >
-        {`${percentage}%`}
+        {percentage}%
       </text>
     </svg>
   );
@@ -82,11 +105,11 @@ const Progress = ({ strokeWidth, percentage, color }: any) => {
 
 
 const VerticalLinearStepper = () => {
-  const questions = useSelector((state: any) => state.questions?.quiz);
-  const question = useSelector((state: any) => state.questions?.quiz[state.questions.trace]);
-  const trace = useSelector((state: any) => state.questions?.trace);
-  const score = useSelector((state: any) => state.questions?.score);
-  const isLoading = useSelector((state: any) => state.questions?.isLoading);
+  const questions = useSelector((state: { questions: Action.Questions }) => state.questions?.quiz);
+  const question = useSelector((state: { questions: Action.Questions }) => state.questions?.quiz[state.questions.trace]);
+  const trace = useSelector((state: { questions: Action.Questions }) => state.questions?.trace);
+  const score = useSelector((state: { questions: Action.Questions }) => state.questions?.score);
+  const isLoading = useSelector((state: { questions: Action.Questions }) => state.questions?.isLoading);
 
   const [activeStep, setActiveStep] = useState<number>(0);
   const [isViewer, setIsViewer] = useState<boolean>(false);
@@ -114,7 +137,6 @@ const VerticalLinearStepper = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-
   const onNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
@@ -132,7 +154,7 @@ const VerticalLinearStepper = () => {
   };
 
   const onSelect = (i: number) => {
-    setIsChecked(prevState => prevState.map((val, index) => index === i));
+    setIsChecked(prevState => prevState.map((_, index) => index === i));
     if (question.answer === question.options[i]) {
       dispatch(Action.addScore());
       dispatch(Action.addedAnswer({
@@ -154,26 +176,7 @@ const VerticalLinearStepper = () => {
     dispatch(Action.viewAnswer());
   };
 
-  const answerResult = (score * 100) / questions.length;
-
-  const color =
-    answerResult <= 15
-      ? '#DF362D'
-      : answerResult > 15 && answerResult < 45
-        ? '#F6A21E'
-        : answerResult > 45 && answerResult <= 99
-          ? '#006ED2'
-          : '#5CD85A';
-
-  const status =
-    answerResult <= 15
-      ? 'Novice'
-      : answerResult > 15 && answerResult < 45
-        ? 'Intermediate'
-        : answerResult > 45 && answerResult <= 99
-          ? 'Advanced'
-          : 'Expert';
-
+  const { answerResult, color, status } = calculateLevel(score, questions.length);
 
   if (isLoading) return (
     <div className={styles.loader}>
@@ -210,15 +213,15 @@ const VerticalLinearStepper = () => {
   return (
     <Box sx={{ maxWidth: 400 }} className={styles['vertical-linear-stepper']}>
       <Stepper activeStep={activeStep} orientation="vertical">
-        {questions.map((step: any, index: number) => (
+        {questions.map((step: Action.QUIZ, index: number) => (
           <Step key={step.question}>
             <StepLabel>
               {step.question}
             </StepLabel>
             <StepContent>
               <Box>
-                <ul key={questions?.id} className={styles.answers}>
-                  {question?.options.map((q: any, i: number) => (
+                <ul className={styles.answers}>
+                  {question?.options.map((q: string, i: number) => (
                     <li key={i}>
                       <input
                         type='radio'

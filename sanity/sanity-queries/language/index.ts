@@ -63,7 +63,6 @@ interface LANGUAGE {
     text: TEXT[];
 };
 
-
 interface HOME_DETALIS_LANGUAGE_QUERYResult {
     _id: string;
     about_us: {
@@ -206,13 +205,4 @@ interface CONTACT_US_LANGUAGE_QUERYResult {
     address: string;
     phone_number: string;
     social_links: SOCIAL_LINK[];
-};
-
-interface RootProps {
-    courses: any;
-    branches: any;
-    social: any;
-    lessons: any;
-    lessonsArmenian: any;
-    isError: any;
 };

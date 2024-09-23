@@ -13,6 +13,8 @@ import Container from '@/src/components/components/container';
 import { ArianAMU } from '@/src/constants/font';
 import { Pages } from '@/src/constants/pages';
 
+import colors from '@/src/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -31,12 +33,12 @@ const QuestionsViewer = () => {
                 item.wrongAnswer &&
                 <div className={styles.wrong}>
                     <p className={cn(styles.text, ArianAMU.className)}>{item.wrongAnswer}</p>
-                    <IoClose fill='#fff' />
+                    <IoClose fill={colors.white} />
                 </div>
             }
             <div className={styles.correct} style={{ backgroundColor: item.wrongAnswer ? '#006ED2' : '#65a30d' }}>
                 <p className={cn(styles.text, ArianAMU.className)}>{item.correctAnswer}</p>
-                <FaCheck fill='#fff' />
+                <FaCheck fill={colors.white} />
             </div>
 
         </div>

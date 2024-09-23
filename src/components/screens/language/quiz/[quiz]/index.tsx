@@ -16,7 +16,7 @@ interface Props {
 };
 
 const QuizPage = ({ data }: Readonly<Props>) => {
-    const isViewAnswer = useSelector((state: any) => state.questions.isViewAnswer);
+    const isViewAnswer = useSelector((state: {questions: Action.Questions}) => state.questions.isViewAnswer);
 
     const dispatch = useDispatch();
 

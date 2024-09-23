@@ -104,6 +104,28 @@ export const coursesSchemaEducationalCenter = {
             ],
         },
         {
+            title: 'About Courses Title',
+            name: 'about_us_title',
+            type: 'object',
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string'
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string'
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string'
+                }
+            ]
+        },
+        {
             title: 'About Courses Content',
             name: 'about_us_content',
             type: 'object',

@@ -54,6 +54,7 @@ export const COURSES_QUERY =
     student_works,
     svg,
     "slug": slug.current,
+    "about_us_title": about_us_title[$language],
     "about_us_content": about_us_content[$language],
     "course_name": course_name[$language],
     "course_main": course_main[] {
@@ -80,6 +81,7 @@ export const COURSE_SLUG_QUERY =
     student_works,
     svg,
     "slug": slug.current,
+    "about_us_title": about_us_title[$language],
     "about_us_content": about_us_content[$language],
     "course_name": course_name[$language],
     "course_main": course_main[] {
@@ -106,6 +108,7 @@ export const COURSE_ID_QUERY =
     student_works,
     svg,
     "slug": slug.current,
+    "about_us_title": about_us_title[$language],
     "about_us_content": about_us_content[$language],
     "course_name": course_name[$language],
     "course_main": course_main[] {

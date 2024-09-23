@@ -72,16 +72,18 @@ const TeacherWithWorksImages = ({ specialist }: Readonly<Props>) => {
             </div>
             <div className={styles.column}>
                 <div className={styles.header}>
-                    <div className={styles.point} />
+                   <div className={styles.user}>
+                   <div className={styles.point} />
                     <h2 className={cn(styles.teacher, ArianAMU.className)}>
                         {specialist?.title}
                     </h2>
+                   </div>
+                    <Button
+                        className={cn(styles.button, ArianAMU.className)}
+                        text={specialist?.course_name}
+                        onClick={getResources}
+                    />
                 </div>
-                <Button
-                    className={cn(styles.button, ArianAMU.className)}
-                    text={specialist?.course_name}
-                    onClick={getResources}
-                />
                 <div className={styles.gallery}>
                     {imageGallery}
                 </div>

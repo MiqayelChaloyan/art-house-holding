@@ -36,8 +36,8 @@ const Course = ({ course, position }: Readonly<CourseProps>) => {
     const titleClass = name.length >= 30 ? 'title-large' : 'title';
     const courseNameStyles = course_name.length >= 30 ? 'design-title-large' : 'design-title';
 
-    let aboutCourse = about_course.slice(0, 150) + '..'
-    let aboutCourseStyles = aboutCourse.length > 65 ? 'content-large' : 'content';
+    let aboutCourse = about_course.slice(0, 184);
+    let aboutCourseStyles = aboutCourse.length > 184 ? 'content-large' : 'content';
 
     const boxClass = position === 'left' ? 'box-left' : 'box-right';
     const pointerClass = position === 'left' ? 'pointer-left' : 'pointer-right';

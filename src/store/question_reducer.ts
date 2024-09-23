@@ -1,14 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface Questions {
-    quiz: any
-    trace: number
-    score: number
-    answer: any
-    isLoading: boolean
-    isViewAnswer: boolean
+export interface QUIZ {
+    question: string;
+    slug: string;
+    options: string[];
+    answer: string;
+};
 
-}
+export interface Questions {
+    quiz: QUIZ[];
+    trace: number;
+    score: number;
+    answer: string[];
+    isLoading: boolean;
+    isViewAnswer: boolean;
+};
 
 const initialState: Questions = {
     quiz: [],

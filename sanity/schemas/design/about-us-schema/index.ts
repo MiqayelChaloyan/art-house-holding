@@ -165,7 +165,7 @@ export const aboutUsSchemaDesign = {
                             title: 'About Course',
                             name: 'about_course',
                             type: 'object',
-                            description: 'About the course (It is preferable that the length does not exceed 65).',
+                            description: 'About the course (It is preferable that the length does not exceed 165).',
                             validation: (Rule: RuleType) => Rule.required(),
                             fields: [
                                 {
