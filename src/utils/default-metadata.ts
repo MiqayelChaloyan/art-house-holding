@@ -6,7 +6,7 @@ export const generateMetadataDynamic = (
     ogTitle?: string,
     path?: ImagePath,
     icon?: ImagePath | null,
-    keywords?: string[],
+    keywords?: string[] | null,
     locale?: string,
 ) => {
     const icons = icon ? { icon: icon?.src } : { icon: DefaultIcon.src };
