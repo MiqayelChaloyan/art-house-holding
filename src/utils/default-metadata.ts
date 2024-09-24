@@ -6,16 +6,15 @@ export const generateMetadataDynamic = (
     ogTitle?: string,
     path?: ImagePath,
     icon?: ImagePath | null,
-    url?: string,
     keywords?: string[],
     locale?: string,
 ) => {
     const icons = icon ? { icon: icon?.src } : { icon: DefaultIcon.src };
 
     return {
-        metadataBase: url
-            ? url
-            : new URL(process.env.NEXT_PUBLIC_DOMAIN || `http://localhost:${process.env.PORT || 3000}`),
+        metadataBase: process.env.NEXT_PUBLIC_DOMAIN
+        ? new URL(process.env.NEXT_PUBLIC_DOMAIN)
+        : new URL(`http://localhost:${process.env.PORT || 3000}`),
         authors: [{ name: process.env.NEXT_PUBLIC_SITE_NAME, url: process.env.NEXT_PUBLIC_DOMAIN }],
         icons,
         title: ogTitle,

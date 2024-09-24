@@ -99,10 +99,10 @@ export async function generateMetadata({
     params: { locale: Locale };
 }): Promise<Metadata> {
     const meta: Site = await getSiteMeta(SITE_META_QUERY, client);
-    const { ogDescription, ogTitle, ogImage, url, keywords } = meta;
+    const { ogDescription, ogTitle, ogImage, keywords } = meta;
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;
 
-    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, url, keywords, locale);
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, keywords, locale);
     return metadata;
 };

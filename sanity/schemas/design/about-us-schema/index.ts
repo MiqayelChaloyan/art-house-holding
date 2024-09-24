@@ -40,14 +40,6 @@ export const aboutUsSchemaDesign = {
             group: ['og']
         },
         {
-            type: 'url',
-            title: 'URL',
-            name: 'url',
-            description: 'Most likely either the url of the page or its canonical url',
-            validation: (Rule: RuleType) => Rule.required(),
-            group: ['meta'],
-        },
-        {
             title: 'Meta keywords',
             name: 'keywords',
             type: 'array',

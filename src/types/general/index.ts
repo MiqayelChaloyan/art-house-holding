@@ -48,7 +48,6 @@ export interface Site {
         }
     },
     ogDescription: string;
-    url: string;
     keywords: string[];
 };
 

@@ -142,7 +142,6 @@ export const SITE_META_QUERY = `
     ogDescription,
     ogTitle,
     ogImage,
-    url,
     keywords
 }`;
 
