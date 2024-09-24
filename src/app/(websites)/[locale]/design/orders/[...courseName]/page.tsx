@@ -50,7 +50,8 @@ export async function generateMetadata({
 
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;
+    const keywords = null;
 
-    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale);
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, keywords, locale);
     return metadata;
 };
