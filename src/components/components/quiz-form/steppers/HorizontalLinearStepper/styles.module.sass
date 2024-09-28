@@ -317,13 +317,16 @@
 			display: none
 
 
-
-
 /* Form Style */
 .questions 
 	display: grid 
 	width: 700px 
-
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		width: 550px
+	/* @sm */
+	@media screen and (max-width: 768px)
+		width: 450px
 
 .text_light
 	color: #006ED2 
@@ -349,19 +352,19 @@
 		font-size: 23px
 	/* @md */
 	@media screen and (max-width: 1024px)
-		font-size: 23px
+		font-size: 20px
 	/* @sm */
 	@media screen and (max-width: 768px)
-		font-size: 23px
+		font-size: 17px
 	/* @xs */
 	@media screen and (max-width: 600px)
-		font-size: 23px
+		font-size: 17px
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		font-size: 23px
+		font-size: 17px
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		font-size: 23px
+		font-size: 17px
 
 
 .long
@@ -386,16 +389,16 @@
 		font-size: 18px
 	/* @sm */
 	@media screen and (max-width: 768px)
-		font-size: 18px
+		font-size: 16px
 	/* @xs */
 	@media screen and (max-width: 600px)
-		font-size: 18px
+		font-size: 16px
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		font-size: 18px
+		font-size: 16px
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		font-size: 18px
+		font-size: 16px
 
 
 .answers 
@@ -424,7 +427,16 @@
 	&:hover 
 		cursor: pointer 
 		background-color: #006ED2 
-
+	/* @lg */
+	@media screen and (max-width: 1280px)
+		width: 150px
+		height: 50px
+		font-size: 18px
+	/* @md */
+	@media screen and (max-width: 1024px)
+		width: 100px
+		height: 35px
+		font-size: 14px
 
 .next 
 	background-color: #F9CC48 

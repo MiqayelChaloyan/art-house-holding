@@ -37,6 +37,7 @@ export type ImagePath = {
 } | any;
 
 export type ContactUsResponse = { status: number } | { error: string } | any;
+export type ResponseType = { status: number } | { error: string } | any;
 
 export interface Site {
     ogTitle: string;

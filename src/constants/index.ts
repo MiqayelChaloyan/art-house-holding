@@ -37,8 +37,11 @@ const Titles = {
     contactUs: 'CONTACT US',
 };
 
+const defaultKeywords = ['it-m', 'courses'];
+
 export {
     ImagePaths,
     TRAINING_CENTERS,
     Titles,
+    defaultKeywords
 };

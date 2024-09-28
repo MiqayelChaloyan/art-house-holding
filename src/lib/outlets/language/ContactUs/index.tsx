@@ -23,6 +23,7 @@ import useWindowSize from '@/src/hooks/useWindowSize';
 
 import { sendContactUsLanguage } from '@/src/api';
 import { FormSmall, socialNetwork } from '@/src/types/language';
+import { ResponseType } from '@/src/types/general';
 
 import cn from 'classnames';
 
@@ -86,7 +87,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
     const initState = { isLoading: false, error: false, values: initValues };
 
     const [state, setState] = useState<FormProps>(initState);
-    const { values, isLoading, error } = state;
+    const { values, isLoading } = state;
 
 
     const handleChange = ({ target }: any) =>
@@ -117,7 +118,7 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
                 }))
             };
 
-            const res: { status: number } | any = await sendContactUsLanguage(formData);
+            const res: ResponseType = await sendContactUsLanguage(formData);
 
             if (res?.status !== 200) {
                 setOpen(true);

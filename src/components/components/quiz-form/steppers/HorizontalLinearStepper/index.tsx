@@ -29,23 +29,21 @@ interface Props {
 };
 
 const calculateLevel = (score: number, totalQuestions: number) => {
-    const answerResult = Math.floor((score * 100) / totalQuestions);
+    const answerResult = Math.round((score * 100) / totalQuestions);
+    const oneQuestionMissThreshold = ((totalQuestions - 1) / totalQuestions) * 100;
 
     let color = '';
     let status = '';
 
-    if (answerResult <= 25) {
+    if (answerResult <= 45) {
         color = '#DF362D';
-        status = 'Novice';
-    } else if (answerResult > 25 && answerResult <= 50) {
-        color = '#F6A21E';
-        status = 'Intermediate';
-    } else if (answerResult > 50 && answerResult <= 75) {
+        status = 'Beginner';
+    } else if (answerResult > 45 && answerResult < oneQuestionMissThreshold) {
         color = '#006ED2';
-        status = 'Advanced';
-    } else if (answerResult > 75) {
+        status = 'Pre-Intermediate';
+    } else if (answerResult >= oneQuestionMissThreshold) {
         color = '#5CD85A';
-        status = 'Expert';
+        status = 'Intermediate';
     }
 
     return { answerResult, color, status };
