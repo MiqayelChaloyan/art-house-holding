@@ -117,6 +117,6 @@ export async function generateMetadata({
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;
 
-    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, keywords, locale);
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
     return metadata;
 };

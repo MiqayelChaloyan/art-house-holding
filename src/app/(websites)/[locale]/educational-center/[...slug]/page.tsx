@@ -60,6 +60,6 @@ export async function generateMetadata({
     const icon: ImagePath = urlForImage(data?.svg);
     const keywords = null;
 
-    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, keywords, locale);
+    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
     return metadata;
 };
