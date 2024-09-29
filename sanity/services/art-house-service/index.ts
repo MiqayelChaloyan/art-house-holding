@@ -18,10 +18,10 @@ export const HOME_DETALIS_QUERY = `
 
 export const SITE_META_QUERY = `
 *[_type == "art-house-home"] {
-    ogDescription,
     ogTitle,
     ogImage,
-    keywords
+    keywords,
+    "ogDescription": ogDescription[$language]
 }`;
 
 export const SOCIAL_QUERY = `

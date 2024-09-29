@@ -9,7 +9,67 @@ export const coursesSchemaEducationalCenter = {
     title: 'Courses',
     id: 'courses-educational-center',
     icon: BookIcon,
+    groups: [
+        {
+            name: 'meta',
+            title: 'Site Info',
+            default: true
+        },
+        {
+            name: 'og',
+            title: 'Social Share Info',
+        },
+        {
+            name: 'manifest',
+            title: 'Web App Settings',
+            hidden: ({ document }: {
+                document: {
+                    [key: string]: string;
+                }
+            }): boolean => !(document.isPwa)
+        },
+    ],
     fields: [
+        {
+            title: 'Social Share Description',
+            name: 'ogDescription',
+            type: 'object',
+            group: ['og'],
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string'
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string'
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string'
+                }
+            ]
+        },
+        {
+            type: 'image',
+            title: 'Image',
+            name: 'ogImage',
+            description:
+                'URL of the image that should be used in social media previews.',
+            validation: (Rule: RuleType) => Rule.required(),
+            group: ['og'],
+        },
+        {
+            title: 'Meta keywords',
+            name: 'keywords',
+            type: 'array',
+            of: [{ type: 'string' }],
+            group: ['meta'],
+        },
+        /* Schema */
         {
             title: 'Course Name',
             name: 'course_name',

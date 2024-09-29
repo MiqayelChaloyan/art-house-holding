@@ -11,13 +11,9 @@ const homeSchemaArtHouse = {
     id: 'art-house',
     groups: [
         {
-            name: 'meta',
-            title: 'Site Info',
-            default: true
-        },
-        {
             name: 'og',
             title: 'Social Share Info',
+            default: true
         },
         {
             name: 'manifest',
@@ -31,9 +27,9 @@ const homeSchemaArtHouse = {
     ],
     fields: [
         {
-            type: 'string',
             title: 'Open Graph Title',
             name: 'ogTitle',
+            type: 'string',
             description:
                 'Set the title Open Graph should use. In most situations, this should be different from the value of the title prop',
             validation: (Rule: RuleType) => Rule.required(),
@@ -44,13 +40,30 @@ const homeSchemaArtHouse = {
             name: 'keywords',
             type: 'array',
             of: [{ type: 'string' }],
-            group: ['meta'],
+            group: ['og'],
         },
         {
-            type: 'text',
-            name: 'ogDescription',
             title: 'Social Share Description',
+            name: 'ogDescription',
+            type: 'object',
             group: ['og'],
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string'
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string'
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string'
+                }
+            ]
         },
         {
             type: 'image',
