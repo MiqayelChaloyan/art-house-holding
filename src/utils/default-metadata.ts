@@ -8,7 +8,7 @@ export const generateMetadataDynamic = (
     path?: ImagePath,
     icon?: ImagePath,
     locale?: string,
-    keywords?: string[] | null, //remove null
+    keywords?: string[] | null,
 ) => {
     const icons = icon ? { icon: icon?.src } : { icon: DefaultIcon.src };
     const finalKeywords = keywords?.length ? keywords : defaultKeywords;
