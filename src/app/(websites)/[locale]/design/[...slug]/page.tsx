@@ -46,12 +46,12 @@ export async function generateMetadata({
     const data = await getCourseBySlug(locale, decodedQuery);
 
     const ogTitle = data?.name;
-    const ogImage = data?.gallery_of_course[0];
-    const ogDescription = data?.guides[0];
+    const ogImage = data?.ogImage;
+    const ogDescription = data?.ogDescription;
+    const keywords = data?.keywords;
 
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;
-    const keywords = null;
 
     const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
     return metadata;

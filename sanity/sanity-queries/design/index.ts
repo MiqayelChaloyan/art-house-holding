@@ -91,6 +91,9 @@ interface COURSES_DESIGN_QUERYResult {
     gallery_of_course: GALLERY[];
     portfolios: PORTFOLIO[];
     orders: ORDER[];
+    keywords?: string[];
+    ogDescription?: string;
+    ogImage?: Asset;
 };
 
 interface HOME_COURSES {

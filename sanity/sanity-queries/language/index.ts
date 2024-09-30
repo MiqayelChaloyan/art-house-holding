@@ -61,6 +61,9 @@ interface LANGUAGE {
     slug: Slug;
     teachers: TEACHER[];
     text: TEXT[];
+    ogImage?: Asset;
+    ogDescription?: string;
+    keywords?: string[];
 };
 
 interface HOME_DETALIS_LANGUAGE_QUERYResult {

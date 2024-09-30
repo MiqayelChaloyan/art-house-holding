@@ -9,7 +9,6 @@ import { Locale } from '@/src/locales';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 
-import BlocksToText from '@/src/helpers/BlocksToText';
 import { ImagePath } from '@/src/types/general';
 import { generateMetadataDynamic } from '@/src/utils/default-metadata';
 import { getContacts, getCourse, getSelectOptions } from '@/src/utils/data/educational-center';
@@ -54,11 +53,11 @@ export async function generateMetadata({
 
     const ogTitle = data?.course_name;
     const ogImage = data.course_main[0]?.image;
-    const ogDescription = BlocksToText(data?.about_us_content).slice(0, 900);
+    const ogDescription = data?.ogDescription;
+    const keywords = data?.keywords;
 
     const path: ImagePath = urlForImage(ogImage);
     const icon: ImagePath = urlForImage(data?.svg);
-    const keywords = null;
 
     const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
     return metadata;

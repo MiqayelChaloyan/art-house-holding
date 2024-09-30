@@ -19,7 +19,6 @@ import { Inter } from '@/src/constants/font';
 import '@/src/styles/globals.sass';
 
 
-
 interface RootLayoutProps {
   children: React.ReactNode;
   params: {

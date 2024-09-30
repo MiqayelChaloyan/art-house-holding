@@ -20,10 +20,10 @@ export const ABOUT_US_DETAILS_QUERY = `
 
 export const SITE_META_QUERY = `
 *[_type == "about-us-language"] {
-    ogDescription,
     ogTitle,
     ogImage,
-    keywords
+    keywords,
+    "ogDescription": ogDescription[$language],
 }`;
 
 export const COURSES_QUERY =
@@ -89,6 +89,9 @@ export const LANGUAGE_SLUG_QUERY =
         teacher_image,
         "fullName": fullName[$language],
     },
+    ogImage,
+    keywords,
+    "ogDescription": ogDescription[$language],
 }`;
 
 export const LANGUAGE_ID_QUERY = 

@@ -12,13 +12,9 @@ export const aboutUsSchemaEducationalCenter = {
     id: 'about-us-educational-center',
     groups: [
         {
-            name: 'meta',
-            title: 'Site Info',
-            default: true
-        },
-        {
             name: 'og',
             title: 'Social Share Info',
+            default: true
         },
         {
             name: 'manifest',
@@ -45,13 +41,30 @@ export const aboutUsSchemaEducationalCenter = {
             name: 'keywords',
             type: 'array',
             of: [{ type: 'string' }],
-            group: ['meta'],
+            group: ['og'],
         },
         {
-            type: 'text',
-            name: 'ogDescription',
             title: 'Social Share Description',
+            name: 'ogDescription',
+            type: 'object',
             group: ['og'],
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string'
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string'
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string'
+                }
+            ]
         },
         {
             type: 'image',

@@ -135,14 +135,17 @@ export const COURSE_SLUG_QUERY = `
             "images": images[],
         }
     },
+    ogImage,
+    keywords,
+    "ogDescription": ogDescription[$language],
 }`;
 
 export const SITE_META_QUERY = `
 *[_type == "about-us-design"] {
-    ogDescription,
     ogTitle,
     ogImage,
-    keywords
+    keywords,
+    "ogDescription": ogDescription[$language],
 }`;
 
 export const SOCIAL_QUERY = `

@@ -139,6 +139,9 @@ interface COURSES_QUERYResult {
     course_process: VIDEO;
     price_list: PRICE_LIST[];
     svg: Asset;
+    keywords?: string[];
+    ogDescription?: string;
+    ogImage?: Asset;
 };
 
 interface CONTACT_US_QUERYResult {

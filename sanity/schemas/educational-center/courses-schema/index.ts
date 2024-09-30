@@ -11,13 +11,9 @@ export const coursesSchemaEducationalCenter = {
     icon: BookIcon,
     groups: [
         {
-            name: 'meta',
-            title: 'Site Info',
-            default: true
-        },
-        {
             name: 'og',
             title: 'Social Share Info',
+            default: true
         },
         {
             name: 'manifest',
@@ -30,6 +26,13 @@ export const coursesSchemaEducationalCenter = {
         },
     ],
     fields: [
+        {
+            title: 'Meta keywords',
+            name: 'keywords',
+            type: 'array',
+            of: [{ type: 'string' }],
+            group: ['og'],
+        },
         {
             title: 'Social Share Description',
             name: 'ogDescription',
@@ -61,13 +64,6 @@ export const coursesSchemaEducationalCenter = {
                 'URL of the image that should be used in social media previews.',
             validation: (Rule: RuleType) => Rule.required(),
             group: ['og'],
-        },
-        {
-            title: 'Meta keywords',
-            name: 'keywords',
-            type: 'array',
-            of: [{ type: 'string' }],
-            group: ['meta'],
         },
         /* Schema */
         {

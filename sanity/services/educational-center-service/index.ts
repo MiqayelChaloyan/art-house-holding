@@ -100,6 +100,9 @@ export const COURSE_SLUG_QUERY =
         "course_title": course_title[$language],
         "duration": duration[$language],
     },
+    ogImage,
+    keywords,
+    "ogDescription": ogDescription[$language],
 }`;
 
 export const COURSE_ID_QUERY = 
@@ -149,8 +152,8 @@ export const LESSONS_QUERY =
 
 export const SITE_META_QUERY = `
 *[_type == "about-us"] {
-    ogDescription,
     ogTitle,
     ogImage,
-    keywords
+    keywords,
+    "ogDescription": ogDescription[$language],
 }`;

@@ -18,8 +18,62 @@ export const coursesSchemaDesign = {
             title: 'Orders',
             default: false
         },
+        {
+            name: 'og',
+            title: 'Social Share Info',
+            default: true
+        },
+        {
+            name: 'manifest',
+            title: 'Web App Settings',
+            hidden: ({ document }: {
+                document: {
+                    [key: string]: never;
+                }
+            }): boolean => !(document.isPwa)
+        },
     ],
     fields: [
+        {
+            title: 'Meta keywords',
+            name: 'keywords',
+            type: 'array',
+            of: [{ type: 'string' }],
+            group: ['og'],
+        },
+        {
+            title: 'Social Share Description',
+            name: 'ogDescription',
+            type: 'object',
+            group: ['og'],
+            fields: [
+                {
+                    title: 'Armenian',
+                    name: 'am',
+                    type: 'string'
+                },
+                {
+                    title: 'English',
+                    name: 'en',
+                    type: 'string'
+                },
+                {
+                    title: 'Russian',
+                    name: 'ru',
+                    type: 'string'
+                }
+            ]
+        },
+        {
+            type: 'image',
+            title: 'Image',
+            name: 'ogImage',
+            description:
+                'URL of the image that should be used in social media previews.',
+            validation: (Rule: RuleType) => Rule.required(),
+            group: ['og'],
+        },
+        /* Schema */
         {
             title: 'Name',
             name: 'name',

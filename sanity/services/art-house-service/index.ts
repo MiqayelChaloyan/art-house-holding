@@ -21,7 +21,7 @@ export const SITE_META_QUERY = `
     ogTitle,
     ogImage,
     keywords,
-    "ogDescription": ogDescription[$language]
+    "ogDescription": ogDescription[$language],
 }`;
 
 export const SOCIAL_QUERY = `

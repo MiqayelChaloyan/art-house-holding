@@ -12,17 +12,16 @@ import FloatingMenu from '@/src/lib/outlets/general/FloatingMenu';
 import GoBack from '@/src/lib/outlets/general/GoBack';
 
 import { Locale } from '@/src/locales';
-import { SanityClient } from 'sanity';
 
 import { ImagePath, Site } from '@/src/types/general';
 
-import { client } from '@/sanity/client';
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 import { SITE_META_QUERY } from '@/sanity/services/language-service';
 
 import { getHomeDetails } from '@/src/utils/data/art-house';
 import { getContacts, getSelectOptions, getSelectOptionsFiltered } from '@/src/utils/data/language';
 import { generateMetadataDynamic } from '@/src/utils/default-metadata';
+import { sanityFetch } from '@/src/api/sanity-fetch';
 
 
 interface RootLayoutProps {
@@ -86,19 +85,23 @@ export default async function Layout({
 
 async function getSiteMeta(
     query: string = SITE_META_QUERY,
-    client: SanityClient,
-    mutation: 'fetch' = 'fetch'
+    locale?: Locale,
 ): Promise<Site> {
-    const site: Site[] = await client[mutation](query);
+    const site = await sanityFetch<Site[]>({
+        query,
+        params: { language: locale },
+    });
+
     return site[0];
 };
+
 
 export async function generateMetadata({
     params: { locale },
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta: Site = await getSiteMeta(SITE_META_QUERY, client);
+    const meta: Site = await getSiteMeta(SITE_META_QUERY, locale);
     const { ogDescription, ogTitle, ogImage, keywords } = meta;
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;

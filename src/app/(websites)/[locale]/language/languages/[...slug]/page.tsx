@@ -15,14 +15,13 @@ import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
 
-import BlocksToText from '@/src/helpers/BlocksToText';
 import { generateMetadataDynamic } from '@/src/utils/default-metadata';
 import { getCourseBySlug } from '@/src/utils/data/language';
+
 
 const DLanguage = dynamic(() =>
     import('@/src/components/screens/language/languages/Language'),
 );
-
 
 interface Props {
     params: {
@@ -51,12 +50,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const course = await getCourseBySlug(locale, slug[0]);
     const ogTitle = course?.name;
-    const ogImage = course?.during_courses_images[0];
-    const ogDescription = BlocksToText(course?.text).slice(0, 900);
+    const ogImage = course?.ogImage;
+    const ogDescription = course?.ogDescription;
+    const keywords = course?.keywords;;
 
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;
-    const keywords = null;
 
     const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
     return metadata;
