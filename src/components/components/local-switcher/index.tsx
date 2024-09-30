@@ -74,7 +74,7 @@ export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black'
             <NextImage
               src={localeImages[key]}
               alt={key}
-              className={styles.option}
+              className={styles['option-image']}
               width={500}
               height={500}
             />
