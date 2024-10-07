@@ -5,13 +5,11 @@ import styles from './styles.module.sass';
 interface Props {
     width?: string;
     height?: string;
-    borderRadius?: number;
-};
+}
 
 export default function GoogleMaps({
     width = '100%',
     height = '400px',
-    borderRadius = 10
 }: Props) {
     return (
         <iframe
@@ -20,9 +18,10 @@ export default function GoogleMaps({
             width={width}
             height={height}
             className={styles.iframe}
-            style={{ borderRadius }}
+            style={{ borderRadius: 10 }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            aria-label="Google Maps location"
         />
     );
 };

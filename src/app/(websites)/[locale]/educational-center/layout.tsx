@@ -59,24 +59,22 @@ export default async function Layout({
     };
 
     return (
-        <div>
-            <div className='wrapper'>
-                <GoBack locale={locale} theme='#821616' />
-                <RightMenu locale={locale} socialData={contacts} />
-                <BottomMenu locale={locale} socialData={contacts} />
-                <ScrollToTopButton theme='#821616' />
-                <FloatingMenu
-                    website={localeStrings[locale]}
-                    branches={branches}
-                    theme='#821616'
-                    hover='#111111'
-                />
-                <div className='wrapper-content'>
-                    <Header typePosition="fixed" locale={locale} />
-                    <main className='wrapper-main'>
-                        {children}
-                    </main>
-                </div>
+        <>
+            <GoBack locale={locale} theme='#821616' />
+            <RightMenu locale={locale} socialData={contacts} />
+            <BottomMenu locale={locale} socialData={contacts} />
+            <ScrollToTopButton theme='#821616' />
+            <FloatingMenu
+                website={localeStrings[locale]}
+                branches={branches}
+                theme='#821616'
+                hover='#111111'
+            />
+            <div>
+                <Header typePosition="fixed" locale={locale} />
+                <main className='wrapper-main'>
+                    {children}
+                </main>
                 <Footer
                     courses={courses}
                     socialData={contacts}
@@ -91,7 +89,7 @@ export default async function Layout({
                 />
             </Modal>
             <PlayerModal />
-        </div>
+        </>
     );
 };
 

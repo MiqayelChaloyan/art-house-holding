@@ -57,60 +57,6 @@
       width: 100%
       padding-bottom: 12px
 
-.triangle
-    display: block
-    height: 59px
-    width: 50%
-    position: relative
-    transform: skew(44deg)
-    bottom: 50px
-    &:after 
-      height: 59px
-      width: 110%
-      background-color: var(--color-bg-gray)
-      margin: 0 auto
-      position: absolute
-      content: ''
-      right: 0
-    /* @4xl */
-    @media screen and (max-width: 2560px)
-      bottom: 50px
-      &:after 
-        height: 59px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-      bottom: 50px
-      &:after 
-        height: 59px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-      bottom: 50px
-      &:after 
-        height: 59px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-      bottom: 43px
-      &:after 
-        height: 45px
-    /* @lg */
-    @media screen and (max-width: 1280px)
-      bottom: 42px
-      &:after 
-        height: 45px
-    /* @md */
-    @media screen and (max-width: 1024px)
-      bottom: 41px
-      &:after 
-        height: 45px
-    /* @sm */
-    @media screen and (max-width: 768px)
-      bottom: 35px
-      &:after 
-        height: 37px
-    /* @xs */
-    @media screen and (max-width: 600px)
-      display: none
-
 .view-more-btn
     color: #313131
     padding-right: var(--container-gap)
@@ -174,43 +120,111 @@
         padding-left: 0
         margin-bottom: 15px
 
-.title
-    position: absolute
-    margin: 0 auto
-    width: 30%
-    color: #313131
-    top: -40px
-    font-size: 28px
+/* Shapes */
+.shapes 
+    display: flex 
+    position: relative
+    bottom: 65px
+    background: linear-gradient(90deg, var(--color-bg-gray) 24%, transparent 33%, transparent 100%)
+    /* sm */
+    @media screen and ( max-width: 640px )
+        background: var(--color-bg-gray) 
+
+.rounds
+    width: 100%
+    display: flex
+    max-width: var(--container)
+    margin-left: auto
+    margin-right: auto
     padding-right: var(--container-gap)
     padding-left: var(--container-gap)
+    @media screen and ( max-width: 1280px )
+      max-width: 991px
+    @media screen and ( max-width: 991px )
+      max-width: 100%
+    @media screen and ( max-width: 767px )
+      max-width: 100%
+
+.shape-1 
+    position: relative 
+    width: 60% 
+    height: auto 
+    min-height: 59px 
+    z-index: 10 
+    display: flex 
+    align-items: center 
+    justify-content: flex-start 
+    overflow: hidden 
+    &::before 
+        content: "" 
+        position: absolute 
+        top: 0 
+        left: 0 
+        bottom: -2px
+        right: 0 
+        background: var(--color-bg-gray) 
+        transform: skewX(40deg) 
+        transform-origin: bottom 
+        z-index: -1 
+    /* sm */
+    @media screen and ( max-width: 640px )
+        width: 100%
+        &::before
+          transform: skewX(0) 
+
+.shape 
+    position: relative 
+    z-index: 1 
+
+.title
+    width: 90%
+    word-wrap: break-word 
+    line-height: 1.2
+    padding: 5px 0 5px 0
+    padding-right: var(--container-gap)
+    padding-left: var(--container-gap)
+    color: #313131
+    /* sm */
+    @media screen and ( max-width: 640px )
+        margin: 20px auto
+
+
+.title-small
+    font-size: 35px
     /* 2xl */
     @media screen and ( max-width: 1536px )
-      font-size: 28px
-      width: 50%
+      font-size: 33px
     /* xl */
     @media screen and ( max-width: 1280px )
-      font-size: 24px
-      width: 40%
+      font-size: 30px
     /* lg */
     @media screen and ( max-width: 1024px )
-      font-size: 22px
-      width: 49%
-      top: -37px
+      font-size: 27px
     /* md */
     @media screen and ( max-width: 768px )
-      font-size: 18px
-      top: -30px
+      font-size: 24px
     /* sm */
-    @media screen and ( max-width: 600px )
-      top: 15px
+    @media screen and ( max-width: 640px )
       text-align: center
       width: 100%
       position: relative
-      margin-bottom: 20px
-    /* xs */
-    @media screen and ( max-width: 475px )
-      top: 15px
+
+.title-large
+    font-size: 25px
+    /* 2xl */
+    @media screen and ( max-width: 1536px )
+      font-size: 25px
+    /* xl */
+    @media screen and ( max-width: 1280px )
+      font-size: 25px
+    /* lg */
+    @media screen and ( max-width: 1024px )
+      font-size: 25px
+    /* md */
+    @media screen and ( max-width: 768px )
+      font-size: 24px
+    /* sm */
+    @media screen and ( max-width: 640px )
       text-align: center
       width: 100%
       position: relative
-      margin-bottom: 20px

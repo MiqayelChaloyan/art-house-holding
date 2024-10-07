@@ -37,7 +37,10 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
 
     return (
         <section id='video-player' className={styles.section}>
-            <div className={styles.triangle} />
+            <div className={styles.shapes}>
+                <div className={cn(styles.shape, styles['shape-1'])} />
+                <div className={cn(styles.shape, styles['shape-2'])} />
+            </div>
             <Container className='container'>
                 <h1 className={cn(styles.title, Inter.className)}>
                     {data?.video_section_title}

@@ -57,48 +57,56 @@ const About = ({
     const minimumHeight = 500;
 
     const toggleReadMore = () => setIsReadMore(!isReadMore);
-    
+
     return (
+
         <section id='about-us' className={styles.container}>
-            <div className={styles.triangle} />
-            <Container className='container'>
-            <h1 className={cn(styles.title, Inter.className)}>
-                    {about_us_title}
-                </h1>
-                <div className={styles.about_us}>
-                    <div className={styles.about_box}>
-                        {getTotalTextLength(about_us_content) > minimumHeight ?
-                            <>
-                                <Content
-                                    content={about_us_content}
-                                    isReadMore={isReadMore}
-                                    minimumHeight={minimumHeight}
-                                />
-                                <Button
-                                    text={isReadMore ? t('buttons.view-more') : t('buttons.show-less')}
-                                    className={cn(styles.button, styles['view-more-btn'], Arial.className)}
-                                    onClick={toggleReadMore}
-                                />
-                            </>
-                            :
-                            <div className={cn(styles.content, Inter.className)}>
-                                <PortableText
-                                    value={about_us_content}
-                                    components={components}
-                                />
-                            </div>
-                        }
-                    </div>
-                    <div className={styles.form_box}>
-                        <FormAppointment
-                            social_links={socialData?.social_links}
-                            lessons={lessons}
-                            lessonsArmenian={lessonsArmenian}
-                            theme={colors.black}
-                        />
+            <div className={styles.shapes}>
+                <div className={styles['rounds']}>
+                    <div className={cn(styles.shape, styles['shape-1'])}>
+                        <h1 className={cn(styles.title, about_us_title.length >= 30 ? styles['title-large'] : styles['title-small'])}>
+                            {about_us_title}
+                        </h1>
                     </div>
                 </div>
-            </Container>
+            </div>
+            <section id='about-us' className={styles.container}>
+                <Container className='container'>
+                    <div className={styles.about_us}>
+                        <div className={styles.about_box}>
+                            {getTotalTextLength(about_us_content) > minimumHeight ?
+                                <>
+                                    <Content
+                                        content={about_us_content}
+                                        isReadMore={isReadMore}
+                                        minimumHeight={minimumHeight}
+                                    />
+                                    <Button
+                                        text={isReadMore ? t('buttons.view-more') : t('buttons.show-less')}
+                                        className={cn(styles.button, styles['view-more-btn'], Arial.className)}
+                                        onClick={toggleReadMore}
+                                    />
+                                </>
+                                :
+                                <div className={cn(styles.content, Inter.className)}>
+                                    <PortableText
+                                        value={about_us_content}
+                                        components={components}
+                                    />
+                                </div>
+                            }
+                        </div>
+                        <div className={styles.form_box}>
+                            <FormAppointment
+                                social_links={socialData?.social_links}
+                                lessons={lessons}
+                                lessonsArmenian={lessonsArmenian}
+                                theme={colors.black}
+                            />
+                        </div>
+                    </div>
+                </Container>
+            </section>
         </section>
     );
 };
