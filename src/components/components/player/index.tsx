@@ -15,7 +15,6 @@ import cn from 'classnames';
 
 import styles from './styles.module.sass';
 
-
 const key = '/it-m';
 
 interface Props {

@@ -35,6 +35,7 @@ const nextConfig = {
         eagerEsModules: false,
         styledComponents: true,
       },
+      removeConsole: process.env.NEXT_NODE_ENV === "production"
     },
 
 };

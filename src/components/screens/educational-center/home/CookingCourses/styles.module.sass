@@ -1,34 +1,9 @@
 .section
     background: var(--color-black)
     position: relative
-    height: 800px
-    /* @3xl */
-    @media screen and (max-width: 1920px)
-      height: 800px
-    /* @2xl */
-    @media screen and (max-width: 1600px)
-      height: 800px
-    /* @xl */
-    @media screen and (max-width: 1440px)
-      height: 800px
-    /* @lg */
-    @media screen and (max-width: 1280px)
-      height: 630px
-    /* @md */
-    @media screen and (max-width: 1024px)
-      height: 570px
-    /* @sm */
-    @media screen and (max-width: 768px)
-      height: 420px
-    /* @xs */
-    @media screen and (max-width: 600px)
-      height: 420px
-    /* @2xs */
-    @media screen and (max-width: 480px)
-      height: 420px
-    /* @3xs */
-    @media screen and (max-width: 360px)
-      height: 270px
+    height: max-content
+    min-height: 200px
+    padding-bottom: 70px
 
 .title
     margin: 20px auto
@@ -56,7 +31,6 @@
     @media screen and ( max-width: 640px )
       text-align: center
       width: 100%
-      margin-bottom: 20px
     /* xs */
     @media screen and ( max-width: 475px )
       text-align: center
@@ -70,7 +44,10 @@
 .shapes 
     display: flex 
     background: var(--color-bg-gray)
-
+    /* sm */
+    @media screen and ( max-width: 640px )
+        display: none
+        
 .shape-1 
     position: relative 
     width: 55% 

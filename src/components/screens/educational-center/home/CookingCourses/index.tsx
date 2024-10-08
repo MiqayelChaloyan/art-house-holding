@@ -45,7 +45,7 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
                 <h1 className={cn(styles.title, Inter.className)}>
                     {data?.video_section_title}
                 </h1>
-                <div className={styles.player}>
+                <div>
                     <Player
                         path={path}
                         video_url={data?.video_url}
