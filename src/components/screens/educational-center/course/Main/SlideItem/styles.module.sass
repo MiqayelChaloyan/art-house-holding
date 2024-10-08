@@ -1,6 +1,6 @@
 .article
 	width: 100%
-	min-height: 75vh
+	min-height: 100%
 	display: grid
 	min-width: 100%
 	background-size: cover
@@ -8,90 +8,44 @@
 	background-position: center center
 	background-color: #00000094
 	background-blend-mode: multiply
-	/* @md */
-	@media screen and (max-width: 1024px)
-		height: 70vh
-		min-height: 70vh
-	/* @xs */
-	@media screen and (max-width: 600px)
-		height: 70vh
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		height: 70vh
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		height: 70vh
 		
 .container
 	display: flex
 	justify-content: center
+	align-items: center
 	width: 100%
-	height: 650px
-	/* @4xl */
-	@media screen and (max-width: 2560px)
-		height: 650px
-	/* @3xl */
-	@media screen and (max-width: 1920px)
-		height: 650px
+	height: 80vh
 	/* @2xl */
 	@media screen and (max-width: 1600px)
-		height: 620px
+		height: 80vh
 	/* @xl */
 	@media screen and (max-width: 1440px)
-		height: 620px
+		height: 70vh
 	/* @lg */
 	@media screen and (max-width: 1280px)
-		height: 530px
+		height: 50vh
 	/* @md */
 	@media screen and (max-width: 1024px)
-		height: 530px
+		height: 50vh
 	/* @sm */
 	@media screen and (max-width: 768px)
-		height: 530px
+		height: 50vh
 	/* @xs */
 	@media screen and (max-width: 600px)
-		height: 600px
+		height: 60vh
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		height: 600px
+		height: 60vh
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		height: 600px
+		height: 60vh
 
 .contact
-	position: absolute
-	top: 30%
+	display: grid
+	justify-content: center
+	grid-template-columns: 1fr
 	width: 100%
-	/* @4xl */
-	@media screen and (max-width: 2560px)
-		top: 30%
-	/* @3xl */
-	@media screen and (max-width: 1920px)
-		top: 30%
-	/* @2xl */
-	@media screen and (max-width: 1600px)
-		top: 30%
-	/* @xl */
-	@media screen and (max-width: 1440px)
-		top: 30%
-	/* @lg */
-	@media screen and (max-width: 1280px)
-		top: 20%
-	/* @md */
-	@media screen and (max-width: 1024px)
-		top: 20%
-	/* @sm */
-	@media screen and (max-width: 768px)
-		top: 20%
-	/* @xs */
-	@media screen and (max-width: 600px)
-		top: 20%
-	/* @2xs */
-	@media screen and (max-width: 480px)
-		top: 20%
-	/* @3xs */
-	@media screen and (max-width: 360px)
-		top: 20%
+	place-items: center
 
 .title 
 	width: 100% 

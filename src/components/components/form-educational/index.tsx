@@ -97,8 +97,8 @@ const FormAppointment = ({
 				target='_blank'
 			>
 				<SocialIcon
-					width={windowSize.width <= 1024 ? 12 : 23}
-					height={windowSize.width <= 1024 ? 12 : 23}
+					width={windowSize.width <= 1024 ? 18 : 23}
+					height={windowSize.width <= 1024 ? 18 : 23}
 					fill={theme}
 				/>
 			</Link>
