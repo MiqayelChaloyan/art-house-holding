@@ -36,13 +36,13 @@ const calculateLevel = (score: number, totalQuestions: number) => {
     let status = '';
 
     if (answerResult <= 45) {
-        color = '#DF362D';
+        color = colors.grapefruit;
         status = 'Beginner';
     } else if (answerResult > 45 && answerResult < oneQuestionMissThreshold) {
-        color = '#006ED2';
+        color = colors.blue;
         status = 'Pre-Intermediate';
     } else if (answerResult >= oneQuestionMissThreshold) {
-        color = '#5CD85A';
+        color = colors.green;
         status = 'Intermediate';
     }
 

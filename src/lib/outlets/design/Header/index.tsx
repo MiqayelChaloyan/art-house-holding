@@ -111,7 +111,7 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
                             </Link>
                         ))}
                     </div>
-                    <LocalSwitcher activeColor={colors.lightBrown} color={colors.white} />
+                    <LocalSwitcher activeColor={colors.darkChestnut} color={colors.white} />
                 </div>
                 <button
                     className={cn(

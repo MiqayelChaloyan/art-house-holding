@@ -17,6 +17,8 @@ import * as Action from '@/src/store/question_reducer';
 import { Loader } from '@/src/lib/ui/loading';
 import { ArianAMU } from '@/src/constants/font';
 
+import colors from '@/src/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -30,13 +32,13 @@ const calculateLevel = (score: number, totalQuestions: number) => {
   let status = '';
 
   if (answerResult <= 45) {
-    color = '#DF362D';
+    color = colors.grapefruit;
     status = 'Beginner';
   } else if (answerResult > 45 && answerResult < oneQuestionMissThreshold) {
-    color = '#006ED2';
+    color = colors.blue;
     status = 'Pre-Intermediate';
   } else if (answerResult >= oneQuestionMissThreshold) {
-    color = '#5CD85A';
+    color = colors.green;
     status = 'Intermediate';
   }
 
@@ -73,7 +75,7 @@ const Progress = ({ strokeWidth, percentage, color }: any) => {
         strokeWidth={strokeWidth}
         fillOpacity={0}
         style={{
-          stroke: '#d6d6d6',
+          stroke: colors.iron,
         }}
       />
 

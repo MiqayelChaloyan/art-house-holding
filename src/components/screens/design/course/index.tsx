@@ -10,9 +10,12 @@ import useWindowSize from '@/src/hooks/useWindowSize';
 
 import Checkmark from '@/src/lib/icons/design/Checkmark';
 import PortfolioImageCard from '@/src/lib/ui/portfolio-card';
+
 import { Pages } from '@/src/constants/pages';
 import { Arial } from '@/src/constants/font';
 import { Titles } from '@/src/constants';
+
+import colors from '@/src/themes';
 
 import cn from 'classnames';
 
@@ -33,7 +36,7 @@ interface BoxProps {
 
 const Box = ({ guide, iconSize }: Readonly<BoxProps>) => (
   <div className={cn(styles.hex)}>
-    <Checkmark width={20} height={18} fill='#FFFFFF' />
+    <Checkmark width={20} height={18} fill={colors.white} />
     <p className={cn(styles['our-advantages'], Arial.className)}>{guide}</p>
   </div>);
 

@@ -11,6 +11,8 @@ import PlayerModal from '@/src/lib/outlets/general/PlayerModal';
 import FloatingMenu from '@/src/lib/outlets/general/FloatingMenu';
 import GoBack from '@/src/lib/outlets/general/GoBack';
 
+import colors from '@/src/themes';
+
 import { Locale } from '@/src/locales';
 
 import { ImagePath, Site } from '@/src/types/general';
@@ -59,13 +61,13 @@ export default async function Layout({
         <div className='languages-container'>
             <div className='wrapper-content'>
                 <Header locale={locale} />
-                <GoBack locale={locale} theme='#006ED2' />
-                <ScrollToTopButton theme='#006ED2' />
+                <GoBack locale={locale} theme={colors.blue} />
+                <ScrollToTopButton theme={colors.blue} />
                 <FloatingMenu
                     website={localeStrings[locale]}
                     branches={branches}
-                    theme='#006ED2'
-                    hover='#F9CC48'
+                    theme={colors.blue}
+                    hover={colors.yellow}
                 />
                 <main className='languages-main'>
                     {children}

@@ -10,6 +10,8 @@ import NextImage from '@/src/components/components/image';
 import { ImagePaths } from '@/src/constants';
 import { ArianAMU } from '@/src/constants/font';
 
+import colors from '@/src/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -33,7 +35,7 @@ const localeImages: {
 
 const keySwithcer = '/design';
 
-export default function LocalSwitcher({ activeColor = '#B21B1B', color = 'black' }) {
+export default function LocalSwitcher({ activeColor = colors.darkRed, color = colors.black }) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const localActive = useLocale();

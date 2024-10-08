@@ -16,6 +16,8 @@ import Logo from '@/src/lib/icons/art-house/LogoFooter';
 import { Pages } from '@/src/constants/pages';
 import { ArianAMU } from '@/src/constants/font';
 
+import colors from '@/src/themes';
+
 import { socialNetwork } from '@/src/types/coming-soon';
 
 import cn from 'classnames';
@@ -65,7 +67,7 @@ const ComingSoon = ({ data }: Readonly<Props>) => {
                         <Logo
                             width={350}
                             height={70}
-                            fill='#FFFFFF'
+                            fill={colors.white}
                         />
                     </Link>
                     <h1 className={cn(styles.title, ArianAMU.className)}>Were <span>Launching</span> Soon</h1>

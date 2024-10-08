@@ -7,6 +7,8 @@ import { useTranslations } from 'next-intl';
 
 import { Arial } from '@/src/constants/font';
 
+import colors from '@/src/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -49,7 +51,7 @@ const AccordionItem = ({
                     <h5 className={cn(styles['accordion-title'], Arial.className)}>{course_name}</h5>
                 </div>
                 <div>
-                    <RiArrowDownSLine className={styles['accordion-icon']} size={20} color='#fff' />
+                    <RiArrowDownSLine className={styles['accordion-icon']} size={20} color={colors.white} />
                 </div>
             </div>
             <div

@@ -13,6 +13,8 @@ import ContactUs from '@/src/lib/outlets/design/ContactUs';
 import PlayerModal from '@/src/lib/outlets/general/PlayerModal';
 import GoBack from '@/src/lib/outlets/general/GoBack';
 
+import colors from '@/src/themes';
+
 import { Locale } from '@/src/locales';
 
 import { SITE_META_QUERY } from '@/sanity/services/design-service';
@@ -61,13 +63,13 @@ export default async function Layout({
         <>
             <Header typePosition='fixed' locale={locale} />
             <div className='design-container'>
-                <GoBack locale={locale} theme='#8E685C' />
-                <ScrollToTopButton theme='#8E685C' />
+                <GoBack locale={locale} theme={colors.darkChestnut} />
+                <ScrollToTopButton theme={colors.darkChestnut} />
                 <FloatingMenu
                     website={localeStrings[locale]}
                     branches={branches}
-                    theme='#8E685C'
-                    hover='#4B352B'
+                    theme={colors.darkChestnut}
+                    hover={colors.woodyBrown}
                 />
                 {children}
                 <ContactUs lessons={lessons} lessonsArmenian={lessonsArmenianKeyword} />

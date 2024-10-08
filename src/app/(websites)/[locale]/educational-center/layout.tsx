@@ -14,6 +14,8 @@ import FloatingMenu from '@/src/lib/outlets/general/FloatingMenu';
 import PlayerModal from '@/src/lib/outlets/general/PlayerModal';
 import GoBack from '@/src/lib/outlets/general/GoBack';
 
+import colors from '@/src/themes';
+
 import { Locale } from '@/src/locales';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
@@ -60,15 +62,15 @@ export default async function Layout({
 
     return (
         <>
-            <GoBack locale={locale} theme='#821616' />
+            <GoBack locale={locale} theme={colors.red} />
             <RightMenu locale={locale} socialData={contacts} />
             <BottomMenu locale={locale} socialData={contacts} />
-            <ScrollToTopButton theme='#821616' />
+            <ScrollToTopButton theme={colors.red}  />
             <FloatingMenu
                 website={localeStrings[locale]}
                 branches={branches}
-                theme='#821616'
-                hover='#111111'
+                theme={colors.red} 
+                hover={colors.black}
             />
             <div>
                 <Header typePosition="fixed" locale={locale} />

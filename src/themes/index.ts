@@ -5,8 +5,14 @@ const colors = {
     darkRed: '#B21B1B',
     yellow: '#F9CC48',
     brown: '#4b352b',
-    lightBrown: '#8E685C',
-    blue: '#006ED2'
+    blue: '#006ED2',
+    darkChestnut: '#8E685C',
+    woodyBrown: '#4B352B',
+    red: '#821616',
+    grapefruit: '#DF362D',
+    green: '#5CD85A',
+    leafGreen: '#65a30d',
+    iron: '#d6d6d6'
 };
 
 export default colors;
