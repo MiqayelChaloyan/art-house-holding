@@ -81,7 +81,6 @@ const Footer = ({
                     <GoogleMaps
                         width='100%'
                         height='100%'
-                        borderRadius={30}
                     />
                     <p className={cn(styles.address, Arial.className)}>
                         {t('texts.address')}: {socialData?.address || t('address.address')}
