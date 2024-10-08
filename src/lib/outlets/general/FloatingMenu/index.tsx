@@ -73,13 +73,15 @@ const FloatingMenu = ({ website, branches, theme, hover }: Props) => {
                     aria-label={`/${activeLocale}/${link.web_site_url}`}
                 >
                     <div className={styles.link}>
-                        <NextImage
-                            src={path?.src}
-                            alt='logo'
-                            className={styles.logo}
-                            width={500}
-                            height={500}
-                        />
+                        <div className={styles['logo-contain']}>
+                            <NextImage
+                                src={path?.src}
+                                alt='logo'
+                                className={styles.logo}
+                                width={500}
+                                height={500}
+                            />
+                        </div>
                         <div className={styles.column}>
                             <p className={cn(styles.word, ArianAMU.className)}>{link.company_name}</p>
                             <p className={cn(styles.word, ArianAMU.className)}>{link.words}</p>
