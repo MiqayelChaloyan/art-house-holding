@@ -60,22 +60,31 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and (max-width: 600px)
 		height: 100vh
+	.nav
 		/* @xs */
 		@media screen and (max-width: 600px)
-			height: 70vh
+			height: 100vh
 		.linkActive
 			border-radius: 0
-			color: #F9CC48
-			background-color: transparent
+			color: white
+			background-color: #F9CC48
 			box-shadow: none
 			&:hover
 				background-color: #F9CC48
 				color: #fff
+			/* @xs */
+			@media screen and (max-width: 600px)
+				background-color: transparent
+				color: #F9CC48
 	.link
 		flex: 1 0 18%
+		height: 70px
+		display: flex
+		justify-content: center
+		align-items: center
 	/* @xs */
 	@media screen and (max-width: 600px)
-		background-color: none
+		background-color: transparent
 		position: relative
 
 .nav
@@ -104,14 +113,14 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and (max-width: 600px)
 		display: grid
-		line-height: 250px
+		line-height: 70px
 		padding: 0
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		line-height: 250px
+		line-height: 70px
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		line-height: 250px
+		line-height: 40px
 
 .link
 	flex: 0 0 18%
@@ -136,6 +145,9 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and (max-width: 600px)
 		font-size: 18px
 		color: #fff
+		display: flex
+		justify-content: center
+		align-items: center
 	/* @2xs */
 	@media screen and (max-width: 480px)
 		font-size: 16px
@@ -158,7 +170,9 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and ( max-width: 600px )
 		color: #fff
-		height: 0
+		display: flex
+		justify-content: center
+		align-items: center
 		&:after 
 			display: block 
 			content: '' 
@@ -175,7 +189,6 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	/* @xs */
 	@media screen and ( max-width: 600px )
 		color: #fff
-		height: 0
 
 .linkActive
 	color: #fff
@@ -186,6 +199,7 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	@media screen and ( max-width: 600px )
 		color: #F9CC48
 		box-shadow: none
+		background-color: transparent
 
 .header
 	display: flex
@@ -244,8 +258,8 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	border-color: #006ED2 #006ED2 transparent #006ED2
 	border-style: solid
 	border-width: 100px 70px 70px 70px
-	height: 0
-	width: 0
+	height: 0px
+	width: 0px
 	position: relative
 	top: 0
 	transition: .4s

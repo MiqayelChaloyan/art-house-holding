@@ -98,8 +98,6 @@ const Header = ({ locale }: IHeaderProps) => {
                             href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
                             aria-label={Pages.LANGUAGE_SEND_REQUEST}
                             className={`${styles.triangle_text} ${Arial.className}`}
-                            // prefetch={true}
-                            // passHref
                         >
                             {t("texts.send-request")}
                         </Link>
@@ -110,8 +108,6 @@ const Header = ({ locale }: IHeaderProps) => {
                             aria-label={Pages.LANGUAGE_TAKE_TEST}
                             className={`${styles.triangle_text} ${Arial.className}`}
                             onClick={() => dispatch(Action.resetAllAction())}
-                            // prefetch={true}
-                            // passHref
                         >
                             {t("texts.take-the-test")}
                         </Link>
