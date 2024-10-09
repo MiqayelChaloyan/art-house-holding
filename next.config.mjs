@@ -26,7 +26,6 @@ const nextConfig = {
         },
       ],
     },
-
     compiler: {
       relay: {
         src: './',
@@ -35,7 +34,7 @@ const nextConfig = {
         eagerEsModules: false,
         styledComponents: true,
       },
-      removeConsole: process.env.NEXT_NODE_ENV === "production"
+      // removeConsole: process.env.NEXT_NODE_ENV === "production"
     },
 
 };

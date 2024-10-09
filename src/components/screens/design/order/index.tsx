@@ -74,7 +74,7 @@ const Home = ({ data }: Readonly<Props>) => {
 
     return (
         <div>
-            <div className={styles.article} style={{ backgroundImage: `url(${path})` }} >
+            <div className={styles.article} style={{ backgroundImage: `url(${path?.src})` }} >
                 <div className={styles.titles}>
                     <h1 className={cn(styles.course_name, Arial.className)}>{data.course_name}</h1>
                     <h2 className={cn(styles.author, Arial.className)}>{author}</h2>
