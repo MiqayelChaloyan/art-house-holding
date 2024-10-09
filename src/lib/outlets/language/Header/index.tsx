@@ -17,6 +17,8 @@ import { Pages } from '@/src/constants/pages';
 import { Arial } from '@/src/constants/font';
 import Logo from '@/src/lib/icons/language/Logo';
 
+import colors from '@/src/themes';
+
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
@@ -97,7 +99,7 @@ const Header = ({ locale }: IHeaderProps) => {
                         <Link
                             href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
                             aria-label={Pages.LANGUAGE_SEND_REQUEST}
-                            className={`${styles.triangle_text} ${Arial.className}`}
+                            className={cn(styles.triangle_text, Arial.className)}
                         >
                             {t("texts.send-request")}
                         </Link>
@@ -106,7 +108,7 @@ const Header = ({ locale }: IHeaderProps) => {
                         <Link
                             href={`/${locale}${Pages.LANGUAGE_TAKE_TEST}`}
                             aria-label={Pages.LANGUAGE_TAKE_TEST}
-                            className={`${styles.triangle_text} ${Arial.className}`}
+                            className={cn(styles.triangle_text, Arial.className)}
                             onClick={() => dispatch(Action.resetAllAction())}
                         >
                             {t("texts.take-the-test")}
@@ -114,10 +116,10 @@ const Header = ({ locale }: IHeaderProps) => {
                     </div>
                 </div>
                 <div className={styles.logo}>
-                    <Logo width={windowSize.width < 1280 ? 150 : 255.53} height={80} fill='#F9CC48' />
+                    <Logo width={windowSize.width < 1280 ? 150 : 255.53} height={80} fill={colors.yellow} />
                 </div>
                 <div className={styles.switcher}>
-                    <LocalSwitcher activeColor='#F9CC48' color='#006ED2' />
+                    <LocalSwitcher activeColor={colors.yellow} color={colors.blue} />
                 </div>
             </HeaderBoundary>
             <StickyBoundary sticky={isSticky}>
@@ -130,7 +132,7 @@ const Header = ({ locale }: IHeaderProps) => {
                             key={key}
                             href={`/${locale}${link.path}`}
                             aria-label={link.path}
-                            className={`${styles.link} ${pathname === `/${locale}${link.path}` ? styles.linkActive : ''} ${isSticky ? styles.scrollX : styles.scrollY} ${Arial.className}`}
+                            className={cn(styles.link, pathname === `/${locale}${link.path}` ? styles.linkActive : '', isSticky ? styles.scrollX : styles.scrollY, Arial.className)}
                             prefetch={true}
                             passHref
                             onClick={() => {
@@ -143,9 +145,9 @@ const Header = ({ locale }: IHeaderProps) => {
                     ))}
                     <div className={styles.mobile}>
                         <div className={styles.mobile_switcher}>
-                            <LocalSwitcher activeColor='#F9CC48' color='#fff' />
+                            <LocalSwitcher activeColor={colors.yellow} color={colors.white} />
                         </div>
-                        <Logo width={150} height={80} fill='#fff' />
+                        <Logo width={150} height={80} fill={colors.white} />
                     </div>
                 </nav>
                 <div className={styles.menuMobile}>

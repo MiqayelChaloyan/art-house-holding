@@ -93,8 +93,8 @@ const Footer = ({
                     <div className={styles.contain}>
                         <div className={styles.art_center_logo}>
                             <Logo
-                                width='162'
-                                height='44'
+                                width={162}
+                                height={44}
                                 fill={colors.black}
                             />
                         </div>
@@ -104,8 +104,8 @@ const Footer = ({
                             className={styles.icon}
                         >
                             <Phone
-                                width='20'
-                                height='20'
+                                width={20}
+                                height={20}
                                 fill={colors.white}
                             />
                             <p className={cn(styles.info_web, Arial.className)}>
@@ -118,8 +118,8 @@ const Footer = ({
                             className={styles.icon}
                         >
                             <Email
-                                width='20'
-                                height='20'
+                                width={20}
+                                height={20}
                                 fill={colors.white}
                             />
                             <p className={cn(styles.info_web, Arial.className)}>

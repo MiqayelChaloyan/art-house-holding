@@ -1,7 +1,7 @@
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { SwiperTypes } from '@/src/types/art-house';
 
-import styles from './styles.module.sass';
+import './styles.css';
 
 export const options: SwiperTypes = {
     effect: 'coverflow',
@@ -10,7 +10,7 @@ export const options: SwiperTypes = {
     slidesPerView: 'auto',
     pagination: true,
     modules: [EffectCoverflow, Pagination],
-    className: styles.mySwiper,
+    className: 'mySwiper',
     coverflowEffect: {
         rotate: 50,
         stretch: 0,
