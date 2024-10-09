@@ -2,27 +2,22 @@
     display: flex
     position: relative
     bottom: 60px
-    z-index: 11
+    z-index: 2
     /* @md */
     @media screen and (max-width: 1024px)
         bottom: 0
     /* @sm */
     @media screen and (max-width: 768px)
-        position: initial
-    /* @xs */
-    @media screen and (max-width: 600px)
-        position: initial
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        position: initial
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        position: initial
+        position: relative
 
 .left
     display: grid
     width: 80%
     margin-bottom: 70px
+    margin-top: 70px
+    /* @xl */
+    @media screen and (max-width: 1440px)
+        margin-top: 0
     /* @lg */
     @media screen and (max-width: 1280px)
         margin-bottom: 40px
@@ -33,15 +28,6 @@
     @media screen and (max-width: 768px)
         width: 100%
         margin-bottom: 20px
-    /* @xs */
-    @media screen and (max-width: 600px)
-        width: 100%
-    /* @2xs */
-    @media screen and (max-width: 480px)
-        width: 100%
-    /* @3xs */
-    @media screen and (max-width: 360px)
-        width: 100%
 
 .image
     margin: 10px

@@ -1,7 +1,17 @@
 .column
-    display: flex
-    padding: 0 30px
+    display: grid
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: none
+
+.mobile-column
+    display: none
+    /* @sm */
+    @media screen and (max-width: 768px)
+        display: block
 
 .row
-    display: block
-    width: 50%
+    display: flex
+    /* @lg */
+    @media screen and (max-width: 1280px)
+        width: 90%

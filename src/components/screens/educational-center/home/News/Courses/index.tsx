@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-import useWindowSize from '@/src/hooks/useWindowSize';
-
+import Container from '@/src/components/components/container';
 import { Course, CourseMobileCard, Gallery } from '../Course';
 
 import styles from './styles.module.sass';
@@ -14,22 +13,25 @@ interface Props {
 };
 
 const Courses = ({ data }: Readonly<Props>) => {
-    const windowSize = useWindowSize();
-
-    const courses: JSX.Element[] = data?.map((course: LESSON) => <Course key={course._key} course={course} />);
-    const gallery: JSX.Element[] = data?.map((course: LESSON) => <Gallery key={course._key} course={course} />);
-    const mobile: JSX.Element[] = data?.map((course: LESSON) => <CourseMobileCard key={course._key} course={course} />);
-
-    return windowSize.width < 768 ? (mobile) : (
-        <div className={styles.column}>
-            <div className={styles.row}>
-                {courses}
+    return (
+        <>
+            <div className={styles['mobile-column']}>
+                {data?.map((course: LESSON) => (
+                    <CourseMobileCard key={course._key} course={course} />
+                ))}
             </div>
-            <div className={styles.row}>
-                {gallery}
-            </div>
-        </div>
-    )
+            <Container className='container'>
+                <div className={styles.column}>
+                    {data?.map((course: LESSON) => (
+                        <div className={styles.row} key={course._key}>
+                            <Course course={course} />
+                            <Gallery course={course} />
+                        </div>
+                    ))}
+                </div>
+            </Container>
+        </>
+    );
 };
 
 export default React.memo(Courses);
