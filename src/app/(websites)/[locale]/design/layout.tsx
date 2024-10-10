@@ -69,7 +69,7 @@ export default async function Layout({
                     website={localeStrings[locale]}
                     branches={branches}
                     theme={colors.darkChestnut}
-                    hover={colors.woodyBrown}
+                    hover={colors.brown}
                 />
                 {children}
                 <ContactUs lessons={lessons} lessonsArmenian={lessonsArmenianKeyword} />

@@ -2,11 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import dynamic from 'next/dynamic';
-
 import { useTranslations } from 'next-intl';
 
-import {  StackedCarousel } from 'react-stacked-center-carousel';
+import {  StackedCarousel, ResponsiveContainer } from 'react-stacked-center-carousel';
 
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
@@ -20,11 +18,6 @@ import { Titles } from '@/src/constants';
 import cn from 'classnames';
 
 import styles from './styles.module.sass';
-
-
-const ResponsiveContainer = dynamic(() =>
-    import('react-stacked-center-carousel').then((mod) => mod.ResponsiveContainer)
-);
 
 interface Props {
     data: WORKER[];

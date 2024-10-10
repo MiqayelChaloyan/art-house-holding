@@ -1,14 +1,13 @@
-'use client'
-
 import { RotatingLines } from 'react-loader-spinner';
+import colors from '@/src/themes';
 
 function Loader() {
   return (
     <RotatingLines
-      strokeColor="#4B352B"
+      strokeColor={colors.brown}
       strokeWidth="5"
       animationDuration="0.75"
-      width="50"
+      width="70"
       visible={true}
     />
   )
