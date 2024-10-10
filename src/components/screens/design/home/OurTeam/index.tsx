@@ -64,7 +64,7 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                     <ResponsiveContainer
                         carouselRef={ref}
                         render={(parentWidth, carouselRef) => {
-                            let currentVisibleSlide = 5;
+                            let currentVisibleSlide = 7;
                             if (parentWidth <= 1440) currentVisibleSlide = 5;
                             if (parentWidth <= 1280) currentVisibleSlide = 3;
 
@@ -72,11 +72,11 @@ const OurTeam = ({ data }: Readonly<Props>) => {
                                 <StackedCarousel
                                     ref={carouselRef}
                                     slideComponent={Card}
-                                    slideWidth={parentWidth > 1500 ? 740 : 300}
+                                    slideWidth={parentWidth > 1500 ? 1280 : 300}
                                     carouselWidth={parentWidth}
                                     data={data}
                                     currentVisibleSlide={currentVisibleSlide}
-                                    maxVisibleSlide={5}
+                                    maxVisibleSlide={7}
                                     onActiveSlideChange={onCenterSlideDataIndexChange}
                                     useGrabCursor
                                     fadeDistance={0.3}
