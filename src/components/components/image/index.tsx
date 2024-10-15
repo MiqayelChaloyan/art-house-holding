@@ -18,7 +18,7 @@ const NextImage = ({ src, alt= 'Image', width, height, className, ...rest }: Nex
             width={width}
             height={height}
             className={className}
-            quality={100}
+            quality={80}
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             {...rest}

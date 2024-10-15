@@ -4,9 +4,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
+        userAgent: '/',
         allow: ['/'],
-        disallow: ['/admin', 'privacy'],
+        disallow: ['/admin'],
       },
     ],
     sitemap: `${process.env.NEXT_PUBLIC_DOMAIN}/sitemap.xml`,
