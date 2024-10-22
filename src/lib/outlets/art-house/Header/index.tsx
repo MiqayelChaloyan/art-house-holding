@@ -43,7 +43,7 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
         const handleScroll = () => {
             setIsSticky(window.scrollY > 0);
 
-            if(window.scrollY === 1655) {
+            if (window.scrollY === 1655) {
                 handleChangeActiveLink('partners')
             } else {
                 handleChangeActiveLink('')
@@ -52,7 +52,7 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
         };
 
         window.addEventListener('scroll', handleScroll);
-        
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -125,9 +125,9 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
                         >
                             {t(scrollLinks[1].label)}
                         </ScrollLink>
-                    </div>
-                    <div>
-                        <LocalSwitcher activeColor={colors.darkRed} color={colors.black} />
+                        <div>
+                            <LocalSwitcher activeColor={colors.darkRed} color={colors.black} />
+                        </div>
                     </div>
                 </div>
                 <button

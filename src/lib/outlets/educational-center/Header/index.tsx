@@ -112,12 +112,12 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         >
                             {t('price-list')}
                         </Link>
-                    </div>
-                    <div>
-                        <LocalSwitcher
-                            activeColor={colors.darkRed}
-                            color={colors.white}
-                        />
+                        <div>
+                            <LocalSwitcher
+                                activeColor={colors.darkRed}
+                                color={colors.white}
+                            />
+                        </div>
                     </div>
                 </div>
                 <button

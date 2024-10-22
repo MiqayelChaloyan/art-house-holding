@@ -110,8 +110,10 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
                                 {t(`${link.label}`)}
                             </Link>
                         ))}
+                        <div>
+                            <LocalSwitcher activeColor={colors.darkChestnut} color={colors.white} />
+                        </div>
                     </div>
-                    <LocalSwitcher activeColor={colors.darkChestnut} color={colors.white} />
                 </div>
                 <button
                     className={cn(

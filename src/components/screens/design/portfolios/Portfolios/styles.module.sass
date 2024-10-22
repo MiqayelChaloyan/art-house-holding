@@ -88,9 +88,10 @@
             font-size: 8px
     @media screen and (max-width: 550px)
         span
-            width: 70%
-            height: 40px
-            font-size: 14px
+            width: 100%
+            height: auto
+            min-height: 40px
+            font-size: 13px
             display: flex
             justify-content: center
             align-items: center
@@ -99,7 +100,8 @@
     @media screen and (max-width: 480px)
         span
             width: 100%
-            height: 45px
+            height: auto
+            min-height: 45px
             font-size: 11px
             display: flex
             justify-content: center
@@ -108,8 +110,9 @@
     /* @3xs */
     @media screen and (max-width: 360px)
         span
-            width: 70%
-            height: 40px
+            width: 100%
+            height: auto
+            min-height: 45px
             font-size: 10px
             display: flex
             justify-content: center
@@ -359,6 +362,9 @@
 /*Titles*/
 .titles
     margin-top: 60px
+    /* @sm */
+    @media screen and (max-width: 768px)
+        margin-top: 100px
 
 .title-line
     width: 39%

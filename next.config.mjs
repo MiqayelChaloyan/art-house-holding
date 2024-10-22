@@ -36,7 +36,6 @@ const nextConfig = {
       },
       removeConsole: process.env.NEXT_NODE_ENV === "production"
     },
-
 };
 
 export default withNextIntl(nextConfig);

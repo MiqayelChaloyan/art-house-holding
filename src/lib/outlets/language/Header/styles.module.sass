@@ -140,21 +140,21 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		font-size: 17px
 	/* @sm */
 	@media screen and (max-width: 768px)
-		font-size: 14px
+		font-size: 13px
 	/* @xs */
 	@media screen and (max-width: 600px)
-		font-size: 18px
+		font-size: 14px
 		color: #fff
 		display: flex
 		justify-content: center
 		align-items: center
 	/* @2xs */
 	@media screen and (max-width: 480px)
-		font-size: 16px
+		font-size: 14px
 		color: #fff
 	/* @3xs */
 	@media screen and (max-width: 360px)
-		font-size: 16px
+		font-size: 14px
 		color: #fff
 
 .scrollY
@@ -173,6 +173,10 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 		display: flex
 		justify-content: center
 		align-items: center
+		&:hover
+			background-color: transparent
+			color: #F9CC48
+			box-shadow: none
 		&:after 
 			display: block 
 			content: '' 
@@ -195,6 +199,9 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 	background-color: #F9CC48
 	border-radius: 50px
 	box-shadow: 1px 10px 11px -4px rgb(0 0 0 / 24%)
+	/* @sm */
+	@media screen and (max-width: 768px)
+		border-radius: 20px
 	/* @xs */
 	@media screen and ( max-width: 600px )
 		color: #F9CC48
