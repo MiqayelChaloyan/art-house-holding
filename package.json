@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:local": "npm run build && pm2 start ecosystem.config.js --env local",
+    "deploy:dev": "npm run build && pm2 start ecosystem.config.js --env local",
+    "deploy:prod": "npm run build && pm2 start ecosystem.config.js --env local"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
