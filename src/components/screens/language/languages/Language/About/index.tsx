@@ -18,7 +18,12 @@ import cn from 'classnames';
 import styles from './styles.module.sass';
 
 
-const About = ({ image, text }: Readonly<ABOUT>) => {
+interface Props {
+    image: Asset;
+    text: TEXT[];
+};
+
+const About = ({ image, text }: Readonly<Props>) => {
     const language: ImagePath = urlForImage(image);
 
     return (

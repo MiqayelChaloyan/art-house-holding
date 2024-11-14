@@ -136,26 +136,68 @@ const aboutUsSchemaLanguage = {
                             type: 'object',
                             fields: [
                                 {
-                                    name: 'video_url',
-                                    title: 'Video Link',
-                                    type: 'string',
-                                    validation: (Rule: any) => Rule.required(),
-                                },
-                                {
-                                    name: 'video_light',
-                                    title: 'Video Light',
-                                    type: 'image',
-                                    options: { hotspot: true },
+                                    name: 'video',
+                                    type: 'object',
+                                    title: 'Video',
                                     fields: [
                                         {
-                                            name: 'alt',
-                                            title: 'Alternative text',
-                                            type: 'string'
-                                        }
+                                            name: 'useUpload',
+                                            type: 'boolean',
+                                            title: 'Use uploaded video?',
+                                            description: 'Check this box to upload a video file. Leave unchecked to provide a video URL.',
+                                            initialValue: false,
+                                        },
+                                        {
+                                            name: 'video_url',
+                                            title: 'Video Link',
+                                            type: 'url',
+                                            hidden: ({ parent }: { parent: { useUpload?: boolean } }) => parent?.useUpload === true,
+                                        },
+                                        {
+                                            name: 'videoFile',
+                                            type: 'file',
+                                            title: 'Upload Video',
+                                            options: {
+                                                accept: 'video/*',
+                                            },
+                                            hidden: ({ parent }: { parent: { useUpload?: boolean } }) => parent?.useUpload === false,
+                                        },
+                                        {
+                                            name: 'video_light',
+                                            title: 'Video Light',
+                                            type: 'image',
+                                            options: { hotspot: true },
+                                            fields: [
+                                                {
+                                                    name: 'alt',
+                                                    title: 'Alternative text',
+                                                    type: 'string'
+                                                }
+                                            ],
+                                        },
                                     ],
-                                    validation: (Rule: any) => Rule.required(),
+                                    validation: (Rule: RuleType) =>
+                                        Rule.custom((fields) => {
+                                            if (fields.useUpload && !fields.videoFile) {
+                                                return 'Please upload a video file or uncheck "Use uploaded video?"';
+                                            }
+                                            if (!fields.useUpload && !fields.video_url) {
+                                                return 'Please provide a video URL or check "Use uploaded video?"';
+                                            }
+                                            return true;
+                                        }),
+                                }
+                            ],
+                            preview: {
+                                select: {
+                                    title: 'title',
                                 },
-                            ]
+                                prepare() {
+                                    return {
+                                        title: 'Uploaded Video',
+                                    };
+                                },
+                            }
                         }
                     ]
                 },
@@ -238,28 +280,70 @@ const aboutUsSchemaLanguage = {
                                     validation: (Rule: any) => Rule.required(),
                                 },
                                 {
-                                    name: 'video_url',
-                                    title: 'Video Link',
-                                    type: 'string',
-                                    validation: (Rule: any) => Rule.required(),
-                                },
-                                {
-                                    name: 'video_light',
-                                    title: 'Video Light',
-                                    type: 'image',
-                                    options: { hotspot: true },
+                                    name: 'video',
+                                    type: 'object',
+                                    title: 'Video',
                                     fields: [
                                         {
-                                            name: 'alt',
-                                            title: 'Alternative text',
-                                            type: 'string'
-                                        }
+                                            name: 'useUpload',
+                                            type: 'boolean',
+                                            title: 'Use uploaded video?',
+                                            description: 'Check this box to upload a video file. Leave unchecked to provide a video URL.',
+                                            initialValue: false,
+                                        },
+                                        {
+                                            name: 'video_url',
+                                            title: 'Video Link',
+                                            type: 'url',
+                                            hidden: ({ parent }: { parent: { useUpload?: boolean } }) => parent?.useUpload === true,
+                                        },
+                                        {
+                                            name: 'videoFile',
+                                            type: 'file',
+                                            title: 'Upload Video',
+                                            options: {
+                                                accept: 'video/*',
+                                            },
+                                            hidden: ({ parent }: { parent: { useUpload?: boolean } }) => parent?.useUpload === false,
+                                        },
+                                        {
+                                            name: 'video_light',
+                                            title: 'Video Light',
+                                            type: 'image',
+                                            options: { hotspot: true },
+                                            fields: [
+                                                {
+                                                    name: 'alt',
+                                                    title: 'Alternative text',
+                                                    type: 'string'
+                                                }
+                                            ],
+                                        },
                                     ],
-                                    validation: (Rule: any) => Rule.required(),
+                                    validation: (Rule: RuleType) =>
+                                        Rule.custom((fields) => {
+                                            if (fields.useUpload && !fields.videoFile) {
+                                                return 'Please upload a video file or uncheck "Use uploaded video?"';
+                                            }
+                                            if (!fields.useUpload && !fields.video_url) {
+                                                return 'Please provide a video URL or check "Use uploaded video?"';
+                                            }
+                                            return true;
+                                        }),
                                 },
-                            ]
-                        }
-                    ]
+                            ],
+                            preview: {
+                                select: {
+                                    title: 'news.en'
+                                },
+                                prepare(selection: { title?: string }) {
+                                    return {
+                                        title: selection.title,
+                                    };
+                                },
+                            }
+                        },
+                    ],
                 },
             ],
         },

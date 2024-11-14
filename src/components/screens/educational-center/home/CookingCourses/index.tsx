@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Container from '@/src/components/components/container';
 import Player from '@/src/components/components/player';
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/src/store/player_reducer';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
+import VideoPreview from '@/sanity/videoBuilder';
 
 import { Inter } from '@/src/constants/font';
 
@@ -21,11 +22,15 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    data: VIDEO;
+    data: {
+        video: VIDEO;
+        video_section_title?: string;
+    };
 };
 
 const CookingCourses = ({ data }: Readonly<Props>) => {
-    const path: ImagePath = urlForImage(data?.video_light);
+    const [url, setUrl] = useState<string>('');
+    const path: ImagePath = urlForImage(data.video?.video_light);
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
 
     const dispatch = useDispatch();
@@ -34,6 +39,15 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
         dispatch(onPlay(!isPlay));
         dispatch(setPath(path));
     };
+
+    useEffect(() => {
+        if (data.video?.useUpload) {
+            const videoUrl = VideoPreview(data.video?.videoFile);
+            setUrl(videoUrl?.url);
+        } else {
+            setUrl(data.video?.video_url);
+        }
+    }, []);
 
     return (
         <section id='video-player' className={styles.section}>
@@ -48,7 +62,7 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
                 <div>
                     <Player
                         path={path}
-                        video_url={data?.video_url}
+                        video_url={url}
                         handlePlayVideo={handlePlayVideo}
                     />
                 </div>

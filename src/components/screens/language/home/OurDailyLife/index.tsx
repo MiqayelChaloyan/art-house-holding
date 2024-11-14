@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { notFound, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -19,6 +19,7 @@ import { onPlay, setPath } from '@/src/store/player_reducer';
 import { client } from '@/sanity/client';
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 import { LANGUAGE_ID_QUERY } from '@/sanity/services/language-service';
+import VideoPreview from '@/sanity/videoBuilder';
 
 import { ImagePath } from '@/src/types/general';
 
@@ -61,12 +62,13 @@ const DailyLifeImage = ({ item }: Image) => {
 
 
 const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
+    const [url, setUrl] = useState<string>('');
     const t = useTranslations('buttons');
     const router = useRouter();
     const dispatch = useDispatch();
 
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
-    const light: ImagePath = urlForImage(item.video_light);
+    const light: ImagePath = urlForImage(item.video?.video_light);
 
     const getResources = async () => {
         const _id = item.languages._ref;
@@ -82,21 +84,30 @@ const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
     const handlePlayVideo = (path: string) => {
         dispatch(onPlay(!isPlay));
         dispatch(setPath(path));
-    }
+    };
+
+    useEffect(() => {
+        if (item.video?.useUpload) {
+            const videoUrl = VideoPreview(item.video?.videoFile);
+            setUrl(videoUrl?.url);
+        } else {
+            setUrl(item.video?.video_url);
+        }
+    }, []);
 
     return (
         <div className={styles.video}>
             <div className={styles.playing}>
                 <NextImage
                     src={light?.src}
-                    alt={item?.video_light.alt}
+                    alt={item.video?.video_light.alt}
                     className={styles.video_play}
                     width={500}
                     height={500}
                 />
                 <button
                     className={styles.icon}
-                    onClick={() => handlePlayVideo(item.video_url)}
+                    onClick={() => handlePlayVideo(url)}
                 >
                     <MdPlayCircle size={75} color={colors.white} />
                 </button>

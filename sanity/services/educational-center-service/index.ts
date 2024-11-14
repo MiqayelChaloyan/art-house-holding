@@ -10,8 +10,7 @@ export const HOME_DETALIS_QUERY =
         "about_us_content": about_us_content[$language],
     },
     "cooking_courses": cooking_courses {
-        video_url,
-        video_light,
+        video,
         "video_section_title": video_section_title[$language],
     },
     "section": section {
@@ -63,8 +62,7 @@ export const COURSES_QUERY =
         "title": title[$language],
     },
     "course_process": course_process {
-        video_url,
-        video_light,
+        video,
     },
     "price_list": price_list[] {
         _key,
@@ -90,8 +88,7 @@ export const COURSE_SLUG_QUERY =
         "title": title[$language],
     },
     "course_process": course_process {
-        video_url,
-        video_light,
+        video,
     },
     "price_list": price_list[] {
         _key,
@@ -120,8 +117,7 @@ export const COURSE_ID_QUERY =
         "title": title[$language],
     },
     "course_process": course_process {
-        video_url,
-        video_light,
+        video,
     },
     "price_list": price_list[] {
         _key,

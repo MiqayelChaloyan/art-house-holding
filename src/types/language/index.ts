@@ -1,4 +1,5 @@
 interface Asset {
+    alt: string;
     _ref: string;
     _type: string;
 };
@@ -32,17 +33,23 @@ export interface PARTNER {
 
 export interface DAILY_LIFE_VIDEO {
     _key: string,
-    video_light: Image,
+    video: Video,
     news: string,
     languages: Ref,
-    video_url: string,
 };
 
 export interface Video {
     video_url: string;
-    _type: string;
+    video_light: Asset;
+    useUpload: boolean;
+    videoFile: Asset;
+    alt: string;
+};
+
+export interface VIDEO {
+    video: Video;
     _key: string;
-    video_light: Image;
+    _type: string;
 };
 
 export interface DAILY_LIFE_IMAGE {

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import About from './About';
 import Teachers from './Teachers';
@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/src/store/player_reducer';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
+import VideoPreview from '@/sanity/videoBuilder';
 
 import styles from './styles.module.sass';
 
@@ -25,8 +26,9 @@ interface Props {
 };
 
 const Language = ({ data }: Readonly<Props>) => {
+    const [url, setUrl] = useState<string>('');
     const { during_courses_images, course_process, teachers } = data;
-    const path: ImagePath = urlForImage(course_process.video_light);
+    const path: ImagePath = urlForImage(course_process.video?.video_light);
 
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
@@ -35,6 +37,15 @@ const Language = ({ data }: Readonly<Props>) => {
         dispatch(onPlay(!isPlay));
         dispatch(setPath(path));
     };
+
+    useEffect(() => {
+        if (course_process.video?.useUpload) {
+            const videoUrl = VideoPreview(course_process.video?.videoFile);
+            setUrl(videoUrl?.url);
+        } else {
+            setUrl(course_process.video?.video_url);
+        }
+    }, []);
 
     return (
         <Container className='container'>
@@ -45,7 +56,7 @@ const Language = ({ data }: Readonly<Props>) => {
                     <div className={styles.video_player}>
                         <Player
                             path={path}
-                            video_url={course_process.video_url}
+                            video_url={url}
                             handlePlayVideo={handlePlayVideo}
                         />
                     </div>

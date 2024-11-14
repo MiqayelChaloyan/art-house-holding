@@ -41,9 +41,10 @@ interface ABOUT {
 };
 
 interface VIDEO {
-    video_section_title: string;
-    video_light: Asset;
     video_url: string;
+    video_light: Asset;
+    useUpload: boolean;
+    videoFile: Asset;
 };
 
 interface LESSON {
@@ -121,7 +122,7 @@ interface PRICE_LIST {
 interface HOME_DETALIS_QUERYResult {
     main_section: MAIN_SLIDE[];
     about_us: ABOUT;
-    cooking_courses: VIDEO;
+    cooking_courses: VIDEO | any;
     section: SECTON;
     progress_section: PROGRESS[];
     specialists_section: SPECIALIST[];
@@ -136,7 +137,10 @@ interface COURSES_QUERYResult {
     course_main: COURSE_MAIN[];
     about_us_title: string;
     about_us_content: TEXT;
-    course_process: VIDEO;
+    course_process: {
+        video: VIDEO;
+        video_section_title?: string;
+    };
     price_list: PRICE_LIST[];
     svg: Asset;
     keywords?: string[];

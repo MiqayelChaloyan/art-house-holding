@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
@@ -18,6 +18,7 @@ import { ImagePath } from '@/src/types/general';
 import { ReduxType } from '@/src/types/language';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
+import VideoPreview from '@/sanity/videoBuilder';
 
 import cn from 'classnames';
 
@@ -29,7 +30,8 @@ interface Props {
 };
 
 const OurDay = ({ our_day }: Readonly<Props>) => {
-    const path: ImagePath = urlForImage(our_day?.video_light)
+    const [url, setUrl] = useState<string>('');
+    const path: ImagePath = urlForImage(our_day.video?.video_light)
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
     const t = useTranslations();
@@ -39,6 +41,15 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
         dispatch(onPlay(!isPlay));
         dispatch(setPath(path));
     };
+
+    useEffect(() => {
+        if (our_day.video?.useUpload) {
+            const videoUrl = VideoPreview(our_day.video?.videoFile);
+            setUrl(videoUrl?.url);
+        } else {
+            setUrl(our_day.video?.video_url);
+        }
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -56,7 +67,7 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
                 <div className={styles.player}>
                     <Player
                         path={path}
-                        video_url={our_day?.video_url}
+                        video_url={url}
                         handlePlayVideo={handlePlayVideo}
                     />
                 </div>

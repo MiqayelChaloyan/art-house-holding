@@ -33,8 +33,10 @@ interface TEACHER {
 };
 
 interface VIDEO {
-    video_light: Asset;
     video_url: string;
+    video_light: Asset;
+    useUpload: boolean;
+    videoFile: Asset;
 };
 
 interface TEXT {
@@ -54,7 +56,7 @@ interface COURSE_IMAGES {
 
 interface LANGUAGE {
     _id: string;
-    course_process: VIDEO;
+    course_process: { video: VIDEO };
     during_courses_images: COURSE_IMAGES[];
     image: Asset;
     name: string;
@@ -84,18 +86,14 @@ interface HOME_DETALIS_LANGUAGE_QUERYResult {
             asset: Asset;
         }],
         about_our_daily: {
-            video_light: Asset;
-            _type: string;
-            video_url: string;
-            _key: string;
-        } | any
+            [x: string]: any; video: VIDEO
+        }
     };
     our_daily_life: {
         about_our_daily: [{
             news: string;
             languages: Asset;
-            video_url: string;
-            video_light: Asset;
+            video: VIDEO;
         }]
         our_daily_life_images: Asset[];
     }

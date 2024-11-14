@@ -16,8 +16,9 @@ import { Pages } from '@/src/constants/pages';
 import components from '@/src/helpers/PortableTextComponents';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
+import VideoPreview from '@/sanity/videoBuilder';
 
-import { Video } from '@/src/types/language';
+import { VIDEO } from '@/src/types/language';
 import { ImagePath } from '@/src/types/general';
 
 import cn from 'classnames';
@@ -48,18 +49,23 @@ const About = ({ data, locale }: Readonly<Props>) => {
         );
     });
 
-    const videos = data?.about_us?.about_our_daily.map((video: Video) => {
-        const path: ImagePath = urlForImage(video.video_light);
-
+    const videos = data?.about_us?.about_our_daily.map((video: VIDEO) => {
+        const path: ImagePath = urlForImage(video.video?.video_light);
+        
+        const url = video.video?.useUpload 
+            ? VideoPreview(video.video?.videoFile)?.url 
+            : video.video?.video_url;
+    
         return (
             <VideoPlayer
                 key={video._key}
                 light={path}
-                link={video.video_url}
-                alt={video.video_light.alt}
+                link={url}
+                alt={video.video.video_light?.alt}
             />
-        )
+        );
     });
+    
 
     return (
         <section id='about' className={styles.container}>

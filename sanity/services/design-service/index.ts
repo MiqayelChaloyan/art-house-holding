@@ -15,8 +15,7 @@ export const ABOUT_US_DETAILS_QUERY = `
         "about_course": about_course[$language],
     },
     "our_day": our_day {
-        video_url,
-        video_light,
+        video,
     },
     "progress_section": progress_section[] {
         _key,

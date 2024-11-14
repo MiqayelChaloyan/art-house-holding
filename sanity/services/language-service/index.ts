@@ -11,8 +11,7 @@ export const ABOUT_US_DETAILS_QUERY = `
         "about_our_daily": about_our_daily[] {
             _key,
             languages,
-            video_url,
-            video_light,
+            video,
             "news": news[$language],
         },
     },

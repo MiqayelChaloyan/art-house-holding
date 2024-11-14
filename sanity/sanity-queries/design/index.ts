@@ -107,8 +107,12 @@ interface HOME_COURSES {
 };
 
 interface OUR_DAY {
-    video_light: Asset;
-    video_url: string;
+    video: {
+        video_url: string;
+        video_light: Asset;
+        useUpload: boolean;
+        videoFile: Asset;
+    }
 };
 
 interface WORKER {

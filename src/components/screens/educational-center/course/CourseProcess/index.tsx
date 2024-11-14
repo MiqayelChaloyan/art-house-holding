@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onPlay, setPath } from '@/src/store/player_reducer';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
+import VideoPreview from '@/sanity/videoBuilder';
 
 import { ImagePath } from '@/src/types/general';
 import { ReduxType } from '@/src/types/language';
@@ -23,13 +24,14 @@ import styles from './styles.module.sass';
 
 
 interface Props {
-    course: VIDEO;
+    course: { video: VIDEO };
 };
 
 const CourseProcess = ({ course }: Readonly<Props>) => {
+    const [url, setUrl] = useState<string>('');
     const t = useTranslations('sections');
 
-    const path: ImagePath = urlForImage(course?.video_light);
+    const path: ImagePath = urlForImage(course.video?.video_light);
     const isPlay = useSelector((state: ReduxType) => state.player.isPlay);
     const dispatch = useDispatch();
 
@@ -37,6 +39,15 @@ const CourseProcess = ({ course }: Readonly<Props>) => {
         dispatch(onPlay(!isPlay));
         dispatch(setPath(path));
     };
+
+    useEffect(() => {
+        if (course.video?.useUpload) {
+            const videoUrl = VideoPreview(course.video?.videoFile);
+            setUrl(videoUrl?.url);
+        } else {
+            setUrl(course.video?.video_url);
+        }
+    }, []);
 
     return (
         <section id='video-player' className={styles.section}>
@@ -46,7 +57,7 @@ const CourseProcess = ({ course }: Readonly<Props>) => {
                 </h1>
                 <Player
                     path={path}
-                    video_url={course?.video_url}
+                    video_url={url}
                     handlePlayVideo={handlePlayVideo}
                 />
             </Container>
