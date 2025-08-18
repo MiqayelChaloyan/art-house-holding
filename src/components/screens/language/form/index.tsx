@@ -89,6 +89,11 @@ const Form = ({ data, courses }: Readonly<Props>) => {
             course_type: course_type[0].slug,
         };
 
+        const sendEmailForm = {
+            week_number_of_lessons: week_number_of_lessons[0].week_number_of_lessons,
+            course_type: course_type[0].course_type,
+        }
+
         try {
             if (
                 formData.course_name !== t('contact-us-form.select-course') ||
@@ -100,7 +105,7 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                     isLoading: true,
                 }));
 
-                const res: ContactUsResponse = await sendRequest(formData);
+                const res: ContactUsResponse = await sendRequest(formData, sendEmailForm);
 
                 if (res?.status !== 200) {
                     setOpen(true);

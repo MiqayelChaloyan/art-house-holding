@@ -76,6 +76,11 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
             if (!orderValue?.order_name) {
                 return
             }
+
+            setState((prev: FormProps) => ({
+                ...prev,
+                isLoading: true,
+            }));
     
             const res: ContactUsResponse = await sendOrderDesign(formData);
     

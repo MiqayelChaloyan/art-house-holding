@@ -77,6 +77,11 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
             if (formData.course_name === '') {
                 return
             }
+
+            setState((prev: FormProps) => ({
+                ...prev,
+                isLoading: true,
+            }));
     
             const res: ContactUsResponse = await sendContactUsDesign(formData);
     
@@ -91,6 +96,7 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
             });
     
             setCourse('');
+
             setState(() => ({
                 ...initState,
                 isLoading: false,

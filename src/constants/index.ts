@@ -24,6 +24,12 @@ const TRAINING_CENTERS = {
     language_school: 44,
 };
 
+const TRAINING_CENTERS_NAMES = [
+    { name: 'Design School', id: 48 },
+    { name: 'Art House Educational Center', id: 46 },
+    { name: 'Art House Language Center', id: 44 },
+];
+
 const Titles = {
     ourDay: 'OUR DAY',
     ourTeam: 'OUR TEAM',
@@ -42,6 +48,7 @@ const defaultKeywords = ['it-m', 'courses'];
 export {
     ImagePaths,
     TRAINING_CENTERS,
+    TRAINING_CENTERS_NAMES,
     Titles,
     defaultKeywords
 };
