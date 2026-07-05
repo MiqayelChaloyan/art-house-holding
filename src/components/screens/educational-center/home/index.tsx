@@ -23,7 +23,7 @@ const EducationalCenterHome = ({ data }: Readonly<Props>) => {
 
     useEffect(() => {
         dispatch(closeModal(false));
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

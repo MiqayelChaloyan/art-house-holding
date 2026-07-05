@@ -11,6 +11,7 @@ import { Arial } from '@/src/constants/font';
 
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 import { ImagePath } from '@/src/types/general';
+import { getPortfolioItemKey } from '@/src/utils/portfolio-item-key';
 
 import cn from 'classnames';
 
@@ -26,29 +27,20 @@ const Home = ({ data }: Readonly<Props>) => {
     const [path, setPath] = useState<ImagePath | null>(null);
     const [order, setOrder] = useState<ORDER[]>([]);
 
-    const handleSearch = (term: string | null) => {
-        const params = new URLSearchParams(window.location.search);
-
-        if (term) {
-            params.set('query', term);
-        } else {
-            params.delete('query');
-        }
-
-        const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-        window.history.pushState({}, '', newUrl);
-    };
-
     useEffect(() => {
-        let nameFromParams: string | null = searchParams.get('name');
+        let nameFromParams = getPortfolioItemKey(searchParams);
 
         if (!nameFromParams) {
             nameFromParams = localStorage.getItem('name');
-            handleSearch(nameFromParams)
         }
 
-        localStorage.setItem('name', nameFromParams || '');
+        if (!nameFromParams && data.orders?.length) {
+            nameFromParams = data.orders[0]._key;
+        }
+
+        if (nameFromParams) {
+            localStorage.setItem('name', nameFromParams);
+        }
 
         const filteredOrder = data.orders?.filter((item: PORTFOLIO) => item._key === nameFromParams) || [];
         setOrder(filteredOrder);
@@ -59,7 +51,7 @@ const Home = ({ data }: Readonly<Props>) => {
             setPath(imagePath);
         }
 
-    }, [searchParams, data.portfolios]);
+    }, [searchParams, data.orders]);
 
     if (order.length === 0) {
         return (

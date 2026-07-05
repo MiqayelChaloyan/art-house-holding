@@ -36,6 +36,19 @@ const nextConfig = {
       },
       removeConsole: process.env.NEXT_NODE_ENV === "production"
     },
+    async headers() {
+      return [
+        {
+          source: '/:path*',
+          headers: [
+            {
+              key: 'Strict-Transport-Security',
+              value: 'max-age=31536000; includeSubDomains',
+            },
+          ],
+        },
+      ];
+    },
 };
 
 export default withNextIntl(nextConfig);

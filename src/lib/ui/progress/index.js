@@ -17,7 +17,7 @@ const ProgressItem = ({ value = 0, quantity, isPlusSign }) => {
         if (percent < quantity) {
             setTimeout(() => setPercent(newval => newval + 1), 10);
         }
-    }, [percent]);
+    }, [percent, quantity]);
     
     return <p className={cn(styles.percent, ArianAMU.className)}>{percent} {plus}</p>;
 };

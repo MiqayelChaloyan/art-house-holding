@@ -56,7 +56,7 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [handleChangeActiveLink]);
 
     const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 

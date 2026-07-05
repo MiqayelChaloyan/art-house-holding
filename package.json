@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "check:pre-deploy": "python3 scripts/check-pre-deploy.py --skip-prod-only",
+    "check:pre-deploy:prod": "python3 scripts/check-pre-deploy.py https://arthouse.am https://arthouse.am --workers 12",
     "deploy:local": "npm run build && pm2 start ecosystem.config.js --env local",
     "deploy:dev": "npm run build && pm2 start ecosystem.config.js --env local",
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --env local"
@@ -48,6 +50,7 @@
     "react-type-animation": "^3.2.0",
     "sanity": "^3.32.0",
     "schema-dts": "^1.1.2",
+    "sharp": "^0.35.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.8",
     "swiper": "^11.0.7"

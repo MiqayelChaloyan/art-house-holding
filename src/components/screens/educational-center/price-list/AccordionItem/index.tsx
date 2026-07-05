@@ -4,6 +4,8 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import NextImage from '@/src/components/components/image';
+
 import useWindowSize from '@/src/hooks/useWindowSize';
 
 import AccordionArrow from '@/src/lib/icons/educational-center/AccordionArrow';
@@ -54,7 +56,6 @@ const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly
         <div
             className={styles.panel}
             role='tabpanel'
-            aria-expanded={activeTab === index}
             id={`panel-${index}`}
         >
             <div className={styles.panel_box}>
@@ -66,6 +67,7 @@ const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly
                         onClick={activateTab}
                         style={{ transform: activeTab !== index ? 'rotate(178deg)' : 'rotate(0deg)' }}
                         className={styles.button_tab}
+                        aria-expanded={activeTab === index}
                     >
                         <AccordionArrow
                             width={size.width <= 767 ? 25 : 50}
@@ -75,17 +77,19 @@ const Panel = ({ name, list, svg, alt, activeTab, index, activateTab }: Readonly
                     </button>
                 </div>
                 <div>
-                    <img
+                    <NextImage
                         src={pathSvg?.src}
-                        alt={alt}
+                        alt={alt ?? name}
                         className={styles.svg_icon}
+                        width={pathSvg?.width ?? 80}
+                        height={pathSvg?.height ?? 80}
                     />
                 </div>
             </div>
             <div
                 className={styles.panel__inner}
                 style={innerStyle}
-                aria-hidden={!activeTab === index}
+                aria-hidden={activeTab !== index}
             >
                 <div className={styles.panel__content}>
                     {table}

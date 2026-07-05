@@ -30,13 +30,25 @@ async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sit
   }));
 
   const designCoursesEntries = designCourses?.map(({ slug }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_HOME}/${slug}`),
+    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_HOME}/${encodeURIComponent(slug)}`),
     lastModified: new Date().toISOString(),
     priority: 1,
   }));
 
+  const designPortfolioEntries = designCourses?.map(({ slug }) => ({
+    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_PORTFOLIOS}/${encodeURIComponent(slug)}`),
+    lastModified: new Date().toISOString(),
+    priority: 0.8,
+  }));
+
+  const designOrderEntries = designCourses?.map(({ slug }) => ({
+    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_ORDERS}/${encodeURIComponent(slug)}`),
+    lastModified: new Date().toISOString(),
+    priority: 0.8,
+  }));
+
   const languageCoursesEntries = languageCourses?.map(({ slug }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_HOME}/${slug.current}`),
+    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_LANGUAGES}/${slug.current}`),
     lastModified: new Date().toISOString(),
     priority: 1,
   }));
@@ -164,6 +176,8 @@ async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sit
     },
     ...educationalCoursesEntries,
     ...designCoursesEntries,
+    ...designPortfolioEntries,
+    ...designOrderEntries,
     ...languageCoursesEntries,
   ];
 };

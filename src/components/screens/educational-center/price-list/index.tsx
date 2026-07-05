@@ -28,7 +28,7 @@ const PriceList = ({ data }: Readonly<Props>) => {
 
     useEffect(() => {
         setTimeout(() => dispatch(closeModal(false)), 1);
-    }, [data]);
+    }, [data, dispatch]);
 
 	return (
 		<section id='price-list' className={styles.section}>

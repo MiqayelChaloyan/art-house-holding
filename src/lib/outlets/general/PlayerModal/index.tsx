@@ -70,7 +70,7 @@ const PlayerModal = () => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [showModal]);
+    }, [showModal, dispatch]);
 
     if (!isMounted) {
         return null;

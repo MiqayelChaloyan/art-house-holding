@@ -47,7 +47,7 @@ const CourseProcess = ({ course }: Readonly<Props>) => {
         } else {
             setUrl(course.video?.video_url);
         }
-    }, []);
+    }, [course.video?.useUpload, course.video?.videoFile, course.video?.video_url]);
 
     return (
         <section id='video-player' className={styles.section}>

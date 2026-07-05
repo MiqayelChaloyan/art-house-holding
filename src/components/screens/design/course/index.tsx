@@ -54,7 +54,7 @@ const Course = ({ locale, course }: Readonly<Props>) => {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [index]);
+  }, [index, gallery_of_course.length]);
 
   const terms = conditions?.map((condition: string, conditionIndex: number) =>
     <div key={conditionIndex} className={styles.term}>

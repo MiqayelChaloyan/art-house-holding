@@ -44,13 +44,11 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (!isSticky) {
-            setIsSticky(window.scrollY > 0);
-        }
-
         const handleScroll = () => {
             setIsSticky(window.scrollY > 0);
         };
+
+        handleScroll();
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);

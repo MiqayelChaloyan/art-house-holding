@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
@@ -36,22 +36,12 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
       ? allCourses?.filter((elem: COURSES_DESIGN_QUERYResult) => elem.name === decodedProperty)
       : allCourses;
     setCategory(filteredCourses);
-  }, [decodedProperty, courses]);
+  }, [decodedProperty, courses, allCourses]);
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      const modifiedValue = value.replace(/ /g, '_');
-      params.set(name, encodeURIComponent(modifiedValue));
-      return params.toString();
-    },
-    [searchParams]
-  );
-
-  const navbar: React.JSX.Element[] = allCourses?.map(({ course_name, _id, name }: COURSES_DESIGN_QUERYResult) => (
+  const navbar: React.JSX.Element[] = allCourses?.map(({ course_name, _id, slug, name }: COURSES_DESIGN_QUERYResult) => (
     <Link
       key={_id}
-      href={`/${activeLocale}${Pages.DESIGN_PORTFOLIOS}?${createQueryString('name', name)}`}
+      href={`/${activeLocale}${Pages.DESIGN_PORTFOLIOS}/${encodeURIComponent(slug)}`}
       scroll={false}
       className={cn(styles.link, styles.line, decodedProperty === name ? styles.active : '', Arial.className)}
     >
@@ -64,7 +54,7 @@ const Portfolios = ({ courses }: Readonly<Props>) => {
     <section id='portfolio' className={styles.container}>
       <div className={styles.navigation}>
         <Link
-          href={`/${activeLocale}${Pages.DESIGN_PORTFOLIOS}?${createQueryString('name', defaultSearchParam)}`}
+          href={`/${activeLocale}${Pages.DESIGN_PORTFOLIOS}`}
           scroll={false}
           className={cn(styles.link, styles.line, !decodedProperty || decodedProperty === defaultSearchParam ? styles.active : '', Arial.className)}
         >

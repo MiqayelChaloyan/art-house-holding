@@ -47,7 +47,7 @@ const CookingCourses = ({ data }: Readonly<Props>) => {
         } else {
             setUrl(data.video?.video_url);
         }
-    }, []);
+    }, [data.video?.useUpload, data.video?.videoFile, data.video?.video_url]);
 
     return (
         <section id='video-player' className={styles.section}>

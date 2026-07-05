@@ -93,7 +93,7 @@ const DailyLifeVideo = ({ item, locale }: Readonly<Video>) => {
         } else {
             setUrl(item.video?.video_url);
         }
-    }, []);
+    }, [item.video?.useUpload, item.video?.videoFile, item.video?.video_url]);
 
     return (
         <div className={styles.video}>

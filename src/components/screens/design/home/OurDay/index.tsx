@@ -49,7 +49,7 @@ const OurDay = ({ our_day }: Readonly<Props>) => {
         } else {
             setUrl(our_day.video?.video_url);
         }
-    }, []);
+    }, [our_day.video?.useUpload, our_day.video?.videoFile, our_day.video?.video_url]);
 
     return (
         <div className={styles.container}>

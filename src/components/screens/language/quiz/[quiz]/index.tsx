@@ -20,12 +20,10 @@ const QuizPage = ({ data }: Readonly<Props>) => {
 
     const dispatch = useDispatch();
 
-    const startExam = () => {
-        dispatch(Action.startExamAction(data.questions))
-        dispatch(Action.updateLoader(false))
-    };
-
-    useEffect(() => startExam(), []);
+    useEffect(() => {
+        dispatch(Action.startExamAction(data.questions));
+        dispatch(Action.updateLoader(false));
+    }, [dispatch, data.questions]);
 
 
     return (

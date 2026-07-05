@@ -45,7 +45,7 @@ const Language = ({ data }: Readonly<Props>) => {
         } else {
             setUrl(course_process.video?.video_url);
         }
-    }, []);
+    }, [course_process.video?.useUpload, course_process.video?.videoFile, course_process.video?.video_url]);
 
     return (
         <Container className='container'>

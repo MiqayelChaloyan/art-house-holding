@@ -44,7 +44,11 @@ export async function generateMetadata({
     const decodedQuery = decodeURIComponent(courseName[0]);
     const data = await getCourseBySlug(locale, decodedQuery);
 
-    const ogTitle =  `${data?.course_name} | ${data.orders[0]?.author}`;
+    if (!data) {
+        notFound();
+    }
+
+    const ogTitle = `${data.course_name} | ${data.orders[0]?.author}`;
     const ogImage = data.orders[0]?.image;
     const ogDescription = data?.guides[0];
 
@@ -52,6 +56,17 @@ export async function generateMetadata({
     const icon = null;
     const keywords = null;
 
-    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
+    const slugPath = Array.isArray(courseName)
+        ? courseName.map(decodeURIComponent).join('/')
+        : decodeURIComponent(courseName);
+    const metadata = generateMetadataDynamic(
+        ogDescription,
+        ogTitle,
+        path,
+        icon,
+        locale,
+        keywords,
+        `/${locale}/design/orders/${slugPath}`,
+    );
     return metadata;
 };

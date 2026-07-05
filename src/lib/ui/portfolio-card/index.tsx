@@ -36,7 +36,7 @@ const PortfolioImageCard = ({
     const { _key, author, image: { alt } } = project;
 
     return (
-        <Link href={{ pathname: `/${activeLocale}/design/${type}/${encodeURIComponent(slug)}`, query: { name: _key } }}>
+        <Link href={`/${activeLocale}/design/${type}/${encodeURIComponent(slug)}#${encodeURIComponent(_key)}`}>
             <figure className={styles.figure}>
                 <NextImage
                     src={cardImagePath?.src}

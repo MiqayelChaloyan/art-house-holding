@@ -61,10 +61,10 @@ const AnimationCarousel = ({ gallery }: Readonly<Props>) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            swipeToImage(1)
+            setImageCount(([count]) => [count + 1, 1])
         }, 5000)
         return () => clearInterval(interval)
-    }, [imageCount])
+    }, [])
 
     return (
         <div className={styles['slider-container']}>

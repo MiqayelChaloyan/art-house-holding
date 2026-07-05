@@ -49,7 +49,12 @@ export async function generateMetadata({
     params: { locale: Locale, slug: string };
 }): Promise<Metadata> {
     const course = await getCourseBySlug(locale, slug[0]);
-    const ogTitle = course?.name;
+
+    if (!course) {
+        notFound();
+    }
+
+    const ogTitle = course.name;
     const ogImage = course?.ogImage;
     const ogDescription = course?.ogDescription;
     const keywords = course?.keywords;;
@@ -57,6 +62,15 @@ export async function generateMetadata({
     const path: ImagePath = urlForImage(ogImage);
     const icon = null;
 
-    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
+    const slugPath = Array.isArray(slug) ? slug.map(decodeURIComponent).join('/') : decodeURIComponent(slug);
+    const metadata = generateMetadataDynamic(
+        ogDescription,
+        ogTitle,
+        path,
+        icon,
+        locale,
+        keywords,
+        `/${locale}/language/languages/${slugPath}`,
+    );
     return metadata;
 };

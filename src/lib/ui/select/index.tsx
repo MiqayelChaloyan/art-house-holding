@@ -97,7 +97,13 @@ const Select = ({
             </span>
             <ul className={styles[`${classNameProperty}-select-dropdown`]} role="listbox" id="select-dropdown">
                 {data?.map((item: any, index: number) => (
-                    <li key={item?.slug.current || index} role="option" onClick={handleOptionClick} tabIndex={index}>
+                    <li
+                        key={item?.slug.current || index}
+                        role="option"
+                        aria-selected={state.values[valueName] === item?.[valueName]}
+                        onClick={handleOptionClick}
+                        tabIndex={index}
+                    >
                         <input type="radio" id={valueName} name={valueName} />
                         <label htmlFor={item?.valueName} id={item?.slug}>{item?.[valueName]}</label>
                     </li>

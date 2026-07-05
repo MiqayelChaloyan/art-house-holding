@@ -12,7 +12,7 @@ const Pages = {
     LANGUAGE_PARTNERS: '/language/partners',
     LANGUAGE_SEND_REQUEST: '/language/form',
     LANGUAGE_TAKE_TEST: '/language/quiz',
-    LANGUAGE_ABOUT: '/about',
+    LANGUAGE_ABOUT: '/language/about',
     LANGUAGE_QUIZ: '/language/quiz',
     DESIGN_HOME: '/design',
     DESIGN_PRICE_LIST: '/design/price-list',

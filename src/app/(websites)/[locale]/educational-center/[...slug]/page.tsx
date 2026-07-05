@@ -51,7 +51,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const data = await getCourse(locale, slug[0]);
 
-    const ogTitle = data?.course_name;
+    if (!data) {
+        notFound();
+    }
+
+    const ogTitle = data.course_name;
     const ogImage = data.course_main[0]?.image;
     const ogDescription = data?.ogDescription;
     const keywords = data?.keywords;
@@ -59,6 +63,15 @@ export async function generateMetadata({
     const path: ImagePath = urlForImage(ogImage);
     const icon: ImagePath = urlForImage(data?.svg);
 
-    const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
+    const slugPath = Array.isArray(slug) ? slug.map(decodeURIComponent).join('/') : decodeURIComponent(slug);
+    const metadata = generateMetadataDynamic(
+        ogDescription,
+        ogTitle,
+        path,
+        icon,
+        locale,
+        keywords,
+        `/${locale}/educational-center/${slugPath}`,
+    );
     return metadata;
 };

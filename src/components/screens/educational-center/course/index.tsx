@@ -30,7 +30,7 @@ const Course = ({
 
     useEffect(() => {
         setTimeout(() => dispatch(closeModal(false)), 1);
-    }, [course]);
+    }, [course, dispatch]);
 
     return (
         <>

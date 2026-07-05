@@ -7,14 +7,10 @@ import AboutUs from '@/src/components/screens/art-house/about';
 
 import { Locale } from '@/src/locales';
 
-import { ImagePath, Site } from '@/src/types/general';
-
 import { SITE_META_QUERY } from '@/sanity/services/art-house-service';
-import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import { getAboutDetails } from '@/src/utils/data/art-house';
-import { generateMetadataDynamic } from '@/src/utils/default-metadata';
-import { sanityFetch } from '@/src/api/sanity-fetch';
+import { buildSiteMetadata, fetchSiteMetaEntry } from '@/src/utils/site-meta';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -40,28 +36,11 @@ export default async function Page({
 };
 
 
-async function getSiteMeta(
-  query: string = SITE_META_QUERY,
-  locale?: Locale,
-): Promise<Site> {
-  const site = await sanityFetch<Site[]>({
-    query,
-    params: { language: locale },
-  });
-
-  return site[1];
-};
-
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
-  const meta: Site = await getSiteMeta(SITE_META_QUERY, locale);
-  const { ogDescription, ogTitle, ogImage, keywords } = meta;
-  const path: ImagePath = urlForImage(ogImage);
-  const icon = null;
-
-  const metadata = generateMetadataDynamic(ogDescription, ogTitle, path, icon, locale, keywords);
-  return metadata;
+  const meta = await fetchSiteMetaEntry(SITE_META_QUERY, locale, 1);
+  return buildSiteMetadata(meta, locale, `/${locale}/about`);
 };

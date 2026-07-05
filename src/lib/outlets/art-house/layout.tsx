@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
@@ -38,9 +38,9 @@ const Layout = ({
         };
 
         fetchData();
-    }, []);
+    }, [activeLocale]);
 
-    const handleChangeActiveLink = (link: string) => setLinkActive(link);
+    const handleChangeActiveLink = useCallback((link: string) => setLinkActive(link), []);
 
     return (
         <>

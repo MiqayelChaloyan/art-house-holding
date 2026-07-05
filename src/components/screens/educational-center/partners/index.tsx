@@ -31,7 +31,7 @@ const Partners = ({ data }: Props) => {
 
 	useEffect(() => {
 		setTimeout(() => dispatch(closeModal(false)), 1);
-	}, [data]);
+	}, [data, dispatch]);
 
 	const partners = data?.map((item: PARTNER_Result) => {
 		const path: ImagePath = urlForImage(item?.logo);
