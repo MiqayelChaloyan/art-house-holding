@@ -2,6 +2,7 @@
     "navigation": {
         "about": "Մեր մասին",
         "partners": "Գործընկերներ",
+        "blog": "Բլոգ",
         "price-list": "Գնացուցակ",
         "courses": "Դասընթացներ",
         "languages": "Լեզուներ",
@@ -28,6 +29,8 @@
         "follow-us": "ՀԵՏԵՎԵՔ ՄԵԶ",
         "rights": "Բոլոր իրավունքները պաշտպանված են",
         "rating-title": "Art House ուսումնական կենտրոն",
+        "design-studio-title": "Art House Design Studio",
+        "language-center-title": "Art House լեզվի կենտրոն",
         "send-request": "Ուղարկել \n հայտ",
         "take-the-test": "Անցնել \n թեստ",
         "contact-us": "Կապ մեզ հետ",
@@ -39,7 +42,12 @@
         "send-message-success": "Ձեր նամակը հաջողությամբ ուղարկվեց",
         "send-message-failure": "Ինչ որ բան այնպես չգնաց, խնդրում ենք փորձել նորից",
         "other-platforms": "Այլ հարթակներ",
-        "address": "Հասցե"
+        "address": "Հասցե",
+        "share-post": "Կիսվել",
+        "error-title": "Ինչ-որ բան սխալ է գնացել",
+        "error-description": "Չհաջողվեց բեռնել այս էջը։ Խնդրում ենք կրկին փորձել։",
+        "error-retry": "Կրկին փորձել",
+        "error-home": "Գլխավոր էջ"
     },
     "buttons": {
         "contact-us": "Կապ մեզ հետ",
@@ -76,7 +84,11 @@
         "contact-us": "Կապ մեզ հետ",
         "promotions": "Ակցիաներ",
         "portfolios": "Պորտֆոլիոներ",
-        "orders": "Պատվերներ"
+        "orders": "Պատվերներ",
+        "similar-posts": "Նման գրառումներ",
+        "more-stories": "Ավելի շատ պատմություններ",
+        "more-stories-description": "Ձեզ սպասում է ևս {count} հոդված",
+        "explore-all-stories": "Բացահայտել բոլոր պատմությունները"
     },
     "contact": {
         "tell": "Հեռ.",

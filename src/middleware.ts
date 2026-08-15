@@ -16,6 +16,7 @@ const intlMiddleware = createMiddleware({
 
 const LANGUAGE_SECTION_RESERVED = new Set([
   'languages',
+  'blog',
   'promotions',
   'price-list',
   'partners',
@@ -69,6 +70,16 @@ export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const nameParam = request.nextUrl.searchParams.get('name');
 
+  if (pathname.startsWith('/monitoring') || pathname.startsWith('/api/')) {
+    return NextResponse.next();
+  }
+
+  const localeMonitoringMatch = pathname.match(/^\/(am|en|ru)\/monitoring(\/.*)?$/);
+  if (localeMonitoringMatch) {
+    const suffix = localeMonitoringMatch[2] ?? '';
+    return redirectTo(request, `/monitoring${suffix}`);
+  }
+
   const normalizedPath = resolvePathNormalization(pathname);
   if (normalizedPath) {
     return redirectTo(request, normalizedPath);
@@ -89,6 +100,14 @@ export default function middleware(request: NextRequest) {
   const legacyPathRedirect = resolveLegacyPathRedirect(pathname);
   if (legacyPathRedirect) {
     return redirectTo(request, legacyPathRedirect);
+  }
+
+  const languageBlogMisrouteMatch = pathname.match(
+    /^\/(am|en|ru)\/language\/languages\/blog(\/.*)?$/,
+  );
+  if (languageBlogMisrouteMatch) {
+    const [, locale, suffix = ''] = languageBlogMisrouteMatch;
+    return redirectTo(request, `/${locale}/language/blog${suffix}`);
   }
 
   const languageLegacyMatch = pathname.match(/^\/(am|en|ru)\/language\/([^/]+)\/?$/);
@@ -123,7 +142,8 @@ export default function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/',
+    '/monitoring/:path*',
     '/(am|en|ru)/:path*',
-    '/((?!_next|admin|api|robots.txt|sitemap.xml|favicon.ico).*)',
+    '/((?!_next|admin|api|monitoring|robots.txt|sitemap.xml|favicon.ico).*)',
   ],
 };

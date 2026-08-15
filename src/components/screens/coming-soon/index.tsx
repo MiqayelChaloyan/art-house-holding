@@ -12,6 +12,7 @@ import { FaLinkedinIn } from 'react-icons/fa6';
 import useWindowSize from '@/src/hooks/useWindowSize';
 
 import Logo from '@/src/lib/icons/art-house/LogoFooter';
+import Copyright from '@/src/components/components/copyright';
 
 import { Pages } from '@/src/constants/pages';
 import { ArianAMU } from '@/src/constants/font';
@@ -30,7 +31,6 @@ interface Props {
 };
 
 const ComingSoon = ({ data }: Readonly<Props>) => {
-    const currentYear = new Date().getFullYear();
     const windowSize = useWindowSize();
 
     const socialNetworkComponents: socialNetwork = {
@@ -89,9 +89,7 @@ const ComingSoon = ({ data }: Readonly<Props>) => {
                     <div className={styles.hosts}>
                         {hosts}
                     </div>
-                    <p className={cn(styles.reserved, ArianAMU.className)}>
-                        {`©️ ${currentYear}  All rights reserved`}
-                    </p>
+                    <Copyright className={cn(styles.reserved, ArianAMU.className)} />
                 </div>
             </div>
             <div className={styles.left_box}>

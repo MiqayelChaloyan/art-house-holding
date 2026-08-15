@@ -96,7 +96,8 @@ interface HOME_DETALIS_LANGUAGE_QUERYResult {
             video: VIDEO;
         }]
         our_daily_life_images: Asset[];
-    }
+    };
+    blog_section?: BLOG_SECTION;
 };
 
 interface ABOUT_LANGUAGE_QUERYResult {

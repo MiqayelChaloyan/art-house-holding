@@ -12,6 +12,7 @@ import LocalSwitcher from '@/src/components/components/local-switcher';
 import Logo from '@/src/lib/icons/art-house/Logo';
 import { Pages } from '@/src/constants/pages';
 import { ArianAMU } from '@/src/constants/font';
+import { trackButtonClick } from '@/src/lib/analytics/tracking';
 
 import colors from '@/src/themes';
 
@@ -48,10 +49,9 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
             } else {
                 handleChangeActiveLink('')
             }
-
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -60,29 +60,18 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
 
     const toggleMenuClick = () => setIsOpenMenu(!isOpenMenu);
 
-    const handleRouteChangeComplete = (scrollTo: string) => {
-        const observer = new MutationObserver((_, obs) => {
-            const element = document.getElementById(scrollTo);
-            if (element) {
-                const topPosition = element.offsetTop;
-                window.scrollTo({ top: topPosition, behavior: 'smooth' });
-                obs.disconnect();
-            }
-        });
+    const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
-        observer.observe(document, { childList: true, subtree: true });
-    };
+    const handleScrollNavClick = (sectionId: string, activeLabel: string, trackName?: string) => {
+        if (trackName) {
+            trackButtonClick({ name: trackName });
+        }
 
-    const handleActiveLink = (newPath: string) => {
-        handleChangeActiveLink(newPath);
+        handleChangeActiveLink(activeLabel === 'main' ? '' : activeLabel);
         setIsOpenMenu(false);
 
-        if (pathname.includes('/about')) {
-            router.push('/');
-
-            setTimeout(() => {
-                handleRouteChangeComplete(newPath);
-            }, 500);
+        if (!isHomePage) {
+            router.push(`/${locale}#${sectionId}`);
         }
     };
 
@@ -100,7 +89,8 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
                     smooth={false}
                     duration={500}
                     className={cn(styles.logo, isSticky && styles.logoSticky)}
-                    onClick={() => handleActiveLink(scrollLinks[0].label)}>
+                    onClick={() => handleScrollNavClick(scrollLinks[0].to, scrollLinks[0].label, 'Home Logo')}
+                >
                     <Logo
                         width={212}
                         height={60}
@@ -111,8 +101,13 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
                     <div className={styles.navbar}>
                         <Link
                             href={`/${locale}/${Pages.HOME_ABOUT}`}
+                            prefetch
                             className={cn(styles.link, pathname.includes(Pages.HOME_ABOUT) && styles.linkActive, ArianAMU.className)}
-                            onClick={() => handleActiveLink(Pages.HOME_ABOUT)}
+                            onClick={() => {
+                                trackButtonClick({ name: 'About' });
+                                handleChangeActiveLink(Pages.HOME_ABOUT);
+                                setIsOpenMenu(false);
+                            }}
                         >
                             {t('about')}
                         </Link>
@@ -121,7 +116,7 @@ const Header = ({ locale, typePosition, linkActive, handleChangeActiveLink }: Re
                             smooth={false}
                             duration={500}
                             className={cn(styles.link, linkActive === scrollLinks[1].label && styles.linkActive, ArianAMU.className)}
-                            onClick={() => handleActiveLink(scrollLinks[1].to)}
+                            onClick={() => handleScrollNavClick(scrollLinks[1].to, scrollLinks[1].label, 'Partners')}
                         >
                             {t(scrollLinks[1].label)}
                         </ScrollLink>

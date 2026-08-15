@@ -89,6 +89,7 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                         </Link>
                         <Button
                             text={t('courses')}
+                            trackName="Courses"
                             onClick={handleSubmit}
                             className={cn(styles.btn, ArianAMU.className)}
                         />
@@ -107,6 +108,14 @@ const Header = ({ typePosition, locale }: IHeaderProps) => {
                             className={cn(styles.link, pathname === `/${locale}${Pages.EDUCATIONAL_PRICE_LIST}` && styles.linkActive, ArianAMU.className)}
                         >
                             {t('price-list')}
+                        </Link>
+                        <Link
+                            onClick={toggleMenuClick}
+                            href={`/${locale}${Pages.EDUCATIONAL_BLOG_HOME}`}
+                            aria-label={Pages.EDUCATIONAL_BLOG_HOME}
+                            className={cn(styles.link, pathname.startsWith(`/${locale}${Pages.EDUCATIONAL_BLOG_HOME}`) && styles.linkActive, ArianAMU.className)}
+                        >
+                            {t('blog')}
                         </Link>
                         <div>
                             <LocalSwitcher

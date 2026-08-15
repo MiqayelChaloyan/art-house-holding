@@ -41,6 +41,7 @@ const RightMenu = ({ locale, socialData }: Props) => {
 				</Link>
 				<button
 					className={styles.btn_courses}
+					data-track-click="Courses"
 					onClick={() => setTimeout(() => dispatch(openModal(true)), 500)}
 					title='Courses'
 				>

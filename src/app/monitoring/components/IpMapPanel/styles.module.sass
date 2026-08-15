@@ -1,0 +1,29 @@
+.ipMapPanel
+  margin-bottom: 1rem
+
+.ipMapPanelError
+  margin: 0 0 0.75rem
+  padding: 0.65rem 0.85rem
+  border-radius: var(--mon-radius-sm)
+  border: 1px solid color-mix(in srgb, var(--mon-danger) 35%, var(--mon-border))
+  background: color-mix(in srgb, var(--mon-danger) 8%, var(--mon-chart-card))
+  color: var(--mon-danger)
+  font-size: 0.85rem
+
+.ipMapPanelLoading
+  min-height: 420px
+
+.ipMapPanelSkeleton
+  width: 100%
+  min-height: 420px
+  border-radius: var(--mon-radius-lg)
+  border: 1px solid var(--mon-border)
+  background: linear-gradient(90deg, var(--mon-skeleton) 0%, var(--mon-skeleton-shine) 50%, var(--mon-skeleton) 100%)
+  background-size: 200% 100%
+  animation: skeletonShimmer 1.25s ease-in-out infinite
+
+@keyframes skeletonShimmer
+  0%
+    background-position: 200% 0
+  100%
+    background-position: -200% 0

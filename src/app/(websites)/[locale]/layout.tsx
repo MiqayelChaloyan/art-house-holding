@@ -6,6 +6,7 @@ import { NextIntlClientProvider, useMessages } from 'next-intl';
 // import { generateStructuredData } from '@/src/utils/jsonLdData';
 
 import { StoreProvider } from '@/src/store/StoreProvider';
+import { AnalyticsProvider } from '@/src/components/analytics/AnalyticsProvider';
 
 // import { SITE_META_QUERY as HOME_QUERY } from '@/sanity/services/art-house-service';
 // import { SITE_META_QUERY as DESIGN_QUERY } from '@/sanity/services/design-service';
@@ -68,8 +69,8 @@ function RootLayout({
   // });
 
   return (
-    <html lang={locale}>
-      <body className={Inter.className}>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={Inter.className} suppressHydrationWarning>
         {/* <script
           key="structured-data"
           type="application/ld+json"
@@ -79,7 +80,9 @@ function RootLayout({
         />  */}
         <NextIntlClientProvider locale={locale} messages={messages}>
           <StoreProvider>
-            {children}
+            <AnalyticsProvider>
+              {children}
+            </AnalyticsProvider>
           </StoreProvider>
         </NextIntlClientProvider>
       </body>

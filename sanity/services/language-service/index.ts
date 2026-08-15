@@ -1,3 +1,9 @@
+import { createBlogPostsQuery, createBlogSlugQuery, createBlogSimilarPostsQuery, blogSectionQueryFragment } from '../blog-queries';
+
+export const BLOG_POSTS_QUERY = createBlogPostsQuery('language-blog-post');
+export const BLOG_SLUG_QUERY = createBlogSlugQuery('language-blog-post');
+export const BLOG_SIMILAR_POSTS_QUERY = createBlogSimilarPostsQuery('language-blog-post');
+
 export const ABOUT_US_DETAILS_QUERY = `
 *[_type == "about-us-language"] {
     _id,
@@ -15,6 +21,7 @@ export const ABOUT_US_DETAILS_QUERY = `
             "news": news[$language],
         },
     },
+    ${blogSectionQueryFragment},
 }`;
 
 export const SITE_META_QUERY = `

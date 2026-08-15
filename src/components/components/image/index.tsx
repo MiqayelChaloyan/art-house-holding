@@ -8,9 +8,22 @@ interface NextImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     alt: string;
     width: number;
     height: number;
+    priority?: boolean;
+    loading?: 'lazy' | 'eager';
+    sizes?: string;
 };
 
-const NextImage = ({ src, alt= 'Image', width, height, className, ...rest }: NextImageProps) => {
+const NextImage = ({
+    src,
+    alt = 'Image',
+    width,
+    height,
+    className,
+    priority = false,
+    loading,
+    sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+    ...rest
+}: NextImageProps) => {
     return (
         <Image
             src={src}
@@ -19,8 +32,9 @@ const NextImage = ({ src, alt= 'Image', width, height, className, ...rest }: Nex
             height={height}
             className={className}
             quality={80}
-            priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={priority}
+            loading={loading ?? (priority ? 'eager' : 'lazy')}
+            sizes={sizes}
             {...rest}
         />
     );

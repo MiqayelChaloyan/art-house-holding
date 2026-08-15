@@ -33,7 +33,7 @@ $imagePAth: '../../../../../public/assets/images/educational-center/BlueBackgrou
     @media screen and ( max-width: 991px )
       width: 70%
     @media screen and ( max-width: 767px )
-      width: 90%
+      width: 100%
 
 .box
     background-image: url($imagePAth) 
@@ -47,42 +47,42 @@ $imagePAth: '../../../../../public/assets/images/educational-center/BlueBackgrou
     /* 2xl */
     @media screen and ( max-width: 1536px )
       width: 100%
-      padding: 0
+      padding: 0 var(--container-gap-mobile)
       margin-bottom: 0
       height: 470px
       background-size: 100%
     /* xl */
     @media screen and ( max-width: 1280px )
       width: 100%
-      padding: 0
+      padding: 0 var(--container-gap-mobile)
       margin-bottom: 0
       height: 470px
       background-size: 100%
     /* lg */
     @media screen and ( max-width: 1024px )
       width: 100%
-      padding: 0
+      padding: 0 var(--container-gap-mobile)
       margin-bottom: 0
       height: 470px
       background-size: 100%
     /* md */
     @media screen and ( max-width: 768px )
       width: 100%
-      padding: 0
+      padding: 0 var(--container-gap-mobile)
       height: 470px
       background-size: 94%
       background-position: bottom      
     /* sm */
     @media screen and ( max-width: 640px )
       width: 100%
-      padding: 0
+      padding: 0 var(--container-gap-mobile)
       height: 385px
       background-size: 94%
       background-position: bottom  
     /* xs */
     @media screen and ( max-width: 475px )
       width: 100%
-      padding: 0
+      padding: 0 var(--container-gap-mobile)
       height: 385px
       background-size: 94%
       background-position: bottom    
@@ -208,3 +208,9 @@ $imagePAth: '../../../../../public/assets/images/educational-center/BlueBackgrou
       grid-template-columns: repeat(1, 1fr)
       margin: 0 auto
       width: 100%
+
+.reserved
+   margin-top: 16px
+   text-align: right
+   @media screen and ( max-width: 767px )
+      text-align: center

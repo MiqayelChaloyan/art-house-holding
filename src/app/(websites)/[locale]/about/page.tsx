@@ -9,7 +9,7 @@ import { Locale } from '@/src/locales';
 
 import { SITE_META_QUERY } from '@/sanity/services/art-house-service';
 
-import { getAboutDetails } from '@/src/utils/data/art-house';
+import { getAboutDetails, getContacts } from '@/src/utils/data/art-house';
 import { buildSiteMetadata, fetchSiteMetaEntry } from '@/src/utils/site-meta';
 
 import 'swiper/css';
@@ -26,13 +26,16 @@ interface Props {
 export default async function Page({
   params: { locale }
 }: Readonly<Props>) {
-  const data = await getAboutDetails(locale);
+  const [data, socialData] = await Promise.all([
+    getAboutDetails(locale),
+    getContacts(locale),
+  ]);
 
   if (!data) {
     notFound()
   };
 
-  return (<AboutUs data={data} />);
+  return (<AboutUs data={data} socialData={socialData} />);
 };
 
 

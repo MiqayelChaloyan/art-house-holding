@@ -47,11 +47,13 @@ export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
-    const branches = await getHomeDetails(locale);
-    const courses = await getCourses(locale);
-    const contacts = await getContacts(locale);
-    const lessons = await getSelectOptions(locale);
-    const lessonsArmenianKeyword = await getSelectOptions('am');
+    const [branches, courses, contacts, lessons, lessonsArmenianKeyword] = await Promise.all([
+        getHomeDetails(locale),
+        getCourses(locale),
+        getContacts(locale),
+        getSelectOptions(locale),
+        getSelectOptions('am'),
+    ]);
 
     if (!courses || !branches || !contacts || !lessons || !lessonsArmenianKeyword) {
         notFound()

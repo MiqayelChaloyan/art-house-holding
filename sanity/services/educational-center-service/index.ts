@@ -1,3 +1,9 @@
+import { createBlogPostsQuery, createBlogSlugQuery, createBlogSimilarPostsQuery, blogSectionQueryFragment } from '../blog-queries';
+
+export const BLOG_POSTS_QUERY = createBlogPostsQuery('educational-center-blog-post');
+export const BLOG_SLUG_QUERY = createBlogSlugQuery('educational-center-blog-post');
+export const BLOG_SIMILAR_POSTS_QUERY = createBlogSimilarPostsQuery('educational-center-blog-post');
+
 export const HOME_DETALIS_QUERY = 
 `*[_type == "about-us"] {
     "main_section": main_section[] {
@@ -45,6 +51,7 @@ export const HOME_DETALIS_QUERY =
         "user_feedback": user_feedback[$language],
         "user_name": user_name[$language],
     },
+    ${blogSectionQueryFragment},
 }`;
 
 export const COURSES_QUERY = 

@@ -13,6 +13,7 @@ import TextareaField from '@/src/lib/ui/TextareaField';
 import { Arial, Calibri } from '@/src/constants/font';
 
 import { sendOrderDesign } from '@/src/api';
+import { trackFormSubmit } from '@/src/lib/analytics/tracking';
 import { FormOrder } from '@/src/types/design';
 import { ContactUsResponse } from '@/src/types/general';
 
@@ -85,8 +86,23 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
             const res: ContactUsResponse = await sendOrderDesign(formData);
     
             if (res.status !== 200) {
+                trackFormSubmit({
+                    name: 'Order Design',
+                    success: false,
+                    requestBody: formData,
+                    responseStatus: res.status,
+                    responseMessage: 'error' in res ? String(res.error) : 'Request failed',
+                });
                 throw new Error('Failed to send message');
             }
+
+            trackFormSubmit({
+                name: 'Order Design',
+                success: true,
+                requestBody: formData,
+                responseStatus: res.status,
+                responseMessage: 'OK',
+            });
 
             setOpen(true);
             setInfo({
@@ -101,6 +117,12 @@ const OrderForm = ({ orders, ordersArmenian }: Readonly<Props>) => {
                 error: false,
             }));
         } catch (error) {
+            trackFormSubmit({
+                name: 'Order Design',
+                success: false,
+                requestBody: formData,
+                responseMessage: error instanceof Error ? error.message : 'Unknown error',
+            });
             setOpen(true);
             setInfo({
                 status: 'info',

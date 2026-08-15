@@ -45,6 +45,25 @@ $imagePath: '../../../../../public/assets/images/language/background.png'
 .stickyContainer
 	background-image: none
 
+.blogCompact
+	height: auto
+	min-height: 0
+	margin-bottom: 0
+	background-image: none
+	.header
+		display: none
+	.boundary
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+		z-index: 999
+		background-color: #006ED2
+		height: 70px
+		@media screen and (max-width: 600px)
+			position: relative
+			height: auto
+
 .boundary
 	height: 70px
 

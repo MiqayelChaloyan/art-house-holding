@@ -13,6 +13,7 @@ import { Arial } from '@/src/constants/font';
 import { TRAINING_CENTERS } from '@/src/constants';
 
 import { sendContactUsDesign } from '@/src/api';
+import { trackFormSubmit } from '@/src/lib/analytics/tracking';
 import { FormContactUs } from '@/src/types/design';
 import { ContactUsResponse } from '@/src/types/general';
 
@@ -86,8 +87,23 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
             const res: ContactUsResponse = await sendContactUsDesign(formData);
     
             if (res.status !== 200) {
+                trackFormSubmit({
+                    name: 'Contact Us Design',
+                    success: false,
+                    requestBody: formData,
+                    responseStatus: res.status,
+                    responseMessage: 'error' in res ? String(res.error) : 'Request failed',
+                });
                 throw new Error('Failed to send message');
             }
+
+            trackFormSubmit({
+                name: 'Contact Us Design',
+                success: true,
+                requestBody: formData,
+                responseStatus: res.status,
+                responseMessage: 'OK',
+            });
     
             setOpen(true);
             setInfo({
@@ -102,7 +118,13 @@ const ContactUsForm = ({ lessons, lessonsArmenian, classNameProperty }: Props) =
                 isLoading: false,
                 error: false,
             }));
-        } catch (error) {    
+        } catch (error) {
+            trackFormSubmit({
+                name: 'Contact Us Design',
+                success: false,
+                requestBody: formData,
+                responseMessage: error instanceof Error ? error.message : 'Unknown error',
+            });
             setOpen(true);
             setInfo({
                 status: 'info',

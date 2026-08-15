@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import Link from 'next/link';
@@ -6,6 +8,7 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import GoogleMaps from '@/src/components/components/map';
 import FormAppointment from '@/src/components/components/form-educational';
+import Copyright from '@/src/components/components/copyright';
 
 import Logo from '@/src/lib/icons/educational-center/Logo';
 import Email from '@/src/lib/icons/educational-center/Email';
@@ -129,6 +132,7 @@ const Footer = ({
                         <p className={cn(styles.info_web, Arial.className)}>
                             {t('texts.address')}: {socialData?.address || t('address.address')}
                         </p>
+                        <Copyright className={cn(styles.reserved, Arial.className)} />
                     </div>
                 </div>
             </div>

@@ -30,6 +30,7 @@ interface IHeaderProps {
 };
 
 const navigationLinks = [
+    { path: Pages.DESIGN_BLOG_HOME, label: 'blog' },
     { path: Pages.DESIGN_PRICE_LIST, label: 'price-list' },
     { path: Pages.DESIGN_ORDERS, label: 'orders' },
     { path: Pages.DESIGN_PORTFOLIOS, label: 'portfolios' },
@@ -92,6 +93,7 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
                     <div className={styles.nav}>
                         <Button
                             text={t('departments')}
+                            trackName="Departments"
                             onClick={handleSubmit}
                             className={cn(styles.link, ArianAMU.className)}
                         />
@@ -104,6 +106,7 @@ const Header = ({ typePosition, locale }: Readonly<IHeaderProps>) => {
                                 prefetch={true}
                                 passHref
                                 onClick={() => setIsOpenMenu(false)}
+                                {...(link.label === 'contact' ? { 'data-track-click': 'Contact' } : {})}
                             >
                                 {t(`${link.label}`)}
                             </Link>

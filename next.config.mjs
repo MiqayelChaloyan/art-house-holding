@@ -11,11 +11,39 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
     reactStrictMode: false,
 
+    transpilePackages: [
+      'sanity',
+      'next-sanity',
+      '@sanity/vision',
+      '@sanity/dashboard',
+      '@sanity/client',
+      '@sanity/eventsource',
+    ],
+
+    experimental: {
+      serverComponentsExternalPackages: ['@sanity/image-url'],
+    },
+
+    webpack: (config, { dev, isServer }) => {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        // Avoid lazy chunk load failures for Sanity document lists in embedded Studio
+        '@sanity/eventsource$': '@sanity/eventsource/browser',
+      };
+
+      if (dev && isServer) {
+        config.optimization.splitChunks = false;
+      }
+
+      return config;
+    },
+
     sassOptions: {
       includePaths: [path.join(__dirname, 'styles')],
     },
   
     images: {
+      unoptimized: process.env.NODE_ENV === 'development',
       dangerouslyAllowSVG: true,
       contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
       remotePatterns: [
@@ -37,6 +65,10 @@ const nextConfig = {
       removeConsole: process.env.NEXT_NODE_ENV === "production"
     },
     async headers() {
+      if (process.env.NODE_ENV !== 'production') {
+        return [];
+      }
+
       return [
         {
           source: '/:path*',

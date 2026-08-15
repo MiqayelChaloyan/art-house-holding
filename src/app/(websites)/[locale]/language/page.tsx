@@ -16,9 +16,11 @@ export default async function Page({
     params: { locale }
 }:
     Readonly<RootProps>) {
-    const data = await getHomeDetails(locale);
-    const discounts = await getDiscounts(locale);
-    const partners = await getPartners(locale);
+    const [data, discounts, partners] = await Promise.all([
+        getHomeDetails(locale),
+        getDiscounts(locale),
+        getPartners(locale),
+    ]);
 
     if (!data || !discounts || !partners) {
         notFound()

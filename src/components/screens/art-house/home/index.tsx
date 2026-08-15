@@ -13,11 +13,12 @@ import Partners from '@/src/components/screens/art-house/home/Partners';
 interface Props {
     data: HOME_DETALIS_QUERYResult;
     partners: PARTNER_Result[];
+    socialData?: SOCIAL_QUERYResult;
 };
 
-const Home = ({ data, partners }: Readonly<Props>) => {
+const Home = ({ data, partners, socialData }: Readonly<Props>) => {
     return (
-        <Layout headerPosition='fixed'>
+        <Layout headerPosition='fixed' socialData={socialData}>
             <Main />
             <Branches data={data?.our_websites} />
             <Progress data={data?.progress_section} />

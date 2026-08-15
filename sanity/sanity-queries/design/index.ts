@@ -146,6 +146,7 @@ interface HOME_DETALIS_DESIGN_QUERYResult {
     progress_section: PROGRESS[];
     our_day: OUR_DAY;
     workers: WORKER[];
+    blog_section?: BLOG_SECTION;
 };
 
 interface CONTACT_US_DESIGN_QUERYResult {

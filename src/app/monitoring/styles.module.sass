@@ -1,0 +1,2561 @@
+.monitoringPage
+  min-height: 100vh
+  min-height: 100dvh
+  font-family: Inter, system-ui, sans-serif
+  background: var(--mon-bg)
+  color: var(--mon-text)
+  transition: background 0.2s ease, color 0.2s ease
+  --mon-audit-head-height: 2.875rem
+  --mon-audit-row-height: 3rem
+  --mon-audit-page-rows: 10
+  --mon-mobile-topbar-height: 56px
+  --mon-backdrop-overlay: rgba(15, 17, 23, 0.52)
+
+  &[data-theme='dark']
+    --mon-bg: #141414
+    --mon-backdrop-overlay: rgba(0, 0, 0, 0.62)
+    --mon-surface: #1f1f1f
+    --mon-surface-2: #1a1a1a
+    --mon-border: rgba(255,255,255,0.1)
+    --mon-border-soft: rgba(255,255,255,0.06)
+    --mon-text: #f3f4f6
+    --mon-text-muted: #9ca3af
+    --mon-text-soft: #d1d5db
+    --mon-primary: #e5e7eb
+    --mon-primary-bg: rgba(255,255,255,0.08)
+    --mon-on-primary: #111827
+    --mon-success: #86efac
+    --mon-danger: #fca5a5
+    --mon-input-bg: #262626
+    --mon-topbar: rgba(26,26,26,0.96)
+    --mon-shadow: none
+    --mon-chart-card: #1f1f1f
+    --mon-row-alt: rgba(255,255,255,0.03)
+    --mon-skeleton: #2a2a2a
+    --mon-skeleton-shine: #383838
+    --mon-detail-accent: #60a5fa
+    --mon-detail-bg: rgba(96, 165, 250, 0.06)
+    --mon-detail-border: rgba(96, 165, 250, 0.18)
+    --mon-table-header-bg: #303134
+    --mon-table-header-text: #bdc1c6
+    --mon-surface-hover: rgba(255,255,255,0.06)
+    --mon-surface-inset: #171717
+    --mon-btn-surface: #262626
+    --mon-text-brand: #60a5fa
+    --mon-brand-soft: rgba(96, 165, 250, 0.14)
+    --mon-radius-lg: 14px
+    --mon-radius-md: 10px
+    --mon-radius-sm: 8px
+
+  &[data-theme='light']
+    --mon-bg: #f3f4f6
+    --mon-backdrop-overlay: rgba(15, 17, 23, 0.42)
+    --mon-surface: #ffffff
+    --mon-surface-2: #f9fafb
+    --mon-border: #e5e7eb
+    --mon-border-soft: #f3f4f6
+    --mon-text: #111827
+    --mon-text-muted: #6b7280
+    --mon-text-soft: #374151
+    --mon-primary: #374151
+    --mon-primary-bg: rgba(55,65,81,0.08)
+    --mon-on-primary: #ffffff
+    --mon-success: #15803d
+    --mon-danger: #dc2626
+    --mon-input-bg: #ffffff
+    --mon-topbar: rgba(255,255,255,0.98)
+    --mon-shadow: 0 1px 2px rgba(17,24,39,0.06)
+    --mon-chart-card: #ffffff
+    --mon-row-alt: #f9fafb
+    --mon-skeleton: #e5e7eb
+    --mon-skeleton-shine: #f3f4f6
+    --mon-detail-accent: #2563eb
+    --mon-detail-bg: rgba(37, 99, 235, 0.04)
+    --mon-detail-border: rgba(37, 99, 235, 0.14)
+    --mon-table-header-bg: #f8f9fa
+    --mon-table-header-text: #3c4043
+    --mon-surface-hover: #f3f4f6
+    --mon-surface-inset: #f9fafb
+    --mon-btn-surface: #ffffff
+    --mon-text-brand: #2563eb
+    --mon-brand-soft: rgba(37, 99, 235, 0.1)
+    --mon-radius-lg: 14px
+    --mon-radius-md: 10px
+    --mon-radius-sm: 8px
+
+@mixin monScrollbar
+  scrollbar-width: thin
+  scrollbar-color: color-mix(in srgb, var(--mon-text-muted) 55%, transparent) color-mix(in srgb, var(--mon-text-muted) 12%, transparent)
+  scrollbar-gutter: stable
+  -webkit-overflow-scrolling: touch
+
+  &::-webkit-scrollbar
+    width: 8px
+    height: 8px
+
+  &::-webkit-scrollbar-track
+    background: color-mix(in srgb, var(--mon-text-muted) 10%, transparent)
+    border-radius: 999px
+
+  &::-webkit-scrollbar-thumb
+    background: color-mix(in srgb, var(--mon-text-muted) 50%, transparent)
+    border-radius: 999px
+    border: 2px solid transparent
+    background-clip: padding-box
+
+  &::-webkit-scrollbar-thumb:hover
+    background: color-mix(in srgb, var(--mon-text-muted) 72%, transparent)
+    background-clip: padding-box
+
+  &::-webkit-scrollbar-corner
+    background: transparent
+
+.shell
+  --mon-sidebar-expanded-width: 260px
+  --mon-sidebar-collapsed-width: 72px
+  --mon-sidebar-width: var(--mon-sidebar-expanded-width)
+  display: grid
+  grid-template-columns: var(--mon-sidebar-width) 1fr
+  min-height: 100vh
+  transition: grid-template-columns 0.16s ease
+
+.shellCollapsed
+  --mon-sidebar-width: var(--mon-sidebar-collapsed-width)
+
+.sidebar
+  display: flex
+  flex-direction: column
+  width: var(--mon-sidebar-width)
+  background: var(--mon-surface-2)
+  border-right: 1px solid var(--mon-border)
+  position: sticky
+  top: 0
+  height: 100vh
+  overflow-y: auto
+  overflow-x: hidden
+  transition: width 0.16s ease
+  @include monScrollbar
+
+.sidebarHeader
+  display: flex
+  align-items: center
+  gap: 0.65rem
+  flex-shrink: 0
+  min-height: 64px
+  padding: 0.85rem 0.9rem
+  border-bottom: 1px solid var(--mon-border-soft)
+
+.sidebarMenuBtn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 2rem
+  height: 2rem
+  flex-shrink: 0
+  border: none
+  border-radius: 8px
+  background: transparent
+  color: var(--mon-text-muted)
+  cursor: pointer
+  transition: background 0.15s ease, color 0.15s ease
+  &:hover
+    background: var(--mon-primary-bg)
+    color: var(--mon-primary)
+
+.sidebarBrand
+  display: flex
+  align-items: center
+  gap: 12px
+  min-width: 0
+  flex: 1
+
+.sidebarBrandCopy
+  min-width: 0
+  overflow: hidden
+  strong
+    display: block
+    font-size: 0.95rem
+    letter-spacing: 0.02em
+    color: var(--mon-text)
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+  span
+    color: var(--mon-text-muted)
+    font-size: 0.78rem
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+.sidebarCollapsed
+  .sidebarHeader
+    flex-direction: column
+    align-items: center
+    gap: 0.55rem
+    padding: 0.75rem 0.45rem
+  .sidebarBrand
+    justify-content: center
+  .sidebarBrandCopy
+    display: none
+  .sidebarNav
+    padding-inline: 8px
+  .navItem, .navItemActive
+    justify-content: center
+    padding-inline: 10px
+    gap: 0
+  .navItemLabel
+    display: none
+  .navItemActive
+    box-shadow: inset 0 3px 0 var(--mon-primary)
+  .sidebarFooter
+    padding-inline: 10px
+
+.sidebarNav
+  flex: 1
+  display: flex
+  flex-direction: column
+  gap: 4px
+  padding: 16px 12px
+
+.navItem, .navItemActive
+  display: flex
+  align-items: center
+  gap: 12px
+  width: 100%
+  padding: 11px 14px
+  border: none
+  border-radius: 10px
+  background: transparent
+  color: var(--mon-text-soft)
+  font-size: 0.9rem
+  font-weight: 500
+  cursor: pointer
+  text-align: left
+  transition: background 0.15s ease, color 0.15s ease
+
+.navItem:hover
+  background: var(--mon-primary-bg)
+  color: var(--mon-text)
+
+.navItemActive
+  background: var(--mon-primary-bg)
+  color: var(--mon-primary)
+  box-shadow: inset 3px 0 0 var(--mon-primary)
+
+.navItemIcon
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+
+.navItemLabel
+  min-width: 0
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.sidebarSectionLabel
+  margin: 14px 8px 6px
+  padding: 0 6px
+  font-size: 0.68rem
+  font-weight: 700
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  color: var(--mon-text-muted)
+
+.sidebarFooter
+  padding: 16px 20px
+  border-top: 1px solid var(--mon-border-soft)
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+.sidebarCloseBtn
+  display: none
+
+.mobileTopbar,
+.sidebarBackdrop
+  display: none
+
+.shellMain
+  display: flex
+  flex-direction: column
+  min-width: 0
+
+.topBar
+  position: sticky
+  top: 0
+  z-index: 10
+  border-bottom: 1px solid var(--mon-border)
+  background: var(--mon-topbar)
+  backdrop-filter: blur(12px)
+  box-shadow: var(--mon-shadow)
+
+.topBarAccent
+  height: 3px
+  background: linear-gradient(90deg, var(--mon-primary) 0%, color-mix(in srgb, var(--mon-primary) 35%, transparent) 55%, transparent 100%)
+
+.topBarInner
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  gap: 20px
+  padding: 20px 28px 18px
+
+.topBarMain
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  gap: 24px
+  flex: 1
+  min-width: 0
+
+.topBarHeading
+  display: flex
+  align-items: flex-start
+  gap: 14px
+  min-width: 0
+
+.topBarIcon
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 44px
+  height: 44px
+  border-radius: 12px
+  background: var(--mon-primary-bg)
+  color: var(--mon-primary)
+  border: 1px solid color-mix(in srgb, var(--mon-primary) 22%, transparent)
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06)
+  flex-shrink: 0
+
+.topBarLeft
+  display: flex
+  align-items: center
+  gap: 20px
+  min-width: 0
+
+.topBarTitles
+  min-width: 0
+  h1
+    margin: 0
+    font-size: 1.5rem
+    font-weight: 700
+    letter-spacing: -0.02em
+    line-height: 1.15
+    color: var(--mon-text)
+  p
+    margin: 6px 0 0
+    color: var(--mon-text-muted)
+    font-size: 0.88rem
+    line-height: 1.45
+    max-width: 520px
+
+.topBarEyebrow
+  display: inline-flex
+  align-items: center
+  margin-bottom: 6px
+  font-size: 0.72rem
+  font-weight: 600
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  color: var(--mon-primary)
+
+.topBarMeta
+  display: flex
+  align-items: center
+  gap: 10px
+  flex-shrink: 0
+  padding-top: 4px
+
+.topBarBadge
+  display: inline-flex
+  align-items: center
+  padding: 7px 12px
+  border-radius: 999px
+  background: var(--mon-primary-bg)
+  border: 1px solid color-mix(in srgb, var(--mon-primary) 24%, transparent)
+  color: var(--mon-primary)
+  font-size: 0.76rem
+  font-weight: 600
+  letter-spacing: 0.02em
+  white-space: nowrap
+
+.rangePills
+  display: inline-flex
+  align-items: center
+  gap: 4px
+  padding: 4px
+  border-radius: 12px
+  background: var(--mon-input-bg)
+  border: 1px solid var(--mon-border)
+  flex-shrink: 0
+  align-self: center
+
+.rangePill, .rangePillActive
+  border: none
+  border-radius: 8px
+  padding: 8px 14px
+  font-size: 0.82rem
+  font-weight: 600
+  cursor: pointer
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease
+  white-space: nowrap
+
+.rangePill
+  background: transparent
+  color: var(--mon-text)
+  &:hover
+    background: var(--mon-primary-bg)
+    color: var(--mon-text)
+
+.rangePillActive
+  background: var(--mon-primary)
+  color: var(--mon-on-primary)
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12)
+
+.topBarActions
+  display: flex
+  align-items: center
+  gap: 12px
+
+.themeToggle
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  width: 100%
+  background: transparent
+  border: 1px solid var(--mon-border)
+  color: var(--mon-text-soft)
+  padding: 8px 14px
+  border-radius: 8px
+  cursor: pointer
+  font-size: 0.88rem
+  transition: background 0.15s ease, color 0.15s ease
+  &:hover
+    background: var(--mon-primary-bg)
+    color: var(--mon-text)
+
+.themeToggleCompact
+  width: auto
+  padding: 8px
+  margin-inline: auto
+
+.rangeSelect
+  display: flex
+  align-items: center
+  gap: 10px
+  flex-shrink: 0
+  span
+    color: var(--mon-text-muted)
+    font-size: 0.82rem
+    font-weight: 500
+  select
+    background: var(--mon-input-bg)
+    border: 1px solid var(--mon-border)
+    color: var(--mon-text)
+    padding: 8px 12px
+    border-radius: 8px
+    font-size: 0.88rem
+    cursor: pointer
+    min-width: 140px
+    &:focus
+      outline: none
+      border-color: var(--mon-primary)
+
+.dashboardMain
+  padding: 24px 28px 48px
+  flex: 1
+
+.errorPanel
+  margin: 24px 28px
+  padding: 32px
+  border-radius: 14px
+  background: rgba(234,67,53,0.08)
+  border: 1px solid rgba(234,67,53,0.25)
+  h2
+    margin: 0 0 8px
+    font-size: 1.1rem
+  p
+    margin: 0 0 16px
+    color: #f28b82
+  button
+    background: transparent
+    border: 1px solid rgba(255,255,255,0.15)
+    color: #e8eaed
+    padding: 8px 16px
+    border-radius: 8px
+    cursor: pointer
+    &:hover
+      background: rgba(255,255,255,0.06)
+
+// ── Data table panel ─────────────────────────────────────
+
+.configBanner
+  display: flex
+  flex-wrap: wrap
+  gap: 16px 24px
+  margin-bottom: 16px
+  padding: 12px 16px
+  border-radius: 10px
+  background: var(--mon-surface)
+  border: 1px solid var(--mon-border)
+  color: var(--mon-text-muted)
+  font-size: 0.85rem
+  strong
+    color: var(--mon-text)
+
+.configBannerHint
+  color: var(--mon-text-muted)
+  font-size: 0.8rem
+
+.firebaseChartCard
+  background: var(--mon-chart-card)
+  border: 1px solid var(--mon-border)
+  border-radius: 12px
+  box-shadow: var(--mon-shadow)
+  overflow: hidden
+  margin-bottom: 16px
+
+.firebaseChartHeader
+  padding: 16px 18px 0
+  h2
+    margin: 0
+    font-size: 0.95rem
+    font-weight: 600
+    color: var(--mon-text)
+  p
+    margin: 4px 0 0
+    color: var(--mon-text-muted)
+    font-size: 0.82rem
+
+.monitoringPage[data-theme='dark']
+  .firebaseChartHeader
+    h2,
+    p
+      color: #ffffff
+  .performanceChartHead
+    h3,
+    p
+      color: #ffffff
+  .chartEmpty
+    color: #ffffff
+  .donutCenter
+    strong,
+    span
+      color: #ffffff
+  .chartCanvas
+    :global(.recharts-cartesian-axis-tick-value)
+      fill: #ffffff
+    :global(.recharts-legend-item-text)
+      color: #ffffff !important
+    :global(.recharts-tooltip-label)
+      color: #ffffff !important
+    :global(.recharts-tooltip-item)
+      color: #ffffff !important
+
+.firebaseChartBody
+  padding: 8px 12px 16px
+
+// ── Performance overview charts (monitoring_system style) ─
+
+.chartsSection
+  margin-bottom: 16px
+
+.performanceChartCard
+  display: flex
+  flex-direction: column
+  min-height: 22rem
+  background: var(--mon-chart-card)
+  border: 1px solid var(--mon-border)
+  border-radius: var(--mon-radius-lg)
+  box-shadow: var(--mon-shadow)
+  overflow: hidden
+
+.performanceChartHead
+  padding: 0.95rem 1rem 0.75rem
+  border-bottom: 1px solid color-mix(in srgb, var(--mon-border) 78%, transparent)
+  h3
+    margin: 0
+    font-size: 0.98rem
+    font-weight: 700
+    color: var(--mon-text)
+  p
+    margin: 0.28rem 0 0
+    font-size: 0.76rem
+    color: var(--mon-text-muted)
+
+.performanceChartBody
+  position: relative
+  flex: 1
+  min-height: 16.5rem
+  padding: 0.75rem 0.85rem 1rem
+
+.chartCanvas
+  width: 100%
+  min-height: 320px
+  border-radius: var(--mon-radius-md)
+  padding: 0.35rem 0.25rem 0.15rem
+  overflow: hidden
+
+.chartEmpty
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 320px
+  color: var(--mon-text-muted)
+  font-size: 0.84rem
+  line-height: 1.5
+  text-align: center
+  padding: 1rem 24px
+
+.chartTooltip
+  padding: 0.55rem 0.65rem
+  border: 1px solid
+  border-radius: 8px
+  box-shadow: var(--mon-shadow)
+  font-size: 0.76rem
+  line-height: 1.45
+
+.chartTooltipTitle
+  display: block
+  margin-bottom: 0.2rem
+  font-size: 0.78rem
+  font-weight: 600
+
+.chartTooltipList
+  list-style: none
+  margin: 0
+  padding: 0
+  li
+    display: flex
+    align-items: center
+    gap: 0.45rem
+    margin-top: 0.25rem
+
+.chartTooltipSwatch
+  width: 8px
+  height: 8px
+  border-radius: 50%
+  flex-shrink: 0
+
+.chartTooltipLabel
+  flex: 1
+  opacity: 0.88
+
+.chartTooltipValue
+  font-weight: 700
+  font-variant-numeric: tabular-nums
+
+.donutWrap
+  position: relative
+  width: 100%
+  min-height: 320px
+
+.donutCenter
+  position: absolute
+  top: 50%
+  left: 38%
+  transform: translate(-50%, -50%)
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 0.15rem
+  pointer-events: none
+  strong
+    font-size: 1.35rem
+    font-weight: 800
+    color: var(--mon-text)
+    font-variant-numeric: tabular-nums
+  span
+    font-size: 0.72rem
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.06em
+    color: var(--mon-text-muted)
+
+.chartsRow
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 0.85rem
+  margin-bottom: 16px
+
+// ── Audit data table (monitoring_system pattern) ─────────
+
+.auditPanel
+  display: flex
+  flex-direction: column
+  gap: 0
+  width: 100%
+  max-width: 100%
+  overflow-x: clip
+
+.auditPanelHeader
+  position: relative
+  overflow: hidden
+  margin-bottom: 14px
+  border: 1px solid color-mix(in srgb, var(--mon-detail-accent) 18%, var(--mon-border))
+  border-radius: var(--mon-radius-lg)
+  background: linear-gradient(135deg, color-mix(in srgb, var(--mon-brand-soft) 70%, var(--mon-surface)) 0%, var(--mon-surface) 58%)
+  box-shadow: var(--mon-shadow)
+
+.auditPanelHeaderAccent
+  height: 4px
+  background: linear-gradient(90deg, var(--mon-detail-accent) 0%, color-mix(in srgb, var(--mon-detail-accent) 45%, transparent) 100%)
+
+.auditPanelHeaderMain
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  gap: 16px
+  padding: 16px 18px 18px
+
+.auditPanelHeaderCopy
+  min-width: 0
+  flex: 1
+
+.auditPanelEyebrow
+  margin: 0 0 6px
+  font-size: 0.68rem
+  font-weight: 700
+  letter-spacing: 0.1em
+  text-transform: uppercase
+  color: var(--mon-text-brand)
+
+.auditPanelTitle
+  margin: 0
+  font-size: 1.2rem
+  font-weight: 700
+  line-height: 1.2
+  letter-spacing: -0.02em
+  color: var(--mon-text)
+
+.auditPanelDescription
+  margin: 6px 0 0
+  font-size: 0.84rem
+  line-height: 1.45
+  color: var(--mon-text-muted)
+
+.auditPanelCount
+  margin: 0
+  flex-shrink: 0
+  padding: 8px 12px
+  border-radius: 999px
+  border: 1px solid var(--mon-border)
+  background: var(--mon-btn-surface)
+  color: var(--mon-text-muted)
+  font-size: 0.72rem
+  font-weight: 700
+  white-space: nowrap
+
+.auditPanelFilters
+  display: flex
+  flex-direction: column
+  gap: 10px
+  margin-bottom: 14px
+  padding: 12px 14px
+  background: var(--mon-surface)
+  border: 1px solid var(--mon-border)
+  border-radius: var(--mon-radius-md)
+  box-shadow: var(--mon-shadow)
+
+.auditPanelFiltersRow
+  display: flex
+  align-items: center
+  gap: 10px
+  min-width: 0
+
+.auditPanelFiltersRowSearch
+  flex-wrap: nowrap
+
+.auditSearchField
+  position: relative
+  display: flex
+  flex: 1 1 14rem
+  min-width: 0
+  width: 100%
+
+  input
+    flex: 1 1 auto
+    width: 100%
+    min-width: 0
+    height: 2.125rem
+    padding: 0 2.25rem 0 0.75rem
+    border: 1px solid var(--mon-border)
+    border-radius: var(--mon-radius-sm)
+    background: var(--mon-input-bg)
+    color: var(--mon-text)
+    font: inherit
+    font-size: 0.8125rem
+    font-weight: 500
+    line-height: 1.2
+    box-sizing: border-box
+    transition: border-color 0.15s ease, box-shadow 0.15s ease
+    &:focus
+      outline: none
+      border-color: color-mix(in srgb, var(--mon-detail-accent) 45%, var(--mon-border))
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--mon-detail-accent) 12%, transparent)
+    &::placeholder
+      color: var(--mon-text-muted)
+      opacity: 1
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration
+      -webkit-appearance: none
+      appearance: none
+    &::-ms-clear
+      display: none
+      width: 0
+      height: 0
+
+.auditSearchClear
+  position: absolute
+  top: 50%
+  right: 0.35rem
+  transform: translateY(-50%)
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 1.65rem
+  height: 1.65rem
+  padding: 0
+  border: none
+  border-radius: 999px
+  background: transparent
+  color: var(--mon-text-muted)
+  cursor: pointer
+  transition: background 0.15s ease, color 0.15s ease
+  &:hover
+    background: var(--mon-primary-bg)
+    color: var(--mon-text)
+  &:focus-visible
+    outline: 2px solid color-mix(in srgb, var(--mon-detail-accent) 45%, transparent)
+    outline-offset: 1px
+
+.auditPanelTableSection
+  display: flex
+  flex-direction: column
+  gap: 14px
+  min-height: calc(var(--mon-audit-head-height) + (var(--mon-audit-page-rows) * var(--mon-audit-row-height)) + 3rem + 14px)
+
+.auditPanelTableSectionExpanded
+  min-height: auto
+
+.auditTableWrap
+  overflow-x: clip
+  overflow-y: visible
+  width: 100%
+  max-width: 100%
+  min-height: calc(var(--mon-audit-head-height) + (var(--mon-audit-page-rows) * var(--mon-audit-row-height)))
+  border: 1px solid var(--mon-border)
+  border-radius: var(--mon-radius-lg)
+  background: var(--mon-surface)
+  box-shadow: var(--mon-shadow)
+
+.auditTableWrapLoading
+  height: calc(var(--mon-audit-head-height) + (var(--mon-audit-page-rows) * var(--mon-audit-row-height)))
+  min-height: calc(var(--mon-audit-head-height) + (var(--mon-audit-page-rows) * var(--mon-audit-row-height)))
+
+.auditTableWrapExpanded
+  overflow-y: visible
+  min-height: auto
+  height: auto
+
+.auditTableWrapEmpty
+  min-height: calc(var(--mon-audit-head-height) + (var(--mon-audit-page-rows) * var(--mon-audit-row-height)))
+  background: var(--mon-surface)
+  .auditTable tbody tr,
+  .auditTable tbody tr:nth-child(even)
+    background: transparent !important
+  .auditTable tbody tr:hover
+    background: transparent !important
+
+.auditTable
+  width: 100%
+  max-width: 100%
+  border-collapse: separate
+  border-spacing: 0
+  table-layout: fixed
+  font-size: 0.8125rem
+
+.auditTableCol
+  padding: 0.65rem 0.5rem
+  border-bottom: 1px solid var(--mon-border)
+  text-align: left
+  vertical-align: middle
+  overflow-wrap: anywhere
+  word-break: break-word
+  hyphens: auto
+  color: var(--mon-text)
+
+.auditTable thead .auditTableCol
+  background: var(--mon-table-header-bg)
+  color: var(--mon-table-header-text)
+  font-size: 0.6875rem
+  font-weight: 500
+  text-transform: uppercase
+  letter-spacing: 0.05em
+  position: sticky
+  top: 0
+  z-index: 6
+  border-bottom: 1px solid var(--mon-border)
+  box-shadow: 0 2px 8px color-mix(in srgb, black 12%, transparent)
+
+.auditTableWrapExpanded .auditTable thead .auditTableCol
+  top: 0
+
+.auditTable tbody tr
+  background: var(--mon-surface)
+  transition: background 0.12s ease
+
+.auditTable tbody tr:nth-child(even):not(.detailsRow):not(.auditTableSpacerRow)
+  background: var(--mon-row-alt)
+
+.auditTable tbody tr:hover:not(.detailsRow):not(.auditTableSpacerRow)
+  background: var(--mon-surface-hover)
+
+.auditRowClickable
+  cursor: pointer
+
+.auditRowExpanded
+  background: color-mix(in srgb, var(--mon-detail-accent) 8%, var(--mon-surface)) !important
+
+.auditTableSpacerRow
+  pointer-events: none
+  background: transparent !important
+
+.auditTableSpacerCell
+  padding: 0 !important
+  border: none !important
+  background: transparent !important
+  line-height: 0
+
+.auditTableColDetails
+  width: 88px
+  min-width: 88px
+  text-align: center
+
+.auditTableColPath
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  font-size: 0.78rem
+  color: var(--mon-text-soft)
+
+.auditTableColIp
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  font-size: 0.78rem
+  color: var(--mon-text-soft)
+
+.auditTableColMono
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  font-size: 0.78rem
+
+.auditAlign_left
+  text-align: left
+
+.auditAlign_center
+  text-align: center
+
+  .auditSortBtn
+    justify-content: center
+    text-align: center
+
+.auditAlign_right
+  text-align: right
+
+.auditSortBtn
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  width: 100%
+  padding: 0
+  border: none
+  background: transparent
+  color: inherit
+  font: inherit
+  cursor: pointer
+  text-align: left
+  &:hover
+    color: var(--mon-text)
+
+.auditSortBtnActive
+  color: var(--mon-text) !important
+
+.auditSortIndicator
+  font-size: 0.72rem
+  color: var(--mon-text-brand)
+
+.detailsBtn
+  border: 1px solid var(--mon-border)
+  background: var(--mon-btn-surface)
+  color: var(--mon-text-brand)
+  border-radius: 6px
+  padding: 0.3rem 0.5rem
+  font-size: 0.74rem
+  font-weight: 700
+  white-space: nowrap
+  cursor: pointer
+  transition: border-color 0.15s ease, background 0.15s ease
+  &:hover
+    border-color: var(--mon-detail-accent)
+    background: var(--mon-brand-soft)
+
+.detailsRow td
+  background: var(--mon-surface-inset)
+  padding: 0
+  overflow: visible
+  border-bottom: 1px solid var(--mon-border)
+
+.detailsRowBody
+  padding: 0.65rem 0.85rem
+
+  .detailPanel
+    gap: 10px
+
+  .detailSectionHeader
+    padding: 10px 14px
+
+  .detailSectionBody
+    padding: 12px 14px 14px
+
+  .detailItem,
+  .detailItemFull
+    padding: 8px 10px
+    gap: 4px
+
+  .detailGrid
+    gap: 8px
+
+  .detailNestedListHeader
+    padding: 10px 14px
+
+  .detailNestedListBody
+    padding: 10px
+
+  .detailNestedListRow
+    padding: 10px 12px
+
+  .detailTimeline
+    gap: 0
+
+  .detailTimelineItem
+    padding-bottom: 10px
+
+.auditEmptyCell
+  padding: 0 !important
+  border-bottom: none !important
+  background: transparent !important
+
+.auditEmptyState
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 6px
+  min-height: 10rem
+  padding: 32px 20px
+  color: var(--mon-text-muted)
+  background: transparent
+  strong
+    color: var(--mon-text)
+    font-size: 0.95rem
+  span
+    font-size: 0.82rem
+
+.auditTablePagination
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 1rem
+  flex-wrap: wrap
+  flex: 0 0 auto
+  margin-top: auto
+  padding: 0.65rem 0.85rem
+  min-height: 3rem
+  background: var(--mon-surface)
+  border: 1px solid var(--mon-border)
+  border-radius: var(--mon-radius-md)
+  box-shadow: var(--mon-shadow)
+
+.auditTablePaginationInfo,
+.auditTablePaginationPage
+  color: var(--mon-text-muted)
+  font-size: 0.85rem
+  font-weight: 600
+
+.auditTablePaginationControls
+  display: flex
+  align-items: center
+  gap: 10px
+
+.auditTablePaginationBtn
+  border: 1px solid var(--mon-border)
+  background: var(--mon-btn-surface)
+  color: var(--mon-text-brand)
+  border-radius: var(--mon-radius-sm)
+  padding: 0.45rem 0.85rem
+  font-size: 0.85rem
+  font-weight: 700
+  cursor: pointer
+  transition: border-color 0.15s ease, background 0.15s ease
+  &:hover:not(:disabled)
+    border-color: var(--mon-detail-accent)
+    background: var(--mon-brand-soft)
+  &:disabled
+    opacity: 0.45
+    cursor: not-allowed
+
+.detailPanel
+  display: flex
+  flex-direction: column
+  gap: 16px
+
+.detailGrid
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 12px
+
+.detailItem, .detailItemFull
+  display: flex
+  flex-direction: column
+  gap: 8px
+  padding: 12px 14px
+  border-radius: 10px
+  background: var(--mon-surface-2)
+  border: 1px solid var(--mon-border-soft)
+  transition: border-color 0.15s ease, box-shadow 0.15s ease
+  &:hover
+    border-color: color-mix(in srgb, var(--mon-detail-accent) 22%, var(--mon-border))
+
+.detailItemFull
+  grid-column: 1 / -1
+
+.detailLabel
+  font-size: 0.68rem
+  font-weight: 700
+  text-transform: uppercase
+  letter-spacing: 0.06em
+  color: var(--mon-text-muted)
+
+.detailValue
+  font-size: 0.9rem
+  font-weight: 500
+  color: var(--mon-text)
+  word-break: break-word
+  line-height: 1.45
+
+.detailStatusOk
+  display: inline-flex
+  align-items: center
+  padding: 4px 10px
+  border-radius: 999px
+  background: color-mix(in srgb, var(--mon-success) 14%, transparent)
+  color: var(--mon-success)
+  font-size: 0.82rem
+  font-weight: 700
+
+.detailStatusError
+  display: inline-flex
+  align-items: center
+  padding: 4px 10px
+  border-radius: 999px
+  background: color-mix(in srgb, var(--mon-danger) 14%, transparent)
+  color: var(--mon-danger)
+  font-size: 0.82rem
+  font-weight: 700
+
+.detailSection
+  border: 1px solid var(--mon-border-soft)
+  border-radius: 14px
+  overflow: hidden
+  background: var(--mon-surface-2)
+  box-shadow: 0 2px 8px color-mix(in srgb, black 4%, transparent)
+
+.detailSectionHeader
+  display: flex
+  align-items: flex-start
+  gap: 14px
+  padding: 16px 20px
+  border-bottom: 1px solid var(--mon-border-soft)
+  background: linear-gradient(135deg, color-mix(in srgb, var(--mon-detail-accent) 8%, var(--mon-surface-2)) 0%, var(--mon-surface-2) 100%)
+
+.detailSectionAccent
+  width: 4px
+  align-self: stretch
+  min-height: 36px
+  border-radius: 999px
+  background: linear-gradient(180deg, var(--mon-detail-accent) 0%, color-mix(in srgb, var(--mon-detail-accent) 40%, transparent) 100%)
+  flex-shrink: 0
+
+.detailSectionTitle
+  margin: 0
+  font-size: 0.92rem
+  font-weight: 700
+  color: var(--mon-text)
+  line-height: 1.25
+
+.detailSectionSubtitle
+  margin: 4px 0 0
+  font-size: 0.78rem
+  color: var(--mon-text-muted)
+  line-height: 1.45
+
+.detailSectionBody
+  padding: 20px 22px 22px
+
+.detailCode
+  margin: 0
+  padding: 14px
+  border-radius: 10px
+  background: var(--mon-input-bg)
+  border: 1px solid var(--mon-border)
+  color: var(--mon-text)
+  font-size: 0.76rem
+  line-height: 1.55
+  overflow-x: auto
+  white-space: pre-wrap
+  word-break: break-word
+  max-height: 280px
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  @include monScrollbar
+
+.detailNestedList
+  border-radius: 12px
+  border: 1px solid var(--mon-border-soft)
+  overflow: hidden
+  background: var(--mon-surface)
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 4%, transparent)
+
+.detailNestedListHeader
+  display: grid
+  grid-template-columns: 1fr auto
+  align-items: center
+  gap: 20px
+  padding: 14px 24px
+  border-bottom: 1px solid var(--mon-border-soft)
+  background: var(--mon-surface-2)
+
+.detailNestedListHeaderLabel
+  font-size: 0.68rem
+  font-weight: 700
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  color: var(--mon-text-muted)
+  &:last-child
+    text-align: right
+    min-width: 4.5rem
+
+.detailNestedListBody
+  list-style: none
+  margin: 0
+  padding: 14px
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+.detailNestedListRow
+  display: grid
+  grid-template-columns: 1fr auto
+  align-items: center
+  gap: 20px
+  padding: 16px 18px
+  border-radius: 12px
+  border: 1px solid var(--mon-border-soft)
+  background: var(--mon-surface-2)
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease
+  &:hover
+    border-color: var(--mon-detail-border)
+    background: var(--mon-detail-bg)
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--mon-detail-accent) 10%, transparent)
+    transform: translateY(-1px)
+
+.detailNestedPath
+  display: flex
+  align-items: flex-start
+  gap: 14px
+  min-width: 0
+
+.detailNestedIndex
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  width: 28px
+  height: 28px
+  border-radius: 8px
+  background: color-mix(in srgb, var(--mon-detail-accent) 12%, transparent)
+  border: 1px solid color-mix(in srgb, var(--mon-detail-accent) 22%, transparent)
+  color: var(--mon-detail-accent)
+  font-size: 0.72rem
+  font-weight: 800
+  font-variant-numeric: tabular-nums
+
+.detailNestedLabel
+  display: block
+  flex: 1
+  min-width: 0
+  padding: 4px 0
+  color: var(--mon-text)
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  font-size: 0.8rem
+  word-break: break-all
+  line-height: 1.6
+
+.detailNestedValue
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  min-width: 3rem
+  padding: 8px 14px
+  border-radius: 999px
+  background: linear-gradient(135deg, color-mix(in srgb, var(--mon-detail-accent) 18%, transparent) 0%, color-mix(in srgb, var(--mon-detail-accent) 8%, transparent) 100%)
+  border: 1px solid color-mix(in srgb, var(--mon-detail-accent) 28%, transparent)
+  color: var(--mon-detail-accent)
+  font-size: 0.82rem
+  font-weight: 800
+  font-variant-numeric: tabular-nums
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--mon-detail-accent) 12%, transparent)
+
+.detailEmpty
+  margin: 0
+  padding: 20px
+  border-radius: 10px
+  border: 1px dashed var(--mon-border)
+  color: var(--mon-text-muted)
+  font-size: 0.85rem
+  text-align: center
+  background: var(--mon-surface)
+
+.detailTimeline
+  display: flex
+  flex-direction: column
+  gap: 0
+  max-height: 360px
+  overflow-y: auto
+  padding: 4px 2px
+  @include monScrollbar
+
+.detailTimelineItem
+  display: grid
+  grid-template-columns: 28px 1fr
+  gap: 12px
+  align-items: stretch
+  padding-bottom: 14px
+
+.detailTimelineItemLast
+  padding-bottom: 0
+
+.detailTimelineRail
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 28px
+  flex-shrink: 0
+
+.detailTimelineDot
+  width: 11px
+  height: 11px
+  border-radius: 50%
+  border: 2px solid var(--mon-surface)
+  flex-shrink: 0
+  z-index: 1
+
+.detailTimelineDot_pageView
+  box-shadow: 0 0 0 2px #60a5fa
+  background: #60a5fa
+
+.detailTimelineDot_buttonClick
+  box-shadow: 0 0 0 2px #4ade80
+  background: #4ade80
+
+.detailTimelineDot_formSubmit
+  box-shadow: 0 0 0 2px #fbbf24
+  background: #fbbf24
+
+.detailTimelineDot_default
+  box-shadow: 0 0 0 2px var(--mon-detail-accent)
+  background: var(--mon-detail-accent)
+
+.detailTimelineLine
+  flex: 1
+  width: 2px
+  min-height: 12px
+  margin-top: 4px
+  border-radius: 999px
+  background: linear-gradient(180deg, var(--mon-detail-border) 0%, transparent 100%)
+
+.detailTimelineContent
+  padding: 10px 12px
+  border-radius: 10px
+  border: 1px solid var(--mon-border-soft)
+  background: var(--mon-surface)
+  transition: border-color 0.15s ease, box-shadow 0.15s ease
+  &:hover
+    border-color: var(--mon-detail-border)
+    box-shadow: 0 4px 12px color-mix(in srgb, black 5%, transparent)
+
+.detailTimelineMeta
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 8px 12px
+  margin-bottom: 6px
+
+.detailTimelineTime
+  font-size: 0.72rem
+  color: var(--mon-text-muted)
+  font-variant-numeric: tabular-nums
+
+.detailTimelineType
+  display: inline-flex
+  padding: 2px 8px
+  border-radius: 999px
+  font-size: 0.68rem
+  font-weight: 700
+  text-transform: capitalize
+  letter-spacing: 0.02em
+  background: var(--mon-primary-bg)
+  color: var(--mon-text-soft)
+
+.detailTimelineType_pageView
+  background: rgba(96, 165, 250, 0.14)
+  color: #60a5fa
+
+.detailTimelineType_buttonClick
+  background: rgba(74, 222, 128, 0.14)
+  color: #4ade80
+
+.detailTimelineType_formSubmit
+  background: rgba(251, 191, 36, 0.14)
+  color: #fbbf24
+
+.detailTimelineName
+  margin: 0 0 6px
+  font-size: 0.86rem
+  font-weight: 600
+  color: var(--mon-text)
+  line-height: 1.35
+
+.detailTimelinePath
+  display: block
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  font-size: 0.74rem
+  color: var(--mon-text-muted)
+  word-break: break-all
+  text-align: left
+  padding: 6px 8px
+  border-radius: 6px
+  background: var(--mon-surface-2)
+  border: 1px solid var(--mon-border-soft)
+
+.downloadBtn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 6px
+  padding: 6px 12px
+  border-radius: 8px
+  background: var(--mon-primary-bg)
+  color: var(--mon-primary)
+  border: 1px solid var(--mon-border)
+  font-size: 0.82rem
+  font-weight: 600
+  text-decoration: none
+  transition: background 0.15s ease
+  &:hover
+    background: var(--mon-primary)
+    color: #fff
+
+.mutedText
+  color: var(--mon-text-muted)
+  font-size: 0.85rem
+
+.mono
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  font-size: 0.82rem
+  color: var(--mon-primary)
+  background: var(--mon-primary-bg)
+  padding: 3px 8px
+  border-radius: 6px
+  word-break: break-all
+
+.badge
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  padding: 4px 10px
+  border-radius: 999px
+  font-size: 0.72rem
+  font-weight: 700
+  text-transform: capitalize
+  letter-spacing: 0.02em
+  background: rgba(127,127,127,0.12)
+  color: var(--mon-text-soft)
+
+.badge_pageView
+  background: rgba(66,133,244,0.18)
+  color: #8ab4f8
+
+.badge_buttonClick
+  background: rgba(52,168,83,0.18)
+  color: #81c995
+
+.badge_formSubmit
+  background: rgba(251,188,4,0.18)
+  color: #fdd663
+
+.valueSmall
+  font-size: 1.1rem
+  font-weight: 700
+  line-height: 1.3
+  word-break: break-word
+
+// ── Skeleton loading ─────────────────────────────────────
+
+@keyframes skeletonPulse
+  0%, 100%
+    opacity: 0.55
+  50%
+    opacity: 1
+
+@keyframes skeletonShimmer
+  0%
+    background-position: 200% 0
+  100%
+    background-position: -200% 0
+
+.skeletonBar
+  height: 14px
+  border-radius: 6px
+  background: linear-gradient(90deg, var(--mon-skeleton) 0%, var(--mon-skeleton-shine) 50%, var(--mon-skeleton) 100%)
+  background-size: 200% 100%
+  animation: skeletonShimmer 1.25s ease-in-out infinite
+
+.skeletonBone
+  display: block
+  max-width: 100%
+  min-height: 0.78rem
+  border-radius: 6px
+  background: linear-gradient(90deg, var(--mon-skeleton) 0%, var(--mon-skeleton-shine) 50%, var(--mon-skeleton) 100%)
+  background-size: 200% 100%
+  animation: skeletonShimmer 1.25s ease-in-out infinite
+
+.skeletonBonePill
+  border-radius: 999px !important
+
+.visuallyHidden
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  white-space: nowrap
+  border: 0
+
+.skeletonAuditTable
+  width: 100%
+  height: 100%
+  min-height: calc(var(--mon-audit-head-height) + (var(--skeleton-table-rows, var(--mon-audit-page-rows)) * var(--mon-audit-row-height)))
+  pointer-events: none
+  display: flex
+  flex-direction: column
+  box-sizing: border-box
+
+.skeletonAuditTableHead,
+.skeletonAuditTableRow
+  display: grid
+  grid-template-columns: repeat(var(--skeleton-table-columns, 6), minmax(0, 1fr))
+  gap: 0.45rem
+  align-items: center
+  padding: 0.65rem 0.5rem
+  border-bottom: 1px solid var(--mon-border)
+  box-sizing: border-box
+
+.skeletonAuditTableHead
+  background: var(--mon-table-header-bg)
+  border-bottom-color: var(--mon-border)
+  flex: 0 0 var(--mon-audit-head-height)
+  height: var(--mon-audit-head-height)
+  min-height: var(--mon-audit-head-height)
+
+.skeletonAuditTableRow
+  flex: 0 0 var(--mon-audit-row-height)
+  height: var(--mon-audit-row-height)
+  min-height: var(--mon-audit-row-height)
+  max-height: var(--mon-audit-row-height)
+
+.skeletonAuditTableHeadCell
+  height: 0.62rem !important
+
+.skeletonAuditTableRowAlt
+  background: var(--mon-row-alt)
+
+.skeletonAuditTableDetailsCell
+  width: 4.5rem
+  justify-self: center
+
+.skeletonTableCellXs
+  width: 42%
+
+.skeletonTableCellSm
+  width: 58%
+
+.skeletonTableCellMd
+  width: 72%
+
+.skeletonTableCellLg
+  width: 88%
+
+.skeletonAuditPagination
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 1rem
+  flex-wrap: wrap
+  flex: 0 0 auto
+  margin-top: auto
+  padding: 0.65rem 0.85rem
+  min-height: 3rem
+  background: var(--mon-surface)
+  border: 1px solid var(--mon-border)
+  border-radius: var(--mon-radius-md)
+  box-shadow: var(--mon-shadow)
+
+.skeletonAuditPaginationControls
+  display: flex
+  align-items: center
+  gap: 10px
+
+.skeletonCard
+  background: var(--mon-chart-card)
+  border: 1px solid var(--mon-border)
+  border-radius: 14px
+  padding: 18px
+
+.skeletonChart
+  width: 100%
+  border-radius: 10px
+  background: linear-gradient(90deg, var(--mon-skeleton) 0%, var(--mon-skeleton-shine) 50%, var(--mon-skeleton) 100%)
+  background-size: 200% 100%
+  animation: skeletonShimmer 1.25s ease-in-out infinite
+
+.skeletonTableBody
+  padding: 8px 0 12px
+
+.skeletonTableLine
+  padding: 14px 22px
+  border-bottom: 1px solid var(--mon-border-soft)
+
+.heatmapSkeleton
+  padding: 8px 12px 16px
+  display: flex
+  flex-direction: column
+  gap: 6px
+
+.heatmapSkeletonRow
+  display: grid
+  grid-template-columns: 56px repeat(24, minmax(0, 1fr))
+  gap: 4px
+
+.heatmapSkeletonCell
+  aspect-ratio: 1.15
+  min-height: 18px
+  border-radius: 4px
+  background: linear-gradient(90deg, var(--mon-skeleton) 0%, var(--mon-skeleton-shine) 50%, var(--mon-skeleton) 100%)
+  background-size: 200% 100%
+  animation: skeletonShimmer 1.25s ease-in-out infinite
+
+.pageHeader
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin-bottom: 20px
+
+// ── Legacy header (login etc.) ────────────────────────────
+
+.header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 20px 32px
+  border-bottom: 1px solid rgba(255,255,255,0.08)
+  background: rgba(15,17,23,0.95)
+  position: sticky
+  top: 0
+  z-index: 10
+
+.brand
+  display: flex
+  align-items: center
+  gap: 12px
+
+.brandMark
+  width: 40px
+  height: 40px
+  border-radius: 10px
+  background: linear-gradient(135deg, #4285f4, #34a853)
+  display: grid
+  place-items: center
+  font-weight: 700
+
+.title
+  h1
+    margin: 0
+    font-size: 1.25rem
+  p
+    margin: 2px 0 0
+    color: #9aa0a6
+    font-size: 0.85rem
+
+.actions
+  display: flex
+  gap: 12px
+
+.logoutBtn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  background: transparent
+  border: 1px solid var(--mon-border)
+  color: var(--mon-text)
+  padding: 8px 14px
+  border-radius: 8px
+  cursor: pointer
+  width: 100%
+  font: inherit
+  font-size: 0.88rem
+  &:hover
+    background: var(--mon-primary-bg)
+
+.logoutBtnCompact
+  width: auto
+  padding: 8px
+  margin-inline: auto
+
+.card
+  background: var(--mon-surface)
+  border: 1px solid var(--mon-border)
+  border-radius: 14px
+  padding: 18px
+  box-shadow: var(--mon-shadow)
+  h3
+    margin: 0 0 8px
+    color: var(--mon-text-muted)
+    font-size: 0.8rem
+    font-weight: 500
+    text-transform: uppercase
+    letter-spacing: 0.04em
+  .value
+    font-size: 1.75rem
+    font-weight: 700
+    line-height: 1.2
+    color: var(--mon-text)
+  .sub
+    margin-top: 6px
+    color: var(--mon-text-muted)
+    font-size: 0.85rem
+
+.chartCard
+  background: var(--mon-chart-card)
+  border: 1px solid var(--mon-border)
+  border-radius: 14px
+  padding: 18px
+  box-shadow: var(--mon-shadow)
+  h2
+    margin: 0 0 16px
+    font-size: 1rem
+    color: var(--mon-text)
+
+.tableCard
+  background: var(--mon-surface)
+  border: 1px solid var(--mon-border)
+  border-radius: 14px
+  padding: 18px
+  box-shadow: var(--mon-shadow)
+  h2
+    margin: 0 0 16px
+    font-size: 1rem
+    color: var(--mon-text)
+
+.table
+  width: 100%
+  border-collapse: collapse
+  th, td
+    text-align: left
+    padding: 10px 8px
+    border-bottom: 1px solid var(--mon-border-soft)
+    font-size: 0.9rem
+    color: var(--mon-text)
+  th
+    color: var(--mon-text-muted)
+    font-weight: 500
+
+.trendUp
+  color: var(--mon-success)
+
+.trendDown
+  color: var(--mon-danger)
+
+.httpStatusBadge
+  display: inline-flex
+  align-items: center
+  gap: 0.25rem
+  font-size: 0.78rem
+  font-weight: 700
+  font-variant-numeric: tabular-nums
+  white-space: nowrap
+
+.httpStatus2xx
+  color: var(--mon-success)
+
+.httpStatus3xx
+  color: var(--mon-text-brand)
+
+.httpStatus4xx
+  color: #fbbf24
+
+.httpStatus5xx
+  color: var(--mon-danger)
+
+.httpStatusUnknown
+  color: var(--mon-text-muted)
+
+.chartsGrid
+  display: grid
+  grid-template-columns: 2fr 1fr
+  gap: 0.85rem
+  margin-bottom: 0.85rem
+
+.activityChartCanvas
+  background: transparent !important
+  padding: 0.15rem 0.35rem 0.25rem
+  min-height: 300px
+
+  :global(.recharts-cartesian-grid-horizontal line)
+    stroke-opacity: 0.85
+
+  :global(.recharts-line-curve)
+    stroke-linecap: round
+    stroke-linejoin: round
+
+.row
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 16px
+  margin-bottom: 16px
+
+.heatmapCard
+  margin-bottom: 0
+
+.heatmapFull
+  padding: 12px 14px 8px
+
+.heatmap
+  display: flex
+  flex-direction: column
+  gap: 5px
+  width: 100%
+
+.heatmapRow
+  display: grid
+  grid-template-columns: 56px repeat(24, minmax(0, 1fr))
+  gap: 4px
+  align-items: stretch
+
+.heatmapCorner
+  min-height: 24px
+
+.heatmapHour
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 24px
+  font-size: 0.68rem
+  color: var(--mon-text-muted)
+  line-height: 1
+
+.heatmapDay
+  display: flex
+  align-items: center
+  font-size: 0.78rem
+  font-weight: 600
+  color: var(--mon-text-soft)
+  padding-right: 8px
+
+.heatmapCell
+  width: 100%
+  aspect-ratio: 1.15
+  min-height: 22px
+  border-radius: 4px
+  border: 1px solid var(--mon-border-soft)
+  box-sizing: border-box
+  transition: transform 0.12s ease, box-shadow 0.12s ease
+  &:hover
+    transform: scale(1.04)
+    box-shadow: 0 0 0 1px var(--mon-border)
+    z-index: 1
+
+.heatmapLegend
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  gap: 10px
+  margin-top: 14px
+  padding: 0 14px 14px
+  font-size: 0.76rem
+  color: var(--mon-text-muted)
+
+.heatmapLegendScale
+  display: flex
+  gap: 4px
+
+.heatmapLegendSwatch
+  width: 18px
+  height: 14px
+  border-radius: 3px
+  border: 1px solid var(--mon-border-soft)
+
+.cards
+  display: grid
+  grid-template-columns: repeat(5, minmax(0, 1fr))
+  gap: 16px
+  margin-bottom: 24px
+
+@media (max-width: 1200px)
+  .cards
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  .chartsGrid, .row, .chartsRow
+    grid-template-columns: 1fr
+
+@media (max-width: 900px)
+  .shell,
+  .shellCollapsed
+    --mon-sidebar-width: 0px
+    grid-template-columns: 1fr
+
+  .mobileTopbar
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    z-index: 280
+    display: flex
+    align-items: center
+    gap: 0.65rem
+    height: var(--mon-mobile-topbar-height)
+    padding: 0 0.85rem
+    padding-top: env(safe-area-inset-top, 0)
+    background: var(--mon-surface-2)
+    border-bottom: 1px solid var(--mon-border)
+    box-shadow: var(--mon-shadow)
+
+  .mobileTopbarMenu
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 2.5rem
+    height: 2.5rem
+    flex-shrink: 0
+    border: none
+    border-radius: 10px
+    background: transparent
+    color: var(--mon-text-muted)
+    cursor: pointer
+    &:hover,
+    &:focus-visible
+      background: var(--mon-primary-bg)
+      color: var(--mon-text-brand)
+
+  .mobileTopbarBrand
+    display: flex
+    align-items: center
+    gap: 0.55rem
+    min-width: 0
+    flex: 1
+
+  .mobileTopbarTitle
+    min-width: 0
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    font-size: 0.94rem
+    font-weight: 700
+    color: var(--mon-text)
+
+  .sidebarBackdrop
+    display: block
+    position: fixed
+    inset: 0
+    z-index: 290
+    border: none
+    padding: 0
+    background: var(--mon-backdrop-overlay)
+    cursor: pointer
+    animation: sidebarBackdropIn 0.22s ease
+
+  @keyframes sidebarBackdropIn
+    from
+      opacity: 0
+    to
+      opacity: 1
+
+  .sidebar
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 300
+    width: min(300px, 88vw)
+    height: 100vh
+    height: 100dvh
+    transform: translateX(-105%)
+    transition: transform 0.16s cubic-bezier(0.4, 0, 0.2, 1)
+    box-shadow: var(--mon-shadow)
+    pointer-events: none
+    border-right: 1px solid var(--mon-border)
+
+  .sidebarMobileOpen
+    transform: translateX(0)
+    pointer-events: auto
+
+  .sidebarCollapsed
+    .navItemLabel
+      display: inline
+    .navItem, .navItemActive
+      justify-content: flex-start
+      gap: 12px
+      padding-inline: 14px
+    .navItemActive
+      box-shadow: inset 3px 0 0 var(--mon-primary)
+    .sidebarBrandCopy
+      display: block
+    .sidebarHeader
+      flex-direction: row
+      align-items: center
+
+  .sidebarHeader
+    padding-top: calc(0.85rem + env(safe-area-inset-top, 0))
+
+  .sidebarCloseBtn
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 2rem
+    height: 2rem
+    flex-shrink: 0
+    margin-left: auto
+    border: none
+    border-radius: 8px
+    background: transparent
+    color: var(--mon-text-muted)
+    cursor: pointer
+    &:hover
+      background: var(--mon-primary-bg)
+      color: var(--mon-text)
+
+  .sidebarNav
+    flex-direction: column
+    flex-wrap: nowrap
+    padding: 16px 12px
+
+  .navItem, .navItemActive
+    width: 100%
+    flex: 0 0 auto
+    min-width: 0
+
+  .sidebarFooter
+    display: flex
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0))
+
+  .shellMain
+    padding-top: calc(var(--mon-mobile-topbar-height) + env(safe-area-inset-top, 0))
+    min-width: 0
+
+  .topBar
+    top: calc(var(--mon-mobile-topbar-height) + env(safe-area-inset-top, 0))
+
+  .dashboardMain,
+  .content
+    padding: 16px 14px 32px
+
+  .errorPanel
+    margin: 16px 14px
+
+  .auditPanel
+    min-width: 0
+
+  .auditPanelHeaderMain
+    flex-direction: column
+    align-items: stretch
+    gap: 12px
+
+  .auditPanelCount
+    align-self: flex-start
+
+  .auditPanelFilters
+    padding: 10px 12px
+
+  .auditTableWrap
+    overflow-x: auto
+    -webkit-overflow-scrolling: touch
+
+  .auditTable
+    min-width: 42rem
+
+  .auditTablePagination
+    flex-direction: column
+    align-items: stretch
+    gap: 0.65rem
+
+  .auditTablePaginationControls
+    justify-content: space-between
+
+  .performanceChartCard
+    min-height: 18rem
+
+  .performanceChartBody
+    min-height: 14rem
+
+  .chartCanvas
+    min-height: 260px
+
+  .configBanner
+    flex-direction: column
+    gap: 10px
+
+  .cards
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+@media (max-width: 768px)
+  .content, .dashboardMain
+    padding: 14px 12px 28px
+  .cards
+    grid-template-columns: 1fr
+  .topBarInner
+    flex-direction: column
+    padding: 16px 14px
+  .topBarMain
+    flex-direction: column
+    align-items: stretch
+    gap: 16px
+  .topBarHeading
+    align-items: flex-start
+  .topBarIcon
+    width: 40px
+    height: 40px
+  .topBarTitles
+    h1
+      font-size: 1.25rem
+    p
+      font-size: 0.82rem
+  .topBarMeta
+    padding-top: 0
+  .topBarBadge
+    font-size: 0.72rem
+  .rangePills
+    align-self: stretch
+    justify-content: stretch
+    flex-wrap: wrap
+  .rangePill, .rangePillActive
+    flex: 1 1 calc(50% - 4px)
+    min-width: 0
+    text-align: center
+    padding-inline: 8px
+    font-size: 0.76rem
+  .auditPanelFiltersRowSearch
+    flex-wrap: wrap
+  .detailGrid
+    grid-template-columns: 1fr
+  .detailsRowBody
+    padding: 0.85rem
+  .detailSectionBody
+    padding: 16px
+  .detailNestedListHeader
+    padding: 12px 16px
+  .detailNestedListBody
+    padding: 10px
+  .detailNestedListRow
+    grid-template-columns: 1fr
+    gap: 12px
+    padding: 14px 16px
+  .detailNestedValue
+    align-self: flex-start
+  .auditTable
+    min-width: 36rem
+    font-size: 0.78rem
+
+@media (max-width: 480px)
+  .mobileTopbar
+    padding-inline: 0.65rem
+
+  .dashboardMain,
+  .content
+    padding: 12px 10px 24px
+
+  .topBarInner
+    padding: 14px 10px
+
+  .topBarTitles
+    h1
+      font-size: 1.12rem
+
+  .rangePill, .rangePillActive
+    flex: 1 1 100%
+
+  .auditPanelHeader
+    border-radius: var(--mon-radius-md)
+
+  .auditPanelFilters
+    padding: 8px 10px
+
+  .auditPanelTableSection
+    min-height: auto
+
+  .performanceChartHead
+    padding: 0.8rem 0.85rem 0.65rem
+    h3
+      font-size: 0.9rem
+
+  .chartCanvas
+    min-height: 220px
+
+  .auditTable
+    min-width: 32rem
+
+  .auditTableCol
+    padding-inline: 0.4rem
+
+  .logoutBtnCompact
+    width: 100%
+
+// ── Login page ──────────────────────────────────────────
+
+.loginPage
+  min-height: 100vh
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 24px 16px
+  position: relative
+  overflow: hidden
+  background: #0a0c10
+  color: #e8eaed
+  font-family: Inter, system-ui, sans-serif
+
+.loginGlow
+  position: absolute
+  inset: 0
+  background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(91, 141, 239, 0.18), transparent 55%), radial-gradient(ellipse 70% 50% at 85% 80%, rgba(61, 214, 140, 0.12), transparent 50%)
+  pointer-events: none
+
+.loginShell
+  position: relative
+  z-index: 1
+  display: grid
+  grid-template-columns: 1fr 1fr
+  width: min(920px, 100%)
+  min-height: min(560px, calc(100vh - 48px))
+  background: rgba(23, 25, 35, 0.72)
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  border-radius: 24px
+  overflow: hidden
+  backdrop-filter: blur(20px)
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45)
+
+.loginAside
+  display: flex
+  flex-direction: column
+  justify-content: center
+  gap: 28px
+  padding: 48px 40px
+  background: linear-gradient(145deg, rgba(91, 141, 239, 0.14) 0%, rgba(61, 214, 140, 0.08) 100%)
+  border-right: 1px solid rgba(255, 255, 255, 0.06)
+
+.loginAsideContent
+  h2
+    margin: 0 0 12px
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem)
+    font-weight: 700
+    letter-spacing: -0.02em
+    line-height: 1.25
+  p
+    margin: 0
+    color: #b0b8c4
+    font-size: 0.95rem
+    line-height: 1.6
+    max-width: 28ch
+
+.loginFeatures
+  list-style: none
+  margin: 0
+  padding: 0
+  display: flex
+  flex-direction: column
+  gap: 10px
+  li
+    position: relative
+    padding-left: 18px
+    color: #9aa0a6
+    font-size: 0.88rem
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      top: 0.55em
+      width: 6px
+      height: 6px
+      border-radius: 50%
+      background: linear-gradient(135deg, #5B8DEF, #3DD68C)
+
+.loginCard
+  display: flex
+  flex-direction: column
+  justify-content: center
+  padding: clamp(28px, 5vw, 48px) clamp(24px, 4vw, 40px)
+
+.loginBrand
+  display: flex
+  align-items: center
+  gap: 14px
+  margin-bottom: 32px
+  h1
+    margin: 0
+    font-size: clamp(1.25rem, 2vw, 1.5rem)
+    font-weight: 700
+    letter-spacing: -0.02em
+  p
+    margin: 4px 0 0
+    color: #9aa0a6
+    font-size: 0.9rem
+
+.loginForm
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+.fieldLabel
+  display: flex
+  flex-direction: column
+  gap: 8px
+  span
+    font-size: 0.82rem
+    font-weight: 500
+    color: #b0b8c4
+    letter-spacing: 0.02em
+
+.inputWrap
+  position: relative
+  display: flex
+  align-items: center
+
+.inputIcon
+  position: absolute
+  left: 14px
+  color: #6b7280
+  pointer-events: none
+  flex-shrink: 0
+
+.input
+  width: 100%
+  background: rgba(15, 17, 23, 0.85)
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  border-radius: 12px
+  color: #e8eaed
+  padding: 14px 44px 14px 42px
+  font-size: 0.95rem
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease
+  &::placeholder
+    color: #6b7280
+  &:hover
+    border-color: rgba(255, 255, 255, 0.18)
+  &:focus
+    outline: none
+    border-color: rgba(91, 141, 239, 0.65)
+    box-shadow: 0 0 0 3px rgba(91, 141, 239, 0.15)
+    background: rgba(15, 17, 23, 1)
+
+.passwordToggle
+  position: absolute
+  right: 10px
+  background: transparent
+  border: none
+  color: #9aa0a6
+  cursor: pointer
+  display: grid
+  place-items: center
+  padding: 8px
+  border-radius: 8px
+  transition: color 0.15s ease, background 0.15s ease
+  &:hover
+    color: #e8eaed
+    background: rgba(255, 255, 255, 0.06)
+
+.errorBox
+  display: flex
+  align-items: flex-start
+  gap: 10px
+  padding: 12px 14px
+  border-radius: 12px
+  background: rgba(234, 67, 53, 0.1)
+  border: 1px solid rgba(234, 67, 53, 0.25)
+  color: #f28b82
+  font-size: 0.88rem
+  line-height: 1.45
+  svg
+    flex-shrink: 0
+    margin-top: 1px
+
+.submitBtn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 10px
+  margin-top: 4px
+  width: 100%
+  padding: 14px 20px
+  border: none
+  border-radius: 12px
+  background: linear-gradient(135deg, #5B8DEF 0%, #4a7fe8 50%, #3DD68C 100%)
+  background-size: 200% 200%
+  color: #fff
+  font-size: 0.95rem
+  font-weight: 600
+  cursor: pointer
+  transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease
+  box-shadow: 0 8px 24px rgba(91, 141, 239, 0.25)
+  &:hover:not(:disabled)
+    transform: translateY(-1px)
+    box-shadow: 0 12px 32px rgba(91, 141, 239, 0.35)
+  &:active:not(:disabled)
+    transform: translateY(0)
+  &:disabled
+    opacity: 0.65
+    cursor: not-allowed
+    transform: none
+
+.spinner
+  width: 18px
+  height: 18px
+  border: 2px solid rgba(255, 255, 255, 0.35)
+  border-top-color: #fff
+  border-radius: 50%
+  animation: monitoringSpin 0.7s linear infinite
+
+@keyframes monitoringSpin
+  to
+    transform: rotate(360deg)
+
+.loginFooter
+  margin: 24px 0 0
+  text-align: center
+  font-size: 0.78rem
+  color: #6b7280
+
+@media (max-width: 768px)
+  .loginPage
+    padding: 16px 12px
+    align-items: flex-start
+    padding-top: max(24px, env(safe-area-inset-top))
+
+  .loginShell
+    grid-template-columns: 1fr
+    min-height: auto
+    border-radius: 20px
+
+  .loginAside
+    display: none
+
+  .loginCard
+    padding: 28px 22px 32px
+
+  .loginBrand
+    margin-bottom: 24px
+    flex-direction: column
+    text-align: center
+    gap: 12px
+
+@media (max-width: 380px)
+  .loginCard
+    padding: 24px 18px 28px
+
+  .input
+    padding: 12px 40px 12px 38px
+    font-size: 16px
+
+.error
+  color: #ea4335
+  font-size: 0.85rem
+  margin: 0
+
+.toastViewport
+  position: fixed
+  top: max(20px, env(safe-area-inset-top))
+  right: max(20px, env(safe-area-inset-right))
+  z-index: 9999
+  width: min(380px, calc(100vw - 32px))
+  pointer-events: none
+
+.toast
+  display: flex
+  align-items: flex-start
+  gap: 12px
+  padding: 14px 16px
+  border-radius: 14px
+  backdrop-filter: blur(16px)
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35)
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  pointer-events: auto
+  animation: toastIn 0.28s ease-out
+
+.toastSuccess
+  background: rgba(20, 40, 30, 0.92)
+  border-color: rgba(61, 214, 140, 0.35)
+  .toastIcon
+    color: #3DD68C
+
+.toastError
+  background: rgba(45, 20, 20, 0.92)
+  border-color: rgba(234, 67, 53, 0.35)
+  .toastIcon
+    color: #f28b82
+
+.toastIcon
+  flex-shrink: 0
+  margin-top: 1px
+
+.toastMessage
+  flex: 1
+  margin: 0
+  font-size: 0.9rem
+  line-height: 1.45
+  color: #e8eaed
+
+.toastClose
+  flex-shrink: 0
+  background: transparent
+  border: none
+  color: #9aa0a6
+  cursor: pointer
+  padding: 2px
+  border-radius: 6px
+  display: grid
+  place-items: center
+  &:hover
+    color: #e8eaed
+    background: rgba(255, 255, 255, 0.08)
+
+@keyframes toastIn
+  from
+    opacity: 0
+    transform: translateX(16px) translateY(-8px)
+  to
+    opacity: 1
+    transform: translateX(0) translateY(0)
+
+@media (max-width: 480px)
+  .toastViewport
+    left: 16px
+    right: 16px
+    width: auto

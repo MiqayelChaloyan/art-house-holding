@@ -1,20 +1,31 @@
-import { ABOUT_US_DETAILS_QUERY, COURSES_QUERY, DISCOUNTS_QUERY, FILTER_COURSES_QUERY, LANGUAGE_ID_QUERY, LANGUAGE_SLUG_QUERY, LANGUAGES_QUERY, PRICE_LIST_QUERY, QUIZ_SLUG_QUERY, QUIZS_QUERY, SOCIAL_QUERY } from '@/sanity/services/language-service';
+import { cache } from 'react';
+
+import { ABOUT_US_DETAILS_QUERY, COURSES_QUERY, DISCOUNTS_QUERY, FILTER_COURSES_QUERY, LANGUAGE_ID_QUERY, LANGUAGE_SLUG_QUERY, LANGUAGES_QUERY, PRICE_LIST_QUERY, QUIZ_SLUG_QUERY, QUIZS_QUERY, SOCIAL_QUERY, BLOG_POSTS_QUERY, BLOG_SLUG_QUERY, BLOG_SIMILAR_POSTS_QUERY } from '@/sanity/services/language-service';
 
 import { sanityFetch } from '@/src/api/sanity-fetch';
+import { createBlogFetchers } from '@/src/utils/data/blog/fetchers';
 
-export async function getHomeDetails(locale: string): Promise<HOME_DETALIS_LANGUAGE_QUERYResult> {
-    try {
-        "use server";
-        const result = await sanityFetch<HOME_DETALIS_LANGUAGE_QUERYResult[]>({
-            query: ABOUT_US_DETAILS_QUERY,
-            params: { language: locale },
-        });
 
-        return result[0];
-    } catch (error) {
-        throw error;
-    }
-};
+const blogFetchers = createBlogFetchers({
+    posts: BLOG_POSTS_QUERY,
+    slug: BLOG_SLUG_QUERY,
+    similar: BLOG_SIMILAR_POSTS_QUERY,
+    tag: 'language-blog',
+});
+
+export const getBlogPosts = blogFetchers.getBlogPosts;
+export const getBlogPost = blogFetchers.getBlogPost;
+export const getSimilarBlogPosts = blogFetchers.getSimilarBlogPosts;
+
+export const getHomeDetails = cache(async (locale: string): Promise<HOME_DETALIS_LANGUAGE_QUERYResult> => {
+    const result = await sanityFetch<HOME_DETALIS_LANGUAGE_QUERYResult[]>({
+        query: ABOUT_US_DETAILS_QUERY,
+        params: { language: locale },
+        tags: ['language-home'],
+    });
+
+    return result[0];
+});
 
 export async function getDiscounts(locale: string): Promise<DISCOUNTS_QUERYResult> {
     try {
@@ -72,47 +83,35 @@ export async function getCourseById(locale: string, slug: string): Promise<ABOUT
     }
 };
 
-export async function getSelectOptions(locale: string): Promise<COURSES> {
-    try {
-        "use server";
-        const result = await sanityFetch<COURSES[]>({
-            query: COURSES_QUERY,
-            params: { language: locale },
-        });
+export const getSelectOptions = cache(async (locale: string): Promise<COURSES> => {
+    const result = await sanityFetch<COURSES[]>({
+        query: COURSES_QUERY,
+        params: { language: locale },
+        tags: ['language-courses'],
+    });
 
-        return result[0];
-    } catch (error) {
-        throw error;
-    }
-};
+    return result[0];
+});
 
-export async function getSelectOptionsFiltered(locale: string): Promise<COURSES> {
-    try {
-        "use server";
-        const result = await sanityFetch<COURSES[]>({
-            query: FILTER_COURSES_QUERY,
-            params: { language: locale },
-        });
+export const getSelectOptionsFiltered = cache(async (locale: string): Promise<COURSES> => {
+    const result = await sanityFetch<COURSES[]>({
+        query: FILTER_COURSES_QUERY,
+        params: { language: locale },
+        tags: ['language-courses'],
+    });
 
-        return result[0];
-    } catch (error) {
-        throw error;
-    }
-};
+    return result[0];
+});
 
-export async function getContacts(locale: string): Promise<CONTACT_US_LANGUAGE_QUERYResult> {
-    try {
-        "use server";
-        const result = await sanityFetch<CONTACT_US_LANGUAGE_QUERYResult[]>({
-            query: SOCIAL_QUERY,
-            params: { language: locale },
-        });
+export const getContacts = cache(async (locale: string): Promise<CONTACT_US_LANGUAGE_QUERYResult> => {
+    const result = await sanityFetch<CONTACT_US_LANGUAGE_QUERYResult[]>({
+        query: SOCIAL_QUERY,
+        params: { language: locale },
+        tags: ['language-contacts'],
+    });
 
-        return result[0];
-    } catch (error) {
-        throw error;
-    }
-};
+    return result[0];
+});
 
 export async function getPriceList(locale: string): Promise<PRICE_LIST_LANGUAGE_QUERYResult> {
     try {

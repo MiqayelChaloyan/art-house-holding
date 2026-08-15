@@ -1,0 +1,424 @@
+.ipMapCard
+  --ip-map-panel-height: 480px
+  --ip-map-item-height: 4.25rem
+  background: var(--mon-chart-card)
+  border: 1px solid color-mix(in srgb, var(--mon-text-brand) 14%, var(--mon-border))
+  border-radius: var(--mon-radius-lg)
+  box-shadow: var(--mon-shadow)
+  overflow: hidden
+
+.ipMapHero
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: space-between
+  gap: 1rem 1.25rem
+  padding: 1rem 1.1rem 0.95rem
+  border-bottom: 1px solid color-mix(in srgb, var(--mon-border) 82%, transparent)
+  background: linear-gradient(135deg, color-mix(in srgb, var(--mon-brand-soft) 55%, var(--mon-chart-card)) 0%, color-mix(in srgb, #7c4dff 6%, var(--mon-chart-card)) 100%)
+
+.ipMapHeroCopy
+  min-width: min(100%, 18rem)
+
+.ipMapEyebrow
+  display: inline-flex
+  align-items: center
+  gap: 0.35rem
+  margin: 0 0 0.35rem
+  font-size: 0.68rem
+  font-weight: 800
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  color: var(--mon-text-brand)
+
+.ipMapTitle
+  margin: 0
+  font-size: 1.15rem
+  font-weight: 800
+  letter-spacing: -0.02em
+  color: var(--mon-text)
+
+.ipMapLede
+  margin: 0.35rem 0 0
+  max-width: 38rem
+  font-size: 0.82rem
+  line-height: 1.45
+  color: var(--mon-text-muted)
+
+.ipMapStats
+  display: flex
+  flex-wrap: wrap
+  gap: 0.55rem
+
+.ipMapStat
+  min-width: 5.5rem
+  padding: 0.55rem 0.72rem
+  border-radius: 12px
+  border: 1px solid color-mix(in srgb, var(--mon-border) 85%, transparent)
+  background: color-mix(in srgb, var(--mon-chart-card) 88%, transparent)
+
+  span
+    display: block
+    font-size: 0.64rem
+    font-weight: 700
+    letter-spacing: 0.05em
+    text-transform: uppercase
+    color: var(--mon-text-muted)
+
+  strong
+    display: block
+    margin-top: 0.12rem
+    font-size: 1.05rem
+    font-weight: 800
+    color: var(--mon-text)
+    font-variant-numeric: tabular-nums
+
+.ipMapStatAccent
+  border-color: color-mix(in srgb, var(--mon-text-brand) 28%, var(--mon-border))
+  background: color-mix(in srgb, var(--mon-brand-soft) 35%, var(--mon-chart-card))
+
+  strong
+    color: var(--mon-text-brand)
+
+.ipMapBody
+  display: grid
+  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.95fr)
+  gap: 0
+  align-items: stretch
+
+.ipMapPanel
+  display: flex
+  flex-direction: column
+  min-width: 0
+  min-height: 0
+
+.ipMapPanelMap
+  border-right: 1px solid var(--mon-border)
+  background: var(--mon-chart-card)
+
+.ipMapPanelHead
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  gap: 0.75rem
+  margin: 0
+  padding: 0.75rem 1rem 0.65rem
+  border-bottom: 1px solid color-mix(in srgb, var(--mon-border) 88%, transparent)
+  background: color-mix(in srgb, var(--mon-surface-inset) 28%, var(--mon-chart-card))
+
+.ipMapPanelCopy
+  min-width: 0
+
+.ipMapPanelTitle
+  display: inline-flex
+  align-items: center
+  gap: 0.4rem
+  margin: 0
+  font-size: 0.9rem
+  font-weight: 700
+  color: var(--mon-text)
+
+.ipMapPanelHint
+  margin: 0.25rem 0 0
+  font-size: 0.74rem
+  line-height: 1.35
+  color: var(--mon-text-muted)
+
+.ipMapMapArea
+  position: relative
+  flex: 0 0 var(--ip-map-panel-height)
+  height: var(--ip-map-panel-height)
+  min-height: var(--ip-map-panel-height)
+  max-height: var(--ip-map-panel-height)
+  display: flex
+  flex-direction: column
+  padding: 0.5rem 0.65rem 0.75rem
+  overflow: hidden
+  box-sizing: border-box
+  background: color-mix(in srgb, var(--mon-surface-inset) 42%, var(--mon-chart-card))
+
+.ipMapEmpty
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
+  min-height: 0
+  padding: 1.5rem
+  text-align: center
+  font-size: 0.88rem
+  color: var(--mon-text)
+
+.ipMapOverlay
+  position: absolute
+  top: 0.85rem
+  right: 0.85rem
+  left: auto
+  bottom: auto
+  transform: none
+  max-width: calc(100% - 1.7rem)
+  padding: 0.45rem 0.75rem
+  border-radius: 999px
+  border: 1px solid var(--mon-border)
+  background: color-mix(in srgb, var(--mon-chart-card) 94%, transparent)
+  backdrop-filter: blur(6px)
+  font-size: 0.74rem
+  line-height: 1.35
+  color: var(--mon-text)
+  text-align: center
+  pointer-events: none
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.ipMapPanelList
+  background: var(--mon-chart-card)
+
+.ipMapListBody
+  display: flex
+  flex-direction: column
+  flex: 0 0 var(--ip-map-panel-height)
+  height: var(--ip-map-panel-height)
+  min-height: var(--ip-map-panel-height)
+  max-height: var(--ip-map-panel-height)
+  overflow: hidden
+  box-sizing: border-box
+
+.ipMapPanelHeadList
+  border-bottom: 1px solid color-mix(in srgb, var(--mon-border) 88%, transparent)
+
+.ipMapList
+  list-style: none
+  margin: 0
+  padding: 0.35rem 0.45rem 0.35rem
+  flex: 1
+  min-height: 0
+  display: flex
+  flex-direction: column
+  overflow: hidden
+
+.ipMapEmptyList
+  display: flex
+  align-items: center
+  justify-content: center
+  flex: 1
+  padding: 1rem
+  text-align: center
+  font-size: 0.82rem
+  color: var(--mon-text-muted)
+
+.ipMapListSpacer
+  flex: 0 0 var(--ip-map-item-height)
+  min-height: var(--ip-map-item-height)
+  max-height: var(--ip-map-item-height)
+  pointer-events: none
+  visibility: hidden
+
+.ipMapItem
+  display: block
+  width: 100%
+  flex: 0 0 var(--ip-map-item-height)
+  min-height: var(--ip-map-item-height)
+  max-height: var(--ip-map-item-height)
+  margin: 0 0 0.35rem
+  padding: 0.55rem 0.6rem
+  border: 1px solid transparent
+  border-radius: var(--mon-radius-sm)
+  background: transparent
+  text-align: left
+  cursor: pointer
+  box-sizing: border-box
+  overflow: hidden
+  transition: background 0.15s ease, border-color 0.15s ease
+
+  &:last-child
+    margin-bottom: 0
+
+  &:hover
+    background: var(--mon-surface-hover)
+
+.ipMapItemActive
+  border-color: color-mix(in srgb, var(--mon-text-brand) 35%, var(--mon-border))
+  background: color-mix(in srgb, var(--mon-brand-soft) 45%, transparent)
+
+.ipMapItemCountryActive
+  border-color: color-mix(in srgb, var(--mon-text-brand) 18%, var(--mon-border))
+  background: color-mix(in srgb, var(--mon-brand-soft) 20%, transparent)
+
+.ipMapItemTop
+  display: grid
+  grid-template-columns: auto 1fr auto
+  align-items: center
+  gap: 0.45rem
+
+.ipMapRank
+  font-size: 0.68rem
+  font-weight: 700
+  color: var(--mon-text-muted)
+  font-variant-numeric: tabular-nums
+
+.ipMapIp
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+  font-size: 0.78rem
+  color: var(--mon-text)
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.ipMapCount
+  font-size: 0.78rem
+  font-weight: 700
+  color: var(--mon-text-brand)
+  font-variant-numeric: tabular-nums
+
+.ipMapBarTrack
+  height: 4px
+  margin: 0.35rem 0 0.25rem
+  border-radius: 999px
+  background: color-mix(in srgb, var(--mon-border) 70%, transparent)
+  overflow: hidden
+
+.ipMapBarFill
+  height: 100%
+  border-radius: inherit
+  background: linear-gradient(90deg, color-mix(in srgb, var(--mon-text-brand) 70%, #22c55e), var(--mon-text-brand))
+
+.ipMapMeta
+  display: block
+  font-size: 0.7rem
+  color: var(--mon-text-muted)
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.mapSkeleton
+  width: 100%
+  height: 100%
+  min-height: 0
+  border-radius: 0
+  background: linear-gradient(90deg, var(--mon-skeleton) 0%, var(--mon-skeleton-shine) 50%, var(--mon-skeleton) 100%)
+  background-size: 200% 100%
+  animation: skeletonShimmer 1.25s ease-in-out infinite
+
+.ipMapPagination
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 0.65rem
+  flex: 0 0 auto
+  margin: 0 0.45rem 0.45rem
+  padding: 0.5rem 0.55rem
+  min-height: 2.75rem
+  border: 1px solid var(--mon-border)
+  border-radius: var(--mon-radius-sm)
+  background: var(--mon-surface)
+  box-shadow: var(--mon-shadow)
+
+.ipMapPaginationInfo,
+.ipMapPaginationPage
+  color: var(--mon-text-muted)
+  font-size: 0.74rem
+  font-weight: 600
+  font-variant-numeric: tabular-nums
+
+.ipMapPaginationControls
+  display: flex
+  align-items: center
+  gap: 0.45rem
+
+.ipMapPaginationBtn
+  border: 1px solid var(--mon-border)
+  background: var(--mon-btn-surface)
+  color: var(--mon-text-brand)
+  border-radius: var(--mon-radius-sm)
+  padding: 0.35rem 0.65rem
+  font-size: 0.74rem
+  font-weight: 700
+  cursor: pointer
+  transition: border-color 0.15s ease, background 0.15s ease
+
+  &:hover:not(:disabled)
+    border-color: var(--mon-detail-accent)
+    background: var(--mon-brand-soft)
+
+  &:disabled
+    opacity: 0.45
+    cursor: not-allowed
+
+@keyframes skeletonShimmer
+  0%
+    background-position: 200% 0
+  100%
+    background-position: -200% 0
+
+.listSkeleton
+  display: grid
+  gap: 0.45rem
+  padding: 0.35rem 0
+
+.listSkeletonItem
+  height: var(--ip-map-item-height)
+  min-height: var(--ip-map-item-height)
+  border-radius: var(--mon-radius-sm)
+  background: linear-gradient(90deg, var(--mon-skeleton) 0%, var(--mon-skeleton-shine) 50%, var(--mon-skeleton) 100%)
+  background-size: 200% 100%
+  animation: skeletonShimmer 1.25s ease-in-out infinite
+
+@media (max-width: 960px)
+  .ipMapCard
+    --ip-map-panel-height: 360px
+    --ip-map-item-height: 3.75rem
+
+  .ipMapOverlay
+    white-space: normal
+    top: 0.75rem
+    right: 0.65rem
+    max-width: calc(100% - 1.25rem)
+
+  .ipMapBody
+    grid-template-columns: 1fr
+
+  .ipMapPanelMap
+    border-right: none
+    border-bottom: 1px solid var(--mon-border)
+
+@media (max-width: 768px)
+  .ipMapHero
+    flex-direction: column
+    align-items: stretch
+    padding: 0.95rem 0.85rem
+
+  .ipMapStats
+    width: 100%
+
+  .ipMapStat
+    flex: 1 1 calc(33.333% - 0.4rem)
+    min-width: 0
+
+  .ipMapTitle
+    font-size: 1.05rem
+
+  .ipMapLede
+    font-size: 0.78rem
+
+  .ipMapPagination
+    flex-direction: column
+    align-items: stretch
+    gap: 0.55rem
+
+  .ipMapPaginationControls
+    justify-content: space-between
+
+@media (max-width: 480px)
+  .ipMapCard
+    --ip-map-panel-height: 300px
+    --ip-map-item-height: 3.5rem
+
+  .ipMapStat
+    flex: 1 1 calc(50% - 0.3rem)
+
+  .ipMapPanelHead
+    padding-inline: 0.75rem
+
+  .ipMapMapArea,
+  .ipMapListBody
+    --ip-map-panel-height: 280px

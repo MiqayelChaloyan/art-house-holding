@@ -1,44 +1,28 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
-import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
 import Header from '@/src/lib/outlets/art-house/Header';
 import Footer from '@/src/lib/outlets/art-house/Footer';
 
-import { client } from '@/sanity/client';
-import { SOCIAL_QUERY } from '@/sanity/services/art-house-service';
-
 
 interface Props {
     children: React.ReactNode;
     headerPosition?: 'fixed' | 'sticky';
+    socialData?: SOCIAL_QUERYResult;
 };
 
 const Layout = ({
     children,
     headerPosition,
+    socialData,
 }: Readonly<Props>) => {
     const [linkActive, setLinkActive] = useState<string>('');
-    const [socialData, setSocialData] = useState<SOCIAL_QUERYResult[]>([]);
     const activeLocale = useLocale();
 
     const typePosition = headerPosition === 'fixed' ? 'fixed' : 'sticky';
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await client.fetch(SOCIAL_QUERY, { language: activeLocale }, { next: { revalidate: 100 } });
-                setSocialData(data);
-            } catch (_) {
-                notFound();
-            }
-        };
-
-        fetchData();
-    }, [activeLocale]);
 
     const handleChangeActiveLink = useCallback((link: string) => setLinkActive(link), []);
 
@@ -53,7 +37,7 @@ const Layout = ({
             {children}
             <Footer
                 locale={activeLocale}
-                socialData={socialData[0]}
+                socialData={socialData}
                 linkActive={linkActive}
                 handleChangeActiveLink={handleChangeActiveLink}
             />

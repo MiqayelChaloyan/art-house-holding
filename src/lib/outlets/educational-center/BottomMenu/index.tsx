@@ -50,6 +50,7 @@ const BottomMenu = ({
 				</Link>
 				<button
 					className={styles.nav__link}
+					data-track-click="Courses"
 					onClick={() => setTimeout(() => dispatch(openModal(true)), 500)}
 					title='Courses'
 				>

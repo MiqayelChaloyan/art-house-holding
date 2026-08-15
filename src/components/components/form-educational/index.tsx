@@ -29,6 +29,7 @@ import WhatsApp from '@/src/lib/icons/educational-center/WhatsApp';
 import Viber from '@/src/lib/icons/educational-center/Viber';
 
 import { sendContactUsEducational } from '@/src/api';
+import { trackFormSubmit } from '@/src/lib/analytics/tracking';
 
 import { Form } from '@/src/types/educational-center';
 import { ContactUsResponse, socialNetwork } from '@/src/types/general';
@@ -152,6 +153,13 @@ const FormAppointment = ({
 			const res: ContactUsResponse = await sendContactUsEducational(formData);
 
 			if (res?.status !== 200) {
+				trackFormSubmit({
+					name: 'Contact Us Educational',
+					success: false,
+					requestBody: formData,
+					responseStatus: res?.status,
+					responseMessage: 'error' in res ? String(res.error) : 'Request failed',
+				});
 				setOpen(true);
 				setInfo({
 					status: 'info',
@@ -163,6 +171,14 @@ const FormAppointment = ({
 				}))
 				return;
 			};
+
+			trackFormSubmit({
+				name: 'Contact Us Educational',
+				success: true,
+				requestBody: formData,
+				responseStatus: res?.status,
+				responseMessage: 'OK',
+			});
 
 			setOpen(true);
 
@@ -178,6 +194,12 @@ const FormAppointment = ({
 			}));
 
 		} catch (error: any) {
+			trackFormSubmit({
+				name: 'Contact Us Educational',
+				success: false,
+				requestBody: formData,
+				responseMessage: error?.message ?? 'Unknown error',
+			});
 			setState((prev: FormProps) => ({
 				...prev,
 				isLoading: false,

@@ -12,6 +12,7 @@ import { AiOutlineYoutube } from 'react-icons/ai';
 
 import NextImage from '@/src/components/components/image';
 import Container from '@/src/components/components/container';
+import Copyright from '@/src/components/components/copyright';
 
 import { Arial, ArianAMU } from '@/src/constants/font';
 import { ImagePaths } from '@/src/constants';
@@ -46,7 +47,6 @@ const socialNetworkComponents: socialNetwork = {
 };
 
 const Footer = ({ socialData }: Readonly<Props>) => {
-    const currentYear = new Date().getFullYear();
     const windowSize = useWindowSize();
     const t = useTranslations('address');
 
@@ -110,9 +110,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                                 </p>
                             </Link>
                         </div>
-                        <p className={cn(styles.reserved, Arial.className)}>
-                            {`©️ ${currentYear} ART HOUSE`}
-                        </p>
+                        <Copyright className={cn(styles.reserved, Arial.className)} />
                     </div>
                     <div className={styles.hosts}>
                         {hosts}

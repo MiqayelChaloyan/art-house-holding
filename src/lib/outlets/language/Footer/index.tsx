@@ -18,6 +18,7 @@ import Pinterest from '@/src/lib/icons/language/Pinterest';
 import WhatsApp from '@/src/lib/icons/language/WhatsApp';
 import Viber from '@/src/lib/icons/language/Viber';
 
+import Copyright from '@/src/components/components/copyright';
 import { Arial } from '@/src/constants/font';
 
 import useWindowSize from '@/src/hooks/useWindowSize';
@@ -51,7 +52,6 @@ const socialNetworkComponents: socialNetwork = {
 
 const Footer = ({ socialData }: Readonly<Props>) => {
     const windowSize = useWindowSize();
-    const currentYear = new Date().getFullYear();
     const tel = 'tel:' + socialData?.phone_number.replace(/\s/g, '');
     const t = useTranslations('address');
 
@@ -97,9 +97,7 @@ const Footer = ({ socialData }: Readonly<Props>) => {
                             <p className={cn(styles.phone, Arial.className)}>{socialData?.phone_number}</p>
                         </Link>
                     </div>
-                    <p className={cn(styles.reserved, Arial.className)}>
-                        {`©️ ${currentYear} ART HOUSE`}
-                    </p>
+                    <Copyright className={cn(styles.reserved, Arial.className)} />
                 </div>
                 <div className={styles.hosts}>
                     {hosts}

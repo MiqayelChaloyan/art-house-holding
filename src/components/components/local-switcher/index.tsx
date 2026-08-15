@@ -5,6 +5,8 @@ import React, { useTransition } from 'react';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 
+import { trackButtonClick } from '@/src/lib/analytics/tracking';
+
 import NextImage from '@/src/components/components/image';
 
 import { ImagePaths } from '@/src/constants';
@@ -47,6 +49,12 @@ export default function LocalSwitcher({ activeColor = colors.darkRed, color = co
     if (pathname) {
       pathParts = pathname.slice(3);
     }
+
+    trackButtonClick({
+      name: 'Language Switcher',
+      page: pathname,
+      locale,
+    });
 
     startTransition(() => {
       router.replace(`/${locale}${pathParts}`, { scroll: false });

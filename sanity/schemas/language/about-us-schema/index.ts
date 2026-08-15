@@ -1,5 +1,6 @@
 import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
 import { RuleType } from '@/sanity/ruleType';
+import { blogSectionFields } from '@/sanity/schemas/shared/blogSectionFields';
 
 const aboutUsSchemaLanguage = {
     name: 'about-us-language',
@@ -347,6 +348,7 @@ const aboutUsSchemaLanguage = {
                 },
             ],
         },
+        blogSectionFields,
     ],
     preview: {
         select: {

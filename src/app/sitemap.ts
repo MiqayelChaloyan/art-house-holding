@@ -1,6 +1,6 @@
-import { getCourses as getCoursesEducational } from '@/src/utils/data/educational-center';
-import { getCourses as getCoursesDesign } from '@/src/utils/data/design';
-import { getCourses as getCoursesLanguages } from '@/src/utils/data/language';
+import { getCourses as getCoursesEducational, getBlogPosts as getEducationalBlogPosts } from '@/src/utils/data/educational-center';
+import { getCourses as getCoursesDesign, getBlogPosts as getDesignBlogPosts } from '@/src/utils/data/design';
+import { getCourses as getCoursesLanguages, getBlogPosts as getLanguageBlogPosts } from '@/src/utils/data/language';
 
 import { MetadataRoute } from 'next';
 import { Pages } from '@/src/constants/pages';
@@ -22,6 +22,29 @@ async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sit
   const educationalCourses = await getCoursesEducational(locale);
   const designCourses = await getCoursesDesign(locale);
   const languageCourses = await getCoursesLanguages(locale);
+  const [educationalBlogPosts, designBlogPosts, languageBlogPosts] = await Promise.all([
+    getEducationalBlogPosts(locale),
+    getDesignBlogPosts(locale),
+    getLanguageBlogPosts(locale),
+  ]);
+
+  const educationalBlogEntries = educationalBlogPosts?.map(({ slug, publishedAt }) => ({
+    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_BLOG_HOME}/${slug}`),
+    lastModified: publishedAt || new Date().toISOString(),
+    priority: 0.8,
+  }));
+
+  const designBlogEntries = designBlogPosts?.map(({ slug, publishedAt }) => ({
+    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_BLOG_HOME}/${slug}`),
+    lastModified: publishedAt || new Date().toISOString(),
+    priority: 0.8,
+  }));
+
+  const languageBlogEntries = languageBlogPosts?.map(({ slug, publishedAt }) => ({
+    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_BLOG_HOME}/${slug}`),
+    lastModified: publishedAt || new Date().toISOString(),
+    priority: 0.8,
+  }));
 
   const educationalCoursesEntries = educationalCourses?.map(({ slug }) => ({
     url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_HOME}/${slug}`),
@@ -91,6 +114,12 @@ async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sit
       changeFrequency: 'weekly',
     },
     {
+      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_BLOG_HOME}`),
+      lastModified: new Date().toISOString(),
+      priority: 0.7,
+      changeFrequency: 'weekly',
+    },
+    {
       url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_HOME}`),
       lastModified: new Date().toISOString(),
       priority: 1,
@@ -139,6 +168,12 @@ async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sit
       changeFrequency: 'weekly',
     },
     {
+      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_BLOG_HOME}`),
+      lastModified: new Date().toISOString(),
+      priority: 0.7,
+      changeFrequency: 'weekly',
+    },
+    {
       url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_QUIZ}`),
       lastModified: new Date().toISOString(),
       priority: 0.5,
@@ -174,11 +209,20 @@ async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sit
       priority: 0.5,
       changeFrequency: 'weekly',
     },
+    {
+      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_BLOG_HOME}`),
+      lastModified: new Date().toISOString(),
+      priority: 0.7,
+      changeFrequency: 'weekly',
+    },
     ...educationalCoursesEntries,
     ...designCoursesEntries,
     ...designPortfolioEntries,
     ...designOrderEntries,
     ...languageCoursesEntries,
+    ...educationalBlogEntries,
+    ...designBlogEntries,
+    ...languageBlogEntries,
   ];
 };
 

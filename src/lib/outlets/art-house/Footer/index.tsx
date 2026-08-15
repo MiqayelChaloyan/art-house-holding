@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
 import Container from '@/src/components/components/container';
+import Copyright from '@/src/components/components/copyright';
 
 import LogoFooter from '@/src/lib/icons/art-house/LogoFooter';
 import Facebook from '@/src/lib/icons/art-house/Facebook';
@@ -59,7 +60,6 @@ const socialNetworkComponents: socialNetwork = {
 
 const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Readonly<Props>) => {
     const windowSize = useWindowSize();
-    const currentYear = new Date().getFullYear();
     const t = useTranslations();
     const pathname = usePathname();
     const router = useRouter();
@@ -101,28 +101,13 @@ const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Read
         )
     });
 
-    const handleRouteChangeComplete = (scrollTo: string) => {
-        const observer = new MutationObserver((_, obs) => {
-            const element = document.getElementById(scrollTo);
-            if (element) {
-                const topPosition = element.offsetTop;
-                window.scrollTo({ top: topPosition, behavior: 'smooth' });
-                obs.disconnect();
-            }
-        });
+    const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
-        observer.observe(document, { childList: true, subtree: true });
-    };
+    const handleScrollNavClick = (sectionId: string, activeLabel: string) => {
+        handleChangeActiveLink(activeLabel);
 
-    const handleActiveLink = (newPath: string) => {
-        handleChangeActiveLink(newPath);
-
-        if (pathname.includes('/about')) {
-            router.push('/');
-
-            setTimeout(() => {
-                handleRouteChangeComplete(newPath);
-            }, 500);
+        if (!isHomePage) {
+            router.push(`/${locale}#${sectionId}`);
         }
     };
 
@@ -136,7 +121,7 @@ const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Read
                             href={`/${locale}/${Pages.HOME_ABOUT}`}
                             aria-label='About us'
                             className={styles.icon}
-                            onClick={() => handleActiveLink(Pages.HOME_ABOUT)}
+                            onClick={() => handleChangeActiveLink(Pages.HOME_ABOUT)}
                         >
                             <p className={cn(styles.info_web,  pathname.includes(Pages.HOME_ABOUT) && styles.linkActive, ArianAMU.className)}>
                                 {t('footer.about-us')}
@@ -147,7 +132,7 @@ const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Read
                             smooth={false}
                             duration={500}
                             className={styles.icon}
-                            onClick={() => handleActiveLink('partners')}
+                            onClick={() => handleScrollNavClick('partners', 'partners')}
                         >
                             <p className={cn(styles.info_web,  linkActive === 'partners' && styles.linkActive, ArianAMU.className)}>
                                 {t('footer.partners')}
@@ -178,9 +163,7 @@ const Footer = ({ locale, socialData, linkActive, handleChangeActiveLink }: Read
                                 fill={colors.white}
                             />
                         </div>
-                        <p className={cn(styles.reserved, ArianAMU.className)}>
-                            {`©️ ${currentYear}  ${t('texts.rights')}`}
-                        </p>
+                        <Copyright className={cn(styles.reserved, ArianAMU.className)} />
                     </div>
                 </div>
             </Container>

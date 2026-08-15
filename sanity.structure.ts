@@ -2,6 +2,8 @@ import { IoFolderOpen } from 'react-icons/io5';
 import { MdFolder } from 'react-icons/md';
 import { MdContactSupport } from 'react-icons/md';
 import { RiAiGenerate } from 'react-icons/ri';
+import { MdSettings, MdBarChart } from 'react-icons/md';
+import { RiPulseLine } from 'react-icons/ri';
 
 import { StructureBuilder } from 'sanity/structure';
 
@@ -14,6 +16,9 @@ export default (S: any) =>
                     'art-house-home',
                     'art-house-about-us',
                     'art-house-contact-us',
+                    'educational-center-blog-post',
+                    'design-blog-post',
+                    'language-blog-post',
                     'about-us',
                     'courses',
                     'educational-center-contact-us',
@@ -34,6 +39,8 @@ export default (S: any) =>
                     'design-lessons-select-option',
                     'partners',
                     'portfolio-design',
+                    'analyticsEvent',
+                    'monitoringSettings',
                 ].includes(listItem.getId() as string)
             ),
 
@@ -84,6 +91,13 @@ export default (S: any) =>
                                 .title('Contact Us')
                                 .icon(MdContactSupport)
                                 .child(S.document().schemaType('educational-center-contact-us').documentId('contact-us-educational-center')),
+                            S.listItem()
+                                .title('Blog')
+                                .icon(IoFolderOpen)
+                                .child(
+                                    S.documentList()
+                                        .title('Blog Posts')
+                                        .filter('_type == "educational-center-blog-post"')),
                         ])
                 ),
             S.listItem().title('ART-HOUSE-DESIGN')
@@ -119,6 +133,13 @@ export default (S: any) =>
                                 .title('Contact Us')
                                 .icon(MdContactSupport)
                                 .child(S.document().schemaType('design-contact-us').documentId('contact-us-design')),
+                            S.listItem()
+                                .title('Blog')
+                                .icon(IoFolderOpen)
+                                .child(
+                                    S.documentList()
+                                        .title('Blog Posts')
+                                        .filter('_type == "design-blog-post"')),
                         ])
                 ),
             S.listItem()
@@ -162,6 +183,13 @@ export default (S: any) =>
                                 .title('Contact Us')
                                 .icon(MdContactSupport)
                                 .child(S.document().schemaType('language-contact-us').documentId('contact-us-language')),
+                            S.listItem()
+                                .title('Blog')
+                                .icon(IoFolderOpen)
+                                .child(
+                                    S.documentList()
+                                        .title('Blog Posts')
+                                        .filter('_type == "language-blog-post"')),
                         ])
                 ),
             S.listItem().title('GENERIC')
@@ -177,6 +205,32 @@ export default (S: any) =>
                                     S.documentList()
                                         .title('Partners')
                                         .filter('_type == "partners"')),
+                        ])
+                ),
+            S.listItem()
+                .title('MONITORING')
+                .icon(RiPulseLine)
+                .child(
+                    S.list()
+                        .title('Analytics')
+                        .items([
+                            S.listItem()
+                                .title('Monitoring Settings')
+                                .icon(MdSettings)
+                                .child(
+                                    S.document()
+                                        .schemaType('monitoringSettings')
+                                        .documentId('monitoringSettings.main')
+                                ),
+                            S.listItem()
+                                .title('Analytics Events')
+                                .icon(MdBarChart)
+                                .child(
+                                    S.documentList()
+                                        .title('Analytics Events')
+                                        .filter('_type == "analyticsEvent"')
+                                        .defaultOrdering([{ field: 'timestamp', direction: 'desc' }])
+                                ),
                         ])
                 ),
         ]);

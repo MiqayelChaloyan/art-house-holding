@@ -51,7 +51,7 @@ export async function generateMetadata({
     const course = await getCourseBySlug(locale, slug[0]);
 
     if (!course) {
-        notFound();
+        return {};
     }
 
     const ogTitle = course.name;

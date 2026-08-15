@@ -10,7 +10,7 @@ import { Locale } from '@/src/locales';
 import { SITE_META_QUERY } from '@/sanity/services/art-house-service';
 
 import { getPartners } from '@/src/utils/data';
-import { getHomeDetails } from '@/src/utils/data/art-house';
+import { getContacts, getHomeDetails } from '@/src/utils/data/art-house';
 import { buildSiteMetadata, fetchSiteMetaEntry } from '@/src/utils/site-meta';
 
 
@@ -23,14 +23,17 @@ interface RootProps {
 export default async function Page({
   params: { locale }
 }: Readonly<RootProps>) {
-  const partners = await getPartners(locale);
-  const data = await getHomeDetails(locale);
+  const [partners, data, socialData] = await Promise.all([
+    getPartners(locale),
+    getHomeDetails(locale),
+    getContacts(locale),
+  ]);
 
   if (!data || !partners) {
     notFound()
   };
 
-  return (<Home data={data} partners={partners} />);
+  return (<Home data={data} partners={partners} socialData={socialData} />);
 };
 
 

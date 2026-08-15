@@ -3,6 +3,7 @@ import { GiProgression } from 'react-icons/gi';
 
 import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
 import { RuleType } from '@/sanity/ruleType';
+import { blogSectionFields } from '@/sanity/schemas/shared/blogSectionFields';
 
 export const aboutUsSchemaDesign = {
     name: 'about-us-design',
@@ -455,6 +456,7 @@ export const aboutUsSchemaDesign = {
                 }
             ],
         },
+        blogSectionFields,
     ],
     preview: {
         select: {

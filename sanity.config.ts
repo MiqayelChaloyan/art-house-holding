@@ -8,7 +8,12 @@ import { dashboardTool, projectUsersWidget, projectInfoWidget } from '@sanity/da
 import { BsDatabaseFillGear } from 'react-icons/bs';
 
 import Structure from './sanity.structure';
-
+import { MonitoringSettingsPublishAction } from './sanity/documentActions/monitoringSettingsPublish';
+import {
+  ANALYTICS_SYSTEM_TYPES,
+  filterAnalyticsDocumentActions,
+  filterMonitoringSettingsActions,
+} from './sanity/config/monitoring-access';
 
 const config = defineConfig(
   {
@@ -34,9 +39,33 @@ const config = defineConfig(
         defaultDataset: dataset,
       }),
     ],
+    document: {
+      newDocumentOptions: (prev, { creationContext }) => {
+        const schemaType = creationContext.type;
+        if (ANALYTICS_SYSTEM_TYPES.includes(schemaType as (typeof ANALYTICS_SYSTEM_TYPES)[number])) {
+          return [];
+        }
+        return prev;
+      },
+      actions: (prev, { schemaType }) => {
+        let actions = prev;
+
+        if (schemaType === 'monitoringSettings') {
+          actions = filterMonitoringSettingsActions(actions, schemaType);
+          return actions.map((originalAction) => {
+            const actionName = (originalAction as { action?: string }).action;
+            return actionName === 'publish' ? MonitoringSettingsPublishAction : originalAction;
+          });
+        }
+
+        if (ANALYTICS_SYSTEM_TYPES.includes(schemaType as (typeof ANALYTICS_SYSTEM_TYPES)[number])) {
+          return filterAnalyticsDocumentActions(actions, schemaType);
+        }
+
+        return actions;
+      },
+    },
   }
 );
 
 export default config;
-
-

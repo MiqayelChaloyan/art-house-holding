@@ -1,3 +1,9 @@
+import { createBlogPostsQuery, createBlogSlugQuery, createBlogSimilarPostsQuery, blogSectionQueryFragment } from '../blog-queries';
+
+export const BLOG_POSTS_QUERY = createBlogPostsQuery('design-blog-post');
+export const BLOG_SLUG_QUERY = createBlogSlugQuery('design-blog-post');
+export const BLOG_SIMILAR_POSTS_QUERY = createBlogSimilarPostsQuery('design-blog-post');
+
 export const ABOUT_US_DETAILS_QUERY = `
 *[_type == "about-us-design"] {
    "main_section": main_section[] {
@@ -29,6 +35,7 @@ export const ABOUT_US_DETAILS_QUERY = `
         "worker": worker[$language],
         "profession": profession[$language],
     },
+    ${blogSectionQueryFragment},
 }`;
 
 export const COURSES_QUERY = `

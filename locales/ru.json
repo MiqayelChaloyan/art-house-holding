@@ -3,6 +3,7 @@
         "about": "О нас",
         "courses": "Курсы",
         "partners": "Коллеги",
+        "blog": "Блог",
         "price-list": "Прайс-лист",
         "languages": "Языки",
         "promotions": "Акции",
@@ -28,6 +29,8 @@
         "follow-us": "ПОДПИСЫВАЙТЕСЬ НА НАС",
         "rights": "Все права защищены",
         "rating-title": "Учебный центр Art House",
+        "design-studio-title": "Design Studio Art House",
+        "language-center-title": "Языковой центр Art House",
         "send-request": "Отправить \n запрос",
         "take-the-test": "Пройди \n тест",
         "contact-us": "Связаться с нами",
@@ -39,7 +42,12 @@
         "send-message-success": "Ваше письмо было успешно отправлено",
         "send-message-failure": "Что-то пошло не так. Пожалуйста, попробуйте еще раз",
         "other-platforms": "Другие платформы",
-        "address": "Адрес"
+        "address": "Адрес",
+        "share-post": "Поделиться",
+        "error-title": "Что-то пошло не так",
+        "error-description": "Не удалось загрузить эту страницу. Пожалуйста, попробуйте снова.",
+        "error-retry": "Попробовать снова",
+        "error-home": "На главную"
     },
     "buttons": {
         "contact-us": "Связаться с нами",
@@ -76,7 +84,11 @@
         "contact-us": "Связаться с нами",
         "promotions": "Акции",
         "portfolios": "Портфолио",
-        "orders": "Заказы"
+        "orders": "Заказы",
+        "similar-posts": "Похожие статьи",
+        "more-stories": "Больше историй",
+        "more-stories-description": "Ещё {count} статей ждут вас",
+        "explore-all-stories": "Смотреть все статьи"
     },
     "contact": {
         "tell": "Телл.",

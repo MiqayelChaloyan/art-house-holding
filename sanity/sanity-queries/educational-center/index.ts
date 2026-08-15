@@ -127,6 +127,7 @@ interface HOME_DETALIS_QUERYResult {
     progress_section: PROGRESS[];
     specialists_section: SPECIALIST[];
     our_rating_section: OUR_RATING[];
+    blog_section?: BLOG_SECTION;
 };
 
 interface COURSES_QUERYResult {

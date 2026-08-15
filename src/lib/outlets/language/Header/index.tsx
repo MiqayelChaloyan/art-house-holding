@@ -15,6 +15,7 @@ import useWindowSize from '@/src/hooks/useWindowSize';
 
 import { Pages } from '@/src/constants/pages';
 import { Arial } from '@/src/constants/font';
+import { trackButtonClick } from '@/src/lib/analytics/tracking';
 import Logo from '@/src/lib/icons/language/Logo';
 
 import colors from '@/src/themes';
@@ -39,6 +40,7 @@ interface HeaderProps {
 
 const navigationLinks = [
     { path: Pages.LANGUAGE_HOME, label: 'about' },
+    { path: Pages.LANGUAGE_BLOG_HOME, label: 'blog' },
     { path: Pages.LANGUAGE_LANGUAGES, label: 'languages' },
     { path: Pages.LANGUAGE_PROMOTIONS, label: 'promotions' },
     { path: Pages.LANGUAGE_PRICE_LIST, label: 'price-list' },
@@ -63,6 +65,8 @@ const Header = ({ locale }: IHeaderProps) => {
     const windowSize = useWindowSize();
     const t = useTranslations()
     const dispatch = useDispatch();
+    const isBlogPage = /\/language\/blog(?:\/|$)/.test(pathname);
+    const navSticky = isBlogPage || isSticky;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -91,7 +95,8 @@ const Header = ({ locale }: IHeaderProps) => {
     return (
         <div className={cn(
             styles.container,
-            isSticky ? styles.stickyContainer : ''
+            navSticky ? styles.stickyContainer : '',
+            isBlogPage ? styles.blogCompact : '',
         )}>
             <HeaderBoundary>
                 <div className={styles.requests}>
@@ -100,6 +105,7 @@ const Header = ({ locale }: IHeaderProps) => {
                             href={`/${locale}${Pages.LANGUAGE_SEND_REQUEST}`}
                             aria-label={Pages.LANGUAGE_SEND_REQUEST}
                             className={cn(styles.triangle_text, Arial.className)}
+                            onClick={() => trackButtonClick({ name: 'Send Request' })}
                         >
                             {t("texts.send-request")}
                         </Link>
@@ -109,7 +115,10 @@ const Header = ({ locale }: IHeaderProps) => {
                             href={`/${locale}${Pages.LANGUAGE_TAKE_TEST}`}
                             aria-label={Pages.LANGUAGE_TAKE_TEST}
                             className={cn(styles.triangle_text, Arial.className)}
-                            onClick={() => dispatch(Action.resetAllAction())}
+                            onClick={() => {
+                                trackButtonClick({ name: 'Take Test' });
+                                dispatch(Action.resetAllAction());
+                            }}
                         >
                             {t("texts.take-the-test")}
                         </Link>
@@ -122,7 +131,7 @@ const Header = ({ locale }: IHeaderProps) => {
                     <LocalSwitcher activeColor={colors.yellow} color={colors.blue} />
                 </div>
             </HeaderBoundary>
-            <StickyBoundary sticky={isSticky}>
+            <StickyBoundary sticky={navSticky}>
                 <nav className={cn(
                     styles.nav,
                     isOpenMenu ? styles.active : ''
@@ -132,13 +141,18 @@ const Header = ({ locale }: IHeaderProps) => {
                             key={key}
                             href={`/${locale}${link.path}`}
                             aria-label={link.path}
-                            className={cn(styles.link, pathname === `/${locale}${link.path}` ? styles.linkActive : '', isSticky ? styles.scrollX : styles.scrollY, Arial.className)}
+                            className={cn(styles.link, pathname === `/${locale}${link.path}` ? styles.linkActive : '', navSticky ? styles.scrollX : styles.scrollY, Arial.className)}
                             prefetch={true}
                             passHref
                             onClick={() => {
                                 setIsOpenMenu(false);
                                 dispatch(Action.resetAllAction())
                             }}
+                            {...(link.label === 'send-request'
+                                ? { 'data-track-click': 'Send Request' }
+                                : link.label === 'take-the-test'
+                                  ? { 'data-track-click': 'Take Test' }
+                                  : {})}
                         >
                             {t(`navigation.${link.label}`)}
                         </Link>

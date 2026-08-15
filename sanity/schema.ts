@@ -1,6 +1,11 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
+import analyticsEventSchema from './schemas/analytics/analytics-event-schema';
+import monitoringSettingsSchema from './schemas/analytics/monitoring-settings-schema';
 import homeSchemaArtHouse from './schemas/art-house/home-schema';
+import blogSchemaEducationalCenter from './schemas/educational-center/blog-schema';
+import blogSchemaDesign from './schemas/design/blog-schema';
+import blogSchemaLanguage from './schemas/language/blog-schema';
 import aboutUsSchemaArtHouse from './schemas/art-house/about-us-schema';
 import contactUsSchemaArtHouse from './schemas/art-house/contact-us-schema';
 import aboutUsSchemaEducationalCenter from './schemas/educational-center/about-us-schema';
@@ -23,7 +28,12 @@ import lessonsSchemaDesign from './schemas/design/lessons-schema';
 import portfolioSchemaDesign from './schemas/design/portfolios-schema';
 
 export const schemaTypes: SchemaTypeDefinition[] = [
+  analyticsEventSchema,
+  monitoringSettingsSchema,
   homeSchemaArtHouse,
+  blogSchemaEducationalCenter,
+  blogSchemaDesign,
+  blogSchemaLanguage,
   aboutUsSchemaArtHouse,
   contactUsSchemaArtHouse,
   aboutUsSchemaEducationalCenter,

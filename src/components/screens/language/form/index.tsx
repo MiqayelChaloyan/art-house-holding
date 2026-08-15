@@ -14,6 +14,7 @@ import { Arial } from '@/src/constants/font';
 import { TRAINING_CENTERS } from '@/src/constants';
 
 import { sendRequest } from '@/src/api';
+import { trackFormSubmit } from '@/src/lib/analytics/tracking';
 import { FormLarge } from '@/src/types/language';
 import { ContactUsResponse } from '@/src/types/general';
 
@@ -108,6 +109,13 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                 const res: ContactUsResponse = await sendRequest(formData, sendEmailForm);
 
                 if (res?.status !== 200) {
+                    trackFormSubmit({
+                        name: 'Course Registration',
+                        success: false,
+                        requestBody: formData,
+                        responseStatus: res?.status,
+                        responseMessage: 'error' in res ? String(res.error) : 'Request failed',
+                    });
                     setOpen(true);
                     setInfo({
                         status: 'info',
@@ -119,6 +127,14 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                     }))
                     return;
                 };
+
+                trackFormSubmit({
+                    name: 'Course Registration',
+                    success: true,
+                    requestBody: formData,
+                    responseStatus: res?.status,
+                    responseMessage: 'OK',
+                });
 
                 setOpen(true);
 
@@ -136,6 +152,12 @@ const Form = ({ data, courses }: Readonly<Props>) => {
                 setIsClear(true);
             }
         } catch (error) {
+            trackFormSubmit({
+                name: 'Course Registration',
+                success: false,
+                requestBody: formData,
+                responseMessage: error instanceof Error ? error.message : 'Unknown error',
+            });
             setState((prev: FormProps) => ({
                 ...prev,
                 isLoading: false,

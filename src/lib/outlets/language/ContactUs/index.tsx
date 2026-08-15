@@ -22,6 +22,7 @@ import { Arial, Vrdznagir } from '@/src/constants/font';
 import useWindowSize from '@/src/hooks/useWindowSize';
 
 import { sendContactUsLanguage } from '@/src/api';
+import { trackFormSubmit } from '@/src/lib/analytics/tracking';
 import { FormSmall, socialNetwork } from '@/src/types/language';
 import { ResponseType } from '@/src/types/general';
 
@@ -121,6 +122,13 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
             const res: ResponseType = await sendContactUsLanguage(formData);
 
             if (res?.status !== 200) {
+                trackFormSubmit({
+                    name: 'Contact Us Language',
+                    success: false,
+                    requestBody: formData,
+                    responseStatus: res?.status,
+                    responseMessage: 'error' in res ? String(res.error) : 'Request failed',
+                });
                 setOpen(true);
                 setInfo({
                     status: 'info',
@@ -132,6 +140,14 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
                 }))
                 return;
             };
+
+            trackFormSubmit({
+                name: 'Contact Us Language',
+                success: true,
+                requestBody: formData,
+                responseStatus: res?.status,
+                responseMessage: 'OK',
+            });
 
             setOpen(true);
 
@@ -146,6 +162,12 @@ const ContactUs = ({ courses, languages, socialData }: Props) => {
                 error: false,
             }));
         } catch (error: any) {
+            trackFormSubmit({
+                name: 'Contact Us Language',
+                success: false,
+                requestBody: formData,
+                responseMessage: error?.message ?? 'Unknown error',
+            });
             setState((prev: FormProps) => ({
                 ...prev,
                 isLoading: false,

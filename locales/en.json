@@ -3,6 +3,7 @@
         "about": "About us",
         "courses": "Courses",
         "partners": "Partners",
+        "blog": "Blog",
         "price-list": "Price List",
         "languages": "Languages",
         "promotions": "Promotions",
@@ -28,6 +29,8 @@
         "follow-us": "FOLLOW US",
         "rights": "All rights reserved",
         "rating-title": "Art House Learning Center",
+        "design-studio-title": "Art House Design Studio",
+        "language-center-title": "Art House Language Center",
         "send-request": "Send \n request",
         "take-the-test": "Pass \n the test",
         "contact-us": "Contact us",
@@ -39,7 +42,12 @@
         "send-message-success": "Your email was sent successfully",
         "send-message-failure": "Something went wrong, please try again",
         "other-platforms": "Other platforms",
-        "address": "Address"
+        "address": "Address",
+        "share-post": "Share",
+        "error-title": "Something went wrong",
+        "error-description": "We couldn't load this page. Please try again.",
+        "error-retry": "Try again",
+        "error-home": "Go home"
     },
     "buttons": {
         "contact-us": "Contact Us",
@@ -76,7 +84,11 @@
         "contact-us": "Contact us",
         "promotions": "Promotions",
         "portfolios": "Portfolios",
-        "orders": "Orders"
+        "orders": "Orders",
+        "similar-posts": "Similar posts",
+        "more-stories": "More stories",
+        "more-stories-description": "{count} more articles waiting for you",
+        "explore-all-stories": "Explore all stories"
     },
     "contact": {
         "tell": "Tell.",

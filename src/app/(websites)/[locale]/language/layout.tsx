@@ -44,10 +44,12 @@ export default async function Layout({
     children,
     params: { locale },
 }: Readonly<RootLayoutProps>) {
-    const courses = await getSelectOptions(locale);
-    const languages = await getSelectOptionsFiltered(locale);
-    const contacts = await getContacts(locale);
-    const branches = await getHomeDetails(locale);
+    const [courses, languages, contacts, branches] = await Promise.all([
+        getSelectOptions(locale),
+        getSelectOptionsFiltered(locale),
+        getContacts(locale),
+        getHomeDetails(locale),
+    ]);
 
     if (!courses || !branches || !languages || !contacts) {
         notFound()
