@@ -18,21 +18,16 @@ export type SwiperTypes = {
 };
 
 export interface SwiperType {
-    effect: 'coverflow';
     grabCursor: boolean;
     centeredSlides: boolean;
     slidesPerView: number;
     loop: boolean,
-    pagination: {
-        clickable: boolean,
-        el: string,
-    };
+    autoHeight: boolean,
     navigation: {
         nextEl: string,
         prevEl: string,
     },
-    modules: (typeof Navigation | typeof Pagination)[],
-    className: string;
+    modules: (typeof Navigation)[],
 };
 
 export interface Content {

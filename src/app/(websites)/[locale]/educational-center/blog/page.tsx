@@ -7,7 +7,7 @@ import { Locale } from '@/src/locales';
 import { BlogSiteKey } from '@/src/components/blog/config';
 
 import { getBlogPosts, getHomeDetails } from '@/src/utils/data/educational-center';
-import { buildSiteMetadata, fetchSiteMetaEntry } from '@/src/utils/site-meta';
+import { buildSectionPageMetadata } from '@/src/utils/page-metadata';
 
 import { SITE_META_QUERY } from '@/sanity/services/educational-center-service';
 import { Pages } from '@/src/constants/pages';
@@ -45,11 +45,10 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta = await fetchSiteMetaEntry(SITE_META_QUERY, locale, 0);
-
-    return buildSiteMetadata(
-        meta,
+    return buildSectionPageMetadata({
+        query: SITE_META_QUERY,
         locale,
-        `/${locale}${Pages.EDUCATIONAL_BLOG_HOME}`,
-    );
+        path: `/${locale}${Pages.EDUCATIONAL_BLOG_HOME}`,
+        navigationKey: 'blog',
+    });
 };

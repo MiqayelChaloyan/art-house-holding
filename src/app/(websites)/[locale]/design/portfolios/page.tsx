@@ -7,7 +7,7 @@ import Home from '@/src/components/screens/design/portfolios';
 
 import { Locale } from '@/src/locales';
 
-import { buildSiteMetadata, fetchSiteMetaEntry } from '@/src/utils/site-meta';
+import { buildSectionPageMetadata } from '@/src/utils/page-metadata';
 import { SITE_META_QUERY } from '@/sanity/services/design-service';
 import { getCourses, getPortfolio } from '@/src/utils/data/design';
 import { Pages } from '@/src/constants/pages';
@@ -37,6 +37,10 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta = await fetchSiteMetaEntry(SITE_META_QUERY, locale, 0);
-    return buildSiteMetadata(meta, locale, `/${locale}${Pages.DESIGN_PORTFOLIOS}`);
+    return buildSectionPageMetadata({
+        query: SITE_META_QUERY,
+        locale,
+        path: `/${locale}${Pages.DESIGN_PORTFOLIOS}`,
+        navigationKey: 'portfolios',
+    });
 };

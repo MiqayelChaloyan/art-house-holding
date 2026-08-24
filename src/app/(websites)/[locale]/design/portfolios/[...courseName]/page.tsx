@@ -2,6 +2,7 @@
 
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
 import Home from '@/src/components/screens/design/portfolio';
 
@@ -46,7 +47,9 @@ export async function generateMetadata({
         notFound();
     }
 
-    const ogTitle = `${data.course_name} | ${data.portfolios[0]?.author}`;
+    const t = await getTranslations({ locale, namespace: 'navigation' });
+    // Distinguishes this page from /design/orders/<slug>, which describes the same course.
+    const ogTitle = `${data.course_name} | ${data.portfolios[0]?.author} | ${t('portfolios')}`;
     const ogImage = data.portfolios[0]?.image;
     const ogDescription = data?.guides[0];
 

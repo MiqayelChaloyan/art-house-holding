@@ -1,4 +1,4 @@
-import { locales } from '@/src/locales';
+import { defaultLocale, locales } from '@/src/locales';
 
 export function buildPagePath(locale: string, ...segments: string[]): string {
     const suffix = segments.filter(Boolean).join('/');
@@ -22,12 +22,17 @@ export function encodeCanonicalPath(pathname: string): string {
 }
 
 export function buildHreflangAlternates(pathname: string): Record<string, string> {
-    return Object.fromEntries(
+    const alternates = Object.fromEntries(
         locales.map((loc) => [
             loc,
             pathname.replace(/^\/(am|en|ru)(?=\/|$)/, `/${loc}`),
         ]),
     );
+
+    return {
+        ...alternates,
+        'x-default': alternates[defaultLocale],
+    };
 }
 
 export function resolveCanonicalPath(

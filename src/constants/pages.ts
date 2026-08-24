@@ -1,3 +1,5 @@
+const LANGUAGE_QUIZ_PATH = '/language/quiz';
+
 const Pages = {
     HOME: '/',
     HOME_ABOUT: 'about',
@@ -13,9 +15,9 @@ const Pages = {
     LANGUAGE_PRICE_LIST: '/language/price-list',
     LANGUAGE_PARTNERS: '/language/partners',
     LANGUAGE_SEND_REQUEST: '/language/form',
-    LANGUAGE_TAKE_TEST: '/language/quiz',
+    LANGUAGE_TAKE_TEST: LANGUAGE_QUIZ_PATH,
     LANGUAGE_ABOUT: '/language/about',
-    LANGUAGE_QUIZ: '/language/quiz',
+    LANGUAGE_QUIZ: LANGUAGE_QUIZ_PATH,
     DESIGN_HOME: '/design',
     DESIGN_BLOG_HOME: '/design/blog',
     DESIGN_PRICE_LIST: '/design/price-list',

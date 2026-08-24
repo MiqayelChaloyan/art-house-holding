@@ -1,7 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { locales } from './locales';
+import { defaultLocale, locales } from './locales';
 import {
     resolveLegacyPathRedirect,
     resolvePathNormalization,
@@ -10,7 +10,7 @@ import {
 
 const intlMiddleware = createMiddleware({
   locales,
-  defaultLocale: 'am',
+  defaultLocale,
   localeDetection: false,
 });
 

@@ -4,8 +4,10 @@ import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
 import Home from '@/src/components/screens/art-house/home';
+import JsonLd from '@/src/components/seo/JsonLd';
 
 import { Locale } from '@/src/locales';
+import { buildSiteSchema } from '@/src/utils/structured-data';
 
 import { SITE_META_QUERY } from '@/sanity/services/art-house-service';
 
@@ -33,7 +35,19 @@ export default async function Page({
     notFound()
   };
 
-  return (<Home data={data} partners={partners} socialData={socialData} />);
+  return (
+    <>
+      <JsonLd
+        data={buildSiteSchema({
+          locale,
+          address: socialData?.address,
+          phoneNumbers: socialData?.phone_numbers,
+          socialLinks: socialData?.social_links,
+        })}
+      />
+      <Home data={data} partners={partners} socialData={socialData} />
+    </>
+  );
 };
 
 

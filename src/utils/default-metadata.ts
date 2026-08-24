@@ -1,10 +1,12 @@
 import 'server-only';
 
+import { type Metadata } from 'next';
 import { headers } from 'next/headers';
 
 import { ImagePath } from '@/src/types/general';
 import { defaultKeywords } from '../constants';
 import DefaultIcon from '@/src/app/favicon.ico';
+import { siteName, siteUrl } from '@/src/config/site';
 import { buildHreflangAlternates, encodeCanonicalPath, resolveCanonicalPath } from '@/src/utils/canonical';
 
 export const generateMetadataDynamic = (
@@ -15,39 +17,42 @@ export const generateMetadataDynamic = (
     locale?: string,
     keywords?: string[] | null,
     canonicalPath?: string,
-) => {
+): Metadata => {
     const icons = icon ? { icon: icon?.src } : { icon: DefaultIcon.src };
     const finalKeywords = keywords?.length ? keywords : defaultKeywords;
-    const baseUrl = process.env.NEXT_PUBLIC_DOMAIN || `http://localhost:${process.env.PORT || 3000}`;
     const requestPathname = headers().get('x-pathname');
     const pathname = encodeCanonicalPath(
         resolveCanonicalPath(locale, canonicalPath, requestPathname),
     );
-    const canonical = `${baseUrl.replace(/\/$/, '')}${pathname}`;
+    const canonical = `${siteUrl}${pathname}`;
+
+    const images = path?.src
+        ? [
+            {
+                url: path.src,
+                width: path.width,
+                height: path.height,
+                alt: ogTitle ?? siteName,
+            },
+        ]
+        : undefined;
 
     return {
-        metadataBase: new URL(baseUrl),
+        metadataBase: new URL(siteUrl),
         title: ogTitle,
         description: ogDescription,
         authors: [
             {
-                name: process.env.NEXT_PUBLIC_SITE_NAME,
-                url: baseUrl,
+                name: siteName,
+                url: siteUrl,
             },
         ],
         twitter: {
-            card: path?.src,
+            card: images ? 'summary_large_image' : 'summary',
             title: ogTitle,
             description: ogDescription,
             creator: '@arthouse',
-            images: [
-                {
-                    url: path?.src,
-                    width: path?.width,
-                    height: path?.height,
-                    alt: 'twitter',
-                },
-            ],
+            images,
         },
         robots: 'index, follow',
         alternates: {
@@ -59,15 +64,8 @@ export const generateMetadataDynamic = (
             url: canonical,
             title: ogTitle,
             description: ogDescription,
-            siteName: process.env.NEXT_PUBLIC_SITE_NAME,
-            images: [
-                {
-                    url: path?.src,
-                    width: 500,
-                    height: 500,
-                    alt: 'seo-image',
-                },
-            ],
+            siteName,
+            images,
             locale,
         },
         icons,

@@ -2,6 +2,8 @@ import { UserIcon } from '@sanity/icons';
 import ArrayMaxItems from '@/src/helpers/ArrayMaxItems';
 import { RuleType } from '@/sanity/ruleType';
 
+const feedbackLengthWarning = 'This feedback is much longer than the others and will stretch the testimonial card. You can still publish it.';
+
 export const aboutUsSchemaArtHouse = {
     name: 'art-house-about-us',
     type: 'document',
@@ -57,10 +59,10 @@ export const aboutUsSchemaArtHouse = {
         {
             name: 'our_rating',
             type: 'array',
-            title: 'Our Rating Section',
+            title: 'Our Rating Section (max 70)',
             components: { input: ArrayMaxItems },
-            validation: (Rule: RuleType) => Rule.max(10),
-            description: 'No less than two, and no more ten.',
+            validation: (Rule: RuleType) => Rule.min(2).max(70),
+            description: 'No less than 2, and no more than 70.',
             of: [
                 {
                     name: 'Object',
@@ -95,8 +97,8 @@ export const aboutUsSchemaArtHouse = {
                             title: 'User Image',
                             type: 'image',
                             options: { hotspot: true },
+                            validation: (Rule: RuleType) => Rule.required(),
                             fields: [
-
                                 {
                                     name: 'alt',
                                     title: 'Alternative text',
@@ -109,21 +111,25 @@ export const aboutUsSchemaArtHouse = {
                             name: 'user_feedback',
                             type: 'object',
                             validation: (Rule: RuleType) => Rule.required(),
+                            description: 'Recommended length: 150-300 characters, so every testimonial card stays the same size.',
                             fields: [
                                 {
                                     title: 'Armenian',
                                     name: 'am',
-                                    type: 'string'
+                                    type: 'string',
+                                    validation: (Rule: RuleType) => Rule.max(350).warning(feedbackLengthWarning),
                                 },
                                 {
                                     title: 'English',
                                     name: 'en',
-                                    type: 'string'
+                                    type: 'string',
+                                    validation: (Rule: RuleType) => Rule.max(350).warning(feedbackLengthWarning),
                                 },
                                 {
                                     title: 'Russian',
                                     name: 'ru',
-                                    type: 'string'
+                                    type: 'string',
+                                    validation: (Rule: RuleType) => Rule.max(350).warning(feedbackLengthWarning),
                                 }
                             ]
                         },

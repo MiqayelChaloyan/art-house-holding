@@ -2,6 +2,12 @@
 
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import { type Metadata } from 'next';
+
+import { Locale } from '@/src/locales';
+import { Pages } from '@/src/constants/pages';
+import { SITE_META_QUERY } from '@/sanity/services/language-service';
+import { buildSectionPageMetadata } from '@/src/utils/page-metadata';
 import { getCourses } from '@/src/utils/data/language';
 
 
@@ -25,5 +31,18 @@ export default async function Page({
     }
 
     return (<Component locale={locale} data={languages} />);
+};
+
+export async function generateMetadata({
+    params: { locale },
+}: {
+    params: { locale: Locale };
+}): Promise<Metadata> {
+    return buildSectionPageMetadata({
+        query: SITE_META_QUERY,
+        locale,
+        path: `/${locale}${Pages.LANGUAGE_LANGUAGES}`,
+        navigationKey: 'languages',
+    });
 };
 

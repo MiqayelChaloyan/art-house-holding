@@ -4,6 +4,7 @@ import { type Metadata } from 'next';
 
 import { sanityFetch } from '@/src/api/sanity-fetch';
 import { Site } from '@/src/types/general';
+import { siteName } from '@/src/config/site';
 import { generateMetadataDynamic } from '@/src/utils/default-metadata';
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 
@@ -28,7 +29,7 @@ export function buildSiteMetadata(
     if (!meta) {
         return generateMetadataDynamic(
             undefined,
-            process.env.NEXT_PUBLIC_SITE_NAME ?? 'Art House',
+            siteName,
             undefined,
             null,
             locale,

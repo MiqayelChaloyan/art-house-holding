@@ -4,232 +4,148 @@ import { getCourses as getCoursesLanguages, getBlogPosts as getLanguageBlogPosts
 
 import { MetadataRoute } from 'next';
 import { Pages } from '@/src/constants/pages';
+import { locales } from '@/src/locales';
+import { siteUrl } from '@/src/config/site';
+import { encodeCanonicalPath } from '@/src/utils/canonical';
 
-type LocaleKeys = 'am' | 'en' | 'ru';
-type LocaleValues = string;
+/** Regenerate hourly so newly published CMS content reaches Search Console without a redeploy. */
+export const revalidate = 3600;
 
-const locales: Record<LocaleKeys, LocaleValues> = {
-  am: 'am',
-  en: 'en',
-  ru: 'ru',
-};
+const staticRoutes: { path: string; priority: number }[] = [
+  { path: '', priority: 1 },
+  { path: `/${Pages.HOME_ABOUT}`, priority: 0.5 },
+  { path: Pages.EDUCATIONAL_HOME, priority: 1 },
+  { path: Pages.EDUCATIONAL_ABOUT, priority: 0.5 },
+  { path: Pages.EDUCATIONAL_PARTNERS, priority: 0.5 },
+  { path: Pages.EDUCATIONAL_PRICE_LIST, priority: 0.5 },
+  { path: Pages.EDUCATIONAL_BLOG_HOME, priority: 0.7 },
+  { path: Pages.LANGUAGE_HOME, priority: 1 },
+  { path: Pages.LANGUAGE_LANGUAGES, priority: 0.5 },
+  { path: Pages.LANGUAGE_PROMOTIONS, priority: 0.5 },
+  { path: Pages.LANGUAGE_PRICE_LIST, priority: 0.5 },
+  { path: Pages.LANGUAGE_PARTNERS, priority: 0.5 },
+  { path: Pages.LANGUAGE_SEND_REQUEST, priority: 0.5 },
+  { path: Pages.LANGUAGE_TAKE_TEST, priority: 0.5 },
+  { path: Pages.LANGUAGE_ABOUT, priority: 0.5 },
+  { path: Pages.LANGUAGE_BLOG_HOME, priority: 0.7 },
+  { path: Pages.DESIGN_HOME, priority: 1 },
+  { path: Pages.DESIGN_PRICE_LIST, priority: 0.5 },
+  { path: Pages.DESIGN_CONTACT, priority: 0.5 },
+  { path: Pages.DESIGN_PORTFOLIOS, priority: 0.5 },
+  { path: Pages.DESIGN_ORDERS, priority: 0.5 },
+  { path: Pages.DESIGN_BLOG_HOME, priority: 0.7 },
+];
 
 function escapeUrl(url: string): string {
   return url.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 };
 
+/** Must match the canonical tag byte for byte, or Search Console reports the sitemap URL as a non-indexed alternate. */
+function buildUrl(locale: string, path: string): string {
+  return escapeUrl(`${siteUrl}${encodeCanonicalPath(`/${locale}${path}`)}`);
+};
+
+/** A CMS outage must degrade the sitemap to its static routes, never fail the whole response. */
+async function safeList<T>(label: string, load: () => Promise<T[] | null | undefined>): Promise<T[]> {
+  try {
+    const result = await load();
+    return Array.isArray(result) ? result : [];
+  } catch (error) {
+    console.error(`[sitemap] failed to load ${label}`, error);
+    return [];
+  }
+};
+
+function dedupeByUrl(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+  const seen = new Set<string>();
+
+  return entries.filter(({ url }) => {
+    if (seen.has(url)) {
+      return false;
+    }
+
+    seen.add(url);
+    return true;
+  });
+};
+
+type SlugValue = string | string[] | { current?: string | null } | null | undefined;
+type SluggedItem = { slug?: SlugValue };
+type BlogItem = SluggedItem & { publishedAt?: string | null };
+
+function readSlug({ slug }: SluggedItem): string | null {
+  const value = Array.isArray(slug)
+    ? slug[0]
+    : typeof slug === 'string'
+      ? slug
+      : slug?.current;
+
+  return value?.trim() ? value : null;
+};
+
+/** Content missing a slug has no reachable URL, so it must never reach the sitemap. */
+function slugEntries<T extends SluggedItem>(
+  items: T[],
+  toUrl: (slug: string) => string,
+  priority: number,
+  toLastModified: (item: T) => string,
+): MetadataRoute.Sitemap {
+  return items.flatMap((item) => {
+    const slug = readSlug(item);
+
+    if (!slug) {
+      return [];
+    }
+
+    return [{ url: toUrl(slug), lastModified: toLastModified(item), priority }];
+  });
+};
+
 async function generateSitemapEntries(locale: string): Promise<MetadataRoute.Sitemap> {
-  const educationalCourses = await getCoursesEducational(locale);
-  const designCourses = await getCoursesDesign(locale);
-  const languageCourses = await getCoursesLanguages(locale);
-  const [educationalBlogPosts, designBlogPosts, languageBlogPosts] = await Promise.all([
-    getEducationalBlogPosts(locale),
-    getDesignBlogPosts(locale),
-    getLanguageBlogPosts(locale),
+  const [
+    educationalCourses,
+    designCourses,
+    languageCourses,
+    educationalBlogPosts,
+    designBlogPosts,
+    languageBlogPosts,
+  ] = await Promise.all([
+    safeList('educational courses', () => getCoursesEducational(locale)),
+    safeList('design courses', () => getCoursesDesign(locale)),
+    safeList('language courses', () => getCoursesLanguages(locale)),
+    safeList('educational blog posts', () => getEducationalBlogPosts(locale)),
+    safeList('design blog posts', () => getDesignBlogPosts(locale)),
+    safeList('language blog posts', () => getLanguageBlogPosts(locale)),
   ]);
 
-  const educationalBlogEntries = educationalBlogPosts?.map(({ slug, publishedAt }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_BLOG_HOME}/${slug}`),
-    lastModified: publishedAt || new Date().toISOString(),
-    priority: 0.8,
-  }));
+  const lastModified = new Date().toISOString();
+  const publishedOr = (post: BlogItem) => post.publishedAt || lastModified;
+  const always = () => lastModified;
 
-  const designBlogEntries = designBlogPosts?.map(({ slug, publishedAt }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_BLOG_HOME}/${slug}`),
-    lastModified: publishedAt || new Date().toISOString(),
-    priority: 0.8,
-  }));
-
-  const languageBlogEntries = languageBlogPosts?.map(({ slug, publishedAt }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_BLOG_HOME}/${slug}`),
-    lastModified: publishedAt || new Date().toISOString(),
-    priority: 0.8,
-  }));
-
-  const educationalCoursesEntries = educationalCourses?.map(({ slug }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_HOME}/${slug}`),
-    lastModified: new Date().toISOString(),
-    priority: 1,
-  }));
-
-  const designCoursesEntries = designCourses?.map(({ slug }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_HOME}/${encodeURIComponent(slug)}`),
-    lastModified: new Date().toISOString(),
-    priority: 1,
-  }));
-
-  const designPortfolioEntries = designCourses?.map(({ slug }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_PORTFOLIOS}/${encodeURIComponent(slug)}`),
-    lastModified: new Date().toISOString(),
-    priority: 0.8,
-  }));
-
-  const designOrderEntries = designCourses?.map(({ slug }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_ORDERS}/${encodeURIComponent(slug)}`),
-    lastModified: new Date().toISOString(),
-    priority: 0.8,
-  }));
-
-  const languageCoursesEntries = languageCourses?.map(({ slug }) => ({
-    url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_LANGUAGES}/${slug.current}`),
-    lastModified: new Date().toISOString(),
-    priority: 1,
+  const staticEntries = staticRoutes.map(({ path, priority }) => ({
+    url: buildUrl(locale, path),
+    lastModified,
+    priority,
+    changeFrequency: 'weekly' as const,
   }));
 
   return [
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}`),
-      lastModified: new Date().toISOString(),
-      priority: 1,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}/${Pages.HOME_ABOUT}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_HOME}`),
-      lastModified: new Date().toISOString(),
-      priority: 1,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_ABOUT}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_PARTNERS}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_PRICE_LIST}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.EDUCATIONAL_BLOG_HOME}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.7,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_HOME}`),
-      lastModified: new Date().toISOString(),
-      priority: 1,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_LANGUAGES}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_PROMOTIONS}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_PRICE_LIST}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_PARTNERS}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_SEND_REQUEST}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_TAKE_TEST}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_ABOUT}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_BLOG_HOME}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.7,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.LANGUAGE_QUIZ}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_HOME}`),
-      lastModified: new Date().toISOString(),
-      priority: 1,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_PRICE_LIST}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_CONTACT}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_PORTFOLIOS}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_ORDERS}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.5,
-      changeFrequency: 'weekly',
-    },
-    {
-      url: escapeUrl(`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${Pages.DESIGN_BLOG_HOME}`),
-      lastModified: new Date().toISOString(),
-      priority: 0.7,
-      changeFrequency: 'weekly',
-    },
-    ...educationalCoursesEntries,
-    ...designCoursesEntries,
-    ...designPortfolioEntries,
-    ...designOrderEntries,
-    ...languageCoursesEntries,
-    ...educationalBlogEntries,
-    ...designBlogEntries,
-    ...languageBlogEntries,
+    ...staticEntries,
+    ...slugEntries(educationalCourses, (slug) => buildUrl(locale, `${Pages.EDUCATIONAL_HOME}/${slug}`), 1, always),
+    ...slugEntries(designCourses, (slug) => buildUrl(locale, `${Pages.DESIGN_HOME}/${slug}`), 1, always),
+    ...slugEntries(designCourses, (slug) => buildUrl(locale, `${Pages.DESIGN_PORTFOLIOS}/${slug}`), 0.8, always),
+    ...slugEntries(designCourses, (slug) => buildUrl(locale, `${Pages.DESIGN_ORDERS}/${slug}`), 0.8, always),
+    ...slugEntries(languageCourses, (slug) => buildUrl(locale, `${Pages.LANGUAGE_LANGUAGES}/${slug}`), 1, always),
+    ...slugEntries(educationalBlogPosts, (slug) => buildUrl(locale, `${Pages.EDUCATIONAL_BLOG_HOME}/${slug}`), 0.8, publishedOr),
+    ...slugEntries(designBlogPosts, (slug) => buildUrl(locale, `${Pages.DESIGN_BLOG_HOME}/${slug}`), 0.8, publishedOr),
+    ...slugEntries(languageBlogPosts, (slug) => buildUrl(locale, `${Pages.LANGUAGE_BLOG_HOME}/${slug}`), 0.8, publishedOr),
   ];
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const localeSitemaps = await Promise.all(
-    Object.values(locales).map((locale) => generateSitemapEntries(locale))
+    locales.map((locale) => generateSitemapEntries(locale))
   );
 
-  return localeSitemaps.flat();
+  return dedupeByUrl(localeSitemaps.flat());
 };

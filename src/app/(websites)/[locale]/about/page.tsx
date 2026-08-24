@@ -10,11 +10,10 @@ import { Locale } from '@/src/locales';
 import { SITE_META_QUERY } from '@/sanity/services/art-house-service';
 
 import { getAboutDetails, getContacts } from '@/src/utils/data/art-house';
-import { buildSiteMetadata, fetchSiteMetaEntry } from '@/src/utils/site-meta';
+import { buildSectionPageMetadata } from '@/src/utils/page-metadata';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 
 interface Props {
@@ -44,6 +43,11 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
-  const meta = await fetchSiteMetaEntry(SITE_META_QUERY, locale, 1);
-  return buildSiteMetadata(meta, locale, `/${locale}/about`);
+  return buildSectionPageMetadata({
+    query: SITE_META_QUERY,
+    locale,
+    index: 1,
+    path: `/${locale}/about`,
+    navigationKey: 'about',
+  });
 };

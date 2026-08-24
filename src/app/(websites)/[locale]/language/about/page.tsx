@@ -1,7 +1,14 @@
 'use server'
 
 import { notFound } from 'next/navigation';
+import { type Metadata } from 'next';
+
 import About from '@/src/components/screens/language/about';
+
+import { Locale } from '@/src/locales';
+import { Pages } from '@/src/constants/pages';
+import { SITE_META_QUERY } from '@/sanity/services/language-service';
+import { buildSectionPageMetadata } from '@/src/utils/page-metadata';
 import { getHomeDetails } from '@/src/utils/data/language';
 
 
@@ -21,5 +28,18 @@ export default async function Page({
     }
 
     return (<About data={data} locale={locale} />);
+};
+
+export async function generateMetadata({
+    params: { locale },
+}: {
+    params: { locale: Locale };
+}): Promise<Metadata> {
+    return buildSectionPageMetadata({
+        query: SITE_META_QUERY,
+        locale,
+        path: `/${locale}${Pages.LANGUAGE_ABOUT}`,
+        navigationKey: 'about',
+    });
 };
 

@@ -11,7 +11,7 @@ import { SITE_META_QUERY } from '@/sanity/services/design-service';
 
 import { Pages } from '@/src/constants/pages';
 import { getCourses, getSelectOptions } from '@/src/utils/data/design';
-import { buildSiteMetadata, fetchSiteMetaEntry } from '@/src/utils/site-meta';
+import { buildSectionPageMetadata } from '@/src/utils/page-metadata';
 
 
 interface Props {
@@ -45,6 +45,10 @@ export async function generateMetadata({
 }: {
     params: { locale: Locale };
 }): Promise<Metadata> {
-    const meta = await fetchSiteMetaEntry(SITE_META_QUERY, locale, 0);
-    return buildSiteMetadata(meta, locale, `/${locale}${Pages.DESIGN_ORDERS}`);
+    return buildSectionPageMetadata({
+        query: SITE_META_QUERY,
+        locale,
+        path: `/${locale}${Pages.DESIGN_ORDERS}`,
+        navigationKey: 'orders',
+    });
 };

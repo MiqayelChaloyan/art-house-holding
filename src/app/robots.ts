@@ -1,14 +1,16 @@
 import type { MetadataRoute } from 'next';
 
-export default function robots(): MetadataRoute.Robots {
-  const domain = process.env.NEXT_PUBLIC_DOMAIN ?? 'https://arthouse.am';
+import { siteUrl } from '@/src/config/site';
 
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/_next/', '/admin'],
+      // /monitoring is intentionally crawlable so Googlebot can read its noindex
+      // directive; blocking it here would let the URL be indexed link-only.
+      disallow: ['/admin', '/api/'],
     },
-    sitemap: `${domain.replace(/\/$/, '')}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 };

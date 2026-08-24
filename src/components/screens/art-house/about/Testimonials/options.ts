@@ -1,22 +1,17 @@
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import { SwiperType } from '@/src/types/art-house';
 
-import './styles.css';
+export const VISIBLE_DOTS = 3;
 
 export const options: SwiperType = {
-    effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
     loop: true,
+    autoHeight: true,
     slidesPerView: 1,
-    pagination: {
-        clickable: true,
-        el: '.swiper-pagination',
-    },
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-    modules: [Navigation, Pagination],
-    className: 'swiper-wrapper',
+    modules: [Navigation],
 };

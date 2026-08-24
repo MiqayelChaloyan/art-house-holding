@@ -20,6 +20,7 @@ export type RuleType = {
   integer: () => RuleType;
   precision: (limit: number) => RuleType;
   unique: () => RuleType;
+  warning: (message?: string) => RuleType;
 }
 
 type Validation = (rule: RuleType) => RuleType

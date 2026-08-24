@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 
 import BlogDetailPage from '@/src/components/blog/DetailPage';
+import JsonLd from '@/src/components/seo/JsonLd';
 
 import { Locale } from '@/src/locales';
 import { BlogSiteKey } from '@/src/components/blog/config';
@@ -9,7 +10,9 @@ import { BlogSiteKey } from '@/src/components/blog/config';
 import { urlForImage } from '@/sanity/imageUrlBuilder';
 
 import { ImagePath } from '@/src/types/general';
+import { absoluteUrl } from '@/src/config/site';
 import { generateMetadataDynamic } from '@/src/utils/default-metadata';
+import { buildBlogPostingSchema } from '@/src/utils/structured-data';
 import { getBlogPost, getSimilarBlogPosts } from '@/src/utils/data/design';
 
 
@@ -37,15 +40,27 @@ export default async function Page({
     }
 
     const similarPosts = await getSimilarBlogPosts(locale, decodedSlug, post.relatedPosts);
-    const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/${locale}/design/blog/${decodedSlug}`;
+    const shareUrl = absoluteUrl(`/${locale}/design/blog/${decodedSlug}`);
 
     return (
-        <BlogDetailPage
-            siteKey={'design' satisfies BlogSiteKey}
-            post={post}
-            similarPosts={similarPosts}
-            shareUrl={shareUrl}
-        />
+        <>
+            <JsonLd
+                data={buildBlogPostingSchema({
+                    title: post.title,
+                    url: shareUrl,
+                    locale,
+                    description: post.ogDescription || post.excerpt,
+                    imageUrl: post.featuredImagePath?.src,
+                    publishedAt: post.publishedAt,
+                })}
+            />
+            <BlogDetailPage
+                siteKey={'design' satisfies BlogSiteKey}
+                post={post}
+                similarPosts={similarPosts}
+                shareUrl={shareUrl}
+            />
+        </>
     );
 };
 
