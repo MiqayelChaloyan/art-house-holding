@@ -44,6 +44,7 @@ export async function getCourseBySlug(locale: string, slug: string): Promise<COU
         const result = await sanityFetch<COURSES_DESIGN_QUERYResult[]>({
             query: COURSE_SLUG_QUERY,
             params: { language: locale, slug },
+            tags: ['design-courses'],
         });
 
         return result[0];
@@ -58,6 +59,7 @@ export async function getCourseById(locale: string, slug: string): Promise<COURS
         const result = await sanityFetch<COURSES_DESIGN_QUERYResult[]>({
             query: COURSE_ID_QUERY,
             params: { language: locale, slug },
+            tags: ['design-courses'],
         });
 
         return result[0];
@@ -92,6 +94,7 @@ export async function getPriceList(locale: string): Promise<PRICE_LIST_DESIGN_QU
         const result = await sanityFetch<PRICE_LIST_DESIGN_QUERYResult[]>({
             query: PRICE_LIST_QUERY,
             params: { language: locale },
+            tags: ['design-home', 'design-courses'],
         });
 
         return result[0];
@@ -106,6 +109,7 @@ export async function getPortfolio(locale: string): Promise<PRICE_LIST_DESIGN_QU
         const result = await sanityFetch<PRICE_LIST_DESIGN_QUERYResult[]>({
             query: PORTFOLIO_QUERY,
             params: { language: locale },
+            tags: ['design-courses'],
         });
 
         return result[0];

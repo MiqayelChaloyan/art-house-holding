@@ -33,6 +33,7 @@ export async function getDiscounts(locale: string): Promise<DISCOUNTS_QUERYResul
         const result = await sanityFetch<DISCOUNTS_QUERYResult[]>({
             query: DISCOUNTS_QUERY,
             params: { language: locale },
+            tags: ['language-home'],
         });
 
         return result[0];
@@ -47,6 +48,7 @@ export async function getCourses(locale: string): Promise<LANGUAGE[]> {
         const result = await sanityFetch<LANGUAGE[]>({
             query: LANGUAGES_QUERY,
             params: { language: locale },
+            tags: ['language-courses'],
         });
 
         return result;
@@ -61,6 +63,7 @@ export async function getCourseBySlug(locale: string, slug: string): Promise<LAN
         const result = await sanityFetch<LANGUAGE[]>({
             query: LANGUAGE_SLUG_QUERY,
             params: { language: locale, slug },
+            tags: ['language-courses'],
         });
 
         return result[0];
@@ -75,6 +78,7 @@ export async function getCourseById(locale: string, slug: string): Promise<ABOUT
         const result = await sanityFetch<ABOUT_LANGUAGE_QUERYResult[]>({
             query: LANGUAGE_ID_QUERY,
             params: { language: locale, slug },
+            tags: ['language-courses'],
         });
 
         return result[0];
@@ -119,6 +123,7 @@ export async function getPriceList(locale: string): Promise<PRICE_LIST_LANGUAGE_
         const result = await sanityFetch<PRICE_LIST_LANGUAGE_QUERYResult[]>({
             query: PRICE_LIST_QUERY,
             params: { language: locale },
+            tags: ['language-home', 'language-courses'],
         });
 
         return result[0];
@@ -133,6 +138,7 @@ export async function getQuizs(locale: string): Promise<QUIZ_QUERYResult[]> {
         const result = await sanityFetch<QUIZ_QUERYResult[]>({
             query: QUIZS_QUERY,
             params: { language: locale },
+            tags: ['language-home'],
         });
 
         return result;
@@ -147,6 +153,7 @@ export async function getQuizBySlug(locale: string, slug: string): Promise<QUIZ_
         const result = await sanityFetch<QUIZ_QUERYResult[]>({
             query: QUIZ_SLUG_QUERY,
             params: { language: locale, slug },
+            tags: ['language-home'],
         });
 
         return result[0];

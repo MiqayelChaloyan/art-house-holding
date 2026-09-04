@@ -44,6 +44,7 @@ export async function getCourse(locale: string, slug: string): Promise<COURSES_Q
         const result = await sanityFetch<COURSES_QUERYResult[]>({
             query: COURSE_SLUG_QUERY,
             params: { language: locale, slug },
+            tags: ['educational-courses'],
         });
 
         return result[0];
